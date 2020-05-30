@@ -1,0 +1,18 @@
+#
+# The Standard Library for the psASM Language
+#
+
+
+# Status Register + Bit Positions
+@define STS           0x100
+@define STS_C         0x0
+@define STS_HC        0x1
+@define STS_B         0x2
+@define STS_HB        0x3
+@define STS_ShftIn    0x4
+@define STS_A0        0x5
+@define STS_B0        0x6
+@define STS_AB        0x7
+
+# Page Register
+@define PGE           0x101                    

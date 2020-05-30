@@ -1,0 +1,26 @@
+# Writes sequential numbers to all RAM pages
+
+# Defines
+@define STS 0x100 # Status Reg Adr
+@define STS_C 0x0 # Carry Bit position
+@define PGE 0x101 # Page Reg Adr
+# Setup the Regs
+LITA 0
+LITB 0
+
+# Loop:
+l: SVDM # Store A in Adr. B
+ADDL 1  # Increase A by 1
+TBRM STS, STS_C  # Check if we overflowed
+JMP ovf
+CPY     # Store same value in B
+JMP l   # Jump Back
+
+
+#Overflow handler
+ovf: LDA PGE
+ADDL 1
+SVA PGE
+LITA 0
+LITB 0
+JMP l

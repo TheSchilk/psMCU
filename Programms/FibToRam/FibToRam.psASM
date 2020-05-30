@@ -1,0 +1,54 @@
+# Calculates all Fibonacci numbers that fit into 8 bits and stores them in RAM
+
+###### Definitions ##########
+# Position were we will store the pointer to the latest number
+@define adr_pointer 0xff
+# Address of the ALU status register
+@define STATUS 0x100
+# The bit in the ALU status register that indicates a carry-out 
+@define ALU_OVF 0
+
+LITA 1 
+SVA adr_pointer
+
+# The first two numbers are given
+LITA 1
+LITB 1
+SVA 0 
+SVA 1
+
+
+# Loop
+
+# A: New Value  B: Prev Value
+# Calculate the next number into A
+loop: ADD 
+
+# Check we did not overflow
+TBRM STATUS, ALU_OVF
+JMP STOP
+
+# Temporarily store the previous number on the stack
+# and grab the address of the last number we stored in RAM
+SWP
+PUSH
+LDA adr_pointer 
+
+# Increment the address and store the new value there
+ADDL 1
+SWP
+SVDM 
+
+# Save the current address
+SVB adr_pointer # stored new address
+
+# Retrieve the previous number into A and keep the current number in B
+# Loop again
+SWP
+POP
+JMP loop
+
+# Infinite Loop to stop
+# because when I wrote this the HALT instruction wasn't working yet *grin*
+STOP: NOP
+JMP STOP

@@ -1,0 +1,13 @@
+###### Definitions ##########
+
+@define    adr_pointer       0xff # Position were we will store the pointer to the latest number
+@define    STATUS        0x100 # Address of the ALU status register
+@define        ALU_OVF          0 # The bit in the ALU status register that indicates a carry-out
+
+LITA      0xab
+SVA     0x0
+LITA     0xba
+SVA     0x1
+LDA    0x0
+LDA  0x0
+HALT
