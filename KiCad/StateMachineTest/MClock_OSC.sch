@@ -1,0 +1,195 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 23 58
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Text HLabel 8850 1800 2    50   Output ~ 0
+MCLOCK
+$Comp
+L Timer:LM555 U60
+U 1 1 5F054B64
+P 5900 1750
+F 0 "U60" H 5800 2150 50  0000 C CNN
+F 1 "LM555" H 5600 2150 50  0000 C CNN
+F 2 "Package_SO:SO-8_3.9x4.9mm_P1.27mm" H 5900 1750 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/lm555.pdf" H 5900 1750 50  0001 C CNN
+	1    5900 1750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6400 1550 6850 1550
+Wire Wire Line
+	6850 1550 6850 1800
+Wire Wire Line
+	6850 1800 8850 1800
+$Comp
+L Device:R_Small R60
+U 1 1 5F056532
+P 7150 1550
+F 0 "R60" V 6954 1550 50  0000 C CNN
+F 1 "10K" V 7045 1550 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 7150 1550 50  0001 C CNN
+F 3 "~" H 7150 1550 50  0001 C CNN
+	1    7150 1550
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_POT RV1
+U 1 1 5F056BFD
+P 7550 1550
+F 0 "RV1" V 7343 1550 50  0000 C CNN
+F 1 "5M" V 7434 1550 50  0000 C CNN
+F 2 "Potentiometer_THT:Potentiometer_Bourns_3386F_Vertical" H 7550 1550 50  0001 C CNN
+F 3 "~" H 7550 1550 50  0001 C CNN
+	1    7550 1550
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7400 1550 7250 1550
+Wire Wire Line
+	7050 1550 6850 1550
+Connection ~ 6850 1550
+Wire Wire Line
+	7550 1700 7550 1950
+Wire Wire Line
+	7550 1950 6800 1950
+$Comp
+L Device:C_Small C66
+U 1 1 5F057C86
+P 6800 2200
+F 0 "C66" H 6892 2246 50  0000 L CNN
+F 1 "200n" H 6892 2155 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 6800 2200 50  0001 C CNN
+F 3 "~" H 6800 2200 50  0001 C CNN
+	1    6800 2200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7550 1950 7900 1950
+Wire Wire Line
+	7900 1950 7900 900 
+Wire Wire Line
+	7900 900  5100 900 
+Connection ~ 7550 1950
+Wire Wire Line
+	5400 1550 5100 1550
+Wire Wire Line
+	5100 900  5100 1550
+Wire Wire Line
+	5400 1750 5100 1750
+$Comp
+L Device:C_Small C64
+U 1 1 5F059CC5
+P 5100 2150
+F 0 "C64" H 5192 2196 50  0000 L CNN
+F 1 "100n" H 5192 2105 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 5100 2150 50  0001 C CNN
+F 3 "~" H 5100 2150 50  0001 C CNN
+	1    5100 2150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5100 1750 5100 2050
+Wire Wire Line
+	5400 1950 5300 1950
+Wire Wire Line
+	5300 1950 5300 1250
+Wire Wire Line
+	5900 1250 5900 1350
+Wire Wire Line
+	5300 1250 5900 1250
+Wire Wire Line
+	5900 1250 5900 1150
+Connection ~ 5900 1250
+$Comp
+L power:+5V #PWR0348
+U 1 1 5F05B4BA
+P 5900 1150
+F 0 "#PWR0348" H 5900 1000 50  0001 C CNN
+F 1 "+5V" H 5915 1323 50  0000 C CNN
+F 2 "" H 5900 1150 50  0001 C CNN
+F 3 "" H 5900 1150 50  0001 C CNN
+	1    5900 1150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C65
+U 1 1 5F05BC90
+P 6200 1250
+F 0 "C65" V 5971 1250 50  0000 C CNN
+F 1 "0u1" V 6062 1250 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 6200 1250 50  0001 C CNN
+F 3 "~" H 6200 1250 50  0001 C CNN
+	1    6200 1250
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6100 1250 5900 1250
+$Comp
+L power:GND #PWR0349
+U 1 1 5F05DCB1
+P 6800 2350
+F 0 "#PWR0349" H 6800 2100 50  0001 C CNN
+F 1 "GND" H 6805 2177 50  0000 C CNN
+F 2 "" H 6800 2350 50  0001 C CNN
+F 3 "" H 6800 2350 50  0001 C CNN
+	1    6800 2350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6800 2350 6800 2300
+Wire Wire Line
+	6800 2100 6800 1950
+Connection ~ 6800 1950
+Wire Wire Line
+	6800 1950 6400 1950
+$Comp
+L power:GND #PWR0350
+U 1 1 5F05F688
+P 5900 2200
+F 0 "#PWR0350" H 5900 1950 50  0001 C CNN
+F 1 "GND" H 5905 2027 50  0000 C CNN
+F 2 "" H 5900 2200 50  0001 C CNN
+F 3 "" H 5900 2200 50  0001 C CNN
+	1    5900 2200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5900 2200 5900 2150
+$Comp
+L power:GND #PWR0351
+U 1 1 5F06000F
+P 5100 2300
+F 0 "#PWR0351" H 5100 2050 50  0001 C CNN
+F 1 "GND" H 5105 2127 50  0000 C CNN
+F 2 "" H 5100 2300 50  0001 C CNN
+F 3 "" H 5100 2300 50  0001 C CNN
+	1    5100 2300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5100 2300 5100 2250
+$Comp
+L power:GND #PWR0352
+U 1 1 5F0615AA
+P 6400 1250
+F 0 "#PWR0352" H 6400 1000 50  0001 C CNN
+F 1 "GND" V 6405 1122 50  0000 R CNN
+F 2 "" H 6400 1250 50  0001 C CNN
+F 3 "" H 6400 1250 50  0001 C CNN
+	1    6400 1250
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6400 1250 6300 1250
+$EndSCHEMATC
