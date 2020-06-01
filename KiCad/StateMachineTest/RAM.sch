@@ -217,9 +217,6 @@ Wire Wire Line
 	1500 3000 1600 3000
 Wire Wire Line
 	1700 2700 1700 2550
-Connection ~ 1700 2550
-Wire Wire Line
-	1700 2550 1700 2500
 $Comp
 L 74xGxx:74LVC1G08 U?
 U 1 1 5EED02F2
@@ -696,21 +693,21 @@ Wire Wire Line
 Wire Wire Line
 	2750 3150 4250 3150
 Entry Wire Line
-	6050 2350 6150 2450
+	5850 2350 5950 2450
 Entry Wire Line
-	6050 2450 6150 2550
+	5850 2450 5950 2550
 Entry Wire Line
-	6050 2550 6150 2650
+	5850 2550 5950 2650
 Entry Wire Line
-	6050 2650 6150 2750
+	5850 2650 5950 2750
 Entry Wire Line
-	6050 2750 6150 2850
+	5850 2750 5950 2850
 Entry Wire Line
-	6050 2850 6150 2950
+	5850 2850 5950 2950
 Entry Wire Line
-	6050 2950 6150 3050
+	5850 2950 5950 3050
 Entry Wire Line
-	6050 3050 6150 3150
+	5850 3050 5950 3150
 Wire Wire Line
 	6600 3250 6500 3250
 Wire Wire Line
@@ -757,43 +754,7 @@ F 3 "" H 6500 3950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Bus Line
-	6050 1400 5050 1400
-Wire Wire Line
-	6150 2450 6600 2450
-Wire Wire Line
-	6150 2550 6600 2550
-Wire Wire Line
-	6150 2650 6600 2650
-Wire Wire Line
-	6150 2750 6600 2750
-Wire Wire Line
-	6150 2850 6600 2850
-Wire Wire Line
-	6150 2950 6600 2950
-Wire Wire Line
-	6150 3050 6600 3050
-Wire Wire Line
-	6150 3150 6600 3150
-Text Label 6150 2450 0    50   ~ 0
-RAMA0
-Text Label 6150 2550 0    50   ~ 0
-RAMA1
-Text Label 6150 2650 0    50   ~ 0
-RAMA2
-Text Label 6150 2750 0    50   ~ 0
-RAMA3
-Text Label 6150 2850 0    50   ~ 0
-RAMA4
-Text Label 6150 2950 0    50   ~ 0
-RAMA5
-Text Label 6150 3050 0    50   ~ 0
-RAMA6
-Text Label 6150 3150 0    50   ~ 0
-RAMA7
-Text Label 5100 1400 0    50   ~ 0
-RAMA_SYNC[0..7]
-Text Label 6050 1500 3    50   ~ 0
-RAMA[0..7]
+	5850 1400 5050 1400
 $Comp
 L power:+5V #PWR0709
 U 1 1 5EFC3B94
@@ -1413,9 +1374,9 @@ Wire Wire Line
 Wire Wire Line
 	7000 1100 7000 1950
 Wire Wire Line
-	7000 1950 5950 1950
+	7000 1950 5800 1950
 Wire Wire Line
-	5950 1950 5950 3150
+	5800 1950 5800 3150
 $Comp
 L 74xGxx:74LVC1G04 U?
 U 1 1 5F24580A
@@ -1484,7 +1445,7 @@ $EndComp
 Wire Wire Line
 	5350 3350 5350 3250
 Wire Wire Line
-	5950 3150 5600 3150
+	5800 3150 5600 3150
 Wire Wire Line
 	5050 3150 4750 3150
 $Sheet
@@ -1525,14 +1486,66 @@ Wire Wire Line
 Connection ~ 3000 5950
 Wire Wire Line
 	3000 5950 7150 5950
+$Comp
+L power:GND #PWR?
+U 1 1 5F5E9BA4
+P 5650 2950
+AR Path="/5ED2705B/5F5E9BA4" Ref="#PWR?"  Part="1" 
+AR Path="/5F1CE57C/5F5E9BA4" Ref="#PWR?"  Part="1" 
+AR Path="/5ED3C49A/5F5E9BA4" Ref="#PWR0179"  Part="1" 
+F 0 "#PWR0179" H 5650 2700 50  0001 C CNN
+F 1 "GND" H 5900 2900 50  0000 R CNN
+F 2 "" H 5650 2950 50  0001 C CNN
+F 3 "" H 5650 2950 50  0001 C CNN
+	1    5650 2950
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5950 2450 6600 2450
+Wire Wire Line
+	5950 2550 6600 2550
+Wire Wire Line
+	5950 2650 6600 2650
+Wire Wire Line
+	5950 2750 6600 2750
+Wire Wire Line
+	5950 2850 6600 2850
+Wire Wire Line
+	5950 2950 6600 2950
+Wire Wire Line
+	5950 3050 6600 3050
+Wire Wire Line
+	5950 3150 6600 3150
+Text Label 5950 2450 0    50   ~ 0
+RAMA_SYNC0
+Text Label 5950 2550 0    50   ~ 0
+RAMA_SYNC1
+Text Label 5950 2650 0    50   ~ 0
+RAMA_SYNC2
+Text Label 5950 2750 0    50   ~ 0
+RAMA_SYNC3
+Text Label 5950 2850 0    50   ~ 0
+RAMA_SYNC4
+Text Label 5950 2950 0    50   ~ 0
+RAMA_SYNC5
+Text Label 5950 3050 0    50   ~ 0
+RAMA_SYNC6
+Text Label 5950 3150 0    50   ~ 0
+RAMA_SYNC7
 Wire Bus Line
 	6050 800  9050 800 
 Wire Bus Line
 	10750 650  10750 3950
 Wire Bus Line
-	6050 1400 6050 3050
-Wire Bus Line
 	1950 1400 1950 2550
 Wire Bus Line
 	1200 1650 1200 2450
+Wire Bus Line
+	5850 1400 5850 3050
+Text Label 5800 1400 2    50   ~ 0
+RAMA_SYNC[0..7]
+Text Label 2500 1400 0    50   ~ 0
+RAMA[0..7]
+Text Label 5800 1300 2    50   ~ 0
+DB_SYNC[0..7]
 $EndSCHEMATC

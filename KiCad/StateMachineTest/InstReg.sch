@@ -465,18 +465,18 @@ Connection ~ 3000 4850
 Wire Wire Line
 	3000 4850 3000 2450
 $Sheet
-S 6900 3300 700  200 
+S 7800 3300 700  200 
 U 5F225B33
 F0 "Inst[0..7]" 50
 F1 "8BitLED.sch" 50
-F2 "VAL[0..7]" I L 6900 3400 50 
+F2 "VAL[0..7]" I L 7800 3400 50 
 $EndSheet
 $Sheet
-S 6900 4450 700  200 
+S 7850 4450 700  200 
 U 5F225B36
 F0 "Inst[8..15]" 50
 F1 "8BitLED.sch" 50
-F2 "VAL[0..7]" I L 6900 4550 50 
+F2 "VAL[0..7]" I L 7850 4550 50 
 $EndSheet
 Entry Wire Line
 	6550 2500 6650 2600
@@ -506,78 +506,10 @@ Entry Wire Line
 	6550 4050 6650 4150
 Entry Wire Line
 	6550 4150 6650 4250
-Wire Bus Line
-	6650 3400 6900 3400
-Wire Bus Line
-	6650 4550 6900 4550
-Wire Wire Line
-	5950 2500 6550 2500
-Wire Wire Line
-	5950 2600 6550 2600
-Wire Wire Line
-	5950 2700 6550 2700
-Wire Wire Line
-	5950 2800 6550 2800
-Wire Wire Line
-	5950 2900 6550 2900
-Wire Wire Line
-	5950 3000 6550 3000
-Wire Wire Line
-	5950 3100 6550 3100
-Wire Wire Line
-	5950 3200 6550 3200
-Wire Wire Line
-	5950 3650 6550 3650
-Wire Wire Line
-	5950 3750 6550 3750
-Wire Wire Line
-	5950 3850 6550 3850
-Wire Wire Line
-	5950 3950 6550 3950
-Wire Wire Line
-	5950 4050 6550 4050
-Wire Wire Line
-	5950 4150 6550 4150
-Text Label 6550 2500 2    50   ~ 0
-VAL0
-Text Label 6550 2600 2    50   ~ 0
-VAL1
-Text Label 6550 2700 2    50   ~ 0
-VAL2
-Text Label 6550 2800 2    50   ~ 0
-VAL3
-Text Label 6550 2900 2    50   ~ 0
-VAL4
-Text Label 6550 3000 2    50   ~ 0
-VAL5
-Text Label 6550 3100 2    50   ~ 0
-VAL6
-Text Label 6550 3200 2    50   ~ 0
-VAL7
-Text Label 6550 3650 2    50   ~ 0
-VAL8
-Text Label 6550 3750 2    50   ~ 0
-VAL9
-Text Label 6550 3850 2    50   ~ 0
-VAL10
-Text Label 6550 3950 2    50   ~ 0
-VAL11
-Text Label 6550 4050 2    50   ~ 0
-VAL12
-Text Label 6550 4150 2    50   ~ 0
-VAL13
-Wire Wire Line
-	5950 4250 6550 4250
-Wire Wire Line
-	5950 4350 6550 4350
 Entry Wire Line
 	6550 4250 6650 4350
 Entry Wire Line
 	6550 4350 6650 4450
-Text Label 6550 4250 2    50   ~ 0
-VAL14
-Text Label 6550 4350 2    50   ~ 0
-VAL15
 Entry Wire Line
 	5850 2400 5950 2500
 Entry Wire Line
@@ -643,10 +575,82 @@ Inst14
 Text Label 5950 4350 0    50   ~ 0
 Inst15
 Wire Bus Line
-	5400 950  6100 950 
-Wire Bus Line
-	5850 2350 5400 2350
+	5400 2350 5850 2350
 Connection ~ 5400 2350
+Wire Bus Line
+	5400 950  6100 950 
+Wire Wire Line
+	5950 2500 6550 2500
+Wire Wire Line
+	5950 2600 6550 2600
+Wire Wire Line
+	5950 2700 6550 2700
+Wire Wire Line
+	5950 2800 6550 2800
+Wire Wire Line
+	5950 2900 6550 2900
+Wire Wire Line
+	5950 3000 6550 3000
+Wire Wire Line
+	5950 3100 6550 3100
+Wire Wire Line
+	5950 3200 6550 3200
+Wire Wire Line
+	5950 3650 6550 3650
+Wire Wire Line
+	5950 3750 6550 3750
+Wire Wire Line
+	5950 3850 6550 3850
+Wire Wire Line
+	5950 3950 6550 3950
+Wire Wire Line
+	5950 4050 6550 4050
+Wire Wire Line
+	5950 4150 6550 4150
+Wire Wire Line
+	5950 4250 6550 4250
+Wire Wire Line
+	5950 4350 6550 4350
+Text Label 6550 2500 2    50   ~ 0
+VALL0
+Text Label 6550 2600 2    50   ~ 0
+VALL1
+Text Label 6550 2700 2    50   ~ 0
+VALL2
+Text Label 6550 2800 2    50   ~ 0
+VALL3
+Text Label 6550 2900 2    50   ~ 0
+VALL4
+Text Label 6550 3000 2    50   ~ 0
+VALL5
+Text Label 6550 3100 2    50   ~ 0
+VALL6
+Text Label 6550 3200 2    50   ~ 0
+VALL7
+Text Label 6550 3650 2    50   ~ 0
+VALH0
+Text Label 6550 3750 2    50   ~ 0
+VALH1
+Text Label 6550 3850 2    50   ~ 0
+VALH2
+Text Label 6550 3950 2    50   ~ 0
+VALH3
+Text Label 6550 4050 2    50   ~ 0
+VALH4
+Text Label 6550 4150 2    50   ~ 0
+VALH5
+Text Label 6550 4250 2    50   ~ 0
+VALH6
+Text Label 6550 4350 2    50   ~ 0
+VALH7
+Wire Bus Line
+	6650 3400 7800 3400
+Text Label 7100 3400 0    50   ~ 0
+VALL[0..7]
+Wire Bus Line
+	6650 4550 7850 4550
+Text Label 7150 4550 0    50   ~ 0
+VALH[0..7]
 Wire Bus Line
 	6650 3750 6650 4550
 Wire Bus Line

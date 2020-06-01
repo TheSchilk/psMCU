@@ -149,20 +149,6 @@ $EndComp
 Wire Wire Line
 	3300 3650 3700 3650
 Connection ~ 3300 3650
-$Comp
-L 74xGxx:74LVC1G04 U?
-U 1 1 5F3B8686
-P 4000 3650
-AR Path="/5ED2705B/5F3B8686" Ref="U?"  Part="1" 
-AR Path="/5F1CE57C/5F3B8686" Ref="U?"  Part="1" 
-AR Path="/5F394B96/5F3B8686" Ref="U145"  Part="1" 
-F 0 "U145" H 4100 3450 50  0000 C CNN
-F 1 "74LVC1G04" H 4250 3550 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 4000 3650 50  0001 C CNN
-F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 4000 3650 50  0001 C CNN
-	1    4000 3650
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	4000 3550 4000 3450
 Wire Wire Line

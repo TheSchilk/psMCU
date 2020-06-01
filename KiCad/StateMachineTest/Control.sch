@@ -372,8 +372,6 @@ F2 "VAL[0..7]" I L 5600 750 50
 $EndSheet
 Text Label 4600 750  0    50   ~ 0
 InstCode[0..7]
-Text Label 5200 750  0    50   ~ 0
-Val[0..7]
 Wire Bus Line
 	4350 750  4350 1050
 Wire Bus Line
@@ -461,37 +459,13 @@ $EndSheet
 Wire Wire Line
 	8100 1650 8800 1650
 Wire Wire Line
-	8100 4400 8750 4400
-Wire Wire Line
-	8100 4500 8750 4500
-Wire Wire Line
-	8100 4600 8750 4600
-Wire Wire Line
-	8100 4700 8750 4700
-Wire Wire Line
-	8100 4800 8750 4800
-Wire Wire Line
 	8100 4900 8750 4900
-Wire Wire Line
-	8100 5000 8750 5000
-Wire Wire Line
-	8100 5100 8750 5100
 Wire Wire Line
 	8100 5500 8750 5500
 Wire Wire Line
 	8100 5600 8750 5600
 Wire Wire Line
 	8100 5700 8750 5700
-Wire Wire Line
-	8100 5800 8750 5800
-Wire Wire Line
-	8100 5900 8750 5900
-Wire Wire Line
-	8100 6000 8750 6000
-Wire Wire Line
-	8100 6100 8750 6100
-Wire Wire Line
-	8100 6200 8750 6200
 Text Label 8800 1050 2    50   ~ 0
 Next_Inst
 Text Label 8800 1150 2    50   ~ 0
@@ -519,43 +493,15 @@ Wire Wire Line
 Wire Wire Line
 	8100 1350 8800 1350
 Wire Wire Line
-	8100 1750 8800 1750
-NoConn ~ 8800 1750
-Wire Wire Line
 	8100 2150 8800 2150
 Wire Wire Line
 	8100 2250 8800 2250
-Wire Wire Line
-	8100 2350 8800 2350
-Wire Wire Line
-	8100 2450 8800 2450
-Wire Wire Line
-	8100 2550 8800 2550
-Wire Wire Line
-	8100 2650 8800 2650
-Wire Wire Line
-	8100 2750 8800 2750
-Wire Wire Line
-	8100 2850 8800 2850
 Text HLabel 8800 2150 2    50   Output ~ 0
 RegA_Latch_En
 Text HLabel 8800 2250 2    50   Output ~ 0
 RegA_OE
-NoConn ~ 8800 2350
-NoConn ~ 8800 2450
-NoConn ~ 8800 2550
-NoConn ~ 8800 2650
-NoConn ~ 8800 2750
-NoConn ~ 8800 2850
 Text HLabel 8750 4900 2    50   Output ~ 0
 Inst[0..7]->DBus
-NoConn ~ 8750 5100
-NoConn ~ 8750 5000
-NoConn ~ 8750 4800
-NoConn ~ 8750 4700
-NoConn ~ 8750 4600
-NoConn ~ 8750 4500
-NoConn ~ 8750 4400
 Text HLabel 8750 5500 2    50   Output ~ 0
 RAM_WAsync
 Text HLabel 8750 5600 2    50   Output ~ 0

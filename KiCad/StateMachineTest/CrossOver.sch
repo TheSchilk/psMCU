@@ -268,22 +268,6 @@ Entry Wire Line
 	2750 3750 2850 3850
 Entry Wire Line
 	2750 3850 2850 3950
-Entry Wire Line
-	2750 3950 2850 4050
-Entry Wire Line
-	2750 4050 2850 4150
-Entry Wire Line
-	2750 4150 2850 4250
-Entry Wire Line
-	2750 4250 2850 4350
-Entry Wire Line
-	2750 4350 2850 4450
-Entry Wire Line
-	2750 4450 2850 4550
-Entry Wire Line
-	2750 4550 2850 4650
-Entry Wire Line
-	2750 4650 2850 4750
 Text Label 2850 3250 0    50   ~ 0
 Inst0
 Text Label 2850 3350 0    50   ~ 0
@@ -300,48 +284,8 @@ Text Label 2850 3850 0    50   ~ 0
 Inst6
 Text Label 2850 3950 0    50   ~ 0
 Inst7
-Text Label 2850 4050 0    50   ~ 0
-Inst8
-Text Label 2850 4150 0    50   ~ 0
-Inst9
-Text Label 2850 4250 0    50   ~ 0
-Inst10
-Text Label 2850 4350 0    50   ~ 0
-Inst11
-Text Label 2850 4450 0    50   ~ 0
-Inst12
-Text Label 2850 4550 0    50   ~ 0
-Inst13
-Text Label 2850 4650 0    50   ~ 0
-Inst14
-Text Label 2850 4750 0    50   ~ 0
-Inst15
 Wire Bus Line
 	2750 3100 2300 3100
-Wire Wire Line
-	2850 4050 3150 4050
-Wire Wire Line
-	2850 4150 3150 4150
-Wire Wire Line
-	2850 4250 3150 4250
-Wire Wire Line
-	2850 4350 3150 4350
-Wire Wire Line
-	2850 4450 3150 4450
-Wire Wire Line
-	2850 4550 3150 4550
-Wire Wire Line
-	2850 4650 3150 4650
-Wire Wire Line
-	2850 4750 3150 4750
-NoConn ~ 3150 4050
-NoConn ~ 3150 4150
-NoConn ~ 3150 4250
-NoConn ~ 3150 4350
-NoConn ~ 3150 4450
-NoConn ~ 3150 4550
-NoConn ~ 3150 4650
-NoConn ~ 3150 4750
 Wire Wire Line
 	2850 3250 4150 3250
 Wire Wire Line
@@ -472,6 +416,54 @@ Wire Wire Line
 	1300 6400 1350 6400
 Wire Wire Line
 	1650 5600 1650 6200
+Text Label 2850 4750 0    50   ~ 0
+Inst15
+Text Label 2850 4650 0    50   ~ 0
+Inst14
+Text Label 2850 4550 0    50   ~ 0
+Inst13
+Text Label 2850 4450 0    50   ~ 0
+Inst12
+Text Label 2850 4350 0    50   ~ 0
+Inst11
+Text Label 2850 4250 0    50   ~ 0
+Inst10
+Text Label 2850 4150 0    50   ~ 0
+Inst9
+Text Label 2850 4050 0    50   ~ 0
+Inst8
+Entry Wire Line
+	2750 4650 2850 4750
+Entry Wire Line
+	2750 4550 2850 4650
+Entry Wire Line
+	2750 4450 2850 4550
+Entry Wire Line
+	2750 4350 2850 4450
+Entry Wire Line
+	2750 4250 2850 4350
+Entry Wire Line
+	2750 4150 2850 4250
+Entry Wire Line
+	2750 4050 2850 4150
+Entry Wire Line
+	2750 3950 2850 4050
+Wire Wire Line
+	2850 4050 3100 4050
+Wire Wire Line
+	2850 4150 3100 4150
+Wire Wire Line
+	2850 4250 3100 4250
+Wire Wire Line
+	2850 4350 3100 4350
+Wire Wire Line
+	2850 4450 3100 4450
+Wire Wire Line
+	2850 4550 3100 4550
+Wire Wire Line
+	2850 4650 3100 4650
+Wire Wire Line
+	2850 4750 3100 4750
 Wire Bus Line
 	5500 3350 5500 4050
 Wire Bus Line

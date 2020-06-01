@@ -180,13 +180,13 @@ Entry Wire Line
 Entry Wire Line
 	4450 2400 4550 2500
 Wire Bus Line
-	4450 5050 4550 5050
+	4450 5050 4900 5050
 $Sheet
-S 4550 4950 700  200 
+S 4900 4950 700  200 
 U 5F30EEBC
 F0 "RegValDisp" 50
 F1 "8BitLED.sch" 50
-F2 "VAL[0..7]" I L 4550 5050 50 
+F2 "VAL[0..7]" I L 4900 5050 50 
 $EndSheet
 Text Label 6050 3200 2    50   ~ 0
 DB7
@@ -804,4 +804,6 @@ Wire Bus Line
 	6150 650  6150 3300
 Wire Bus Line
 	4450 1500 4450 4750
+Text Label 4500 5050 0    50   ~ 0
+VAL[0..7]
 $EndSCHEMATC

@@ -146,8 +146,6 @@ $EndComp
 Wire Wire Line
 	4200 3750 4250 3750
 Wire Wire Line
-	4350 2150 3650 2150
-Wire Wire Line
 	4350 2250 3650 2250
 Wire Wire Line
 	4350 2350 3650 2350
@@ -205,24 +203,6 @@ Entry Wire Line
 	3550 2550 3650 2650
 Entry Wire Line
 	3550 2650 3650 2750
-Wire Wire Line
-	4150 2050 3650 2050
-Wire Wire Line
-	4150 1950 3650 1950
-Wire Wire Line
-	4150 1850 3650 1850
-Wire Wire Line
-	4150 1750 3650 1750
-Wire Wire Line
-	4150 1650 3650 1650
-Wire Wire Line
-	4150 1550 3650 1550
-Wire Wire Line
-	4150 1450 3650 1450
-Wire Wire Line
-	4150 1350 3650 1350
-Wire Wire Line
-	4150 1250 3650 1250
 Entry Wire Line
 	3550 1150 3650 1250
 Entry Wire Line
@@ -241,15 +221,6 @@ Entry Wire Line
 	3550 1850 3650 1950
 Entry Wire Line
 	3550 1950 3650 2050
-NoConn ~ 4150 1250
-NoConn ~ 4150 1350
-NoConn ~ 4150 1450
-NoConn ~ 4150 1550
-NoConn ~ 4150 1650
-NoConn ~ 4150 1750
-NoConn ~ 4150 1850
-NoConn ~ 4150 1950
-NoConn ~ 4150 2050
 Wire Bus Line
 	3550 1000 3050 1000
 NoConn ~ 4350 3850
@@ -320,6 +291,26 @@ F 3 "" H 4200 4150 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	4200 4150 4350 4150
+Wire Wire Line
+	3650 1250 3950 1250
+Wire Wire Line
+	3650 1350 3950 1350
+Wire Wire Line
+	3650 1450 3950 1450
+Wire Wire Line
+	3650 1550 3950 1550
+Wire Wire Line
+	3650 1650 3950 1650
+Wire Wire Line
+	3650 1750 3950 1750
+Wire Wire Line
+	3650 1850 3950 1850
+Wire Wire Line
+	3650 1950 3950 1950
+Wire Wire Line
+	3650 2050 3950 2050
 Wire Bus Line
 	3550 1000 3550 2650
+Wire Wire Line
+	4350 2150 3650 2150
 $EndSCHEMATC
