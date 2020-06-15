@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 2 58
+Sheet 2 56
 Title ""
 Date ""
 Rev ""
@@ -131,54 +131,6 @@ Entry Wire Line
 	4350 1500 4450 1600
 Entry Wire Line
 	4350 1400 4450 1500
-Text Label 4550 3200 0    50   ~ 0
-VAL7
-Text Label 4550 3100 0    50   ~ 0
-VAL6
-Text Label 4550 3000 0    50   ~ 0
-VAL5
-Text Label 4550 2900 0    50   ~ 0
-VAL4
-Text Label 4550 2800 0    50   ~ 0
-VAL3
-Text Label 4550 2700 0    50   ~ 0
-VAL2
-Text Label 4550 2600 0    50   ~ 0
-VAL1
-Text Label 4550 2500 0    50   ~ 0
-VAL0
-Wire Wire Line
-	4550 3200 4800 3200
-Wire Wire Line
-	4550 3100 4800 3100
-Wire Wire Line
-	4550 3000 4800 3000
-Wire Wire Line
-	4550 2900 4800 2900
-Wire Wire Line
-	4550 2800 4800 2800
-Wire Wire Line
-	4550 2700 4800 2700
-Wire Wire Line
-	4550 2600 4800 2600
-Wire Wire Line
-	4550 2500 4800 2500
-Entry Wire Line
-	4450 3100 4550 3200
-Entry Wire Line
-	4450 3000 4550 3100
-Entry Wire Line
-	4450 2900 4550 3000
-Entry Wire Line
-	4450 2800 4550 2900
-Entry Wire Line
-	4450 2700 4550 2800
-Entry Wire Line
-	4450 2600 4550 2700
-Entry Wire Line
-	4450 2500 4550 2600
-Entry Wire Line
-	4450 2400 4550 2500
 Wire Bus Line
 	4450 5050 4900 5050
 $Sheet
@@ -188,56 +140,8 @@ F0 "RegValDisp" 50
 F1 "8BitLED.sch" 50
 F2 "VAL[0..7]" I L 4900 5050 50 
 $EndSheet
-Text Label 6050 3200 2    50   ~ 0
-DB7
-Text Label 6050 3100 2    50   ~ 0
-DB6
-Text Label 6050 3000 2    50   ~ 0
-DB5
-Text Label 6050 2900 2    50   ~ 0
-DB4
-Text Label 6050 2800 2    50   ~ 0
-DB3
-Text Label 6050 2700 2    50   ~ 0
-DB2
-Text Label 6050 2600 2    50   ~ 0
-DB1
-Text Label 6050 2500 2    50   ~ 0
-DB0
-Wire Wire Line
-	5800 3200 6050 3200
-Wire Wire Line
-	5800 3100 6050 3100
-Wire Wire Line
-	5800 3000 6050 3000
-Wire Wire Line
-	5800 2900 6050 2900
-Wire Wire Line
-	5800 2800 6050 2800
-Wire Wire Line
-	5800 2700 6050 2700
-Wire Wire Line
-	5800 2600 6050 2600
-Wire Wire Line
-	5800 2500 6050 2500
 Wire Bus Line
 	6150 3300 6500 3300
-Entry Wire Line
-	6050 3200 6150 3300
-Entry Wire Line
-	6050 3100 6150 3200
-Entry Wire Line
-	6050 3000 6150 3100
-Entry Wire Line
-	6050 2900 6150 3000
-Entry Wire Line
-	6050 2800 6150 2900
-Entry Wire Line
-	6050 2700 6150 2800
-Entry Wire Line
-	6050 2600 6150 2700
-Entry Wire Line
-	6050 2500 6150 2600
 Text HLabel 6500 3300 2    50   3State ~ 0
 DB[0..7]
 $Comp
@@ -798,12 +702,108 @@ Wire Wire Line
 	2150 6500 1050 6500
 Wire Wire Line
 	1050 6500 1050 7000
+Text Label 4500 5050 0    50   ~ 0
+VAL[0..7]
+Entry Wire Line
+	6050 2500 6150 2600
+Entry Wire Line
+	6050 2600 6150 2700
+Entry Wire Line
+	6050 2700 6150 2800
+Entry Wire Line
+	6050 2800 6150 2900
+Entry Wire Line
+	6050 2900 6150 3000
+Entry Wire Line
+	6050 3000 6150 3100
+Entry Wire Line
+	6050 3100 6150 3200
+Entry Wire Line
+	6050 3200 6150 3300
+Text Label 6050 3200 2    50   ~ 0
+DB0
+Text Label 6050 3100 2    50   ~ 0
+DB1
+Text Label 6050 3000 2    50   ~ 0
+DB2
+Text Label 6050 2900 2    50   ~ 0
+DB3
+Text Label 6050 2800 2    50   ~ 0
+DB4
+Text Label 6050 2700 2    50   ~ 0
+DB5
+Text Label 6050 2600 2    50   ~ 0
+DB6
+Text Label 6050 2500 2    50   ~ 0
+DB7
+Text Label 4550 2500 0    50   ~ 0
+VAL7
+Text Label 4550 2600 0    50   ~ 0
+VAL6
+Text Label 4550 2700 0    50   ~ 0
+VAL5
+Text Label 4550 2800 0    50   ~ 0
+VAL4
+Text Label 4550 2900 0    50   ~ 0
+VAL3
+Text Label 4550 3000 0    50   ~ 0
+VAL2
+Text Label 4550 3100 0    50   ~ 0
+VAL1
+Text Label 4550 3200 0    50   ~ 0
+VAL0
+Entry Wire Line
+	4450 2400 4550 2500
+Entry Wire Line
+	4450 2500 4550 2600
+Entry Wire Line
+	4450 2600 4550 2700
+Entry Wire Line
+	4450 2700 4550 2800
+Entry Wire Line
+	4450 2800 4550 2900
+Entry Wire Line
+	4450 2900 4550 3000
+Entry Wire Line
+	4450 3000 4550 3100
+Entry Wire Line
+	4450 3100 4550 3200
+Wire Wire Line
+	5800 2500 6050 2500
+Wire Wire Line
+	5800 2600 6050 2600
+Wire Wire Line
+	5800 2700 6050 2700
+Wire Wire Line
+	5800 2800 6050 2800
+Wire Wire Line
+	5800 2900 6050 2900
+Wire Wire Line
+	5800 3000 6050 3000
+Wire Wire Line
+	5800 3100 6050 3100
+Wire Wire Line
+	5800 3200 6050 3200
+Wire Wire Line
+	4550 2500 4800 2500
+Wire Wire Line
+	4550 2600 4800 2600
+Wire Wire Line
+	4550 2700 4800 2700
+Wire Wire Line
+	4550 2800 4800 2800
+Wire Wire Line
+	4550 2900 4800 2900
+Wire Wire Line
+	4550 3000 4800 3000
+Wire Wire Line
+	4550 3100 4800 3100
+Wire Wire Line
+	4550 3200 4800 3200
 Wire Bus Line
 	2400 650  2400 4150
 Wire Bus Line
 	6150 650  6150 3300
 Wire Bus Line
 	4450 1500 4450 4750
-Text Label 4500 5050 0    50   ~ 0
-VAL[0..7]
 $EndSCHEMATC

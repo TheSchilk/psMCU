@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 40 58
+Sheet 38 56
 Title ""
 Date ""
 Rev ""
@@ -309,8 +309,8 @@ Wire Wire Line
 	3650 1950 3950 1950
 Wire Wire Line
 	3650 2050 3950 2050
-Wire Bus Line
-	3550 1000 3550 2650
 Wire Wire Line
 	4350 2150 3650 2150
+Wire Bus Line
+	3550 1000 3550 2650
 $EndSCHEMATC

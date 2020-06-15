@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 53 58
+Sheet 51 56
 Title ""
 Date ""
 Rev ""
@@ -14,7 +14,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Sheet
-S 3800 1200 1250 600 
+S 3800 1200 1250 650 
 U 5ED3C508
 F0 "SyncRegisters" 50
 F1 "SyncRegisters.sch" 50
@@ -25,6 +25,7 @@ F5 "LATCH_A_EN" I L 3800 1600 50
 F6 "CLK" I L 3800 1700 50 
 F7 "RAMA[0..7]" I L 3800 1400 50 
 F8 "RAMA_SYNC[0..7]" O R 5050 1400 50 
+F9 "RESET" I L 3800 1800 50 
 $EndSheet
 Text HLabel 1600 4100 0    50   Input ~ 0
 LatchSafeDA_EN
@@ -674,22 +675,6 @@ Wire Wire Line
 	4250 3250 4100 3250
 Text Label 4100 3250 0    50   ~ 0
 CLK
-$Comp
-L power:+5V #PWR?
-U 1 1 5EF44C19
-P 4500 3550
-AR Path="/5ED2705B/5EF44C19" Ref="#PWR?"  Part="1" 
-AR Path="/5F1CE57C/5EF44C19" Ref="#PWR?"  Part="1" 
-AR Path="/5ED3C49A/5EF44C19" Ref="#PWR0707"  Part="1" 
-F 0 "#PWR0707" H 4500 3400 50  0001 C CNN
-F 1 "+5V" H 4515 3723 50  0000 C CNN
-F 2 "" H 4500 3550 50  0001 C CNN
-F 3 "" H 4500 3550 50  0001 C CNN
-	1    4500 3550
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	4500 3550 4500 3500
 Wire Wire Line
 	2750 3150 4250 3150
 Entry Wire Line
@@ -1366,8 +1351,6 @@ Wire Wire Line
 Wire Wire Line
 	7700 5050 8200 5050
 Wire Wire Line
-	7150 5050 3000 5050
-Wire Wire Line
 	8150 1300 8150 1100
 Wire Wire Line
 	8150 1100 7000 1100
@@ -1476,7 +1459,6 @@ Wire Wire Line
 	3100 4750 3000 4750
 Wire Wire Line
 	3000 4750 3000 5050
-Connection ~ 3000 5050
 Wire Wire Line
 	3000 5050 2400 5050
 Wire Wire Line
@@ -1532,6 +1514,119 @@ Text Label 5950 3050 0    50   ~ 0
 RAMA_SYNC6
 Text Label 5950 3150 0    50   ~ 0
 RAMA_SYNC7
+Text Label 5800 1400 2    50   ~ 0
+RAMA_SYNC[0..7]
+Text Label 2500 1400 0    50   ~ 0
+RAMA[0..7]
+Text Label 5800 1300 2    50   ~ 0
+DB_SYNC[0..7]
+Text HLabel 3750 1800 0    50   Input ~ 0
+RESET
+Wire Wire Line
+	3750 1800 3800 1800
+$Comp
+L 74xGxx:74LVC1G175 U29
+U 1 1 5EE6AC91
+P 5450 5150
+F 0 "U29" H 5600 4850 50  0000 C CNN
+F 1 "74LVC1G175" H 5800 4950 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 5450 5150 50  0001 C CNN
+F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 5450 5150 50  0001 C CNN
+	1    5450 5150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5300 5300 5300 5350
+$Comp
+L power:GND #PWR0223
+U 1 1 5EE6AC98
+P 5300 5350
+F 0 "#PWR0223" H 5300 5100 50  0001 C CNN
+F 1 "GND" H 5305 5177 50  0000 C CNN
+F 2 "" H 5300 5350 50  0001 C CNN
+F 3 "" H 5300 5350 50  0001 C CNN
+	1    5300 5350
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5EE6AC9E
+P 5750 4900
+AR Path="/5ED2705B/5EE6AC9E" Ref="#PWR?"  Part="1" 
+AR Path="/5F1CE57C/5EE6AC9E" Ref="#PWR?"  Part="1" 
+AR Path="/5ED3C49A/5EE6AC9E" Ref="#PWR0224"  Part="1" 
+F 0 "#PWR0224" H 5750 4650 50  0001 C CNN
+F 1 "GND" V 5755 4772 50  0000 R CNN
+F 2 "" H 5750 4900 50  0001 C CNN
+F 3 "" H 5750 4900 50  0001 C CNN
+	1    5750 4900
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5450 4900 5450 4850
+$Comp
+L Device:C_Small C?
+U 1 1 5EE6ACA5
+P 5600 4900
+AR Path="/5ED2705B/5EE6ACA5" Ref="C?"  Part="1" 
+AR Path="/5F1CE57C/5EE6ACA5" Ref="C?"  Part="1" 
+AR Path="/5ED3C49A/5EE6ACA5" Ref="C30"  Part="1" 
+F 0 "C30" V 5450 4950 50  0000 C CNN
+F 1 "0u1" V 5550 5000 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 5600 4900 50  0001 C CNN
+F 3 "~" H 5600 4900 50  0001 C CNN
+	1    5600 4900
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 5EE6ACAB
+P 5450 4850
+AR Path="/5ED2705B/5EE6ACAB" Ref="#PWR?"  Part="1" 
+AR Path="/5F1CE57C/5EE6ACAB" Ref="#PWR?"  Part="1" 
+AR Path="/5ED3C49A/5EE6ACAB" Ref="#PWR0225"  Part="1" 
+F 0 "#PWR0225" H 5450 4700 50  0001 C CNN
+F 1 "+5V" H 5465 5023 50  0000 C CNN
+F 2 "" H 5450 4850 50  0001 C CNN
+F 3 "" H 5450 4850 50  0001 C CNN
+	1    5450 4850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5500 4900 5450 4900
+Wire Wire Line
+	5450 4900 5450 5000
+Connection ~ 5450 4900
+Wire Wire Line
+	5750 4900 5700 4900
+Wire Wire Line
+	5200 5150 5050 5150
+Text Label 5050 5150 0    50   ~ 0
+CLK
+Wire Wire Line
+	5700 5050 7150 5050
+Wire Wire Line
+	3000 5050 5200 5050
+Connection ~ 3000 5050
+Wire Wire Line
+	4500 3500 4500 3650
+Text HLabel 4950 4200 0    50   Input ~ 0
+~RESET
+Wire Wire Line
+	4950 4200 5350 4200
+Wire Wire Line
+	5350 4200 5350 3650
+Wire Wire Line
+	4500 3650 5350 3650
+Wire Wire Line
+	5350 4200 6350 4200
+Wire Wire Line
+	6350 4200 6350 5600
+Connection ~ 5350 4200
+Wire Wire Line
+	5450 5400 5450 5600
+Wire Wire Line
+	5450 5600 6350 5600
 Wire Bus Line
 	6050 800  9050 800 
 Wire Bus Line
@@ -1542,10 +1637,4 @@ Wire Bus Line
 	1200 1650 1200 2450
 Wire Bus Line
 	5850 1400 5850 3050
-Text Label 5800 1400 2    50   ~ 0
-RAMA_SYNC[0..7]
-Text Label 2500 1400 0    50   ~ 0
-RAMA[0..7]
-Text Label 5800 1300 2    50   ~ 0
-DB_SYNC[0..7]
 $EndSCHEMATC

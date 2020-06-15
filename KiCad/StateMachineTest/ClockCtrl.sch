@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 18 58
+Sheet 18 56
 Title ""
 Date ""
 Rev ""
@@ -930,8 +930,8 @@ Wire Wire Line
 	9100 5200 8350 5200
 Connection ~ 7600 2400
 Wire Wire Line
-	8300 3300 8400 3300
-Text HLabel 8400 3300 2    50   Output ~ 0
+	8300 3300 8600 3300
+Text HLabel 8700 3300 2    50   Output ~ 0
 CLK
 Text Label 3750 6050 2    50   ~ 0
 ~R
@@ -1033,4 +1033,22 @@ Wire Wire Line
 Wire Wire Line
 	2300 6500 2300 6050
 Connection ~ 2300 6050
+$Sheet
+S 8250 3950 700  200 
+U 5EECC2BE
+F0 "sheet5EECC2BB" 50
+F1 "1BitLED.sch" 50
+F2 "VAL" I L 8250 4050 50 
+$EndSheet
+Wire Wire Line
+	8600 3300 8600 3800
+Wire Wire Line
+	8600 3800 8100 3800
+Wire Wire Line
+	8100 3800 8100 4050
+Wire Wire Line
+	8100 4050 8250 4050
+Connection ~ 8600 3300
+Wire Wire Line
+	8600 3300 8700 3300
 $EndSCHEMATC

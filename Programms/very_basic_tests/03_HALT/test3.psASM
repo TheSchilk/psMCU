@@ -1,0 +1,10 @@
+lbl: LITA 0
+NOP
+HALT
+LITA 1
+NOP
+HALT
+LITA 2
+NOP
+HALT 
+JMP lbl

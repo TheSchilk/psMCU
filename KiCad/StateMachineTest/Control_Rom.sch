@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 42 58
+Sheet 40 56
 Title ""
 Date ""
 Rev ""
@@ -136,8 +136,6 @@ F 3 "" H 3750 4000 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	3750 4000 3800 4000
-NoConn ~ 3900 4100
-NoConn ~ 3900 4200
 Connection ~ 3800 4000
 Wire Wire Line
 	3800 3800 3800 3900
@@ -750,10 +748,21 @@ F 3 "" H 3800 4750 50  0001 C CNN
 	1    3800 4750
 	1    0    0    -1  
 $EndComp
+Text Label 6100 3700 0    50   ~ 0
+VAL[0..7]
+Wire Wire Line
+	3800 4000 3800 4100
+Wire Wire Line
+	3800 4100 3900 4100
+Wire Wire Line
+	3800 4100 3800 4200
+Wire Wire Line
+	3800 4200 3900 4200
+Connection ~ 3800 4100
+Text Notes 5300 4450 0    50   ~ 0
+Grounding pins 1 and 30 should allow the \nSST39SF010 to be subsituted with a higher memory unit (020,040)
 Wire Bus Line
 	5350 3700 6500 3700
 Wire Bus Line
 	3200 1850 3200 3000
-Text Label 6100 3700 0    50   ~ 0
-VAL[0..7]
 $EndSCHEMATC

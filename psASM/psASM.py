@@ -13,6 +13,7 @@ from Errors import ArgumentRangeException
 # Make sure there where enough arguments parsed
 if len(sys.argv) < 2:
     print("Not Enough arguments. Please specify a .psasm file")
+    sys.exit()
 
 # Parse into a listing of lines
 try:

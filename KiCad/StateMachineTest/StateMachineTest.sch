@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 58
+Sheet 1 56
 Title ""
 Date ""
 Rev ""
@@ -49,6 +49,7 @@ F2 "LATCH_EN" I L 6200 1500 50
 F3 "CLK" I L 6200 1700 50 
 F4 "NextInst[0..15]" I L 6200 1400 50 
 F5 "Inst[0..15]" O R 7400 1400 50 
+F6 "RESET" I L 6200 1800 50 
 $EndSheet
 $Sheet
 S 3400 1300 1300 450 
@@ -58,8 +59,6 @@ F1 "ROM.sch" 50
 F2 "PC[0..13]" I L 3400 1400 50 
 F3 "NextInst[0..15]" O R 4700 1400 50 
 $EndSheet
-Wire Bus Line
-	2800 1400 3100 1400
 $Sheet
 S 7950 3900 750  400 
 U 608BF85D
@@ -86,21 +85,6 @@ Wire Bus Line
 Wire Bus Line
 	7650 3400 7950 3400
 $Sheet
-S 3400 700  1300 200 
-U 60A296EE
-F0 "Breakpoint" 50
-F1 "Breakpoint.sch" 50
-F2 "BRKPT_TRIG" O R 4700 800 50 
-F3 "PC[0..13]" I L 3400 800 50 
-$EndSheet
-Wire Bus Line
-	3400 800  3100 800 
-Wire Bus Line
-	3100 800  3100 1400
-Connection ~ 3100 1400
-Wire Bus Line
-	3100 1400 3400 1400
-$Sheet
 S 8150 1300 1400 1100
 U 60E33DBC
 F0 "Control" 50
@@ -121,7 +105,7 @@ F14 "RAM_LatchSafeDA_EN" O R 9550 2200 50
 F15 "InstReg_Latch_EN" O R 9550 2300 50 
 $EndSheet
 $Sheet
-S 2800 3150 950  850 
+S 2800 3150 850  950 
 U 5ED3C49A
 F0 "RAM" 50
 F1 "RAM.sch" 50
@@ -131,6 +115,8 @@ F4 "R_ASYNC" I L 2800 3900 50
 F5 "DB[0..7]" T L 2800 3250 50 
 F6 "RAMA[0..8]" I L 2800 3350 50 
 F7 "CLK" I L 2800 3600 50 
+F8 "RESET" I L 2800 3500 50 
+F9 "~RESET" I L 2800 4000 50 
 $EndSheet
 $Sheet
 S 5350 3950 800  300 
@@ -138,17 +124,12 @@ U 5F394B96
 F0 "DBUS_DISPLAY.sch" 50
 F1 "DBUS_DISPLAY.sch" 50
 F2 "DB_OUT" T R 6150 4150 50 
-F3 "DB[0..7]" T R 6150 4050 50 
 $EndSheet
 Wire Bus Line
 	8150 1400 7650 1400
 Connection ~ 7650 1400
 Text Notes 7750 5300 0    50   ~ 0
 \n\n
-Wire Wire Line
-	8150 1500 7900 1500
-Wire Wire Line
-	7900 1500 7900 800 
 Wire Wire Line
 	9550 1400 10500 1400
 Wire Wire Line
@@ -298,8 +279,6 @@ Wire Wire Line
 	2800 3600 2450 3600
 Text Label 2450 3600 0    50   ~ 0
 CLK
-Wire Wire Line
-	4700 800  7900 800 
 Wire Bus Line
 	4700 1400 6200 1400
 Wire Wire Line
@@ -350,11 +329,6 @@ Wire Wire Line
 	9150 3500 9500 3500
 Text Label 9500 3500 2    50   ~ 0
 DB_OUT
-Wire Bus Line
-	6650 3250 6650 4050
-Wire Bus Line
-	6650 4050 6150 4050
-Connection ~ 6650 3250
 Wire Bus Line
 	7650 2500 650  2500
 Connection ~ 7650 2500
@@ -743,10 +717,83 @@ Text Label 750  6100 0    50   ~ 0
 ROMA[0..13]
 Text Label 7200 2500 0    50   ~ 0
 Inst[0..15]
+Text Label 2000 3350 0    50   ~ 0
+RAMA[0..8]
+Wire Wire Line
+	8150 1600 7800 1600
+Wire Wire Line
+	8150 1700 7800 1700
+Text Label 7800 1600 0    50   ~ 0
+CLK
+Text Label 7800 1700 0    50   ~ 0
+~RESET
+Wire Wire Line
+	6200 1800 5850 1800
+Text Label 5850 1800 0    50   ~ 0
+RESET
+Wire Wire Line
+	2800 3500 2450 3500
+Text Label 2450 3500 0    50   ~ 0
+RESET
 Wire Bus Line
-	1450 4500 1450 6100
+	2800 1400 3400 1400
+Wire Wire Line
+	7800 1500 7800 750 
+Wire Wire Line
+	7800 1500 8150 1500
+$Comp
+L Connector_Generic:Conn_01x03 J?
+U 1 1 5FAFB5AB
+P 7100 750
+AR Path="/60A296EE/5FAFB5AB" Ref="J?"  Part="1" 
+AR Path="/5FAFB5AB" Ref="J7"  Part="1" 
+F 0 "J7" H 7180 792 50  0000 L CNN
+F 1 "BKPT" H 7180 701 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 7100 750 50  0001 C CNN
+F 3 "~" H 7100 750 50  0001 C CNN
+	1    7100 750 
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7300 750  7800 750 
+$Comp
+L power:+5V #PWR?
+U 1 1 5FB008BA
+P 7400 650
+AR Path="/60A296EE/5FB008BA" Ref="#PWR?"  Part="1" 
+AR Path="/5FB008BA" Ref="#PWR0221"  Part="1" 
+F 0 "#PWR0221" H 7400 500 50  0001 C CNN
+F 1 "+5V" V 7415 778 50  0000 L CNN
+F 2 "" H 7400 650 50  0001 C CNN
+F 3 "" H 7400 650 50  0001 C CNN
+	1    7400 650 
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7400 650  7300 650 
+$Comp
+L power:GND #PWR?
+U 1 1 5FB05786
+P 7400 850
+AR Path="/60A296EE/5FB05786" Ref="#PWR?"  Part="1" 
+AR Path="/5FB05786" Ref="#PWR0222"  Part="1" 
+F 0 "#PWR0222" H 7400 600 50  0001 C CNN
+F 1 "GND" V 7405 722 50  0000 R CNN
+F 2 "" H 7400 850 50  0001 C CNN
+F 3 "" H 7400 850 50  0001 C CNN
+	1    7400 850 
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7400 850  7300 850 
+Wire Wire Line
+	2800 4000 2450 4000
+Text Label 2450 4000 0    50   ~ 0
+~RESET
 Wire Bus Line
 	1450 2800 1450 3700
+Wire Bus Line
+	1450 4500 1450 6100
 Wire Bus Line
 	650  2500 650  5600
 $EndSCHEMATC
