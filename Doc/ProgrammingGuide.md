@@ -1,6 +1,57 @@
 # Programming Guide
 
 ## Architecture Overview
+psMCU features two 8 bit registers (A & B) onto which the instructions add. 
+
+The program is a sequence of 16 bit instructions stored in their own ROM
+with a 14 bit address bus allowing for up to aprox. 16K instructions.
+
+psMCU features 4096 bytes of freely usable heap RAM and 4096 Stack RAM which
+are completely separate, Additionally there is accommodation for up to 256
+peripheral and status registers which share an address space with the heap RAM.
+
+The heap RAM is referred to simply as RAM, while the Stack RAM is refereed to
+as STACK.
+
+RAM and Peripheral Register addressing works as follows:  
+The internal RAM address bus is 9 bits wide, giving an address space of 0x000-0x1FF
+
+The 4096 bytes of RAM are paged into 16 pages of 256 bytes.
+
+The 9 bit wide RAM address bus is mapped as follows:
+
+| 0x000<br>.<br>.<br>0x0FF | <br>Currently Selected<br>RAM Page     |
+|:------------------------:|----------------------------------------|
+| 0x100<br>.<br>.<br>0x1FF | <br>Peripheral and<br>Status Registers |
+
+The current RAM page can be selected using the PAGE register.
+
+The Stack may only be accessed using the `PUSH`, `POP`, `CALL`, and `RETURN`
+instructions.
+
+Do note however that some instructions cannot access the whole 9 bit wide
+address bus. In this case two instructions are provided. One accesses the
+lower RAM portion of the address space, and one the upper peripheral section.
+
+These instructions are:
+```
+# Save the value in register A to the peripheral register at the address
+# specified by the B register. (Address = B + 0x100)
+SVDP
+
+# Load the value from the peripheral register specified in B to the A
+# Register (Address = B + 0x100)
+LDDP
+
+# Save the value in register A to RAM at the address specified by the
+# B register. (Address = B + 0x000)
+SVDM
+
+# Load the value from RAM at the address specified by the B register to the
+# A Register. (Address = B + 0x000)
+LDDM
+
+```
 
 ## Syntax
 
@@ -53,7 +104,7 @@ A label must not contain whitespace characters.
 Preprocessor directives start with a `@`.
 There are 2 preprocessor directives:
 `@define ONE 1`  
-`@include another_file.psASM'  
+`@include another_file.psASM'   
 
 ### Constants
 
