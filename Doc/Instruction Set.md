@@ -30,6 +30,9 @@ Skip if bit is reset in A.
 
 b: Bit to check (3bit) (0 = LSB, 7 = MSB)
 
+# RTRNI
+Returns from an interrupt.
+
 # AND
 Logical AND A and B, store in A.
 

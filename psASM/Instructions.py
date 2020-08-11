@@ -60,6 +60,12 @@ class TBRRInstruction(BaseInstruction):
     arg_bit_shift = [9]
 
 
+class RTRNIInstruction(BaseInstruction):
+    op_code = "RTRNI"
+    binary_literal = 0x3000
+    arg_count = 0
+
+
 class ANDInstruction(BaseInstruction):
     op_code = "AND"
     binary_literal = 0x2800
