@@ -8,4 +8,5 @@ LITA 3
 NOP
 NOP
 NOP
+HALT
 JMP lbl

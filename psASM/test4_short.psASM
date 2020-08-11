@@ -1,0 +1,12 @@
+# Fills the first 10 positions in RAM with sequential Numbers,
+# Then Reads them out.
+# Implemented with only very limited instructions to test RAM
+# on a basic state-machine prototype without any useful instructions.
+
+begin: LITA 0
+HALT
+LITA 1
+HALT
+JMP begin
+ 
+ 

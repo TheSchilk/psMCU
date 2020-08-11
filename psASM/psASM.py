@@ -49,11 +49,21 @@ for b in listing.binary_listing:
     print(b)
 
 # Generate Output Binary
-with open(sys.argv[1].rstrip('.psASM')+".bin",'wb') as outfile:
+with open(sys.argv[1].split('.')[0]+".bin",'wb') as outfile:
     for b in listing.binary_listing:
         outfile.write(b)
 
-with open(sys.argv[1].rstrip('.psASM')+"LOGISIM", 'w') as outfile:
+do_split_files = True
+
+if do_split_files:
+    name = sys.argv[1].split('.')[0]
+    with open(name + "_low.bin", 'wb') as file_low:
+        with open(name + "_high.bin", 'wb') as file_high:
+            for b in listing.binary_listing:
+                file_low.write(b[1:2])
+                file_high.write(b[0:1])
+
+with open(sys.argv[1].split('.')[0]+".LOGISIM", 'w') as outfile:
     outfile.write("v2.0 raw\n")
     count = 0
     for b in listing.binary_listing:
