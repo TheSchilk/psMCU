@@ -1,142 +1,140 @@
+from Line import Line
 from Errors import ParsingException
-import BaseInstruction
-import TextParsing
-import Instructions
-
-
-class LineContext:
-    def __init__(self, file, line_num, line_text):
-        self.file = file
-        self.line_num = line_num
-        self.line_text = line_text
-
-    def location(self):
-        return self.file + ":" + str(self.line_num)
-
-
-class InstructionLine:
-
-    def __init__(self, line_context):
-        self.context = line_context
-        self.label, self.op, self.args = TextParsing.parse_instruction(line_context)
-        self.inst = None
-
-    def generate_instruction(self):
-        self.inst = Instructions.generate_instruction(self)
-
-    def insert_definition(self, name, value):
-        for i in range(0, len(self.args)):
-            if self.args[i] == name:
-                self.args[i] = value
-
-    def __str__(self):
-        return "(Line @ " + self.context.location() + ", " \
-               + str(self.label) + ", " + self.op + ", " + str(self.args) + " )"
 
 
 class Listing:
-    def __init__(self, file_name, taken_names):
+    def __init__(self, file_name, namespace):
         self.file_name = file_name
-        self.instruction_list = []
-        self.end_instruction_list = []
-        self.definitions = {}
-        self.taken_names = taken_names
-        self.binary_listing = []
+        sub_listings = []
+        self.Lines = []
 
-        # Open file and parse each line
+        # Open file
         with open(file_name, 'r') as file:
+            line_num = 1
+            for line_text in file:
+                line = Line(line_text, file_name, line_num)
 
-            line_count = 0
-            for line in file:
-                line_count += 1
-                context = LineContext(file_name, line_count, line)
-
-                # Get rid of any whitespace at the front or end
-                context.line_text = context.line_text.strip()
-
-                # If the line is empty, move on to next line
-                if context.line_text == '':
+                # if this line is a comment or empty, ignore it:
+                if line.is_comment() or line.is_empty():
                     continue
 
-                # If this is a comment, move on to next line
-                if TextParsing.is_comment(context):
-                    continue
-
-                # If this is a include directive, load the file,
-                # parse it, and store it to be appended to this file
-                if TextParsing.is_include(context):
-
-                    included_file_name = TextParsing.parse_include(context)
+                # if this line is an include statement,
+                # parse it and recursively generate a new listing for the file:
+                if line.is_include():
+                    included_file_name = line.parse_include()
                     try:
-                        # Turn that include (and any includes it may include) into a listing in it's own right
-                        # Pass all names that are already taken to detect name collisions
-                        included_listing = Listing(included_file_name, self.taken_names)
-
-                        # Save all instructions to be added at the end of this listing
-                        self.end_instruction_list += included_listing.instruction_list
-
-                        # Add all new definitions to the definitions list
-                        for new_definition_name in included_listing.definitions:
-                            self.definitions[new_definition_name] = included_listing.definitions[new_definition_name]
-
-                        # The list of taken names of the new listing will include all previously taken names
-                        # and the names taken up in it's listing.
-                        # Use that as the new list of already taken name
-                        self.taken_names = included_listing.taken_names
-
+                        included_listing = Listing(included_file_name, namespace)
                     except FileNotFoundError:
-                        raise ParsingException(context, "File not found!")
+                        raise ParsingException(line, "Included file not found!")
 
-                    continue  # move on to next line
+                    # Add the listing to the sub listings to be appended at the end
+                    sub_listings.append(included_listing)
 
-                # If this is a definition directive:
-                if TextParsing.is_definition(context):
-                    # Parse it
-                    name, value = TextParsing.parse_definition(context)
+                    # Move on to next line
+                    continue
 
-                    # Ensure there is not already a label or definition by that name
-                    if name in self.taken_names:
-                        raise ParsingException(context, "Name Collision: \'" + name + "\'")
+                # if this line is definition,
+                # parse it and add it to the namespace:
+                if line.is_definition():
+                    name, value = line.parse_definition()
+                    if namespace.contains_alias(name):
+                        raise ParsingException(line, "Namespace collision: \'" + name + "\' already exists elsewhere")
+                    namespace.add_alias(name)
+                    namespace.define_alias(name, value)
 
-                    # Add it to the list
-                    self.definitions[name] = value
-                    self.taken_names.append(name)
+                    # Move on to next line
+                    continue
 
-                    continue  # move on to next line
+                # If this line is none of the above, treat it as an instruction:
+                line.parse_instruction()
 
-                # This must be an instruction
-                inst_line = InstructionLine(context)
+                # if there is a label, add it to the namespace
+                if line.label is not None:
+                    if namespace.contains_alias(line.label):
+                        raise ParsingException(line, "Namespace collision: \'" + line.label +
+                                               "\' already exists elsewhere")
+                    namespace.add_alias(line.label)
 
-                # Check that if there is a label, that name is not already taken:
-                if inst_line.label is not None:
-                    if inst_line.label in self.taken_names:
-                        raise ParsingException(context, "Name Collision: \'" + inst_line.label + "\'")
+                # Add the instruction to the listing
+                self.Lines.append(line)
 
-                    # Add it to the list of taken names
-                    self.taken_names.append(inst_line.label)
+        # Append all sub-listings:
+        for sub_listing in sub_listings:
+            for line in sub_listing.Lines:
+                self.Lines.append(line)
 
-                # Add the line to the listing
-                self.instruction_list.append(inst_line)
+    def add_header(self, namespace):
+        """
+        Adds the first two instruction to the program.
+        At 0x0 is the jump to the main program
+        At 0x1 is the jump to the interrupt routine.
 
-        # Add all the instructions from the included files to the end
-        self.instruction_list += self.end_instruction_list
+        :param namespace: the namespace
+        :return:
+        """
 
-    def print(self):
-        for instruction_line in self.instruction_list:
-            print(instruction_line)
+        # Check if there is a MAIN label
+        if namespace.contains_alias("MAIN"):
+            # There is a MAIN label. Start there.
+            # Set instruction at 0x0 to "Jump to MAIN"
+            jump_to_main = Line("JMP MAIN # Jump to entry point (AUTO GENERATED)\n", "X", "X")
+            jump_to_main.parse_instruction()
+            self.Lines.insert(0, jump_to_main)
+        else:
+            # There is no MAIN label. Start executing in the first file
+            # Set instruction at 0x0 to "Jump to 0x2"
+            jump_to_main = Line("JMP 0x2 # No MAIN label, jump to first file (AUTO GENERATED)\n", "X", "X")
+            jump_to_main.parse_instruction()
+            self.Lines.insert(0, jump_to_main)
 
-    def convert_labels(self):
-        for adr in range(0, len(self.instruction_list)):
-            label = self.instruction_list[adr].label
-            if label != '':
-                self.definitions[label] = str(adr)
+        # Check if there is an INTERRUPT label
+        if namespace.contains_alias("INTERRUPT"):
+            # There is an INTERRUPT label. Jump there on interrupt
+            # Set instruction at 0x1 to "Jump to Interrupt"
+            jump_to_int = Line("JMP INTERRUPT # Jump to INTERRUPT handler (AUTO GENERATED)\n", "X", "X")
+            jump_to_int.parse_instruction()
+            self.Lines.insert(1, jump_to_int)
+        else:
+            # There is no INTERRUPT label.
+            # Insert a "RTRNI" instruction to safely handle interrupts if one should
+            # still occur
+            jump_to_int = Line("RTRNI # No INTERRUPT label (AUTO GENERATED)\n", "X", "X")
+            jump_to_int.parse_instruction()
+            self.Lines.insert(1, jump_to_int)
 
-    def insert_definitions(self):
-        for definition_name in self.definitions:
-            for line in self.instruction_list:
-                line.insert_definition(definition_name, self.definitions[definition_name])
+    def define_labels(self, namespace):
+        # Iterate over all lines in listing:
+        for line in enumerate(self.Lines):
+            # If a line is labelled, define that label with the now known address.
+            if line[1].label is not None:
+                # Sanity check that the label is already in the namespace, which it should be:
+                if not namespace.contains_alias(line[1].label):
+                    raise Exception("Missed label during parsing?")
+
+                # Define the label to point to the correct address:
+                namespace.define_alias(line[1].label, str(line[0]))
+
+    def insert_aliases(self, namespace):
+        # Iterate over all known aliases
+        for alias in namespace.aliases:
+            for line in self.Lines:
+                line.insert_alias(alias)
+        pass
 
     def generate_instructions(self):
-        for line in self.instruction_list:
+        for line in self.Lines:
             line.generate_instruction()
-            self.binary_listing.append(line.inst.binary)
+
+    def __str__(self):
+        s = ""
+        for line in self.Lines:
+            s += str(line)
+            s += "\n"
+        return s
+
+    def str_data(self):
+        s = ""
+        for line in self.Lines:
+            s += line.str_data()
+            s += "\n"
+        return s

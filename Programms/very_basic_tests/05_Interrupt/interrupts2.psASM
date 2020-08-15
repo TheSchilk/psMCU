@@ -4,7 +4,7 @@ SVA 0x102
 
 # Loop that cycles values through A
 Loop: LITA 0xF0
-LITA +1
+LITA 0xF1
 LITA 0xF2
 LITA 0xF3
 LITA 0xF4

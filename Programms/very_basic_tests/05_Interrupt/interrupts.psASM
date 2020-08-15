@@ -1,0 +1,13 @@
+# Enable Interrupts
+MAIN: LITA 0x1
+SVA 0x102
+
+# Loop that adds 1 to A
+LITA 0
+Adder: ADDL 1
+JMP Adder
+
+# Interrupt that resets A to 0
+# Reset A to 0
+INTERRUPT: LITA 0
+RTRNI

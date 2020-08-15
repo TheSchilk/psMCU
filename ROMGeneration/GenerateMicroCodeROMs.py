@@ -68,7 +68,7 @@ for rom_index in range(0, rom_count):
 
 # Generate LOGISIM style ROM files
 for rom_index in range(0, rom_count):
-    file_name = "LogisimMicroCodeROM" + str(rom_index) + ".bin"
+    file_name = "LogisimMicroCodeROM" + str(rom_index)
     with open(file_name, mode='w') as file:
         file.write("v2.0 raw\n")
         count = 0
