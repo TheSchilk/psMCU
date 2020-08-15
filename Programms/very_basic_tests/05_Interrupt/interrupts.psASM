@@ -1,6 +1,3 @@
-JMP MAIN
-JMP INT
-
 # Enable Interrupts
 MAIN: LITA 0x1
 SVA 0x102
@@ -12,5 +9,5 @@ JMP Adder
 
 # Interrupt that resets A to 0
 # Reset A to 0
-INT: LITA 0
+INTERRUPT: LITA 0
 RTRNI

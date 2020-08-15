@@ -301,8 +301,8 @@ for instruction_class in BaseInstruction.__subclasses__():
     instruction_set[instruction_class.op_code] = instruction_class
 
 
-def generate_instruction(instruction_line):
+def generate_instruction(line):
     try:
-        return instruction_set[instruction_line.op](instruction_line)
+        return instruction_set[line.op_code](line)
     except KeyError:
-        raise ParsingException(instruction_line.context, "Unknown Instruction \'" + instruction_line.op + "\'")
+        raise ParsingException(line, "Unknown Instruction \'" + line.op + "\'")

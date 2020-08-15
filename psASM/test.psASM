@@ -1,13 +1,24 @@
-###### Definitions ##########
+# Enable Interrupts
+MAIN: LITA 0x1
+SVA 0x102
 
-@define    adr_pointer       0xff # Position were we will store the pointer to the latest number
-@define    STATUS        0x100 # Address of the ALU status register
-@define        ALU_OVF          0 # The bit in the ALU status register that indicates a carry-out
+# Loop that cycles values through A
+Loop: LITA 0xF0
+LITA +1
+LITA 0xF2
+LITA 0xF3
+LITA 0xF4
+LITA 0xF5
+LITA 0xF6
+LITA 0xF7
+LITA 0xF8
+LITA 0xF9
+JMP Loop
 
-LITA      0xab
-SVA     0x0
-LITA     0xba
-SVA     0x1
-LDA    0x0
-LDA  0x0
-HALT
+# Interrupt that puts A through 4 other values
+# Keep A at 0x11
+INTERRUPT: LITA 0x11
+LITA 0x12
+LITA 0x13
+LITA 0x14
+RTRNI
