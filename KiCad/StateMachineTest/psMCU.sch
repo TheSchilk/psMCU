@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
-Sheet 1 62
+Sheet 1 65
 Title ""
 Date ""
 Rev ""
@@ -378,5 +378,11 @@ F2 "BRPT_TRIG" I L -1950 2100 50
 F3 "CLK" I L -1950 2200 50 
 F4 "~RESET" I L -1950 2300 50 
 F5 "Inst[0..15]" I L -1950 2000 50 
+$EndSheet
+$Sheet
+S -4400 7050 2500 2150
+U 5F396002
+F0 "PALLET" 50
+F1 "PALLET.sch" 50
 $EndSheet
 $EndSCHEMATC
