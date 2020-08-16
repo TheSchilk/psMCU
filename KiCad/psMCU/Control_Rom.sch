@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 50 65
+Sheet 51 94
 Title ""
 Date ""
 Rev ""
@@ -598,7 +598,7 @@ AR Path="/60E33DBC/5F768DA1/5F73BBDA" Ref="U?"  Part="1"
 AR Path="/60E33DBC/5F47FADF/5F73BBDA" Ref="U?"  Part="1" 
 F 0 "U?" H 4650 5000 50  0000 C CNN
 F 1 "SST39SF010" H 4800 4900 50  0000 C CNN
-F 2 "PLCC-32_11.4x14.0mm_P1.27mm_SMD-Socket:PLCC-32_11.4x14.0mm_P1.27mm_SMD-Socket" H 4500 3900 50  0001 C CNN
+F 2 "Package_SO:TSOP-I-32_11.8x8mm_P0.5mm" H 4500 3900 50  0001 C CNN
 F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/25022B.pdf" H 4500 3900 50  0001 C CNN
 	1    4500 3600
 	1    0    0    -1  
@@ -726,7 +726,7 @@ VAL7
 $Sheet
 S 6500 3600 700  200 
 U 5F82FFCD
-F0 "CtrlBusOut" 50
+F0 "LEDs: CtrlBusOut" 50
 F1 "8BitLED.sch" 50
 F2 "VAL[0..7]" I L 6500 3700 50 
 $EndSheet

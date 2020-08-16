@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 28 65
+Sheet 39 94
 Title ""
 Date ""
 Rev ""
@@ -1294,7 +1294,7 @@ Wire Wire Line
 $Sheet
 S 9000 4750 700  200 
 U 5F8BAC6C
-F0 "Do_Inc" 50
+F0 "LED: Do_Inc" 50
 F1 "1BitLED.sch" 50
 F2 "VAL" I L 9000 4850 50 
 $EndSheet
@@ -1308,7 +1308,7 @@ Wire Wire Line
 $Sheet
 S 7600 5800 700  200 
 U 5F8C5BB6
-F0 "Do_Clear" 50
+F0 "LED: Do_Clear" 50
 F1 "1BitLED.sch" 50
 F2 "VAL" I L 7600 5900 50 
 $EndSheet
@@ -1494,21 +1494,21 @@ Connection ~ 10150 2050
 $Sheet
 S 8950 1000 700  200 
 U 5EECFBAD
-F0 "HALTED" 50
+F0 "LED: HALTED" 50
 F1 "1BitLED.sch" 50
 F2 "VAL" I R 9650 1100 50 
 $EndSheet
 $Sheet
 S 6400 900  700  200 
 U 5EEE0F09
-F0 "STEP_MODE_HALT" 50
+F0 "LED: STEP_MODE_HALT" 50
 F1 "1BitLED.sch" 50
 F2 "VAL" I L 6400 1000 50 
 $EndSheet
 $Sheet
 S 5400 900  700  200 
 U 5EEE6B09
-F0 "INST_HALT" 50
+F0 "LED: INST_HALT" 50
 F1 "1BitLED.sch" 50
 F2 "VAL" I R 6100 1000 50 
 $EndSheet
@@ -1531,7 +1531,7 @@ Wire Wire Line
 $Sheet
 S 6000 2400 700  200 
 U 5EF3226F
-F0 "BKTP_HALT" 50
+F0 "LED: BKTP_HALT" 50
 F1 "1BitLED.sch" 50
 F2 "VAL" I R 6700 2500 50 
 $EndSheet

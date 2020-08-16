@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 35 65
+Sheet 46 94
 Title ""
 Date ""
 Rev ""
@@ -576,14 +576,14 @@ Wire Wire Line
 $Sheet
 S 6950 4500 700  200 
 U 5EE697A1
-F0 "DO STEP" 50
+F0 "LED: DO STEP" 50
 F1 "1BitLED.sch" 50
 F2 "VAL" I L 6950 4600 50 
 $EndSheet
 $Sheet
 S 4850 2350 700  200 
 U 5EE697A4
-F0 "STEP" 50
+F0 "LED: STEP" 50
 F1 "1BitLED.sch" 50
 F2 "VAL" I L 4850 2450 50 
 $EndSheet

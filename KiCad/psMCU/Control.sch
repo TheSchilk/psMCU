@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 37 65
+Sheet 17 94
 Title ""
 Date ""
 Rev ""
@@ -314,6 +314,7 @@ F4 "InstCode4" O R 3700 1200 50
 F5 "InstCode5" O R 3700 1300 50 
 F6 "InstCode6" O R 3700 1400 50 
 F7 "InstCode7" O R 3700 1500 50 
+F8 "Interrupt" I L 2500 1200 50 
 $EndSheet
 Wire Wire Line
 	6200 2450 6750 2450
@@ -366,7 +367,7 @@ Entry Wire Line
 $Sheet
 S 5600 650  700  200 
 U 5F76BABD
-F0 "InstCode" 50
+F0 "LEDs: InstCode" 50
 F1 "8BitLED.sch" 50
 F2 "VAL[0..7]" I L 5600 750 50 
 $EndSheet
@@ -477,11 +478,11 @@ Wire Wire Line
 Wire Wire Line
 	8100 1050 8800 1050
 Text HLabel 8800 1350 2    50   Output ~ 0
-PC_Inc_En
+PC_Inc_EN
 Text HLabel 8800 1450 2    50   Output ~ 0
-PC_CondInc_En
+PC_CondInc_EN
 Text HLabel 8800 1550 2    50   Output ~ 0
-PC_Latch_En
+PC_Latch_EN
 Text Label 8800 1650 2    50   ~ 0
 Halt_Clear
 Wire Wire Line
@@ -495,22 +496,17 @@ Wire Wire Line
 Wire Wire Line
 	8100 2250 8800 2250
 Text HLabel 8800 2150 2    50   Output ~ 0
-RegA_Latch_En
+RegA_Latch_EN
 Text HLabel 8800 2250 2    50   Output ~ 0
 RegA_OE
 Text HLabel 8750 4900 2    50   Output ~ 0
-Inst[0..7]->DBus
+In[0..7]->DBus
 Text HLabel 8750 5500 2    50   Output ~ 0
 RAM_WAsync
 Text HLabel 8750 5600 2    50   Output ~ 0
 RAM_RAsync_LatchSafeA
 Text HLabel 8750 5700 2    50   Output ~ 0
 RAM_LatchSafeDA_EN
-NoConn ~ 8750 5800
-NoConn ~ 8750 5900
-NoConn ~ 8750 6000
-NoConn ~ 8750 6100
-NoConn ~ 8750 6200
 Text HLabel 8800 1250 2    50   Output ~ 0
 InstReg_Latch_EN
 Wire Wire Line
@@ -532,21 +528,21 @@ Wire Wire Line
 $Sheet
 S 2050 4250 700  200 
 U 5F872DA4
-F0 "Next_Inst" 50
+F0 "LED: Next_Inst" 50
 F1 "1BitLED.sch" 50
 F2 "VAL" I L 2050 4350 50 
 $EndSheet
 $Sheet
 S 2050 4650 700  200 
 U 5F8756AE
-F0 "Halt" 50
+F0 "LED: Halt" 50
 F1 "1BitLED.sch" 50
 F2 "VAL" I L 2050 4750 50 
 $EndSheet
 $Sheet
 S 2050 5050 700  200 
 U 5F87BE2E
-F0 "Halt_Clear" 50
+F0 "LED: Halt_Clear" 50
 F1 "1BitLED.sch" 50
 F2 "VAL" I L 2050 5150 50 
 $EndSheet
@@ -568,7 +564,7 @@ Wire Bus Line
 	6850 2800 7100 2800
 Connection ~ 7100 2800
 Wire Bus Line
-	7100 2800 7100 4400
+	7100 2800 7100 3300
 $Comp
 L 74xGxx:74LVC1G04 U?
 U 1 1 5EF3D4C8
@@ -683,6 +679,119 @@ F10 "7" O R 8100 4000 50
 $EndSheet
 Wire Wire Line
 	8100 1750 8800 1750
+Wire Wire Line
+	8100 5800 8750 5800
+Wire Wire Line
+	8100 5900 8750 5900
+Wire Wire Line
+	8100 6000 8750 6000
+Wire Wire Line
+	8100 6100 8750 6100
+Wire Wire Line
+	8100 6200 8750 6200
+Wire Wire Line
+	8100 5000 8750 5000
+Wire Wire Line
+	8100 5100 8750 5100
+Wire Wire Line
+	8100 4400 8750 4400
+Wire Wire Line
+	8100 4500 8750 4500
+Wire Wire Line
+	8100 4600 8750 4600
+Wire Wire Line
+	8100 4700 8750 4700
+Wire Wire Line
+	8100 4800 8750 4800
+Text Label 8800 1750 2    50   ~ 0
+INT_Set
+Wire Wire Line
+	8100 2350 8800 2350
+Wire Wire Line
+	8100 2450 8800 2450
+Wire Wire Line
+	8100 2550 8800 2550
+Wire Wire Line
+	8100 2650 8800 2650
+Wire Wire Line
+	8100 2750 8800 2750
+Wire Wire Line
+	8100 2850 8800 2850
+Text HLabel 8800 2350 2    50   Output ~ 0
+RegB_Latch_EN
+Text HLabel 8800 2450 2    50   Output ~ 0
+RegB_OE
+Text HLabel 8800 2550 2    50   Output ~ 0
+RegT_LatchL_EN
+Text HLabel 8800 2650 2    50   Output ~ 0
+RegT_LatchH_EN
+Text HLabel 8800 2650 2    50   Output ~ 0
+RegT_LatchH_EN
+Text HLabel 8800 2750 2    50   Output ~ 0
+RegT_OE_Adr
+Text HLabel 8800 2850 2    50   Output ~ 0
+RegT_OE_DataL
+Wire Wire Line
+	8100 3300 8800 3300
+Wire Wire Line
+	8100 3400 8800 3400
+Wire Wire Line
+	8100 3500 8800 3500
+Wire Wire Line
+	8100 3600 8800 3600
+Wire Wire Line
+	8100 3700 8800 3700
+Wire Wire Line
+	8100 3800 8800 3800
+Wire Wire Line
+	8100 3900 8800 3900
+Wire Wire Line
+	8100 4000 8800 4000
+Text HLabel 8800 3300 2    50   Output ~ 0
+ALU_DoBComp
+Text HLabel 8800 3400 2    50   Output ~ 0
+ALU_OE
+Text HLabel 8800 3500 2    50   Output ~ 0
+Status_LatchAdd_EN
+Text HLabel 8800 3600 2    50   Output ~ 0
+Status_LatchSub_EN
+Text HLabel 8800 3700 2    50   Output ~ 0
+Logic_Comp_OE
+Text HLabel 8800 3800 2    50   Output ~ 0
+Logic_Not_OE
+Text HLabel 8800 3900 2    50   Output ~ 0
+Logic_Dual_OE
+Text HLabel 8800 4000 2    50   Output ~ 0
+BarrelS_OE
+Text HLabel 8750 5800 2    50   Output ~ 0
+Stack_W
+Text HLabel 8750 5900 2    50   Output ~ 0
+Stack_RAsync
+Text HLabel 8750 6000 2    50   Output ~ 0
+Stack_PresentData
+Text HLabel 8750 6100 2    50   Output ~ 0
+Stack_Dec_EN
+Text HLabel 8750 6200 2    50   Output ~ 0
+Stack_Inc+LatchSageD_EN
+Text HLabel 8750 4400 2    50   Output ~ 0
+In[0..13]->ROMA
+Text HLabel 8750 4500 2    50   Output ~ 0
+PC[0..7]->DBus
+Text HLabel 8750 4600 2    50   Output ~ 0
+PC[8..13]->DBus
+Text HLabel 8750 4700 2    50   Output ~ 0
+In[0..7]->RAMA[0..7]
+Text HLabel 8750 4800 2    50   Output ~ 0
+RegB->RAMA[0..7]
+Text HLabel 8750 5000 2    50   Output ~ 0
+INTAdr->ROMA
+Text Label 8750 5100 2    50   ~ 0
+INT_Reset
+Wire Bus Line
+	7300 3300 7100 3300
+Connection ~ 7100 3300
+Wire Bus Line
+	7100 3300 7100 4400
 Wire Bus Line
 	6850 2550 6850 2800
 Wire Bus Line

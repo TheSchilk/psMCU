@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 38 65
+Sheet 49 94
 Title ""
 Date ""
 Rev ""
@@ -83,15 +83,11 @@ AR Path="/5F28170E/5F6D4418" Ref="U?"  Part="1"
 AR Path="/60E33DBC/5F3D8E0D/5F6D4418" Ref="U?"  Part="1" 
 F 0 "U?" H 5100 4750 50  0000 C CNN
 F 1 "SST39SF010" H 5250 4650 50  0000 C CNN
-F 2 "PLCC-32_11.4x14.0mm_P1.27mm_SMD-Socket:PLCC-32_11.4x14.0mm_P1.27mm_SMD-Socket" H 4950 3650 50  0001 C CNN
+F 2 "Package_SO:TSOP-I-32_11.8x8mm_P0.5mm" H 4950 3650 50  0001 C CNN
 F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/25022B.pdf" H 4950 3650 50  0001 C CNN
 	1    4950 3350
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	4350 2850 4250 2850
-Wire Wire Line
-	4250 2850 4250 2950
 Wire Wire Line
 	4250 3750 4350 3750
 Wire Wire Line
@@ -101,7 +97,6 @@ Wire Wire Line
 	4250 3650 4250 3750
 Wire Wire Line
 	4350 2950 4250 2950
-Connection ~ 4250 2950
 Wire Wire Line
 	4250 2950 4250 3050
 Wire Wire Line
@@ -311,6 +306,10 @@ Wire Wire Line
 	3650 2050 3950 2050
 Wire Wire Line
 	4350 2150 3650 2150
+Wire Wire Line
+	4350 2850 3250 2850
+Text HLabel 3250 2850 0    50   Input ~ 0
+Interrupt
 Wire Bus Line
 	3550 1000 3550 2650
 $EndSCHEMATC

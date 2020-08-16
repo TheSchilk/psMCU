@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 51 65
+Sheet 21 94
 Title ""
 Date ""
 Rev ""
@@ -35,7 +35,7 @@ Text HLabel 1600 5900 0    50   Input ~ 0
 R_ASYNC
 Text HLabel 1050 1300 0    50   3State ~ 0
 DB[0..7]
-Text HLabel 1050 1650 0    50   Input ~ 0
+Text HLabel 1050 1650 0    50   BiDi ~ 0
 RAMA[0..8]
 Entry Wire Line
 	1200 1650 1300 1750
@@ -479,7 +479,7 @@ Wire Wire Line
 Wire Wire Line
 	1600 5900 1850 5900
 Text Notes 1550 6650 0    50   ~ 0
-Only Do Something if RAM and\nnot Periphs are addressed.
+Only Do Something if RAM (0x000-0x0ff) and\nnot Periphs (0x100-0x1ff) are addressed.
 Wire Bus Line
 	1950 1400 3800 1400
 Wire Bus Line
@@ -666,8 +666,8 @@ Wire Wire Line
 Connection ~ 4500 3000
 Wire Wire Line
 	4800 3000 4750 3000
-Text Notes 3950 3850 0    50   ~ 0
-Ensure Data is stabil during Write
+Text Notes 5050 4600 0    50   ~ 0
+Latch Async Write.\nShould keep writes stable and \nprevent accidental writes.
 Connection ~ 2750 3150
 Wire Wire Line
 	2750 3150 2750 2600
@@ -1434,21 +1434,21 @@ Wire Wire Line
 $Sheet
 S 3100 5550 700  200 
 U 5F31E1C9
-F0 "R_ASYNC_SAFEA" 50
+F0 "LED: R_ASYNC_SAFEA" 50
 F1 "1BitLED.sch" 50
 F2 "VAL" I L 3100 5650 50 
 $EndSheet
 $Sheet
 S 3100 4650 700  200 
 U 5F3261C9
-F0 "W_ASYNC" 50
+F0 "LED: W_ASYNC" 50
 F1 "1BitLED.sch" 50
 F2 "VAL" I L 3100 4750 50 
 $EndSheet
 $Sheet
 S 3100 4050 700  200 
 U 5F32E5C9
-F0 "LATCHSAFEDA_EN" 50
+F0 "LED: LATCHSAFEDA_EN" 50
 F1 "1BitLED.sch" 50
 F2 "VAL" I L 3100 4150 50 
 $EndSheet

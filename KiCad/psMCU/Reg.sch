@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 53 65
+Sheet 34 94
 Title ""
 Date ""
 Rev ""
@@ -146,7 +146,7 @@ Wire Bus Line
 $Sheet
 S 4900 4950 700  200 
 U 5F30EEBC
-F0 "RegValDisp" 50
+F0 "LED: Reg Val" 50
 F1 "8BitLED.sch" 50
 F2 "VAL[0..7]" I L 4900 5050 50 
 $EndSheet
@@ -625,7 +625,7 @@ Wire Wire Line
 $Sheet
 S 1500 5300 700  200 
 U 5F5F12F1
-F0 "LATCH_EN_LED" 50
+F0 "LED: LATCH_EN_LED" 50
 F1 "1BitLED.sch" 50
 F2 "VAL" I L 1500 5400 50 
 $EndSheet
@@ -639,7 +639,7 @@ Wire Wire Line
 $Sheet
 S 4250 7300 700  200 
 U 5F5FD588
-F0 "OE_LED" 50
+F0 "LED: OE_LED" 50
 F1 "1BitLED.sch" 50
 F2 "VAL" I L 4250 7400 50 
 $EndSheet

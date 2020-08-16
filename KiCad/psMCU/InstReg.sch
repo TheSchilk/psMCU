@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 13 65
+Sheet 73 94
 Title ""
 Date ""
 Rev ""
@@ -16,7 +16,7 @@ $EndDescr
 $Sheet
 S 1650 8600 700  200 
 U 5F190609
-F0 "INST_LATCH_EN" 50
+F0 "LED: INST_LATCH_EN" 50
 F1 "1BitLED.sch" 50
 F2 "VAL" I L 1650 8700 50 
 $EndSheet
@@ -249,14 +249,14 @@ Inst15
 $Sheet
 S 7000 4650 700  200 
 U 5F225B33
-F0 "Inst[0..7]" 50
+F0 "LED: Inst[0..7]" 50
 F1 "8BitLED.sch" 50
 F2 "VAL[0..7]" I L 7000 4750 50 
 $EndSheet
 $Sheet
 S 7000 5800 700  200 
 U 5F225B36
-F0 "Inst[8..15]" 50
+F0 "LED: Inst[8..15]" 50
 F1 "8BitLED.sch" 50
 F2 "VAL[0..7]" I L 7000 5900 50 
 $EndSheet

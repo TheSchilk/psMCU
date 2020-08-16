@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 18 65
+Sheet 2 94
 Title ""
 Date ""
 Rev ""
@@ -1036,7 +1036,7 @@ Connection ~ 2300 6050
 $Sheet
 S 8250 3950 700  200 
 U 5EECC2BE
-F0 "sheet5EECC2BB" 50
+F0 "LED: Clock" 50
 F1 "1BitLED.sch" 50
 F2 "VAL" I L 8250 4050 50 
 $EndSheet

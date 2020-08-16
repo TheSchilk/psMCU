@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 23 65
+Sheet 20 94
 Title ""
 Date ""
 Rev ""
@@ -90,7 +90,7 @@ L Device:C_Small C?
 U 1 1 5F059CC5
 P 2700 2450
 F 0 "C?" H 2792 2496 50  0000 L CNN
-F 1 "100n" H 2792 2405 50  0000 L CNN
+F 1 "0u1" H 2792 2405 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0603_1608Metric" H 2700 2450 50  0001 C CNN
 F 3 "~" H 2700 2450 50  0001 C CNN
 	1    2700 2450

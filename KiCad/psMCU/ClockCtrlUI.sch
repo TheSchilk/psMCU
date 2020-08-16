@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 19 65
+Sheet 16 94
 Title ""
 Date ""
 Rev ""
@@ -622,14 +622,14 @@ Wire Wire Line
 $Sheet
 S 5700 4100 700  200 
 U 5F0227B2
-F0 "Do_Clock_Step" 50
+F0 "LED: Do_Clock_Step" 50
 F1 "1BitLED.sch" 50
 F2 "VAL" I L 5700 4200 50 
 $EndSheet
 $Sheet
 S 3600 1950 700  200 
 U 5F0227B5
-F0 "Clock_Step" 50
+F0 "LED: Clock_Step" 50
 F1 "1BitLED.sch" 50
 F2 "VAL" I L 3600 2050 50 
 $EndSheet
@@ -847,7 +847,7 @@ Wire Wire Line
 $Sheet
 S 3800 5150 700  200 
 U 5F03D817
-F0 "Reset" 50
+F0 "LED: Reset" 50
 F1 "1BitLED.sch" 50
 F2 "VAL" I L 3800 5250 50 
 $EndSheet

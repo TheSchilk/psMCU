@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 11693 16535 portrait
 encoding utf-8
-Sheet 6 65
+Sheet 79 94
 Title ""
 Date ""
 Rev ""
@@ -176,32 +176,32 @@ Wire Wire Line
 $Sheet
 S 1600 3500 700  200 
 U 5F61E0F9
-F0 "INC_EN" 50
+F0 "LED: INC_EN" 50
 F1 "1BitLED.sch" 50
 F2 "VAL" I L 1600 3600 50 
 $EndSheet
 $Sheet
 S 1600 4700 700  200 
 U 5F6223B6
-F0 "CNDT_INC_EN" 50
+F0 "LED: CNDT_INC_EN" 50
 F1 "1BitLED.sch" 50
 F2 "VAL" I L 1600 4800 50 
 $EndSheet
 $Sheet
 S 1600 5100 700  200 
 U 5F62248D
-F0 "CNDT_AFFIRMATIVE" 50
+F0 "LED: CNDT_AFFIRMATIVE" 50
 F1 "1BitLED.sch" 50
 F2 "VAL" I L 1600 5200 50 
 $EndSheet
 $Sheet
 S 1650 7000 700  200 
 U 5F622502
-F0 "LATCH_EN" 50
+F0 "LED: LATCH_EN" 50
 F1 "1BitLED.sch" 50
 F2 "VAL" I L 1650 7100 50 
 $EndSheet
-Text HLabel 4500 1550 0    50   Input ~ 0
+Text HLabel 4500 1550 0    50   BiDi ~ 0
 ROMA[0..13]
 Text HLabel 8350 1550 2    50   Output ~ 0
 PC[0..13]
@@ -839,17 +839,17 @@ Entry Wire Line
 Entry Wire Line
 	8700 6350 8800 6450
 Entry Wire Line
-	8700 6800 8800 6900
+	8700 6450 8800 6550
 Entry Wire Line
-	8700 6900 8800 7000
+	8700 6550 8800 6650
 Entry Wire Line
-	8700 7000 8800 7100
+	8700 6650 8800 6750
 Entry Wire Line
-	8700 7100 8800 7200
+	8700 6750 8800 6850
 Entry Wire Line
-	8700 7200 8800 7300
+	8700 6850 8800 6950
 Entry Wire Line
-	8700 7300 8800 7400
+	8700 6950 8800 7050
 Text Label 8800 5750 0    50   ~ 0
 PC0
 Text Label 8800 5850 0    50   ~ 0
@@ -866,17 +866,17 @@ Text Label 8800 6350 0    50   ~ 0
 PC6
 Text Label 8800 6450 0    50   ~ 0
 PC7
-Text Label 8800 6900 0    50   ~ 0
+Text Label 8800 6550 0    50   ~ 0
 PC8
-Text Label 8800 7000 0    50   ~ 0
+Text Label 8800 6650 0    50   ~ 0
 PC9
-Text Label 8800 7100 0    50   ~ 0
+Text Label 8800 6750 0    50   ~ 0
 PC10
-Text Label 8800 7200 0    50   ~ 0
+Text Label 8800 6850 0    50   ~ 0
 PC11
-Text Label 8800 7300 0    50   ~ 0
+Text Label 8800 6950 0    50   ~ 0
 PC12
-Text Label 8800 7400 0    50   ~ 0
+Text Label 8800 7050 0    50   ~ 0
 PC13
 Wire Wire Line
 	3700 3400 5300 3400
@@ -1001,21 +1001,15 @@ Entry Wire Line
 Entry Wire Line
 	9400 6450 9500 6550
 Entry Wire Line
-	9400 6900 9500 7000
+	9400 6550 9500 6650
 Entry Wire Line
-	9400 7000 9500 7100
+	9400 6650 9500 6750
 Entry Wire Line
-	9400 7100 9500 7200
+	9400 6750 9500 6850
 Entry Wire Line
-	9400 7200 9500 7300
+	9400 6850 9500 6950
 Entry Wire Line
-	9400 7300 9500 7400
-Entry Wire Line
-	9400 7400 9500 7500
-Entry Wire Line
-	9400 7500 9500 7600
-Entry Wire Line
-	9400 7600 9500 7700
+	9400 6950 9500 7050
 Wire Wire Line
 	8800 5750 9400 5750
 Wire Wire Line
@@ -1033,88 +1027,64 @@ Wire Wire Line
 Wire Wire Line
 	8800 6450 9400 6450
 Wire Wire Line
-	8800 6900 9400 6900
+	8800 6550 9400 6550
 Wire Wire Line
-	8800 7000 9400 7000
+	8800 6650 9400 6650
 Wire Wire Line
-	8800 7100 9400 7100
+	8800 6750 9400 6750
 Wire Wire Line
-	8800 7200 9400 7200
+	8800 6850 9400 6850
 Wire Wire Line
-	8800 7300 9400 7300
+	8800 6950 9400 6950
 Wire Wire Line
-	8800 7400 9400 7400
-Wire Wire Line
-	8800 7500 9400 7500
-Wire Wire Line
-	8800 7600 9400 7600
+	8800 7050 9400 7050
+Entry Wire Line
+	9400 7050 9500 7150
+$Sheet
+S 9700 7050 700  200 
+U 603A2DD6
+F0 "sheet603A2DD3" 50
+F1 "14BitLED.sch" 50
+F2 "VAL[0..13]" I L 9700 7150 50 
+$EndSheet
+Wire Bus Line
+	9700 7150 9500 7150
 Text Label 9400 5750 2    50   ~ 0
-VALL0
+VAL0
 Text Label 9400 5850 2    50   ~ 0
-VALL1
+VAL1
 Text Label 9400 5950 2    50   ~ 0
-VALL2
+VAL2
 Text Label 9400 6050 2    50   ~ 0
-VALL3
+VAL3
 Text Label 9400 6150 2    50   ~ 0
-VALL4
+VAL4
 Text Label 9400 6250 2    50   ~ 0
-VALL5
+VAL5
 Text Label 9400 6350 2    50   ~ 0
-VALL6
+VAL6
 Text Label 9400 6450 2    50   ~ 0
-VALL7
-Text Label 9400 6900 2    50   ~ 0
-VALH0
-Text Label 9400 7000 2    50   ~ 0
-VALH1
-Text Label 9400 7100 2    50   ~ 0
-VALH2
-Text Label 9400 7200 2    50   ~ 0
-VALH3
-Text Label 9400 7300 2    50   ~ 0
-VALH4
-Text Label 9400 7400 2    50   ~ 0
-VALH5
-Text Label 9400 7500 2    50   ~ 0
-VALH6
-Text Label 9400 7600 2    50   ~ 0
-VALH7
-Wire Bus Line
-	9500 7800 10000 7800
-Text Label 9550 7800 0    50   ~ 0
-VALH[0..7]
-Wire Bus Line
-	9500 6650 10000 6650
-Text Label 9550 6650 0    50   ~ 0
-VALL[0..7]
-$Sheet
-S 10000 7700 700  200 
-U 5F61E658
-F0 "PC_VAL[8..13]" 50
-F1 "8BitLED.sch" 50
-F2 "VAL[0..7]" I L 10000 7800 50 
-$EndSheet
-$Sheet
-S 10000 6550 700  200 
-U 5F61E0F6
-F0 "PC_VAL[0..7]" 50
-F1 "8BitLED.sch" 50
-F2 "VAL[0..7]" I L 10000 6650 50 
-$EndSheet
-NoConn ~ 8800 7500
-NoConn ~ 8800 7600
-NoConn ~ 9600 4500
+VAL7
+Text Label 9400 6550 2    50   ~ 0
+VAL8
+Text Label 9400 6650 2    50   ~ 0
+VAL9
+Text Label 9400 6750 2    50   ~ 0
+VAL10
+Text Label 9400 6850 2    50   ~ 0
+VAL11
+Text Label 9400 6950 2    50   ~ 0
+VAL12
+Text Label 9400 7050 2    50   ~ 0
+VAL13
 Wire Bus Line
 	7950 5600 7950 9350
-Wire Bus Line
-	9500 7000 9500 7800
-Wire Bus Line
-	9500 5850 9500 6650
 Wire Bus Line
 	7950 1550 7950 5600
 Wire Bus Line
 	4600 1550 4600 9150
 Wire Bus Line
-	8700 5600 8700 7300
+	8700 5600 8700 6950
+Wire Bus Line
+	9500 5850 9500 7150
 $EndSCHEMATC
