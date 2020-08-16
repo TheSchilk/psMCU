@@ -1,0 +1,254 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 52 62
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Wire Wire Line
+	4850 3800 5150 3800
+Wire Wire Line
+	3200 3850 3200 3800
+Wire Wire Line
+	3200 3800 3100 3800
+Wire Wire Line
+	3200 4050 3200 4150
+$Comp
+L power:GND #PWR?
+U 1 1 5F783D7E
+P 3200 4150
+F 0 "#PWR?" H 3200 3900 50  0001 C CNN
+F 1 "GND" H 3205 3977 50  0000 C CNN
+F 2 "" H 3200 4150 50  0001 C CNN
+F 3 "" H 3200 4150 50  0001 C CNN
+	1    3200 4150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3200 3800 3600 3800
+Connection ~ 3200 3800
+Wire Wire Line
+	3900 3700 3900 3600
+Wire Wire Line
+	3950 3600 3900 3600
+Connection ~ 3900 3600
+Wire Wire Line
+	3900 3600 3900 3550
+Wire Wire Line
+	4200 3600 4150 3600
+Wire Wire Line
+	3900 4000 3900 3900
+Text HLabel 3100 3800 0    50   3State ~ 0
+DB_OUT
+$Comp
+L Device:R_Small R?
+U 1 1 5F3ABFEC
+P 4750 3800
+AR Path="/5ED2705B/5F30EEBC/5F3ABFEC" Ref="R?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/5F3ABFEC" Ref="R?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/5F3ABFEC" Ref="R?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/5F3ABFEC" Ref="R?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/5F3ABFEC" Ref="R?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/5F3ABFEC" Ref="R?"  Part="1" 
+AR Path="/5F394B96/5F3ABFEC" Ref="R?"  Part="1" 
+F 0 "R?" V 4700 3950 50  0000 C CNN
+F 1 "rled" V 4700 3650 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 4750 3800 50  0001 C CNN
+F 3 "~" H 4750 3800 50  0001 C CNN
+	1    4750 3800
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:LED_Small D?
+U 1 1 5F3AC028
+P 5250 3800
+AR Path="/5ED2705B/5F30EEBC/5F3AC028" Ref="D?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/5F3AC028" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/5F3AC028" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/5F3AC028" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/5F3AC028" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/5F3AC028" Ref="D?"  Part="1" 
+AR Path="/5F394B96/5F3AC028" Ref="D?"  Part="1" 
+F 0 "D?" H 5050 3750 50  0000 C CNN
+F 1 "LED" H 5350 3750 50  0000 C CNN
+F 2 "Diode_SMD:D_0603_1608Metric" V 5250 3800 50  0001 C CNN
+F 3 "~" V 5250 3800 50  0001 C CNN
+	1    5250 3800
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 5F3B0CCC
+P 3200 3950
+F 0 "R?" H 3259 3996 50  0000 L CNN
+F 1 "10K" H 3259 3905 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 3200 3950 50  0001 C CNN
+F 3 "~" H 3200 3950 50  0001 C CNN
+	1    3200 3950
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5F3B281D
+P 3200 4150
+F 0 "#PWR?" H 3200 3900 50  0001 C CNN
+F 1 "GND" H 3205 3977 50  0000 C CNN
+F 2 "" H 3200 4150 50  0001 C CNN
+F 3 "" H 3200 4150 50  0001 C CNN
+	1    3200 4150
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74xGxx:74LVC1G04 U?
+U 1 1 5F783D7F
+P 3900 3800
+AR Path="/5ED2705B/5F783D7F" Ref="U?"  Part="1" 
+AR Path="/5F1CE57C/5F783D7F" Ref="U?"  Part="1" 
+AR Path="/5F394B96/5F783D7F" Ref="U?"  Part="1" 
+F 0 "U?" H 4000 3600 50  0000 C CNN
+F 1 "74LVC1G04" H 4150 3700 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 3900 3800 50  0001 C CNN
+F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 3900 3800 50  0001 C CNN
+	1    3900 3800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 5F3B868D
+P 3900 3550
+AR Path="/5ED2705B/5F3B868D" Ref="#PWR?"  Part="1" 
+AR Path="/5F1CE57C/5F3B868D" Ref="#PWR?"  Part="1" 
+AR Path="/5F394B96/5F3B868D" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 3900 3400 50  0001 C CNN
+F 1 "+5V" H 3915 3723 50  0000 C CNN
+F 2 "" H 3900 3550 50  0001 C CNN
+F 3 "" H 3900 3550 50  0001 C CNN
+	1    3900 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C?
+U 1 1 5F3B8693
+P 4050 3600
+AR Path="/5ED2705B/5F3B8693" Ref="C?"  Part="1" 
+AR Path="/5F1CE57C/5F3B8693" Ref="C?"  Part="1" 
+AR Path="/5F394B96/5F3B8693" Ref="C?"  Part="1" 
+F 0 "C?" V 4150 3700 50  0000 C CNN
+F 1 "0u1" V 4000 3700 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 4050 3600 50  0001 C CNN
+F 3 "~" H 4050 3600 50  0001 C CNN
+	1    4050 3600
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5F3B869C
+P 4200 3600
+AR Path="/5ED2705B/5F3B869C" Ref="#PWR?"  Part="1" 
+AR Path="/5F1CE57C/5F3B869C" Ref="#PWR?"  Part="1" 
+AR Path="/5F394B96/5F3B869C" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 4200 3350 50  0001 C CNN
+F 1 "GND" V 4205 3472 50  0000 R CNN
+F 2 "" H 4200 3600 50  0001 C CNN
+F 3 "" H 4200 3600 50  0001 C CNN
+	1    4200 3600
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5F783D83
+P 3900 4000
+AR Path="/5ED2705B/5F783D83" Ref="#PWR?"  Part="1" 
+AR Path="/5F1CE57C/5F783D83" Ref="#PWR?"  Part="1" 
+AR Path="/5F394B96/5F783D83" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 3900 3750 50  0001 C CNN
+F 1 "GND" H 3905 3827 50  0000 C CNN
+F 2 "" H 3900 4000 50  0001 C CNN
+F 3 "" H 3900 4000 50  0001 C CNN
+	1    3900 4000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4650 3800 4150 3800
+$Comp
+L power:GND #PWR?
+U 1 1 5EF78AA6
+P 5700 3900
+AR Path="/5ED2705B/5EF78AA6" Ref="#PWR?"  Part="1" 
+AR Path="/5F1CE57C/5EF78AA6" Ref="#PWR?"  Part="1" 
+AR Path="/5F394B96/5EF78AA6" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 5700 3650 50  0001 C CNN
+F 1 "GND" H 5705 3727 50  0000 C CNN
+F 2 "" H 5700 3900 50  0001 C CNN
+F 3 "" H 5700 3900 50  0001 C CNN
+	1    5700 3900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5700 3900 5700 3800
+Wire Wire Line
+	5350 3800 5700 3800
+Wire Bus Line
+	3300 1900 2950 1900
+Text HLabel 2950 1900 0    50   3State ~ 0
+DB[0..7]
+Entry Wire Line
+	3400 2700 3300 2600
+Entry Wire Line
+	3400 2600 3300 2500
+Entry Wire Line
+	3400 2500 3300 2400
+Entry Wire Line
+	3400 2400 3300 2300
+Entry Wire Line
+	3400 2300 3300 2200
+Entry Wire Line
+	3400 2200 3300 2100
+Entry Wire Line
+	3400 2100 3300 2000
+Entry Wire Line
+	3400 2000 3300 1900
+Wire Wire Line
+	3650 2000 3400 2000
+Wire Wire Line
+	3650 2100 3400 2100
+Wire Wire Line
+	3650 2200 3400 2200
+Wire Wire Line
+	3650 2300 3400 2300
+Wire Wire Line
+	3650 2400 3400 2400
+Wire Wire Line
+	3650 2500 3400 2500
+Wire Wire Line
+	3650 2600 3400 2600
+Wire Wire Line
+	3650 2700 3400 2700
+Text Label 3400 2000 0    50   ~ 0
+DB0
+Text Label 3400 2100 0    50   ~ 0
+DB1
+Text Label 3400 2200 0    50   ~ 0
+DB2
+Text Label 3400 2300 0    50   ~ 0
+DB3
+Text Label 3400 2400 0    50   ~ 0
+DB4
+Text Label 3400 2500 0    50   ~ 0
+DB5
+Text Label 3400 2600 0    50   ~ 0
+DB6
+Text Label 3400 2700 0    50   ~ 0
+DB7
+Connection ~ 3200 4150
+Wire Bus Line
+	3300 1900 3300 2600
+$EndSCHEMATC

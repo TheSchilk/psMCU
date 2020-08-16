@@ -1,0 +1,382 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A3 16535 11693
+encoding utf-8
+Sheet 1 62
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Sheet
+S -8350 1900 1050 900 
+U 5F607AA2
+F0 "PC" 50
+F1 "PC.sch" 50
+F2 "ROMA[0..13]" I L -8350 2000 50 
+F3 "PC[0..13]" O R -7300 2000 50 
+F4 "INC_EN" I L -8350 2100 50 
+F5 "CLK" I L -8350 2700 50 
+F6 "~RESET" I L -8350 2600 50 
+F7 "CNDT_INC_EN" I L -8350 2200 50 
+F8 "CNDT_AFFIRMATIVE" I L -8350 2300 50 
+F9 "LATCH_EN" I L -8350 2400 50 
+$EndSheet
+$Sheet
+S -4700 1550 1200 550 
+U 5F18F3CA
+F0 "InstReg" 50
+F1 "InstReg.sch" 50
+F2 "LATCH_EN" I L -4700 1750 50 
+F3 "CLK" I L -4700 1950 50 
+F4 "NextInst[0..15]" I L -4700 1650 50 
+F5 "Inst[0..15]" O R -3500 1650 50 
+F6 "RESET" I L -4700 2050 50 
+$EndSheet
+$Sheet
+S -6700 1900 1300 450 
+U 5F28170E
+F0 "ROM" 50
+F1 "ROM.sch" 50
+F2 "PC[0..13]" I L -6700 2000 50 
+F3 "NextInst[0..15]" O R -5400 2000 50 
+$EndSheet
+$Sheet
+S -2150 4500 750  400 
+U 608BF85D
+F0 "ClockCtrl" 50
+F1 "ClockCtrl.sch" 50
+F2 "CLK" O R -1400 4600 50 
+F3 "RESET" O R -1400 4800 50 
+F4 "~RESET" O R -1400 4700 50 
+$EndSheet
+$Sheet
+S -2150 3900 1200 350 
+U 609EB802
+F0 "CrossOver.sch" 50
+F1 "CrossOver.sch" 50
+F2 "Inst[0..7]->DBus" I L -2150 4100 50 
+F3 "Inst[0..15]" I L -2150 4000 50 
+F4 "DB_OUT" O R -950 4100 50 
+F5 "DB[0..7]" T R -950 4000 50 
+$EndSheet
+$Sheet
+S -7300 3750 850  950 
+U 5ED3C49A
+F0 "RAM" 50
+F1 "RAM.sch" 50
+F2 "LatchSafeDA_EN" I L -7300 4300 50 
+F3 "W_ASYNC" I L -7300 4400 50 
+F4 "R_ASYNC" I L -7300 4500 50 
+F5 "DB[0..7]" T L -7300 3850 50 
+F6 "RAMA[0..8]" I L -7300 3950 50 
+F7 "CLK" I L -7300 4200 50 
+F8 "RESET" I L -7300 4100 50 
+F9 "~RESET" I L -7300 4600 50 
+$EndSheet
+$Sheet
+S -4750 4550 800  300 
+U 5F394B96
+F0 "DBUS_DISPLAY.sch" 50
+F1 "DBUS_DISPLAY.sch" 50
+F2 "DB_OUT" T R -3950 4750 50 
+$EndSheet
+Text Notes -2350 5900 0    50   ~ 0
+\n\n
+$Comp
+L Regulator_Linear:L7805 U?
+U 1 1 5F0653EF
+P 7550 10000
+F 0 "U?" H 7550 10242 50  0000 C CNN
+F 1 "L7805" H 7550 10151 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:TO-252-2" H 7575 9850 50  0001 L CIN
+F 3 "http://www.st.com/content/ccc/resource/technical/document/datasheet/41/4f/b3/b0/12/d4/47/88/CD00000444.pdf/files/CD00000444.pdf/jcr:content/translations/en.CD00000444.pdf" H 7550 9950 50  0001 C CNN
+	1    7550 10000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP C?
+U 1 1 5F065F7B
+P 8050 10300
+F 0 "C?" H 8168 10346 50  0000 L CNN
+F 1 "100u" H 8168 10255 50  0000 L CNN
+F 2 "Capacitor_SMD:CP_Elec_8x6.2" H 8088 10150 50  0001 C CNN
+F 3 "~" H 8050 10300 50  0001 C CNN
+	1    8050 10300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP C?
+U 1 1 5F0663D0
+P 8500 10300
+F 0 "C?" H 8618 10346 50  0000 L CNN
+F 1 "100u" H 8618 10255 50  0000 L CNN
+F 2 "Capacitor_SMD:CP_Elec_8x6.2" H 8538 10150 50  0001 C CNN
+F 3 "~" H 8500 10300 50  0001 C CNN
+	1    8500 10300
+	1    0    0    -1  
+$EndComp
+Connection ~ 8050 10700
+Wire Wire Line
+	8050 10700 8500 10700
+Connection ~ 7550 10700
+Wire Wire Line
+	7550 10700 8050 10700
+Wire Wire Line
+	7850 10000 8050 10000
+Wire Wire Line
+	8500 10000 8500 10150
+Wire Wire Line
+	8050 10150 8050 10000
+Connection ~ 8050 10000
+Wire Wire Line
+	8050 10000 8500 10000
+$Comp
+L power:GND #PWR?
+U 1 1 5F07B4A4
+P 8500 10750
+F 0 "#PWR?" H 8500 10500 50  0001 C CNN
+F 1 "GND" H 8505 10577 50  0000 C CNN
+F 2 "" H 8500 10750 50  0001 C CNN
+F 3 "" H 8500 10750 50  0001 C CNN
+	1    8500 10750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8500 10750 8500 10700
+Connection ~ 8500 10700
+$Comp
+L power:+5V #PWR?
+U 1 1 5F07EBCC
+P 8500 9950
+F 0 "#PWR?" H 8500 9800 50  0001 C CNN
+F 1 "+5V" H 8515 10123 50  0000 C CNN
+F 2 "" H 8500 9950 50  0001 C CNN
+F 3 "" H 8500 9950 50  0001 C CNN
+	1    8500 9950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8500 9950 8500 10000
+Connection ~ 8500 10000
+$Comp
+L power:PWR_FLAG #FLG?
+U 1 1 5F2BE17B
+P 7150 10750
+F 0 "#FLG?" H 7150 10825 50  0001 C CNN
+F 1 "PWR_FLAG" H 7150 10923 50  0000 C CNN
+F 2 "" H 7150 10750 50  0001 C CNN
+F 3 "~" H 7150 10750 50  0001 C CNN
+	1    7150 10750
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7150 10750 7150 10700
+Connection ~ 7150 10700
+Wire Wire Line
+	7150 10700 7550 10700
+Text Notes 850  1700 0    787  ~ 0
+WIP
+Text Notes 6000 2450 0    591  ~ 0
+Tentatively\nReady
+Text Notes 12600 1500 0    591  ~ 0
+Done.
+Wire Notes Line
+	4950 750  4950 10950
+Wire Notes Line
+	11650 850  11650 11050
+$Comp
+L Connector_Generic:Conn_01x02 J?
+U 1 1 5F064A98
+P 5400 10150
+F 0 "J?" H 5318 9825 50  0000 C CNN
+F 1 "Conn_01x02" H 5318 9916 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 5400 10150 50  0001 C CNN
+F 3 "~" H 5400 10150 50  0001 C CNN
+	1    5400 10150
+	-1   0    0    1   
+$EndComp
+$Sheet
+S 5800 3150 1050 600 
+U 5ED2705B
+F0 "RegA" 50
+F1 "Reg.sch" 50
+F2 "OE" I L 5800 3250 50 
+F3 "DB[0..7]" T R 6850 3250 50 
+F4 "LATCH_EN" I L 5800 3350 50 
+F5 "VAL[0..7]" O R 6850 3350 50 
+F6 "RESET" I L 5800 3550 50 
+F7 "CLK" I L 5800 3650 50 
+F8 "DB_OUT" T R 6850 3450 50 
+$EndSheet
+$Sheet
+S 5800 4100 1050 600 
+U 5F3ED0F9
+F0 "RegB" 50
+F1 "Reg.sch" 50
+F2 "OE" I L 5800 4200 50 
+F3 "DB[0..7]" T R 6850 4200 50 
+F4 "LATCH_EN" I L 5800 4300 50 
+F5 "VAL[0..7]" O R 6850 4300 50 
+F6 "RESET" I L 5800 4500 50 
+F7 "CLK" I L 5800 4600 50 
+F8 "DB_OUT" T R 6850 4400 50 
+$EndSheet
+$Comp
+L Connector:Barrel_Jack J?
+U 1 1 5F442BB9
+P 5450 10600
+F 0 "J?" H 5507 10925 50  0000 C CNN
+F 1 "Barrel_Jack" H 5507 10834 50  0000 C CNN
+F 2 "Connector_BarrelJack:BarrelJack_Horizontal" H 5500 10560 50  0001 C CNN
+F 3 "~" H 5500 10560 50  0001 C CNN
+	1    5450 10600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:D_Small D?
+U 1 1 5F447D08
+P 6150 10150
+F 0 "D?" V 6104 10218 50  0000 L CNN
+F 1 "D_Small" V 6195 10218 50  0000 L CNN
+F 2 "" V 6150 10150 50  0001 C CNN
+F 3 "~" V 6150 10150 50  0001 C CNN
+	1    6150 10150
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6150 10650 6150 10700
+Wire Wire Line
+	6150 10700 6650 10700
+Wire Wire Line
+	6650 10650 6650 10700
+Connection ~ 6650 10700
+Wire Wire Line
+	6650 10700 7150 10700
+Wire Wire Line
+	6150 10050 6150 10000
+Wire Wire Line
+	6150 10000 6650 10000
+Wire Wire Line
+	6650 10050 6650 10000
+$Comp
+L Device:Polyfuse_Small F?
+U 1 1 5F44BF7B
+P 6900 10000
+F 0 "F?" V 6695 10000 50  0000 C CNN
+F 1 "0.5A" V 6786 10000 50  0000 C CNN
+F 2 "" H 6950 9800 50  0001 L CNN
+F 3 "~" H 6900 10000 50  0001 C CNN
+	1    6900 10000
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6800 10000 6650 10000
+Connection ~ 6650 10000
+$Comp
+L Device:D_Small D?
+U 1 1 5F445F25
+P 6650 10150
+F 0 "D?" V 6604 10218 50  0000 L CNN
+F 1 "D_Small" V 6695 10218 50  0000 L CNN
+F 2 "" V 6650 10150 50  0001 C CNN
+F 3 "~" V 6650 10150 50  0001 C CNN
+	1    6650 10150
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:D_Small D?
+U 1 1 5F4493BF
+P 6650 10550
+F 0 "D?" V 6604 10618 50  0000 L CNN
+F 1 "D_Small" V 6695 10618 50  0000 L CNN
+F 2 "" V 6650 10550 50  0001 C CNN
+F 3 "~" V 6650 10550 50  0001 C CNN
+	1    6650 10550
+	0    1    -1   0   
+$EndComp
+$Comp
+L Device:D_Small D?
+U 1 1 5F4493B9
+P 6150 10550
+F 0 "D?" V 6104 10618 50  0000 L CNN
+F 1 "D_Small" V 6195 10618 50  0000 L CNN
+F 2 "" V 6150 10550 50  0001 C CNN
+F 3 "~" V 6150 10550 50  0001 C CNN
+	1    6150 10550
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	6650 10250 6650 10400
+Wire Wire Line
+	6150 10250 6150 10300
+Wire Wire Line
+	7550 10300 7550 10700
+Wire Wire Line
+	8050 10450 8050 10700
+Wire Wire Line
+	8500 10450 8500 10700
+Wire Wire Line
+	6000 10050 6000 10300
+Wire Wire Line
+	6000 10300 6150 10300
+Connection ~ 6150 10300
+Wire Wire Line
+	6150 10300 6150 10450
+Wire Wire Line
+	5900 10150 5900 10400
+Wire Wire Line
+	5900 10400 6650 10400
+Connection ~ 6650 10400
+Wire Wire Line
+	6650 10400 6650 10450
+Wire Wire Line
+	6000 10500 6000 10300
+Connection ~ 6000 10300
+Wire Wire Line
+	5900 10400 5900 10700
+Connection ~ 5900 10400
+Wire Wire Line
+	5750 10500 6000 10500
+Wire Wire Line
+	5900 10700 5750 10700
+Wire Wire Line
+	5600 10150 5900 10150
+Wire Wire Line
+	6000 10050 5600 10050
+$Comp
+L power:PWR_FLAG #FLG?
+U 1 1 5F2B9585
+P 7150 10050
+F 0 "#FLG?" H 7150 10125 50  0001 C CNN
+F 1 "PWR_FLAG" V 7150 10350 50  0000 C CNN
+F 2 "" H 7150 10050 50  0001 C CNN
+F 3 "~" H 7150 10050 50  0001 C CNN
+	1    7150 10050
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7000 10000 7150 10000
+Wire Wire Line
+	7150 10000 7150 10050
+Connection ~ 7150 10000
+Wire Wire Line
+	7150 10000 7250 10000
+Text Notes 5700 11000 0    50   ~ 0
+The 'I'm not taking any chances'\nDC reverse polarity protection\nFullbridge recitifier
+$Sheet
+S -1950 1900 1400 1100
+U 60E33DBC
+F0 "Control" 50
+F1 "Control.sch" 50
+F2 "BRPT_TRIG" I L -1950 2100 50 
+F3 "CLK" I L -1950 2200 50 
+F4 "~RESET" I L -1950 2300 50 
+F5 "Inst[0..15]" I L -1950 2000 50 
+$EndSheet
+$EndSCHEMATC

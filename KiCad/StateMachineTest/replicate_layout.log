@@ -1,0 +1,89 @@
+06-04 07:43:35 replicate_layout.action_replicate_layout 295:Replicate layout plugin version: 52 started
+06-04 07:43:35 replicate_layout.action_replicate_layout 327:Preparing replicator with U103 as a reference
+06-04 07:43:35 replicate_layout.replicatelayout 201:getting project hierarchy from schematics
+06-04 07:43:35 replicate_layout.replicatelayout 203:Project hierarchy looks like:
+{'5F31E1C9': ['R_ASYNC_SAFEA', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\1BitLED.sch'], '5F0227B2': ['Do_Clock_Step', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\1BitLED.sch'], '5F0227B5': ['Clock_Step', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\1BitLED.sch'], '5F8756AE': ['Halt', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\1BitLED.sch'], '5F190609': ['INST_LATCH_EN', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\1BitLED.sch'], '5F6223B6': ['CNDT_INC_EN', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\1BitLED.sch'], '5F62248D': ['CNDT_AFFIRMATIVE', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\1BitLED.sch'], '5ED2705B': ['RegA', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\RegA.sch'], '5F82FFCD': ['CtrlBusOut', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\8BitLED.sch'], '5F3D8E0D': ['Inst_Decode_ROM', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\Inst_Decode_ROM.sch'], '5F30EEBC': ['RegValDisp', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\8BitLED.sch'], '5F3261C9': ['W_ASYNC', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\1BitLED.sch'], '5F225B33': ['Inst[0..7]', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\8BitLED.sch'], '5F2A8674': ['BKPT_IS_TRIG', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\1BitLED.sch'], '5F225B36': ['Inst[8..15]', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\8BitLED.sch'], '5F767EF5': ['Control_Rom3', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\Control_Rom.sch'], '5F872DA4': ['Next_Inst', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\1BitLED.sch'], '5F61E0F6': ['PC_VAL[0..7]', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\8BitLED.sch'], '5F3D6AF9': ['STEP_LOGIC', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\STEP_LOGIC.sch'], '5F61E0F9': ['INC_EN', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\1BitLED.sch'], '60E33DBC': ['Control', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\Control.sch'], '5F5FD588': ['OE_LED', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\1BitLED.sch'], '5ED3C49A': ['RAM', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\RAM.sch'], '60A296EE': ['Breakpoint', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\Breakpoint.sch'], '5F8BAC6C': ['Do_Inc', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\1BitLED.sch'], '5ED3C508': ['SyncRegisters', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\SyncRegisters.sch'], '5F768DA1': ['Control_Rom4', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\Control_Rom.sch'], '5F32E5C9': ['LATCHSAFEDA_EN', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\1BitLED.sch'], '5F394B96': ['DBUS_DISPLAY.sch', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\DBUS_DISPLAY.sch'], '5F3D7BFA': ['Control_Rom0', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\Control_Rom.sch'], '5EEE6B09': ['INST_HALT', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\1BitLED.sch'], '5F76BABD': ['InstCode', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\8BitLED.sch'], '608BF85D': ['ClockCtrl', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\ClockCtrl.sch'], '5F622502': ['LATCH_EN', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\1BitLED.sch'], '5EE697A4': ['STEP', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\1BitLED.sch'], '5F355201': ['Inst[0..7]->DBus', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\1BitLED.sch'], '5F03D817': ['Reset', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\1BitLED.sch'], '608BF87D': ['ClockCtrlUI', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\ClockCtrlUI.sch'], '5EE697A1': ['DO STEP', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\1BitLED.sch'], '5EEE0F09': ['STEP_MODE_HALT', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\1BitLED.sch'], '5F2A0B04': ['BKPT_IS_ACTIVE', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\1BitLED.sch'], '6091007D': ['MClock_OSC', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\MClock_OSC.sch'], '5F607AA2': ['PC', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\PC.sch'], '5F5F12F1': ['LATCH_EN_LED', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\1BitLED.sch'], '5EF3226F': ['BKTP_HALT', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\1BitLED.sch'], '609EB802': ['CrossOver.sch', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\CrossOver.sch'], '5F8C5BB6': ['Do_Clear', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\1BitLED.sch'], '5F765D85': ['Control_Rom1', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\Control_Rom.sch'], '5F18F3CA': ['InstReg', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\InstReg.sch'], '5F61E658': ['PC_VAL[8..13]', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\8BitLED.sch'], '5F3D6AE0': ['CTRL_UI', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\CTRL_UI.sch'], '5EECFBAD': ['HALTED', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\1BitLED.sch'], '5F28170E': ['ROM', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\ROM.sch'], '5F87BE2E': ['Halt_Clear', u'C:\\Users\\pschilk\\home\\Repos\\psMCU\\KiCad\\StateMachineTest\\1BitLED.sch']}
+06-04 07:43:35 replicate_layout.replicatelayout 211:getting a list of all footprints on board
+06-04 07:43:35 replicate_layout.action_replicate_layout 353:Pivot footprint is u'U103'
+Located on:['Control', 'Control_Rom0']
+With filenames:[u'Control.sch', u'Control_Rom.sch']
+With sheet_id:['Control', 'Control_Rom0']
+06-04 07:43:35 replicate_layout.action_replicate_layout 357:Corresponding footprints are 
+[(u'U118', ['Control', 'Control_Rom4']), (u'U113', ['Control', 'Control_Rom3']), (u'U108', ['Control', 'Control_Rom1']), (u'U103', ['Control', 'Control_Rom0'])]
+06-04 07:43:35 replicate_layout.action_replicate_layout 370:Showing dialog
+06-04 07:43:35 replicate_layout.action_replicate_layout 374:Pcbnew position: wx.Point(952, 0)
+06-04 07:43:35 replicate_layout.action_replicate_layout 380:Display 0: wx.Rect(0, 0, 1920, 1080)
+06-04 07:43:35 replicate_layout.action_replicate_layout 384:Toolbar position: wx.Point(1686, 135)
+06-04 07:43:35 replicate_layout.action_replicate_layout 391:Dialog position: wx.Point(1373, 135)
+06-04 07:43:37 replicate_layout.replicatelayout 238:construcing a list of sheets suitable for replication on level:'Control_Rom0', file:u'Control_Rom.sch'
+06-04 07:43:37 replicate_layout.replicatelayout 245:Sheet ids up to the level:['Control', 'Control_Rom0']
+06-04 07:43:37 replicate_layout.replicatelayout 249:Footprints on the sheets:
+[u'U118', u'U113', u'U108', u'U103']
+06-04 07:43:37 replicate_layout.replicatelayout 252:Footprints raw sheet ids:
+[u'/60E33DBC/5F768DA1/5F73BBDA', u'/60E33DBC/5F767EF5/5F73BBDA', u'/60E33DBC/5F765D85/5F73BBDA', u'/60E33DBC/5F3D7BFA/5F73BBDA']
+06-04 07:43:37 replicate_layout.replicatelayout 268:All sheets to replicate:
+[['Control', 'Control_Rom4'], ['Control', 'Control_Rom3'], ['Control', 'Control_Rom1'], ['Control', 'Control_Rom0']]
+06-04 07:43:37 replicate_layout.replicatelayout 273:All sheets to replicate sorted:
+[['Control', 'Control_Rom0'], ['Control', 'Control_Rom1'], ['Control', 'Control_Rom3'], ['Control', 'Control_Rom4']]
+06-04 07:43:37 replicate_layout.replicatelayout 279:All sheets to replicate sorted and without pivot_sheet:
+[['Control', 'Control_Rom1'], ['Control', 'Control_Rom3'], ['Control', 'Control_Rom4']]
+06-04 07:43:40 replicate_layout.replicatelayout 238:construcing a list of sheets suitable for replication on level:'Control_Rom0', file:u'Control_Rom.sch'
+06-04 07:43:40 replicate_layout.replicatelayout 245:Sheet ids up to the level:['Control', 'Control_Rom0']
+06-04 07:43:40 replicate_layout.replicatelayout 249:Footprints on the sheets:
+[u'U118', u'U113', u'U108', u'U103']
+06-04 07:43:40 replicate_layout.replicatelayout 252:Footprints raw sheet ids:
+[u'/60E33DBC/5F768DA1/5F73BBDA', u'/60E33DBC/5F767EF5/5F73BBDA', u'/60E33DBC/5F765D85/5F73BBDA', u'/60E33DBC/5F3D7BFA/5F73BBDA']
+06-04 07:43:40 replicate_layout.replicatelayout 268:All sheets to replicate:
+[['Control', 'Control_Rom4'], ['Control', 'Control_Rom3'], ['Control', 'Control_Rom1'], ['Control', 'Control_Rom0']]
+06-04 07:43:40 replicate_layout.replicatelayout 273:All sheets to replicate sorted:
+[['Control', 'Control_Rom0'], ['Control', 'Control_Rom1'], ['Control', 'Control_Rom3'], ['Control', 'Control_Rom4']]
+06-04 07:43:40 replicate_layout.replicatelayout 279:All sheets to replicate sorted and without pivot_sheet:
+[['Control', 'Control_Rom1'], ['Control', 'Control_Rom3'], ['Control', 'Control_Rom4']]
+06-04 07:43:40 replicate_layout.action_replicate_layout 170:Replicating layout
+06-04 07:43:40 replicate_layout.replicatelayout 968:Starting replication of sheets: [['Control', 'Control_Rom1'], ['Control', 'Control_Rom3'], ['Control', 'Control_Rom4']]
+on level: ['Control', 'Control_Rom0']
+with tracks=True, zone=True, text=True, containing=True, remov=False
+06-04 07:43:40 root 250:updating GUI message: 'Preparing for replication'
+06-04 07:43:40 root 255:updating GUI with: 0
+06-04 07:43:40 replicate_layout.replicatelayout 542:Getting the list of pivot footprints
+06-04 07:43:40 replicate_layout.replicatelayout 546:Getting the list of all the remaining footprints
+06-04 07:43:40 replicate_layout.replicatelayout 550:Getting nets local to pivot footprints
+06-04 07:43:40 replicate_layout.replicatelayout 554:Getting pivot bounding box
+06-04 07:43:40 root 255:updating GUI with: 37
+06-04 07:43:40 replicate_layout.replicatelayout 558:Getting pivot tracks
+06-04 07:43:40 replicate_layout.replicatelayout 562:Getting pivot zones
+06-04 07:43:40 root 255:updating GUI with: 62
+06-04 07:43:40 replicate_layout.replicatelayout 566:Getting pivot text items
+06-04 07:43:40 replicate_layout.replicatelayout 570:Getting pivot text items
+06-04 07:43:40 root 250:updating GUI message: 'Replicating footprints'
+06-04 07:43:40 replicate_layout.replicatelayout 576:Replicating footprints
+06-04 07:43:40 replicate_layout.replicatelayout 582:Replicating footprints on sheet ['Control', 'Control_Rom1']
+06-04 07:43:40 root 255:updating GUI with: 31
+06-04 07:43:40 replicate_layout.replicatelayout 582:Replicating footprints on sheet ['Control', 'Control_Rom3']
+06-04 07:43:40 root 255:updating GUI with: 66
+06-04 07:43:40 replicate_layout.replicatelayout 582:Replicating footprints on sheet ['Control', 'Control_Rom4']
+06-04 07:43:40 root 250:updating GUI message: 'Replicating tracks'
+06-04 07:43:40 replicate_layout.replicatelayout 696:Replicating tracks
+06-04 07:43:40 root 255:updating GUI with: 0
+06-04 07:43:40 replicate_layout.replicatelayout 702:Replicating tracks on sheet ['Control', 'Control_Rom1']
+06-04 07:43:40 replicate_layout.replicatelayout 702:Replicating tracks on sheet ['Control', 'Control_Rom3']
+06-04 07:43:40 root 255:updating GUI with: 34
+06-04 07:43:40 replicate_layout.replicatelayout 702:Replicating tracks on sheet ['Control', 'Control_Rom4']
+06-04 07:43:40 root 250:updating GUI message: 'Replicating zones'
+06-04 07:43:40 replicate_layout.replicatelayout 747:Replicating zones
+06-04 07:43:40 replicate_layout.replicatelayout 754:Replicating zones on sheet ['Control', 'Control_Rom1']
+06-04 07:43:40 root 255:updating GUI with: 33
+06-04 07:43:40 replicate_layout.replicatelayout 754:Replicating zones on sheet ['Control', 'Control_Rom3']
+06-04 07:43:40 root 255:updating GUI with: 66
+06-04 07:43:40 replicate_layout.replicatelayout 754:Replicating zones on sheet ['Control', 'Control_Rom4']
+06-04 07:43:40 root 250:updating GUI message: 'Replicating text'
+06-04 07:43:40 replicate_layout.replicatelayout 813:Replicating text
+06-04 07:43:40 replicate_layout.replicatelayout 820:Replicating text on sheet ['Control', 'Control_Rom1']
+06-04 07:43:40 replicate_layout.replicatelayout 820:Replicating text on sheet ['Control', 'Control_Rom3']
+06-04 07:43:40 replicate_layout.replicatelayout 820:Replicating text on sheet ['Control', 'Control_Rom4']
+06-04 07:43:40 root 250:updating GUI message: 'Replicating drawings'
+06-04 07:43:40 replicate_layout.replicatelayout 843:Replicating drawings
+06-04 07:43:40 replicate_layout.replicatelayout 849:Replicating drawings on sheet ['Control', 'Control_Rom1']
+06-04 07:43:40 replicate_layout.replicatelayout 849:Replicating drawings on sheet ['Control', 'Control_Rom3']
+06-04 07:43:40 replicate_layout.replicatelayout 849:Replicating drawings on sheet ['Control', 'Control_Rom4']
+06-04 07:43:40 replicate_layout.action_replicate_layout 190:Replication complete
