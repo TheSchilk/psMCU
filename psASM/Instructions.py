@@ -24,8 +24,8 @@ class CALLInstruction(BaseInstruction):
     arg_bit_shift = [0]
 
 
-class TBSMInstruction(BaseInstruction):
-    op_code = "TBSM"
+class IFRMInstruction(BaseInstruction):
+    op_code = "IFRM"
     binary_literal = 0x7000
     arg_count = 2
     arg_ranges = [RANGE_9BIT, RANGE_3BIT]
@@ -33,8 +33,8 @@ class TBSMInstruction(BaseInstruction):
     arg_bit_shift = [0, 9]
 
 
-class TBRMInstruction(BaseInstruction):
-    op_code = "TBRM"
+class IFSMInstruction(BaseInstruction):
+    op_code = "IFSM"
     binary_literal = 0x6000
     arg_count = 2
     arg_ranges = [RANGE_9BIT, RANGE_3BIT]
@@ -42,8 +42,8 @@ class TBRMInstruction(BaseInstruction):
     arg_bit_shift = [0, 9]
 
 
-class TBSRInstruction(BaseInstruction):
-    op_code = "TBSR"
+class IFRAInstruction(BaseInstruction):
+    op_code = "IFRA"
     binary_literal = 0x5000
     arg_count = 1
     arg_ranges = [RANGE_3BIT]
@@ -51,8 +51,8 @@ class TBSRInstruction(BaseInstruction):
     arg_bit_shift = [9]
 
 
-class TBRRInstruction(BaseInstruction):
-    op_code = "TBRR"
+class IFSAInstruction(BaseInstruction):
+    op_code = "IFSA"
     binary_literal = 0x4000
     arg_count = 1
     arg_ranges = [RANGE_3BIT]
@@ -216,8 +216,8 @@ class SVDPInstruction(BaseInstruction):
     arg_count = 0
 
 
-class SVDMInstruction(BaseInstruction):
-    op_code = "SVDM"
+class SVDRInstruction(BaseInstruction):
+    op_code = "SVDR"
     binary_literal = 0x1600
     arg_count = 0
 
@@ -228,8 +228,8 @@ class LDDPInstruction(BaseInstruction):
     arg_count = 0
 
 
-class LDDMInstruction(BaseInstruction):
-    op_code = "LDDM"
+class LDDRInstruction(BaseInstruction):
+    op_code = "LDDR"
     binary_literal = 0x1400
     arg_count = 0
 

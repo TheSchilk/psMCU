@@ -26,7 +26,7 @@ SVA 1
 loop: ADD 
 
 # Check we did not overflow
-TBRM STATUS, ALU_OVF
+IFSM STATUS, ALU_OVF
 JMP STOP
 
 # Temporarily store the previous number on the stack
@@ -38,7 +38,7 @@ LDA adr_pointer
 # Increment the address and store the new value there
 ADDL 1
 SWP
-SVDM 
+SVDR 
 
 # Save the current address
 SVB adr_pointer # stored new address

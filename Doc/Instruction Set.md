@@ -8,24 +8,28 @@ Jump to ROM address and push return address onto stack.
 
 a: ROM Address (14bit)
 
-# TBSM a,b
+# IFRM a,b
+Execute next instruction if bit is reset in specified RAM position.
 Skip if bit is set in specified RAM position.
 
 a: Ram Address  (9bit)
 b: Bit to check (3bit) (0 = LSB, 7 = MSB)
 
-# TBRM a,b
+# IFSM a,b
+Execute next instruction if bit is set in specified RAM position.
 Skip if bit is reset in specified RAM position.
 
 a: Ram Address  (9bit)
 b: Bit to check (3bit) (0 = LSB, 7 = MSB)
 
-# TBSR b
+# IFRA b
+Execute next instruction if specified bit in A is reset.
 Skip if bit is set in A.
 
 b: Bit to check (3bit) (0 = LSB, 7 = MSB)
 
-# TBRR b
+# IFSA b
+Execute next instruction if specified bit in A is set.
 Skip if bit is reset in A.
 
 b: Bit to check (3bit) (0 = LSB, 7 = MSB)
@@ -83,89 +87,89 @@ Put literal into A.
 
 l: literal (8bit)
 
-#LITB l
+# LITB l
 Put literal into B.
 
 l: literal (8bit)
 
-#SHFTR 
+# SHFTR 
 Shift A right by a value in B. Store in A.
 
-#SHFTRL l
+# SHFTRL l
 Shift A right by a literal. Store in A.
 
 l: literal (8bit)
 
-#SHFTL
+# SHFTL
 Shift A left by a value in B. Store in A.
 
-#SHFTLL l
+# SHFTLL l
 Shift A left by a literal. Store in A.
 
 l: literal (8bit)
 
-#ADD
+# ADD
 Add A to B. Store in A.
 
 May set the C and HC flags in the Status Register
 
-#ADDL l
+# ADDL l
 Add A to literal. Store in A.
 
 May set the C and HC flags in the Status Register.
 
 l: literal (8bit)
 
-#SVDP
+# SVDP
 Save A to RAM at the location specified in B, with the 9th bit set.
 
 Note: This saves to the upper half of RAM, where all peripherals are mapped to.
 
-#SVDM 
+# SVDR 
 Save A to RAM at the location specified in B, with the 9th bit zeroed.
 
 Note: This saves to the lower half of RAM, where the selected RAM page is mapped to.
 
-#LDDP
+# LDDP
 Load A from RAM at the location specified in B, with the 9th bit set. 
 
 Note: This loads from the upper half of RAM, where all peripherals are mapped to. 
 
-#LDDM
+# LDDR
 Load A from RAM at the location specified in B, with the 9th bit zeroed. 
 
 Note: This loads from the lower half of RAM, where the selected RAM page is mapped to.
 
-#CPY
+# CPY
 Copy the contents of the A into B.
 
-#NOTA
+# NOTA
 Invert A. Store in A.
 
-#COMPB
+# COMPB
 Calculate two's complement of B. Store in B. 
 
-#SUB
+# SUB
 Subtract B from A. Store in A.
 
 May set the B and HB flags in the Status Register.
 
-#RTRN
+# RTRN
 Pop the last two values off the stack and return to that address.
 
-#POP
+# POP
 Pop the last value off the stack and store in A.
 
-#PUSH
+# PUSH
 Push A onto the Stack.
 
-#SWP
+# SWP
 Swap the contents of A and B
 
-#HALT
+# HALT
 Stop program execution. (Pressing the "Instruction Step" will resume)
 
-#NOP
+# NOP
 No Operation.
 
 
