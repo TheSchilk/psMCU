@@ -13,6 +13,7 @@ from Errors import ParsingException
 # Make sure there where enough arguments parsed
 if len(sys.argv) < 2:
     print("Not Enough arguments. Please specify a .psASM file")
+    sys.exit()
 
 namespace = Namespace()
 try:

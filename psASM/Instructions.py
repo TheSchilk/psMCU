@@ -305,4 +305,4 @@ def generate_instruction(line):
     try:
         return instruction_set[line.op_code](line)
     except KeyError:
-        raise ParsingException(line, "Unknown Instruction \'" + line.op + "\'")
+        raise ParsingException(line, "Unknown Instruction \'" + line.op_code + "\'")
