@@ -1,13 +1,13 @@
 # Programming Guide
 
 ## Architecture Overview
-psMCU features two 8 bit registers (A & B) onto which the instructions add. 
+psMCU features two 8 bit registers (A & B) onto which the instructions act. 
 
 The program is a sequence of 16 bit instructions stored in their own ROM
 with a 14 bit address bus allowing for up to aprox. 16K instructions.
 
-psMCU features 4096 bytes of freely usable heap RAM and 4096 Stack RAM which
-are completely separate, Additionally there is accommodation for up to 256
+psMCU features 4096 bytes of freely usable heap RAM and 4096 bytes of Stack RAM 
+which are completely separate, Additionally there is accommodation for up to 256
 peripheral and status registers which share an address space with the heap RAM.
 
 The heap RAM is referred to simply as RAM, while the Stack RAM is refereed to
@@ -24,7 +24,7 @@ The 9 bit wide RAM address bus is mapped as follows:
 |:------------------------:|----------------------------------------|
 | 0x100<br>.<br>.<br>0x1FF | <br>Peripheral and<br>Status Registers |
 
-The current RAM page can be selected using the PAGE register.
+The current RAM page can be selected using System Register 2.
 
 The Stack may only be accessed using the `PUSH`, `POP`, `CALL`, and `RETURN`
 instructions.
@@ -52,6 +52,14 @@ SVDM
 LDDM
 
 ```
+## Execution/Fixed Addresses
+The processor starts by executing the instruction at ROM address 0x0.
+The processor jumps to address 0x1 when an interrupt occurs.
+
+Therefor, the instruciton at 0x0 is a jump to the entry point of the 
+programm, and the instruction at 0x1 a jump to the interrupt
+service routine. These instructions are generated automatically by
+psASM. See the sections Main and Interrupts below for details.
 
 ## Syntax
 
@@ -98,7 +106,84 @@ JMP TheStart_isHere # A jump to the previously defined label
 
 ```
 
-A label must not contain whitespace characters.
+A label must always be followed by an instruction and not stand on a line
+by itself.
+
+A label must not contain white-space characters. There are 2 reserved labels:
+`MAIN` and `INTERRUPT`.
+
+### Main
+psASM automatically generates a jump instruction at address 0x0 to jump to the
+entry point of the program.
+
+If a `MAIN` (case sensitive) label exists anywhere in the program, psASM will 
+generate a jump to that label.
+
+If no `MAIN` label is found, psASM will generate a jump to the first instruction
+of the first file. It is recommended to have a `MAIN` label.
+
+
+### Interrupts
+Interrupts are enabled with the `EN_INT` bit in System Register 3.
+
+If Interrupts are enabled and an interrupt occurs, the processor will finish 
+executing the current instruction, and then jump to address 0x1 while pushing
+the address of the next instruciton to be executed onto the stack.
+
+If a `INTERRUPT` (case sensitive) label exists anywhere in the program,
+psASM will automatically generate a jump to that label at ROM address 0x1.
+
+If there is no such label, psASM will automatically generate a `RTRNI`
+(Return from interrupt) instruction at that location which will cause 
+the process to return back to execution.
+
+All interrupts are suppressed until the processor finishes handling the
+interrupt with the `RTRNI` instruction. Should another interrupt occur
+while handling the interrupt (or while interrupts are disabled), another
+interrupt will occur immediately after the current interrupt returns (or
+interrupts are enabled).
+
+Registers A and B do not feature shadow registers. Therefor, the interrupt
+should stash their current value on the stack and restore it before returning.
+
+System Register 2 also does not feature a shadow register. If the interrupt
+routine needs to access a different RAM page it needs to restore the page
+selected before returning.
+
+An example interrupt routine:
+
+```
+# Interrupt routine:
+
+# Push A then B onto the Stack:
+INTERRUPT: PUSH 
+SWP 
+PUSH
+
+# Push System Register 2 onto the Stack 
+# to save the currently selected RAM page:
+LDA 0x101
+PUSH
+
+
+# ... Handle Interrupt ....
+
+
+# Restore System Register 2:
+POP
+SVA 0x0101
+
+# Restore A and B
+POP
+SWAP
+POP
+
+
+# Return from the interrupt routine:
+RTRNI
+
+```
+
 
 ### Preprocessor Directives
 Preprocessor directives start with a `@`.
@@ -107,5 +192,4 @@ There are 2 preprocessor directives:
 `@include another_file.psASM'   
 
 ### Constants
-
 
