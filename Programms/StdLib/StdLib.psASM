@@ -1,18 +1,31 @@
-#
-# The Standard Library for the psASM Language
-#
+# #### Scratch Registers ####
 
+@define SCRT1 0x100
+@define SCRT2 0x101
+@define SCRT3 0x102
+@define SCRT4 0x103
 
-# Status Register + Bit Positions
-@define STS           0x100
-@define STS_C         0x0
-@define STS_HC        0x1
-@define STS_B         0x2
-@define STS_HB        0x3
-@define STS_ShftIn    0x4
-@define STS_A0        0x5
-@define STS_B0        0x6
-@define STS_AB        0x7
+# #### System Registers ####
 
-# Page Register
-@define PGE           0x101                    
+# SYS1
+@define SYS1 0x104
+
+@define S1_SHFT_IN   0
+@define S1_CARRY     1
+@define S1_HCARRY    2
+@define S1_BORRW     3
+@define S1_HBORROW   4
+
+# SYS2
+@define SYS2 0x105
+
+# SYS3
+@define SYS3 0x106
+
+@define S3_INTEN       0       
+@define S3_A0          1
+@define S3_B0          2
+@define S3_AB          3
+@define S3_AgreaterB   4
+@define S3_BgreaterA   5
+

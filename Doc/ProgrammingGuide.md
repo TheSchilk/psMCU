@@ -150,6 +150,11 @@ System Register 2 also does not feature a shadow register. If the interrupt
 routine needs to access a different RAM page it needs to restore the page
 selected before returning.
 
+The only data that is automatically saved and restored when entering/exiting
+an interrupt are the ALU status bits in the System Register 1. This does not
+include the 'Shift in' bit. This means that instructions that affect these 
+bits can be used in the interrupt routine without causing problems.
+
 An example interrupt routine:
 
 ```

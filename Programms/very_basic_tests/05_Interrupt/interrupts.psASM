@@ -1,6 +1,6 @@
 # Enable Interrupts
 MAIN: LITA 0x1
-SVA 0x102
+SVA 0x106
 
 # Loop that adds 1 to A
 LITA 0
