@@ -1,67 +1,74 @@
 from Line import Line
 from Errors import ParsingException
-
+from StdLib import StdLib
 
 class Listing:
     def __init__(self, file_name, namespace):
         self.file_name = file_name
-        sub_listings = []
+        self.sub_listings = []
         self.Lines = []
 
-        # Open file
-        with open(file_name, 'r') as file:
-            line_num = 1
-            for line_text in file:
-                line = Line(line_text, file_name, line_num)
-
-                # if this line is a comment or empty, ignore it:
-                if line.is_comment() or line.is_empty():
-                    continue
-
-                # if this line is an include statement,
-                # parse it and recursively generate a new listing for the file:
-                if line.is_include():
-                    included_file_name = line.parse_include()
-                    try:
-                        included_listing = Listing(included_file_name, namespace)
-                    except FileNotFoundError:
-                        raise ParsingException(line, "Included file not found!")
-
-                    # Add the listing to the sub listings to be appended at the end
-                    sub_listings.append(included_listing)
-
-                    # Move on to next line
-                    continue
-
-                # if this line is definition,
-                # parse it and add it to the namespace:
-                if line.is_definition():
-                    name, value = line.parse_definition()
-                    if namespace.contains_alias(name):
-                        raise ParsingException(line, "Namespace collision: \'" + name + "\' already exists elsewhere")
-                    namespace.add_alias(name)
-                    namespace.define_alias(name, value)
-
-                    # Move on to next line
-                    continue
-
-                # If this line is none of the above, treat it as an instruction:
-                line.parse_instruction()
-
-                # if there is a label, add it to the namespace
-                if line.label is not None:
-                    if namespace.contains_alias(line.label):
-                        raise ParsingException(line, "Namespace collision: \'" + line.label +
-                                               "\' already exists elsewhere")
-                    namespace.add_alias(line.label)
-
-                # Add the instruction to the listing
-                self.Lines.append(line)
+        if file_name == "StdLib.psASM":
+            self.initial_parse(namespace, StdLib, "StdLib.psASM-[INTERNAL]")
+        else:
+            with open(file_name, 'r') as file:
+                self.initial_parse(namespace, file, file_name)
 
         # Append all sub-listings:
-        for sub_listing in sub_listings:
+        for sub_listing in self.sub_listings:
             for line in sub_listing.Lines:
                 self.Lines.append(line)
+
+        self.sub_listings = []
+
+    def initial_parse(self, namespace, file, file_name):
+        line_num = 1
+        for line_text in file:
+            line = Line(line_text, file_name, line_num)
+
+            # if this line is a comment or empty, ignore it:
+            if line.is_comment() or line.is_empty():
+                continue
+
+            # if this line is an include statement,
+            # parse it and recursively generate a new listing for the file:
+            if line.is_include():
+                included_file_name = line.parse_include()
+                try:
+                    included_listing = Listing(included_file_name, namespace)
+                except FileNotFoundError:
+                    raise ParsingException(line, "Included file not found!")
+
+                # Add the listing to the sub listings to be appended at the end
+                self.sub_listings.append(included_listing)
+
+                # Move on to next line
+                continue
+
+            # if this line is definition,
+            # parse it and add it to the namespace:
+            if line.is_definition():
+                name, value = line.parse_definition()
+                if namespace.contains_alias(name):
+                    raise ParsingException(line, "Namespace collision: \'" + name + "\' already exists elsewhere")
+                namespace.add_alias(name)
+                namespace.define_alias(name, value)
+
+                # Move on to next line
+                continue
+
+            # If this line is none of the above, treat it as an instruction:
+            line.parse_instruction()
+
+            # if there is a label, add it to the namespace
+            if line.label is not None:
+                if namespace.contains_alias(line.label):
+                    raise ParsingException(line, "Namespace collision: \'" + line.label +
+                                           "\' already exists elsewhere")
+                namespace.add_alias(line.label)
+
+            # Add the instruction to the listing
+            self.Lines.append(line)
 
     def add_header(self, namespace):
         """
