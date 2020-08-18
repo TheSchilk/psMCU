@@ -18,7 +18,6 @@ LITB 1
 SVA 0 
 SVA 1
 
-
 # Loop
 
 # A: New Value  B: Prev Value
@@ -50,6 +49,6 @@ POP
 JMP loop
 
 # Infinite Loop to stop
-# because when I wrote this the HALT instruction wasn't working yet *grin*
+# because when I wrote this the HALT instruction wasn't working yet. *grin*.
 STOP: NOP
 JMP STOP

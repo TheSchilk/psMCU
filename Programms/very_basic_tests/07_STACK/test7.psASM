@@ -1,0 +1,36 @@
+# Some hot-headed recusion:
+# Calculate sum(n) = 1+2+...+n using the recursive method:
+# sum(n):
+#   if n ==0:
+#       return 0
+#   else:
+#       return n + sum(n-1)
+
+# MAIN: Calculate sum(10) (=55=0x37) and halt.
+MAIN: LITA 10
+CALL SUM
+STOP: HALT
+JMP STOP
+
+# sum(n)
+# Takes in Argument stored in A, saves return value in A
+
+SUM: NOP
+    # if A=0, return with A =0
+    IFSM 0x106,1
+        RTRN
+
+    # ELSE: A = n. Save n and call SUM with n-1
+    PUSH # Save A to the stack
+    ADDL 0xff # Subtract 1 from n
+    CALL SUM # Call SUM with n-1
+    # Now we have sum(n-1) in A 
+    SWP
+    POP
+    # Now we have n in A and sum(n-1) in B
+    ADD # calculate sum(n-1)+n
+    LITB 0
+RTRN
+
+
+
