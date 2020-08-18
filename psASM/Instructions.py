@@ -247,7 +247,7 @@ class NOTAInstruction(BaseInstruction):
 
 
 class COMPBInstruction(BaseInstruction):
-    op_code = "KOMPC"
+    op_code = "COMPB"
     binary_literal = 0x0e00
     arg_count = 0
 

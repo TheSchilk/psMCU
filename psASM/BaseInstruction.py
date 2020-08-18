@@ -36,7 +36,7 @@ class BaseInstruction:
     def check_arg_count(self, line):
         if not len(line.args) == self.arg_count:
             raise ParsingException(line, "Instruction " + line.op_code +
-                                   " excepted " + str(self.arg_count) + "arguments, but got "
+                                   " excepted " + str(self.arg_count) + " arguments, but got "
                                    + str(len(line.args)))
 
     def generate_binary(self):
