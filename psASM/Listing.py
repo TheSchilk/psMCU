@@ -23,6 +23,7 @@ class Listing:
 
     def initial_parse(self, namespace, file, file_name):
         line_num = 1
+        cascading_labels = []
         for line_text in file:
             line = Line(line_text, file_name, line_num)
 
@@ -57,18 +58,36 @@ class Listing:
                 # Move on to next line
                 continue
 
-            # If this line is none of the above, treat it as an instruction:
-            line.parse_instruction()
+            # if this line is a label, add it to the list of cascading labels:
+            if line.is_label():
+                label = line.parse_label()
 
-            # if there is a label, add it to the namespace
-            if line.label is not None:
-                if namespace.contains_alias(line.label):
-                    raise ParsingException(line, "Namespace collision: \'" + line.label +
+                if namespace.contains_alias(label):
+                    raise ParsingException(line, "Namespace collision: \'" + label +
                                            "\' already exists elsewhere")
-                namespace.add_alias(line.label)
+
+                cascading_labels.append(line.parse_label())
+                continue
+
+            # If this line is none of the above, treat it as an instruction:
+            line.parse_instruction(cascading_labels)
+            cascading_labels = []
+
+            # if there are labels, add them to the namespace
+            for label in line.labels:
+                if namespace.contains_alias(label):
+                    raise ParsingException(line, "Namespace collision: \'" + label +
+                                           "\' already exists elsewhere")
+                namespace.add_alias(label)
 
             # Add the instruction to the listing
             self.Lines.append(line)
+
+        # If the file is over and there are some un-applied labels, issue a warning
+        if cascading_labels:
+            print("Warning: In file \'"+self.file_name+"\' there are dangling labels:")
+            for label in cascading_labels:
+                print("\'" + label + "\'")
 
     def add_header(self, namespace):
         """
@@ -85,13 +104,13 @@ class Listing:
             # There is a MAIN label. Start there.
             # Set instruction at 0x0 to "Jump to MAIN"
             jump_to_main = Line("JMP MAIN # Jump to entry point (AUTO GENERATED)\n", "X", "X")
-            jump_to_main.parse_instruction()
+            jump_to_main.parse_instruction([])
             self.Lines.insert(0, jump_to_main)
         else:
             # There is no MAIN label. Start executing in the first file
             # Set instruction at 0x0 to "Jump to 0x2"
             jump_to_main = Line("JMP 0x2 # No MAIN label, jump to first file (AUTO GENERATED)\n", "X", "X")
-            jump_to_main.parse_instruction()
+            jump_to_main.parse_instruction([])
             self.Lines.insert(0, jump_to_main)
 
         # Check if there is an INTERRUPT label
@@ -99,27 +118,27 @@ class Listing:
             # There is an INTERRUPT label. Jump there on interrupt
             # Set instruction at 0x1 to "Jump to Interrupt"
             jump_to_int = Line("JMP INTERRUPT # Jump to INTERRUPT handler (AUTO GENERATED)\n", "X", "X")
-            jump_to_int.parse_instruction()
+            jump_to_int.parse_instruction([])
             self.Lines.insert(1, jump_to_int)
         else:
             # There is no INTERRUPT label.
             # Insert a "RTRNI" instruction to safely handle interrupts if one should
             # still occur
             jump_to_int = Line("RTRNI # No INTERRUPT label (AUTO GENERATED)\n", "X", "X")
-            jump_to_int.parse_instruction()
+            jump_to_int.parse_instruction([])
             self.Lines.insert(1, jump_to_int)
 
     def define_labels(self, namespace):
         # Iterate over all lines in listing:
         for line in enumerate(self.Lines):
             # If a line is labelled, define that label with the now known address.
-            if line[1].label is not None:
+            for label in line[1].labels:
                 # Sanity check that the label is already in the namespace, which it should be:
-                if not namespace.contains_alias(line[1].label):
+                if not namespace.contains_alias(label):
                     raise Exception("Missed label during parsing?")
 
                 # Define the label to point to the correct address:
-                namespace.define_alias(line[1].label, str(line[0]))
+                namespace.define_alias(label, str(line[0]))
 
     def insert_aliases(self, namespace):
         # Iterate over all known aliases

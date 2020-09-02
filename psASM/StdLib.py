@@ -38,6 +38,7 @@ StdLib = ["#",
           "@define S3_BgreaterA   5        # [5]    (R) Reads 1 if A<0. 0 Otherwise.",
           "                                # [6..7] (R) Reserved. Always Reads 0.	"]
 
+
 # Utility Function to parse a file into paste-able format:
 def pasteable_psasm(file_name):
     print('[', end='')
@@ -45,4 +46,3 @@ def pasteable_psasm(file_name):
         for line in file:
             print('\"' + line.rstrip('\n') + '\",\\')
     print(']')
-

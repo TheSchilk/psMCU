@@ -8,7 +8,7 @@ class Line:
         self.text = text.rstrip("\n")
         self.file_name = file_name
         self.line_num = line_num
-        self.label = None
+        self.labels = []
         self.op_code = None
         self.args = []
         self.instruction = None
@@ -33,6 +33,12 @@ class Line:
 
     def is_empty(self):
         if re.match(r'^\s*$', self.text):
+            return True
+        else:
+            return False
+
+    def is_label(self):
+        if re.match(r'^\s*(?P<Label>\w+)\s*:\s*($|#)', self.text):
             return True
         else:
             return False
@@ -80,7 +86,7 @@ class Line:
 
         return name, value
 
-    def parse_instruction(self):
+    def parse_instruction(self, cascading_labes):
         text = self.text
 
         # Remove any comment at the end of the line, if there is any
@@ -90,20 +96,22 @@ class Line:
         text = text.strip()
 
         # See if there is a label
-        if len(text.split(':', 1)) == 1:
-            # No label
-            self.label = None
-        else:
+        if len(text.split(':', 1)) != 1:
             # Label
             # Extract it
-            self.label = text.split(':', 1)[0].strip()
+            label = text.split(':', 1)[0].strip()
 
             # Ensure the label name is legal:
-            if not re.fullmatch(r'^[a-zA-z]\w*$', self.label):  # Ensures only letters/digits/_ and starts with letter
+            if not re.fullmatch(r'^[a-zA-z]\w*$', label):  # Ensures only letters/digits/_ and starts with letter
                 raise ParsingException(self, "Malformed Label: \'" + self.label + "\'")
 
             # Remove Label
             text = text.split(':', 1)[1].strip()
+
+            self.labels.append(label)
+
+        for label in cascading_labes:
+            self.labels.append(label)
 
         # Get Operation
         self.op_code = text.split(' ', 1)[0]
@@ -129,6 +137,15 @@ class Line:
 
             self.args.append(arg)
 
+    def parse_label(self):
+        label = re.search(r'^\s*(?P<Label>\w+)\s*:\s*($|#)', self.text).group('Label')
+
+        # Ensure the label name is legal:
+        if not re.fullmatch(r'^[a-zA-z]\w*$', label):  # Ensures only letters/digits/_ and starts with letter
+            raise ParsingException(self, "Malformed Label: \'" + self.label + "\'")
+
+        return label
+
     def insert_alias(self, alias):
         for arg in enumerate(self.args):
             if arg[1] == alias.name:
@@ -138,8 +155,15 @@ class Line:
     def generate_instruction(self):
         self.instruction = generate_instruction(self)
 
+    def str_labels(self):
+        labels = ""
+        for label in self.labels:
+            labels += (label + " ")
+        labels = labels.rstrip(" ")
+        return labels
+
     def __str__(self):
-        return self.file_name + ":" + str(self.line_num) + " = " + self.text
+        return self.file_name + ":" + str(self.line_num) + " [" + self.str_labels() + "] = " + self.text
 
     def str_data(self):
-        return str([self.label, self.op_code, self.args])
+        return str([self.str_labels(), self.op_code, self.args])
