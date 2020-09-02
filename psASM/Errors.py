@@ -11,6 +11,14 @@ class ArgumentRangeException(Exception):
         return msg
 
 
+class DefinitionException(Exception):
+    def __init__(self, msg, alias):
+        self.msg = msg
+        self.alias = alias
+
+    def __str__(self):
+        return self.msg + " (" + str(self.alias) + ")"
+
 class ParsingException(Exception):
     def __init__(self, line, error_text):
         self.line = line

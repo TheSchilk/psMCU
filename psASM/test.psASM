@@ -1,5 +1,12 @@
+@define ONE axeh
+@define ONE1 ONE
+@define ONE2 ONE1
+@define ONE3 ONE2
+
+
 # Enable Interrupts
-MAIN: LITA 0x1
+MAIN:
+LITA ONE3
 SVA 0x102
 JMP START
 

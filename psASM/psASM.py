@@ -2,6 +2,8 @@ import sys
 from Namespace import Namespace
 from Listing import Listing
 from Errors import ParsingException
+from Errors import DefinitionException
+from Errors import ArgumentRangeException
 
 # TODO: proper argparse
 # Flags:
@@ -27,6 +29,9 @@ try:
     # we can define all Labels in the namespace
     listing.define_labels(namespace)
 
+    # Now we can recursively define all definitions
+    namespace.recurse_definitions()
+
     # Now that everything in the namespace is defined,
     # We can insert everything in the Namespace into the program
     listing.insert_aliases(namespace)
@@ -35,6 +40,12 @@ try:
     listing.generate_instructions()
 
 except ParsingException as e:
+    print(e)
+    sys.exit()
+except DefinitionException as e:
+    print(e)
+    sys.exit()
+except ArgumentRangeException as e:
     print(e)
     sys.exit()
 except FileNotFoundError as e:

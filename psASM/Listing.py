@@ -26,6 +26,7 @@ class Listing:
         cascading_labels = []
         for line_text in file:
             line = Line(line_text, file_name, line_num)
+            line_num += 1
 
             # if this line is a comment or empty, ignore it:
             if line.is_comment() or line.is_empty():

@@ -1,3 +1,6 @@
+from Errors import DefinitionException
+
+
 class Alias:
     """
     Class that holds an alias in the program.
@@ -94,8 +97,23 @@ class Namespace:
         """
         for a in self.aliases:
             if a.name == name:
-                return a.d
+                return a.definition
         raise Exception("Attempted to get definition of non-existent alias. Missing contains_alias() check?")
+
+    def recurse_definitions(self):
+        max_recursion = 500
+        for alias in self.aliases:
+            name = alias.definition
+            rec_count = 0
+            while self.contains_alias(name):
+                rec_count += 1
+                if rec_count >= max_recursion:
+                    raise DefinitionException("Recursion Cap (" + str(max_recursion) + ") reached while "
+                                                                                       "attempting to define. is there "
+                                                                                       "a cyclical definition?",
+                                              alias)
+                name = self.get_alias_definition(name)
+            alias.definition = name
 
     def define_alias(self, name, definition):
         for a in self.aliases:
