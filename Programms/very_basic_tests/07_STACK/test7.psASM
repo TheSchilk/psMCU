@@ -1,4 +1,5 @@
-# Some hot-headed recusion:
+@include StdLib.psASM
+# Some hot-headed recursion:
 # Calculate sum(n) = 1+2+...+n using the recursive method:
 # sum(n):
 #   if n ==0:
@@ -16,8 +17,8 @@ JMP STOP
 # Takes in Argument stored in A, saves return value in A
 
 SUM: NOP
-    # if A=0, return with A =0
-    IFSM 0x106,1
+    # if A=0, return with A = 0
+    IFSM SYS3,S3_A0
         RTRN
 
     # ELSE: A = n. Save n and call SUM with n-1

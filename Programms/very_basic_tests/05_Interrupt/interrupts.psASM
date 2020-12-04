@@ -1,6 +1,8 @@
+@include StdLib.psASM
+
 # Enable Interrupts
 MAIN: LITA 0x1
-SVA 0x106
+SVA SYS3
 
 # Loop that adds 1 to A
 LITA 0
@@ -9,5 +11,6 @@ JMP Adder
 
 # Interrupt that resets A to 0
 # Reset A to 0
-INTERRUPT: LITA 0
+INTERRUPT: 
+LITA 0
 RTRNI

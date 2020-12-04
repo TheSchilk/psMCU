@@ -1,36 +1,41 @@
 # Fully write and fully read each RAM page
+@include StdLib.psASM
 
-MAIN: LITA 0
-SVA 0x105
+MAIN: 
+# Set Ram Page to 0
+LITA 0
+SVA SYS2
+# Start Filling
 JMP FILL
 
-
-FILL: HALT
+# Fill the current page with consecutive numbers
+FILL: 
+HALT
 LITA 0
 CPY
-LOOP1: SVDR
+LOOP1: 
+SVDR
 ADDLA 1
 CPY
-IFSM 0x104,1 # Check if we are done
-    JMP FULL
+IFSM SYS1,S1_CARRY # Check if we are done
+    JMP FULL # We are done
 JMP LOOP1
 
-
-FULL: HALT
+# Finished Filling page, read it out:
+FULL: 
+HALT
 LITA 0
 LITB 0
 LOOP2: LDDR
-SWP
-ADDLA 1
-SWP
-IFSM 0x104,1
+ADDLB 1
+IFSM SYS1,S1_CARRY
     JMP PAGE
 JMP LOOP2
 
-
+# Go to next page
 PAGE: HALT
-LDA 0x105
+LDA SYS2
 ADDLA 1 
 ANDL 0x0F
-SVA 0x105
+SVA SYS2
 JMP FILL
