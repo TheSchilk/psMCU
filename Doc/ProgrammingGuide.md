@@ -26,8 +26,19 @@ The 9 bit wide RAM address bus is mapped as follows:
 
 The current RAM page can be selected using System Register 2.
 
-The Stack may only be accessed using the `PUSH`, `POP`, `CALL`, and `RETURN`
-instructions.
+The Stack may only be accessed using the following instructions:
+```
+PUSHA 
+PUSHB
+PUSHM
+
+POPA
+POPB
+POPM
+
+CALL
+RETURN
+```
 
 Do note, however, that some instructions cannot access the whole 9 bit wide
 address bus. In this case two instructions are provided. One accesses the
@@ -157,31 +168,27 @@ bits can be used in the interrupt routine without causing problems.
 An example interrupt routine:
 
 ```
+@include StdLib.psASM
 # Interrupt routine:
 
 # Push A then B onto the Stack:
-INTERRUPT: PUSH 
-SWP 
-PUSH
+INTERRUPT: 
+PUSHA
+PUSHB
 
 # Push System Register 2 onto the Stack 
 # to save the currently selected RAM page:
-LDA 0x101
-PUSH
-
+# (Only necessary if page is changed in interrupt)
+PUSHM SYS2
 
 # ... Handle Interrupt ....
 
-
 # Restore System Register 2:
-POP
-SVA 0x0101
+POPM SYS2
 
 # Restore A and B
-POP
-SWAP
-POP
-
+POPB
+POPA
 
 # Return from the interrupt routine:
 RTRNI
