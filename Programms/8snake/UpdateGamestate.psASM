@@ -1,0 +1,33 @@
+#
+# UpdateGamestate.psASM
+#
+# Update the current game state
+#
+
+@define GS_length     0x40
+@define GS_headpos    0x41 
+@define GS_applepos   0x42
+@define GS_dir        0x43
+@define GS_board_dec  0x45 
+
+@define INPUT        0x1f7
+@define INP_L        0x0
+@define INP_R        0x1
+
+# Movement:
+#   Up: -8 
+#   Right: -1
+#   Down: +8
+#   Left: +1 
+# 
+# Wall Dtct:
+#   Up: (current-8) overflows
+#   Right: (current && 0b0000'0111) == 0
+#   Down: (current+8) overflows 
+#   Left: (current && 0b0000'0111) == 0b111 == 7
+# 
+
+UPDATE_GAMESTATE:
+RTRN
+
+

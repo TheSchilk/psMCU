@@ -1,0 +1,66 @@
+#
+# Setup.psASM
+#
+#
+# Setup routine for Snake
+#
+
+SETUP:
+    SETUP1:
+    # Step 1:
+    # Empty Board Memory
+    
+    LITA 0x00 # zeroes
+    LITB BOARD_STARTD # initial pointer
+
+    SETUP_CLR_LOOP: 
+    SVDR # Write 0
+    ADDLB 1 # Increase Pointer 
+    
+    # Check if we are done
+    LITA BOARD_ENDD
+    IFSM SYS3, S3_AB
+        JMP SETUP2
+    LITA 0
+
+    JMP SETUP_CLR_LOOP
+
+
+    SETUP2:
+    # Step 2:
+    # Clear Display 
+    LITA 0
+    SVA 0x1f8
+    SVA 0x1f9
+    SVA 0x1fa
+    SVA 0x1fb
+    SVA 0x1fc
+    SVA 0x1fd
+    SVA 0x1fe
+    SVA 0x1ff
+
+    SETUP3:
+    # Step 3:
+    # Setup Gamestate
+
+    # Initial head position is 27
+    LITA 27
+    SVA GS_headpos
+    
+    # Initial Direction is 1
+    LITA 1
+    SVA GS_dir
+
+    # Initial Length is 1
+    LITA 1
+    SVA GS_length
+
+    # Initial apple position is 27
+    LITA 27
+    SVA GS_applepos
+    
+    # Decrease board by default
+    LITA 1
+    SVA GS_board_dec
+
+    RTRN

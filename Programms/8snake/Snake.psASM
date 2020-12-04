@@ -1,0 +1,29 @@
+#
+# Snake.psASM
+#
+# A simple snake game for an 8x8 LED Matrix
+#
+
+@include Setup.psASM
+@include StdLib.psASM
+@include Render.psASM
+@include UpdateBoard.psASM
+@include UpdateGamestate.psASM
+
+# Entry Point:
+MAIN:
+    CALL SETUP
+    JMP MAIN_LOOP
+
+
+# Game Loop:
+MAIN_LOOP: 
+    HALT
+    CALL RENDER
+    # CALL UPDATE_GAMESTATE
+    # CALL UPDATE_BOARD
+    JMP MAIN_LOOP
+
+GAME_OVER: 
+    HALT
+    JMP MAIN

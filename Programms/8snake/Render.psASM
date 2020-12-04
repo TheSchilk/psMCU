@@ -1,0 +1,92 @@
+#
+# Render.psASM
+# 
+# Takes the current board state from RAM and
+# renders it to the display
+#
+
+@define RNDR_ptr 0x45
+@define RNDR_bit 0x46
+@define RNDR_val 0x47
+
+RENDER: 
+    # ##### STEP 1: Render #####
+    
+    # Start with the LSB
+    LITA 0x01 
+    SVA RNDR_bit
+
+    # Start at the beginning of the board
+    LITB BOARD_STARTD
+    SVB RNDR_ptr
+
+    # Empty first value
+    LITA 0x0
+    SVA RNDR_val
+
+    # State: A = 0, B = ptr
+    
+    # Render Loop: 
+    RENDER_LOOP: 
+        LDDR # Load board into A (A = Board, B = Ptr)
+        
+        # Save the current Pointer
+        SVB RNDR_ptr
+        
+        # Load the current bit (A= Board, B = Bit)
+        LDB RNDR_bit
+
+        # If A is 0, skip ahead 
+        IFSM SYS3, S3_A0
+            JMP RENDER_ADVANCE_BIT
+
+        # Otherwise, OR the current Bit into the current val:
+        LDA RNDR_val
+        OR
+        SVA RNDR_val
+
+        # Advance the current Bit
+        RENDER_ADVANCE_BIT: # A = ? B = Bit
+        SWP
+        SHFTLL 1
+        SVA RNDR_bit
+
+        # If we did not shift out we can go on to the next pointer
+        IFRM SYS3, S3_A0
+            JMP RENDER_ADVANCE_PTR
+
+        # Otherwise we need to push the current value to the stack
+        # and setup for the next 8 bits:
+        LDA RNDR_val
+        PUSHA
+        LITA 0
+        SVA RNDR_val
+        LITA 1
+        SVA RNDR_bit
+
+        # Advance pointer and check against end condition:
+        RENDER_ADVANCE_PTR:
+        LDB RNDR_ptr
+        ADDLB 1
+        LITA BOARD_END
+
+        IFSM SYS3, S3_AB
+            JMP RENDER_LOOP_DONE
+
+        JMP RENDER_LOOP
+
+    
+    # ##### STEP 2: Display #####
+    # An unrolled loop is shorter and faster at this size
+   
+    RENDER_LOOP_DONE: 
+    POPM 0x1ff
+    POPM 0x1fe
+    POPM 0x1fd
+    POPM 0x1fc
+    POPM 0x1fb
+    POPM 0x1fa
+    POPM 0x1f9
+    POPM 0x1f8
+
+    RTRN

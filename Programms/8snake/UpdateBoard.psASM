@@ -1,0 +1,15 @@
+# 
+# UpdateBoard.psASM
+#
+# Update the Board depending on the current
+# Game state.
+#
+
+
+@define BOARD_STARTD 0x0
+@define BOARD_START  0x0
+@define BOARD_ENDD   0x40
+@define BOARD_END    0x40
+
+UPDATE_BOARD:
+RTRN
