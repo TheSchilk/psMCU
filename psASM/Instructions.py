@@ -201,9 +201,18 @@ class ADDInstruction(BaseInstruction):
     arg_count = 0
 
 
-class ADDLInstruction(BaseInstruction):
-    op_code = "ADDL"
+class ADDLAInstruction(BaseInstruction):
+    op_code = "ADDLA"
     binary_literal = 0x1900
+    arg_count = 1
+    arg_ranges = [RANGE_8BIT]
+    arg_bit_widths = [8]
+    arg_bit_shift = [0]
+
+
+class ADDLBInstruction(BaseInstruction):
+    op_code = "ADDLB"
+    binary_literal = 0x3B00
     arg_count = 1
     arg_ranges = [RANGE_8BIT]
     arg_bit_widths = [8]
@@ -264,16 +273,44 @@ class RTRNInstruction(BaseInstruction):
     arg_count = 0
 
 
-class POPInstruction(BaseInstruction):
-    op_code = "POP"
+class POPAInstruction(BaseInstruction):
+    op_code = "POPA"
     binary_literal = 0x0800
     arg_count = 0
 
 
-class PUSHInstruction(BaseInstruction):
-    op_code = "PUSH"
+class PUSHAInstruction(BaseInstruction):
+    op_code = "PUSHA"
     binary_literal = 0x0600
     arg_count = 0
+
+class POPBInstruction(BaseInstruction):
+    op_code = "POPB"
+    binary_literal = 0x3400
+    arg_count = 0
+
+
+class PUSHBInstruction(BaseInstruction):
+    op_code = "PUSHB"
+    binary_literal = 0x3200
+    arg_count = 0
+
+class POPMInstruction(BaseInstruction):
+    op_code = "POPM"
+    binary_literal = 0x3800
+    arg_count = 1
+    arg_ranges = [RANGE_9BIT]
+    arg_bit_widths = [9]
+    arg_bit_shift = [0]
+
+
+class PUSHMInstruction(BaseInstruction):
+    op_code = "PUSHM"
+    binary_literal = 0x3600
+    arg_count = 1
+    arg_ranges = [RANGE_9BIT]
+    arg_bit_widths = [9]
+    arg_bit_shift = [0]
 
 
 class SWPInstruction(BaseInstruction):

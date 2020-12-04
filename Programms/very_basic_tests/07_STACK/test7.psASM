@@ -21,12 +21,12 @@ SUM: NOP
         RTRN
 
     # ELSE: A = n. Save n and call SUM with n-1
-    PUSH # Save A to the stack
-    ADDL 0xff # Subtract 1 from n
+    PUSHA # Save A to the stack
+    ADDLA 0xff # Subtract 1 from n
     CALL SUM # Call SUM with n-1
     # Now we have sum(n-1) in A 
     SWP
-    POP
+    POPA
     # Now we have n in A and sum(n-1) in B
     ADD # calculate sum(n-1)+n
     LITB 0

@@ -74,3 +74,12 @@ dmypy.json
 .idea/
 
 *.pyc
+
+# psASM output:
+*LOGISIM
+*.bin
+*.map
+*.parse
+
+# Test psASM files:
+*.psASM

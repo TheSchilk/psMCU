@@ -1,0 +1,5 @@
+# psASM output:
+*LOGISIM
+*.bin
+*.map
+*.parse

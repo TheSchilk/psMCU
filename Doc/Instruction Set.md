@@ -113,8 +113,15 @@ Add A to B. Store in A.
 
 May set the C and HC flags in the Status Register
 
-# ADDL l
-Add A to literal. Store in A.
+# ADDLA l
+Add literal to A. Store in A.
+
+May set the C and HC flags in the Status Register.
+
+l: literal (8bit)
+
+# ADDLB l
+Add literal to B. Store in B.
 
 May set the C and HC flags in the Status Register.
 
@@ -157,11 +164,27 @@ May set the B and HB flags in the Status Register.
 # RTRN
 Pop the last two values off the stack and return to that address.
 
-# POP
+# POPA
 Pop the last value off the stack and store in A.
 
-# PUSH
+# PUSHA
 Push A onto the Stack.
+
+# POPB
+Pop the last value off the stack and store in B.
+
+# PUSHB
+Push B onto the Stack.
+
+# POPM a
+Pop the last value off the stack and store in RAM at a fixed address.
+
+a: Ram Address  (9bit)
+
+# PUSHM a
+Push the value from a fixed memory location onto the stack.
+
+a: Ram Address  (9bit)
 
 # SWP
 Swap the contents of A and B

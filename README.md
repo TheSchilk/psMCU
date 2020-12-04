@@ -5,9 +5,9 @@
 `Doc/`: Documentation  
 `KiCad/`: KiCad PCB Project  
 `Logisim/`: Logisim Digital Simulation  
-`NotepadppStyler/`: Syntax Highlighting for psASM assembly in Notepad++  
+`SyntaxHighlighting/`: Syntax Highlighting for psASM assembly in Notepad++ and vim
 `Programms/`: Programms for the psMCU written in psASM  
-`psASM/`: Basic assembler that creates binaries from .psASM files  
+`psASM/`: Python assembler that creates binaries from .psASM files  
 `ROMGeneration/`: Script and source file for generating state machine ROMs  
 `ROMs/`: Binaries for all ROMs  
 
@@ -18,7 +18,7 @@
 ### KiCad PCB
 
 ### psASM
-An assembler written in python that converts a .psASM assembly code file
+An assembler written in python that converts .psASM assembly files
 into binaries for psMCU and the Logisim simulation.  
 
 To use it simply run:  
@@ -27,7 +27,8 @@ To use it simply run:
 See `Doc/ProgrammingGuide.md` for details about the psASM 'language'.
 
 
-### Notepad++ Styler
+### Syntax Highlighting 
+Predefined profiles for psASM syntax highlighting in Notepad++ and vim.
 
 ### ROM Generation
 The Microcode that defines each individual step of each instruction (or

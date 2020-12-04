@@ -31,11 +31,11 @@ JMP STOP
 # Temporarily store the previous number on the stack
 # and grab the address of the last number we stored in RAM
 SWP
-PUSH
+PUSHA
 LDA adr_pointer 
 
 # Increment the address and store the new value there
-ADDL 1
+ADDLA 1
 SWP
 SVDR 
 
@@ -45,8 +45,9 @@ SVB adr_pointer # stored new address
 # Retrieve the previous number into A and keep the current number in B
 # Loop again
 SWP
-POP
+POPA
 JMP loop
+ADD
 
 # Infinite Loop to stop
 # because when I wrote this the HALT instruction wasn't working yet. *grin*.
