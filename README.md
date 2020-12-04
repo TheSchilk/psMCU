@@ -5,7 +5,7 @@
 `Doc/`: Documentation  
 `KiCad/`: KiCad PCB Project  
 `Logisim/`: Logisim Digital Simulation  
-`SyntaxHighlighting/`: Syntax Highlighting for psASM assembly in Notepad++ and vim
+`SyntaxHighlighting/`: Syntax Highlighting for psASM assembly in Notepad++ and vim  
 `Programms/`: Programms for the psMCU written in psASM  
 `psASM/`: Python assembler that creates binaries from .psASM files  
 `ROMGeneration/`: Script and source file for generating state machine ROMs  
