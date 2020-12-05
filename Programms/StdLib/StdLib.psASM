@@ -34,6 +34,8 @@
 @define S3_A0          1        # [1]    (R) Reads 1 if A==0. 0 Otherwise.
 @define S3_B0          2        # [2]    (R) Reads 1 if B==0. 0 Otherwise.
 @define S3_AB          3        # [3]    (R) Reads 1 if A==B. 0 Otherwise.
-@define S3_AgreaterB   4        # [4]    (R) Reads 1 if A>0. 0 Otherwise.
-@define S3_BgreaterA   5        # [5]    (R) Reads 1 if A<0. 0 Otherwise.
+@define S3_AgreaterB   4        # [4]    (R) Reads 1 if A>B. 0 Otherwise.
+@define S3_BlessA      4        # (Alias)
+@define S3_BgreaterA   5        # [5]    (R) Reads 1 if A<B. 0 Otherwise.
+@define S3_AlessB      5        # (Alias)
                                 # [6..7] (R) Reserved. Always Reads 0.	
