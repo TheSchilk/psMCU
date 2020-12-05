@@ -17,10 +17,10 @@
 @define SYS1           0x104    # (R/W) System Register 1
 
 @define S1_SHFT_IN     0        # [0]    (R/W) Bit that is shifted in while shifting.
-@define S1_CARRY       1        # [1]    (R) Carry-out bit. Updated by ADD & ADDL.
-@define S1_HCARRY      2        # [2]    (R) Half-Carry-out bit. Updated by ADD & ADDL.
-@define S1_BORRW       3        # [3]    (R) Borrow bit. Updated by SUB.
-@define S1_HBORROW     4        # [4]    (R) Half-Borrow bit. Updated by SUB.
+@define S1_CARRY       1        # [1]    (R) Carry-out bit. Updated by ADD, ADDLA, ADDLB.
+@define S1_HCARRY      2        # [2]    (R) Half-Carry-out bit. Updated by ADD, ADDLA, ADDLB.
+@define S1_BORROW      3        # [3]    (R) Borrow bit. Updated by SUB, SUBL.
+@define S1_HBORROW     4        # [4]    (R) Half-Borrow bit. Updated by SUB, SUBL.
                                 # [5..7] (R) Reserved. Always Reads 0.
 # SYS2
 @define SYS2           0x105    # (R/W) System Register 2
