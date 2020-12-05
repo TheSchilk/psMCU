@@ -103,7 +103,7 @@ class Line:
 
             # Ensure the label name is legal:
             if not re.fullmatch(r'^[a-zA-z]\w*$', label):  # Ensures only letters/digits/_ and starts with letter
-                raise ParsingException(self, "Malformed Label: \'" + self.label + "\'")
+                raise ParsingException(self, "Malformed Label: \'" + label + "\'")
 
             # Remove Label
             text = text.split(':', 1)[1].strip()
