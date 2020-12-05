@@ -161,6 +161,13 @@ Subtract B from A. Store in A.
 
 May set the B and HB flags in the Status Register.
 
+# SUBL l
+Subtract literal from A. Store in A.
+
+May set the B and HB flags in the Status Register.
+
+l: literal (8bit)
+
 # RTRN
 Pop the last two values off the stack and return to that address.
 

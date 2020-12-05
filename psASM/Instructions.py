@@ -267,6 +267,15 @@ class SUBInstruction(BaseInstruction):
     arg_count = 0
 
 
+class SUBLInstruction(BaseInstruction):
+    op_code = "SUBL"
+    binary_literal = 0x0d00
+    arg_count = 1
+    arg_ranges = [RANGE_8BIT]
+    arg_bit_widths = [8]
+    arg_bit_shift = [0]
+
+
 class RTRNInstruction(BaseInstruction):
     op_code = "RTRN"
     binary_literal = 0x0a00

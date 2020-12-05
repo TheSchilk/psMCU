@@ -26,7 +26,7 @@
             <Keywords name="Folders in comment, close"></Keywords>
             <Keywords name="Keywords1">NOP &#x000D;&#x000A;HALT</Keywords>
             <Keywords name="Keywords2">JMP&#x000D;&#x000A;CALL&#x000D;&#x000A;IFSA&#x000D;&#x000A;IFRA&#x000D;&#x000A;IFSM&#x000D;&#x000A;IFRM&#x000D;&#x000A;RTRN&#x000D;&#x000A;RTRNI</Keywords>
-            <Keywords name="Keywords3">AND&#x000D;&#x000A;ANDL&#x000D;&#x000A;OR&#x000D;&#x000A;ORL&#x000D;&#x000A;XOR&#x000D;&#x000A;XORL&#x000D;&#x000A;SHFTR&#x000D;&#x000A;SHFTRL&#x000D;&#x000A;SHFTL&#x000D;&#x000A;SHFTLL&#x000D;&#x000A;ADD&#x000D;&#x000A;ADDLA&#x000D;&#x000A;ADDLB&#x000D;&#x000A;NOTA&#x000D;&#x000A;COMPB&#x000D;&#x000A;SUB&#x000D;&#x000A;LITA&#x000D;&#x000A;LITB&#x000D;&#x000A;CPY&#x000D;&#x000A;SWP</Keywords>
+            <Keywords name="Keywords3">AND&#x000D;&#x000A;ANDL&#x000D;&#x000A;OR&#x000D;&#x000A;ORL&#x000D;&#x000A;XOR&#x000D;&#x000A;XORL&#x000D;&#x000A;SHFTR&#x000D;&#x000A;SHFTRL&#x000D;&#x000A;SHFTL&#x000D;&#x000A;SHFTLL&#x000D;&#x000A;ADD&#x000D;&#x000A;ADDLA&#x000D;&#x000A;ADDLB&#x000D;&#x000A;NOTA&#x000D;&#x000A;COMPB&#x000D;&#x000A;SUB&#x000D;&#x000A;SUBL&#x000D;&#x000A;LITA&#x000D;&#x000A;LITB&#x000D;&#x000A;CPY&#x000D;&#x000A;SWP</Keywords>
             <Keywords name="Keywords4">SVA&#x000D;&#x000A;SVB&#x000D;&#x000A;LDA&#x000D;&#x000A;LDB&#x000D;&#x000A;SVDP&#x000D;&#x000A;SVDR&#x000D;&#x000A;LDDP&#x000D;&#x000A;LDDR&#x000D;&#x000A;POPA&#x000D;&#x000A;PUSHA&#x000D;&#x000A;POPM&#x000D;&#x000A;PUSHM&#x000D;&#x000A;POPB&#x000D;&#x000A;PUSHB</Keywords>
             <Keywords name="Keywords5"></Keywords>
             <Keywords name="Keywords6"></Keywords>
