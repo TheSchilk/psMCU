@@ -5,11 +5,57 @@
 # Game state.
 #
 
-
 @define BOARD_STARTD 0x0
 @define BOARD_START  0x0
 @define BOARD_ENDD   0x40
 @define BOARD_END    0x40
 
+@define UB_PTR       0x48
+
 UPDATE_BOARD:
-RTRN
+    #Iterate over board, decreasing all values by GS_board_dec
+    LITB BOARD_STARTD
+    UB_LOOP:
+        # Grab current board value into A
+        LDDR
+
+        # Store current pointer
+        SVB UB_PTR
+        
+        # If the current value is not 0, decrease it
+        LDB GS_board_dec
+        IFRM SYS3,S3_A0
+            SUB
+
+        # Grab the current pointer
+        LDB UB_PTR
+
+        # Put back the updated value
+        SVDR
+
+        # Increase the current pointer
+        ADDLB 1
+
+        # Check if the end condition is met
+        LITA BOARD_ENDD
+        IFSM SYS3,S3_AB
+            JMP UB_LOOP_DONE
+        JMP UB_LOOP
+
+    UB_LOOP_DONE:
+    
+    # Decrease board next time by default:
+    LITA 1
+    SVA GS_board_dec
+
+    # Indicate apple position
+    LITA 1
+    LDB GS_applepos
+    SVDR
+
+    # Place new head position
+    LDA GS_length
+    LDB GS_headpos
+    SVDR
+
+    RTRN

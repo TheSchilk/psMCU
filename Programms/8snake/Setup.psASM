@@ -14,17 +14,16 @@ SETUP:
     LITB BOARD_STARTD # initial pointer
 
     SETUP_CLR_LOOP: 
-    SVDR # Write 0
-    ADDLB 1 # Increase Pointer 
+        SVDR # Write 0
+        ADDLB 1 # Increase Pointer 
     
-    # Check if we are done
-    LITA BOARD_ENDD
-    IFSM SYS3, S3_AB
-        JMP SETUP2
-    LITA 0
+        # Check if we are done
+        LITA BOARD_ENDD
+        IFSM SYS3, S3_AB
+            JMP SETUP2
+        LITA 0
 
-    JMP SETUP_CLR_LOOP
-
+        JMP SETUP_CLR_LOOP
 
     SETUP2:
     # Step 2:
@@ -44,7 +43,7 @@ SETUP:
     # Setup Gamestate
 
     # Initial head position is 27
-    LITA 27
+    LITA 28
     SVA GS_headpos
     
     # Initial Direction is 1
@@ -55,8 +54,8 @@ SETUP:
     LITA 1
     SVA GS_length
 
-    # Initial apple position is 27
-    LITA 27
+    # Initial apple position is 9
+    LITA 25
     SVA GS_applepos
     
     # Decrease board by default

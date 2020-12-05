@@ -8,26 +8,201 @@
 @define GS_headpos    0x41 
 @define GS_applepos   0x42
 @define GS_dir        0x43
-@define GS_board_dec  0x45 
+@define GS_board_dec  0x44 
 
 @define INPUT        0x1f7
-@define INP_L        0x0
-@define INP_R        0x1
+@define INP_L        0
+@define INP_R        1
 
-# Movement:
-#   Up: -8 
-#   Right: -1
-#   Down: +8
-#   Left: +1 
-# 
-# Wall Dtct:
-#   Up: (current-8) overflows
-#   Right: (current && 0b0000'0111) == 0
-#   Down: (current+8) overflows 
-#   Left: (current && 0b0000'0111) == 0b111 == 7
-# 
+@define GS_apple_pos_increase 35
 
 UPDATE_GAMESTATE:
-RTRN
+    # 
+    # Update the current gamestate.
+    # Returns with A=1 if the game is over, A=0 else
+    #
+
+    # ==== Update direction based on input: =====
+    # Check if left is pressed: 
+    IFRM INPUT,INP_L
+        JMP UGS_LEFT_DONE 
+    
+    # Left pressed.
+    LDA GS_dir
+    SUBL 1
+    ANDL 0b11
+    SVA GS_dir
+
+    UGS_LEFT_DONE:
 
 
+    # Check if right is pressed:
+    IFRM INPUT,INP_R
+        JMP UGS_RIGHT_DONE
+
+    # Right pressed.
+    LDA GS_dir
+    ADDLA 1
+    ANDL 0b11
+    SVA GS_dir
+
+    UGS_RIGHT_DONE:
+
+    # === Update headpos based on direction: ====
+    # switch(GS_pos) 
+    LDA GS_dir
+    LITB 0
+    IFSM SYS3, S3_AB
+        JMP UGS_DIR_UP
+    LITB 1
+    IFSM SYS3, S3_AB
+        JMP UGS_DIR_RIGHT
+    LITB 2
+    IFSM SYS3, S3_AB
+        JMP UGS_DIR_DOWN
+    JMP UGS_DIR_LEFT
+
+    UGS_DIR_UP:
+        # Next head position
+        LDA GS_headpos
+        SUBL 8
+        SVA GS_headpos
+
+        # If we did not underflow, we are good to continue: 
+        IFRM SYS1, S1_BORROW
+            JMP UGS_DIR_DONE
+
+        # If we did underflow, we collided against a wall. The game is over
+        LITA 1
+        RTRN # Return with A = 1
+
+    UGS_DIR_RIGHT:
+        # Check if this would cause a wall collision
+        LDA GS_headpos
+        ANDL 0b0111
+        IFSM SYS3, S3_A0
+            JMP UGS_DIR_RIGHT_COLLISION
+        
+        # Calculate next position
+        LDA GS_headpos
+        SUBL 1
+        SVA GS_headpos
+        JMP UGS_DIR_DONE
+
+        UGS_DIR_RIGHT_COLLISION:
+        LITA 1
+        RTRN # Return with  A = 1
+
+    UGS_DIR_DOWN:
+        # Next head position
+        LDA GS_headpos
+        ADDLA 8
+        SVA GS_headpos
+
+        # Check that we did collide:
+        LITB 63
+        IFRM SYS3,S3_AgreaterB
+            JMP UGS_DIR_DONE
+
+        # We collided:
+        LITA 1
+        RTRN # Return with A = 1
+
+    UGS_DIR_LEFT:
+        # Check if this would cause a wall collision
+        LDA GS_headpos
+        ANDL 0b0111
+        LITB 0b0111
+        IFSM SYS3,S3_AB
+            JMP UGS_DIR_LEFT_COLLISION
+
+        # Calculate next position:
+        LDA GS_headpos
+        ADDLA 1
+        SVA GS_headpos
+        JMP UGS_DIR_DONE
+
+        UGS_DIR_LEFT_COLLISION:
+        LITA 1
+        RTRN # Return with A = 1
+
+    UGS_DIR_DONE:
+    
+    #### Make sure we did not collide with snake body: ####
+    
+    # Load board mem at location GS_headpos into A:
+    LDB GS_headpos
+    LDDR
+
+    # If the board is 0 there, we definetly did not collide:
+    IFSM SYS3, S3_A0
+        JMP UGS_NO_BODY_COLLISION
+
+    # If this is the apple position, we also did not collide:
+    LDA GS_applepos
+    IFSM SYS3, S3_AB
+       JMP UGS_NO_BODY_COLLISION
+    
+    # Because the board is not 0, and this is not the the apple position,
+    # We collided with ourselfs.
+    LITA 1 
+    RTRN # Return with A = 1
+
+    UGS_NO_BODY_COLLISION:
+    
+    #### Check if we found an apple: ####
+    LDA GS_applepos
+    LDB GS_headpos
+
+    IFRM SYS3,S3_AB
+        JMP UGS_APPLE_DONE
+    
+    #### Apple found: ####
+
+    # Don't decrease board mem on this iteration:
+    LITA 0
+    SVA GS_board_dec
+
+    # Increase Length
+    LDA GS_length
+    ADDLA 1 
+    SVA GS_length
+    
+    # End condition 
+    LITB 62
+    IFRM SYS3,S3_AB
+        JMP UGS_NOT_TOO_LONG
+    LITA 1
+    RTRN # Return with A = 1 
+    UGS_NOT_TOO_LONG:
+    
+    # Determine next apple position.
+    # First, try GS_apple_pos+GS_apple_pos_increase
+    LDA GS_applepos
+    ADDLA GS_apple_pos_increase 
+    ANDL 0x3F
+    SWP
+
+    
+    # Check if this spot is already taken. 
+    # If it is already take, increase by 1 and try again
+    GS_APPLE_KEEP_STEPPING:
+        LDDR # Load board mem at apple position to A
+        IFSM SYS3, S3_A0
+            JMP UGS_APPLE_POSITION_FOUND # Position OK
+
+        # Position not OK. keep iterating.
+        SWP 
+        ADDLA 1
+        ANDL 0x3F
+        SWP
+        JMP GS_APPLE_KEEP_STEPPING
+    
+    UGS_APPLE_POSITION_FOUND:
+    SVB GS_applepos
+
+    UGS_APPLE_DONE:
+
+    #### Done. Return Success. ####
+    LITA 0
+    RTRN # Return with A = 0
