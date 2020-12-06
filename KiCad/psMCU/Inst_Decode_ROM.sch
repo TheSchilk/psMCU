@@ -3,11 +3,11 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 49 94
-Title ""
+Sheet 24 193
+Title "psMCU"
 Date ""
 Rev ""
-Comp ""
+Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 ""
@@ -75,19 +75,6 @@ Wire Wire Line
 	5250 1850 5200 1850
 Wire Wire Line
 	4950 4600 4950 4550
-$Comp
-L Memory_Flash:SST39SF010 U?
-U 1 1 5F6D4418
-P 4950 3350
-AR Path="/5F28170E/5F6D4418" Ref="U?"  Part="1" 
-AR Path="/60E33DBC/5F3D8E0D/5F6D4418" Ref="U?"  Part="1" 
-F 0 "U?" H 5100 4750 50  0000 C CNN
-F 1 "SST39SF010" H 5250 4650 50  0000 C CNN
-F 2 "Package_SO:TSOP-I-32_11.8x8mm_P0.5mm" H 4950 3650 50  0001 C CNN
-F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/25022B.pdf" H 4950 3650 50  0001 C CNN
-	1    4950 3350
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	4250 3750 4350 3750
 Wire Wire Line
@@ -218,8 +205,6 @@ Entry Wire Line
 	3550 1950 3650 2050
 Wire Bus Line
 	3550 1000 3050 1000
-NoConn ~ 4350 3850
-NoConn ~ 4350 3950
 Connection ~ 4250 3750
 Wire Wire Line
 	4250 3550 4250 3650
@@ -310,6 +295,26 @@ Wire Wire Line
 	4350 2850 3250 2850
 Text HLabel 3250 2850 0    50   Input ~ 0
 Interrupt
+$Comp
+L SST39SF0x0_TSOP:SST39SF0x0_TSOP U?
+U 1 1 5FFBA396
+P 4950 3350
+F 0 "U?" H 4750 4700 50  0000 C CNN
+F 1 "SST39SF010 TSOP" H 5350 4700 50  0000 C CNN
+F 2 "" H 5050 4800 50  0001 C CNN
+F 3 "" H 5050 4800 50  0001 C CNN
+	1    4950 3350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4250 3750 4250 3850
+Wire Wire Line
+	4250 3950 4350 3950
+Wire Wire Line
+	4350 3850 4250 3850
 Wire Bus Line
 	3550 1000 3550 2650
+Connection ~ 4250 3850
+Wire Wire Line
+	4250 3850 4250 3950
 $EndSCHEMATC

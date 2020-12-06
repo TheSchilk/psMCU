@@ -3,11 +3,11 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 11693 16535 portrait
 encoding utf-8
-Sheet 79 94
-Title ""
+Sheet 60 193
+Title "psMCU"
 Date ""
 Rev ""
-Comp ""
+Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 ""
@@ -1043,7 +1043,7 @@ Entry Wire Line
 $Sheet
 S 9700 7050 700  200 
 U 603A2DD6
-F0 "sheet603A2DD3" 50
+F0 "LEDs: PC[0..13]" 50
 F1 "14BitLED.sch" 50
 F2 "VAL[0..13]" I L 9700 7150 50 
 $EndSheet

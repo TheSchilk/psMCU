@@ -3,21 +3,19 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 50 94
-Title ""
+Sheet 53 193
+Title "psMCU"
 Date ""
 Rev ""
-Comp ""
+Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text HLabel 6850 2250 0    50   Input ~ 0
+Text HLabel 7200 1100 0    50   Input ~ 0
 Shift_Right
-Wire Wire Line
-	6850 2250 7150 2250
-Text Label 7150 2250 2    50   ~ 0
+Text Label 7500 1100 2    50   ~ 0
 ShftR
 $Sheet
 S 1900 4000 3550 600 
@@ -49,37 +47,6 @@ F23 "Out5" I B 3200 4600 50
 F24 "Out6" I B 2800 4600 50 
 F25 "Out7" I B 2400 4600 50 
 F26 "Select" I T 2000 4000 50 
-$EndSheet
-$Sheet
-S 1900 2850 3550 600 
-U 5F9214C6
-F0 "Shift1" 50
-F1 "BarrelShifter_Line.sch" 50
-F2 "0_In0" I T 5200 2850 50 
-F3 "0_In1" I T 4800 2850 50 
-F4 "0_In2" I T 4400 2850 50 
-F5 "0_In3" I T 4000 2850 50 
-F6 "0_In4" I T 3600 2850 50 
-F7 "0_In5" I T 3200 2850 50 
-F8 "0_In6" I T 2800 2850 50 
-F9 "0_In7" I T 2400 2850 50 
-F10 "1_In0" I T 5300 2850 50 
-F11 "1_In1" I T 4900 2850 50 
-F12 "1_In2" I T 4500 2850 50 
-F13 "1_In3" I T 4100 2850 50 
-F14 "1_In4" I T 3700 2850 50 
-F15 "1_In5" I T 3300 2850 50 
-F16 "1_In6" I T 2900 2850 50 
-F17 "1_In7" I T 2500 2850 50 
-F18 "Out0" I B 5200 3450 50 
-F19 "Out1" I B 4800 3450 50 
-F20 "Out2" I B 4400 3450 50 
-F21 "Out3" I B 4000 3450 50 
-F22 "Out4" I B 3600 3450 50 
-F23 "Out5" I B 3200 3450 50 
-F24 "Out6" I B 2800 3450 50 
-F25 "Out7" I B 2400 3450 50 
-F26 "Select" I T 2000 2850 50 
 $EndSheet
 $Sheet
 S 1900 5150 3550 600 
@@ -115,7 +82,7 @@ $EndSheet
 $Sheet
 S 1900 6300 3550 600 
 U 5F923C0C
-F0 "sheet5F923BF1" 50
+F0 "Swap" 50
 F1 "BarrelShifter_Line.sch" 50
 F2 "0_In0" I T 5200 6300 50 
 F3 "0_In1" I T 4800 6300 50 
@@ -213,11 +180,9 @@ Wire Wire Line
 	4800 6900 4800 7450
 Wire Wire Line
 	5200 6900 5200 7450
-Text HLabel 6850 2350 0    50   Input ~ 0
+Text HLabel 7150 1500 0    50   Input ~ 0
 Shift_In
-Wire Wire Line
-	6850 2350 7150 2350
-Text Label 7150 2350 2    50   ~ 0
+Text Label 7550 1500 2    50   ~ 0
 Shift_In
 Text Label 5300 2550 3    50   ~ 0
 Shift_In
@@ -393,37 +358,6 @@ Wire Wire Line
 Connection ~ 4000 4650
 Wire Wire Line
 	4000 4650 4000 5150
-$Sheet
-S 1900 1700 3550 600 
-U 5F7FB56D
-F0 "Line: Swap" 50
-F1 "BarrelShifter_Line.sch" 50
-F2 "0_In0" I T 5200 1700 50 
-F3 "0_In1" I T 4800 1700 50 
-F4 "0_In2" I T 4400 1700 50 
-F5 "0_In3" I T 4000 1700 50 
-F6 "0_In4" I T 3600 1700 50 
-F7 "0_In5" I T 3200 1700 50 
-F8 "0_In6" I T 2800 1700 50 
-F9 "0_In7" I T 2400 1700 50 
-F10 "1_In0" I T 5300 1700 50 
-F11 "1_In1" I T 4900 1700 50 
-F12 "1_In2" I T 4500 1700 50 
-F13 "1_In3" I T 4100 1700 50 
-F14 "1_In4" I T 3700 1700 50 
-F15 "1_In5" I T 3300 1700 50 
-F16 "1_In6" I T 2900 1700 50 
-F17 "1_In7" I T 2500 1700 50 
-F18 "Out0" I B 5200 2300 50 
-F19 "Out1" I B 4800 2300 50 
-F20 "Out2" I B 4400 2300 50 
-F21 "Out3" I B 4000 2300 50 
-F22 "Out4" I B 3600 2300 50 
-F23 "Out5" I B 3200 2300 50 
-F24 "Out6" I B 2800 2300 50 
-F25 "Out7" I B 2400 2300 50 
-F26 "Select" I T 2000 1700 50 
-$EndSheet
 Wire Wire Line
 	3600 1650 3600 1700
 Connection ~ 3600 1650
@@ -539,11 +473,11 @@ Wire Wire Line
 Connection ~ 2400 5900
 Wire Wire Line
 	2400 5900 2400 6300
-Text Label 7950 2750 2    50   ~ 0
+Text Label 8300 2300 2    50   ~ 0
 Shft4
-Text Label 7950 2650 2    50   ~ 0
+Text Label 8300 2200 2    50   ~ 0
 Shft2
-Text Label 7950 2550 2    50   ~ 0
+Text Label 8300 2100 2    50   ~ 0
 Shft1
 Entry Wire Line
 	2300 600  2400 700 
@@ -925,10 +859,10 @@ Wire Wire Line
 	7550 5750 7550 5950
 Wire Wire Line
 	7800 5250 8600 5250
-Text HLabel 7000 5250 0    50   Input ~ 0
+Text HLabel 6600 5250 0    50   Input ~ 0
 OE
 Wire Wire Line
-	7000 5250 7050 5250
+	6600 5250 6700 5250
 Connection ~ 7050 5250
 Entry Wire Line
 	2400 7450 2500 7550
@@ -1016,42 +950,36 @@ Text Label 2400 7100 3    50   ~ 0
 RESULT7
 Text HLabel 1900 600  0    50   Input ~ 0
 RegA[0..7]
-Text HLabel 6850 2450 0    50   Input ~ 0
+Text HLabel 7200 2000 0    50   Input ~ 0
 OpB[0..7]
 Wire Bus Line
-	6850 2450 6950 2450
+	7200 2000 7300 2000
 Entry Wire Line
-	6950 2450 7050 2550
+	7300 2000 7400 2100
 Entry Wire Line
-	6950 2550 7050 2650
+	7300 2100 7400 2200
 Entry Wire Line
-	6950 2650 7050 2750
+	7300 2200 7400 2300
 Entry Wire Line
-	6950 2750 7050 2850
+	7300 2300 7400 2400
 Entry Wire Line
-	6950 2850 7050 2950
+	7300 2400 7400 2500
 Entry Wire Line
-	6950 2950 7050 3050
+	7300 2500 7400 2600
 Entry Wire Line
-	6950 3050 7050 3150
+	7300 2600 7400 2700
 Entry Wire Line
-	6950 3150 7050 3250
+	7300 2700 7400 2800
 Wire Wire Line
-	7050 2850 7650 2850
+	7400 2400 8000 2400
 Wire Wire Line
-	7050 2950 7650 2950
+	7400 2500 8000 2500
 Wire Wire Line
-	7050 3050 7650 3050
+	7400 2600 8000 2600
 Wire Wire Line
-	7050 3150 7650 3150
+	7400 2700 8000 2700
 Wire Wire Line
-	7050 3250 7650 3250
-Wire Wire Line
-	7050 2750 7950 2750
-Wire Wire Line
-	7050 2650 7950 2650
-Wire Wire Line
-	7050 2550 7950 2550
+	7400 2800 8000 2800
 Wire Wire Line
 	2400 700  2400 1350
 Wire Wire Line
@@ -1084,26 +1012,155 @@ Text Label 2800 700  3    50   ~ 0
 RegA6
 Text Label 2400 700  3    50   ~ 0
 RegA7
-Text Label 7050 2550 0    50   ~ 0
+Text Label 7400 2100 0    50   ~ 0
 OpB0
-Text Label 7050 2650 0    50   ~ 0
+Text Label 7400 2200 0    50   ~ 0
 OpB1
-Text Label 7050 2750 0    50   ~ 0
+Text Label 7400 2300 0    50   ~ 0
 OpB2
-Text Label 7050 2850 0    50   ~ 0
+Text Label 7400 2400 0    50   ~ 0
 OpB3
-Text Label 7050 2950 0    50   ~ 0
+Text Label 7400 2500 0    50   ~ 0
 OpB4
-Text Label 7050 3050 0    50   ~ 0
+Text Label 7400 2600 0    50   ~ 0
 OpB5
-Text Label 7050 3150 0    50   ~ 0
+Text Label 7400 2700 0    50   ~ 0
 OpB6
-Text Label 7050 3250 0    50   ~ 0
+Text Label 7400 2800 0    50   ~ 0
 OpB7
+$Sheet
+S 7600 1000 700  200 
+U 5FDF7D74
+F0 "LED: Shift Direction" 50
+F1 "1BitLED.sch" 50
+F2 "VAL" I L 7600 1100 50 
+$EndSheet
+$Sheet
+S 7600 1400 700  200 
+U 5FE049B4
+F0 "LED: Shift In" 50
+F1 "1BitLED.sch" 50
+F2 "VAL" I L 7600 1500 50 
+$EndSheet
+Wire Wire Line
+	7150 1500 7600 1500
+Wire Wire Line
+	7200 1100 7600 1100
+$Sheet
+S 7150 4350 700  200 
+U 5FE6DBBD
+F0 "LED: OE" 50
+F1 "1BitLED.sch" 50
+F2 "VAL" I L 7150 4450 50 
+$EndSheet
+Wire Wire Line
+	6700 4450 7150 4450
+Wire Wire Line
+	6700 4450 6700 5250
+Connection ~ 6700 5250
+Wire Wire Line
+	6700 5250 7050 5250
+$Sheet
+S 8500 2000 700  200 
+U 5FE97196
+F0 "LED: Shift[0]" 50
+F1 "1BitLED.sch" 50
+F2 "VAL" I L 8500 2100 50 
+$EndSheet
+$Sheet
+S 8500 2400 700  200 
+U 5FE97199
+F0 "LED: Shift[1]" 50
+F1 "1BitLED.sch" 50
+F2 "VAL" I L 8500 2500 50 
+$EndSheet
+$Sheet
+S 8500 2800 700  200 
+U 5FEBEB17
+F0 "LED: Shift[2]" 50
+F1 "1BitLED.sch" 50
+F2 "VAL" I L 8500 2900 50 
+$EndSheet
+Wire Wire Line
+	7400 2100 8500 2100
+Wire Wire Line
+	8450 2200 8450 2500
+Wire Wire Line
+	8450 2500 8500 2500
+Wire Wire Line
+	7400 2200 8450 2200
+Wire Wire Line
+	8400 2300 8400 2900
+Wire Wire Line
+	8400 2900 8500 2900
+Wire Wire Line
+	7400 2300 8400 2300
+$Sheet
+S 1900 1700 3550 600 
+U 5F7FB56D
+F0 "Line: Swap" 50
+F1 "BarrelShifter_Line.sch" 50
+F2 "0_In0" I T 5200 1700 50 
+F3 "0_In1" I T 4800 1700 50 
+F4 "0_In2" I T 4400 1700 50 
+F5 "0_In3" I T 4000 1700 50 
+F6 "0_In4" I T 3600 1700 50 
+F7 "0_In5" I T 3200 1700 50 
+F8 "0_In6" I T 2800 1700 50 
+F9 "0_In7" I T 2400 1700 50 
+F10 "1_In0" I T 5300 1700 50 
+F11 "1_In1" I T 4900 1700 50 
+F12 "1_In2" I T 4500 1700 50 
+F13 "1_In3" I T 4100 1700 50 
+F14 "1_In4" I T 3700 1700 50 
+F15 "1_In5" I T 3300 1700 50 
+F16 "1_In6" I T 2900 1700 50 
+F17 "1_In7" I T 2500 1700 50 
+F18 "Out0" I B 5200 2300 50 
+F19 "Out1" I B 4800 2300 50 
+F20 "Out2" I B 4400 2300 50 
+F21 "Out3" I B 4000 2300 50 
+F22 "Out4" I B 3600 2300 50 
+F23 "Out5" I B 3200 2300 50 
+F24 "Out6" I B 2800 2300 50 
+F25 "Out7" I B 2400 2300 50 
+F26 "Select" I T 2000 1700 50 
+$EndSheet
+$Sheet
+S 1900 2850 3550 600 
+U 5F9214C6
+F0 "Shift1" 50
+F1 "BarrelShifter_Line.sch" 50
+F2 "0_In0" I T 5200 2850 50 
+F3 "0_In1" I T 4800 2850 50 
+F4 "0_In2" I T 4400 2850 50 
+F5 "0_In3" I T 4000 2850 50 
+F6 "0_In4" I T 3600 2850 50 
+F7 "0_In5" I T 3200 2850 50 
+F8 "0_In6" I T 2800 2850 50 
+F9 "0_In7" I T 2400 2850 50 
+F10 "1_In0" I T 5300 2850 50 
+F11 "1_In1" I T 4900 2850 50 
+F12 "1_In2" I T 4500 2850 50 
+F13 "1_In3" I T 4100 2850 50 
+F14 "1_In4" I T 3700 2850 50 
+F15 "1_In5" I T 3300 2850 50 
+F16 "1_In6" I T 2900 2850 50 
+F17 "1_In7" I T 2500 2850 50 
+F18 "Out0" I B 5200 3450 50 
+F19 "Out1" I B 4800 3450 50 
+F20 "Out2" I B 4400 3450 50 
+F21 "Out3" I B 4000 3450 50 
+F22 "Out4" I B 3600 3450 50 
+F23 "Out5" I B 3200 3450 50 
+F24 "Out6" I B 2800 3450 50 
+F25 "Out7" I B 2400 3450 50 
+F26 "Select" I T 2000 2850 50 
+$EndSheet
 Wire Bus Line
 	9950 4150 9950 4850
 Wire Bus Line
-	6950 2450 6950 3150
+	7300 2000 7300 2700
 Wire Bus Line
 	8050 3900 8050 4850
 Wire Bus Line

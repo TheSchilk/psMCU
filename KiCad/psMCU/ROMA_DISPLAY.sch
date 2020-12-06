@@ -3,11 +3,11 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 56 94
-Title ""
+Sheet 63 193
+Title "psMCU"
 Date ""
 Rev ""
-Comp ""
+Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 ""
@@ -110,12 +110,12 @@ F 3 "" H 3150 4950 50  0001 C CNN
 $EndComp
 $Comp
 L power:GND #PWR?
-U 1 1 5F783D83
+U 1 1 5FDB3532
 P 2850 5350
-AR Path="/5ED2705B/5F783D83" Ref="#PWR?"  Part="1" 
-AR Path="/5F1CE57C/5F783D83" Ref="#PWR?"  Part="1" 
-AR Path="/5F394B96/5F783D83" Ref="#PWR?"  Part="1" 
-AR Path="/6041A022/5F783D83" Ref="#PWR?"  Part="1" 
+AR Path="/5ED2705B/5FDB3532" Ref="#PWR?"  Part="1" 
+AR Path="/5F1CE57C/5FDB3532" Ref="#PWR?"  Part="1" 
+AR Path="/5F394B96/5FDB3532" Ref="#PWR?"  Part="1" 
+AR Path="/6041A022/5FDB3532" Ref="#PWR?"  Part="1" 
 F 0 "#PWR?" H 2850 5100 50  0001 C CNN
 F 1 "GND" H 2855 5177 50  0000 C CNN
 F 2 "" H 2850 5350 50  0001 C CNN
@@ -220,13 +220,13 @@ Wire Wire Line
 	4900 2300 4650 2300
 $Comp
 L power:+5V #PWR?
-U 1 1 5F415EC0
+U 1 1 5FDB352F
 P 4650 2250
-AR Path="/5ED2705B/5F415EC0" Ref="#PWR?"  Part="1" 
-AR Path="/5F1CE57C/5F415EC0" Ref="#PWR?"  Part="1" 
-AR Path="/5F396002/5F415EC0" Ref="#PWR?"  Part="1" 
-AR Path="/5F394B96/5F415EC0" Ref="#PWR?"  Part="1" 
-AR Path="/6041A022/5F415EC0" Ref="#PWR?"  Part="1" 
+AR Path="/5ED2705B/5FDB352F" Ref="#PWR?"  Part="1" 
+AR Path="/5F1CE57C/5FDB352F" Ref="#PWR?"  Part="1" 
+AR Path="/5F396002/5FDB352F" Ref="#PWR?"  Part="1" 
+AR Path="/5F394B96/5FDB352F" Ref="#PWR?"  Part="1" 
+AR Path="/6041A022/5FDB352F" Ref="#PWR?"  Part="1" 
 F 0 "#PWR?" H 4650 2100 50  0001 C CNN
 F 1 "+5V" H 4500 2350 50  0000 C CNN
 F 2 "" H 4650 2250 50  0001 C CNN

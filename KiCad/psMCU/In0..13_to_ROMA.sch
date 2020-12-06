@@ -3,11 +3,11 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 87 94
-Title ""
+Sheet 93 193
+Title "psMCU"
 Date ""
 Rev ""
-Comp ""
+Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 ""
@@ -792,10 +792,6 @@ Wire Wire Line
 	6800 4250 6850 4250
 Wire Wire Line
 	6800 4200 6650 4200
-Wire Bus Line
-	8750 1300 8750 3950
-Wire Bus Line
-	5200 1250 5200 3950
 Connection ~ 6800 4200
 Wire Wire Line
 	6800 4200 6800 4250
@@ -815,4 +811,8 @@ F 3 "" H 6650 4200 50  0001 C CNN
 	1    6650 4200
 	0    1    1    0   
 $EndComp
+Wire Bus Line
+	8750 1300 8750 3950
+Wire Bus Line
+	5200 1250 5200 3950
 $EndSCHEMATC

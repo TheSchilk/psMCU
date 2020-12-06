@@ -3,11 +3,11 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 59 94
-Title ""
+Sheet 65 193
+Title "psMCU"
 Date ""
 Rev ""
-Comp ""
+Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 ""
@@ -51,14 +51,14 @@ F 3 "" H 5400 900 50  0001 C CNN
 $EndComp
 $Comp
 L Device:C_Small C?
-U 1 1 5F40D088
+U 1 1 5FDB352C
 P 5550 1000
-AR Path="/5ED2705B/5F40D088" Ref="C?"  Part="1" 
-AR Path="/5F1CE57C/5F40D088" Ref="C?"  Part="1" 
-AR Path="/5F396002/5F40D088" Ref="C?"  Part="1" 
-AR Path="/5F394B96/5F40D088" Ref="C?"  Part="1" 
-AR Path="/6041A022/5F40D088" Ref="C?"  Part="1" 
-AR Path="/604F08FB/5F40D088" Ref="C?"  Part="1" 
+AR Path="/5ED2705B/5FDB352C" Ref="C?"  Part="1" 
+AR Path="/5F1CE57C/5FDB352C" Ref="C?"  Part="1" 
+AR Path="/5F396002/5FDB352C" Ref="C?"  Part="1" 
+AR Path="/5F394B96/5FDB352C" Ref="C?"  Part="1" 
+AR Path="/6041A022/5FDB352C" Ref="C?"  Part="1" 
+AR Path="/604F08FB/5FDB352C" Ref="C?"  Part="1" 
 F 0 "C?" V 5321 1000 50  0000 C CNN
 F 1 "0u1" V 5412 1000 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0603_1608Metric" H 5550 1000 50  0001 C CNN
@@ -348,11 +348,11 @@ F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 3900 3050 50  0001 C CNN
 $EndComp
 $Comp
 L power:GND #PWR?
-U 1 1 5F3B281D
+U 1 1 5FDB3526
 P 3200 3400
-AR Path="/5F394B96/5F3B281D" Ref="#PWR?"  Part="1" 
-AR Path="/6041A022/5F3B281D" Ref="#PWR?"  Part="1" 
-AR Path="/604F08FB/5F3B281D" Ref="#PWR?"  Part="1" 
+AR Path="/5F394B96/5FDB3526" Ref="#PWR?"  Part="1" 
+AR Path="/6041A022/5FDB3526" Ref="#PWR?"  Part="1" 
+AR Path="/604F08FB/5FDB3526" Ref="#PWR?"  Part="1" 
 F 0 "#PWR?" H 3200 3150 50  0001 C CNN
 F 1 "GND" H 3205 3227 50  0000 C CNN
 F 2 "" H 3200 3400 50  0001 C CNN

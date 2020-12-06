@@ -1,0 +1,108 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 6 193
+Title "psMCU"
+Date ""
+Rev ""
+Comp "Philipp Schilk"
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Text HLabel 8950 1900 2    50   Output ~ 0
+OSC_OUT
+$Comp
+L Device:Jumper_NC_Small JP?
+U 1 1 5FFD11A0
+P 8100 1700
+F 0 "JP?" H 8100 1912 50  0000 C CNN
+F 1 "OSC" H 8100 1821 50  0000 C CNN
+F 2 "" H 8100 1700 50  0001 C CNN
+F 3 "~" H 8100 1700 50  0001 C CNN
+	1    8100 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Jumper_NO_Small JP?
+U 1 1 5FFD137F
+P 8100 2100
+F 0 "JP?" H 8100 2285 50  0000 C CNN
+F 1 "EXT OSC" H 8100 2194 50  0000 C CNN
+F 2 "" H 8100 2100 50  0001 C CNN
+F 3 "~" H 8100 2100 50  0001 C CNN
+	1    8100 2100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8200 1700 8350 1700
+Wire Wire Line
+	8350 1700 8350 1900
+Wire Wire Line
+	8350 2100 8200 2100
+Connection ~ 8350 1900
+Wire Wire Line
+	8350 1900 8350 2100
+Wire Wire Line
+	8350 1900 8700 1900
+$Comp
+L Device:R_Small R?
+U 1 1 5FFD2F76
+P 8700 2250
+F 0 "R?" H 8759 2296 50  0000 L CNN
+F 1 "10K" H 8759 2205 50  0000 L CNN
+F 2 "" H 8700 2250 50  0001 C CNN
+F 3 "~" H 8700 2250 50  0001 C CNN
+	1    8700 2250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8700 2150 8700 1900
+Wire Wire Line
+	8700 2350 8700 2550
+$Comp
+L power:GND #PWR?
+U 1 1 5FFD37B1
+P 8700 2550
+F 0 "#PWR?" H 8700 2300 50  0001 C CNN
+F 1 "GND" H 8705 2377 50  0000 C CNN
+F 2 "" H 8700 2550 50  0001 C CNN
+F 3 "" H 8700 2550 50  0001 C CNN
+	1    8700 2550
+	1    0    0    -1  
+$EndComp
+Connection ~ 8700 1900
+Wire Wire Line
+	8700 1900 8950 1900
+Wire Wire Line
+	7550 2100 8000 2100
+$Comp
+L Connector_Generic:Conn_01x02 J?
+U 1 1 5FFD6EBF
+P 7350 2200
+F 0 "J?" H 7268 1875 50  0000 C CNN
+F 1 " EXT" H 7268 1966 50  0000 C CNN
+F 2 "" H 7350 2200 50  0001 C CNN
+F 3 "~" H 7350 2200 50  0001 C CNN
+	1    7350 2200
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7550 2200 7750 2200
+Wire Wire Line
+	7750 2200 7750 2550
+$Comp
+L power:GND #PWR?
+U 1 1 5FFD86B9
+P 7750 2550
+F 0 "#PWR?" H 7750 2300 50  0001 C CNN
+F 1 "GND" H 7755 2377 50  0000 C CNN
+F 2 "" H 7750 2550 50  0001 C CNN
+F 3 "" H 7750 2550 50  0001 C CNN
+	1    7750 2550
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC

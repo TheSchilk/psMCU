@@ -3,11 +3,11 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 51 94
-Title ""
+Sheet 26 193
+Title "psMCU"
 Date ""
 Rev ""
-Comp ""
+Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 ""
@@ -31,8 +31,6 @@ Text HLabel 6250 3000 2    50   Output ~ 0
 6
 Text HLabel 6250 3100 2    50   Output ~ 0
 7
-Wire Wire Line
-	4500 2300 4500 2100
 Wire Wire Line
 	4550 2100 4500 2100
 Connection ~ 4500 2100
@@ -584,25 +582,6 @@ F 3 "" H 4500 4850 50  0001 C CNN
 	1    4500 4850
 	1    0    0    -1  
 $EndComp
-$Comp
-L Memory_Flash:SST39SF010 U?
-U 1 1 5F73BBDA
-P 4500 3600
-AR Path="/5F28170E/5F73BBDA" Ref="U?"  Part="1" 
-AR Path="/60E33DBC/5F3D8E0D/5F73BBDA" Ref="U?"  Part="1" 
-AR Path="/60E33DBC/5F3D7BFA/5F73BBDA" Ref="U?"  Part="1" 
-AR Path="/60E33DBC/5F765D85/5F73BBDA" Ref="U?"  Part="1" 
-AR Path="/60E33DBC/5F766F2F/5F73BBDA" Ref="U?"  Part="1" 
-AR Path="/60E33DBC/5F767EF5/5F73BBDA" Ref="U?"  Part="1" 
-AR Path="/60E33DBC/5F768DA1/5F73BBDA" Ref="U?"  Part="1" 
-AR Path="/60E33DBC/5F47FADF/5F73BBDA" Ref="U?"  Part="1" 
-F 0 "U?" H 4650 5000 50  0000 C CNN
-F 1 "SST39SF010" H 4800 4900 50  0000 C CNN
-F 2 "Package_SO:TSOP-I-32_11.8x8mm_P0.5mm" H 4500 3900 50  0001 C CNN
-F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/25022B.pdf" H 4500 3900 50  0001 C CNN
-	1    4500 3600
-	1    0    0    -1  
-$EndComp
 Entry Wire Line
 	3200 2300 3300 2400
 Entry Wire Line
@@ -780,7 +759,25 @@ Wire Wire Line
 	3800 4200 3900 4200
 Connection ~ 3800 4100
 Text Notes 5300 4450 0    50   ~ 0
-Grounding pins 1 and 30 should allow the \nSST39SF010 to be subsituted with a higher memory unit (020,040)
+Grounding pins 6 and 9 should allow the \nSST39SF010 to be subsituted with a higher memory unit (020,040)
+$Comp
+L SST39SF0x0_TSOP:SST39SF0x0_TSOP U?
+U 1 1 5FFAA758
+P 4500 3600
+AR Path="/60E33DBC/5F3D7BFA/5FFAA758" Ref="U?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5FFAA758" Ref="U?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5FFAA758" Ref="U?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5FFAA758" Ref="U?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5FFAA758" Ref="U?"  Part="1" 
+F 0 "U?" H 4400 4950 50  0000 C CNN
+F 1 "SST39SF010 TSOP" H 4900 4950 50  0000 C CNN
+F 2 "" H 4600 5050 50  0001 C CNN
+F 3 "" H 4600 5050 50  0001 C CNN
+	1    4500 3600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4500 2100 4500 2300
 Wire Bus Line
 	5350 3700 6500 3700
 Wire Bus Line
