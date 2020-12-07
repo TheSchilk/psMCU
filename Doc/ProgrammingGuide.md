@@ -153,6 +153,13 @@ while handling the interrupt (or while interrupts are disabled), another
 interrupt will occur immediately after the current interrupt returns (or
 interrupts are enabled).
 
+Do note that there is a short window between the interrupt signal being asserted
+and the processor being ready to accept the next interrupt. Should two interrupt
+sources assert an interrupt within this window (or possibly even within the same 
+clock cycle), they will only cause a single interrupt. Therefore, the interrupt
+routine should handle and clear all interrupt flags, as it is possible that only
+one interrupt is generated for multiple assertions.
+
 Registers A and B do not feature shadow registers. Therefore, the interrupt
 should stash their current value on the stack and restore it before returning.
 
