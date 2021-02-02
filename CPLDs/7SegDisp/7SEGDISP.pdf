@@ -1,0 +1,151 @@
+{COMPONENT C:\USERS\PSCHILK\HOME\REPOS\PSMCU\CPLDS\7SEGDISP\7SEGDISP.SYM
+
+ {ENVIRONMENT
+  {PDIFvrev 3.00}
+  {Program "CUPL(WM) Version 5.0a"}
+  {DBtype "Schematic"}
+  {DBvrev 1.01}
+  {DBtime "Tue Feb 02 23:57:47 2021 "}
+  {DBunit "MIL"}
+  {DBgrid 10}
+  {Lyrstr "WIRES" 1 "BUS" 1 "GATE" 2 "IEEE" 2 "PINFUN" 3 "PINNUM" 1 
+          "PINNAM" 6 "PINCON" 4 "REFDES" 2 "ATTR" 6 "SDOT" 1 
+          "DEVICE" 5 "OUTLIN" 5 "ATTR2" 6 "NOTES" 6 "NETNAM" 4 
+          "CMPNAM" 5 "BORDER" 5}
+ }
+
+ {USER
+  {VIEW
+   {Mode SYMB}
+   {Nlst OPEN}
+   {Vw 0 0 2}
+   {Lv 12 2 2 2 0 0 2 2 2 2 0 0 2 1 2 0 0 0 0}
+   {Gs 10 10}
+  }
+ }
+
+ {DISPLAY
+  [Ly "PINNUM"]
+  [Ls "SOLID"][Wd 0]
+  [Ts 15][Tj "LC"][Tr 0][Tm "N"]
+ }
+
+ {SYMBOL
+  {PIN_DEF
+   [Ly "PINCON"]
+   {P IN_0 {Pt "INPUT"}{Lq 0}{Ploc 100 80}}
+   {P IN_1 {Pt "INPUT"}{Lq 0}{Ploc 100 60}}
+   {P IN_2 {Pt "INPUT"}{Lq 0}{Ploc 100 40}}
+   {P IN_3 {Pt "INPUT"}{Lq 0}{Ploc 100 20}}
+   {P 7SEG_A {Pt "I/O"}{Lq 0}{Ploc 300 20}}
+   {P 7SEG_B {Pt "I/O"}{Lq 0}{Ploc 300 40}}
+   {P 7SEG_C {Pt "I/O"}{Lq 0}{Ploc 300 60}}
+   {P 7SEG_D {Pt "I/O"}{Lq 0}{Ploc 300 80}}
+   {P 7SEG_E {Pt "I/O"}{Lq 0}{Ploc 300 100}}
+   {P 7SEG_F {Pt "I/O"}{Lq 0}{Ploc 300 120}}
+   {P 7SEG_G {Pt "I/O"}{Lq 0}{Ploc 300 140}}
+  }
+
+  {PKG
+   [Ly "REFDES"]
+   [Ts 25][Tj "CB"][Tr 0][Tm "N"]
+   {Rdl 200 170}
+
+   [Ly "PINNUM"]
+   [Ts 15][Tj "RC"]
+   {Pnl 120 90}
+   {Pnl 120 70}
+   {Pnl 120 50}
+   {Pnl 120 30}
+   [Ts 15][Tj "LC"]
+   {Pnl 280 30}
+   {Pnl 280 50}
+   {Pnl 280 70}
+   {Pnl 280 90}
+   {Pnl 280 110}
+   {Pnl 280 130}
+   {Pnl 280 150}
+
+   {Sd A 1 2 3 4 12 13 14 15 16 17 18}
+  }
+
+  {PIC
+   [Ly "GATE"]
+   [Ts 15][Tj "LC"][Tr 0][Tm "N"]
+   {R 130 160 270 0}
+   {L 130 80 100 80}
+   {L 130 60 100 60}
+   {L 130 40 100 40}
+   {L 130 20 100 20}
+   {L 270 20 300 20}
+   {L 270 40 300 40}
+   {L 270 60 300 60}
+   {L 270 80 300 80}
+   {L 270 100 300 100}
+   {L 270 120 300 120}
+   {L 270 140 300 140}
+   [Ly "PINNAM"]
+   [Tj "LC"]
+   {T "IN_0" 140 80}
+   {T "IN_1" 140 60}
+   {T "IN_2" 140 40}
+   {T "IN_3" 140 20}
+   [Tj "RC"]
+   {T "7SEG_A" 260 20}
+   {T "7SEG_B" 260 40}
+   {T "7SEG_C" 260 60}
+   {T "7SEG_D" 260 80}
+   {T "7SEG_E" 260 100}
+   {T "7SEG_F" 260 120}
+   {T "7SEG_G" 260 140}
+   [Ly "DEVICE"]
+   [Tj "CT"]
+   {T "G16V8AS" 200 -10}
+  }
+
+  {ATR
+   {IN
+    {Org 100 20}
+    {Ty 255}
+   }
+   {EX
+    [Ly "ATTR2"]
+    [Ts 12][Tj "CT"][Tr 0][Tm "N"]
+    {At PLD C:\USERS\PSCHILK\HOME\REPOS\PSMCU\CPLDS\7SEGDISP\7SEGDISP 200 160}
+   }
+  }
+ }
+
+ {DETAIL
+  {ANNOTATE
+  }
+
+  {NET_DEF
+   {N IN_0
+   }
+   {N IN_1
+   }
+   {N IN_2
+   }
+   {N IN_3
+   }
+   {N 7SEG_A
+   }
+   {N 7SEG_B
+   }
+   {N 7SEG_C
+   }
+   {N 7SEG_D
+   }
+   {N 7SEG_E
+   }
+   {N 7SEG_F
+   }
+   {N 7SEG_G
+   }
+  }
+
+  {SUBCOMP
+  }
+ }
+}

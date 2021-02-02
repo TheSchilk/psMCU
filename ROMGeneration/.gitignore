@@ -72,6 +72,3 @@ dmypy.json
 
 #PyCharms
 .idea/
-
-#CSVs
-*.csv

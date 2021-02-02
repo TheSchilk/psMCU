@@ -1,0 +1,73 @@
+%SIGNAL
+PIN  12 =  7seg_a 
+PIN  13 =  7seg_b 
+PIN  14 =  7seg_c 
+PIN  15 =  7seg_d 
+PIN  16 =  7seg_e 
+PIN  17 =  7seg_f 
+PIN  18 =  7seg_g 
+PIN   1 =  IN_0 
+PIN   2 =  IN_1 
+PIN   3 =  IN_2 
+PIN   4 =  IN_3 
+%END
+
+%FIELD
+%END
+
+%EQUATION
+7seg_a =>
+    !IN_0 & !IN_2 & !IN_3
+  # IN_0 & IN_1 & !IN_3
+  # IN_0 & !IN_1 & IN_2 & !IN_3
+  # !IN_0 & IN_1 & IN_2
+  # !IN_1 & !IN_2 & IN_3
+  # !IN_0 & IN_1 & !IN_2 & IN_3
+  # !IN_0 & !IN_1 & IN_2 & IN_3
+  # IN_0 & IN_1 & IN_2 & IN_3
+
+7seg_b =>
+    IN_0 & !IN_1 & IN_2 & IN_3
+  # !IN_2 & !IN_3
+  # !IN_0 & !IN_1 & IN_2 & !IN_3
+  # IN_0 & IN_1 & IN_2 & !IN_3
+  # !IN_1 & !IN_2 & IN_3
+  # !IN_0 & IN_1 & !IN_2 & IN_3
+
+7seg_c =>
+    IN_0 & !IN_1 & IN_2 & IN_3
+  # IN_0 & IN_1 & !IN_3
+  # !IN_1 & !IN_3
+  # !IN_0 & IN_1 & IN_2 & !IN_3
+  # !IN_2 & IN_3
+
+7seg_d =>
+    !IN_0 & !IN_2 & !IN_3
+  # IN_0 & IN_1 & !IN_2
+  # IN_0 & !IN_1 & IN_2
+  # !IN_0 & IN_1 & IN_2
+  # !IN_1 & !IN_2 & IN_3
+  # !IN_0 & !IN_1 & IN_2 & IN_3
+
+7seg_e =>
+    !IN_1 & IN_2 & IN_3
+  # !IN_0 & IN_1 & IN_2
+  # !IN_0 & !IN_2
+  # IN_0 & IN_1 & IN_3
+
+7seg_f =>
+    !IN_0 & !IN_1 & !IN_3
+  # IN_0 & !IN_1 & IN_2 & !IN_3
+  # !IN_0 & IN_1 & IN_2
+  # IN_0 & IN_1 & IN_2 & IN_3
+  # !IN_2 & IN_3
+  # !IN_0 & !IN_1 & IN_2 & IN_3
+
+7seg_g =>
+    IN_0 & IN_2 & IN_3
+  # !IN_1 & IN_2 & !IN_3
+  # !IN_0 & IN_1 & IN_2
+  # !IN_1 & !IN_2 & IN_3
+  # IN_1 & !IN_2
+
+%END
