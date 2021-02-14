@@ -3,15 +3,15 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 174 202
+Sheet 167 202
 Title "psMCU"
 Date ""
 Rev ""
 Comp "Philipp Schilk"
-Comment1 ""
+Comment1 "(Black Magic. I don't quite remember how this works!)"
 Comment2 ""
-Comment3 ""
-Comment4 ""
+Comment3 "allow manual 'clock stepping'. Avoids clock-glitches when changing modes."
+Comment4 "Generates the actual system clock. Can pause the clock and "
 $EndDescr
 $Comp
 L 74xGxx:74LVC1G175 U?
@@ -470,7 +470,7 @@ Text Label 4700 4750 1    50   ~ 0
 Wire Wire Line
 	4700 4750 4700 4700
 Text Notes 4250 900  0    50   ~ 0
-T-FF with enable. \nDivides MClock by 2 to generate System Clock,\nIf enabled by the Clock-Step-Control Logic
+T-FF with enable. \nDivides the contious clock by 2 to generate  the\nsystem clock, if enabled by the clock-step-control\nlogic below. 
 $Comp
 L 74xGxx:74LVC1G32 U?
 U 1 1 5FFF6FA8
@@ -665,7 +665,7 @@ Wire Wire Line
 	6450 3800 6600 3800
 Wire Wire Line
 	1850 2450 2050 2450
-Text Notes 4350 3600 0    50   ~ 0
+Text Notes 4350 3900 0    50   ~ 0
 D-FF with enable. \nControls Stepping of Clock
 Wire Wire Line
 	5500 3700 5500 2650

@@ -3,15 +3,15 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 168 202
+Sheet 91 202
 Title "psMCU"
 Date ""
 Rev ""
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
-Comment3 ""
-Comment4 ""
+Comment3 "DIP-switches. Can be enabled/disabled."
+Comment4 "Compares current program counter value against a breakpoint-address settable using "
 $EndDescr
 Wire Wire Line
 	6550 9550 6400 9550

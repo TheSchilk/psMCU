@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 173 202
+Sheet 166 202
 Title "psMCU"
 Date ""
 Rev ""
@@ -11,7 +11,7 @@ Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 ""
-Comment4 ""
+Comment4 "Variable frequency clock generation."
 $EndDescr
 Text HLabel 8450 2250 0    50   Input ~ 0
 CLK_STEP_EN

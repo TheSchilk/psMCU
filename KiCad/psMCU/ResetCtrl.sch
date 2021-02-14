@@ -10,8 +10,8 @@ Rev ""
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
-Comment3 ""
-Comment4 ""
+Comment3 "generate the RESET and ~RESET~ signals used globally."
+Comment4 "Generates reset during power-on and combines the different reset sources to"
 $EndDescr
 Text Label 9250 3550 2    50   ~ 0
 ~R
@@ -321,7 +321,7 @@ L Device:R_Small R?
 U 1 1 5FFE44CD
 P 2400 2950
 F 0 "R?" H 2459 2996 50  0000 L CNN
-F 1 "56k" H 2459 2905 50  0000 L CNN
+F 1 "1M" H 2459 2905 50  0000 L CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" H 2400 2950 50  0001 C CNN
 F 3 "~" H 2400 2950 50  0001 C CNN
 	1    2400 2950
@@ -574,14 +574,14 @@ Wire Wire Line
 	7350 3250 7800 3250
 Wire Wire Line
 	7800 3250 7800 3550
-Text Notes 3000 2450 0    50   ~ 0
-Automatic Reset-on-Power
-Text HLabel 7000 2450 2    50   Output ~ 0
+Text Notes 1950 1850 0    100  ~ 0
+Automatic Reset on Power-on
+Text HLabel 5400 2450 2    50   Output ~ 0
 POWER_ON_RESET
 Wire Wire Line
 	5300 2450 5300 3150
 Wire Wire Line
-	5300 2450 7000 2450
+	5300 2450 5400 2450
 Connection ~ 5300 3150
 Wire Wire Line
 	5300 3150 5550 3150
@@ -599,4 +599,6 @@ Wire Wire Line
 Connection ~ 8250 4000
 Wire Wire Line
 	8250 4000 7800 4000
+Text Notes 5750 1850 0    100  ~ 0
+Combine Reset Sources
 $EndSCHEMATC

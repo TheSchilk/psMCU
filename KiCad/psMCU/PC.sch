@@ -3,15 +3,15 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 11693 16535 portrait
 encoding utf-8
-Sheet 46 202
+Sheet 39 202
 Title "psMCU"
 Date ""
 Rev ""
 Comp "Philipp Schilk"
 Comment1 ""
-Comment2 ""
-Comment3 ""
-Comment4 ""
+Comment2 "allowing conditional bit-test instructions. "
+Comment3 "Conditional Increment is an increment that is only perfomed if the comparator indicates, "
+Comment4 "Program Counter. Increment moves to next instruciton. Parrallel latch enables jumps."
 $EndDescr
 $Comp
 L 74xGxx:74LVC1G32 U?

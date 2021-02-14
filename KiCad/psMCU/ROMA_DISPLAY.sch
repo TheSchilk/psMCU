@@ -3,15 +3,15 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 23 202
+Sheet 16 202
 Title "psMCU"
 Date ""
 Rev ""
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
-Comment3 ""
-Comment4 ""
+Comment3 "is providing one (indicated by the ROMA_OUT signal)"
+Comment4 "Displays the current value on the ROMA bus, if a different module "
 $EndDescr
 Wire Wire Line
 	2150 5200 2150 5150
@@ -593,10 +593,10 @@ Text Label 6550 3950 2    50   ~ 0
 VAL12
 Text Label 6550 4050 2    50   ~ 0
 VAL13
+Text Label 7050 4550 0    50   ~ 0
+VAL[0..13]
 Wire Bus Line
 	4000 1300 4000 3950
 Wire Bus Line
 	6650 1500 6650 4550
-Text Label 7050 4550 0    50   ~ 0
-VAL[0..13]
 $EndSCHEMATC

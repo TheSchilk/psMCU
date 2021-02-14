@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 84 202
+Sheet 77 202
 Title "psMCU"
 Date ""
 Rev ""
@@ -892,129 +892,25 @@ CNDT_AFFIRMATIVE
 Wire Wire Line
 	8600 4700 8450 4700
 Entry Wire Line
-	1100 800  1200 900 
-Entry Wire Line
-	1100 900  1200 1000
-Entry Wire Line
-	1100 1000 1200 1100
-Entry Wire Line
-	1100 1100 1200 1200
-Entry Wire Line
-	1100 1200 1200 1300
-Entry Wire Line
-	1100 1300 1200 1400
-Entry Wire Line
-	1100 1400 1200 1500
-Entry Wire Line
-	1100 1500 1200 1600
-Wire Bus Line
-	1100 750  1050 750 
-Entry Wire Line
-	1100 2300 1200 2400
-Entry Wire Line
-	1100 2200 1200 2300
-Entry Wire Line
-	1100 2100 1200 2200
-Entry Wire Line
 	1100 2000 1200 2100
 Entry Wire Line
 	1100 1900 1200 2000
 Entry Wire Line
 	1100 1800 1200 1900
-Entry Wire Line
-	1100 1700 1200 1800
-Entry Wire Line
-	1100 1600 1200 1700
-Wire Wire Line
-	1200 1700 1450 1700
-Wire Wire Line
-	1200 2200 1450 2200
-Wire Wire Line
-	1200 2300 1450 2300
-Wire Wire Line
-	1200 2400 1450 2400
-Text HLabel 1050 750  0    50   Input ~ 0
+Text HLabel 1000 1550 0    50   Input ~ 0
 Inst[0..15]
-Entry Wire Line
-	1100 800  1200 900 
-Entry Wire Line
-	1100 900  1200 1000
-Entry Wire Line
-	1100 1000 1200 1100
-Entry Wire Line
-	1100 1100 1200 1200
-Entry Wire Line
-	1100 1200 1200 1300
-Entry Wire Line
-	1100 1300 1200 1400
-Entry Wire Line
-	1100 1400 1200 1500
-Entry Wire Line
-	1100 1500 1200 1600
-Text Label 1200 900  0    50   ~ 0
-Inst0
-Text Label 1200 1000 0    50   ~ 0
-Inst1
-Text Label 1200 1100 0    50   ~ 0
-Inst2
-Text Label 1200 1200 0    50   ~ 0
-Inst3
-Text Label 1200 1300 0    50   ~ 0
-Inst4
-Text Label 1200 1400 0    50   ~ 0
-Inst5
-Text Label 1200 1500 0    50   ~ 0
-Inst6
-Text Label 1200 1600 0    50   ~ 0
-Inst7
-Text Label 1200 2400 0    50   ~ 0
-Inst15
-Text Label 1200 2300 0    50   ~ 0
-Inst14
-Text Label 1200 2200 0    50   ~ 0
-Inst13
 Text Label 1200 2100 0    50   ~ 0
 Inst12
 Text Label 1200 2000 0    50   ~ 0
 Inst11
 Text Label 1200 1900 0    50   ~ 0
 Inst10
-Text Label 1200 1800 0    50   ~ 0
-Inst9
-Text Label 1200 1700 0    50   ~ 0
-Inst8
-Entry Wire Line
-	1100 2300 1200 2400
-Entry Wire Line
-	1100 2200 1200 2300
-Entry Wire Line
-	1100 2100 1200 2200
 Entry Wire Line
 	1100 2000 1200 2100
 Entry Wire Line
 	1100 1900 1200 2000
 Entry Wire Line
 	1100 1800 1200 1900
-Entry Wire Line
-	1100 1700 1200 1800
-Entry Wire Line
-	1100 1600 1200 1700
-Wire Wire Line
-	1200 1600 1450 1600
-Wire Wire Line
-	1200 1500 1450 1500
-Wire Wire Line
-	1200 1400 1450 1400
-Wire Wire Line
-	1200 1300 1450 1300
-Wire Wire Line
-	1200 1200 1450 1200
-Wire Wire Line
-	1200 1100 1450 1100
-Wire Wire Line
-	1200 1000 1450 1000
-Wire Wire Line
-	1200 900  1450 900 
 Wire Wire Line
 	1200 1800 3350 1800
 Wire Wire Line
@@ -1494,8 +1390,16 @@ Wire Wire Line
 	2550 5950 2550 2750
 Wire Wire Line
 	2550 2750 3350 2750
+Entry Wire Line
+	1100 1700 1200 1800
+Entry Wire Line
+	1100 1700 1200 1800
+Text Label 1200 1800 0    50   ~ 0
+Inst9
+Wire Bus Line
+	1000 1550 1100 1550
+Wire Bus Line
+	1100 1550 1100 2000
 Wire Bus Line
 	2050 5850 2050 6550
-Wire Bus Line
-	1100 750  1100 2300
 $EndSCHEMATC

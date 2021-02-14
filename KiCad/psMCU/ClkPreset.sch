@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 7 202
+Sheet 172 202
 Title "psMCU"
 Date ""
 Rev ""
@@ -11,7 +11,7 @@ Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 ""
-Comment4 ""
+Comment4 "Jumpers to configure default clock frequency after power-on."
 $EndDescr
 Text HLabel 5050 4250 2    50   Output ~ 0
 Preset[0..2]

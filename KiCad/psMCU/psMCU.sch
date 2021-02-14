@@ -947,7 +947,7 @@ Wire Bus Line
 Text Label 10350 1950 2    50   ~ 0
 DB[0..7]
 Wire Bus Line
-	12750 800  12750 1950
+	12700 800  12700 1950
 Wire Bus Line
 	8500 1450 8500 1950
 Wire Bus Line
@@ -964,17 +964,17 @@ Wire Wire Line
 Wire Bus Line
 	10000 800  10850 800 
 Wire Bus Line
-	10000 2750 12750 2750
+	10000 2750 12700 2750
 Wire Bus Line
-	12050 800  12750 800 
+	12050 800  12700 800 
 Wire Bus Line
-	12000 1950 12750 1950
-Connection ~ 12750 1950
+	12000 1950 12700 1950
+Connection ~ 12700 1950
 Wire Bus Line
-	12750 1950 12750 2750
+	12700 1950 12700 2750
 Wire Bus Line
-	12750 800  13400 800 
-Connection ~ 12750 800 
+	12700 800  13400 800 
+Connection ~ 12700 800 
 Wire Wire Line
 	2050 850  2650 850 
 Wire Wire Line
@@ -1433,8 +1433,8 @@ Connection ~ 10000 6400
 Wire Bus Line
 	5950 4000 7450 4000
 Wire Bus Line
-	12750 4000 12750 2750
-Connection ~ 12750 2750
+	12700 4000 12700 2750
+Connection ~ 12700 2750
 Wire Bus Line
 	4700 4000 750  4000
 Wire Bus Line
@@ -1483,7 +1483,7 @@ Wire Bus Line
 	10300 5100 11100 5100
 Connection ~ 10300 4000
 Wire Bus Line
-	10300 4000 12750 4000
+	10300 4000 12700 4000
 Wire Bus Line
 	10300 5100 10300 5900
 Wire Bus Line
@@ -1498,4 +1498,22 @@ Text Label 2700 2350 0    50   ~ 0
 ~RESET
 Wire Wire Line
 	3150 2350 2700 2350
+Text Notes 950  -450 0    100  ~ 0
+THE DOCUMENTATION CHECKMARK:
+Text Notes 4050 -450 0    197  Italic 39
+Ø
+Text Notes 1400 2250 0    197  Italic 39
+Ø
+Text Notes 4200 2250 0    197  Italic 39
+Ø
+Text Notes 4000 1050 0    197  Italic 39
+Ø
+Text Notes 8150 1700 0    197  Italic 39
+Ø
+Text Notes 7550 2500 0    197  Italic 39
+Ø
+Text Notes 8950 1150 0    197  Italic 39
+Ø
+Text Notes 9350 1650 0    197  Italic 39
+Ø
 $EndSCHEMATC

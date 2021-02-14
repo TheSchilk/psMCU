@@ -3,15 +3,15 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 156 202
+Sheet 149 202
 Title "psMCU"
 Date ""
 Rev ""
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
-Comment3 ""
-Comment4 ""
+Comment3 "and a connector/interface for and external remote control."
+Comment4 "Contains all buttons needed to control the state/execution flow of the processor "
 $EndDescr
 Text HLabel 6800 2900 2    50   Output ~ 0
 CLK_STEP
