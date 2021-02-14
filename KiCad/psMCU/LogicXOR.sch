@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 103 209
+Sheet 68 207
 Title "psMCU"
 Date ""
 Rev ""
@@ -142,38 +142,38 @@ Entry Wire Line
 	6900 1850 7000 1950
 Entry Wire Line
 	6900 1950 7000 2050
-Text Label 6900 1950 2    50   ~ 0
-DB0
-Text Label 6900 1850 2    50   ~ 0
-DB1
-Text Label 6900 1750 2    50   ~ 0
-DB2
-Text Label 6900 1650 2    50   ~ 0
-DB3
-Text Label 6900 1550 2    50   ~ 0
-DB4
-Text Label 6900 1450 2    50   ~ 0
-DB5
-Text Label 6900 1350 2    50   ~ 0
-DB6
 Text Label 6900 1250 2    50   ~ 0
+DB0
+Text Label 6900 1350 2    50   ~ 0
+DB1
+Text Label 6900 1450 2    50   ~ 0
+DB2
+Text Label 6900 1550 2    50   ~ 0
+DB3
+Text Label 6900 1650 2    50   ~ 0
+DB4
+Text Label 6900 1750 2    50   ~ 0
+DB5
+Text Label 6900 1850 2    50   ~ 0
+DB6
+Text Label 6900 1950 2    50   ~ 0
 DB7
 Wire Wire Line
-	6650 1250 6900 1250
-Wire Wire Line
-	6650 1350 6900 1350
-Wire Wire Line
-	6650 1450 6900 1450
-Wire Wire Line
-	6650 1550 6900 1550
-Wire Wire Line
-	6650 1650 6900 1650
-Wire Wire Line
-	6650 1750 6900 1750
+	6650 1950 6900 1950
 Wire Wire Line
 	6650 1850 6900 1850
 Wire Wire Line
-	6650 1950 6900 1950
+	6650 1750 6900 1750
+Wire Wire Line
+	6650 1650 6900 1650
+Wire Wire Line
+	6650 1550 6900 1550
+Wire Wire Line
+	6650 1450 6900 1450
+Wire Wire Line
+	6650 1350 6900 1350
+Wire Wire Line
+	6650 1250 6900 1250
 Wire Wire Line
 	4350 1250 5650 1250
 $Comp

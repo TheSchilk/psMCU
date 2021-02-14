@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 144 209
+Sheet 190 207
 Title "psMCU"
 Date ""
 Rev ""
@@ -879,11 +879,11 @@ PERIPH_W_ASYNC
 Text HLabel 1300 9700 0    50   Input ~ 0
 PERIPH_R_ASYNC
 Wire Wire Line
-	1300 9500 1450 9500
-Wire Wire Line
 	1300 9600 1450 9600
 Wire Wire Line
 	1300 9700 1450 9700
+Wire Bus Line
+	1450 9500 1300 9500
 Wire Bus Line
 	2650 1450 2650 2400
 Wire Bus Line

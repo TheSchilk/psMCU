@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 154 209
+Sheet 84 207
 Title "psMCU"
 Date ""
 Rev ""
@@ -487,8 +487,8 @@ DB6
 Text Label 2150 6650 0    50   ~ 0
 DB7
 Wire Bus Line
-	2050 5850 1950 5850
-Text HLabel 1950 5850 0    50   3State ~ 0
+	2050 5850 1550 5850
+Text HLabel 1550 5850 0    50   3State ~ 0
 DB[0..7]
 Entry Wire Line
 	2150 6650 2050 6550

@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 110 209
+Sheet 156 207
 Title "psMCU"
 Date ""
 Rev ""
@@ -15,11 +15,11 @@ Comment4 ""
 $EndDescr
 Text HLabel 6800 2900 2    50   Output ~ 0
 CLK_STEP
-Text HLabel 6800 3600 2    50   Output ~ 0
+Text HLabel 6850 3600 2    50   Output ~ 0
 CLK_STEP_EN
 Text HLabel 6750 4350 2    50   Output ~ 0
 UI_DO_RESET
-Text HLabel 6800 2100 2    50   Output ~ 0
+Text HLabel 6850 2100 2    50   Output ~ 0
 INST_STEP_EN
 Text HLabel 6750 5000 2    50   3State ~ 0
 INT_ASSERT
@@ -73,7 +73,7 @@ Wire Wire Line
 Wire Wire Line
 	6700 2000 6700 2100
 Wire Wire Line
-	6700 2100 6800 2100
+	6700 2100 6850 2100
 Connection ~ 6700 2000
 $Sheet
 S 5750 3400 850  200 
@@ -125,7 +125,7 @@ Wire Wire Line
 Wire Wire Line
 	6700 3500 6700 3600
 Wire Wire Line
-	6700 3600 6800 3600
+	6700 3600 6850 3600
 Connection ~ 6700 3500
 Text HLabel 6800 1400 2    50   Output ~ 0
 INST_STEP
@@ -308,16 +308,16 @@ Wire Wire Line
 Wire Wire Line
 	6700 2100 6700 2250
 Wire Wire Line
-	6700 2250 7400 2250
+	6700 2250 7450 2250
 Connection ~ 6700 2100
-Text Label 7400 2250 2    50   ~ 0
+Text Label 7450 2250 2    50   ~ 0
 LED_INST_STEP_EN
 Text Label 1850 3650 0    50   ~ 0
-LED_INST_STEP_EN
-Text Label 7400 3750 2    50   ~ 0
-LED_INST_STEP_EN
+LED_CLK_STEP_EN
+Text Label 7450 3750 2    50   ~ 0
+LED_CLK_STEP_EN
 Wire Wire Line
-	7400 3750 6700 3750
+	7450 3750 6700 3750
 Wire Wire Line
 	6700 3750 6700 3600
 Connection ~ 6700 3600

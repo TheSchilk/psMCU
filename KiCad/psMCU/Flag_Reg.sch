@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 147 209
+Sheet 202 207
 Title "psMCU"
 Date ""
 Rev ""
@@ -14,7 +14,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 Text HLabel 1300 10400 0    50   Input ~ 0
-Latch_EN
+Register_EN
 Text HLabel 1400 9050 0    50   Input ~ 0
 Add_Latch_EN
 Text HLabel 1400 9950 0    50   Input ~ 0
@@ -1292,23 +1292,7 @@ Connection ~ 3700 6250
 Wire Wire Line
 	1400 8100 1600 8100
 Text Label 2650 8150 2    50   ~ 0
-OE
-Text Label 4400 5950 3    50   ~ 0
-OE
-Wire Wire Line
-	4400 5950 4400 6050
-Text Label 4400 4550 3    50   ~ 0
-OE
-Wire Wire Line
-	4400 4550 4400 4650
-Text Label 4400 3150 3    50   ~ 0
-OE
-Wire Wire Line
-	4400 3150 4400 3250
-Text Label 4400 1750 3    50   ~ 0
-OE
-Wire Wire Line
-	4400 1750 4400 1850
+OE_internal
 Wire Wire Line
 	2200 8900 2150 8900
 $Comp
@@ -1729,7 +1713,31 @@ Wire Wire Line
 Connection ~ 3700 2800
 Wire Wire Line
 	3700 1400 4300 1400
+Connection ~ 3700 1400
+Text Label 3900 6000 0    50   ~ 0
+OE_internal
+Wire Wire Line
+	4400 6000 3900 6000
+Wire Wire Line
+	4400 6000 4400 6050
+Text Label 3900 1800 0    50   ~ 0
+OE_internal
+Wire Wire Line
+	4400 1800 3900 1800
+Wire Wire Line
+	4400 1800 4400 1850
+Text Label 3900 3200 0    50   ~ 0
+OE_internal
+Wire Wire Line
+	4400 3200 3900 3200
+Wire Wire Line
+	4400 3200 4400 3250
+Text Label 3900 4600 0    50   ~ 0
+OE_internal
+Wire Wire Line
+	4400 4600 3900 4600
+Wire Wire Line
+	4400 4600 4400 4650
 Wire Bus Line
 	5400 2050 5400 6700
-Connection ~ 3700 1400
 $EndSCHEMATC

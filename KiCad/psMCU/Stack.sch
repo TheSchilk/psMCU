@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 155 209
+Sheet 85 207
 Title "psMCU"
 Date ""
 Rev ""
@@ -515,54 +515,6 @@ Entry Wire Line
 	6050 3500 6150 3600
 Entry Wire Line
 	6050 3600 6150 3700
-Wire Wire Line
-	6150 2600 6800 2600
-Wire Wire Line
-	6150 2700 6800 2700
-Wire Wire Line
-	6150 2800 6800 2800
-Wire Wire Line
-	6150 2900 6800 2900
-Wire Wire Line
-	6150 3000 6800 3000
-Wire Wire Line
-	6150 3100 6800 3100
-Wire Wire Line
-	6150 3200 6800 3200
-Wire Wire Line
-	6150 3300 6800 3300
-Wire Wire Line
-	6150 3400 6800 3400
-Wire Wire Line
-	6150 3500 6800 3500
-Wire Wire Line
-	6150 3600 6800 3600
-Wire Wire Line
-	6150 3700 6800 3700
-Text Label 6150 2600 0    50   ~ 0
-STACK_PTR0
-Text Label 6150 2700 0    50   ~ 0
-STACK_PTR1
-Text Label 6150 2800 0    50   ~ 0
-STACK_PTR2
-Text Label 6150 2900 0    50   ~ 0
-STACK_PTR3
-Text Label 6150 3000 0    50   ~ 0
-STACK_PTR4
-Text Label 6150 3100 0    50   ~ 0
-STACK_PTR5
-Text Label 6150 3200 0    50   ~ 0
-STACK_PTR6
-Text Label 6150 3300 0    50   ~ 0
-STACK_PTR7
-Text Label 6150 3400 0    50   ~ 0
-STACK_PTR8
-Text Label 6150 3500 0    50   ~ 0
-STACK_PTR9
-Text Label 6150 3600 0    50   ~ 0
-STACK_PTR10
-Text Label 6150 3700 0    50   ~ 0
-STACK_PTR11
 $Sheet
 S 6350 800  1100 500 
 U 60720D05
@@ -582,15 +534,15 @@ Connection ~ 6150 600
 Wire Bus Line
 	6150 600  10950 600 
 $Sheet
-S 4800 2250 1150 500 
+S 4100 2250 1150 500 
 U 608FE1FD
 F0 "Stack_Ptr_Cntr" 50
 F1 "Stack_Ptr_Cntr.sch" 50
-F2 "STACK_PTR[0..11]" O R 5950 2350 50 
-F3 "INC_EN" I L 4800 2350 50 
-F4 "DEC_EN" I L 4800 2450 50 
-F5 "CLK" I L 4800 2550 50 
-F6 "~RESET" I L 4800 2650 50 
+F2 "STACK_PTR[0..11]" O R 5250 2350 50 
+F3 "INC_EN" I L 4100 2350 50 
+F4 "DEC_EN" I L 4100 2450 50 
+F5 "CLK" I L 4100 2550 50 
+F6 "~RESET" I L 4100 2650 50 
 $EndSheet
 Wire Wire Line
 	1600 900  1750 900 
@@ -607,14 +559,14 @@ CLK
 Wire Wire Line
 	6350 1200 6200 1200
 Wire Wire Line
-	4800 2650 4650 2650
+	4100 2650 3950 2650
 Text Label 6200 1200 0    50   ~ 0
 R
-Text Label 4650 2650 0    50   ~ 0
+Text Label 3950 2650 0    50   ~ 0
 ~R
 Wire Wire Line
-	4800 2550 4650 2550
-Text Label 4650 2550 0    50   ~ 0
+	4100 2550 3950 2550
+Text Label 3950 2550 0    50   ~ 0
 CLK
 Text Label 8350 950  3    50   ~ 0
 Present_Data
@@ -638,20 +590,18 @@ Text Label 2250 4150 2    50   ~ 0
 Dec_EN
 Wire Wire Line
 	1600 4150 1750 4150
-Text Label 4500 2350 0    50   ~ 0
+Text Label 3800 2350 0    50   ~ 0
 Inc_EN
 Text Label 5750 1000 0    50   ~ 0
 LatchSafeD_EN
-Text Label 4500 2450 0    50   ~ 0
+Text Label 3800 2450 0    50   ~ 0
 Dec_EN
 Wire Wire Line
-	4500 2450 4800 2450
+	3800 2450 4100 2450
 Wire Wire Line
-	4500 2350 4800 2350
+	3800 2350 4100 2350
 Wire Wire Line
 	6350 1000 5750 1000
-Wire Bus Line
-	5950 2350 6050 2350
 Text Label 4150 1700 2    50   ~ 0
 Present_Data
 $Comp
@@ -1363,6 +1313,60 @@ Wire Wire Line
 Connection ~ 1750 3450
 Wire Wire Line
 	1750 3450 3100 3450
+Wire Wire Line
+	6150 2600 6800 2600
+Wire Wire Line
+	6150 2700 6800 2700
+Wire Wire Line
+	6150 2800 6800 2800
+Wire Wire Line
+	6150 2900 6800 2900
+Wire Wire Line
+	6150 3000 6800 3000
+Wire Wire Line
+	6150 3100 6800 3100
+Wire Wire Line
+	6150 3200 6800 3200
+Wire Wire Line
+	6150 3300 6800 3300
+Wire Wire Line
+	6150 3400 6800 3400
+Wire Wire Line
+	6150 3500 6800 3500
+Wire Wire Line
+	6150 3600 6800 3600
+Wire Wire Line
+	6150 3700 6800 3700
+Text Label 6150 2600 0    50   ~ 0
+STACK_PTR0
+Text Label 6150 2700 0    50   ~ 0
+STACK_PTR1
+Text Label 6150 2800 0    50   ~ 0
+STACK_PTR2
+Text Label 6150 2900 0    50   ~ 0
+STACK_PTR3
+Text Label 6150 3000 0    50   ~ 0
+STACK_PTR4
+Text Label 6150 3100 0    50   ~ 0
+STACK_PTR5
+Text Label 6150 3200 0    50   ~ 0
+STACK_PTR6
+Text Label 6150 3300 0    50   ~ 0
+STACK_PTR7
+Text Label 6150 3400 0    50   ~ 0
+STACK_PTR8
+Text Label 6150 3500 0    50   ~ 0
+STACK_PTR9
+Text Label 6150 3600 0    50   ~ 0
+STACK_PTR10
+Text Label 6150 3700 0    50   ~ 0
+STACK_PTR11
+Text Label 5300 2350 0    50   ~ 0
+STACK_PTR[0..11]
+Wire Bus Line
+	5250 2350 6050 2350
+Text Label 7750 900  0    50   ~ 0
+DB_SYNC[0..7]
 Wire Bus Line
 	7450 900  9250 900 
 Wire Bus Line

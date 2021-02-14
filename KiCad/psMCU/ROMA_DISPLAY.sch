@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 63 209
+Sheet 23 207
 Title "psMCU"
 Date ""
 Rev ""
@@ -263,38 +263,6 @@ Wire Wire Line
 Connection ~ 2400 5150
 Wire Wire Line
 	2400 5150 2550 5150
-Entry Wire Line
-	6550 1400 6650 1500
-Entry Wire Line
-	6550 1500 6650 1600
-Entry Wire Line
-	6550 1600 6650 1700
-Entry Wire Line
-	6550 1700 6650 1800
-Entry Wire Line
-	6550 1800 6650 1900
-Entry Wire Line
-	6550 1900 6650 2000
-Entry Wire Line
-	6550 2000 6650 2100
-Entry Wire Line
-	6550 2100 6650 2200
-Text Label 6550 1400 2    50   ~ 0
-VAL0
-Text Label 6550 1500 2    50   ~ 0
-VAL1
-Text Label 6550 1600 2    50   ~ 0
-VAL2
-Text Label 6550 1700 2    50   ~ 0
-VAL3
-Text Label 6550 1800 2    50   ~ 0
-VAL4
-Text Label 6550 1900 2    50   ~ 0
-VAL5
-Text Label 6550 2000 2    50   ~ 0
-VAL6
-Text Label 6550 2100 2    50   ~ 0
-VAL7
 Text HLabel 3650 1300 0    50   BiDi ~ 0
 ROMA[0..13]
 $Comp
@@ -530,6 +498,59 @@ Wire Wire Line
 Wire Wire Line
 	4850 4250 4900 4250
 Connection ~ 4850 4200
+NoConn ~ 5900 4150
+NoConn ~ 5900 4250
+$Sheet
+S 7550 4450 700  200 
+U 604E8412
+F0 "LEDs: ROMA Bus" 50
+F1 "14BitLED.sch" 50
+F2 "VAL[0..13]" I L 7550 4550 50 
+$EndSheet
+Wire Wire Line
+	5900 2100 6550 2100
+Wire Wire Line
+	5900 2000 6550 2000
+Wire Wire Line
+	5900 1900 6550 1900
+Wire Wire Line
+	5900 1800 6550 1800
+Wire Wire Line
+	5900 1700 6550 1700
+Wire Wire Line
+	5900 1600 6550 1600
+Wire Wire Line
+	5900 1500 6550 1500
+Wire Wire Line
+	5900 1400 6550 1400
+Wire Wire Line
+	5900 4050 6550 4050
+Wire Wire Line
+	5900 3950 6550 3950
+Wire Wire Line
+	5900 3850 6550 3850
+Wire Wire Line
+	5900 3750 6550 3750
+Wire Wire Line
+	5900 3650 6550 3650
+Wire Wire Line
+	5900 3550 6550 3550
+Entry Wire Line
+	6550 1400 6650 1500
+Entry Wire Line
+	6550 1500 6650 1600
+Entry Wire Line
+	6550 1600 6650 1700
+Entry Wire Line
+	6550 1700 6650 1800
+Entry Wire Line
+	6550 1800 6650 1900
+Entry Wire Line
+	6550 1900 6650 2000
+Entry Wire Line
+	6550 2000 6650 2100
+Entry Wire Line
+	6550 2100 6650 2200
 Entry Wire Line
 	6550 3550 6650 3650
 Entry Wire Line
@@ -542,8 +563,24 @@ Entry Wire Line
 	6550 3950 6650 4050
 Entry Wire Line
 	6550 4050 6650 4150
-NoConn ~ 5900 4150
-NoConn ~ 5900 4250
+Wire Bus Line
+	6650 4550 7550 4550
+Text Label 6550 1400 2    50   ~ 0
+VAL0
+Text Label 6550 1500 2    50   ~ 0
+VAL1
+Text Label 6550 1600 2    50   ~ 0
+VAL2
+Text Label 6550 1700 2    50   ~ 0
+VAL3
+Text Label 6550 1800 2    50   ~ 0
+VAL4
+Text Label 6550 1900 2    50   ~ 0
+VAL5
+Text Label 6550 2000 2    50   ~ 0
+VAL6
+Text Label 6550 2100 2    50   ~ 0
+VAL7
 Text Label 6550 3550 2    50   ~ 0
 VAL8
 Text Label 6550 3650 2    50   ~ 0
@@ -556,45 +593,10 @@ Text Label 6550 3950 2    50   ~ 0
 VAL12
 Text Label 6550 4050 2    50   ~ 0
 VAL13
-Wire Wire Line
-	5900 1400 6550 1400
-Wire Wire Line
-	5900 1500 6550 1500
-Wire Wire Line
-	5900 1600 6550 1600
-Wire Wire Line
-	5900 1700 6550 1700
-Wire Wire Line
-	5900 1800 6550 1800
-Wire Wire Line
-	5900 1900 6550 1900
-Wire Wire Line
-	5900 2000 6550 2000
-Wire Wire Line
-	5900 2100 6550 2100
-Wire Wire Line
-	5900 3550 6550 3550
-Wire Wire Line
-	5900 3650 6550 3650
-Wire Wire Line
-	5900 3750 6550 3750
-Wire Wire Line
-	5900 3850 6550 3850
-Wire Wire Line
-	5900 3950 6550 3950
-Wire Wire Line
-	5900 4050 6550 4050
-Wire Bus Line
-	6650 4550 7550 4550
-$Sheet
-S 7550 4450 700  200 
-U 604E8412
-F0 "LEDs: ROMA Bus" 50
-F1 "14BitLED.sch" 50
-F2 "VAL[0..13]" I L 7550 4550 50 
-$EndSheet
 Wire Bus Line
 	4000 1300 4000 3950
 Wire Bus Line
 	6650 1500 6650 4550
+Text Label 7050 4550 0    50   ~ 0
+VAL[0..13]
 $EndSCHEMATC

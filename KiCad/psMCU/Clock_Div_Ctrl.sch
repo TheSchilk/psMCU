@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
-Sheet 6 209
+Sheet 6 207
 Title "psMCU"
 Date ""
 Rev ""

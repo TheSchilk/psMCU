@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 77 209
+Sheet 181 207
 Title "psMCU"
 Date ""
 Rev ""
@@ -433,7 +433,7 @@ Entry Wire Line
 Text Label 6600 3350 2    50   ~ 0
 VAL8
 Wire Bus Line
-	6700 3650 6900 3650
+	6700 3650 7350 3650
 Wire Wire Line
 	5650 3350 6600 3350
 Wire Wire Line
@@ -484,14 +484,16 @@ RAMA7
 Text Label 4250 3350 0    50   ~ 0
 RAMA8
 $Sheet
-S 6900 3550 700  200 
+S 7350 3550 700  200 
 U 6056ED09
 F0 "LEDs: RAMA Val" 50
 F1 "9BitLED.sch" 50
-F2 "VAL[0..8]" I L 6900 3650 50 
+F2 "VAL[0..8]" I L 7350 3650 50 
 $EndSheet
 Wire Bus Line
 	4150 1300 4150 3250
 Wire Bus Line
 	6700 1500 6700 3650
+Text Label 6800 3650 0    50   ~ 0
+VAL[0..8]
 $EndSCHEMATC

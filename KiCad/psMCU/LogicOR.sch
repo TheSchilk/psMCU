@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 106 209
+Sheet 69 207
 Title "psMCU"
 Date ""
 Rev ""
@@ -126,54 +126,6 @@ F 3 "http://www.ti.com/lit/gpn/sn74HC245" H 6150 1750 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	5500 2250 5650 2250
-Entry Wire Line
-	6900 1250 7000 1350
-Entry Wire Line
-	6900 1350 7000 1450
-Entry Wire Line
-	6900 1450 7000 1550
-Entry Wire Line
-	6900 1550 7000 1650
-Entry Wire Line
-	6900 1650 7000 1750
-Entry Wire Line
-	6900 1750 7000 1850
-Entry Wire Line
-	6900 1850 7000 1950
-Entry Wire Line
-	6900 1950 7000 2050
-Text Label 6900 1950 2    50   ~ 0
-DB0
-Text Label 6900 1850 2    50   ~ 0
-DB1
-Text Label 6900 1750 2    50   ~ 0
-DB2
-Text Label 6900 1650 2    50   ~ 0
-DB3
-Text Label 6900 1550 2    50   ~ 0
-DB4
-Text Label 6900 1450 2    50   ~ 0
-DB5
-Text Label 6900 1350 2    50   ~ 0
-DB6
-Text Label 6900 1250 2    50   ~ 0
-DB7
-Wire Wire Line
-	6650 1250 6900 1250
-Wire Wire Line
-	6650 1350 6900 1350
-Wire Wire Line
-	6650 1450 6900 1450
-Wire Wire Line
-	6650 1550 6900 1550
-Wire Wire Line
-	6650 1650 6900 1650
-Wire Wire Line
-	6650 1750 6900 1750
-Wire Wire Line
-	6650 1850 6900 1850
-Wire Wire Line
-	6650 1950 6900 1950
 Wire Wire Line
 	4350 1250 5650 1250
 $Comp
@@ -876,10 +828,58 @@ F 3 "" H 4500 7350 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	4500 7350 4500 7300
-Wire Bus Line
-	7000 1350 7000 2050
+Wire Wire Line
+	6650 1250 6900 1250
+Wire Wire Line
+	6650 1350 6900 1350
+Wire Wire Line
+	6650 1450 6900 1450
+Wire Wire Line
+	6650 1550 6900 1550
+Wire Wire Line
+	6650 1650 6900 1650
+Wire Wire Line
+	6650 1750 6900 1750
+Wire Wire Line
+	6650 1850 6900 1850
+Wire Wire Line
+	6650 1950 6900 1950
+Text Label 6900 1950 2    50   ~ 0
+DB7
+Text Label 6900 1850 2    50   ~ 0
+DB6
+Text Label 6900 1750 2    50   ~ 0
+DB5
+Text Label 6900 1650 2    50   ~ 0
+DB4
+Text Label 6900 1550 2    50   ~ 0
+DB3
+Text Label 6900 1450 2    50   ~ 0
+DB2
+Text Label 6900 1350 2    50   ~ 0
+DB1
+Text Label 6900 1250 2    50   ~ 0
+DB0
+Entry Wire Line
+	6900 1950 7000 2050
+Entry Wire Line
+	6900 1850 7000 1950
+Entry Wire Line
+	6900 1750 7000 1850
+Entry Wire Line
+	6900 1650 7000 1750
+Entry Wire Line
+	6900 1550 7000 1650
+Entry Wire Line
+	6900 1450 7000 1550
+Entry Wire Line
+	6900 1350 7000 1450
+Entry Wire Line
+	6900 1250 7000 1350
 Wire Bus Line
 	1400 900  1400 1600
 Wire Bus Line
 	1400 2250 1400 2950
+Wire Bus Line
+	7000 1350 7000 2050
 $EndSCHEMATC

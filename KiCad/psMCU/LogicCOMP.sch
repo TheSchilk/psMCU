@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
-Sheet 105 209
+Sheet 71 207
 Title "psMCU"
 Date ""
 Rev ""
@@ -1272,10 +1272,6 @@ Entry Wire Line
 	11750 5550 11850 5650
 Entry Wire Line
 	11750 5450 11850 5550
-Wire Bus Line
-	11850 6250 12200 6250
-Text HLabel 12200 6250 2    50   Output ~ 0
-OPB_COMP
 Wire Wire Line
 	11750 5450 11550 5450
 Wire Wire Line
@@ -1292,12 +1288,18 @@ Wire Wire Line
 	11750 6050 11550 6050
 Wire Wire Line
 	11750 6150 11550 6150
+Text Label 1100 900  0    50   ~ 0
+A[0..7]
+Text HLabel 12500 6250 2    50   Output ~ 0
+OP_B_COMP[0..7]
+Wire Bus Line
+	11850 6250 12500 6250
 Wire Bus Line
 	13100 1450 13100 2150
 Wire Bus Line
 	1400 900  1400 1600
 Wire Bus Line
 	11850 5550 11850 6250
-Text Label 1100 900  0    50   ~ 0
-A[0..7]
+Text Label 12000 6250 0    50   ~ 0
+VAL[0..7]
 $EndSCHEMATC

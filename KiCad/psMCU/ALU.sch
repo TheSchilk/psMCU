@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 167 209
+Sheet 96 207
 Title "psMCU"
 Date ""
 Rev ""
@@ -1364,8 +1364,6 @@ F 3 "" H 1500 4350 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	1500 4350 1500 4250
-Wire Wire Line
-	1850 4150 1750 4150
 Entry Wire Line
 	2000 3050 2100 3150
 Entry Wire Line
@@ -1467,8 +1465,6 @@ Wire Bus Line
 Wire Bus Line
 	2000 5200 1650 5200
 Wire Wire Line
-	1900 4150 2650 4150
-Wire Wire Line
 	1100 4150 1150 4150
 Wire Wire Line
 	1150 4150 1150 6400
@@ -1477,6 +1473,8 @@ Wire Wire Line
 	1150 4150 1200 4150
 Wire Wire Line
 	1150 6400 2650 6400
+Wire Wire Line
+	1750 4150 2650 4150
 Wire Bus Line
 	4750 1750 4750 4450
 Wire Bus Line

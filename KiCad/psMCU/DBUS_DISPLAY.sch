@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 48 209
+Sheet 26 207
 Title "psMCU"
 Date ""
 Rev ""
@@ -210,7 +210,7 @@ Wire Wire Line
 Wire Wire Line
 	4500 2850 4250 2850
 Wire Bus Line
-	5900 4200 6150 4200
+	5900 4200 6550 4200
 Wire Wire Line
 	4500 3750 4250 3750
 Wire Wire Line
@@ -383,11 +383,11 @@ Wire Wire Line
 Wire Wire Line
 	2800 4550 2800 4500
 $Sheet
-S 6150 4100 700  200 
+S 6550 4100 700  200 
 U 5F41E955
 F0 "LEDs: DBus " 50
 F1 "8BitLED.sch" 50
-F2 "VAL[0..7]" I L 6150 4200 50 
+F2 "VAL[0..7]" I L 6550 4200 50 
 $EndSheet
 Text Label 4500 1300 0    50   ~ 0
 DB[0..7]
@@ -412,4 +412,6 @@ Wire Bus Line
 	4150 2750 4150 3450
 Wire Bus Line
 	5900 2950 5900 4200
+Text Label 6050 4200 0    50   ~ 0
+VAL[0..7]
 $EndSCHEMATC

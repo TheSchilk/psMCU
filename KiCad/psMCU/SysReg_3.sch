@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 160 209
+Sheet 185 207
 Title "psMCU"
 Date ""
 Rev ""
@@ -798,22 +798,6 @@ Wire Wire Line
 Connection ~ 6250 5550
 Wire Wire Line
 	6250 5550 6700 5550
-$Sheet
-S 3000 4350 700  200 
-U 60491F62
-F0 "LED: SYS3 W" 50
-F1 "8BitLED.sch" 50
-F2 "VAL[0..7]" I R 3700 4450 50 
-$EndSheet
-$Sheet
-S 4550 5850 200  700 
-U 60494872
-F0 "LED: SYS3 R" 50
-F1 "8BitLED.sch" 50
-F2 "VAL[0..7]" I T 4650 5850 50 
-$EndSheet
-Wire Wire Line
-	4650 5850 4650 5550
 Wire Wire Line
 	4650 5550 6250 5550
 Wire Wire Line
@@ -848,8 +832,6 @@ PERIPH_W_ASYNC
 Text HLabel 2700 5550 0    50   Input ~ 0
 PERIPH_R_ASYNC
 Wire Wire Line
-	2700 5350 2850 5350
-Wire Wire Line
 	2700 5450 2850 5450
 Wire Wire Line
 	2700 5550 2850 5550
@@ -859,9 +841,31 @@ Wire Wire Line
 	4100 5550 4650 5550
 Connection ~ 4650 5550
 Wire Bus Line
+	2850 5350 2700 5350
+$Sheet
+S 4750 6050 700  200 
+U 6053C227
+F0 "LED: SYS3 R" 50
+F1 "1BitLED.sch" 50
+F2 "VAL" I L 4750 6150 50 
+$EndSheet
+Wire Wire Line
+	4650 6150 4750 6150
+Wire Wire Line
+	4650 5550 4650 6150
+$Sheet
+S 3000 4350 700  200 
+U 605425EC
+F0 "LED: SYS3 W" 50
+F1 "1BitLED.sch" 50
+F2 "VAL" I R 3700 4450 50 
+$EndSheet
+Wire Bus Line
 	7400 2600 7400 3400
 Wire Bus Line
 	6600 2600 6600 3950
 Wire Bus Line
 	9200 950  9200 3600
+Text Label 6850 2600 0    50   ~ 0
+VAL[0..7]
 $EndSCHEMATC

@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 33 209
+Sheet 11 207
 Title "psMCU"
 Date ""
 Rev ""
@@ -13,8 +13,6 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text HLabel 7200 1100 0    50   Input ~ 0
-Shift_Right
 Text Label 7500 1100 2    50   ~ 0
 ShftR
 $Sheet
@@ -1044,8 +1042,6 @@ F2 "VAL" I L 7600 1500 50
 $EndSheet
 Wire Wire Line
 	7150 1500 7600 1500
-Wire Wire Line
-	7200 1100 7600 1100
 $Sheet
 S 7150 4350 700  200 
 U 5FE6DBBD
@@ -1157,6 +1153,18 @@ F24 "Out6" I B 2800 3450 50
 F25 "Out7" I B 2400 3450 50 
 F26 "Select" I T 2000 2850 50 
 $EndSheet
+Wire Bus Line
+	6800 850  6350 850 
+Text HLabel 6350 850  0    50   Input ~ 0
+Inst[0..15]
+Wire Bus Line
+	6800 850  6800 1000
+Entry Wire Line
+	6800 1000 6900 1100
+Wire Wire Line
+	6900 1100 7600 1100
+Text Label 6900 1100 0    50   ~ 0
+Inst7
 Wire Bus Line
 	9950 4150 9950 4850
 Wire Bus Line

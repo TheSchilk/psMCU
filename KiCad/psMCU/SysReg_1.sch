@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 115 209
+Sheet 195 207
 Title "psMCU"
 Date ""
 Rev ""
@@ -98,44 +98,25 @@ PERIPH_W_ASYNC
 Text HLabel 1300 3150 0    50   Input ~ 0
 PERIPH_R_ASYNC
 Wire Wire Line
-	1300 2950 1450 2950
-Wire Wire Line
 	1300 3050 1450 3050
 Wire Wire Line
 	1300 3150 1450 3150
-$Sheet
-S 6900 4350 1150 1300
-U 608BAC66
-F0 "Flag_Reg" 50
-F1 "Flag_Reg.sch" 50
-F2 "Latch_EN" I L 6900 4450 50 
-F3 "Add_Latch_EN" I L 6900 4550 50 
-F4 "Sub_Latch_EN" I L 6900 4650 50 
-F5 "HBorrow_in" I L 6900 5250 50 
-F6 "Borrow_in" I L 6900 5150 50 
-F7 "HCarry_in" I L 6900 5050 50 
-F8 "Carry_in" I L 6900 4950 50 
-F9 "OE" I L 6900 4750 50 
-F10 "~RESET" I L 6900 5450 50 
-F11 "CLK" I L 6900 5550 50 
-F12 "DB[0..7]" T R 8050 4450 50 
-$EndSheet
 $Sheet
 S 4600 4350 1150 1300
 U 60DA00A1
 F0 "Flag_Reg_Shadow" 50
 F1 "Flag_Reg.sch" 50
-F2 "Latch_EN" I L 4600 4450 50 
-F3 "Add_Latch_EN" I L 4600 4550 50 
-F4 "Sub_Latch_EN" I L 4600 4650 50 
-F5 "HBorrow_in" I L 4600 5250 50 
-F6 "Borrow_in" I L 4600 5150 50 
-F7 "HCarry_in" I L 4600 5050 50 
-F8 "Carry_in" I L 4600 4950 50 
-F9 "OE" I L 4600 4750 50 
-F10 "~RESET" I L 4600 5450 50 
-F11 "CLK" I L 4600 5550 50 
-F12 "DB[0..7]" T R 5750 4450 50 
+F2 "Add_Latch_EN" I L 4600 4550 50 
+F3 "Sub_Latch_EN" I L 4600 4650 50 
+F4 "HBorrow_in" I L 4600 5250 50 
+F5 "Borrow_in" I L 4600 5150 50 
+F6 "HCarry_in" I L 4600 5050 50 
+F7 "Carry_in" I L 4600 4950 50 
+F8 "OE" I L 4600 4750 50 
+F9 "~RESET" I L 4600 5450 50 
+F10 "CLK" I L 4600 5550 50 
+F11 "DB[0..7]" T R 5750 4450 50 
+F12 "Register_EN" I L 4600 4450 50 
 $EndSheet
 $Comp
 L 74xGxx:74LVC1G04 U?
@@ -1221,5 +1202,29 @@ Wire Bus Line
 	8250 950  8250 1750
 Connection ~ 8250 1750
 Wire Bus Line
+	1300 2950 1450 2950
+Text HLabel 6900 1550 2    50   Output ~ 0
+ShiftIn
+Wire Wire Line
+	6900 1550 6800 1550
+Connection ~ 6800 1550
+Wire Bus Line
 	8250 1750 8250 4450
+$Sheet
+S 6900 4350 1150 1300
+U 608BAC66
+F0 "Flag_Reg" 50
+F1 "Flag_Reg.sch" 50
+F2 "Add_Latch_EN" I L 6900 4550 50 
+F3 "Sub_Latch_EN" I L 6900 4650 50 
+F4 "HBorrow_in" I L 6900 5250 50 
+F5 "Borrow_in" I L 6900 5150 50 
+F6 "HCarry_in" I L 6900 5050 50 
+F7 "Carry_in" I L 6900 4950 50 
+F8 "OE" I L 6900 4750 50 
+F9 "~RESET" I L 6900 5450 50 
+F10 "CLK" I L 6900 5550 50 
+F11 "DB[0..7]" T R 8050 4450 50 
+F12 "Register_EN" I L 6900 4450 50 
+$EndSheet
 $EndSCHEMATC

@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 11693 16535 portrait
 encoding utf-8
-Sheet 71 209
+Sheet 46 207
 Title "psMCU"
 Date ""
 Rev ""
@@ -947,9 +947,9 @@ Wire Bus Line
 	7950 9750 7950 10200
 Wire Bus Line
 	7950 10200 8800 10200
+Connection ~ 7950 9750
 Wire Bus Line
 	4600 1550 4600 9150
 Wire Bus Line
 	7950 1550 7950 9750
-Connection ~ 7950 9750
 $EndSCHEMATC

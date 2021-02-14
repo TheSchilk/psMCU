@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 205 209
+Sheet 135 207
 Title "psMCU"
 Date ""
 Rev ""
@@ -1243,13 +1243,13 @@ Wire Wire Line
 Wire Wire Line
 	1700 2300 2100 2300
 Text Label 2100 2300 2    50   ~ 0
-INT_SET
+INT_Set
 Text Label 5250 1200 2    50   ~ 0
-INT_SET
+INT_Set
 Wire Wire Line
 	5250 1200 4900 1200
 Text Label 950  4700 0    50   ~ 0
-INT_SET
+INT_Set
 Wire Wire Line
 	950  4700 1300 4700
 Wire Wire Line

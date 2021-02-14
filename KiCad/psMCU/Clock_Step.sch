@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 3 209
+Sheet 174 207
 Title "psMCU"
 Date ""
 Rev ""
@@ -989,4 +989,10 @@ Text HLabel 2150 5550 0    50   Input ~ 0
 CLK_STEP
 Text HLabel 1850 2450 0    50   Input ~ 0
 CONT_CLK
+Text Label 2250 5750 2    50   ~ 0
+~R
+Text HLabel 2150 5750 0    50   Input ~ 0
+~RESET
+Wire Wire Line
+	2150 5750 2250 5750
 $EndSCHEMATC
