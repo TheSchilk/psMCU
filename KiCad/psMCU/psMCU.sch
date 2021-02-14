@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
-Sheet 1 207
+Sheet 1 202
 Title "psMCU"
 Date ""
 Rev ""
@@ -13,12 +13,6 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-$Sheet
-S 7850 12550 2500 2150
-U 5F396002
-F0 "PALLET" 50
-F1 "PALLET.sch" 50
-$EndSheet
 $Sheet
 S 10800 1850 1200 400 
 U 609EB802
