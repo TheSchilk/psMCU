@@ -14,7 +14,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Sheet
-S -3550 14400 2500 2150
+S 7850 12550 2500 2150
 U 5F396002
 F0 "PALLET" 50
 F1 "PALLET.sch" 50
@@ -624,8 +624,6 @@ Wire Wire Line
 	13400 1700 13150 1700
 Text Label 13150 1700 0    50   ~ 0
 ~RESET
-Text Notes -2900 3300 0    50   ~ 0
-TODO: \n     ENABLE READBACK FOR VERIFICATION\n     Move ROMS to CPLDs
 Text Label 10550 8650 0    50   ~ 0
 ALU_DoBComp
 Text Label 10550 8550 0    50   ~ 0
