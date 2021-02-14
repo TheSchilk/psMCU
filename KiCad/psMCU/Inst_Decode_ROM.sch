@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 24 202
+Sheet 111 108
 Title "psMCU"
 Date ""
 Rev ""
@@ -312,9 +312,9 @@ Wire Wire Line
 	4250 3950 4350 3950
 Wire Wire Line
 	4350 3850 4250 3850
-Wire Bus Line
-	3550 1000 3550 2650
 Connection ~ 4250 3850
 Wire Wire Line
 	4250 3850 4250 3950
+Wire Bus Line
+	3550 1000 3550 2650
 $EndSCHEMATC
