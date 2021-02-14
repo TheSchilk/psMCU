@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 195 202
+Sheet 188 202
 Title "psMCU"
 Date ""
 Rev ""
@@ -128,7 +128,7 @@ AR Path="/5F396002/60DA979D" Ref="U?"  Part="1"
 AR Path="/5FD65262/60DA979D" Ref="U?"  Part="1" 
 F 0 "U?" H 5200 3600 50  0000 C CNN
 F 1 "74LVC1G04" H 5350 3700 50  0000 C CNN
-F 2 "" H 5100 3800 50  0001 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 5100 3800 50  0001 C CNN
 F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 5100 3800 50  0001 C CNN
 	1    5100 3800
 	1    0    0    -1  
@@ -543,7 +543,7 @@ AR Path="/5FD65262/60DA00A1/60E192A3" Ref="U?"  Part="1"
 AR Path="/5FD65262/60E192A3" Ref="U?"  Part="1" 
 F 0 "U?" H 7450 2150 50  0000 C CNN
 F 1 "74LVC1G126" H 7650 2050 50  0000 C CNN
-F 2 "" H 7300 2200 50  0001 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 7300 2200 50  0001 C CNN
 F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 7300 2200 50  0001 C CNN
 	1    7300 2200
 	1    0    0    -1  
@@ -855,7 +855,7 @@ AR Path="/5FD65262/60DA00A1/60FBC8C4" Ref="U?"  Part="1"
 AR Path="/5FD65262/60FBC8C4" Ref="U?"  Part="1" 
 F 0 "U?" H 9550 2750 50  0000 C CNN
 F 1 "74LVC1G126" H 9750 2650 50  0000 C CNN
-F 2 "" H 9400 2800 50  0001 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 9400 2800 50  0001 C CNN
 F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 9400 2800 50  0001 C CNN
 	1    9400 2800
 	-1   0    0    -1  
@@ -959,7 +959,7 @@ AR Path="/5FD65262/60DA00A1/60FCAF7C" Ref="U?"  Part="1"
 AR Path="/5FD65262/60FCAF7C" Ref="U?"  Part="1" 
 F 0 "U?" H 9550 3550 50  0000 C CNN
 F 1 "74LVC1G126" H 9750 3450 50  0000 C CNN
-F 2 "" H 9400 3600 50  0001 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 9400 3600 50  0001 C CNN
 F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 9400 3600 50  0001 C CNN
 	1    9400 3600
 	-1   0    0    -1  
@@ -1061,7 +1061,7 @@ AR Path="/5FD65262/60DA00A1/60FCFB55" Ref="U?"  Part="1"
 AR Path="/5FD65262/60FCFB55" Ref="U?"  Part="1" 
 F 0 "U?" H 9550 4350 50  0000 C CNN
 F 1 "74LVC1G126" H 9750 4250 50  0000 C CNN
-F 2 "" H 9400 4400 50  0001 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 9400 4400 50  0001 C CNN
 F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 9400 4400 50  0001 C CNN
 	1    9400 4400
 	-1   0    0    -1  
@@ -1208,8 +1208,6 @@ ShiftIn
 Wire Wire Line
 	6900 1550 6800 1550
 Connection ~ 6800 1550
-Wire Bus Line
-	8250 1750 8250 4450
 $Sheet
 S 6900 4350 1150 1300
 U 608BAC66
@@ -1227,4 +1225,6 @@ F10 "CLK" I L 6900 5550 50
 F11 "DB[0..7]" T R 8050 4450 50 
 F12 "Register_EN" I L 6900 4450 50 
 $EndSheet
+Wire Bus Line
+	8250 1750 8250 4450
 $EndSCHEMATC

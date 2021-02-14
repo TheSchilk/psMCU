@@ -224,7 +224,7 @@ AR Path="/5F396002/610A8A3B" Ref="U?"  Part="1"
 AR Path="/5FD6F26B/610A8A3B" Ref="U?"  Part="1" 
 F 0 "U?" H 7250 2400 50  0000 C CNN
 F 1 "74LVC1G04" H 7400 2500 50  0000 C CNN
-F 2 "" H 7150 2600 50  0001 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 7150 2600 50  0001 C CNN
 F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 7150 2600 50  0001 C CNN
 	1    7150 2600
 	1    0    0    -1  
@@ -322,7 +322,7 @@ AR Path="/5F396002/610BEE0F" Ref="U?"  Part="1"
 AR Path="/5FD6F26B/610BEE0F" Ref="U?"  Part="1" 
 F 0 "U?" H 7050 4900 50  0000 C CNN
 F 1 "74LVC1G04" H 7200 5000 50  0000 C CNN
-F 2 "" H 6950 5100 50  0001 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 6950 5100 50  0001 C CNN
 F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 6950 5100 50  0001 C CNN
 	1    6950 5100
 	1    0    0    -1  
@@ -881,7 +881,7 @@ AR Path="/5F396002/61257292" Ref="U?"  Part="1"
 AR Path="/5FD6F26B/61257292" Ref="U?"  Part="1" 
 F 0 "U?" H 9400 4250 50  0000 C CNN
 F 1 "74LVC1G04" H 9550 4350 50  0000 C CNN
-F 2 "" H 9300 4450 50  0001 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 9300 4450 50  0001 C CNN
 F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 9300 4450 50  0001 C CNN
 	1    9300 4450
 	1    0    0    -1  
@@ -1288,7 +1288,7 @@ AR Path="/5F396002/61460A2F" Ref="U?"  Part="1"
 AR Path="/5FD6F26B/61460A2F" Ref="U?"  Part="1" 
 F 0 "U?" H 1600 3950 50  0000 C CNN
 F 1 "74LVC1G04" H 1750 4050 50  0000 C CNN
-F 2 "" H 1500 4150 50  0001 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 1500 4150 50  0001 C CNN
 F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 1500 4150 50  0001 C CNN
 	1    1500 4150
 	1    0    0    -1  

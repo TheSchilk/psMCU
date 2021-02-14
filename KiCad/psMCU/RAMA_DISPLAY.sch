@@ -25,7 +25,7 @@ AR Path="/6041A022/5FDB352A" Ref="U?"  Part="1"
 AR Path="/604F08FB/5FDB352A" Ref="U?"  Part="1" 
 F 0 "U?" H 5500 2650 50  0000 C CNN
 F 1 "74HC245" H 5600 2550 50  0000 C CNN
-F 2 "" H 5400 1900 50  0001 C CNN
+F 2 "Package_SO:SSOP-20_5.3x7.2mm_P0.65mm" H 5400 1900 50  0001 C CNN
 F 3 "http://www.ti.com/lit/gpn/sn74HC245" H 5400 1900 50  0001 C CNN
 	1    5400 1900
 	1    0    0    -1  
@@ -405,7 +405,7 @@ AR Path="/5F396002/6052A2BF" Ref="U?"  Part="1"
 AR Path="/604F08FB/6052A2BF" Ref="U?"  Part="1" 
 F 0 "U?" H 5550 3300 50  0000 C CNN
 F 1 "74LVC1G125" H 5750 3200 50  0000 C CNN
-F 2 "" H 5400 3350 50  0001 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 5400 3350 50  0001 C CNN
 F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 5400 3350 50  0001 C CNN
 	1    5400 3350
 	1    0    0    -1  

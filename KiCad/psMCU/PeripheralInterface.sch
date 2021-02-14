@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 84 202
+Sheet 177 202
 Title "psMCU"
 Date ""
 Rev ""
@@ -368,8 +368,6 @@ Text Label 2200 1700 0    50   ~ 0
 RAMA8
 Wire Wire Line
 	2600 1700 2600 2800
-Text HLabel 7900 2350 0    50   Input ~ 0
-~RESET
 Wire Wire Line
 	2200 1700 2600 1700
 Wire Wire Line
@@ -560,8 +558,6 @@ Wire Wire Line
 Wire Wire Line
 	9100 1450 9050 1450
 Wire Wire Line
-	7900 2350 8550 2350
-Wire Wire Line
 	8550 2750 8500 2750
 Wire Wire Line
 	8500 2750 8500 2850
@@ -624,20 +620,14 @@ Wire Wire Line
 	9050 1950 9900 1950
 Wire Wire Line
 	9050 2050 9800 2050
-Text HLabel 10100 4700 2    50   3State ~ 0
-DB[0..7]
-Text HLabel 9900 4550 2    50   Input ~ 0
-CLK
-Text HLabel 9900 4450 2    50   3State ~ 0
-DB_OUT
-Text HLabel 7900 4950 0    50   Input ~ 0
+Text HLabel 7600 2350 0    50   Input ~ 0
 ~RESET
 $Comp
 L Connector_Generic:Conn_02x15_Odd_Even J?
 U 1 1 602CB31D
 P 8750 4750
 F 0 "J?" V 8800 5600 50  0000 C CNN
-F 1 "PERIPH_INTERFACE_1" V 8700 5900 50  0000 C CNN
+F 1 "PERIPH_INTERFACE_2" V 8700 5900 50  0000 C CNN
 F 2 "Connector_IDC:IDC-Header_2x15_P2.54mm_Vertical" H 8750 4750 50  0001 C CNN
 F 3 "~" H 8750 4750 50  0001 C CNN
 	1    8750 4750
@@ -685,12 +675,6 @@ Text Label 7600 5150 0    50   ~ 0
 PERIPH_W_ASYNC
 Text Label 7600 5250 0    50   ~ 0
 PERIPH_R_ASYNC
-Text HLabel 9900 4250 2    50   Input ~ 0
-INT_Active
-Text HLabel 9900 4350 2    50   BiDi ~ 0
-INT_Assert
-Text HLabel 9900 4150 2    50   Input ~ 0
-INT_EN
 Wire Wire Line
 	7600 5050 8550 5050
 Wire Wire Line
@@ -743,8 +727,6 @@ Text Label 9800 5250 2    50   ~ 0
 DB6
 Text Label 9800 5350 2    50   ~ 0
 DB7
-Wire Bus Line
-	9900 4700 10100 4700
 $Comp
 L power:+5V #PWR?
 U 1 1 602CB356
@@ -776,7 +758,7 @@ Wire Wire Line
 Wire Wire Line
 	9100 4050 9050 4050
 Wire Wire Line
-	7900 4950 8550 4950
+	7600 4950 8550 4950
 Wire Wire Line
 	8550 5350 8500 5350
 Wire Wire Line
@@ -829,19 +811,25 @@ Wire Wire Line
 Wire Wire Line
 	7600 4850 8550 4850
 Wire Wire Line
-	9050 4150 9900 4150
+	9050 4150 9800 4150
 Wire Wire Line
-	9050 4250 9900 4250
+	9050 4250 9800 4250
 Wire Wire Line
-	9050 4350 9900 4350
+	9050 4350 9800 4350
 Wire Wire Line
-	9050 4450 9900 4450
+	9050 4450 9800 4450
 Wire Wire Line
-	9050 4550 9900 4550
+	9050 4550 9800 4550
 Wire Wire Line
 	9050 4650 9800 4650
+Wire Wire Line
+	7600 2350 8550 2350
+Text Label 7600 2350 0    50   ~ 0
+~RESET
+Text Label 7600 4950 0    50   ~ 0
+~RESET
 Wire Bus Line
-	9900 2100 9900 2850
+	7500 3900 7500 4750
 Wire Bus Line
 	7500 1300 7500 2150
 Wire Bus Line
@@ -849,7 +837,25 @@ Wire Bus Line
 Wire Bus Line
 	2100 800  2100 1600
 Wire Bus Line
-	9900 4700 9900 5450
-Wire Bus Line
-	7500 3900 7500 4750
+	9900 2100 9900 5450
+Text Label 9800 1550 2    50   ~ 0
+INT_EN
+Text Label 9800 4150 2    50   ~ 0
+INT_EN
+Text Label 9800 1650 2    50   ~ 0
+INT_Active
+Text Label 9800 1750 2    50   ~ 0
+INT_Assert
+Text Label 9800 1850 2    50   ~ 0
+DB_OUT
+Text Label 9800 1950 2    50   ~ 0
+CLK
+Text Label 9800 4250 2    50   ~ 0
+INT_Active
+Text Label 9800 4350 2    50   ~ 0
+INT_Assert
+Text Label 9800 4450 2    50   ~ 0
+DB_OUT
+Text Label 9800 4550 2    50   ~ 0
+CLK
 $EndSCHEMATC

@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 87 202
+Sheet 80 202
 Title "psMCU"
 Date ""
 Rev ""
@@ -539,7 +539,7 @@ AR Path="/5F396002/60BC883C" Ref="U?"  Part="1"
 AR Path="/5FD6EE9C/608FE1FD/60BC883C" Ref="U?"  Part="1" 
 F 0 "U?" H 2700 2350 50  0000 C CNN
 F 1 "74LVC1G04" H 2850 2450 50  0000 C CNN
-F 2 "" H 2600 2550 50  0001 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 2600 2550 50  0001 C CNN
 F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 2600 2550 50  0001 C CNN
 	1    2600 2550
 	1    0    0    -1  
@@ -621,7 +621,7 @@ U 1 1 60BC8860
 P 1800 2550
 F 0 "U?" H 1950 2450 50  0000 C CNN
 F 1 "74LVC1G32" H 2100 2350 50  0000 C CNN
-F 2 "" H 1800 2550 50  0001 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 1800 2550 50  0001 C CNN
 F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 1800 2550 50  0001 C CNN
 	1    1800 2550
 	1    0    0    -1  

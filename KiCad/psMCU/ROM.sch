@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 11693 16535 portrait
 encoding utf-8
-Sheet 43 202
+Sheet 36 202
 Title "psMCU"
 Date ""
 Rev ""
@@ -1525,7 +1525,7 @@ AR Path="/5F396002/6001FC71" Ref="U?"  Part="1"
 AR Path="/5F28170E/6001FC71" Ref="U?"  Part="1" 
 F 0 "U?" H 2050 9300 50  0000 C CNN
 F 1 "74LVC1G175" H 2250 9400 50  0000 C CNN
-F 2 "" H 1900 9600 50  0001 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 1900 9600 50  0001 C CNN
 F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 1900 9600 50  0001 C CNN
 	1    1900 9600
 	1    0    0    -1  
@@ -1699,7 +1699,7 @@ AR Path="/5F396002/6019A438" Ref="U?"  Part="1"
 AR Path="/5F28170E/6019A438" Ref="U?"  Part="1" 
 F 0 "U?" H 3900 9450 50  0000 C CNN
 F 1 "74LVC1G125" H 4100 9350 50  0000 C CNN
-F 2 "" H 3750 9500 50  0001 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 3750 9500 50  0001 C CNN
 F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 3750 9500 50  0001 C CNN
 	1    3750 9500
 	1    0    0    -1  
@@ -3110,7 +3110,7 @@ U 1 1 65073679
 P 2150 14950
 F 0 "J?" H 2200 15467 50  0000 C CNN
 F 1 "PROG" H 2200 15376 50  0000 C CNN
-F 2 "" H 2150 14950 50  0001 C CNN
+F 2 "Connector_IDC:IDC-Header_2x08_P2.54mm_Vertical" H 2150 14950 50  0001 C CNN
 F 3 "~" H 2150 14950 50  0001 C CNN
 	1    2150 14950
 	1    0    0    -1  

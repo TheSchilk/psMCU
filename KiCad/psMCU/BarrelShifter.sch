@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 11 202
+Sheet 4 202
 Title "psMCU"
 Date ""
 Rev ""
@@ -556,7 +556,7 @@ AR Path="/5F394B96/5FB4D7F3" Ref="U?"  Part="1"
 AR Path="/5F43204F/5FB4D7F3" Ref="U?"  Part="1" 
 F 0 "U?" H 9200 5500 50  0000 C CNN
 F 1 "74HC245" H 9300 5400 50  0000 C CNN
-F 2 "" H 9100 4750 50  0001 C CNN
+F 2 "Package_SO:SSOP-20_5.3x7.2mm_P0.65mm" H 9100 4750 50  0001 C CNN
 F 3 "http://www.ti.com/lit/gpn/sn74HC245" H 9100 4750 50  0001 C CNN
 	1    9100 4750
 	1    0    0    -1  
@@ -771,7 +771,7 @@ AR Path="/5F396002/5FC04020" Ref="U?"  Part="1"
 AR Path="/5F43204F/5FC04020" Ref="U?"  Part="1" 
 F 0 "U?" H 7650 5050 50  0000 C CNN
 F 1 "74LVC1G04" H 7800 5150 50  0000 C CNN
-F 2 "" H 7550 5250 50  0001 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 7550 5250 50  0001 C CNN
 F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 7550 5250 50  0001 C CNN
 	1    7550 5250
 	1    0    0    -1  

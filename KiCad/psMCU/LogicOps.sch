@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 67 202
+Sheet 60 202
 Title "psMCU"
 Date ""
 Rev ""
@@ -285,7 +285,7 @@ AR Path="/5F396002/610FED1D" Ref="U?"  Part="1"
 AR Path="/5FF66C9F/610FED1D" Ref="U?"  Part="1" 
 F 0 "U?" H 4350 1250 50  0000 C CNN
 F 1 "74LVC1G04" H 4500 1350 50  0000 C CNN
-F 2 "" H 4250 1450 50  0001 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 4250 1450 50  0001 C CNN
 F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 4250 1450 50  0001 C CNN
 	1    4250 1450
 	0    1    1    0   
@@ -369,7 +369,7 @@ AR Path="/5F396002/61106B41" Ref="U?"  Part="1"
 AR Path="/5FF66C9F/61106B41" Ref="U?"  Part="1" 
 F 0 "U?" H 3300 2350 50  0000 C CNN
 F 1 "74LVC1G08" H 3450 2250 50  0000 C CNN
-F 2 "" H 3150 2450 50  0001 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 3150 2450 50  0001 C CNN
 F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 3150 2450 50  0001 C CNN
 	1    3150 2450
 	0    1    1    0   
@@ -455,7 +455,7 @@ AR Path="/5F396002/6110BBB8" Ref="U?"  Part="1"
 AR Path="/5FF66C9F/6110BBB8" Ref="U?"  Part="1" 
 F 0 "U?" H 3300 1250 50  0000 C CNN
 F 1 "74LVC1G04" H 3450 1350 50  0000 C CNN
-F 2 "" H 3200 1450 50  0001 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 3200 1450 50  0001 C CNN
 F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 3200 1450 50  0001 C CNN
 	1    3200 1450
 	0    1    1    0   

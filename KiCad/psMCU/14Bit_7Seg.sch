@@ -517,7 +517,7 @@ AR Path="/5FF66C9F/605F8495" Ref="U?"  Part="1"
 AR Path="/5F607AA2/6046BFE9/605F8495" Ref="U?"  Part="1" 
 F 0 "U?" H 3700 7950 50  0000 C CNN
 F 1 "74LVC1G04" H 3850 8050 50  0000 C CNN
-F 2 "" H 3600 8150 50  0001 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 3600 8150 50  0001 C CNN
 F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 3600 8150 50  0001 C CNN
 	1    3600 8150
 	1    0    0    -1  

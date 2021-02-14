@@ -25,7 +25,7 @@ AR Path="/6041A022/5F40D07B" Ref="U?"  Part="1"
 AR Path="/604F08FB/5F40D07B" Ref="U?"  Part="1" 
 F 0 "U?" H 5100 4100 50  0000 C CNN
 F 1 "74HC245" H 5200 4000 50  0000 C CNN
-F 2 "" H 5000 3350 50  0001 C CNN
+F 2 "Package_SO:SSOP-20_5.3x7.2mm_P0.65mm" H 5000 3350 50  0001 C CNN
 F 3 "http://www.ti.com/lit/gpn/sn74HC245" H 5000 3350 50  0001 C CNN
 	1    5000 3350
 	1    0    0    -1  
