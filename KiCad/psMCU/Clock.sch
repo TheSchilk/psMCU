@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 89 108
+Sheet 94 113
 Title "psMCU"
 Date ""
 Rev ""
@@ -63,6 +63,7 @@ F3 "DEC_CLK_F" I L 4050 2800 50
 F4 "OSC_IN" I L 4050 2700 50 
 F5 "POWER_ON_RESET" I L 4050 3000 50 
 F6 "F_SET[0..7]" O R 5400 2700 50 
+F7 "F_SET_NUM[0..2]" O R 5400 2800 50 
 $EndSheet
 Wire Wire Line
 	3950 3000 4050 3000
@@ -96,4 +97,12 @@ Text HLabel 8450 2550 0    50   Input ~ 0
 ~RESET
 Wire Wire Line
 	8450 2550 8550 2550
+Wire Bus Line
+	5400 2800 5650 2800
+Wire Bus Line
+	5650 2800 5650 3200
+Wire Bus Line
+	5650 3200 6000 3200
+Text HLabel 6000 3200 2    50   Output ~ 0
+F_SET_NUM[0..2]
 $EndSCHEMATC

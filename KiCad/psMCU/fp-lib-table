@@ -1,4 +1,4 @@
 (fp_lib_table
-  (lib (name PLCC-32_11.4x14.0mm_P1.27mm_SMD-Socket)(type KiCad)(uri ${KIPRJMOD}/PLCC-32_11.4x14.0mm_P1.27mm_SMD-Socket.pretty)(options "")(descr ""))
-  (lib (name IS62C256AL)(type KiCad)(uri ${KIPRJMOD}/IS62C256AL.pretty)(options "")(descr ""))
+  (lib (name IS62C256AL)(type KiCad)(uri ${KIPRJMOD}/IS62C256AL/Footprint/IS62C256AL.pretty)(options "")(descr ""))
+  (lib (name NoRef_Footprints)(type KiCad)(uri ${KIPRJMOD}/NoRef_Footprints/Footprint/NoRef_Footprints.pretty)(options "")(descr ""))
 )

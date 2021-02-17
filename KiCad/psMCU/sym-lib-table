@@ -1,7 +1,7 @@
 (sym_lib_table
-  (lib (name 74HC161)(type Legacy)(uri ${KIPRJMOD}/74HC161.lib)(options "")(descr ""))
-  (lib (name 74LVC1G157)(type Legacy)(uri ${KIPRJMOD}/74LVC1G157.lib)(options "")(descr ""))
-  (lib (name IS62C256AL)(type Legacy)(uri ${KIPRJMOD}/IS62C256AL.lib)(options "")(descr ""))
+  (lib (name 74HC161)(type Legacy)(uri ${KIPRJMOD}/74HC161/Symbol/74HC161.lib)(options "")(descr ""))
+  (lib (name 74LVC1G157)(type Legacy)(uri ${KIPRJMOD}/74LVC1G157/Symbol/74LVC1G157.lib)(options "")(descr ""))
+  (lib (name IS62C256AL)(type Legacy)(uri ${KIPRJMOD}/IS62C256AL/Symbol/IS62C256AL.lib)(options "")(descr ""))
   (lib (name SST39SF0x0_TSOP)(type Legacy)(uri ${KIPRJMOD}/SST39SF0x0_TSOP/Symbol/SST39SF0x0_TSOP.lib)(options "")(descr ""))
   (lib (name ATF16V8C)(type Legacy)(uri ${KIPRJMOD}/ATF16V8C/Symbol/ATF16V8C.lib)(options "")(descr ""))
 )

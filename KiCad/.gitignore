@@ -27,3 +27,5 @@ fp-info-cache
 
 # Replicate Layout
 replicate_layout.log
+
+*.erc
