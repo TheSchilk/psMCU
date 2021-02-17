@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 46 113
+Sheet 102 113
 Title "psMCU"
 Date ""
 Rev ""
@@ -11,7 +11,7 @@ Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 ""
-Comment4 ""
+Comment4 "9bit binary LED display."
 $EndDescr
 Entry Wire Line
 	3700 2150 3800 2250
@@ -622,8 +622,8 @@ AR Path="/5F396002/60363512/60378285" Ref="#PWR?"  Part="1"
 AR Path="/5F396002/60377143/60378285" Ref="#PWR?"  Part="1" 
 AR Path="/5F394B96/604F2BB1/60378285" Ref="#PWR?"  Part="1" 
 AR Path="/604F08FB/604F2BB1/60378285" Ref="#PWR?"  Part="1" 
-AR Path="/604F08FB/6056ED09/60378285" Ref="#PWR01542"  Part="1" 
-F 0 "#PWR01542" H 5300 2750 50  0001 C CNN
+AR Path="/604F08FB/6056ED09/60378285" Ref="#PWR01527"  Part="1" 
+F 0 "#PWR01527" H 5300 2750 50  0001 C CNN
 F 1 "GND" H 5305 2827 50  0000 C CNN
 F 2 "" H 5300 3000 50  0001 C CNN
 F 3 "" H 5300 3000 50  0001 C CNN

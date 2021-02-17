@@ -11,7 +11,7 @@ Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 ""
-Comment4 ""
+Comment4 "A 16bit 7-segment hexadecimal display."
 $EndDescr
 Text HLabel 1850 900  0    50   Input ~ 0
 VAL[0..15]
@@ -817,9 +817,9 @@ Wire Wire Line
 	2350 3800 2350 6000
 Wire Wire Line
 	3350 1650 2350 1650
-Wire Bus Line
-	2550 900  2550 7900
 Connection ~ 2350 1650
 Wire Wire Line
 	2350 1650 2350 3800
+Wire Bus Line
+	2550 900  2550 7900
 $EndSCHEMATC
