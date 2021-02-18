@@ -351,20 +351,20 @@ Text Label 1400 1350 0    50   ~ 0
 RESET
 Wire Wire Line
 	1400 1350 1950 1350
-Text Notes 6150 900  0    100  ~ 0
+Text Notes 2850 900  0    100  ~ 0
 Processor State:
-Text Label 6100 1350 0    50   ~ 0
+Text Label 2800 1350 0    50   ~ 0
 LED_Halted
 Wire Wire Line
-	7150 1350 7300 1350
+	3850 1350 4000 1350
 Wire Wire Line
-	7300 1350 7300 1450
+	4000 1350 4000 1450
 Wire Wire Line
-	7300 1650 7300 1750
+	4000 1650 4000 1750
 $Comp
 L power:GND #PWR?
 U 1 1 61029D0A
-P 7300 1750
+P 4000 1750
 AR Path="/60F73904/61029D0A" Ref="#PWR?"  Part="1" 
 AR Path="/60FA12D6/61029D0A" Ref="#PWR?"  Part="1" 
 AR Path="/60FA686E/61029D0A" Ref="#PWR?"  Part="1" 
@@ -374,68 +374,7 @@ AR Path="/60FA8857/61029D0A" Ref="#PWR?"  Part="1"
 AR Path="/60FAB88D/61029D0A" Ref="#PWR?"  Part="1" 
 AR Path="/60FAB893/61029D0A" Ref="#PWR?"  Part="1" 
 AR Path="/61029D0A" Ref="#PWR0107"  Part="1" 
-F 0 "#PWR0107" H 7300 1500 50  0001 C CNN
-F 1 "GND" H 7305 1577 50  0000 C CNN
-F 2 "" H 7300 1750 50  0001 C CNN
-F 3 "" H 7300 1750 50  0001 C CNN
-	1    7300 1750
-	-1   0    0    -1  
-$EndComp
-Wire Wire Line
-	7150 2300 7300 2300
-Wire Wire Line
-	7300 2300 7300 2400
-Wire Wire Line
-	7300 2600 7300 2700
-$Comp
-L power:GND #PWR?
-U 1 1 6102C7A0
-P 7300 2700
-AR Path="/60F73904/6102C7A0" Ref="#PWR?"  Part="1" 
-AR Path="/60FA12D6/6102C7A0" Ref="#PWR?"  Part="1" 
-AR Path="/60FA686E/6102C7A0" Ref="#PWR?"  Part="1" 
-AR Path="/60FA7824/6102C7A0" Ref="#PWR?"  Part="1" 
-AR Path="/60FA8167/6102C7A0" Ref="#PWR?"  Part="1" 
-AR Path="/60FA8857/6102C7A0" Ref="#PWR?"  Part="1" 
-AR Path="/60FAB88D/6102C7A0" Ref="#PWR?"  Part="1" 
-AR Path="/60FAB893/6102C7A0" Ref="#PWR?"  Part="1" 
-AR Path="/6102C7A0" Ref="#PWR0108"  Part="1" 
-F 0 "#PWR0108" H 7300 2450 50  0001 C CNN
-F 1 "GND" H 7305 2527 50  0000 C CNN
-F 2 "" H 7300 2700 50  0001 C CNN
-F 3 "" H 7300 2700 50  0001 C CNN
-	1    7300 2700
-	-1   0    0    -1  
-$EndComp
-Wire Wire Line
-	6850 2300 6650 2300
-Wire Wire Line
-	6100 1350 6650 1350
-Wire Wire Line
-	6650 1350 6650 2300
-Connection ~ 6650 1350
-Wire Wire Line
-	6650 1350 6850 1350
-Wire Wire Line
-	3850 1350 4000 1350
-Wire Wire Line
-	4000 1350 4000 1450
-Wire Wire Line
-	4000 1650 4000 1750
-$Comp
-L power:GND #PWR?
-U 1 1 6106B570
-P 4000 1750
-AR Path="/60F73904/6106B570" Ref="#PWR?"  Part="1" 
-AR Path="/60FA12D6/6106B570" Ref="#PWR?"  Part="1" 
-AR Path="/60FA686E/6106B570" Ref="#PWR?"  Part="1" 
-AR Path="/60FA7824/6106B570" Ref="#PWR?"  Part="1" 
-AR Path="/60FA8167/6106B570" Ref="#PWR?"  Part="1" 
-AR Path="/60FA8857/6106B570" Ref="#PWR?"  Part="1" 
-AR Path="/60FAB88D/6106B570" Ref="#PWR?"  Part="1" 
-AR Path="/60FAB893/6106B570" Ref="#PWR?"  Part="1" 
-AR Path="/6106B570" Ref="#PWR0109"  Part="1" 
-F 0 "#PWR0109" H 4000 1500 50  0001 C CNN
+F 0 "#PWR0107" H 4000 1500 50  0001 C CNN
 F 1 "GND" H 4005 1577 50  0000 C CNN
 F 2 "" H 4000 1750 50  0001 C CNN
 F 3 "" H 4000 1750 50  0001 C CNN
@@ -450,18 +389,18 @@ Wire Wire Line
 	4000 2600 4000 2700
 $Comp
 L power:GND #PWR?
-U 1 1 6106B585
+U 1 1 6102C7A0
 P 4000 2700
-AR Path="/60F73904/6106B585" Ref="#PWR?"  Part="1" 
-AR Path="/60FA12D6/6106B585" Ref="#PWR?"  Part="1" 
-AR Path="/60FA686E/6106B585" Ref="#PWR?"  Part="1" 
-AR Path="/60FA7824/6106B585" Ref="#PWR?"  Part="1" 
-AR Path="/60FA8167/6106B585" Ref="#PWR?"  Part="1" 
-AR Path="/60FA8857/6106B585" Ref="#PWR?"  Part="1" 
-AR Path="/60FAB88D/6106B585" Ref="#PWR?"  Part="1" 
-AR Path="/60FAB893/6106B585" Ref="#PWR?"  Part="1" 
-AR Path="/6106B585" Ref="#PWR0110"  Part="1" 
-F 0 "#PWR0110" H 4000 2450 50  0001 C CNN
+AR Path="/60F73904/6102C7A0" Ref="#PWR?"  Part="1" 
+AR Path="/60FA12D6/6102C7A0" Ref="#PWR?"  Part="1" 
+AR Path="/60FA686E/6102C7A0" Ref="#PWR?"  Part="1" 
+AR Path="/60FA7824/6102C7A0" Ref="#PWR?"  Part="1" 
+AR Path="/60FA8167/6102C7A0" Ref="#PWR?"  Part="1" 
+AR Path="/60FA8857/6102C7A0" Ref="#PWR?"  Part="1" 
+AR Path="/60FAB88D/6102C7A0" Ref="#PWR?"  Part="1" 
+AR Path="/60FAB893/6102C7A0" Ref="#PWR?"  Part="1" 
+AR Path="/6102C7A0" Ref="#PWR0108"  Part="1" 
+F 0 "#PWR0108" H 4000 2450 50  0001 C CNN
 F 1 "GND" H 4005 2527 50  0000 C CNN
 F 2 "" H 4000 2700 50  0001 C CNN
 F 3 "" H 4000 2700 50  0001 C CNN
@@ -477,89 +416,20 @@ Wire Wire Line
 Connection ~ 3350 1350
 Wire Wire Line
 	3350 1350 3550 1350
-Wire Wire Line
-	5500 1350 5650 1350
-Wire Wire Line
-	5650 1350 5650 1450
-Wire Wire Line
-	5650 1650 5650 1750
-$Comp
-L power:GND #PWR?
-U 1 1 610805EF
-P 5650 1750
-AR Path="/60F73904/610805EF" Ref="#PWR?"  Part="1" 
-AR Path="/60FA12D6/610805EF" Ref="#PWR?"  Part="1" 
-AR Path="/60FA686E/610805EF" Ref="#PWR?"  Part="1" 
-AR Path="/60FA7824/610805EF" Ref="#PWR?"  Part="1" 
-AR Path="/60FA8167/610805EF" Ref="#PWR?"  Part="1" 
-AR Path="/60FA8857/610805EF" Ref="#PWR?"  Part="1" 
-AR Path="/60FAB88D/610805EF" Ref="#PWR?"  Part="1" 
-AR Path="/60FAB893/610805EF" Ref="#PWR?"  Part="1" 
-AR Path="/610805EF" Ref="#PWR0111"  Part="1" 
-F 0 "#PWR0111" H 5650 1500 50  0001 C CNN
-F 1 "GND" H 5655 1577 50  0000 C CNN
-F 2 "" H 5650 1750 50  0001 C CNN
-F 3 "" H 5650 1750 50  0001 C CNN
-	1    5650 1750
-	-1   0    0    -1  
-$EndComp
-Wire Wire Line
-	5500 2300 5650 2300
-Wire Wire Line
-	5650 2300 5650 2400
-Wire Wire Line
-	5650 2600 5650 2700
-$Comp
-L power:GND #PWR?
-U 1 1 61080604
-P 5650 2700
-AR Path="/60F73904/61080604" Ref="#PWR?"  Part="1" 
-AR Path="/60FA12D6/61080604" Ref="#PWR?"  Part="1" 
-AR Path="/60FA686E/61080604" Ref="#PWR?"  Part="1" 
-AR Path="/60FA7824/61080604" Ref="#PWR?"  Part="1" 
-AR Path="/60FA8167/61080604" Ref="#PWR?"  Part="1" 
-AR Path="/60FA8857/61080604" Ref="#PWR?"  Part="1" 
-AR Path="/60FAB88D/61080604" Ref="#PWR?"  Part="1" 
-AR Path="/60FAB893/61080604" Ref="#PWR?"  Part="1" 
-AR Path="/61080604" Ref="#PWR0112"  Part="1" 
-F 0 "#PWR0112" H 5650 2450 50  0001 C CNN
-F 1 "GND" H 5655 2527 50  0000 C CNN
-F 2 "" H 5650 2700 50  0001 C CNN
-F 3 "" H 5650 2700 50  0001 C CNN
-	1    5650 2700
-	-1   0    0    -1  
-$EndComp
-Wire Wire Line
-	5200 2300 5000 2300
-Wire Wire Line
-	4450 1350 5000 1350
-Wire Wire Line
-	5000 1350 5000 2300
-Connection ~ 5000 1350
-Wire Wire Line
-	5000 1350 5200 1350
-Text Notes 4450 900  0    100  ~ 0
-Instruction Mode:
-Text Notes 3000 900  0    100  ~ 0
-Clock Mode:
 Text Notes 1700 900  0    100  ~ 0
 Status:
-Text Label 4450 1350 0    50   ~ 0
-LED_INST_STEP_EN
-Text Label 2800 1350 0    50   ~ 0
-LED_CLK_STEP_EN
-Text Notes 7900 900  0    100  ~ 0
+Text Notes 4600 900  0    100  ~ 0
 Reason for Halt:
 Wire Wire Line
-	8750 1350 8900 1350
+	5450 1350 5600 1350
 Wire Wire Line
-	8900 1350 8900 1450
+	5600 1350 5600 1450
 Wire Wire Line
-	8900 1650 8900 1750
+	5600 1650 5600 1750
 $Comp
 L power:GND #PWR?
 U 1 1 6113EE20
-P 8900 1750
+P 5600 1750
 AR Path="/60F73904/6113EE20" Ref="#PWR?"  Part="1" 
 AR Path="/60FA12D6/6113EE20" Ref="#PWR?"  Part="1" 
 AR Path="/60FA686E/6113EE20" Ref="#PWR?"  Part="1" 
@@ -569,23 +439,23 @@ AR Path="/60FA8857/6113EE20" Ref="#PWR?"  Part="1"
 AR Path="/60FAB88D/6113EE20" Ref="#PWR?"  Part="1" 
 AR Path="/60FAB893/6113EE20" Ref="#PWR?"  Part="1" 
 AR Path="/6113EE20" Ref="#PWR0113"  Part="1" 
-F 0 "#PWR0113" H 8900 1500 50  0001 C CNN
-F 1 "GND" H 8905 1577 50  0000 C CNN
-F 2 "" H 8900 1750 50  0001 C CNN
-F 3 "" H 8900 1750 50  0001 C CNN
-	1    8900 1750
+F 0 "#PWR0113" H 5600 1500 50  0001 C CNN
+F 1 "GND" H 5605 1577 50  0000 C CNN
+F 2 "" H 5600 1750 50  0001 C CNN
+F 3 "" H 5600 1750 50  0001 C CNN
+	1    5600 1750
 	-1   0    0    -1  
 $EndComp
 Wire Wire Line
-	8750 2300 8900 2300
+	5450 2300 5600 2300
 Wire Wire Line
-	8900 2300 8900 2400
+	5600 2300 5600 2400
 Wire Wire Line
-	8900 2600 8900 2700
+	5600 2600 5600 2700
 $Comp
 L power:GND #PWR?
 U 1 1 6113EE35
-P 8900 2700
+P 5600 2700
 AR Path="/60F73904/6113EE35" Ref="#PWR?"  Part="1" 
 AR Path="/60FA12D6/6113EE35" Ref="#PWR?"  Part="1" 
 AR Path="/60FA686E/6113EE35" Ref="#PWR?"  Part="1" 
@@ -595,27 +465,27 @@ AR Path="/60FA8857/6113EE35" Ref="#PWR?"  Part="1"
 AR Path="/60FAB88D/6113EE35" Ref="#PWR?"  Part="1" 
 AR Path="/60FAB893/6113EE35" Ref="#PWR?"  Part="1" 
 AR Path="/6113EE35" Ref="#PWR0114"  Part="1" 
-F 0 "#PWR0114" H 8900 2450 50  0001 C CNN
-F 1 "GND" H 8905 2527 50  0000 C CNN
-F 2 "" H 8900 2700 50  0001 C CNN
-F 3 "" H 8900 2700 50  0001 C CNN
-	1    8900 2700
+F 0 "#PWR0114" H 5600 2450 50  0001 C CNN
+F 1 "GND" H 5605 2527 50  0000 C CNN
+F 2 "" H 5600 2700 50  0001 C CNN
+F 3 "" H 5600 2700 50  0001 C CNN
+	1    5600 2700
 	-1   0    0    -1  
 $EndComp
 Wire Wire Line
-	7850 2300 8450 2300
+	4550 2300 5150 2300
 Wire Wire Line
-	7850 1350 8450 1350
+	4550 1350 5150 1350
 Wire Wire Line
-	8750 3250 8900 3250
+	5450 3250 5600 3250
 Wire Wire Line
-	8900 3250 8900 3350
+	5600 3250 5600 3350
 Wire Wire Line
-	8900 3550 8900 3650
+	5600 3550 5600 3650
 $Comp
 L power:GND #PWR?
 U 1 1 611491D2
-P 8900 3650
+P 5600 3650
 AR Path="/60F73904/611491D2" Ref="#PWR?"  Part="1" 
 AR Path="/60FA12D6/611491D2" Ref="#PWR?"  Part="1" 
 AR Path="/60FA686E/611491D2" Ref="#PWR?"  Part="1" 
@@ -625,27 +495,27 @@ AR Path="/60FA8857/611491D2" Ref="#PWR?"  Part="1"
 AR Path="/60FAB88D/611491D2" Ref="#PWR?"  Part="1" 
 AR Path="/60FAB893/611491D2" Ref="#PWR?"  Part="1" 
 AR Path="/611491D2" Ref="#PWR0115"  Part="1" 
-F 0 "#PWR0115" H 8900 3400 50  0001 C CNN
-F 1 "GND" H 8905 3477 50  0000 C CNN
-F 2 "" H 8900 3650 50  0001 C CNN
-F 3 "" H 8900 3650 50  0001 C CNN
-	1    8900 3650
+F 0 "#PWR0115" H 5600 3400 50  0001 C CNN
+F 1 "GND" H 5605 3477 50  0000 C CNN
+F 2 "" H 5600 3650 50  0001 C CNN
+F 3 "" H 5600 3650 50  0001 C CNN
+	1    5600 3650
 	-1   0    0    -1  
 $EndComp
-Text Label 7850 1350 0    50   ~ 0
+Text Label 4550 1350 0    50   ~ 0
 LED_Halted_Inst
-Text Label 7850 2300 0    50   ~ 0
+Text Label 4550 2300 0    50   ~ 0
 LED_Halted_Step
-Text Label 7850 3250 0    50   ~ 0
+Text Label 4550 3250 0    50   ~ 0
 LED_Halted_Bkpt
 Wire Wire Line
-	7850 3250 8450 3250
+	4550 3250 5150 3250
 Wire Wire Line
 	5100 5000 5450 5000
 $Comp
 L Device:LED D?
 U 1 1 611491D8
-P 8600 3250
+P 5300 3250
 AR Path="/60F73904/611491D8" Ref="D?"  Part="1" 
 AR Path="/60FA12D6/611491D8" Ref="D?"  Part="1" 
 AR Path="/60FA686E/611491D8" Ref="D?"  Part="1" 
@@ -655,17 +525,17 @@ AR Path="/60FA8857/611491D8" Ref="D?"  Part="1"
 AR Path="/60FAB88D/611491D8" Ref="D?"  Part="1" 
 AR Path="/60FAB893/611491D8" Ref="D?"  Part="1" 
 AR Path="/611491D8" Ref="D11"  Part="1" 
-F 0 "D11" H 8593 2995 50  0000 C CNN
-F 1 "LED" H 8593 3086 50  0000 C CNN
-F 2 "LED_THT:LED_D3.0mm" H 8600 3250 50  0001 C CNN
-F 3 "~" H 8600 3250 50  0001 C CNN
-	1    8600 3250
+F 0 "D11" H 5293 2995 50  0000 C CNN
+F 1 "LED" H 5293 3086 50  0000 C CNN
+F 2 "LED_THT:LED_D3.0mm" H 5300 3250 50  0001 C CNN
+F 3 "~" H 5300 3250 50  0001 C CNN
+	1    5300 3250
 	-1   0    0    1   
 $EndComp
 $Comp
 L Device:R_Small R?
 U 1 1 611491C9
-P 8900 3450
+P 5600 3450
 AR Path="/60F73904/611491C9" Ref="R?"  Part="1" 
 AR Path="/60FA12D6/611491C9" Ref="R?"  Part="1" 
 AR Path="/60FA686E/611491C9" Ref="R?"  Part="1" 
@@ -675,17 +545,17 @@ AR Path="/60FA8857/611491C9" Ref="R?"  Part="1"
 AR Path="/60FAB88D/611491C9" Ref="R?"  Part="1" 
 AR Path="/60FAB893/611491C9" Ref="R?"  Part="1" 
 AR Path="/611491C9" Ref="R11"  Part="1" 
-F 0 "R11" H 8841 3496 50  0000 R CNN
-F 1 "rled" H 8841 3405 50  0000 R CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" H 8900 3450 50  0001 C CNN
-F 3 "~" H 8900 3450 50  0001 C CNN
-	1    8900 3450
+F 0 "R11" H 5541 3496 50  0000 R CNN
+F 1 "rled" H 5541 3405 50  0000 R CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 5600 3450 50  0001 C CNN
+F 3 "~" H 5600 3450 50  0001 C CNN
+	1    5600 3450
 	-1   0    0    -1  
 $EndComp
 $Comp
 L Device:LED D?
 U 1 1 6113EE3B
-P 8600 2300
+P 5300 2300
 AR Path="/60F73904/6113EE3B" Ref="D?"  Part="1" 
 AR Path="/60FA12D6/6113EE3B" Ref="D?"  Part="1" 
 AR Path="/60FA686E/6113EE3B" Ref="D?"  Part="1" 
@@ -695,17 +565,17 @@ AR Path="/60FA8857/6113EE3B" Ref="D?"  Part="1"
 AR Path="/60FAB88D/6113EE3B" Ref="D?"  Part="1" 
 AR Path="/60FAB893/6113EE3B" Ref="D?"  Part="1" 
 AR Path="/6113EE3B" Ref="D10"  Part="1" 
-F 0 "D10" H 8593 2045 50  0000 C CNN
-F 1 "LED" H 8593 2136 50  0000 C CNN
-F 2 "LED_THT:LED_D3.0mm" H 8600 2300 50  0001 C CNN
-F 3 "~" H 8600 2300 50  0001 C CNN
-	1    8600 2300
+F 0 "D10" H 5293 2045 50  0000 C CNN
+F 1 "LED" H 5293 2136 50  0000 C CNN
+F 2 "LED_THT:LED_D3.0mm" H 5300 2300 50  0001 C CNN
+F 3 "~" H 5300 2300 50  0001 C CNN
+	1    5300 2300
 	-1   0    0    1   
 $EndComp
 $Comp
 L Device:R_Small R?
 U 1 1 6113EE2C
-P 8900 2500
+P 5600 2500
 AR Path="/60F73904/6113EE2C" Ref="R?"  Part="1" 
 AR Path="/60FA12D6/6113EE2C" Ref="R?"  Part="1" 
 AR Path="/60FA686E/6113EE2C" Ref="R?"  Part="1" 
@@ -715,17 +585,17 @@ AR Path="/60FA8857/6113EE2C" Ref="R?"  Part="1"
 AR Path="/60FAB88D/6113EE2C" Ref="R?"  Part="1" 
 AR Path="/60FAB893/6113EE2C" Ref="R?"  Part="1" 
 AR Path="/6113EE2C" Ref="R10"  Part="1" 
-F 0 "R10" H 8841 2546 50  0000 R CNN
-F 1 "rled" H 8841 2455 50  0000 R CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" H 8900 2500 50  0001 C CNN
-F 3 "~" H 8900 2500 50  0001 C CNN
-	1    8900 2500
+F 0 "R10" H 5541 2546 50  0000 R CNN
+F 1 "rled" H 5541 2455 50  0000 R CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 5600 2500 50  0001 C CNN
+F 3 "~" H 5600 2500 50  0001 C CNN
+	1    5600 2500
 	-1   0    0    -1  
 $EndComp
 $Comp
 L Device:LED D?
 U 1 1 6113EE26
-P 8600 1350
+P 5300 1350
 AR Path="/60F73904/6113EE26" Ref="D?"  Part="1" 
 AR Path="/60FA12D6/6113EE26" Ref="D?"  Part="1" 
 AR Path="/60FA686E/6113EE26" Ref="D?"  Part="1" 
@@ -735,17 +605,17 @@ AR Path="/60FA8857/6113EE26" Ref="D?"  Part="1"
 AR Path="/60FAB88D/6113EE26" Ref="D?"  Part="1" 
 AR Path="/60FAB893/6113EE26" Ref="D?"  Part="1" 
 AR Path="/6113EE26" Ref="D9"  Part="1" 
-F 0 "D9" H 8593 1095 50  0000 C CNN
-F 1 "LED" H 8593 1186 50  0000 C CNN
-F 2 "LED_THT:LED_D3.0mm" H 8600 1350 50  0001 C CNN
-F 3 "~" H 8600 1350 50  0001 C CNN
-	1    8600 1350
+F 0 "D9" H 5293 1095 50  0000 C CNN
+F 1 "LED" H 5293 1186 50  0000 C CNN
+F 2 "LED_THT:LED_D3.0mm" H 5300 1350 50  0001 C CNN
+F 3 "~" H 5300 1350 50  0001 C CNN
+	1    5300 1350
 	-1   0    0    1   
 $EndComp
 $Comp
 L Device:R_Small R?
 U 1 1 6113EE17
-P 8900 1550
+P 5600 1550
 AR Path="/60F73904/6113EE17" Ref="R?"  Part="1" 
 AR Path="/60FA12D6/6113EE17" Ref="R?"  Part="1" 
 AR Path="/60FA686E/6113EE17" Ref="R?"  Part="1" 
@@ -755,177 +625,17 @@ AR Path="/60FA8857/6113EE17" Ref="R?"  Part="1"
 AR Path="/60FAB88D/6113EE17" Ref="R?"  Part="1" 
 AR Path="/60FAB893/6113EE17" Ref="R?"  Part="1" 
 AR Path="/6113EE17" Ref="R9"  Part="1" 
-F 0 "R9" H 8841 1596 50  0000 R CNN
-F 1 "rled" H 8841 1505 50  0000 R CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" H 8900 1550 50  0001 C CNN
-F 3 "~" H 8900 1550 50  0001 C CNN
-	1    8900 1550
-	-1   0    0    -1  
-$EndComp
-$Comp
-L Device:LED D?
-U 1 1 6108060A
-P 5350 2300
-AR Path="/60F73904/6108060A" Ref="D?"  Part="1" 
-AR Path="/60FA12D6/6108060A" Ref="D?"  Part="1" 
-AR Path="/60FA686E/6108060A" Ref="D?"  Part="1" 
-AR Path="/60FA7824/6108060A" Ref="D?"  Part="1" 
-AR Path="/60FA8167/6108060A" Ref="D?"  Part="1" 
-AR Path="/60FA8857/6108060A" Ref="D?"  Part="1" 
-AR Path="/60FAB88D/6108060A" Ref="D?"  Part="1" 
-AR Path="/60FAB893/6108060A" Ref="D?"  Part="1" 
-AR Path="/6108060A" Ref="D6"  Part="1" 
-F 0 "D6" H 5343 2517 50  0000 C CNN
-F 1 "LED" H 5343 2426 50  0000 C CNN
-F 2 "LED_THT:LED_D3.0mm" H 5350 2300 50  0001 C CNN
-F 3 "~" H 5350 2300 50  0001 C CNN
-	1    5350 2300
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R_Small R?
-U 1 1 610805FB
-P 5650 2500
-AR Path="/60F73904/610805FB" Ref="R?"  Part="1" 
-AR Path="/60FA12D6/610805FB" Ref="R?"  Part="1" 
-AR Path="/60FA686E/610805FB" Ref="R?"  Part="1" 
-AR Path="/60FA7824/610805FB" Ref="R?"  Part="1" 
-AR Path="/60FA8167/610805FB" Ref="R?"  Part="1" 
-AR Path="/60FA8857/610805FB" Ref="R?"  Part="1" 
-AR Path="/60FAB88D/610805FB" Ref="R?"  Part="1" 
-AR Path="/60FAB893/610805FB" Ref="R?"  Part="1" 
-AR Path="/610805FB" Ref="R6"  Part="1" 
-F 0 "R6" H 5591 2546 50  0000 R CNN
-F 1 "rled" H 5591 2455 50  0000 R CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" H 5650 2500 50  0001 C CNN
-F 3 "~" H 5650 2500 50  0001 C CNN
-	1    5650 2500
-	-1   0    0    -1  
-$EndComp
-$Comp
-L Device:LED D?
-U 1 1 610805F5
-P 5350 1350
-AR Path="/60F73904/610805F5" Ref="D?"  Part="1" 
-AR Path="/60FA12D6/610805F5" Ref="D?"  Part="1" 
-AR Path="/60FA686E/610805F5" Ref="D?"  Part="1" 
-AR Path="/60FA7824/610805F5" Ref="D?"  Part="1" 
-AR Path="/60FA8167/610805F5" Ref="D?"  Part="1" 
-AR Path="/60FA8857/610805F5" Ref="D?"  Part="1" 
-AR Path="/60FAB88D/610805F5" Ref="D?"  Part="1" 
-AR Path="/60FAB893/610805F5" Ref="D?"  Part="1" 
-AR Path="/610805F5" Ref="D5"  Part="1" 
-F 0 "D5" H 5343 1095 50  0000 C CNN
-F 1 "LED" H 5343 1186 50  0000 C CNN
-F 2 "LED_THT:LED_D3.0mm" H 5350 1350 50  0001 C CNN
-F 3 "~" H 5350 1350 50  0001 C CNN
-	1    5350 1350
-	-1   0    0    1   
-$EndComp
-$Comp
-L Device:R_Small R?
-U 1 1 610805E6
-P 5650 1550
-AR Path="/60F73904/610805E6" Ref="R?"  Part="1" 
-AR Path="/60FA12D6/610805E6" Ref="R?"  Part="1" 
-AR Path="/60FA686E/610805E6" Ref="R?"  Part="1" 
-AR Path="/60FA7824/610805E6" Ref="R?"  Part="1" 
-AR Path="/60FA8167/610805E6" Ref="R?"  Part="1" 
-AR Path="/60FA8857/610805E6" Ref="R?"  Part="1" 
-AR Path="/60FAB88D/610805E6" Ref="R?"  Part="1" 
-AR Path="/60FAB893/610805E6" Ref="R?"  Part="1" 
-AR Path="/610805E6" Ref="R5"  Part="1" 
-F 0 "R5" H 5591 1596 50  0000 R CNN
-F 1 "rled" H 5591 1505 50  0000 R CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" H 5650 1550 50  0001 C CNN
-F 3 "~" H 5650 1550 50  0001 C CNN
-	1    5650 1550
-	-1   0    0    -1  
-$EndComp
-$Comp
-L Device:LED D?
-U 1 1 6106B58B
-P 3700 2300
-AR Path="/60F73904/6106B58B" Ref="D?"  Part="1" 
-AR Path="/60FA12D6/6106B58B" Ref="D?"  Part="1" 
-AR Path="/60FA686E/6106B58B" Ref="D?"  Part="1" 
-AR Path="/60FA7824/6106B58B" Ref="D?"  Part="1" 
-AR Path="/60FA8167/6106B58B" Ref="D?"  Part="1" 
-AR Path="/60FA8857/6106B58B" Ref="D?"  Part="1" 
-AR Path="/60FAB88D/6106B58B" Ref="D?"  Part="1" 
-AR Path="/60FAB893/6106B58B" Ref="D?"  Part="1" 
-AR Path="/6106B58B" Ref="D4"  Part="1" 
-F 0 "D4" H 3693 2517 50  0000 C CNN
-F 1 "LED" H 3693 2426 50  0000 C CNN
-F 2 "LED_THT:LED_D3.0mm" H 3700 2300 50  0001 C CNN
-F 3 "~" H 3700 2300 50  0001 C CNN
-	1    3700 2300
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R_Small R?
-U 1 1 6106B57C
-P 4000 2500
-AR Path="/60F73904/6106B57C" Ref="R?"  Part="1" 
-AR Path="/60FA12D6/6106B57C" Ref="R?"  Part="1" 
-AR Path="/60FA686E/6106B57C" Ref="R?"  Part="1" 
-AR Path="/60FA7824/6106B57C" Ref="R?"  Part="1" 
-AR Path="/60FA8167/6106B57C" Ref="R?"  Part="1" 
-AR Path="/60FA8857/6106B57C" Ref="R?"  Part="1" 
-AR Path="/60FAB88D/6106B57C" Ref="R?"  Part="1" 
-AR Path="/60FAB893/6106B57C" Ref="R?"  Part="1" 
-AR Path="/6106B57C" Ref="R4"  Part="1" 
-F 0 "R4" H 3941 2546 50  0000 R CNN
-F 1 "rled" H 3941 2455 50  0000 R CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" H 4000 2500 50  0001 C CNN
-F 3 "~" H 4000 2500 50  0001 C CNN
-	1    4000 2500
-	-1   0    0    -1  
-$EndComp
-$Comp
-L Device:LED D?
-U 1 1 6106B576
-P 3700 1350
-AR Path="/60F73904/6106B576" Ref="D?"  Part="1" 
-AR Path="/60FA12D6/6106B576" Ref="D?"  Part="1" 
-AR Path="/60FA686E/6106B576" Ref="D?"  Part="1" 
-AR Path="/60FA7824/6106B576" Ref="D?"  Part="1" 
-AR Path="/60FA8167/6106B576" Ref="D?"  Part="1" 
-AR Path="/60FA8857/6106B576" Ref="D?"  Part="1" 
-AR Path="/60FAB88D/6106B576" Ref="D?"  Part="1" 
-AR Path="/60FAB893/6106B576" Ref="D?"  Part="1" 
-AR Path="/6106B576" Ref="D3"  Part="1" 
-F 0 "D3" H 3693 1095 50  0000 C CNN
-F 1 "LED" H 3693 1186 50  0000 C CNN
-F 2 "LED_THT:LED_D3.0mm" H 3700 1350 50  0001 C CNN
-F 3 "~" H 3700 1350 50  0001 C CNN
-	1    3700 1350
-	-1   0    0    1   
-$EndComp
-$Comp
-L Device:R_Small R?
-U 1 1 6106B567
-P 4000 1550
-AR Path="/60F73904/6106B567" Ref="R?"  Part="1" 
-AR Path="/60FA12D6/6106B567" Ref="R?"  Part="1" 
-AR Path="/60FA686E/6106B567" Ref="R?"  Part="1" 
-AR Path="/60FA7824/6106B567" Ref="R?"  Part="1" 
-AR Path="/60FA8167/6106B567" Ref="R?"  Part="1" 
-AR Path="/60FA8857/6106B567" Ref="R?"  Part="1" 
-AR Path="/60FAB88D/6106B567" Ref="R?"  Part="1" 
-AR Path="/60FAB893/6106B567" Ref="R?"  Part="1" 
-AR Path="/6106B567" Ref="R3"  Part="1" 
-F 0 "R3" H 3941 1596 50  0000 R CNN
-F 1 "rled" H 3941 1505 50  0000 R CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" H 4000 1550 50  0001 C CNN
-F 3 "~" H 4000 1550 50  0001 C CNN
-	1    4000 1550
+F 0 "R9" H 5541 1596 50  0000 R CNN
+F 1 "rled" H 5541 1505 50  0000 R CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 5600 1550 50  0001 C CNN
+F 3 "~" H 5600 1550 50  0001 C CNN
+	1    5600 1550
 	-1   0    0    -1  
 $EndComp
 $Comp
 L Device:LED D?
 U 1 1 6102C7A6
-P 7000 2300
+P 3700 2300
 AR Path="/60F73904/6102C7A6" Ref="D?"  Part="1" 
 AR Path="/60FA12D6/6102C7A6" Ref="D?"  Part="1" 
 AR Path="/60FA686E/6102C7A6" Ref="D?"  Part="1" 
@@ -935,17 +645,17 @@ AR Path="/60FA8857/6102C7A6" Ref="D?"  Part="1"
 AR Path="/60FAB88D/6102C7A6" Ref="D?"  Part="1" 
 AR Path="/60FAB893/6102C7A6" Ref="D?"  Part="1" 
 AR Path="/6102C7A6" Ref="D8"  Part="1" 
-F 0 "D8" H 6993 2517 50  0000 C CNN
-F 1 "LED" H 6993 2426 50  0000 C CNN
-F 2 "LED_THT:LED_D3.0mm" H 7000 2300 50  0001 C CNN
-F 3 "~" H 7000 2300 50  0001 C CNN
-	1    7000 2300
+F 0 "D8" H 3693 2517 50  0000 C CNN
+F 1 "LED" H 3693 2426 50  0000 C CNN
+F 2 "LED_THT:LED_D3.0mm" H 3700 2300 50  0001 C CNN
+F 3 "~" H 3700 2300 50  0001 C CNN
+	1    3700 2300
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:R_Small R?
 U 1 1 6102C797
-P 7300 2500
+P 4000 2500
 AR Path="/60F73904/6102C797" Ref="R?"  Part="1" 
 AR Path="/60FA12D6/6102C797" Ref="R?"  Part="1" 
 AR Path="/60FA686E/6102C797" Ref="R?"  Part="1" 
@@ -955,17 +665,17 @@ AR Path="/60FA8857/6102C797" Ref="R?"  Part="1"
 AR Path="/60FAB88D/6102C797" Ref="R?"  Part="1" 
 AR Path="/60FAB893/6102C797" Ref="R?"  Part="1" 
 AR Path="/6102C797" Ref="R8"  Part="1" 
-F 0 "R8" H 7241 2546 50  0000 R CNN
-F 1 "rled" H 7241 2455 50  0000 R CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" H 7300 2500 50  0001 C CNN
-F 3 "~" H 7300 2500 50  0001 C CNN
-	1    7300 2500
+F 0 "R8" H 3941 2546 50  0000 R CNN
+F 1 "rled" H 3941 2455 50  0000 R CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 4000 2500 50  0001 C CNN
+F 3 "~" H 4000 2500 50  0001 C CNN
+	1    4000 2500
 	-1   0    0    -1  
 $EndComp
 $Comp
 L Device:LED D?
 U 1 1 61029D10
-P 7000 1350
+P 3700 1350
 AR Path="/60F73904/61029D10" Ref="D?"  Part="1" 
 AR Path="/60FA12D6/61029D10" Ref="D?"  Part="1" 
 AR Path="/60FA686E/61029D10" Ref="D?"  Part="1" 
@@ -975,17 +685,17 @@ AR Path="/60FA8857/61029D10" Ref="D?"  Part="1"
 AR Path="/60FAB88D/61029D10" Ref="D?"  Part="1" 
 AR Path="/60FAB893/61029D10" Ref="D?"  Part="1" 
 AR Path="/61029D10" Ref="D7"  Part="1" 
-F 0 "D7" H 6993 1095 50  0000 C CNN
-F 1 "LED" H 6993 1186 50  0000 C CNN
-F 2 "LED_THT:LED_D3.0mm" H 7000 1350 50  0001 C CNN
-F 3 "~" H 7000 1350 50  0001 C CNN
-	1    7000 1350
+F 0 "D7" H 3693 1095 50  0000 C CNN
+F 1 "LED" H 3693 1186 50  0000 C CNN
+F 2 "LED_THT:LED_D3.0mm" H 3700 1350 50  0001 C CNN
+F 3 "~" H 3700 1350 50  0001 C CNN
+	1    3700 1350
 	-1   0    0    1   
 $EndComp
 $Comp
 L Device:R_Small R?
 U 1 1 61029D01
-P 7300 1550
+P 4000 1550
 AR Path="/60F73904/61029D01" Ref="R?"  Part="1" 
 AR Path="/60FA12D6/61029D01" Ref="R?"  Part="1" 
 AR Path="/60FA686E/61029D01" Ref="R?"  Part="1" 
@@ -995,11 +705,11 @@ AR Path="/60FA8857/61029D01" Ref="R?"  Part="1"
 AR Path="/60FAB88D/61029D01" Ref="R?"  Part="1" 
 AR Path="/60FAB893/61029D01" Ref="R?"  Part="1" 
 AR Path="/61029D01" Ref="R7"  Part="1" 
-F 0 "R7" H 7241 1596 50  0000 R CNN
-F 1 "rled" H 7241 1505 50  0000 R CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" H 7300 1550 50  0001 C CNN
-F 3 "~" H 7300 1550 50  0001 C CNN
-	1    7300 1550
+F 0 "R7" H 3941 1596 50  0000 R CNN
+F 1 "rled" H 3941 1505 50  0000 R CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 4000 1550 50  0001 C CNN
+F 3 "~" H 4000 1550 50  0001 C CNN
+	1    4000 1550
 	-1   0    0    -1  
 $EndComp
 $Comp
