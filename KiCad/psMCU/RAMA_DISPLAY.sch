@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 101 113
+Sheet 101 110
 Title "psMCU"
 Date ""
 Rev ""
@@ -945,7 +945,7 @@ U 1 1 6061441D
 P 5850 5050
 F 0 "R412" V 5900 5150 50  0000 L CNN
 F 1 "10K" V 5900 4800 50  0000 L CNN
-F 2 "" H 5850 5050 50  0001 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" H 5850 5050 50  0001 C CNN
 F 3 "~" H 5850 5050 50  0001 C CNN
 	1    5850 5050
 	0    1    1    0   

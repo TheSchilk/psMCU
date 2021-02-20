@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
-Sheet 1 113
+Sheet 1 110
 Title "psMCU"
 Date ""
 Rev ""
@@ -102,18 +102,18 @@ F3 "NextInst[0..15]" O R 10000 800 50
 F4 "PROG_DO_RESET" O R 10000 900 50 
 $EndSheet
 $Sheet
-S 7300 700  1050 1000
+S 7350 700  1050 1000
 U 5F607AA2
 F0 "PC" 50
 F1 "PC.sch" 50
-F2 "PC[0..13]" O R 8350 800 50 
-F3 "INC_EN" I L 7300 1200 50 
-F4 "CLK" I L 7300 1500 50 
-F5 "~RESET" I L 7300 1600 50 
-F6 "CNDT_INC_EN" I L 7300 1000 50 
-F7 "CNDT_AFFIRMATIVE" I L 7300 1100 50 
-F8 "LATCH_EN" I L 7300 1300 50 
-F9 "ROMA[0..13]" B L 7300 800 50 
+F2 "PC[0..13]" O R 8400 800 50 
+F3 "INC_EN" I L 7350 1200 50 
+F4 "CLK" I L 7350 1500 50 
+F5 "~RESET" I L 7350 1600 50 
+F6 "CNDT_INC_EN" I L 7350 1000 50 
+F7 "CNDT_AFFIRMATIVE" I L 7350 1100 50 
+F8 "LATCH_EN" I L 7350 1300 50 
+F9 "ROMA[0..13]" B L 7350 800 50 
 $EndSheet
 $Sheet
 S 6950 3200 1250 350 
@@ -309,14 +309,14 @@ F53 "UI_Halt_Step" O R 14850 1100 50
 F54 "UI_Halt_Bkpt" O R 14850 1200 50 
 $EndSheet
 Wire Bus Line
-	8350 800  8500 800 
+	8400 800  8550 800 
 Wire Bus Line
-	8500 800  8500 1450
+	8550 800  8550 1450
 Wire Bus Line
-	8500 1450 8700 1450
-Connection ~ 8500 800 
+	8550 1450 8700 1450
+Connection ~ 8550 800 
 Wire Bus Line
-	8500 800  8700 800 
+	8550 800  8700 800 
 Text Label 15350 800  2    50   ~ 0
 INT_Active
 Text Label 15350 900  2    50   ~ 0
@@ -577,17 +577,13 @@ Wire Wire Line
 	950  7900 1900 7900
 Wire Wire Line
 	950  7700 1900 7700
-Wire Wire Line
-	7300 1500 7050 1500
-Text Label 7050 1500 0    50   ~ 0
+Text Label 7100 1500 0    50   ~ 0
 CLK
 Wire Wire Line
 	10850 1300 10600 1300
 Text Label 10600 1300 0    50   ~ 0
 RESET
-Wire Wire Line
-	7300 1600 7050 1600
-Text Label 7050 1600 0    50   ~ 0
+Text Label 7100 1600 0    50   ~ 0
 ~RESET
 Wire Wire Line
 	10850 1200 10600 1200
@@ -597,18 +593,12 @@ Text Label 10150 1000 0    50   ~ 0
 InstReg_Latch_EN
 Wire Wire Line
 	10850 1000 10150 1000
-Text Label 6600 1200 0    50   ~ 0
+Text Label 6650 1200 0    50   ~ 0
 PC_Inc_EN
-Text Label 6600 1000 0    50   ~ 0
+Text Label 6650 1000 0    50   ~ 0
 PC_CondInc_EN
-Text Label 6600 1300 0    50   ~ 0
+Text Label 6650 1300 0    50   ~ 0
 PC_Latch_EN
-Wire Wire Line
-	7300 1200 6600 1200
-Wire Wire Line
-	7300 1000 6600 1000
-Wire Wire Line
-	7300 1300 6600 1300
 Wire Wire Line
 	13400 1600 13150 1600
 Text Label 13150 1600 0    50   ~ 0
@@ -713,9 +703,7 @@ Wire Wire Line
 	12600 5100 13300 5100
 Text Label 13300 5100 2    50   ~ 0
 CNDT_AFFIRMATIVE
-Wire Wire Line
-	7300 1100 6600 1100
-Text Label 6600 1100 0    50   ~ 0
+Text Label 6650 1100 0    50   ~ 0
 CNDT_AFFIRMATIVE
 Wire Wire Line
 	10000 1450 10450 1450
@@ -758,7 +746,7 @@ Wire Bus Line
 Wire Bus Line
 	6950 3300 6450 3300
 Wire Bus Line
-	6450 800  7300 800 
+	6450 800  7350 800 
 Wire Bus Line
 	7000 2150 6450 2150
 Wire Wire Line
@@ -949,10 +937,10 @@ DB[0..7]
 Wire Bus Line
 	12700 800  12700 1950
 Wire Bus Line
-	8500 1450 8500 1950
+	8550 1450 8550 1950
 Wire Bus Line
-	8500 1950 8700 1950
-Connection ~ 8500 1450
+	8550 1950 8700 1950
+Connection ~ 8550 1450
 Wire Bus Line
 	10800 1950 10450 1950
 Text Label 10450 1950 0    50   ~ 0
@@ -1514,4 +1502,16 @@ Text Notes 13900 9400 0    118  ~ 0
 Philipp Schilk\n2020-2021
 Text Notes 13850 9000 0    118  Italic 0
 'Why not?'
+Wire Wire Line
+	6650 1000 7350 1000
+Wire Wire Line
+	6650 1100 7350 1100
+Wire Wire Line
+	6650 1200 7350 1200
+Wire Wire Line
+	6650 1300 7350 1300
+Wire Wire Line
+	7100 1500 7350 1500
+Wire Wire Line
+	7100 1600 7350 1600
 $EndSCHEMATC

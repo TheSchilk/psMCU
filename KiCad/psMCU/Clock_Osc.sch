@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 96 113
+Sheet 96 110
 Title "psMCU"
 Date ""
 Rev ""
@@ -804,7 +804,7 @@ Clock Source Selection
 Text Notes 9150 1500 0    100  ~ 0
 Output Buffer
 Text Notes 9150 4800 0    50   ~ 0
-Probably not strictly necessary, \nbut better safe than sorry. \nAlso it is probably a good idea to \nclean up the external clock input.
+Probably not strictly necessary, \nbut better safe than sorry. \nAlso used to clean up the \nexternal clock input.
 $Comp
 L Device:Jumper_NO_Small JP5
 U 1 1 609040FB

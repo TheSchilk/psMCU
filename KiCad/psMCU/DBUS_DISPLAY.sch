@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 11 113
+Sheet 11 110
 Title "psMCU"
 Date ""
 Rev ""
@@ -341,25 +341,6 @@ F0 "LEDs: DBus " 50
 F1 "8BitLED.sch" 50
 F2 "VAL[0..7]" I L 8800 4200 50 
 $EndSheet
-Text Label 4500 1300 0    50   ~ 0
-DB[0..7]
-$Sheet
-S 4900 1200 700  300 
-U 604054B9
-F0 "7Seg: DBus" 50
-F1 "8bit7seg.sch" 50
-F2 "VAL[0..7]" I L 4900 1300 50 
-F3 "EN" I L 4900 1400 50 
-$EndSheet
-Wire Bus Line
-	4150 2750 4150 1300
-Wire Bus Line
-	4150 1300 4900 1300
-Connection ~ 4150 2750
-Wire Wire Line
-	3050 1400 3050 4500
-Wire Wire Line
-	3050 1400 4900 1400
 Text Label 8300 4200 0    50   ~ 0
 VAL[0..7]
 $Comp

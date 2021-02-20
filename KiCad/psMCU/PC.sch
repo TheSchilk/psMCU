@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 11693 16535 portrait
 encoding utf-8
-Sheet 27 113
+Sheet 27 110
 Title "psMCU"
 Date ""
 Rev ""

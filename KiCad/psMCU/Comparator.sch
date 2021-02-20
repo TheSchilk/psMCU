@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 53 113
+Sheet 53 110
 Title "psMCU"
 Date ""
 Rev ""
@@ -90,7 +90,7 @@ AR Path="/5F396002/60020E04" Ref="U?"  Part="1"
 AR Path="/5FD6B215/60020E04" Ref="U209"  Part="1" 
 F 0 "U209" H 5600 4150 50  0000 C CNN
 F 1 "74HC85" H 5700 4050 50  0000 C CNN
-F 2 "Package_SO:SOIC-16W_5.3x10.2mm_P1.27mm" H 5500 3500 50  0001 C CNN
+F 2 "Package_SO:SOIC-16_3.9x9.9mm_P1.27mm" H 5500 3500 50  0001 C CNN
 F 3 "http://www.ti.com/lit/gpn/sn74LS85" H 5500 3500 50  0001 C CNN
 	1    5500 3500
 	1    0    0    -1  
@@ -378,7 +378,7 @@ AR Path="/5F396002/60020521" Ref="U?"  Part="1"
 AR Path="/5FD6B215/60020521" Ref="U208"  Part="1" 
 F 0 "U208" H 5600 2350 50  0000 C CNN
 F 1 "74HC85" H 5700 2250 50  0000 C CNN
-F 2 "Package_SO:SOIC-16W_5.3x10.2mm_P1.27mm" H 5500 1700 50  0001 C CNN
+F 2 "Package_SO:SOIC-16_3.9x9.9mm_P1.27mm" H 5500 1700 50  0001 C CNN
 F 3 "http://www.ti.com/lit/gpn/sn74LS85" H 5500 1700 50  0001 C CNN
 	1    5500 1700
 	1    0    0    -1  

@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 56 113
+Sheet 56 110
 Title "psMCU"
 Date ""
 Rev ""
@@ -184,96 +184,94 @@ NoConn ~ 7150 2950
 $Comp
 L 74xGxx:74LVC1G04 U?
 U 1 1 5F656D7F
-P 5250 2950
+P 5200 2950
 AR Path="/5ED2705B/5F656D7F" Ref="U?"  Part="1" 
 AR Path="/5F1CE57C/5F656D7F" Ref="U?"  Part="1" 
 AR Path="/608BF85D/5F656D7F" Ref="U?"  Part="1" 
 AR Path="/60E33DBC/5F3D6AF9/5F656D7F" Ref="U?"  Part="1" 
 AR Path="/60E33DBC/5F656D7F" Ref="U216"  Part="1" 
-F 0 "U216" H 5350 2750 50  0000 C CNN
-F 1 "74LVC1G04" H 5500 2850 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 5250 2950 50  0001 C CNN
-F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 5250 2950 50  0001 C CNN
-	1    5250 2950
+F 0 "U216" H 5300 2750 50  0000 C CNN
+F 1 "74LVC1G04" H 5450 2850 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 5200 2950 50  0001 C CNN
+F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 5200 2950 50  0001 C CNN
+	1    5200 2950
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	5250 2850 5250 2750
-Connection ~ 5250 2750
+	5200 2850 5200 2750
+Connection ~ 5200 2750
 $Comp
 L power:+5V #PWR?
 U 1 1 5F656D87
-P 5250 2700
+P 5200 2700
 AR Path="/5ED2705B/5F656D87" Ref="#PWR?"  Part="1" 
 AR Path="/5F1CE57C/5F656D87" Ref="#PWR?"  Part="1" 
 AR Path="/608BF85D/5F656D87" Ref="#PWR?"  Part="1" 
 AR Path="/60E33DBC/5F3D6AF9/5F656D87" Ref="#PWR?"  Part="1" 
 AR Path="/60E33DBC/5F656D87" Ref="#PWR0952"  Part="1" 
-F 0 "#PWR0952" H 5250 2550 50  0001 C CNN
-F 1 "+5V" H 5265 2873 50  0000 C CNN
-F 2 "" H 5250 2700 50  0001 C CNN
-F 3 "" H 5250 2700 50  0001 C CNN
-	1    5250 2700
+F 0 "#PWR0952" H 5200 2550 50  0001 C CNN
+F 1 "+5V" H 5215 2873 50  0000 C CNN
+F 2 "" H 5200 2700 50  0001 C CNN
+F 3 "" H 5200 2700 50  0001 C CNN
+	1    5200 2700
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:C_Small C?
 U 1 1 5F656D8D
-P 5400 2750
+P 5350 2750
 AR Path="/5ED2705B/5F656D8D" Ref="C?"  Part="1" 
 AR Path="/5F1CE57C/5F656D8D" Ref="C?"  Part="1" 
 AR Path="/608BF85D/5F656D8D" Ref="C?"  Part="1" 
 AR Path="/60E33DBC/5F3D6AF9/5F656D8D" Ref="C?"  Part="1" 
 AR Path="/60E33DBC/5F656D8D" Ref="C220"  Part="1" 
-F 0 "C220" V 5500 2850 50  0000 C CNN
-F 1 "0u1" V 5350 2850 50  0000 C CNN
-F 2 "NoRef_Footprints:C_0603_1608Metric_NoRef" H 5400 2750 50  0001 C CNN
-F 3 "~" H 5400 2750 50  0001 C CNN
-	1    5400 2750
+F 0 "C220" V 5450 2850 50  0000 C CNN
+F 1 "0u1" V 5300 2850 50  0000 C CNN
+F 2 "NoRef_Footprints:C_0603_1608Metric_NoRef" H 5350 2750 50  0001 C CNN
+F 3 "~" H 5350 2750 50  0001 C CNN
+	1    5350 2750
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	5300 2750 5250 2750
+	5250 2750 5200 2750
 Wire Wire Line
-	5250 2750 5250 2700
+	5200 2750 5200 2700
 $Comp
 L power:GND #PWR?
 U 1 1 5F656D95
-P 5250 3150
+P 5200 3150
 AR Path="/5ED2705B/5F656D95" Ref="#PWR?"  Part="1" 
 AR Path="/5F1CE57C/5F656D95" Ref="#PWR?"  Part="1" 
 AR Path="/608BF85D/5F656D95" Ref="#PWR?"  Part="1" 
 AR Path="/60E33DBC/5F3D6AF9/5F656D95" Ref="#PWR?"  Part="1" 
 AR Path="/60E33DBC/5F656D95" Ref="#PWR0953"  Part="1" 
-F 0 "#PWR0953" H 5250 2900 50  0001 C CNN
-F 1 "GND" H 5255 2977 50  0000 C CNN
-F 2 "" H 5250 3150 50  0001 C CNN
-F 3 "" H 5250 3150 50  0001 C CNN
-	1    5250 3150
+F 0 "#PWR0953" H 5200 2900 50  0001 C CNN
+F 1 "GND" H 5205 2977 50  0000 C CNN
+F 2 "" H 5200 3150 50  0001 C CNN
+F 3 "" H 5200 3150 50  0001 C CNN
+	1    5200 3150
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	5250 3150 5250 3050
+	5200 3150 5200 3050
 Wire Wire Line
-	5550 2750 5500 2750
+	5500 2750 5450 2750
 $Comp
 L power:GND #PWR?
 U 1 1 5F656D9D
-P 5550 2750
+P 5500 2750
 AR Path="/5ED2705B/5F656D9D" Ref="#PWR?"  Part="1" 
 AR Path="/5F1CE57C/5F656D9D" Ref="#PWR?"  Part="1" 
 AR Path="/608BF85D/5F656D9D" Ref="#PWR?"  Part="1" 
 AR Path="/60E33DBC/5F3D6AF9/5F656D9D" Ref="#PWR?"  Part="1" 
 AR Path="/60E33DBC/5F656D9D" Ref="#PWR0955"  Part="1" 
-F 0 "#PWR0955" H 5550 2500 50  0001 C CNN
-F 1 "GND" V 5450 2700 50  0000 R CNN
-F 2 "" H 5550 2750 50  0001 C CNN
-F 3 "" H 5550 2750 50  0001 C CNN
-	1    5550 2750
+F 0 "#PWR0955" H 5500 2500 50  0001 C CNN
+F 1 "GND" V 5400 2700 50  0000 R CNN
+F 2 "" H 5500 2750 50  0001 C CNN
+F 3 "" H 5500 2750 50  0001 C CNN
+	1    5500 2750
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	6150 2950 5500 2950
 Wire Wire Line
 	6100 3150 5650 3150
 Wire Wire Line
@@ -287,10 +285,10 @@ Wire Wire Line
 	6050 3450 6150 3450
 Text Notes 6100 1650 0    100  ~ 0
 Sub-Instruction \nStep Counter
-Text HLabel 3000 1100 0    50   Input ~ 0
+Text HLabel 3400 1100 0    50   Input ~ 0
 Inst[0..15]
 Wire Bus Line
-	3000 1100 3450 1100
+	3400 1100 3450 1100
 $Sheet
 S 3450 1000 1200 750 
 U 5F3D8E0D
@@ -341,18 +339,18 @@ InstCode7
 Entry Wire Line
 	7700 2650 7800 2750
 $Sheet
-S 6550 650  700  200 
+S 6150 650  700  200 
 U 5F76BABD
 F0 "LEDs: InstCode" 50
 F1 "8BitLED.sch" 50
-F2 "VAL[0..7]" I L 6550 750 50 
+F2 "VAL[0..7]" I L 6150 750 50 
 $EndSheet
 Text Label 5550 750  0    50   ~ 0
 InstCode[0..7]
 Wire Bus Line
 	5300 750  5300 1050
 Wire Bus Line
-	5300 750  6550 750 
+	5300 750  6150 750 
 Connection ~ 5300 1050
 Wire Bus Line
 	8250 5500 8050 5500
@@ -772,7 +770,7 @@ AR Path="/60E33DBC/61F52B82" Ref="U214"  Part="1"
 AR Path="/60E33DBC/61F011FA/61F52B82" Ref="U?"  Part="1" 
 F 0 "U214" H 5000 7250 50  0000 C CNN
 F 1 "74HC238" H 5100 7150 50  0000 C CNN
-F 2 "" H 4900 6800 50  0001 C CNN
+F 2 "Package_SO:TSSOP-16_4.4x5mm_P0.65mm" H 4900 6800 50  0001 C CNN
 F 3 "" H 4900 6800 50  0001 C CNN
 	1    4900 6800
 	1    0    0    -1  
@@ -965,19 +963,19 @@ Wire Bus Line
 Wire Bus Line
 	4600 2150 5300 2150
 $Sheet
-S 1750 1500 1050 750 
+S 1450 1500 1050 750 
 U 5FD12DEC
 F0 "Interrupts" 50
 F1 "Interrupts.sch" 50
-F2 "Interrupt_Override" O R 2800 1650 50 
-F3 "CLK" I L 1750 1650 50 
-F4 "INT_Assert" I L 1750 1750 50 
-F5 "INT_Set" I L 1750 1850 50 
-F6 "INT_Reset" I L 1750 1950 50 
-F7 "INT_Active" O R 2800 1800 50 
-F8 "InstReg_Latch_EN" I L 1750 2050 50 
-F9 "~RESET" I L 1750 1550 50 
-F10 "INT_EN" I L 1750 2150 50 
+F2 "Interrupt_Override" O R 2500 1650 50 
+F3 "CLK" I L 1450 1650 50 
+F4 "INT_Assert" I L 1450 1750 50 
+F5 "INT_Set" I L 1450 1850 50 
+F6 "INT_Reset" I L 1450 1950 50 
+F7 "INT_Active" O R 2500 1800 50 
+F8 "InstReg_Latch_EN" I L 1450 2050 50 
+F9 "~RESET" I L 1450 1550 50 
+F10 "INT_EN" I L 1450 2150 50 
 $EndSheet
 Text HLabel 1800 3050 0    50   Input ~ 0
 INST_STEP
@@ -1011,38 +1009,36 @@ Wire Bus Line
 	8050 5750 8050 5500
 Connection ~ 8050 5500
 Wire Wire Line
-	1750 1650 1500 1650
+	1450 1650 1200 1650
 Wire Wire Line
-	1750 1550 1500 1550
-Text Label 1500 1650 0    50   ~ 0
+	1450 1550 1200 1550
+Text Label 1200 1650 0    50   ~ 0
 CLK
-Text Label 1500 1550 0    50   ~ 0
+Text Label 1200 1550 0    50   ~ 0
 ~R
-Text Label 1350 1850 0    50   ~ 0
+Text Label 1050 1850 0    50   ~ 0
 INT_Set
-Text Label 1350 1950 0    50   ~ 0
+Text Label 1050 1950 0    50   ~ 0
 INT_Reset
 Wire Wire Line
-	1350 1950 1750 1950
+	1050 1950 1450 1950
 Wire Wire Line
-	1350 1850 1750 1850
-Text Label 1050 2050 0    50   ~ 0
+	1050 1850 1450 1850
+Text Label 750  2050 0    50   ~ 0
 InstReg_Latch_EN
 Wire Wire Line
-	1050 2050 1750 2050
+	750  2050 1450 2050
 Wire Wire Line
-	1750 1750 1300 1750
+	1450 1750 1000 1750
 Wire Wire Line
-	1750 2150 1300 2150
-Text HLabel 1300 1750 0    50   Input ~ 0
+	1450 2150 1000 2150
+Text HLabel 1000 1750 0    50   Input ~ 0
 INT_Assert
-Text HLabel 1300 2150 0    50   Input ~ 0
+Text HLabel 1000 2150 0    50   Input ~ 0
 INT_EN
 Wire Wire Line
-	2800 1650 3200 1650
-Wire Wire Line
-	2800 1800 2900 1800
-Text HLabel 2900 1800 2    50   Output ~ 0
+	2500 1800 2600 1800
+Text HLabel 2600 1800 2    50   Output ~ 0
 INT_Active
 Text HLabel 9700 5100 2    50   Output ~ 0
 INT_Reset
@@ -1071,13 +1067,7 @@ Wire Wire Line
 Wire Wire Line
 	3850 3550 3650 3550
 Wire Wire Line
-	4850 3050 3650 3050
-Wire Wire Line
 	4850 3400 5650 3400
-Wire Wire Line
-	3650 2950 4950 2950
-Wire Wire Line
-	4850 3400 4850 3050
 $Comp
 L power:GND #PWR?
 U 1 1 629A0B5B
@@ -2523,6 +2513,20 @@ Wire Wire Line
 	2700 6550 2250 6550
 Text Notes 3750 850  0    100  ~ 0
 Decode
+Wire Wire Line
+	5450 2950 6150 2950
+Wire Wire Line
+	4850 3400 4850 3050
+Wire Wire Line
+	4850 3050 3650 3050
+Wire Wire Line
+	3650 2950 4900 2950
+Wire Wire Line
+	2500 1650 3200 1650
+Text Notes 1600 1350 0    100  ~ 0
+Interrupts
+Text Notes 2650 2700 0    100  ~ 0
+Step Logic
 Wire Bus Line
 	7800 2550 7800 2800
 Wire Bus Line
