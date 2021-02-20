@@ -10,8 +10,8 @@ Rev ""
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 "allowing conditional bit-test instructions. "
-Comment3 "Conditional Increment is an increment that is only perfomed if the comparator indicates, "
-Comment4 "Program Counter. Increment moves to next instruciton. Parrallel latch enables jumps."
+Comment3 "Conditional Increment is an increment that is only performed, if the comparator indicates, "
+Comment4 "Program Counter. Increment moves to next instruction. Parallel latch enables jumps."
 $EndDescr
 $Comp
 L 74xGxx:74LVC1G32 U?

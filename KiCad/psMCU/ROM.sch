@@ -1267,7 +1267,7 @@ Wire Wire Line
 	5500 4300 5600 4300
 Connection ~ 5600 4300
 Text Notes 6750 4400 0    50   ~ 0
-Grounding pins 6 and 9 \nshould allow the SST39SF010\nto be subsituted with a higher\nmemory version (020,040) in\na pinch.
+Grounding pins 6 and 9 \nshould allow the SST39SF010\nto be substituted with a higher\nmemory version (020,040) in\na pinch.
 Wire Wire Line
 	4100 9100 4350 9100
 Wire Wire Line
@@ -4398,24 +4398,6 @@ Wire Wire Line
 	1800 4900 2500 4900
 Text Notes 700  3750 0    100  ~ 0
 Switch between the 8 \nprogram slots.
-Wire Bus Line
-	2600 4050 2600 5350
-Wire Bus Line
-	4450 1600 4450 2300
-Wire Bus Line
-	4450 6550 4450 7250
-Wire Bus Line
-	4450 8600 4450 11550
-Wire Bus Line
-	4450 3650 4450 5550
-Wire Bus Line
-	2600 1300 2600 3950
-Wire Bus Line
-	5400 5700 5400 7300
-Wire Bus Line
-	5400 2400 5400 4000
-Wire Bus Line
-	8150 2100 8150 14050
 $Comp
 L 74xx:74HC245 U?
 U 1 1 5F87F225
@@ -4434,4 +4416,22 @@ F 3 "http://www.ti.com/lit/gpn/sn74HC245" H 7000 11450 50  0001 C CNN
 	1    7000 11450
 	1    0    0    -1  
 $EndComp
+Wire Bus Line
+	2600 4050 2600 5350
+Wire Bus Line
+	4450 1600 4450 2300
+Wire Bus Line
+	4450 6550 4450 7250
+Wire Bus Line
+	4450 8600 4450 11550
+Wire Bus Line
+	4450 3650 4450 5550
+Wire Bus Line
+	2600 1300 2600 3950
+Wire Bus Line
+	5400 5700 5400 7300
+Wire Bus Line
+	5400 2400 5400 4000
+Wire Bus Line
+	8150 2100 8150 14050
 $EndSCHEMATC

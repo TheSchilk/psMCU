@@ -11,7 +11,7 @@ Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 ""
-Comment4 ""
+Comment4 "A fairly full-featured, 8-bit processor built entirely from 74-Series logic."
 $EndDescr
 $Sheet
 S 10800 1850 1200 400 
@@ -838,13 +838,13 @@ DB_OUT
 Wire Bus Line
 	11100 8150 10850 8150
 Wire Bus Line
-	10850 8150 10850 7900
+	10850 8150 10850 7800
 Wire Bus Line
-	10850 7900 12850 7900
+	10850 7800 12850 7800
 Wire Bus Line
 	12600 7000 12850 7000
 Wire Bus Line
-	12850 7000 12850 7900
+	12850 7000 12850 7800
 Wire Bus Line
 	11100 8250 10100 8250
 Wire Bus Line
@@ -1488,7 +1488,7 @@ Text Label 4600 8200 0    50   ~ 0
 F_SET_NUM[0..2]
 Wire Bus Line
 	5250 8200 4600 8200
-Text Notes 13800 8700 0    315  Italic 63
+Text Notes 13500 6600 0    315  Italic 63
 psMCU
 Connection ~ 4350 7700
 Wire Bus Line
@@ -1498,9 +1498,9 @@ Wire Bus Line
 	4350 8950 4350 9200
 Wire Bus Line
 	4350 7700 4350 8950
-Text Notes 13900 9400 0    118  ~ 0
+Text Notes 13600 7300 0    118  ~ 0
 Philipp Schilk\n2020-2021
-Text Notes 13850 9000 0    118  Italic 0
+Text Notes 13550 6900 0    118  Italic 0
 'Why not?'
 Wire Wire Line
 	6650 1000 7350 1000
@@ -1514,4 +1514,12 @@ Wire Wire Line
 	7100 1500 7350 1500
 Wire Wire Line
 	7100 1600 7350 1600
+Text Notes 13600 7600 0    118  ~ 0
+Specs:
+Text Notes 13600 9650 0    79   ~ 0
+ - 400+ LEDs\n - Instruction Stepping\n - Clock Stepping\n - Clock adjustable down to 1Hz\n - External remote control\n - External USB programmer
+Text Notes 13600 8900 0    118  ~ 0
+Demonstration Features:
+Text Notes 13600 8600 0    79   ~ 0
+ - 8bit Processor\n - 500kHz+ Clock Frequency\n - 4kB Heap RAM, 4kB Stack RAM\n - 16kB Program ROM\n - Hardware call/return support\n - Interrupts\n - Peripheral Ports\n - Hardware breakpoint
 $EndSCHEMATC

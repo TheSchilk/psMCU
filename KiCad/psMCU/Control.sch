@@ -11,7 +11,7 @@ Comp "Philipp Schilk"
 Comment1 ""
 Comment2 "interrupts and instruction stepping logic."
 Comment3 "individual sub-instruction steps are read from the Microcode ROMs. Also handles "
-Comment4 "The central statemachine that handles execution. Instructions are decoded, and the "
+Comment4 "The central state-machine that handles execution. Instructions are decoded, and the "
 $EndDescr
 $Sheet
 S 2450 2850 1200 1100

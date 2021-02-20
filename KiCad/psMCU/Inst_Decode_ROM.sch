@@ -11,7 +11,7 @@ Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 ""
-Comment4 "Decodes the MSBs of an instruciton into the actual instruction code for microcode lookup."
+Comment4 "Decodes the MSBs of an instruction into the actual instruction code for microcode lookup."
 $EndDescr
 Text HLabel 3100 1850 0    50   Input ~ 0
 Inst[0..15]
@@ -75,7 +75,7 @@ AR Path="/5F394B96/604054B9/6071DC6E" Ref="U?"  Part="1"
 AR Path="/5F607AA2/6046BFE9/6071DC6E" Ref="U?"  Part="1" 
 AR Path="/60E33DBC/5F3D8E0D/6071DC6E" Ref="U235"  Part="1" 
 F 0 "U235" H 4650 3200 50  0000 C CNN
-F 1 "ATF16V8C" H 4750 3100 50  0000 C CNN
+F 1 "ATF16V8CZ-15XU" H 4900 3100 50  0000 C CNN
 F 2 "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" H 4050 2150 50  0001 C CNN
 F 3 "" H 4050 2150 50  0001 C CNN
 	1    4500 2550

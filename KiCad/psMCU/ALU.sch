@@ -11,7 +11,7 @@ Comp "Philipp Schilk"
 Comment1 ""
 Comment2 "module. Provides various status/overflow flags."
 Comment3 "the 2's complement of Operand B, which is provided by the Logical Operations"
-Comment4 "ALU that can Add/Subtract Reg A and Operand B. Subtraction is perfomed by using"
+Comment4 "ALU that can Add/Subtract Reg A and Operand B. Subtraction is performed by using"
 $EndDescr
 $Comp
 L 74xx:74LS283 U?

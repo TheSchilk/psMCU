@@ -11,7 +11,7 @@ Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 "from an external remote. "
-Comment4 "A simple single-trigger button. Handles debouncing and also combines the signal"
+Comment4 "A simple single-trigger button. Handles de-bouncing and also combines the signal"
 $EndDescr
 Text HLabel 7250 3350 2    50   Output ~ 0
 OUT
@@ -339,7 +339,7 @@ AR Path="/5FD4EE20/5FF5F4BD/5FEC0A85" Ref="SW8"  Part="1"
 AR Path="/5FD4EE20/5FF9246F/5FEC0A85" Ref="SW9"  Part="1" 
 AR Path="/5FD4EE20/5FF933B5/5FEC0A85" Ref="SW10"  Part="1" 
 F 0 "SW4" V 4296 3002 50  0000 R CNN
-F 1 "SW_Push" V 4205 3002 50  0000 R CNN
+F 1 "Btn" V 4205 3002 50  0000 R CNN
 F 2 "Button_Switch_THT:SW_PUSH_6mm" H 4250 3250 50  0001 C CNN
 F 3 "~" H 4250 3250 50  0001 C CNN
 	1    4250 3050

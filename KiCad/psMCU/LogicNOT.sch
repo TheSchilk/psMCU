@@ -11,7 +11,7 @@ Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 ""
-Comment4 "Perform NOT Reg A"
+Comment4 "Calculate NOT Reg A"
 $EndDescr
 Text HLabel 7350 2050 2    50   3State ~ 0
 DB[0..7]

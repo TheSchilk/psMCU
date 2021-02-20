@@ -11,7 +11,7 @@ Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 "to a 'literal' address."
-Comment4 "Puts the lowest 14bit of the current instruciton on the ROMA bus. Used for branching"
+Comment4 "Puts the lowest 14bit of the current instruction on the ROMA bus. Used for branching"
 $EndDescr
 Wire Bus Line
 	8450 1900 8800 1900
@@ -1158,10 +1158,6 @@ Wire Wire Line
 	5000 2100 6550 2100
 Wire Wire Line
 	5000 2000 6550 2000
-Wire Bus Line
-	8450 1900 8450 4550
-Wire Bus Line
-	4900 1850 4900 4550
 $Comp
 L Device:C_Small C?
 U 1 1 5F5D3F83
@@ -1178,4 +1174,8 @@ F 3 "~" H 4350 5700 50  0001 C CNN
 	1    4350 5700
 	0    1    1    0   
 $EndComp
+Wire Bus Line
+	8450 1900 8450 4550
+Wire Bus Line
+	4900 1850 4900 4550
 $EndSCHEMATC

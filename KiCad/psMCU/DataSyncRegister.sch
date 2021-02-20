@@ -11,7 +11,7 @@ Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 ""
-Comment4 "Registers to latch data nto, for Stack access."
+Comment4 "Registers to latch data into, for Stack access."
 $EndDescr
 Text HLabel 3500 1000 0    50   Input ~ 0
 DB[0..7]

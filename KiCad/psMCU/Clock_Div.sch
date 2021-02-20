@@ -2454,7 +2454,7 @@ Counter
 Text Notes 6000 750  0    100  ~ 0
 Comparator
 Text Notes 3050 13600 0    100  ~ 0
-Convert Frequency Setting\nto Comparator setpoint
+Convert Frequency Setting\nto Comparator set-point
 Text Notes 8850 11250 0    100  ~ 0
 Output T-FF
 Wire Bus Line

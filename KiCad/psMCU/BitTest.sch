@@ -9,7 +9,7 @@ Date ""
 Rev ""
 Comp "Philipp Schilk"
 Comment1 ""
-Comment2 "is determined by the current instruciton."
+Comment2 "is determined by the current instruction."
 Comment3 "conditional bit test instructions. Which bit is tested, and if it is being tested for 1/0 "
 Comment4 "Checks if a given bit of the value currently on the DBus is set/reset. Used for the "
 $EndDescr

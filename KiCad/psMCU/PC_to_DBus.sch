@@ -11,7 +11,7 @@ Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 "a return address onto the stack. "
-Comment4 "Puts the the higher or lower byte of the PC counter onto the DBus. Used to push"
+Comment4 "Puts the higher or lower byte of the PC counter onto the DBus. Used to push"
 $EndDescr
 Wire Wire Line
 	6750 3200 6750 3150

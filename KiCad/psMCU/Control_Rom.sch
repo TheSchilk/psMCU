@@ -10,7 +10,7 @@ Rev ""
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
-Comment3 "instruciton."
+Comment3 "instruction."
 Comment4 "Microcode ROM, stores what control signals are needed for each sub-step of each "
 $EndDescr
 Text HLabel 3050 2250 0    50   Input ~ 0
@@ -318,7 +318,7 @@ AR Path="/60E33DBC/5F767EF5/6074E9EF" Ref="U238"  Part="1"
 AR Path="/60E33DBC/5F768DA1/6074E9EF" Ref="U239"  Part="1" 
 AR Path="/60E33DBC/5F47FADF/6074E9EF" Ref="U240"  Part="1" 
 F 0 "U240" H 4350 3450 50  0000 C CNN
-F 1 "ATF16V8C" H 4450 3350 50  0000 C CNN
+F 1 "ATF16V8CZ-15XU" H 4600 3350 50  0000 C CNN
 F 2 "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" H 3750 2400 50  0001 C CNN
 F 3 "" H 3750 2400 50  0001 C CNN
 	1    4200 2800

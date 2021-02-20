@@ -10,7 +10,7 @@ Rev ""
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
-Comment3 "forces the statemachine to branch to the interrupt handler if one occurs. "
+Comment3 "forces the state-machine to branch to the interrupt handler if one occurs. "
 Comment4 "Interrupt logic. Keeps track if an interrupt is currently being served, and "
 $EndDescr
 Text HLabel 8500 2600 2    50   Output ~ 0

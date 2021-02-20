@@ -10,7 +10,7 @@ Rev ""
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
-Comment3 "Using the internal crystel, this module can generate 2MHz, 4Mhz, or 8MHz"
+Comment3 "Using the internal crystal, this module can generate 2MHz, 4Mhz, or 8MHz"
 Comment4 "The central oscillator. Allows for 2 optional dividers or an external clock source. "
 $EndDescr
 Text HLabel 10050 4100 2    50   Output ~ 0

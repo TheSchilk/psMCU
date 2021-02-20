@@ -10,7 +10,7 @@ Rev ""
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 "current content can be read to the ROMA bus, or the lower 8 bits can be read to the DBus. "
-Comment3 "few other instrucitons. The DBus can be latched into the higher or lower 8 bits. The "
+Comment3 "few other instructions. The DBus can be latched into the higher or lower 8 bits. The "
 Comment4 "A 16 bit register used during return instructions, to swap register contents, and during a "
 $EndDescr
 Text HLabel 1150 7300 0    50   Input ~ 0
@@ -4005,14 +4005,6 @@ $EndComp
 Wire Wire Line
 	1250 8850 1400 8850
 Connection ~ 1250 8850
-Wire Bus Line
-	6950 750  6950 3050
-Wire Bus Line
-	6950 4050 6950 6950
-Wire Bus Line
-	3200 750  3200 8300
-Wire Bus Line
-	5150 1600 5150 8500
 $Comp
 L 74xGxx:74LVC1G126 U?
 U 1 1 61B44768
@@ -4030,4 +4022,12 @@ F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 1750 4200 50  0001 C CNN
 	1    1750 4200
 	1    0    0    1   
 $EndComp
+Wire Bus Line
+	6950 750  6950 3050
+Wire Bus Line
+	6950 4050 6950 6950
+Wire Bus Line
+	3200 750  3200 8300
+Wire Bus Line
+	5150 1600 5150 8500
 $EndSCHEMATC

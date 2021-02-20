@@ -479,7 +479,7 @@ Wire Wire Line
 Wire Wire Line
 	1600 5900 1850 5900
 Text Notes 1550 6650 0    50   ~ 0
-Only Do Something if RAM (0x000-0x0ff) and\nnot Periphs (0x100-0x1ff) are addressed.
+Only Do Something if RAM (0x000-0x0ff) and\nnot Peripherals (0x100-0x1ff) are addressed.
 Wire Bus Line
 	1950 1400 3800 1400
 Wire Bus Line
