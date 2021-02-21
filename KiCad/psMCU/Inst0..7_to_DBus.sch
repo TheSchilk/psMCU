@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 2 110
+Sheet 2 108
 Title "psMCU"
 Date ""
 Rev ""
@@ -945,7 +945,7 @@ AR Path="/5FD65308/605425EC/61D2404B" Ref="R?"  Part="1"
 AR Path="/609EB802/61D2404B" Ref="R1"  Part="1" 
 F 0 "R1" V 1654 4850 50  0000 C CNN
 F 1 "rled" V 1745 4850 50  0000 C CNN
-F 2 "NoRef_Footprints:R_0603_1608Metric" H 1850 4850 50  0001 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 1850 4850 50  0001 C CNN
 F 3 "~" H 1850 4850 50  0001 C CNN
 	1    1850 4850
 	0    1    1    0   

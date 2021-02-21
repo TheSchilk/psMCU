@@ -3,14 +3,14 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 13 110
+Sheet 13 108
 Title "psMCU"
 Date ""
 Rev ""
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 "clock transitions. Some bus-rerouting is done to interface with the bidirectional port."
-Comment3 "interfaces, some latches/registers should prevent accidental writes due to glitches on "
+Comment3 "interface, some latches/registers should prevent accidental writes due to glitches on "
 Comment4 "4Kb of Heap RAM, split into 16 pages. Because the RAM IC only has an asynchronous "
 $EndDescr
 $Sheet
@@ -2034,7 +2034,7 @@ AR Path="/5FD65308/605425EC/61EC8E77" Ref="R?"  Part="1"
 AR Path="/5ED3C49A/61EC8E77" Ref="R50"  Part="1" 
 F 0 "R50" V 3004 4150 50  0000 C CNN
 F 1 "rled" V 3095 4150 50  0000 C CNN
-F 2 "NoRef_Footprints:R_0603_1608Metric" H 3200 4150 50  0001 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 3200 4150 50  0001 C CNN
 F 3 "~" H 3200 4150 50  0001 C CNN
 	1    3200 4150
 	0    1    1    0   
@@ -2514,7 +2514,7 @@ AR Path="/5FD65308/605425EC/61F2246A" Ref="R?"  Part="1"
 AR Path="/5ED3C49A/61F2246A" Ref="R51"  Part="1" 
 F 0 "R51" V 3004 4750 50  0000 C CNN
 F 1 "rled" V 3095 4750 50  0000 C CNN
-F 2 "NoRef_Footprints:R_0603_1608Metric" H 3200 4750 50  0001 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 3200 4750 50  0001 C CNN
 F 3 "~" H 3200 4750 50  0001 C CNN
 	1    3200 4750
 	0    1    1    0   
@@ -2993,7 +2993,7 @@ AR Path="/5FD65308/605425EC/61F83F5E" Ref="R?"  Part="1"
 AR Path="/5ED3C49A/61F83F5E" Ref="R52"  Part="1" 
 F 0 "R52" V 3004 5650 50  0000 C CNN
 F 1 "rled" V 3095 5650 50  0000 C CNN
-F 2 "NoRef_Footprints:R_0603_1608Metric" H 3200 5650 50  0001 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 3200 5650 50  0001 C CNN
 F 3 "~" H 3200 5650 50  0001 C CNN
 	1    3200 5650
 	0    1    1    0   

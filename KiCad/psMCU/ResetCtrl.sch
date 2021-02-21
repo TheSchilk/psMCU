@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 81 110
+Sheet 81 108
 Title "psMCU"
 Date ""
 Rev ""
@@ -191,7 +191,7 @@ U 1 1 5FFDD9FC
 P 1950 3350
 F 0 "C280" H 2042 3396 50  0000 L CNN
 F 1 "0u1" H 2042 3305 50  0000 L CNN
-F 2 "NoRef_Footprints:C_0603_1608Metric_NoRef" H 1950 3350 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 1950 3350 50  0001 C CNN
 F 3 "~" H 1950 3350 50  0001 C CNN
 	1    1950 3350
 	1    0    0    -1  
@@ -883,7 +883,7 @@ AR Path="/60E33DBC/5FD12DEC/62BB5F34" Ref="R?"  Part="1"
 AR Path="/5FD3CD07/62BB5F34" Ref="R367"  Part="1" 
 F 0 "R367" V 7454 4450 50  0000 C CNN
 F 1 "rled" V 7545 4450 50  0000 C CNN
-F 2 "NoRef_Footprints:R_0603_1608Metric" H 7650 4450 50  0001 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 7650 4450 50  0001 C CNN
 F 3 "~" H 7650 4450 50  0001 C CNN
 	1    7650 4450
 	0    1    1    0   

@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 52 110
+Sheet 52 108
 Title "psMCU"
 Date ""
 Rev ""
@@ -437,8 +437,6 @@ F 3 "" H 5500 2600 50  0001 C CNN
 	1    5500 2600
 	1    0    0    -1  
 $EndComp
-Wire Bus Line
-	4800 900  4800 3950
 $Comp
 L 74xx:74LS85 U?
 U 1 1 6006A130
@@ -455,4 +453,6 @@ F 3 "http://www.ti.com/lit/gpn/sn74LS85" H 5500 1850 50  0001 C CNN
 	1    5500 1850
 	1    0    0    -1  
 $EndComp
+Wire Bus Line
+	4800 900  4800 3950
 $EndSCHEMATC

@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 75 110
+Sheet 70 108
 Title "psMCU"
 Date ""
 Rev ""
@@ -1397,7 +1397,7 @@ AR Path="/61C3CF7F/62B8F35A" Ref="R318"  Part="1"
 AR Path="/61C3CF88/62B8F35A" Ref="R342"  Part="1" 
 F 0 "R342" V 4304 8700 50  0000 C CNN
 F 1 "rled" V 4395 8700 50  0000 C CNN
-F 2 "NoRef_Footprints:R_0603_1608Metric" H 4500 8700 50  0001 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 4500 8700 50  0001 C CNN
 F 3 "~" H 4500 8700 50  0001 C CNN
 	1    4500 8700
 	0    1    1    0   
@@ -1888,7 +1888,7 @@ AR Path="/61C3CF7F/62B948CB" Ref="R317"  Part="1"
 AR Path="/61C3CF88/62B948CB" Ref="R341"  Part="1" 
 F 0 "R341" V 1804 6150 50  0000 C CNN
 F 1 "rled" V 1895 6150 50  0000 C CNN
-F 2 "NoRef_Footprints:R_0603_1608Metric" H 2000 6150 50  0001 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 2000 6150 50  0001 C CNN
 F 3 "~" H 2000 6150 50  0001 C CNN
 	1    2000 6150
 	0    1    1    0   

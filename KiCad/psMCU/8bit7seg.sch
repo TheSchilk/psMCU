@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 77 110
+Sheet 72 108
 Title "psMCU"
 Date ""
 Rev ""
@@ -11,7 +11,7 @@ Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 ""
-Comment4 "A 8bit 7-segment hexadecimal display."
+Comment4 "8-bit, 7-segment hexadecimal display."
 $EndDescr
 Text HLabel 4900 1900 0    50   Input ~ 0
 VAL[0..7]

@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 41 110
+Sheet 41 108
 Title "psMCU"
 Date ""
 Rev ""
@@ -2197,7 +2197,7 @@ AR Path="/5F6FD493/62360A5E" Ref="R?"  Part="1"
 AR Path="/612C5E2A/62360A5E" Ref="R163"  Part="1" 
 F 0 "R163" V 1354 3350 50  0000 C CNN
 F 1 "rled" V 1445 3350 50  0000 C CNN
-F 2 "NoRef_Footprints:R_0603_1608Metric" H 1550 3350 50  0001 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 1550 3350 50  0001 C CNN
 F 3 "~" H 1550 3350 50  0001 C CNN
 	1    1550 3350
 	0    1    1    0   
@@ -3680,7 +3680,7 @@ AR Path="/5F6FD493/62512366" Ref="R?"  Part="1"
 AR Path="/612C5E2A/62512366" Ref="R164"  Part="1" 
 F 0 "R164" V 1354 5750 50  0000 C CNN
 F 1 "rled" V 1445 5750 50  0000 C CNN
-F 2 "NoRef_Footprints:R_0603_1608Metric" H 1550 5750 50  0001 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 1550 5750 50  0001 C CNN
 F 3 "~" H 1550 5750 50  0001 C CNN
 	1    1550 5750
 	0    1    1    0   
@@ -3839,7 +3839,7 @@ AR Path="/5F6FD493/6255F8F5" Ref="R?"  Part="1"
 AR Path="/612C5E2A/6255F8F5" Ref="R165"  Part="1" 
 F 0 "R165" V 1354 7300 50  0000 C CNN
 F 1 "rled" V 1445 7300 50  0000 C CNN
-F 2 "NoRef_Footprints:R_0603_1608Metric" H 1550 7300 50  0001 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 1550 7300 50  0001 C CNN
 F 3 "~" H 1550 7300 50  0001 C CNN
 	1    1550 7300
 	0    1    1    0   
@@ -3997,7 +3997,7 @@ AR Path="/5F6FD493/625A9CD2" Ref="R?"  Part="1"
 AR Path="/612C5E2A/625A9CD2" Ref="R162"  Part="1" 
 F 0 "R162" V 1304 8850 50  0000 C CNN
 F 1 "rled" V 1395 8850 50  0000 C CNN
-F 2 "NoRef_Footprints:R_0603_1608Metric" H 1500 8850 50  0001 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 1500 8850 50  0001 C CNN
 F 3 "~" H 1500 8850 50  0001 C CNN
 	1    1500 8850
 	0    1    1    0   

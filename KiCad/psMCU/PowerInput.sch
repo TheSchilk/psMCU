@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 80 110
+Sheet 80 108
 Title ""
 Date ""
 Rev ""
@@ -257,6 +257,17 @@ F 1 "MountingHole" H 7700 3555 50  0000 L CNN
 F 2 "MountingHole:MountingHole_3.2mm_M3_Pad_Via" H 7600 3600 50  0001 C CNN
 F 3 "~" H 7600 3600 50  0001 C CNN
 	1    7600 3600
+	1    0    0    -1  
+$EndComp
+$Comp
+L BarrelPolarity:BarrelPolarity_CenterPos G1
+U 1 1 60342FA6
+P 4250 3950
+F 0 "G1" H 4531 3996 50  0000 L CNN
+F 1 "BarrelPolarity_CenterPos" H 4531 3905 50  0000 L CNN
+F 2 "BarrelPolarity_3mm:BarrelPolarity_3mm_CenterPos" H 4250 3950 50  0001 C CNN
+F 3 "" H 4250 3950 50  0001 C CNN
+	1    4250 3950
 	1    0    0    -1  
 $EndComp
 $EndSCHEMATC

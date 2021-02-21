@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 50 110
+Sheet 50 108
 Title "psMCU"
 Date ""
 Rev ""
@@ -879,7 +879,7 @@ AR Path="/612C5E2A/62942DAB" Ref="R?"  Part="1"
 AR Path="/5FD6B215/62942DAB" Ref="R211"  Part="1" 
 F 0 "R211" V 8054 1900 50  0000 C CNN
 F 1 "rled" V 8145 1900 50  0000 C CNN
-F 2 "NoRef_Footprints:R_0603_1608Metric" H 8250 1900 50  0001 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 8250 1900 50  0001 C CNN
 F 3 "~" H 8250 1900 50  0001 C CNN
 	1    8250 1900
 	0    1    1    0   
@@ -1370,7 +1370,7 @@ AR Path="/612C5E2A/62943F97" Ref="R?"  Part="1"
 AR Path="/5FD6B215/62943F97" Ref="R212"  Part="1" 
 F 0 "R212" V 8054 2300 50  0000 C CNN
 F 1 "rled" V 8145 2300 50  0000 C CNN
-F 2 "NoRef_Footprints:R_0603_1608Metric" H 8250 2300 50  0001 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 8250 2300 50  0001 C CNN
 F 3 "~" H 8250 2300 50  0001 C CNN
 	1    8250 2300
 	0    1    1    0   
@@ -1861,7 +1861,7 @@ AR Path="/612C5E2A/62944E82" Ref="R?"  Part="1"
 AR Path="/5FD6B215/62944E82" Ref="R213"  Part="1" 
 F 0 "R213" V 8054 2700 50  0000 C CNN
 F 1 "rled" V 8145 2700 50  0000 C CNN
-F 2 "NoRef_Footprints:R_0603_1608Metric" H 8250 2700 50  0001 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 8250 2700 50  0001 C CNN
 F 3 "~" H 8250 2700 50  0001 C CNN
 	1    8250 2700
 	0    1    1    0   
@@ -2352,7 +2352,7 @@ AR Path="/612C5E2A/629461B2" Ref="R?"  Part="1"
 AR Path="/5FD6B215/629461B2" Ref="R214"  Part="1" 
 F 0 "R214" V 8054 3100 50  0000 C CNN
 F 1 "rled" V 8145 3100 50  0000 C CNN
-F 2 "NoRef_Footprints:R_0603_1608Metric" H 8250 3100 50  0001 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 8250 3100 50  0001 C CNN
 F 3 "~" H 8250 3100 50  0001 C CNN
 	1    8250 3100
 	0    1    1    0   
@@ -2843,7 +2843,7 @@ AR Path="/612C5E2A/62947FBD" Ref="R?"  Part="1"
 AR Path="/5FD6B215/62947FBD" Ref="R210"  Part="1" 
 F 0 "R210" V 8054 1500 50  0000 C CNN
 F 1 "rled" V 8145 1500 50  0000 C CNN
-F 2 "NoRef_Footprints:R_0603_1608Metric" H 8250 1500 50  0001 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 8250 1500 50  0001 C CNN
 F 3 "~" H 8250 1500 50  0001 C CNN
 	1    8250 1500
 	0    1    1    0   

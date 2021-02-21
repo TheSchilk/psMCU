@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 11 110
+Sheet 11 108
 Title "psMCU"
 Date ""
 Rev ""
@@ -209,7 +209,7 @@ AR Path="/6041A022/5F3B0CCC" Ref="R?"  Part="1"
 AR Path="/604F08FB/5F3B0CCC" Ref="R?"  Part="1" 
 F 0 "R26" H 2859 4696 50  0000 L CNN
 F 1 "10K" H 2859 4605 50  0000 L CNN
-F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" H 2800 4650 50  0001 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 2800 4650 50  0001 C CNN
 F 3 "~" H 2800 4650 50  0001 C CNN
 	1    2800 4650
 	1    0    0    -1  
@@ -808,7 +808,7 @@ AR Path="/5FD65308/605425EC/61D0ACD1" Ref="R?"  Part="1"
 AR Path="/5F394B96/61D0ACD1" Ref="R27"  Part="1" 
 F 0 "R27" V 3054 5300 50  0000 C CNN
 F 1 "rled" V 3145 5300 50  0000 C CNN
-F 2 "NoRef_Footprints:R_0603_1608Metric" H 3250 5300 50  0001 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 3250 5300 50  0001 C CNN
 F 3 "~" H 3250 5300 50  0001 C CNN
 	1    3250 5300
 	0    1    1    0   
@@ -877,7 +877,7 @@ U 1 1 6059DA77
 P 5300 2500
 F 0 "RN4" V 5500 2500 50  0000 L CNN
 F 1 "10K" V 5500 2250 50  0000 L CNN
-F 2 "Resistor_SMD:R_Array_Convex_4x0603" V 5575 2500 50  0001 C CNN
+F 2 "NoRef_Footprints:R_Array_Convex_4x0603_NoRef" V 5575 2500 50  0001 C CNN
 F 3 "~" H 5300 2500 50  0001 C CNN
 	1    5300 2500
 	1    0    0    -1  
@@ -888,7 +888,7 @@ U 1 1 6059DA7D
 P 5800 2500
 F 0 "RN5" V 6000 2500 50  0000 L CNN
 F 1 "10K" V 6000 2250 50  0000 L CNN
-F 2 "Resistor_SMD:R_Array_Convex_4x0603" V 6075 2500 50  0001 C CNN
+F 2 "NoRef_Footprints:R_Array_Convex_4x0603_NoRef" V 6075 2500 50  0001 C CNN
 F 3 "~" H 5800 2500 50  0001 C CNN
 	1    5800 2500
 	1    0    0    -1  
