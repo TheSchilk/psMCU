@@ -1,0 +1,57 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 2 2
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Connector_Generic:Conn_01x10 J?
+U 1 1 60321697
+P 10250 3400
+F 0 "J?" H 10330 3392 50  0000 L CNN
+F 1 "GPIO" H 10330 3301 50  0000 L CNN
+F 2 "" H 10250 3400 50  0001 C CNN
+F 3 "~" H 10250 3400 50  0001 C CNN
+	1    10250 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 6032169D
+P 10000 2950
+F 0 "#PWR?" H 10000 2800 50  0001 C CNN
+F 1 "+5V" H 10015 3123 50  0000 C CNN
+F 2 "" H 10000 2950 50  0001 C CNN
+F 3 "" H 10000 2950 50  0001 C CNN
+	1    10000 2950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10000 2950 10000 3000
+Wire Wire Line
+	10000 3000 10050 3000
+$Comp
+L power:GND #PWR?
+U 1 1 603216A5
+P 10000 3950
+F 0 "#PWR?" H 10000 3700 50  0001 C CNN
+F 1 "GND" H 10005 3777 50  0000 C CNN
+F 2 "" H 10000 3950 50  0001 C CNN
+F 3 "" H 10000 3950 50  0001 C CNN
+	1    10000 3950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10000 3950 10000 3900
+Wire Wire Line
+	10000 3900 10050 3900
+$EndSCHEMATC
