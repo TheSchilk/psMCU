@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 70 108
+Sheet 62 92
 Title "psMCU"
 Date ""
 Rev ""
@@ -884,39 +884,6 @@ Wire Wire Line
 	4850 4500 5950 4500
 Wire Bus Line
 	4650 5150 4650 5750
-Wire Bus Line
-	4650 6250 5100 6250
-Text Label 4700 6250 0    50   ~ 0
-VAL[0..7]
-Wire Bus Line
-	4650 6250 4650 5750
-Connection ~ 4650 5750
-$Sheet
-S 5100 6150 700  300 
-U 60376771
-F0 "7Seg: Reg Val" 50
-F1 "8bit7seg.sch" 50
-F2 "VAL[0..7]" I L 5100 6250 50 
-F3 "EN" I L 5100 6350 50 
-$EndSheet
-$Comp
-L power:+5V #PWR?
-U 1 1 603EF6BE
-P 5000 6350
-AR Path="/5ED2705B/603EF6BE" Ref="#PWR?"  Part="1" 
-AR Path="/5F1CE57C/603EF6BE" Ref="#PWR?"  Part="1" 
-AR Path="/5F3ED0F9/603EF6BE" Ref="#PWR?"  Part="1" 
-AR Path="/61C3CF7F/603EF6BE" Ref="#PWR01126"  Part="1" 
-AR Path="/61C3CF88/603EF6BE" Ref="#PWR01173"  Part="1" 
-F 0 "#PWR01173" H 5000 6200 50  0001 C CNN
-F 1 "+5V" V 5000 6550 50  0000 C CNN
-F 2 "" H 5000 6350 50  0001 C CNN
-F 3 "" H 5000 6350 50  0001 C CNN
-	1    5000 6350
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	5000 6350 5100 6350
 $Comp
 L Device:LED_Small D?
 U 1 1 62B8F34C

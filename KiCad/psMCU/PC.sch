@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 11693 16535 portrait
 encoding utf-8
-Sheet 24 108
+Sheet 19 92
 Title "psMCU"
 Date ""
 Rev ""
@@ -893,18 +893,6 @@ Wire Bus Line
 	7950 9750 8800 9750
 Text Label 8150 9750 0    50   ~ 0
 PC[0..13]
-$Sheet
-S 8800 10100 700  200 
-U 6046BFE9
-F0 "7Seg: PC[0..13]" 50
-F1 "14Bit_7Seg.sch" 50
-F2 "PC[0..13]" I L 8800 10200 50 
-$EndSheet
-Wire Bus Line
-	7950 9750 7950 10200
-Wire Bus Line
-	7950 10200 8800 10200
-Connection ~ 7950 9750
 $Comp
 L power:GND #PWR?
 U 1 1 620EDDCC

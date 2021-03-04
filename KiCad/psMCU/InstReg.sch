@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 16 108
+Sheet 16 92
 Title "psMCU"
 Date ""
 Rev ""
@@ -1293,40 +1293,6 @@ F 3 "~" V 2400 8700 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	2300 8700 1850 8700
-Wire Bus Line
-	5400 2300 6050 2300
-$Sheet
-S 6050 2200 700  300 
-U 6032BB0E
-F0 "7Seg: Inst[0..15]" 50
-F1 "16Bit_7Seg.sch" 50
-F2 "VAL[0..15]" I L 6050 2300 50 
-F3 "EN" I L 6050 2400 50 
-$EndSheet
-Connection ~ 5400 2300
-Wire Bus Line
-	5400 2300 5400 3100
-Wire Wire Line
-	6050 2400 5950 2400
-$Comp
-L power:+5V #PWR0326
-U 1 1 6048A528
-P 5950 2400
-F 0 "#PWR0326" H 5950 2250 50  0001 C CNN
-F 1 "+5V" V 5965 2528 50  0000 L CNN
-F 2 "" H 5950 2400 50  0001 C CNN
-F 3 "" H 5950 2400 50  0001 C CNN
-	1    5950 2400
-	0    -1   -1   0   
-$EndComp
-Text Label 5600 2300 0    50   ~ 0
-VAL[0..15]
-Wire Bus Line
-	5400 600  5400 2300
-Wire Bus Line
-	5400 3100 5400 8350
-Wire Bus Line
-	3450 600  3450 8150
 $Comp
 L 74xx:74LS173 U?
 U 1 1 612C6187
@@ -1340,4 +1306,10 @@ F 3 "http://www.ti.com/lit/gpn/sn74LS173" H 4450 8550 50  0001 C CNN
 	1    4450 8550
 	1    0    0    -1  
 $EndComp
+Wire Bus Line
+	5400 600  5400 3100
+Wire Bus Line
+	5400 3100 5400 8350
+Wire Bus Line
+	3450 600  3450 8150
 $EndSCHEMATC
