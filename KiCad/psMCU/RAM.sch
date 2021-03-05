@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 13 92
+Sheet 13 93
 Title "psMCU"
 Date ""
 Rev ""
@@ -848,40 +848,40 @@ F 1 "GND" H 10150 4450 50  0000 C CNN
 F 2 "" H 9950 4500 50  0001 C CNN
 F 3 "" H 9950 4500 50  0001 C CNN
 	1    9950 4500
-	1    0    0    -1  
+	-1   0    0    -1  
 $EndComp
 Wire Wire Line
-	10250 2750 10200 2750
+	9650 2750 9700 2750
 $Comp
 L power:GND #PWR?
 U 1 1 5F01A72A
-P 10250 2750
+P 9650 2750
 AR Path="/5ED2705B/5F01A72A" Ref="#PWR?"  Part="1" 
 AR Path="/5ED3C49A/5F01A72A" Ref="#PWR0258"  Part="1" 
-F 0 "#PWR0258" H 10250 2500 50  0001 C CNN
-F 1 "GND" V 10255 2622 50  0000 R CNN
-F 2 "" H 10250 2750 50  0001 C CNN
-F 3 "" H 10250 2750 50  0001 C CNN
-	1    10250 2750
-	0    -1   -1   0   
+F 0 "#PWR0258" H 9650 2500 50  0001 C CNN
+F 1 "GND" V 9655 2622 50  0000 R CNN
+F 2 "" H 9650 2750 50  0001 C CNN
+F 3 "" H 9650 2750 50  0001 C CNN
+	1    9650 2750
+	0    1    -1   0   
 $EndComp
 Wire Wire Line
 	9950 2750 9950 2650
 Connection ~ 9950 2750
 Wire Wire Line
-	10000 2750 9950 2750
+	9900 2750 9950 2750
 $Comp
 L Device:C_Small C?
 U 1 1 5F01A733
-P 10100 2750
+P 9800 2750
 AR Path="/5ED2705B/5F01A733" Ref="C?"  Part="1" 
 AR Path="/5ED3C49A/5F01A733" Ref="C67"  Part="1" 
-F 0 "C67" V 9871 2750 50  0000 C CNN
-F 1 "0u1" V 9962 2750 50  0000 C CNN
-F 2 "NoRef_Footprints:C_0603_1608Metric_NoRef" H 10100 2750 50  0001 C CNN
-F 3 "~" H 10100 2750 50  0001 C CNN
-	1    10100 2750
-	0    1    1    0   
+F 0 "C67" V 9571 2750 50  0000 C CNN
+F 1 "0u1" V 9662 2750 50  0000 C CNN
+F 2 "NoRef_Footprints:C_0603_1608Metric_NoRef" H 9800 2750 50  0001 C CNN
+F 3 "~" H 9800 2750 50  0001 C CNN
+	1    9800 2750
+	0    -1   1    0   
 $EndComp
 $Comp
 L power:+5V #PWR?
@@ -894,23 +894,10 @@ F 1 "+5V" H 9800 2750 50  0000 C CNN
 F 2 "" H 9950 2650 50  0001 C CNN
 F 3 "" H 9950 2650 50  0001 C CNN
 	1    9950 2650
-	1    0    0    -1  
+	-1   0    0    -1  
 $EndComp
 Wire Wire Line
 	9950 2850 9950 2750
-$Comp
-L 74xx:74HC245 U?
-U 1 1 5F01A740
-P 9950 3650
-AR Path="/5ED2705B/5F01A740" Ref="U?"  Part="1" 
-AR Path="/5ED3C49A/5F01A740" Ref="U67"  Part="1" 
-F 0 "U67" H 10050 4400 50  0000 C CNN
-F 1 "SN74HC245PW" H 10250 4300 50  0000 C CNN
-F 2 "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" H 9950 3650 50  0001 C CNN
-F 3 "http://www.ti.com/lit/gpn/sn74HC245" H 9950 3650 50  0001 C CNN
-	1    9950 3650
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	7450 3150 8450 3150
 Wire Wire Line
@@ -1090,21 +1077,6 @@ $EndComp
 Wire Wire Line
 	8250 1250 8250 1300
 $Comp
-L power:+5V #PWR?
-U 1 1 5F164885
-P 9400 4050
-AR Path="/5ED2705B/5F164885" Ref="#PWR?"  Part="1" 
-AR Path="/5ED3C49A/5F164885" Ref="#PWR0253"  Part="1" 
-F 0 "#PWR0253" H 9400 3900 50  0001 C CNN
-F 1 "+5V" H 9400 4200 50  0000 C CNN
-F 2 "" H 9400 4050 50  0001 C CNN
-F 3 "" H 9400 4050 50  0001 C CNN
-	1    9400 4050
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	9400 4050 9450 4050
-$Comp
 L 74xGxx:74LVC1G04 U?
 U 1 1 5F16E96C
 P 7450 5950
@@ -1185,8 +1157,6 @@ F 3 "" H 7450 6150 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	7450 6150 7450 6050
-Wire Wire Line
-	9350 4150 9450 4150
 Connection ~ 2850 5950
 $Comp
 L IS62C256AL:IS62C256AL U63
@@ -1199,8 +1169,6 @@ F 3 "" H 7100 3600 50  0001 C CNN
 	1    7050 3150
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	9350 4150 9350 5950
 Wire Wire Line
 	7700 5950 8300 5950
 Wire Wire Line
@@ -1221,8 +1189,6 @@ Wire Wire Line
 Wire Wire Line
 	7450 2750 8200 2750
 Connection ~ 8300 5950
-Wire Wire Line
-	8300 5950 9350 5950
 Wire Wire Line
 	8200 2750 8200 5050
 $Comp
@@ -3170,6 +3136,40 @@ Text Notes 5050 4600 0    50   ~ 0
 Latch Async Write.\nShould keep writes stable and \nprevent accidental writes.
 Text Notes 3800 1000 0    50   ~ 0
 Latch Data and Adr. \nShould help prevent glitches.
+$Comp
+L 74xx:74HC245 U?
+U 1 1 5F01A740
+P 9950 3650
+AR Path="/5ED2705B/5F01A740" Ref="U?"  Part="1" 
+AR Path="/5ED3C49A/5F01A740" Ref="U67"  Part="1" 
+F 0 "U67" H 10100 4400 50  0000 C CNN
+F 1 "SN74HC245PW" H 10300 4300 50  0000 C CNN
+F 2 "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" H 9950 3650 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74HC245" H 9950 3650 50  0001 C CNN
+	1    9950 3650
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	10450 4150 10750 4150
+Wire Wire Line
+	10750 4150 10750 5950
+Wire Wire Line
+	8300 5950 10750 5950
+$Comp
+L power:GND #PWR?
+U 1 1 607CEAF6
+P 10500 4050
+AR Path="/5ED2705B/607CEAF6" Ref="#PWR?"  Part="1" 
+AR Path="/5ED3C49A/607CEAF6" Ref="#PWR0253"  Part="1" 
+F 0 "#PWR0253" H 10500 3800 50  0001 C CNN
+F 1 "GND" V 10505 3922 50  0000 R CNN
+F 2 "" H 10500 4050 50  0001 C CNN
+F 3 "" H 10500 4050 50  0001 C CNN
+	1    10500 4050
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	10500 4050 10450 4050
 Wire Bus Line
 	5850 3350 5850 4000
 Wire Bus Line

@@ -158,24 +158,9 @@ F 3 "~" H 9800 1400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	10100 1100 10150 1100
-Wire Wire Line
-	10150 1100 10150 1050
-Wire Wire Line
 	9600 1100 9550 1100
 Wire Wire Line
 	9550 1100 9550 1050
-$Comp
-L power:+5V #PWR0105
-U 1 1 612C55B2
-P 10150 1050
-F 0 "#PWR0105" H 10150 900 50  0001 C CNN
-F 1 "+5V" H 10165 1223 50  0000 C CNN
-F 2 "" H 10150 1050 50  0001 C CNN
-F 3 "" H 10150 1050 50  0001 C CNN
-	1    10150 1050
-	1    0    0    -1  
-$EndComp
 $Comp
 L power:+5V #PWR0106
 U 1 1 612C6103
@@ -450,7 +435,6 @@ Wire Wire Line
 	9350 6000 8950 6000
 Text Label 8950 6000 0    50   ~ 0
 ~5V_OE
-NoConn ~ 10350 5300
 NoConn ~ 10350 5400
 NoConn ~ 10350 5500
 NoConn ~ 10350 5600
@@ -460,14 +444,9 @@ Wire Wire Line
 Wire Wire Line
 	10350 5100 11000 5100
 Wire Wire Line
-	9350 5300 9250 5300
-Wire Wire Line
-	9250 5300 9250 5400
-Wire Wire Line
 	9250 5700 9350 5700
 Wire Wire Line
 	9350 5400 9250 5400
-Connection ~ 9250 5400
 Wire Wire Line
 	9250 5400 9250 5500
 Wire Wire Line
@@ -1192,13 +1171,13 @@ Wire Wire Line
 	7150 1750 6500 1750
 Text Label 7150 1750 2    50   ~ 0
 DTCT_Vtarget
-Text Label 7100 4050 2    50   ~ 0
+Text Label 6800 4050 2    50   ~ 0
 ~5V_OE
 Wire Wire Line
-	6500 4050 7100 4050
+	6500 4050 6800 4050
 Wire Wire Line
-	6500 3150 7100 3150
-Text Label 7100 3150 2    50   ~ 0
+	6500 3150 7200 3150
+Text Label 7200 3150 2    50   ~ 0
 LV_DO_RESET
 Text Label 4550 3450 0    50   ~ 0
 LV_MEM_~PGM
@@ -1209,7 +1188,7 @@ Wire Wire Line
 Wire Wire Line
 	4550 3450 5100 3450
 Wire Wire Line
-	7100 3050 6500 3050
+	7200 3050 6500 3050
 Wire Wire Line
 	7300 1650 6500 1650
 Wire Wire Line
@@ -1424,16 +1403,16 @@ DIO
 Text Notes 3850 5350 0    100  ~ 0
 USB Bridge
 Wire Wire Line
-	6750 3750 6500 3750
+	6800 3750 6500 3750
 Wire Wire Line
-	6750 3850 6500 3850
+	6800 3850 6500 3850
 Wire Wire Line
-	6750 3950 6500 3950
-Text Label 6750 3750 2    50   ~ 0
+	6800 3950 6500 3950
+Text Label 6800 3750 2    50   ~ 0
 LED1
-Text Label 6750 3850 2    50   ~ 0
+Text Label 6800 3850 2    50   ~ 0
 LED2
-Text Label 6750 3950 2    50   ~ 0
+Text Label 6800 3950 2    50   ~ 0
 LED3
 NoConn ~ 6500 1350
 NoConn ~ 6500 1450
@@ -1449,7 +1428,6 @@ NoConn ~ 6500 3450
 NoConn ~ 6500 3550
 NoConn ~ 6500 3650
 NoConn ~ 6500 4150
-NoConn ~ 6500 4250
 NoConn ~ 5100 4550
 NoConn ~ 5100 4450
 NoConn ~ 5100 4350
@@ -1495,7 +1473,7 @@ Text Label 7300 1650 2    50   ~ 0
 LV_DATA_ROM\~PROG~
 Text Label 7200 3250 2    50   ~ 0
 LV_ADR_~PC~\PROG
-Text Label 7100 3050 2    50   ~ 0
+Text Label 7200 3050 2    50   ~ 0
 LV_MEM_~CE
 Wire Wire Line
 	6500 3250 7200 3250
@@ -1561,4 +1539,20 @@ Wire Wire Line
 Connection ~ 3100 5150
 Wire Wire Line
 	3100 5150 3100 5300
+Text Label 10750 1100 2    50   ~ 0
+BKPT_RCLK
+Wire Wire Line
+	10100 1100 10750 1100
+Text Label 11000 5300 2    50   ~ 0
+BKPT_RCLK
+Wire Wire Line
+	10350 5300 11000 5300
+Text Label 8600 5300 0    50   ~ 0
+LV_BKPT_RCLK
+Wire Wire Line
+	8600 5300 9350 5300
+Text Label 7100 4250 2    50   ~ 0
+LV_BKPT_RCLK
+Wire Wire Line
+	6500 4250 7100 4250
 $EndSCHEMATC

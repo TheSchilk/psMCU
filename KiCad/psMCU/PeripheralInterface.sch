@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 100 92
+Sheet 83 93
 Title "psMCU"
 Date ""
 Rev ""
@@ -13,7 +13,7 @@ Comment2 ""
 Comment3 ""
 Comment4 "2 Identical Peripheral Connectors. Also pre-filters RAMA addresses for peripherals."
 $EndDescr
-Text HLabel 10100 2100 2    50   3State ~ 0
+Text HLabel 10100 3000 2    50   3State ~ 0
 DB[0..7]
 Text HLabel 9900 1950 2    50   Input ~ 0
 CLK
@@ -526,7 +526,7 @@ DB6
 Text Label 9800 2750 2    50   ~ 0
 DB7
 Wire Bus Line
-	9900 2100 10100 2100
+	9900 3000 10100 3000
 $Comp
 L power:+5V #PWR01537
 U 1 1 601B8799
@@ -622,215 +622,11 @@ Wire Wire Line
 	9050 2050 9800 2050
 Text HLabel 7600 2350 0    50   Input ~ 0
 ~RESET
-$Comp
-L Connector_Generic:Conn_02x15_Odd_Even J7
-U 1 1 602CB31D
-P 8750 4750
-F 0 "J7" V 8800 5600 50  0000 C CNN
-F 1 "PERIPH_INTERFACE_2" V 8700 5900 50  0000 C CNN
-F 2 "Connector_IDC:IDC-Header_2x15_P2.54mm_Vertical" H 8750 4750 50  0001 C CNN
-F 3 "~" H 8750 4750 50  0001 C CNN
-	1    8750 4750
-	1    0    0    -1  
-$EndComp
-Text Label 7600 4850 0    50   ~ 0
-PERIPHA0
-Text Label 7600 4750 0    50   ~ 0
-PERIPHA1
-Text Label 7600 4650 0    50   ~ 0
-PERIPHA2
-Text Label 7600 4550 0    50   ~ 0
-PERIPHA3
-Text Label 7600 4450 0    50   ~ 0
-PERIPHA4
-Text Label 7600 4350 0    50   ~ 0
-PERIPHA5
-Text Label 7600 4250 0    50   ~ 0
-PERIPHA6
-Text Label 7600 4150 0    50   ~ 0
-PERIPHA7
-Entry Wire Line
-	7500 4050 7600 4150
-Entry Wire Line
-	7500 4150 7600 4250
-Entry Wire Line
-	7500 4250 7600 4350
-Entry Wire Line
-	7500 4350 7600 4450
-Entry Wire Line
-	7500 4450 7600 4550
-Entry Wire Line
-	7500 4550 7600 4650
-Entry Wire Line
-	7500 4650 7600 4750
-Entry Wire Line
-	7500 4750 7600 4850
-Wire Bus Line
-	6900 3900 7500 3900
-Text Label 6900 3900 0    50   ~ 0
-PERIPHA[0..7]
-Text Label 7600 5050 0    50   ~ 0
-PERIPH_LATCHSAFEDA_EN
-Text Label 7600 5150 0    50   ~ 0
-PERIPH_W_ASYNC
-Text Label 7600 5250 0    50   ~ 0
-PERIPH_R_ASYNC
-Wire Wire Line
-	7600 5050 8550 5050
-Wire Wire Line
-	7600 5150 8550 5150
-Wire Wire Line
-	7600 5250 8550 5250
-Wire Wire Line
-	9050 4750 9800 4750
-Wire Wire Line
-	9050 4850 9800 4850
-Wire Wire Line
-	9050 4950 9800 4950
-Wire Wire Line
-	9050 5050 9800 5050
-Wire Wire Line
-	9050 5150 9800 5150
-Wire Wire Line
-	9050 5250 9800 5250
-Wire Wire Line
-	9050 5350 9800 5350
-Entry Wire Line
-	9800 4650 9900 4750
-Entry Wire Line
-	9800 4750 9900 4850
-Entry Wire Line
-	9800 4850 9900 4950
-Entry Wire Line
-	9800 4950 9900 5050
-Entry Wire Line
-	9800 5050 9900 5150
-Entry Wire Line
-	9800 5150 9900 5250
-Entry Wire Line
-	9800 5250 9900 5350
-Entry Wire Line
-	9800 5350 9900 5450
-Text Label 9800 4650 2    50   ~ 0
-DB0
-Text Label 9800 4750 2    50   ~ 0
-DB1
-Text Label 9800 4850 2    50   ~ 0
-DB2
-Text Label 9800 4950 2    50   ~ 0
-DB3
-Text Label 9800 5050 2    50   ~ 0
-DB4
-Text Label 9800 5150 2    50   ~ 0
-DB5
-Text Label 9800 5250 2    50   ~ 0
-DB6
-Text Label 9800 5350 2    50   ~ 0
-DB7
-$Comp
-L power:+5V #PWR01539
-U 1 1 602CB356
-P 8500 4000
-F 0 "#PWR01539" H 8500 3850 50  0001 C CNN
-F 1 "+5V" H 8515 4173 50  0000 C CNN
-F 2 "" H 8500 4000 50  0001 C CNN
-F 3 "" H 8500 4000 50  0001 C CNN
-	1    8500 4000
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	8500 4000 8500 4050
-Wire Wire Line
-	8500 4050 8550 4050
-$Comp
-L power:+5V #PWR01543
-U 1 1 602CB35E
-P 9100 4000
-F 0 "#PWR01543" H 9100 3850 50  0001 C CNN
-F 1 "+5V" H 9115 4173 50  0000 C CNN
-F 2 "" H 9100 4000 50  0001 C CNN
-F 3 "" H 9100 4000 50  0001 C CNN
-	1    9100 4000
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	9100 4000 9100 4050
-Wire Wire Line
-	9100 4050 9050 4050
-Wire Wire Line
-	7600 4950 8550 4950
-Wire Wire Line
-	8550 5350 8500 5350
-Wire Wire Line
-	8500 5350 8500 5450
-Wire Wire Line
-	8500 5450 8550 5450
-Wire Wire Line
-	8500 5450 8500 5550
-Connection ~ 8500 5450
-Wire Wire Line
-	9050 5450 9100 5450
-Wire Wire Line
-	9100 5450 9100 5550
-$Comp
-L power:GND #PWR01544
-U 1 1 602CB36E
-P 9100 5550
-F 0 "#PWR01544" H 9100 5300 50  0001 C CNN
-F 1 "GND" H 9105 5377 50  0000 C CNN
-F 2 "" H 9100 5550 50  0001 C CNN
-F 3 "" H 9100 5550 50  0001 C CNN
-	1    9100 5550
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR01540
-U 1 1 602CB374
-P 8500 5550
-F 0 "#PWR01540" H 8500 5300 50  0001 C CNN
-F 1 "GND" H 8505 5377 50  0000 C CNN
-F 2 "" H 8500 5550 50  0001 C CNN
-F 3 "" H 8500 5550 50  0001 C CNN
-	1    8500 5550
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	7600 4150 8550 4150
-Wire Wire Line
-	7600 4250 8550 4250
-Wire Wire Line
-	7600 4350 8550 4350
-Wire Wire Line
-	7600 4450 8550 4450
-Wire Wire Line
-	7600 4550 8550 4550
-Wire Wire Line
-	7600 4650 8550 4650
-Wire Wire Line
-	7600 4750 8550 4750
-Wire Wire Line
-	7600 4850 8550 4850
-Wire Wire Line
-	9050 4150 9800 4150
-Wire Wire Line
-	9050 4250 9800 4250
-Wire Wire Line
-	9050 4350 9800 4350
-Wire Wire Line
-	9050 4450 9800 4450
-Wire Wire Line
-	9050 4550 9800 4550
-Wire Wire Line
-	9050 4650 9800 4650
 Wire Wire Line
 	7600 2350 8550 2350
 Text Label 7600 2350 0    50   ~ 0
 ~RESET
-Text Label 7600 4950 0    50   ~ 0
-~RESET
 Text Label 9800 1550 2    50   ~ 0
-INT_EN
-Text Label 9800 4150 2    50   ~ 0
 INT_EN
 Text Label 9800 1650 2    50   ~ 0
 INT_Active
@@ -840,16 +636,6 @@ Text Label 9800 1850 2    50   ~ 0
 DB_OUT
 Text Label 9800 1950 2    50   ~ 0
 CLK
-Text Label 9800 4250 2    50   ~ 0
-INT_Active
-Text Label 9800 4350 2    50   ~ 0
-INT_Assert
-Text Label 9800 4450 2    50   ~ 0
-DB_OUT
-Text Label 9800 4550 2    50   ~ 0
-CLK
-Wire Bus Line
-	7500 3900 7500 4750
 Wire Bus Line
 	7500 1300 7500 2150
 Wire Bus Line
@@ -857,5 +643,5 @@ Wire Bus Line
 Wire Bus Line
 	2100 800  2100 1600
 Wire Bus Line
-	9900 2100 9900 5450
+	9900 2150 9900 3000
 $EndSCHEMATC

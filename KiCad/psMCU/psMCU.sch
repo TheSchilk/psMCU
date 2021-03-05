@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
-Sheet 1 92
+Sheet 1 93
 Title "psMCU"
 Date ""
 Rev ""
@@ -14,14 +14,14 @@ Comment3 ""
 Comment4 "A fairly full-featured, 8-bit processor built entirely from 74-Series logic."
 $EndDescr
 $Sheet
-S 10800 1850 1200 400 
+S 10850 1850 1200 400 
 U 609EB802
 F0 "Inst[0..7]->DBus" 50
 F1 "Inst0..7_to_DBus.sch" 50
-F2 "Inst[0..7]->DBus" I R 12000 2150 50 
-F3 "Inst[0..15]" I R 12000 1950 50 
-F4 "DB[0..7]" T L 10800 1950 50 
-F5 "DB_OUT" T L 10800 2050 50 
+F2 "Inst[0..7]->DBus" I R 12050 2150 50 
+F3 "Inst[0..15]" I R 12050 1950 50 
+F4 "DB[0..7]" T L 10850 1950 50 
+F5 "DB_OUT" T L 10850 2050 50 
 $EndSheet
 Text Notes 800  6100 0    50   ~ 0
 \n
@@ -71,35 +71,38 @@ F10 "PAGE[0..3]" I L 1900 7500 50
 F11 "DB_OUT" T R 3400 7500 50 
 $EndSheet
 $Sheet
-S 8700 1850 1300 550 
+S 8700 2450 1300 550 
 U 5F3A2F3D
 F0 "PC[0..7]/[8..13] ->  DBus" 50
 F1 "PC_to_DBus.sch" 50
-F2 "PC[0..7]->DBus" I L 8700 2300 50 
-F3 "PC[0..13]" I L 8700 1950 50 
-F4 "DB_OUT" T R 10000 2050 50 
-F5 "DB[0..7]" T R 10000 1950 50 
-F6 "PC[8..13]->DBus" I L 8700 2200 50 
+F2 "PC[0..7]->DBus" I L 8700 2900 50 
+F3 "PC[0..13]" I L 8700 2550 50 
+F4 "DB_OUT" T R 10000 2650 50 
+F5 "DB[0..7]" T R 10000 2550 50 
+F6 "PC[8..13]->DBus" I L 8700 2800 50 
 $EndSheet
 $Sheet
-S 10850 700  1200 700 
+S 11200 700  1200 700 
 U 5F18F3CA
 F0 "InstReg" 50
 F1 "InstReg.sch" 50
-F2 "LATCH_EN" I L 10850 1000 50 
-F3 "CLK" I L 10850 1200 50 
-F4 "NextInst[0..15]" I L 10850 800 50 
-F5 "Inst[0..15]" O R 12050 800 50 
-F6 "RESET" I L 10850 1300 50 
+F2 "LATCH_EN" I L 11200 1000 50 
+F3 "CLK" I L 11200 1200 50 
+F4 "NextInst[0..15]" I L 11200 800 50 
+F5 "Inst[0..15]" O R 12400 800 50 
+F6 "RESET" I L 11200 1300 50 
 $EndSheet
 $Sheet
-S 8700 700  1300 400 
+S 8700 700  1300 700 
 U 5F28170E
 F0 "ROM" 50
 F1 "ROM.sch" 50
 F2 "PC[0..13]" I L 8700 800 50 
 F3 "NextInst[0..15]" O R 10000 800 50 
 F4 "PROG_DO_RESET" O R 10000 900 50 
+F5 "BKPT_RCLK" O R 10000 1100 50 
+F6 "BKPT_SER" O R 10000 1200 50 
+F7 "BKPT_SCLK" O R 10000 1300 50 
 $EndSheet
 $Sheet
 S 7350 700  1050 1000
@@ -116,23 +119,23 @@ F8 "LATCH_EN" I L 7350 1300 50
 F9 "ROMA[0..13]" B L 7350 800 50 
 $EndSheet
 $Sheet
-S 6950 3200 1250 350 
+S 6950 3450 1250 350 
 U 5F575798
 F0 "INTAdr->ROMA" 50
 F1 "INTAdr_to_ROMA.sch" 50
-F2 "ROMA[0..13]" B L 6950 3300 50 
-F3 "INTAdr->ROMA" I R 8200 3300 50 
-F4 "ROMA_OUT" T L 6950 3400 50 
+F2 "ROMA[0..13]" B L 6950 3550 50 
+F3 "INTAdr->ROMA" I R 8200 3550 50 
+F4 "ROMA_OUT" T L 6950 3650 50 
 $EndSheet
 $Sheet
-S 8700 2650 1300 400 
+S 10250 3100 1300 400 
 U 5F5CACFC
 F0 "In[0..13]->ROMA" 50
 F1 "In0..13_to_ROMA.sch" 50
-F2 "ROMA[0..13]" B L 8700 2750 50 
-F3 "In[0..13]->ROMA" I R 10000 2950 50 
-F4 "ROMA_OUT" T L 8700 2850 50 
-F5 "Inst[0..15]" I R 10000 2750 50 
+F2 "ROMA[0..13]" B L 10250 3200 50 
+F3 "In[0..13]->ROMA" I R 11550 3400 50 
+F4 "ROMA_OUT" T L 10250 3300 50 
+F5 "Inst[0..15]" I R 11550 3200 50 
 $EndSheet
 $Sheet
 S 8250 7050 1000 300 
@@ -229,14 +232,6 @@ F11 "OE" I L 11100 8550 50
 F12 "USE_B_COMP" I L 11100 8650 50 
 $EndSheet
 $Sheet
-S 8700 1350 1300 200 
-U 5FD6F3D6
-F0 "Breakpoint" 50
-F1 "Breakpoint.sch" 50
-F2 "PC[0..13]" I L 8700 1450 50 
-F3 "BRPT_TRIG" O R 10000 1450 50 
-$EndSheet
-$Sheet
 S 11100 9050 1500 600 
 U 5FD6B215
 F0 "Comparator.sch" 50
@@ -309,14 +304,7 @@ F53 "UI_Halt_Step" O R 14850 1100 50
 F54 "UI_Halt_Bkpt" O R 14850 1200 50 
 $EndSheet
 Wire Bus Line
-	8400 800  8550 800 
-Wire Bus Line
-	8550 800  8550 1450
-Wire Bus Line
-	8550 1450 8700 1450
-Connection ~ 8550 800 
-Wire Bus Line
-	8550 800  8700 800 
+	8550 1700 8700 1700
 Text Label 15350 800  2    50   ~ 0
 INT_Active
 Text Label 15350 900  2    50   ~ 0
@@ -580,19 +568,19 @@ Wire Wire Line
 Text Label 7100 1500 0    50   ~ 0
 CLK
 Wire Wire Line
-	10850 1300 10600 1300
-Text Label 10600 1300 0    50   ~ 0
+	11200 1300 10950 1300
+Text Label 10950 1300 0    50   ~ 0
 RESET
 Text Label 7100 1600 0    50   ~ 0
 ~RESET
 Wire Wire Line
-	10850 1200 10600 1200
-Text Label 10600 1200 0    50   ~ 0
+	11200 1200 10950 1200
+Text Label 10950 1200 0    50   ~ 0
 CLK
-Text Label 10150 1000 0    50   ~ 0
+Text Label 10500 1000 0    50   ~ 0
 InstReg_Latch_EN
 Wire Wire Line
-	10850 1000 10150 1000
+	11200 1000 10500 1000
 Text Label 6650 1200 0    50   ~ 0
 PC_Inc_EN
 Text Label 6650 1000 0    50   ~ 0
@@ -631,34 +619,34 @@ Wire Wire Line
 	11100 7400 10450 7400
 Wire Wire Line
 	11100 7200 10450 7200
-Text Label 10700 2950 2    50   ~ 0
+Text Label 12250 3400 2    50   ~ 0
 In[0..13]->ROMA
-Text Label 8000 2300 0    50   ~ 0
+Text Label 8000 2900 0    50   ~ 0
 PC[0..7]->DBus
-Text Label 8000 2200 0    50   ~ 0
+Text Label 8000 2800 0    50   ~ 0
 PC[8..13]->DBus
 Text Label 6800 4400 2    50   ~ 0
 In[0..7]->RAMA[0..7]
 Text Label 6800 4300 2    50   ~ 0
 RegB->RAMA[0..7]
-Text Label 12600 2150 2    50   ~ 0
+Text Label 12650 2150 2    50   ~ 0
 In[0..7]->DBus
-Text Label 8800 3300 2    50   ~ 0
+Text Label 8800 3550 2    50   ~ 0
 INTAdr->ROMA
 Wire Wire Line
-	10000 2950 10700 2950
+	11550 3400 12250 3400
 Wire Wire Line
-	8700 2300 8000 2300
+	8700 2900 8000 2900
 Wire Wire Line
-	8700 2200 8000 2200
+	8700 2800 8000 2800
 Wire Wire Line
 	5950 4400 6800 4400
 Wire Wire Line
 	5950 4300 6800 4300
 Wire Wire Line
-	12000 2150 12600 2150
+	12050 2150 12650 2150
 Wire Wire Line
-	8200 3300 8800 3300
+	8200 3550 8800 3550
 Wire Wire Line
 	13400 1300 12950 1300
 Text Label 12950 1300 0    50   ~ 0
@@ -706,8 +694,8 @@ CNDT_AFFIRMATIVE
 Text Label 6650 1100 0    50   ~ 0
 CNDT_AFFIRMATIVE
 Wire Wire Line
-	10000 1450 10450 1450
-Text Label 10450 1450 2    50   ~ 0
+	10000 2150 10450 2150
+Text Label 10450 2150 2    50   ~ 0
 BRPT_TRIG
 Wire Wire Line
 	13400 1400 12950 1400
@@ -718,12 +706,12 @@ Wire Wire Line
 Text Label 12950 1200 0    50   ~ 0
 INT_Assert
 Wire Wire Line
-	10000 2050 10350 2050
-Text Label 10350 2050 2    50   ~ 0
+	10000 2650 10350 2650
+Text Label 10350 2650 2    50   ~ 0
 DB_OUT
 Wire Wire Line
-	10800 2050 10450 2050
-Text Label 10450 2050 0    50   ~ 0
+	10850 2050 10500 2050
+Text Label 10500 2050 0    50   ~ 0
 DB_OUT
 Wire Wire Line
 	12600 8250 12950 8250
@@ -742,24 +730,22 @@ Wire Bus Line
 Text Label 1450 7500 0    50   ~ 0
 PAGE[0..3]
 Wire Bus Line
-	8700 2750 6450 2750
-Wire Bus Line
-	6950 3300 6450 3300
+	6950 3550 6450 3550
 Wire Bus Line
 	6450 800  7350 800 
 Wire Bus Line
 	7000 2150 6450 2150
 Wire Wire Line
-	6950 3400 6500 3400
-Text Label 6500 3400 0    50   ~ 0
+	6950 3650 6500 3650
+Text Label 6500 3650 0    50   ~ 0
 ROMA_OUT
 Wire Wire Line
 	7000 2250 6550 2250
 Text Label 6550 2250 0    50   ~ 0
 ROMA_OUT
 Wire Wire Line
-	8700 2850 8250 2850
-Text Label 8250 2850 0    50   ~ 0
+	10250 3300 9800 3300
+Text Label 9800 3300 0    50   ~ 0
 ROMA_OUT
 Text Label 12800 1100 0    50   ~ 0
 INST_STEP_EN
@@ -931,38 +917,24 @@ Wire Bus Line
 Text Label 12950 8150 2    50   ~ 0
 DB[0..7]
 Wire Bus Line
-	10000 1950 10350 1950
-Text Label 10350 1950 2    50   ~ 0
+	10000 2550 10350 2550
+Text Label 10350 2550 2    50   ~ 0
 DB[0..7]
 Wire Bus Line
 	12700 800  12700 1950
 Wire Bus Line
-	8550 1450 8550 1950
+	8550 2550 8700 2550
 Wire Bus Line
-	8550 1950 8700 1950
-Connection ~ 8550 1450
-Wire Bus Line
-	10800 1950 10450 1950
-Text Label 10450 1950 0    50   ~ 0
+	10850 1950 10500 1950
+Text Label 10500 1950 0    50   ~ 0
 DB[0..7]
 Text Label 10700 900  2    50   ~ 0
 PROG_DO_RESET
 Wire Wire Line
 	10000 900  10700 900 
 Wire Bus Line
-	10000 800  10850 800 
-Wire Bus Line
-	10000 2750 12700 2750
-Wire Bus Line
-	12050 800  12700 800 
-Wire Bus Line
-	12000 1950 12700 1950
+	12050 1950 12700 1950
 Connection ~ 12700 1950
-Wire Bus Line
-	12700 1950 12700 2750
-Wire Bus Line
-	12700 800  13400 800 
-Connection ~ 12700 800 
 Wire Wire Line
 	2050 850  2650 850 
 Wire Wire Line
@@ -1086,12 +1058,7 @@ F9 "F_SET_NUM[0..2]" O R 4650 1850 50
 $EndSheet
 Connection ~ 6450 2150
 Wire Bus Line
-	6450 2150 6450 2750
-Wire Bus Line
 	6450 800  6450 2150
-Wire Bus Line
-	6450 2750 6450 3050
-Connection ~ 6450 2750
 Wire Bus Line
 	11100 5200 10750 5200
 Text Label 10750 5200 0    50   ~ 0
@@ -1110,8 +1077,6 @@ Connection ~ 9450 6400
 Wire Bus Line
 	6450 3050 5900 3050
 Connection ~ 6450 3050
-Wire Bus Line
-	6450 3050 6450 3300
 Wire Wire Line
 	5900 3150 6350 3150
 Text Label 6350 3150 2    50   ~ 0
@@ -1418,9 +1383,6 @@ Connection ~ 10000 6400
 Wire Bus Line
 	5950 4000 7450 4000
 Wire Bus Line
-	12700 4000 12700 2750
-Connection ~ 12700 2750
-Wire Bus Line
 	4700 4000 750  4000
 Wire Bus Line
 	750  4000 750  6850
@@ -1522,4 +1484,66 @@ Text Notes 13600 8900 0    118  ~ 0
 Demonstration Features:
 Text Notes 13600 8600 0    79   ~ 0
  - 8bit Processor\n - 500kHz+ Clock Frequency\n - 4kB Heap RAM, 4kB Stack RAM\n - 16kB Program ROM\n - Hardware call/return support\n - Interrupts\n - Peripheral Ports\n - Hardware breakpoint
+Wire Bus Line
+	6450 3050 6450 3200
+Wire Bus Line
+	8400 800  8550 800 
+Wire Bus Line
+	8550 800  8550 1700
+Connection ~ 8550 800 
+Wire Bus Line
+	8550 800  8700 800 
+Wire Bus Line
+	12700 1950 12700 3200
+Wire Bus Line
+	6450 2150 6450 3050
+Wire Bus Line
+	10250 3200 6450 3200
+Connection ~ 6450 3200
+Wire Bus Line
+	6450 3200 6450 3550
+Wire Bus Line
+	11550 3200 12700 3200
+Connection ~ 12700 3200
+Wire Bus Line
+	12700 3200 12700 4000
+$Sheet
+S 8700 1600 1300 650 
+U 5FD6F3D6
+F0 "Breakpoint" 50
+F1 "Breakpoint.sch" 50
+F2 "PC[0..13]" I L 8700 1700 50 
+F3 "BRPT_TRIG" O R 10000 2150 50 
+F4 "BKPT_RCLK" I R 10000 1900 50 
+F5 "BKPT_SER" I R 10000 1800 50 
+F6 "BKPT_SCLK" I R 10000 1700 50 
+$EndSheet
+Wire Bus Line
+	8550 1700 8550 2550
+Connection ~ 8550 1700
+Wire Wire Line
+	10000 1100 10300 1100
+Wire Wire Line
+	10300 1100 10300 1900
+Wire Wire Line
+	10300 1900 10000 1900
+Wire Wire Line
+	10000 1800 10200 1800
+Wire Wire Line
+	10200 1800 10200 1200
+Wire Wire Line
+	10200 1200 10000 1200
+Wire Wire Line
+	10000 1300 10100 1300
+Wire Wire Line
+	10100 1300 10100 1700
+Wire Wire Line
+	10100 1700 10000 1700
+Wire Bus Line
+	12700 800  13400 800 
+Wire Bus Line
+	10000 800  11200 800 
+Wire Bus Line
+	12400 800  12700 800 
+Connection ~ 12700 800 
 $EndSCHEMATC

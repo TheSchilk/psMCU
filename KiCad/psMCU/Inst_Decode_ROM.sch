@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 45 92
+Sheet 44 93
 Title "psMCU"
 Date ""
 Rev ""
@@ -26,10 +26,6 @@ InstCode6
 Text HLabel 5900 2550 2    50   Output ~ 0
 InstCode7
 Wire Wire Line
-	4350 2850 4250 2850
-Wire Wire Line
-	4250 2850 4250 2950
-Wire Wire Line
 	4250 3750 4350 3750
 Wire Wire Line
 	4350 3650 4250 3650
@@ -38,7 +34,6 @@ Wire Wire Line
 	4250 3650 4250 3750
 Wire Wire Line
 	4350 2950 4250 2950
-Connection ~ 4250 2950
 Wire Wire Line
 	4250 2950 4250 3050
 Wire Wire Line
@@ -265,6 +260,10 @@ F 3 "" H 5050 4800 50  0001 C CNN
 	1    4950 3350
 	1    0    0    -1  
 $EndComp
+Text HLabel 4200 2850 0    50   Input ~ 0
+Interrupt
+Wire Wire Line
+	4200 2850 4350 2850
 Wire Bus Line
 	3950 2050 3950 2650
 $EndSCHEMATC

@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 103 92
+Sheet 86 93
 Title "psMCU"
 Date ""
 Rev ""
@@ -176,22 +176,6 @@ Entry Wire Line
 	4600 5450 4700 5550
 Entry Wire Line
 	4600 4750 4700 4850
-Text Label 4600 2500 2    50   ~ 0
-VAL3
-Text Label 4600 2400 2    50   ~ 0
-VAL2
-Text Label 4600 2300 2    50   ~ 0
-VAL1
-Text Label 4600 2200 2    50   ~ 0
-VAL0
-Wire Wire Line
-	4450 2500 4600 2500
-Wire Wire Line
-	4450 2400 4600 2400
-Wire Wire Line
-	4450 2300 4600 2300
-Wire Wire Line
-	4450 2200 4600 2200
 Entry Wire Line
 	4600 2500 4700 2600
 Entry Wire Line
@@ -506,20 +490,20 @@ Entry Wire Line
 Entry Wire Line
 	2650 2400 2750 2500
 Wire Wire Line
-	2750 2200 3450 2200
-Wire Wire Line
-	2750 2300 3450 2300
+	2750 2500 3450 2500
 Wire Wire Line
 	2750 2400 3450 2400
 Wire Wire Line
-	2750 2500 3450 2500
-Text Label 2750 2200 0    50   ~ 0
-DB0
-Text Label 2750 2300 0    50   ~ 0
-DB1
-Text Label 2750 2400 0    50   ~ 0
-DB2
+	2750 2300 3450 2300
+Wire Wire Line
+	2750 2200 3450 2200
 Text Label 2750 2500 0    50   ~ 0
+DB0
+Text Label 2750 2400 0    50   ~ 0
+DB1
+Text Label 2750 2300 0    50   ~ 0
+DB2
+Text Label 2750 2200 0    50   ~ 0
 DB3
 Wire Wire Line
 	6050 7600 6050 4900
@@ -2513,6 +2497,22 @@ Wire Bus Line
 	4150 5850 4700 5850
 Wire Wire Line
 	5950 9300 5950 9500
+Wire Wire Line
+	4600 2200 4450 2200
+Wire Wire Line
+	4600 2300 4450 2300
+Wire Wire Line
+	4600 2400 4450 2400
+Wire Wire Line
+	4600 2500 4450 2500
+Text Label 4450 2200 0    50   ~ 0
+VAL0
+Text Label 4450 2300 0    50   ~ 0
+VAL1
+Text Label 4450 2400 0    50   ~ 0
+VAL2
+Text Label 4450 2500 0    50   ~ 0
+VAL3
 Wire Bus Line
 	3700 5250 3700 5550
 Wire Bus Line

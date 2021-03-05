@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 39 92
+Sheet 29 93
 Title "psMCU"
 Date ""
 Rev ""
@@ -148,38 +148,6 @@ Entry Wire Line
 	6900 1850 7000 1950
 Entry Wire Line
 	6900 1950 7000 2050
-Text Label 6900 1950 2    50   ~ 0
-DB0
-Text Label 6900 1850 2    50   ~ 0
-DB1
-Text Label 6900 1750 2    50   ~ 0
-DB2
-Text Label 6900 1650 2    50   ~ 0
-DB3
-Text Label 6900 1550 2    50   ~ 0
-DB4
-Text Label 6900 1450 2    50   ~ 0
-DB5
-Text Label 6900 1350 2    50   ~ 0
-DB6
-Text Label 6900 1250 2    50   ~ 0
-DB7
-Wire Wire Line
-	6650 1250 6900 1250
-Wire Wire Line
-	6650 1350 6900 1350
-Wire Wire Line
-	6650 1450 6900 1450
-Wire Wire Line
-	6650 1550 6900 1550
-Wire Wire Line
-	6650 1650 6900 1650
-Wire Wire Line
-	6650 1750 6900 1750
-Wire Wire Line
-	6650 1850 6900 1850
-Wire Wire Line
-	6650 1950 6900 1950
 $Comp
 L 74xGxx:74LVC1G04 U?
 U 1 1 60543CB6
@@ -1296,6 +1264,38 @@ F 3 "http://www.ti.com/lit/gpn/sn74HC86" H 6800 7300 50  0001 C CNN
 	5    6800 7300
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	6650 1250 6900 1250
+Wire Wire Line
+	6650 1350 6900 1350
+Wire Wire Line
+	6650 1450 6900 1450
+Wire Wire Line
+	6650 1550 6900 1550
+Wire Wire Line
+	6650 1650 6900 1650
+Wire Wire Line
+	6650 1750 6900 1750
+Wire Wire Line
+	6650 1850 6900 1850
+Wire Wire Line
+	6650 1950 6900 1950
+Text Label 6900 1950 2    50   ~ 0
+DB7
+Text Label 6900 1850 2    50   ~ 0
+DB6
+Text Label 6900 1750 2    50   ~ 0
+DB5
+Text Label 6900 1650 2    50   ~ 0
+DB4
+Text Label 6900 1550 2    50   ~ 0
+DB3
+Text Label 6900 1450 2    50   ~ 0
+DB2
+Text Label 6900 1350 2    50   ~ 0
+DB1
+Text Label 6900 1250 2    50   ~ 0
+DB0
 Wire Bus Line
 	7000 1350 7000 2050
 Wire Bus Line
