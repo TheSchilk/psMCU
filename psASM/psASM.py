@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import sys
 from Namespace import Namespace
 from Listing import Listing
