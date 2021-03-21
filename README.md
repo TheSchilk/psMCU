@@ -26,7 +26,6 @@ To use it simply run:
 
 See `Doc/ProgrammingGuide.md` for details about the psASM 'language'.
 
-
 ### Syntax Highlighting 
 Predefined profiles for psASM syntax highlighting in Notepad++ and vim.
 
