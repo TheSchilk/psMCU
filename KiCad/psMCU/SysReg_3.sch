@@ -296,22 +296,6 @@ Text HLabel 5300 2600 3    50   Input ~ 0
 ~RESET
 Text HLabel 4900 2300 0    50   Input ~ 0
 CLK
-$Comp
-L power:+5V #PWR?
-U 1 1 60320FA1
-P 7800 3700
-AR Path="/5ED2705B/60320FA1" Ref="#PWR?"  Part="1" 
-AR Path="/5F3ED0F9/60320FA1" Ref="#PWR?"  Part="1" 
-AR Path="/5FD65308/60320FA1" Ref="#PWR01564"  Part="1" 
-F 0 "#PWR01564" H 7800 3550 50  0001 C CNN
-F 1 "+5V" H 7850 3850 50  0000 C CNN
-F 2 "" H 7800 3700 50  0001 C CNN
-F 3 "" H 7800 3700 50  0001 C CNN
-	1    7800 3700
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	7850 3700 7800 3700
 Wire Wire Line
 	8350 4150 8350 4100
 $Comp
@@ -326,42 +310,42 @@ F 1 "GND" H 8550 4100 50  0000 C CNN
 F 2 "" H 8350 4150 50  0001 C CNN
 F 3 "" H 8350 4150 50  0001 C CNN
 	1    8350 4150
-	1    0    0    -1  
+	-1   0    0    -1  
 $EndComp
 Wire Wire Line
-	8650 2400 8600 2400
+	8050 2400 8100 2400
 $Comp
 L power:GND #PWR?
 U 1 1 60320FB0
-P 8650 2400
+P 8050 2400
 AR Path="/5ED2705B/60320FB0" Ref="#PWR?"  Part="1" 
 AR Path="/5F3ED0F9/60320FB0" Ref="#PWR?"  Part="1" 
 AR Path="/5FD65308/60320FB0" Ref="#PWR01567"  Part="1" 
-F 0 "#PWR01567" H 8650 2150 50  0001 C CNN
-F 1 "GND" V 8655 2272 50  0000 R CNN
-F 2 "" H 8650 2400 50  0001 C CNN
-F 3 "" H 8650 2400 50  0001 C CNN
-	1    8650 2400
-	0    -1   -1   0   
+F 0 "#PWR01567" H 8050 2150 50  0001 C CNN
+F 1 "GND" V 8055 2272 50  0000 R CNN
+F 2 "" H 8050 2400 50  0001 C CNN
+F 3 "" H 8050 2400 50  0001 C CNN
+	1    8050 2400
+	0    1    -1   0   
 $EndComp
 Wire Wire Line
 	8350 2400 8350 2300
 Connection ~ 8350 2400
 Wire Wire Line
-	8400 2400 8350 2400
+	8300 2400 8350 2400
 $Comp
 L Device:C_Small C?
 U 1 1 60320FB9
-P 8500 2400
+P 8200 2400
 AR Path="/5ED2705B/60320FB9" Ref="C?"  Part="1" 
 AR Path="/5F3ED0F9/60320FB9" Ref="C?"  Part="1" 
 AR Path="/5FD65308/60320FB9" Ref="C372"  Part="1" 
-F 0 "C372" V 8271 2400 50  0000 C CNN
-F 1 "0u1" V 8362 2400 50  0000 C CNN
-F 2 "NoRef_Footprints:C_0603_1608Metric_NoRef" H 8500 2400 50  0001 C CNN
-F 3 "~" H 8500 2400 50  0001 C CNN
-	1    8500 2400
-	0    1    1    0   
+F 0 "C372" V 7971 2400 50  0000 C CNN
+F 1 "0u1" V 8062 2400 50  0000 C CNN
+F 2 "NoRef_Footprints:C_0603_1608Metric_NoRef" H 8200 2400 50  0001 C CNN
+F 3 "~" H 8200 2400 50  0001 C CNN
+	1    8200 2400
+	0    -1   1    0   
 $EndComp
 $Comp
 L power:+5V #PWR?
@@ -375,26 +359,10 @@ F 1 "+5V" H 8200 2400 50  0000 C CNN
 F 2 "" H 8350 2300 50  0001 C CNN
 F 3 "" H 8350 2300 50  0001 C CNN
 	1    8350 2300
-	1    0    0    -1  
+	-1   0    0    -1  
 $EndComp
 Wire Wire Line
 	8350 2500 8350 2400
-$Comp
-L 74xx:74HC245 U?
-U 1 1 60320FC6
-P 8350 3300
-AR Path="/5ED2705B/60320FC6" Ref="U?"  Part="1" 
-AR Path="/5F3ED0F9/60320FC6" Ref="U?"  Part="1" 
-AR Path="/5FD65308/60320FC6" Ref="U356"  Part="1" 
-F 0 "U356" H 8500 4050 50  0000 C CNN
-F 1 "SN74HC245PW" H 8650 3950 50  0000 C CNN
-F 2 "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" H 8350 3300 50  0001 C CNN
-F 3 "http://www.ti.com/lit/gpn/sn74HC245" H 8350 3300 50  0001 C CNN
-	1    8350 3300
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	7700 3800 7850 3800
 Text Label 9100 2800 2    50   ~ 0
 DB0
 Text Label 9100 2900 2    50   ~ 0
@@ -534,10 +502,6 @@ $EndComp
 Wire Wire Line
 	7000 5750 7000 5650
 Connection ~ 6100 2200
-Wire Wire Line
-	7250 5550 7700 5550
-Wire Wire Line
-	7700 3800 7700 5550
 Wire Bus Line
 	9200 950  3400 950 
 Entry Wire Line
@@ -2392,6 +2356,42 @@ F 3 "~" H 8950 4500 50  0001 C CNN
 	1    8950 4500
 	0    1    1    0   
 $EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 606C388F
+P 9000 3700
+AR Path="/5ED2705B/606C388F" Ref="#PWR?"  Part="1" 
+AR Path="/5F3ED0F9/606C388F" Ref="#PWR?"  Part="1" 
+AR Path="/5FD65308/606C388F" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 9000 3450 50  0001 C CNN
+F 1 "GND" V 9005 3572 50  0000 R CNN
+F 2 "" H 9000 3700 50  0001 C CNN
+F 3 "" H 9000 3700 50  0001 C CNN
+	1    9000 3700
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	9000 3700 8850 3700
+Wire Wire Line
+	10350 3800 10350 5550
+Wire Wire Line
+	7250 5550 10350 5550
+$Comp
+L 74xx:74HC245 U?
+U 1 1 60320FC6
+P 8350 3300
+AR Path="/5ED2705B/60320FC6" Ref="U?"  Part="1" 
+AR Path="/5F3ED0F9/60320FC6" Ref="U?"  Part="1" 
+AR Path="/5FD65308/60320FC6" Ref="U356"  Part="1" 
+F 0 "U356" H 8500 4050 50  0000 C CNN
+F 1 "SN74HC245PW" H 8650 3950 50  0000 C CNN
+F 2 "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" H 8350 3300 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74HC245" H 8350 3300 50  0001 C CNN
+	1    8350 3300
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	8850 3800 10350 3800
 Wire Bus Line
 	8250 4300 8250 4900
 Wire Bus Line
