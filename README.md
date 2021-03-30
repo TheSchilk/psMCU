@@ -1,12 +1,12 @@
 # psMCU
-### Philipp Schilk, 2020
+### Philipp Schilk, 2020-2021
 
 ## Repo Overview
 `Doc/`: Documentation  
-`KiCad/`: KiCad PCB Project  
+`ECAD/`: KiCad PCB Project  
 `Logisim/`: Logisim Digital Simulation  
 `SyntaxHighlighting/`: Syntax Highlighting for psASM assembly in Notepad++ and vim  
-`Programms/`: Programms for the psMCU written in psASM  
+`Programs/`: Programms for the psMCU written in psASM  
 `psASM/`: Python assembler that creates binaries from .psASM files  
 `ROMGeneration/`: Script and source file for generating state machine ROMs  
 `ROMs/`: Binaries for all ROMs  
