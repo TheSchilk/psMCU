@@ -4195,11 +4195,6 @@ Wire Wire Line
 	2250 14850 2300 14850
 Connection ~ 2250 14950
 Wire Wire Line
-	2850 14950 2850 14850
-Wire Wire Line
-	2850 14850 2800 14850
-Connection ~ 2850 14950
-Wire Wire Line
 	2300 14050 2250 14050
 Connection ~ 2250 14050
 Wire Wire Line
@@ -4283,6 +4278,19 @@ Wire Wire Line
 	4550 15100 4550 15150
 Wire Wire Line
 	4550 15450 4550 15500
+$Comp
+L power:+5V #PWR?
+U 1 1 606EFA23
+P 3250 14850
+F 0 "#PWR?" H 3250 14700 50  0001 C CNN
+F 1 "+5V" H 3265 15023 50  0000 C CNN
+F 2 "" H 3250 14850 50  0001 C CNN
+F 3 "" H 3250 14850 50  0001 C CNN
+	1    3250 14850
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3250 14850 2800 14850
 Wire Bus Line
 	2600 4050 2600 5350
 Wire Bus Line
@@ -4301,4 +4309,6 @@ Wire Bus Line
 	5400 2400 5400 4000
 Wire Bus Line
 	8150 2100 8150 14050
+Text Notes 2800 14850 0    50   ~ 0
+(5V Detect)
 $EndSCHEMATC
