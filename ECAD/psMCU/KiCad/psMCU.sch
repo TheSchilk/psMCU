@@ -5,8 +5,8 @@ $Descr A3 16535 11693
 encoding utf-8
 Sheet 1 93
 Title "psMCU"
-Date ""
-Rev ""
+Date "2021-03-30"
+Rev "v0.1"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""

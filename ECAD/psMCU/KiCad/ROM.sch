@@ -5,8 +5,8 @@ $Descr A3 11693 16535 portrait
 encoding utf-8
 Sheet 18 93
 Title "psMCU"
-Date ""
-Rev ""
+Date "2021-03-30"
+Rev "v0.1"
 Comp "Philipp Schilk"
 Comment1 "reading to memory. To reduce pin count, programming is done serially with shift registers.  "
 Comment2 "external programmer can reroute the IO of the ROM ICs to allow writing and"

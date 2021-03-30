@@ -3,10 +3,10 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 7 93
+Sheet 8 93
 Title "psMCU"
-Date ""
-Rev ""
+Date "2021-03-30"
+Rev "v0.1"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""

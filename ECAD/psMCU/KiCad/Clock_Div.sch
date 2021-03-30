@@ -5,8 +5,8 @@ $Descr A3 11693 16535 portrait
 encoding utf-8
 Sheet 80 93
 Title "psMCU"
-Date ""
-Rev ""
+Date "2021-03-30"
+Rev "v0.1"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 "Minimum division is /2."
