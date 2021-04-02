@@ -52,5 +52,7 @@ Mkfile.old
 dkms.conf
 
 #STM32CubeIDE/Eclipse
-.settings/
 Debug/
+!.settings/
+.settings/*
+!.settings/org.eclipse.cdt.core.prefs

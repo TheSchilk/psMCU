@@ -1,16 +1,25 @@
- -mcpu=cortex-m0 
- -std=gnu11 
- -g3 
- -DDEBUG 
- -DUSE_HAL_DRIVER 
- -DSTM32F030x6 
- -c 
- -ICore/Inc 
- -IDrivers/STM32F0xx_HAL_Driver/Inc 
- -IDrivers/STM32F0xx_HAL_Driver/Inc/Legacy 
- -IDrivers/CMSIS/Device/ST/STM32F0xx/Include 
- -IDrivers/CMSIS/Include 
- -O0 
- -Wall
+-Og
+-g3
+-ggdb
+
+-DUSE_HAL_DRIVER
+-DSTM32F030x6
+-DDEBUG
+
+-IpsPROG/Inc
+-ICore/Inc
+-IDrivers/STM32F0xx_HAL_Driver/Inc
+-IDrivers/STM32F0xx_HAL_Driver/Inc/Legacy
+-IDrivers/CMSIS/Device/ST/STM32F0xx/Include
+-IDrivers/CMSIS/Include
+
+
+-Wall
+-Wextra
+-Wpedantic
+-Wno-empty-translation-unit
+
+-xc
+-std=c99
 
 

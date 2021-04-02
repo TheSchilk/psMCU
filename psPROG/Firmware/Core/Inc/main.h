@@ -42,7 +42,13 @@ extern "C" {
 
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
+#define psMCU_interface_spi_handle    hspi1
+#define us_timer_handle               htim17
+#define serial_interface_uart_handle  huart1
 
+extern SPI_HandleTypeDef psMCU_interface_spi_handle;
+extern TIM_HandleTypeDef us_timer_handle;
+extern UART_HandleTypeDef serial_interface_uart_handle;
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/
@@ -72,6 +78,8 @@ void Error_Handler(void);
 #define LED2_GPIO_Port GPIOB
 #define ROUTE_ADR_nPC_PROG_Pin GPIO_PIN_8
 #define ROUTE_ADR_nPC_PROG_GPIO_Port GPIOA
+#define ROUTE_DATA_ROM_nPROG_Pin GPIO_PIN_9
+#define ROUTE_DATA_ROM_nPROG_GPIO_Port GPIOA
 #define RESET_TARGET_Pin GPIO_PIN_10
 #define RESET_TARGET_GPIO_Port GPIOA
 #define BUF_5V_nOE_Pin GPIO_PIN_11
@@ -91,6 +99,7 @@ void Error_Handler(void);
 #define MEM_nPGM_Pin GPIO_PIN_7
 #define MEM_nPGM_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
+
 
 /* USER CODE END Private defines */
 
