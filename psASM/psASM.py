@@ -15,6 +15,8 @@ parser.add_argument('-o', required=False, help='Output name.')
 parser.add_argument('-L', required=False, action="store_true", help='Also generate Logisim file.')
 parser.add_argument('-S', required=False, action="store_true", help='Also generate split binary files.')
 parser.add_argument('-M', required=False, action="store_true", help='Also generate Map file.')
+parser.add_argument('-w', required=False, action="store_true", help='Strip line whitespace/indents in map file.')
+parser.add_argument('-c', required=False, action="store_true", help='Strip line comments in map file.')
 cmdline_args = parser.parse_args()
 
 # Parse and assemble program:
@@ -73,5 +75,5 @@ if cmdline_args.L:
 
 # Generate Map file:
 if cmdline_args.M:
-    Output.generate_map(listing, output_name)
+    Output.generate_map(listing, output_name, cmdline_args.w, cmdline_args.c)
 

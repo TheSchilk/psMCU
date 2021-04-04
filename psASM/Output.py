@@ -29,7 +29,7 @@ def generate_logisim(listing, out_name):
                 outfile.write("\n")
 
 
-def generate_map(listing, out_name):
+def generate_map(listing, out_name, do_strip_whitespace, do_strip_comments):
     with open(out_name + ".map", 'w') as outfile:
         map_file_table = {
             "adr": [],
@@ -96,8 +96,14 @@ def generate_map(listing, out_name):
             map_file_col_width["source"] = max(map_file_col_width["source"], len(source))
 
             # Line
-            map_file_table["line"].append(line.text)
-            map_file_col_width["line"] = max(map_file_col_width["line"], len(line.text))
+            line_text = line.text
+            if do_strip_comments:
+                line_text = line_text.split('#',1)[0];
+            if do_strip_whitespace:
+                line_text = line_text.strip()
+
+            map_file_table["line"].append(line_text)
+            map_file_col_width["line"] = max(map_file_col_width["line"], len(line_text))
 
         # Pad each item to the correct width:
         for key, header in map_file_labels.items():
