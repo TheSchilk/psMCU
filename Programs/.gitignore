@@ -2,4 +2,4 @@
 *LOGISIM
 *.bin
 *.map
-*.parse
+*.defs
