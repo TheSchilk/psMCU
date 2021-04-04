@@ -10,7 +10,7 @@ class Alias:
     it can be defined with define()
     """
 
-    def __init__(self, name):
+    def __init__(self, name, alias_type, origin_line):
         """
         Create a new alias
         :param name: the name of the alias
@@ -18,6 +18,8 @@ class Alias:
         self.name = name
         self.is_defined = False
         self.definition = ""
+        self.alias_type = alias_type
+        self.origin_line = origin_line
 
     def define(self, definition):
         """
@@ -49,13 +51,15 @@ class Namespace:
     def __init__(self):
         self.aliases = []
 
-    def add_alias(self, name):
+    def add_alias(self, name, alias_type, origin_line):
         """
         Add a new (undefined) alias to the listing
         :param name: The name of the alias
+        :param alias_type: The type of alias (definition/label)
+        :param origin_line: The source line this originates from.
         :return: None
         """
-        self.aliases.append(Alias(name))
+        self.aliases.append(Alias(name, alias_type, origin_line))
 
     def contains_alias(self, name):
         """

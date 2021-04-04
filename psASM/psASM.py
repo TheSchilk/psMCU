@@ -64,7 +64,7 @@ else:
     output_name = cmdline_args.o
 
 # Generate binary
-Output.generate_bin(listing,output_name)
+Output.generate_bin(listing, output_name)
 
 # Generate split binary
 if cmdline_args.S:

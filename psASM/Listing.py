@@ -2,6 +2,7 @@ from Line import Line
 from Errors import ParsingException
 from StdLib import StdLib
 
+
 class Listing:
     def __init__(self, file_name, namespace):
         self.file_name = file_name
@@ -53,7 +54,7 @@ class Listing:
                 name, value = line.parse_definition()
                 if namespace.contains_alias(name):
                     raise ParsingException(line, "Namespace collision: \'" + name + "\' already exists elsewhere")
-                namespace.add_alias(name)
+                namespace.add_alias(name, "def.", line)
                 namespace.define_alias(name, value)
 
                 # Move on to next line
@@ -79,14 +80,14 @@ class Listing:
                 if namespace.contains_alias(label):
                     raise ParsingException(line, "Namespace collision: \'" + label +
                                            "\' already exists elsewhere")
-                namespace.add_alias(label)
+                namespace.add_alias(label, "label", line)
 
             # Add the instruction to the listing
             self.Lines.append(line)
 
         # If the file is over and there are some un-applied labels, issue a warning
         if cascading_labels:
-            print("Warning: In file \'"+self.file_name+"\' there are dangling labels:")
+            print("Warning: In file \'" + self.file_name + "\' there are dangling labels:")
             for label in cascading_labels:
                 print("\'" + label + "\'")
 

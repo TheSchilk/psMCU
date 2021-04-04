@@ -30,117 +30,132 @@ def generate_logisim(listing, out_name):
 
 
 def generate_map(listing, out_name, do_strip_whitespace, do_strip_comments):
+    cols = {"adr": 0, "labels": 1, "raw_inst": 2, "bin": 3, "source": 4, "line": 5}
+    map_file_table_cols = [[], [], [], [], [], []]
+    map_file_table_headers = ["Adr", "Labels", "Raw Inst.", "Bin", "Source", "Line"]
+
+    # Populate table
+    for adr, line in enumerate(listing.Lines):
+        # Address in lower-case hex
+        adr_hex = format(adr, '04x')
+        map_file_table_cols[cols["adr"]].append(adr_hex)
+
+        # Labels as comma-separated list
+        labels_txt = ""
+        for label in line.labels:
+            if len(labels_txt) != 0:
+                labels_txt += ", "
+            labels_txt += label
+        map_file_table_cols[cols["labels"]].append(labels_txt)
+
+        # Raw instruction
+        raw_inst = line.instruction.op_code
+        for arg_num, arg in enumerate(line.instruction.args):
+            if arg_num == 0:
+                raw_inst += " "
+            else:
+                raw_inst += ", "
+            raw_inst += hex(arg)
+        map_file_table_cols[cols["raw_inst"]].append(raw_inst)
+
+        # Binary instruction as lower-case hex
+        bin_inst = format(int.from_bytes(line.instruction.binary, byteorder='big'), '04x')
+        map_file_table_cols[cols["bin"]].append(bin_inst)
+
+        # Line Source
+        source = line.file_name + ":" + str(line.line_num)
+        map_file_table_cols[cols["source"]].append(source)
+
+        # Line
+        line_text = line.text
+        if do_strip_comments:
+            line_text = line_text.split('#', 1)[0]
+        if do_strip_whitespace:
+            line_text = line_text.strip()
+
+        map_file_table_cols[cols["line"]].append(line_text)
+
     with open(out_name + ".map", 'w') as outfile:
-        map_file_table = {
-            "adr": [],
-            "labels": [],
-            "raw_inst": [],
-            "bin": [],
-            "source": [],
-            "line": []
-        }
-
-        map_file_labels = {
-            "adr": "Adr",
-            "labels": "Labels",
-            "raw_inst": "Raw Inst.",
-            "bin": "Bin",
-            "source": "Source",
-            "line": "Line"
-        }
-
-        map_file_col_width = {
-            "adr": len(map_file_labels["adr"]),
-            "labels": len(map_file_labels["labels"]),
-            "raw_inst": len(map_file_labels["raw_inst"]),
-            "bin": len(map_file_labels["bin"]),
-            "source": len(map_file_labels["source"]),
-            "line": len(map_file_labels["line"])
-        }
-
-        # Populate map_file_table
-        for adr, line in enumerate(listing.Lines):
-            # Address in lower-case hex
-            adr_hex = format(adr, '04x')
-            map_file_table["adr"].append(adr_hex)
-            map_file_col_width["adr"] = max(map_file_col_width["adr"], len(adr_hex))
-
-            # Labels as comma-separated list
-            labels_txt = ""
-            for label in line.labels:
-                if len(labels_txt) != 0:
-                    labels_txt += ", "
-                labels_txt += label
-            map_file_table["labels"].append(labels_txt)
-            map_file_col_width["labels"] = max(map_file_col_width["labels"], len(labels_txt))
-
-            # Raw instruction
-            raw_inst = line.instruction.op_code
-            for arg_num, arg in enumerate(line.instruction.args):
-                if arg_num == 0:
-                    raw_inst += " "
-                else:
-                    raw_inst += ", "
-                raw_inst += hex(arg)
-            map_file_table["raw_inst"].append(raw_inst)
-            map_file_col_width["raw_inst"] = max(map_file_col_width["raw_inst"], len(raw_inst))
-
-            # Binary instruction as lower-case hex
-            bin_inst = format(int.from_bytes(line.instruction.binary, byteorder='big'), '04x')
-            map_file_table["bin"].append(bin_inst)
-            map_file_col_width["bin"] = max(map_file_col_width["bin"], len(bin_inst))
-
-            # Line Source
-            source = line.file_name + ":" + str(line.line_num)
-            map_file_table["source"].append(source)
-            map_file_col_width["source"] = max(map_file_col_width["source"], len(source))
-
-            # Line
-            line_text = line.text
-            if do_strip_comments:
-                line_text = line_text.split('#', 1)[0];
-            if do_strip_whitespace:
-                line_text = line_text.strip()
-
-            map_file_table["line"].append(line_text)
-            map_file_col_width["line"] = max(map_file_col_width["line"], len(line_text))
-
-        # Pad each item to the correct width:
-        for key, header in map_file_labels.items():
-            map_file_labels[key] = header.ljust(map_file_col_width[key])
-        for col_key, col in map_file_table.items():
-            for i, item in enumerate(col):
-                col[i] = item.ljust(map_file_col_width[col_key])
-
-        # Generate file:
-        # Header
-        outfile.write(map_file_labels["adr"])
-        outfile.write(" | " + map_file_labels["labels"])
-        outfile.write(" | " + map_file_labels["raw_inst"])
-        outfile.write(" | " + map_file_labels["bin"])
-        outfile.write(" | " + map_file_labels["source"])
-        outfile.write(" | " + map_file_labels["line"] + "\n")
-
-        # Separator
-        sep_length = 0
-        for val in map_file_col_width.values():
-            sep_length += val
-        sep_length += (len(map_file_table.keys()) - 1) * 3
-        sep = ""
-        for i in range(sep_length):
-            sep += "-"
-        outfile.write(sep + "\n")
-
-        for i in range(len(map_file_table["adr"])):
-            outfile.write(map_file_table["adr"][i])
-            outfile.write(" | " + map_file_table["labels"][i])
-            outfile.write(" | " + map_file_table["raw_inst"][i])
-            outfile.write(" | " + map_file_table["bin"][i])
-            outfile.write(" | " + map_file_table["source"][i])
-            outfile.write(" | " + map_file_table["line"][i] + "\n")
+        outfile.write(table_string(map_file_table_headers, map_file_table_cols))
 
 
 def generate_definitions(namespace, out_name):
+    cols = {"name": 0, "type": 1, "definition": 2, "source": 3}
+    def_file_table_cols = [[], [], [], []]
+    def_file_table_headers = ["Name", "Type", "Definition.", "Source"]
+
+    # Populate table
+    for alias in namespace.aliases:
+        # Name
+        def_file_table_cols[cols["name"]].append(alias.name)
+
+        # Type
+        def_file_table_cols[cols["type"]].append(alias.alias_type)
+
+        # Definition
+        def_file_table_cols[cols["definition"]].append(alias.definition)
+
+        # Source
+        source = alias.origin_line.file_name + ":" + str(alias.origin_line.line_num)
+        def_file_table_cols[cols["source"]].append(source)
+
     with open(out_name + ".defs", 'w') as outfile:
-        for alias in namespace.aliases:
-            outfile.write(str(alias) + "\n")
+        outfile.write(table_string(def_file_table_headers, def_file_table_cols))
+
+
+def table_string(headers, cols):
+    if len(headers) != len(cols):
+        raise Exception("headers/columns don't match")
+
+    col_height = len(cols[0])
+    for col in cols:
+        if len(col) != col_height:
+            raise Exception("cols don't have the same length")
+
+    # Find the width of each column
+    cols_width = []
+    for col_index, col in enumerate(cols):
+        col_width = 0
+        col_width = max(col_width, len(headers[col_index]))
+        for item in col:
+            col_width = max(col_width, len(item))
+        cols_width.append(col_width)
+
+    # Pad each header to the correct width
+    for header_index, header in enumerate(headers):
+        headers[header_index] = header.ljust(cols_width[header_index])
+
+    # Pad each col to the correct width
+    for col_index, col in enumerate(cols):
+        for item_index, item in enumerate(col):
+            col[item_index] = item.ljust(cols_width[col_index])
+
+    # Generate output
+    output = ""
+
+    # Header
+    for header_index, header in enumerate(headers):
+        if header_index != 0:
+            output += " | "
+        output += header
+    output += "\n"
+
+    # Separator
+    sep_length = 0
+    for width in cols_width:
+        sep_length += width
+    sep_length += (len(cols) - 1) * 3
+    sep = ""
+    for i in range(sep_length):
+        sep += "-"
+    output += sep + '\n'
+
+    # Table
+    for row_index in range(col_height):
+        for col_index, col in enumerate(cols):
+            if col_index != 0:
+                output += " | "
+            output += col[row_index]
+        output += '\n'
+
+    return output
