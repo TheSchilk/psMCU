@@ -73,6 +73,7 @@ POPB
 POPA
 HALT
 
+@define SCRT1 0x09
 
 # PUSHM and POPM 
 LITA 1

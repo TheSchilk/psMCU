@@ -4,13 +4,6 @@
 #
 
 
-# #### Scratch Registers ####
-
-@define SCRT1          0x100    # (R/W) Scratch Register 1
-@define SCRT2          0x101    # (R/W) Scratch Register 2
-@define SCRT3          0x102    # (R/W) Scratch Register 3
-@define SCRT4          0x103    # (R/W) Scratch Register 4
-
 # #### System Registers ####
 
 # SYS1
@@ -25,7 +18,8 @@
 # SYS2
 @define SYS2           0x105    # (R/W) System Register 2
                                 # [0..3] (R/W) RAM Page
-                                # [4..7] (R) Reserved. Always Reads 0.
+                                # [4..6] (R) Clock Frequency
+                                # [7] (R) Reserved. Always Reads 0.
 
 # SYS3
 @define SYS3           0x106    # (R/W) System Register 3

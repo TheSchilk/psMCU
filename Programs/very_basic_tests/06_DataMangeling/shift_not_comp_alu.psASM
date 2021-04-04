@@ -1,5 +1,7 @@
 @include StdLib.psASM
 
+@define SCRT1 0x09
+
 # Enable Interrupts:
 MAIN: LITA 0x1
 SVA SYS3
