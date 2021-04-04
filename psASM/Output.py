@@ -98,7 +98,7 @@ def generate_map(listing, out_name, do_strip_whitespace, do_strip_comments):
             # Line
             line_text = line.text
             if do_strip_comments:
-                line_text = line_text.split('#',1)[0];
+                line_text = line_text.split('#', 1)[0];
             if do_strip_whitespace:
                 line_text = line_text.strip()
 
@@ -138,3 +138,9 @@ def generate_map(listing, out_name, do_strip_whitespace, do_strip_comments):
             outfile.write(" | " + map_file_table["bin"][i])
             outfile.write(" | " + map_file_table["source"][i])
             outfile.write(" | " + map_file_table["line"][i] + "\n")
+
+
+def generate_definitions(namespace, out_name):
+    with open(out_name + ".defs", 'w') as outfile:
+        for alias in namespace.aliases:
+            outfile.write(str(alias) + "\n")

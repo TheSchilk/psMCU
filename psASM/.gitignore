@@ -79,7 +79,7 @@ dmypy.json
 *LOGISIM
 *.bin
 *.map
-*.parse
+*.defs
 
 # Test psASM files:
 *.psASM

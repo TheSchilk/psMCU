@@ -12,9 +12,10 @@ from Errors import ArgumentRangeException
 parser = argparse.ArgumentParser(prog="psASM.py", description="psASM Assembler for psMCU.")
 parser.add_argument('input_file', help='Input psASM file.')
 parser.add_argument('-o', required=False, help='Output name.')
-parser.add_argument('-L', required=False, action="store_true", help='Also generate Logisim file.')
+parser.add_argument('-L', required=False, action="store_true", help='Also generate logisim file.')
 parser.add_argument('-S', required=False, action="store_true", help='Also generate split binary files.')
-parser.add_argument('-M', required=False, action="store_true", help='Also generate Map file.')
+parser.add_argument('-M', required=False, action="store_true", help='Also generate map file.')
+parser.add_argument('-D', required=False, action="store_true", help='Also generate definitions file.')
 parser.add_argument('-w', required=False, action="store_true", help='Strip line whitespace/indents in map file.')
 parser.add_argument('-c', required=False, action="store_true", help='Strip line comments in map file.')
 cmdline_args = parser.parse_args()
@@ -62,18 +63,24 @@ if cmdline_args.o is None:
 else:
     output_name = cmdline_args.o
 
-# Generate Output Binary
+# Generate binary
 Output.generate_bin(listing,output_name)
 
-# Generate Split Binary
+# Generate split binary
 if cmdline_args.S:
     Output.generate_split_bin(listing, output_name)
 
-# Generate LOGISIM file
+# Generate logisim file
 if cmdline_args.L:
     Output.generate_logisim(listing, output_name)
 
-# Generate Map file:
+# Generate map file:
 if cmdline_args.M:
     Output.generate_map(listing, output_name, cmdline_args.w, cmdline_args.c)
+
+# Generate definitions file
+if cmdline_args.D:
+    Output.generate_definitions(namespace, output_name)
+
+
 
