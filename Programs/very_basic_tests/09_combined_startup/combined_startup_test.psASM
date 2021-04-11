@@ -1,0 +1,312 @@
+@include StdLib.psASM
+
+MAIN:
+
+# Test 0: LITA LITB HALT SWP COPY
+    # A goes 1-2-3-0xFF
+    LITA 1
+    LITA 2
+    LITA 3
+    LITA 0xFF
+    # B goes 1-2-3-0xFF
+    LITB 1
+    LITB 2
+    LITB 3
+    LITB 0xFF
+    
+    # A = 0xFF, B = 0x55
+    # Swap back and forth
+    LITA 0xFF
+    LITB 0x55
+    SWP
+    SWP
+    SWP 
+    SWP
+
+    # Copy A to B
+    CPY
+
+    # Halt
+    HALT
+
+# Test 1: SVA  SHFTLL SHFTR
+    # Set Ram Page to 1
+    LITA 1
+    LITB 0
+    SVA SYS2
+    
+    # A = 1, << by 1,2,4
+    LITA 1
+    SHFTLL 1
+    SHFTLL 2
+    SHFTLL 4
+    
+    # Shift back right using SHFTR and B register
+    LITB 1
+    SHFTR
+    LITB 2
+    SHFTR 
+    LITB 4
+    SHFTR
+
+    # Halt
+    HALT
+
+
+# Test 2: ADDLA ADDLB ADD
+    # Set Ram Page to 2
+    LITA 2
+    LITB 0
+    SVA SYS2
+    
+    # A = B = 0
+    LITA 0
+    LITB 0
+    # A += 8
+    ADDLA 8
+    # B += 8
+    ADDLB 8
+    # A += B
+    ADD
+    # A += 16
+    ADDLA 16
+    # A += 1
+    ADDLA 1
+
+    # Halt
+    HALT
+
+# Test 3: SUB SUBL
+    # Set Ram Page to 3
+    LITA 3
+    LITB 0
+    SVA SYS2
+
+    # A = 16, B = 0
+    LITA 16
+    LITB 0
+
+    # A -= 1
+    SUBL 1
+
+    # B = 15
+    LITB 15
+    # A -= B
+    SUB
+
+    # Halt
+    HALT
+
+# Test 4: PUSHA POPB
+    # Set Ram Page to 4
+    LITA 4
+    LITB 0
+    SVA SYS2
+
+    # Push 1,2,3,4 from A 
+    LITA 1
+    PUSHA
+    LITA 2
+    PUSHA 
+    LITA 3
+    PUSHA
+    LITA 4
+    PUSHA
+
+    # Pop back into B
+    POPB
+    POPB
+    POPB
+    POPB
+
+    # Halt
+    HALT
+
+# Test 5: Logic
+    # Set Ram Page to 5
+    LITA 5
+    LITB 0
+    SVA SYS2
+
+    # NOT
+    LITA 0x55
+    NOTA
+
+    # AND
+    LITB 0xFF
+    AND
+    
+    # OR
+    LITA 0xF0
+    LITB 0x05
+    OR
+
+    # XORL
+    LITA 0xFF
+    XORL 0x11
+
+    # COMPB
+    LITB 1
+    COMPB
+    
+    # HALT
+    HALT
+
+# Test 6: Jumps/Nops
+    # Set Ram Page to 6
+    LITA 6
+    LITB 0
+    SVA SYS2
+    
+    LITA 0
+    JMP T6_1
+
+    T6_4:
+        LITA 4
+        NOP
+        NOP
+        JMP T6_END
+
+    T6_2:
+        LITA 2
+        NOP
+        NOP
+        JMP T6_3
+
+    T6_1:
+        LITA 1
+        NOP
+        NOP
+        JMP T6_2
+
+    T6_3:
+        LITA 3
+        NOP
+        NOP
+        JMP T6_4
+
+    T6_END:
+        LITA 0xFF
+
+    # HALT
+    HALT
+    
+# Test 7: Call/Return 
+    # Set Ram Page to 7
+    LITA 7
+    LITB 0
+    SVA SYS2
+
+    # Skip the function below:
+    JMP T7_SKIP
+    
+    # The Function:
+    T7_FUNC:
+        ADDLA 1
+        ADDLA 1
+        ADDLA 1
+        ADDLA 1
+        RTRN
+    
+    T7_SKIP:
+        LITA 0
+        CALL T7_FUNC
+        CALL T7_FUNC
+    
+    # HALT
+    HALT
+
+# Test 8:  Conditionals
+    # Set Ram Page to 8
+    LITA 8
+    LITB 0
+    SVA SYS2
+
+    LITA 0
+    LITB 20
+    T8_LOOP:
+        ADDLA 1
+        IFSM SYS3, S3_AB
+            JMP T8_LOOP_BREAK
+        JMP T8_LOOP
+    
+    # HALT
+    T8_LOOP_BREAK:
+        HALT
+
+
+# Test 9:  Interrupts
+    # Set Ram Page to 9
+    LITA 9
+    LITB 0
+    SVA SYS2
+
+    # Enable Interrupts:
+    LITA 1
+    SVA SYS3
+
+    # Skip the Interrupt Handler: 
+    JMP T9_SKIP
+
+    INTERRUPT:
+        ADDLA 1
+        RTRNI
+    
+    T9_SKIP:
+     
+    # Loop until A=B=5
+    LITB 5
+    T9_LOOP:
+        IFSM SYS3, S3_AB
+            JMP T9_BREAK
+        JMP T9_LOOP
+
+    # Finished, Disable Interrupts:
+    T9_BREAK:
+    LITA 0
+    SVA SYS3
+
+    # HALT
+    HALT
+
+# Test 10:  Dynamic Load Store
+    # Set Ram Page to 10
+    LITA 10
+    LITB 0
+    SVA SYS2
+
+    # Save Increasing Numbers at increasing Adrs:
+    LITA 0
+    LITB 0
+    SVDR 
+    ADDLA 1
+    ADDLB 1
+    SVDR
+    ADDLA 1
+    ADDLB 1
+    SVDR
+    ADDLA 1
+    ADDLB 1
+    SVDR
+    ADDLA 1
+    ADDLB 1
+    SVDR
+
+    LITB 0
+    LDDR
+    LITB 1
+    LDDR
+    LITB 2
+    LDDR
+    LITB 3
+    LDDR
+    LITB 4
+    LDDR
+    
+    # HALT
+    HALT
+
+# Jump back to beginning
+LITA 0
+LITA 0
+JMP MAIN
