@@ -1,0 +1,55 @@
+# TODO: Set main .psASM file name:
+MAIN_SOURCE_NAME = PROGRAM_NAME.psASM
+
+# Build Directory:
+BUILD_DIR = build
+
+# Output name
+# The same as MAIN_SOURCE_NAME by default:
+OUTPUT_NAME = $(MAIN_SOURCE_NAME:.psASM=)
+
+.PHONY: all
+all: bin info
+
+.PHONY: clean
+clean:
+	rm -f $(BUILD_DIR)/$(OUTPUT_NAME).bin
+	rm -f $(BUILD_DIR)/$(OUTPUT_NAME)LOGISIM
+	rm -f $(BUILD_DIR)/$(OUTPUT_NAME)_H.bin
+	rm -f $(BUILD_DIR)/$(OUTPUT_NAME)_L.bin
+	rm -f $(BUILD_DIR)/$(OUTPUT_NAME).map
+	rm -f $(BUILD_DIR)/$(OUTPUT_NAME).defs
+
+.PHONY: bin
+bin:
+	@mkdir -p $(BUILD_DIR)
+	psASM $(MAIN_SOURCE_NAME) -o $(BUILD_DIR)/$(OUTPUT_NAME) -D
+
+.PHONY: logisim
+logisim:
+	@mkdir -p $(BUILD_DIR)
+	psASM $(MAIN_SOURCE_NAME) -o $(BUILD_DIR)/$(OUTPUT_NAME) -L
+
+.PHONY: split_bin
+split_bin:
+	@mkdir -p $(BUILD_DIR)
+	psASM $(MAIN_SOURCE_NAME) -o $(BUILD_DIR)/$(OUTPUT_NAME) -S
+
+.PHONY: info map defs
+info: map defs
+
+map:
+	@mkdir -p $(BUILD_DIR)
+	psASM $(MAIN_SOURCE_NAME) -o $(BUILD_DIR)/$(OUTPUT_NAME) -M
+
+defs:
+	@mkdir -p $(BUILD_DIR)
+	psASM $(MAIN_SOURCE_NAME) -o $(BUILD_DIR)/$(OUTPUT_NAME) -D
+
+
+
+
+
+
+
+
