@@ -149,6 +149,24 @@ MAIN:
     LITB 1
     COMPB
     
+    LITB 2
+    COMPB
+    
+    LITB 3
+    COMPB
+    
+    LITB 0xFF
+    COMPB
+    
+    LITB 0
+    COMPB
+    
+    LITB 128
+    COMPB
+    
+    LITB 127
+    COMPB
+
     # HALT
     HALT
 
@@ -257,7 +275,7 @@ MAIN:
     # Loop until A=B=5
     LITB 5
     T9_LOOP:
-        IFSM SYS3, S3_AB
+        IFSM SYS3, S3_AgreaterB
             JMP T9_BREAK
         JMP T9_LOOP
 
