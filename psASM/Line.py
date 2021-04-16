@@ -86,7 +86,7 @@ class Line:
 
         return name, value
 
-    def parse_instruction(self, cascading_labes):
+    def parse_instruction(self, cascading_labes, allow_system_label=False):
         text = self.text
 
         # Remove any comment at the end of the line, if there is any
@@ -101,9 +101,10 @@ class Line:
             # Extract it
             label = text.split(':', 1)[0].strip()
 
-            # Ensure the label name is legal:
-            if not re.fullmatch(r'^[a-zA-z]\w*$', label):  # Ensures only letters/digits/_ and starts with letter
-                raise ParsingException(self, "Malformed Label: \'" + label + "\'")
+            # Ensure the label name is legal, unless this is a system label:
+            if not allow_system_label:
+                if not re.fullmatch(r'^[a-zA-z]\w*$', label):  # Ensures only letters/digits/_ and starts with letter
+                    raise ParsingException(self, "Malformed Label: \'" + label + "\'")
 
             # Remove Label
             text = text.split(':', 1)[1].strip()
@@ -131,9 +132,10 @@ class Line:
         for arg in text.split(','):
             arg = arg.strip()
 
-            # Ensure argument is legal
-            if not (re.fullmatch(r'^\w+$', arg) or re.fullmatch(r'^[+-]?\d+$', arg)):
-                raise ParsingException(self, "Malformed Argument: \'" + arg + "\'")
+            # Ensure argument is legal, unless we are allowing system lables:
+            if not allow_system_label:
+                if not (re.fullmatch(r'^\w+$', arg) or re.fullmatch(r'^[+-]?\d+$', arg)):
+                    raise ParsingException(self, "Malformed Argument: \'" + arg + "\'")
 
             self.args.append(arg)
 
@@ -142,7 +144,7 @@ class Line:
 
         # Ensure the label name is legal:
         if not re.fullmatch(r'^[a-zA-z]\w*$', label):  # Ensures only letters/digits/_ and starts with letter
-            raise ParsingException(self, "Malformed Label: \'" + self.label + "\'")
+            raise ParsingException(self, "Malformed Label: \'" + label + "\'")
 
         return label
 

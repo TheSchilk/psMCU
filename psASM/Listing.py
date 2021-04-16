@@ -1,3 +1,4 @@
+from re import A
 from Line import Line
 from Errors import ParsingException
 from StdLib import StdLib
@@ -129,6 +130,30 @@ class Listing:
             jump_to_int = Line("RTRNI # No INTERRUPT label (AUTO GENERATED)\n", "X", "X")
             jump_to_int.parse_instruction([])
             self.Lines.insert(1, jump_to_int)
+
+    def add_footer(self, namespace):
+        """
+        Adds a footer to the program, that halts the program
+        if it should overrun. This is done with both a HALT and an infinite
+        Loop to prevent continuing into non-defined space, even if the HALT
+        instruction is skipped using the instruction step button.
+        """
+        halt_label = '$END_HALT'
+
+        halt_line = Line(halt_label+": HALT # Prevent over-run (AUTO GENERATED)\n", "X", "X")
+        halt_line.parse_instruction([],allow_system_label=True)
+
+        jump_to_halt_line = Line("JMP "+halt_label+" # (AUTO GENERATED)", "X", "X")
+        jump_to_halt_line.parse_instruction([], allow_system_label=True)
+        
+        # Add halt label to namespace
+        if namespace.contains_alias(halt_label):
+            raise ParsingException(halt_line, "Namespace collision: \'" + halt_label + "\' already exists elsewhere")
+        namespace.add_alias(halt_label, "label", halt_line)
+        
+        # Add the instructions to the listing
+        self.Lines.append(halt_line)
+        self.Lines.append(jump_to_halt_line)
 
     def define_labels(self, namespace):
         # Iterate over all lines in listing:
