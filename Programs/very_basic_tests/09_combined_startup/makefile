@@ -16,17 +16,12 @@ all: bin info
 
 .PHONY: clean
 clean:
-	rm $(ASM_FLAGS) $(BUILD_DIR)/$(OUTPUT_NAME).bin
-	rm $(ASM_FLAGS) $(BUILD_DIR)/$(OUTPUT_NAME)LOGISIM
-	rm $(ASM_FLAGS) $(BUILD_DIR)/$(OUTPUT_NAME)_H.bin
-	rm $(ASM_FLAGS) $(BUILD_DIR)/$(OUTPUT_NAME)_L.bin
-	rm $(ASM_FLAGS) $(BUILD_DIR)/$(OUTPUT_NAME).map
-	rm $(ASM_FLAGS) $(BUILD_DIR)/$(OUTPUT_NAME).defs
+	-rm -rf $(BUILD_DIR)
 
 .PHONY: bin
 bin:
 	@mkdir -p $(BUILD_DIR)
-	psASM $(MAIN_SOURCE_NAME) -o $(BUILD_DIR)/$(OUTPUT_NAME) -D $(ASM_FLAGS)
+	psASM $(MAIN_SOURCE_NAME) -o $(BUILD_DIR)/$(OUTPUT_NAME) -B $(ASM_FLAGS)
 
 .PHONY: logisim
 logisim:
