@@ -80,7 +80,7 @@ def main(args):
         print("Instruction ROM usage: %.2f%% (%i/%i)" % (usage, program_len, 2**14))
 
     # Generate binary (if selected or nothing else selected)
-    if cmdline_args.B or not (cmdline_args.S or cmdline_args.L or cmdline_args.L or cmdline_args.M or cmdline_args.D):
+    if cmdline_args.B or not (cmdline_args.S or cmdline_args.L or cmdline_args.L or cmdline_args.M or cmdline_args.D or cmdline_args.U):
         Output.generate_bin(listing, output_name)
 
     # Generate split binary
