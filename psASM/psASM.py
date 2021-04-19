@@ -19,6 +19,7 @@ def main(args):
     parser.add_argument('-S', required=False, action="store_true", help='Generate split binary files.')
     parser.add_argument('-M', required=False, action="store_true", help='Generate map file.')
     parser.add_argument('-D', required=False, action="store_true", help='Generate definitions file.')
+    parser.add_argument('-U', required=False, action="store_true", help='Report memory usage.')
     parser.add_argument('-w', required=False, action="store_true", help='Strip line whitespace/indents in map file.')
     parser.add_argument('-c', required=False, action="store_true", help='Strip line comments in map file.')
 
@@ -67,11 +68,16 @@ def main(args):
         sys.exit()
 
     # Generate Output Files
-
     if cmdline_args.o is None:
         output_name = cmdline_args.input_file.rstrip('.psASM')
     else:
         output_name = cmdline_args.o
+
+    # Report memory usage:
+    if cmdline_args.U:
+        program_len = len(listing.Lines)
+        usage = (program_len*100)/(2**14)
+        print("Instruction ROM usage: %.2f%% (%i/%i)" % (usage, program_len, 2**14))
 
     # Generate binary (if selected or nothing else selected)
     if cmdline_args.B or not (cmdline_args.S or cmdline_args.L or cmdline_args.L or cmdline_args.M or cmdline_args.D):

@@ -33,8 +33,8 @@ split_bin:
 	@mkdir -p $(BUILD_DIR)
 	psASM $(MAIN_SOURCE_NAME) -o $(BUILD_DIR)/$(OUTPUT_NAME) -S $(ASM_FLAGS)
 
-.PHONY: info map defs
-info: map defs
+.PHONY: info map defs usage
+info: map defs usage
 
 map:
 	@mkdir -p $(BUILD_DIR)
@@ -43,6 +43,9 @@ map:
 defs:
 	@mkdir -p $(BUILD_DIR)
 	psASM $(MAIN_SOURCE_NAME) -o $(BUILD_DIR)/$(OUTPUT_NAME) -D $(ASM_FLAGS)
+
+usage:
+	psASM $(MAIN_SOURCE_NAME) -U
 
 
 
