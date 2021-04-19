@@ -49,6 +49,22 @@ MAIN:
     LITB 4
     SHFTR
 
+    # Repeat, with shift-in = 1:
+    LITB 1
+    SVB SYS1
+    
+    LITA 1
+    SHFTLL 1
+    SHFTLL 2
+    SHFTLL 4
+
+    LITB 0
+    SVB SYS1
+
+    SHFTRL 4
+    SHFTRL 2
+    SHFTRL 1
+
     # Halt
     HALT
 
@@ -73,6 +89,11 @@ MAIN:
     # A += 1
     ADDLA 1
 
+    LITA 0
+    ADDLA 0xF0
+    ADDLA 0x0F
+    ADDLA 1
+
     # Halt
     HALT
 
@@ -93,6 +114,8 @@ MAIN:
     LITB 15
     # A -= B
     SUB
+
+    SUBL 1
 
     # Halt
     HALT
@@ -133,7 +156,7 @@ MAIN:
     NOTA
 
     # AND
-    LITB 0xFF
+    LITB 0x0F
     AND
     
     # OR
