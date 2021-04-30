@@ -12,7 +12,7 @@ OUTPUT_NAME = $(MAIN_SOURCE_NAME:.psASM=)
 ASM_FLAGS =
 
 .PHONY: all
-all: bin info 
+all: bin logisim info
 
 .PHONY: clean
 clean:
