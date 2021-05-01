@@ -82,4 +82,4 @@ dmypy.json
 *.defs
 
 # Test psASM files:
-*.psASM
+test.psASM
