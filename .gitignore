@@ -1,2 +1,5 @@
 # Microsoft Office Temporary Files
 ~$*
+
+# LibreOffice Lock Files
+.~lock*
