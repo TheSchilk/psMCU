@@ -1,22 +1,42 @@
-@include StdLib.psASM
-# Some hot-headed recursion:
+# #########################################################
+
 # Calculate sum(n) = 1+2+...+n using the recursive method:
 # sum(n):
-#   if n ==0:
+#   if n == 0:
 #       return 0
 #   else:
 #       return n + sum(n-1)
 
+# #########################################################
+
+@include StdLib.psASM
+
 # MAIN: Calculate sum(10) (=55=0x37) and halt.
-MAIN: LITA 10
+MAIN:
+
+# Calculate sum(4) =10=0x0a and halt
+LITA 4
 CALL SUM
-STOP: HALT
-JMP STOP
+HALT
+
+# Calculate sum(10) =55=0x37 and halt
+LITA 10
+CALL SUM
+HALT
+
+# Calculate sum(18) =171=0xAB and halt
+LITA 18
+CALL SUM
+HALT
+
+# Jump back to main
+JMP MAIN
+
+# #########################################################
 
 # sum(n)
 # Takes in Argument stored in A, saves return value in A
-
-SUM: NOP
+SUM:
     # if A=0, return with A = 0
     IFSM SYS3,S3_A0
         RTRN
@@ -25,13 +45,13 @@ SUM: NOP
     PUSHA # Save A to the stack
     ADDLA 0xff # Subtract 1 from n
     CALL SUM # Call SUM with n-1
+
     # Now we have sum(n-1) in A 
     SWP
     POPA
+
     # Now we have n in A and sum(n-1) in B
     ADD # calculate sum(n-1)+n
     LITB 0
-RTRN
-
-
+    RTRN
 

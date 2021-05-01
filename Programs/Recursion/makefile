@@ -1,5 +1,4 @@
-# Main .psASM file name:
-MAIN_SOURCE_NAME = combined_startup_test.psASM
+MAIN_SOURCE_NAME = recursion.psASM
 
 # Build Directory:
 BUILD_DIR = build
@@ -8,8 +7,8 @@ BUILD_DIR = build
 # The same as MAIN_SOURCE_NAME by default:
 OUTPUT_NAME = $(MAIN_SOURCE_NAME:.psASM=)
 
-# Additional Flags:
-ASM_FLAGS =
+# Additional Flags
+ASM_FLAGS = 
 
 .PHONY: all
 all: bin logisim info
@@ -46,7 +45,6 @@ defs:
 
 usage:
 	psASM $(MAIN_SOURCE_NAME) -U
-
 
 
 
