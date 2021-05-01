@@ -10,7 +10,7 @@ if len(sys.argv) != 2:
 
 # Open CSV File
 with open(sys.argv[1], 'r', newline='') as file:
-    CSVFile = csv.reader(file, delimiter=';')
+    CSVFile = csv.reader(file, delimiter=',')
 
     # Read first line and extract description of file
     line0 = next(CSVFile)

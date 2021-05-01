@@ -75,3 +75,7 @@ dmypy.json
 
 #CSVs
 *.csv
+
+#Output Files:
+*.bin
+Logisim*
