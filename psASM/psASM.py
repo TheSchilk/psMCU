@@ -56,16 +56,16 @@ def main(args):
 
     except ParsingException as e:
         print(e)
-        sys.exit()
+        sys.exit(1)
     except DefinitionException as e:
         print(e)
-        sys.exit()
+        sys.exit(1)
     except ArgumentRangeException as e:
         print(e)
-        sys.exit()
+        sys.exit(1)
     except FileNotFoundError as e:
         print("File not found!")
-        sys.exit()
+        sys.exit(1)
 
     # Generate Output Files
     if cmdline_args.o is None:
