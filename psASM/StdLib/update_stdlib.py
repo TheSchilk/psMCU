@@ -8,7 +8,7 @@ with open('StdLib.psASM', 'r') as asm_file:
     StdLib.append("StdLib = [\n")
     for line in asm_file:
         line = line.rstrip("\n\r")
-        StdLib.append("    '"+str(line)+"'\n")
+        StdLib.append("    '"+str(line)+"',\n")
     StdLib.append("]\n")
 
 # Overwrite ../StdLib.py with new content:
