@@ -1,6 +1,5 @@
 import sys
 import csv
-from msilib import RadioButtonGroup
 
 
 def insert_value(input_entries, value_to_insert):
@@ -89,19 +88,21 @@ def main():
                 if ROM[input_val] is None:
                     ROM[input_val] = output_value.to_bytes(1, byteorder='big')
                 else:
-                    print("Redefined same input " + str(i) + "!")
+                    print("Redefined same input " + bin(i) + "!")
                     print("In the following line: ")
                     print(line)
                     sys.exit(1)
 
         # Make sure all inputs are defined:
         not_full = False
+        undef_count = 0
         for i, value in enumerate(ROM):
             if value is None:
-                print('Error: undefined input '+str(i)+'!')
-                not_full = True
+                print('Error: undefined input '+bin(i)+'!')
+                undef_count += 1
 
-        if not_full:
+        if undef_count != 0:
+            print('Undefined Inputs: '+str(undef_count))
             sys.exit(1)
 
     print("Successfully parsed CSV file")
