@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import sys
 import csv
+import os
 
 
 def insert_value(input_entries, value_to_insert):
@@ -27,8 +28,9 @@ def possible_values(input_entries):
 def main():
     # Make sure we got passed an command line argument
     if len(sys.argv) != 2:
-        print("Received no or too many command line arguments!")
+        print("Received too few command line arguments!")
         print("Please specify a single .csv file!")
+        print("-i replaces files in ../Logisim/ROMs/ and ../ROMs/")
         sys.exit(1)
 
     # Open CSV File
@@ -110,6 +112,9 @@ def main():
 
     # Generate normal ROM file
     file_name = "DecodeROM.bin"
+    if '-i' in sys.argv:
+        file_name = os.path.join('..', '..', 'ROMs', file_name)
+
     with open(file_name, mode='wb') as file:
         for value in ROM:
             file.write(value)
@@ -117,6 +122,9 @@ def main():
 
     # Generate LOGISIM style ROM files
     file_name = "LogisimDecodeROM"
+    if '-i' in sys.argv:
+        file_name = os.path.join('..', '..', 'Logisim', 'ROMs', file_name)
+
     with open(file_name, mode='w') as file:
         file.write("v2.0 raw\n")
         count = 0

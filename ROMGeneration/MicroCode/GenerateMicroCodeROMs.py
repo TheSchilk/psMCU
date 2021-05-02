@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 import sys
 import csv
+import os
 
 
 def main():
     # Make sure we got passed a command line argument
-    if len(sys.argv) != 2:
-        print("Received no or too many command line arguments!")
+    if len(sys.argv) < 2:
+        print("Received too few command line arguments!")
         print("Please specify a single .csv file!")
+        print("-i replaces files in ../Logisim/ROMs/ and ../ROMs/")
         sys.exit()
 
     # Open CSV File
@@ -66,6 +68,9 @@ def main():
     # Generate normal ROM files
     for rom_index in range(0, rom_count):
         file_name = "MicroCodeROM" + str(rom_index) + ".bin"
+        if '-i' in sys.argv:
+            file_name = os.path.join('..', '..', 'ROMs', file_name)
+
         with open(file_name, mode='wb') as file:
             for value in ROMs[rom_index]:
                 file.write(value)
@@ -74,6 +79,9 @@ def main():
     # Generate LOGISIM style ROM files
     for rom_index in range(0, rom_count):
         file_name = "LogisimMicroCodeROM" + str(rom_index)
+        if '-i' in sys.argv:
+            file_name = os.path.join('..', '..', 'Logisim', 'ROMs', file_name)
+
         with open(file_name, mode='w') as file:
             file.write("v2.0 raw\n")
             count = 0
