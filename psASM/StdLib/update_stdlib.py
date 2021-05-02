@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Update the StdLib embedded in StdLib.py using StdLib.psASM 
+# Update the StdLib embedded in StdLib.py using StdLib.psASM
 
 # Convert StdLib.psASM into a python list of strings
 StdLib = []

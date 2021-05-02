@@ -8,6 +8,7 @@ from Errors import ParsingException
 from Errors import DefinitionException
 from Errors import ArgumentRangeException
 
+
 def main(args):
     # arg-parse:
     parser = argparse.ArgumentParser(prog="psASM.py", description="psASM Assembler for psMCU.")
@@ -102,8 +103,5 @@ def main(args):
 
 if __name__ == '__main__':
     args = sys.argv.copy()
-    args.pop(0) # Get rid of path
+    args.pop(0)  # Get rid of path
     main(args)
-
-
-

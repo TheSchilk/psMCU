@@ -293,6 +293,7 @@ class PUSHAInstruction(BaseInstruction):
     binary_literal = 0x0600
     arg_count = 0
 
+
 class POPBInstruction(BaseInstruction):
     op_code = "POPB"
     binary_literal = 0x3400
@@ -303,6 +304,7 @@ class PUSHBInstruction(BaseInstruction):
     op_code = "PUSHB"
     binary_literal = 0x3200
     arg_count = 0
+
 
 class POPMInstruction(BaseInstruction):
     op_code = "POPM"

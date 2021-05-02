@@ -141,16 +141,16 @@ class Listing:
         halt_label = '$END_HALT'
 
         halt_line = Line(halt_label+": HALT # Prevent over-run (AUTO GENERATED)\n", "X", "X")
-        halt_line.parse_instruction([],allow_system_label=True)
+        halt_line.parse_instruction([], allow_system_label=True)
 
         jump_to_halt_line = Line("JMP "+halt_label+" # (AUTO GENERATED)", "X", "X")
         jump_to_halt_line.parse_instruction([], allow_system_label=True)
-        
+
         # Add halt label to namespace
         if namespace.contains_alias(halt_label):
             raise ParsingException(halt_line, "Namespace collision: \'" + halt_label + "\' already exists elsewhere")
         namespace.add_alias(halt_label, "label", halt_line)
-        
+
         # Add the instructions to the listing
         self.Lines.append(halt_line)
         self.Lines.append(jump_to_halt_line)
