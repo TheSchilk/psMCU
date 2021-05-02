@@ -43,7 +43,7 @@ SUM:
 
     # ELSE: A = n. Save n and call SUM with n-1
     PUSHA # Save A to the stack
-    ADDLA 0xff # Subtract 1 from n
+    ADDLA -1 # Subtract 1 from n
     CALL SUM # Call SUM with n-1
 
     # Now we have sum(n-1) in A 
