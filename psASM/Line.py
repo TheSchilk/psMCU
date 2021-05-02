@@ -1,6 +1,6 @@
 import re
 from Errors import ParsingException
-from Instructions import generate_instruction
+from InstructionSet import generate_instruction
 
 
 class Line:
@@ -86,7 +86,7 @@ class Line:
 
         return name, value
 
-    def parse_instruction(self, cascading_labes, allow_system_label=False):
+    def parse_instruction(self, cascading_labels, allow_system_label=False):
         text = self.text
 
         # Remove any comment at the end of the line, if there is any
@@ -111,7 +111,7 @@ class Line:
 
             self.labels.append(label)
 
-        for label in cascading_labes:
+        for label in cascading_labels:
             self.labels.append(label)
 
         # Get Operation
@@ -157,6 +157,9 @@ class Line:
     def generate_instruction(self):
         self.instruction = generate_instruction(self)
 
+    def str_location(self):
+        return self.file_name + ":" + str(self.line_num)
+
     def str_labels(self):
         labels = ""
         for label in self.labels:
@@ -164,8 +167,8 @@ class Line:
         labels = labels.rstrip(" ")
         return labels
 
-    def __str__(self):
-        return self.file_name + ":" + str(self.line_num) + " [" + self.str_labels() + "] = " + self.text
-
     def str_data(self):
         return str([self.str_labels(), self.op_code, self.args])
+
+    def __str__(self):
+        return self.str_location() + " [" + self.str_labels() + "] = " + self.text

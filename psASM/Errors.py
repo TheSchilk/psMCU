@@ -1,13 +1,14 @@
 class ArgumentRangeException(Exception):
-    def __init__(self, line, num, valid_range):
+    def __init__(self, line, num, arg_setup):
         self.line = line
         self.num = num
-        self.range = valid_range
+        self.arg_setup = arg_setup
 
     def __str__(self):
         msg = "Argument Range Error at " + str(self.line) + "\n"
-        msg += "The number " + str(self.num) + " is not within the valid range of that argument:\'"
-        msg += "[" + str(self.range.start) + "," + str(self.range.stop) + "["
+        msg += "The number " + str(self.num) + " is not within the valid range for the argument \'"
+        msg += self.arg_setup['name'] + "\' ("
+        msg += "[" + str(self.arg_setup['min']) + "," + str(self.arg_setup['max']) + "]" + ")"
         return msg
 
 
