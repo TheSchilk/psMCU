@@ -27,7 +27,7 @@ def possible_values(input_entries):
 
 def main():
     # Make sure we got passed an command line argument
-    if len(sys.argv) != 2:
+    if len(sys.argv) < 2:
         print("Received too few command line arguments!")
         print("Please specify a single .csv file!")
         print("-i replaces files in ../Logisim/ROMs/ and ../ROMs/")

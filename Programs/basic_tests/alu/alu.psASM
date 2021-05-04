@@ -1,0 +1,39 @@
+@include StdLib.psASM
+
+# Test 1: 16 bit addition with cross-byte carry
+# Calculate 4863+1200=6063
+# 4863 =  0x12ff
+# 1200 =  0x04B0
+# 6063 =  0x17AF
+
+# Calculate lower bytes:
+LITA 0xff
+LITB 0xB0
+ADD # Add without carry
+PUSHA # Save value onto the stack (This should be 0xAF)
+LITA 0x12
+LITB 0x04
+ADDC # Add with carry
+CPY # Move MSBs to B
+POPA # Load LSBs back to A
+# Expected Result:
+# A = 0xAF
+# B = 0x17
+HALT
+
+
+# Test 2: 16 bit subtraciton with cross-byte carry in complement:
+# Calcualte 4863-4608=255
+# 4863 = 0x12ff 
+# 4608 = 0x1200
+# 255  = 0x00ff 
+LITA 0xff
+SUBL 0x00
+CPY
+LITA 0x12
+SUBLC 0x12
+SWP
+# Expected Result:
+# A = LSBs = 0xff
+# B = MSBs = 0x00
+HALT

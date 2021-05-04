@@ -167,6 +167,18 @@ class PUSHMInstruction(Instruction):
     ]
 
 
+class COMPBInstruction(Instruction):
+    op_code = "COMPB"
+    binary_literal = 0x2400
+    arg_count = 0
+
+
+class COMPBCInstruction(Instruction):
+    op_code = "COMPBC"
+    binary_literal = 0x2C00
+    arg_count = 0
+
+
 class ADDLBInstruction(Instruction):
     op_code = "ADDLB"
     binary_literal = 0x2500
@@ -323,12 +335,6 @@ class SHFTLLInstruction(Instruction):
 class NOTAInstruction(Instruction):
     op_code = "NOTA"
     binary_literal = 0x1500
-    arg_count = 0
-
-
-class COMPBInstruction(Instruction):
-    op_code = "COMPB"
-    binary_literal = 0x1400
     arg_count = 0
 
 

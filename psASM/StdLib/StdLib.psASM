@@ -12,10 +12,11 @@
 
 # Bits:
 @define S1_SHFT_IN     0        # [0]    (R/W) Bit that is shifted in while shifting.
-@define S1_C           1        # [1]    (R) ALU Carry in/out bit.
-@define S1_HC          2        # [2]    (R) ALU Half-carry out bit.
-@define S1_OVF         3        # [3]    (R) ALU Overflow flag.
-                                # [4..7] (R) Reserved. Always Reads 0.
+@define S1_C           1        # [1]    (R/W) ALU Carry in/out bit.
+@define S1_HC          2        # [2]    (R/W) ALU Half-carry out bit.
+@define S1_OVF         3        # [3]    (R/W) ALU Overflow flag.
+@define S1_COMP_C      4        # [4]    (R/W) Complement carry in/out flag. 
+                                # [5..7] (R) Reserved. Always Reads 0.
 
 # Shifts and Masks:
 @define S1_SHFT_IN_S   0        # SHFT_IN field shift.
@@ -29,6 +30,9 @@
 
 @define S1_OVF_S       3        # OVF field shift.
 @define S1_OVF_M       0x8      # OVF field mask.
+
+@define S1_COMP_C_S    4        # COMP_C field shift.
+@define S1_COMP_C_M    0x10     # COMP_C field mask.
 
 # ############### SYS2 ##################
 @define SYS2           0x101    # (R/W) System Register 2.

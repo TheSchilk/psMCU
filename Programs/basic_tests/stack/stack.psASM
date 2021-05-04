@@ -1,0 +1,19 @@
+@include StdLib.psASM
+
+
+MAIN:
+    GROW 4
+    LITA 0xf1
+    STSA -1
+    LITA 0xf2
+    STSA -2
+    LITA 0xf3
+    STSA -3
+    LITA 0xf4
+    STSA -4
+
+    STLA -1
+    STLA -2
+    STLA -3
+    STLA -4
+    SHRINK -4
