@@ -33,6 +33,14 @@ psprog_error_t programmer_handle_package(package_t *pckg) {
     break;
 
   case PCKG_TYPE_CMD_CONFIG_BKPT: // Configure breakpoint
+
+	// Ensure psMCU is connected
+    if (!psMCUinter_detected()) {
+      protocol_make_error_pckg(pckg,"psMCU VDD not detected!");
+      err = PSPROG_ERROR;
+      break;
+    }
+
     // Connect and set breakpoint:
     psMCUinter_connect();
 
@@ -49,6 +57,14 @@ psprog_error_t programmer_handle_package(package_t *pckg) {
     break;
 
   case PCKG_TYPE_CMD_ERASE_ALL: // Erase whole chip
+
+	// Ensure psMCU is connected
+    if (!psMCUinter_detected()) {
+      protocol_make_error_pckg(pckg,"psMCU VDD not detected!");
+      err = PSPROG_ERROR;
+      break;
+    }
+
     // Connect to psMCU and hold in reset
     psMCUinter_connect();
     psMCUinter_reset_target(true);
@@ -91,9 +107,16 @@ psprog_error_t programmer_handle_package(package_t *pckg) {
     psMCUinter_disconnect();
     protocol_make_ok_pckg(pckg);
     break;
-    break;
 
-  case PCKG_TYPE_CMD_ERASE_SECTOR:
+  case PCKG_TYPE_CMD_ERASE_SECTOR: // Erase a single sector
+	// Ensure psMCU is connected
+    if (!psMCUinter_detected()) {
+      protocol_make_error_pckg(pckg,"psMCU VDD not detected!");
+      err = PSPROG_ERROR;
+      break;
+    }
+
+    // Ensure subsector is valid
     if(pckg->subsector % 4 != 0){
       protocol_make_error_pckg(pckg, "Error: Sub-sector must be multiple of 4!");
       err = PSPROG_ERROR;
@@ -143,7 +166,15 @@ psprog_error_t programmer_handle_package(package_t *pckg) {
     protocol_make_ok_pckg(pckg);
     break;
 
-  case PCKG_TYPE_CMD_WRITE_SUBSECTOR:
+  case PCKG_TYPE_CMD_WRITE_SUBSECTOR: // Write a single sub-sector
+	// Ensure psMCU is connected
+    if (!psMCUinter_detected()) {
+      protocol_make_error_pckg(pckg,"psMCU VDD not detected!");
+      err = PSPROG_ERROR;
+      break;
+    }
+
+    // Ensure data-length is valid
     if(pckg->data_length % 2 != 0){
       protocol_make_error_pckg(pckg, "Error: Data block length must be multiple of 2!");
       err = PSPROG_ERROR;
@@ -222,7 +253,14 @@ psprog_error_t programmer_handle_package(package_t *pckg) {
 
     break;
 
-  case PCKG_TYPE_CMD_READ_SUBSECTOR:
+  case PCKG_TYPE_CMD_READ_SUBSECTOR: // Read a single sub-sector
+	// Ensure psMCU is connected
+    if (!psMCUinter_detected()) {
+      protocol_make_error_pckg(pckg,"psMCU VDD not detected!");
+      err = PSPROG_ERROR;
+      break;
+    }
+
     // Connect to psMCU and hold in reset
     psMCUinter_connect();
     psMCUinter_reset_target(true);
@@ -264,9 +302,10 @@ psprog_error_t programmer_handle_package(package_t *pckg) {
   case PCKG_TYPE_RESP_OK:
   case PCKG_TYPE_RESP_READ_SUBSECTOR:
   default:
+
     // Package of unknown type, return error package
     protocol_make_error_pckg(pckg, "Unknown package type!");
-     err = PSPROG_ERROR;
+    err = PSPROG_ERROR;
     break;
   }
   return err;
