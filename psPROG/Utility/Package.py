@@ -11,6 +11,8 @@ class PackageType(Enum):
     CMD_ERASE_SECTOR = b'\x03'
     CMD_WRITE_SUBSECTOR = b'\x04'
     CMD_READ_SUBSECTOR = b'\x05'
+    CMD_HOLD_RESET = b'\x06'
+    CMD_RELEASE_RESET = b'\x07'
 
     RESP_OK = b'\x80'
     RESP_ERR = b'\x81'

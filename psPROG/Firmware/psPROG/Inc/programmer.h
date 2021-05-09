@@ -13,4 +13,6 @@
 
 psprog_error_t programmer_handle_package(package_t *pckg);
 
+void programmer_systick_handler();
+
 #endif /* PROGRAMMER_H_ */

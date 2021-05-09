@@ -50,29 +50,44 @@ class ProgrammerInterface:
             return
 
         if action.action == "erase_slot":
+            self._hold_reset()
             self._erase_slot(action.slot)
+            self._release_reset()
             print("Slot %i erased." % action.slot)
             return
 
         if action.action == "read_all":
             filename = action.file
+
+            self._hold_reset()
+
             if filename.endswith('.bin'):
                 filename = filename.rsplit(".", 1)[0]
             for slot in slots:
                 self._read_slot(filename + "_" + str(slot), slot)
                 print("Slot %i read." % slot)
+
+            self._release_reset()
             return
 
         if action.action == "read_slot":
+            self._hold_reset()
+
             self._read_slot(action.file, action.slot)
+
+            self._release_reset()
             print("Slot %i read." % action.slot)
             return
 
         if action.action == "write_slot":
+            self._hold_reset()
+
             self._erase_slot(action.slot)
             print("Slot %i erased." % action.slot)
             self._write_slot(action.file, action.slot)
             print("Slot %i written." % action.slot)
+
+            self._release_reset()
             return
 
         if action.action == "disable_breakpoint":
@@ -84,6 +99,24 @@ class ProgrammerInterface:
             self._config_breakpoint(1, action.breakpoint_adr)
             print("Breakpoint set.")
             return
+
+    def _hold_reset(self):
+        # Generate 'Hold reset' package:
+        package_tx = Package(package_type=PackageType.CMD_HOLD_RESET)
+
+        # Send package, get response, make sure there was no error.
+        self.serial_interface.send_package(package_tx)
+        package_rx = self.serial_interface.receive_package()
+        _check_response(package_rx, PackageType.RESP_OK)
+
+    def _release_reset(self):
+        # Generate 'Release reset' package:
+        package_tx = Package(package_type=PackageType.CMD_RELEASE_RESET)
+
+        # Send package, get response, make sure there was no error.
+        self.serial_interface.send_package(package_tx)
+        package_rx = self.serial_interface.receive_package()
+        _check_response(package_rx, PackageType.RESP_OK)
 
     def _erase_all(self):
         # Generate 'Erase all' package:

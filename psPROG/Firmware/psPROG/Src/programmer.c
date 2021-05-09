@@ -14,10 +14,16 @@
 
 static inline void pulse_pgm();
 
+// ==== Private variables ====
+bool hold_reset = false;
+uint32_t no_contact_since_ms = 0;
+
 // ==== Function implementation ====
 
 psprog_error_t programmer_handle_package(package_t *pckg) {
   psprog_error_t err = PSPROG_OK;
+
+  no_contact_since_ms = 0;
 
   switch (pckg->type) {
   case PCKG_TYPE_CMD_STATUS: // Status request
@@ -42,7 +48,9 @@ psprog_error_t programmer_handle_package(package_t *pckg) {
     }
 
     // Connect and set breakpoint:
-    psMCUinter_connect();
+	if(!hold_reset){
+		psMCUinter_connect();
+	}
 
     // Extract address and enable/disable bit from package:
     uint8_t bkpt_en = pckg->data_buf[0];
@@ -50,7 +58,9 @@ psprog_error_t programmer_handle_package(package_t *pckg) {
 
     psMCUinter_set_BKPT(bkpt_en, bkpt_adr);
 
-    psMCUinter_disconnect();
+    if(!hold_reset){
+		psMCUinter_disconnect();
+    }
 
     // Reply with 'OK' package
     protocol_make_ok_pckg(pckg);
@@ -66,8 +76,10 @@ psprog_error_t programmer_handle_package(package_t *pckg) {
     }
 
     // Connect to psMCU and hold in reset
-    psMCUinter_connect();
-    psMCUinter_reset_target(true);
+    if(!hold_reset){
+		psMCUinter_connect();
+		psMCUinter_reset_target(true);
+    }
 
     // Route memory connections to programmer:
     psMCUinter_attach_Prog_ROMAdr(true);
@@ -104,7 +116,10 @@ psprog_error_t programmer_handle_package(package_t *pckg) {
 
     // TODO maybe verify erase?
 
-    psMCUinter_disconnect();
+    if(!hold_reset){
+    	psMCUinter_disconnect();
+    }
+
     protocol_make_ok_pckg(pckg);
     break;
 
@@ -124,8 +139,10 @@ psprog_error_t programmer_handle_package(package_t *pckg) {
     }
 
     // Connect to psMCU and hold in reset
-    psMCUinter_connect();
-    psMCUinter_reset_target(true);
+    if(!hold_reset){
+    	psMCUinter_connect();
+    	psMCUinter_reset_target(true);
+    }
 
     // Route memory connections to programmer:
     psMCUinter_attach_Prog_ROMAdr(true);
@@ -162,7 +179,10 @@ psprog_error_t programmer_handle_package(package_t *pckg) {
 
     // TODO maybe verify erase?
 
-    psMCUinter_disconnect();
+    if(!hold_reset){
+    	psMCUinter_disconnect();
+    }
+
     protocol_make_ok_pckg(pckg);
     break;
 
@@ -182,8 +202,10 @@ psprog_error_t programmer_handle_package(package_t *pckg) {
     }
 
     // Connect to psMCU and hold in reset
-    psMCUinter_connect();
-    psMCUinter_reset_target(true);
+    if(!hold_reset){
+		psMCUinter_connect();
+		psMCUinter_reset_target(true);
+    }
 
     // Route memory connections to programmer:
     psMCUinter_attach_Prog_ROMAdr(true);
@@ -246,7 +268,10 @@ psprog_error_t programmer_handle_package(package_t *pckg) {
       }
     }
 
-    psMCUinter_disconnect();
+    if(!hold_reset){
+		psMCUinter_disconnect();
+    }
+
     if(!err){
       protocol_make_ok_pckg(pckg);
     }
@@ -262,8 +287,10 @@ psprog_error_t programmer_handle_package(package_t *pckg) {
     }
 
     // Connect to psMCU and hold in reset
-    psMCUinter_connect();
-    psMCUinter_reset_target(true);
+    if(!hold_reset){
+		psMCUinter_connect();
+		psMCUinter_reset_target(true);
+    }
 
     // Route memory address connection to programmer:
     psMCUinter_attach_Prog_ROMAdr(true);
@@ -295,8 +322,41 @@ psprog_error_t programmer_handle_package(package_t *pckg) {
     pckg->type=PCKG_TYPE_RESP_READ_SUBSECTOR;
     pckg->data_length=0x800;
 
-    psMCUinter_disconnect();
+    if(!hold_reset){
+		psMCUinter_disconnect();
+    }
     break;
+
+  case PCKG_TYPE_CMD_HOLD_RESET: // Hold psMCU in reset
+	// Ensure psMCU is connected
+    if (!psMCUinter_detected()) {
+      protocol_make_error_pckg(pckg,"psMCU VDD not detected!");
+      err = PSPROG_ERROR;
+      break;
+    }
+
+    hold_reset = true;
+    psMCUinter_connect();
+    psMCUinter_reset_target(true);
+
+    protocol_make_ok_pckg(pckg);
+	break;
+
+  case PCKG_TYPE_CMD_RELEASE_RESET: // Release psMCU in reset
+	// Ensure psMCU is connected
+    if (!psMCUinter_detected()) {
+      protocol_make_error_pckg(pckg,"psMCU VDD not detected!");
+      err = PSPROG_ERROR;
+      break;
+    }
+
+    hold_reset = false;
+    psMCUinter_disconnect();
+
+    protocol_make_ok_pckg(pckg);
+
+    break;
+
 
   case PCKG_TYPE_RESP_ERR:
   case PCKG_TYPE_RESP_OK:
@@ -308,10 +368,27 @@ psprog_error_t programmer_handle_package(package_t *pckg) {
     err = PSPROG_ERROR;
     break;
   }
+
+
+  // If there was an error, stop holding reset:
+  if(err){
+    hold_reset = false;
+    psMCUinter_disconnect();
+  }
+
   return err;
 }
 
-
+void programmer_systick_handler(){
+  if(no_contact_since_ms < 2000){
+    no_contact_since_ms++;
+  } else if (hold_reset){
+    // If there has been no contact for two seconds, and we are still holding reset,
+    // release it.
+    hold_reset = false;
+    psMCUinter_disconnect();
+  }
+}
 // === Private Functions ===
 
 static inline void pulse_pgm(){
