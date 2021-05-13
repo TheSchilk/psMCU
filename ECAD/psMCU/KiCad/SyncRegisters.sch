@@ -3,10 +3,10 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 14 93
+Sheet 41 98
 Title "psMCU"
 Date "2021-03-30"
-Rev "v0.1"
+Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
@@ -22,7 +22,7 @@ DB_SYNC[0..7]
 Text HLabel 5650 5600 2    50   Output ~ 0
 RAMA_SYNC[0..7]
 Text HLabel 1450 4300 0    50   Input ~ 0
-LATCH_D_EN
+Latch_D
 Text HLabel 2500 9100 0    50   Input ~ 0
 CLK
 Entry Wire Line
@@ -545,7 +545,7 @@ Wire Bus Line
 Wire Bus Line
 	5650 850  5150 850 
 Text HLabel 1400 6700 0    50   Input ~ 0
-LATCH_A_EN
+Latch_A
 Entry Wire Line
 	3050 5750 3150 5850
 Entry Wire Line

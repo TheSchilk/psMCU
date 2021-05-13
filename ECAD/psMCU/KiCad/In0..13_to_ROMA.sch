@@ -3,10 +3,10 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 22 93
+Sheet 22 98
 Title "psMCU"
 Date "2021-03-30"
-Rev "v0.1"
+Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
@@ -708,7 +708,7 @@ AR Path="/5F28170E/622A405D" Ref="D?"  Part="1"
 AR Path="/5F607AA2/622A405D" Ref="D?"  Part="1" 
 AR Path="/5F5CACFC/622A405D" Ref="D147"  Part="1" 
 F 0 "D147" H 4100 4943 50  0000 C CNN
-F 1 "In0..13->ROMA" H 4100 5034 50  0000 C CNN
+F 1 "LED" H 4100 5034 50  0000 C CNN
 F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 4100 5150 50  0001 C CNN
 F 3 "~" V 4100 5150 50  0001 C CNN
 	1    4100 5150
@@ -1173,9 +1173,11 @@ Wire Wire Line
 	7700 5900 7700 5150
 Wire Wire Line
 	4450 5900 7700 5900
+Connection ~ 7700 5150
+Text Notes 4400 5200 0    50   ~ 0
+In0..13->ROMA
 Wire Bus Line
 	8450 1900 8450 4550
 Wire Bus Line
 	4900 1850 4900 4550
-Connection ~ 7700 5150
 $EndSCHEMATC

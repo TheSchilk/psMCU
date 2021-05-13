@@ -3,10 +3,10 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 11693 16535 portrait
 encoding utf-8
-Sheet 80 93
+Sheet 81 98
 Title "psMCU"
 Date "2021-03-30"
-Rev "v0.1"
+Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 "Minimum division is /2."

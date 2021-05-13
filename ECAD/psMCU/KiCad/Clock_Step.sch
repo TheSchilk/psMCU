@@ -3,10 +3,10 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 75 93
+Sheet 76 98
 Title "psMCU"
 Date "2021-03-30"
-Rev "v0.1"
+Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 "(Black Magic. I don't quite remember how this works!)"
 Comment2 ""
@@ -928,9 +928,9 @@ Wire Wire Line
 Wire Wire Line
 	2100 4400 2350 4400
 Text HLabel 2100 4400 0    50   Input ~ 0
-CLK_STEP_EN
+Clk_Step_EN
 Text HLabel 2150 5550 0    50   Input ~ 0
-CLK_STEP
+Clk_Step
 Text HLabel 1850 2450 0    50   Input ~ 0
 CONT_CLK
 Text Label 2250 5750 2    50   ~ 0
@@ -1465,7 +1465,7 @@ AR Path="/60E33DBC/5FD12DEC/62BEB19B" Ref="D?"  Part="1"
 AR Path="/61C3CF7F/62BEB19B" Ref="D?"  Part="1" 
 AR Path="/608BF85D/5FFAAF6D/62BEB19B" Ref="D371"  Part="1" 
 F 0 "D371" H 8300 3950 50  0000 C CNN
-F 1 "Clk" H 8300 4050 50  0000 C CNN
+F 1 "LED" H 8300 4050 50  0000 C CNN
 F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 8300 4150 50  0001 C CNN
 F 3 "~" V 8300 4150 50  0001 C CNN
 	1    8300 4150
@@ -1475,4 +1475,6 @@ Wire Wire Line
 	7750 3750 7750 4150
 Wire Wire Line
 	8200 4150 8050 4150
+Text Notes 8550 4150 0    50   ~ 0
+CLK
 $EndSCHEMATC

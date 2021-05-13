@@ -1,1564 +1,860 @@
 EESchema Schematic File Version 4
 EELAYER 30 0
 EELAYER END
-$Descr A4 11693 8268
+$Descr A3 16535 11693
 encoding utf-8
-Sheet 42 93
+Sheet 4 98
 Title "psMCU"
 Date "2021-03-30"
-Rev "v0.1"
+Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 "interrupts and instruction stepping logic."
 Comment3 "individual sub-instruction steps are read from the Microcode ROMs. Also handles "
 Comment4 "The central state-machine that handles execution. Instructions are decoded, and the "
 $EndDescr
-$Sheet
-S 2450 2850 1200 1100
-U 5F3D6AF9
-F0 "STEP_LOGIC" 50
-F1 "STEP_LOGIC.sch" 50
-F2 "Next_Inst" I L 2450 3150 50 
-F3 "InstR_Latch_EN" I L 2450 3250 50 
-F4 "Halt" I L 2450 3350 50 
-F5 "Halt_Clear" I L 2450 3450 50 
-F6 "BKPT_TRIG" I L 2450 3550 50 
-F7 "DO_INC" O R 3650 3050 50 
-F8 "DO_CLR" O R 3650 2950 50 
-F9 "CLK" I L 2450 3850 50 
-F10 "~RESET" I L 2450 3750 50 
-F11 "INST_STEP_EN" I L 2450 2950 50 
-F12 "INST_STEP" I L 2450 3050 50 
-F13 "UI_Halted" O R 3650 3250 50 
-F14 "UI_Halt_Inst" O R 3650 3350 50 
-F15 "UI_Halt_Step" O R 3650 3450 50 
-F16 "UI_Halt_Bkpt" O R 3650 3550 50 
-$EndSheet
-Text HLabel 2400 3550 0    50   Input ~ 0
-BRPT_TRIG
+Text HLabel 4350 4750 0    50   Input ~ 0
+Bkpt_Trig
 Wire Wire Line
-	2450 2950 1800 2950
+	4400 4550 3750 4550
 Wire Wire Line
-	1800 3050 2450 3050
+	3750 4450 4400 4450
 Wire Wire Line
-	2400 3550 2450 3550
+	4350 4750 4400 4750
 $Comp
 L power:+5V #PWR?
 U 1 1 5F6323D3
-P 6650 1950
+P 8600 3250
 AR Path="/5F607AA2/5F6323D3" Ref="#PWR?"  Part="1" 
 AR Path="/60E33DBC/5F6323D3" Ref="#PWR0957"  Part="1" 
-F 0 "#PWR0957" H 6650 1800 50  0001 C CNN
-F 1 "+5V" H 6600 2100 50  0000 C CNN
-F 2 "" H 6650 1950 50  0001 C CNN
-F 3 "" H 6650 1950 50  0001 C CNN
-	1    6650 1950
+F 0 "#PWR0957" H 8600 3100 50  0001 C CNN
+F 1 "+5V" H 8550 3400 50  0000 C CNN
+F 2 "" H 8600 3250 50  0001 C CNN
+F 3 "" H 8600 3250 50  0001 C CNN
+	1    8600 3250
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:C_Small C?
 U 1 1 5F6323D9
-P 6800 2050
+P 8750 3350
 AR Path="/5F607AA2/5F6323D9" Ref="C?"  Part="1" 
 AR Path="/60E33DBC/5F6323D9" Ref="C221"  Part="1" 
-F 0 "C221" V 6571 2050 50  0000 C CNN
-F 1 "0u1" V 6662 2050 50  0000 C CNN
-F 2 "NoRef_Footprints:C_0603_1608Metric_NoRef" H 6800 2050 50  0001 C CNN
-F 3 "~" H 6800 2050 50  0001 C CNN
-	1    6800 2050
+F 0 "C221" V 8521 3350 50  0000 C CNN
+F 1 "0u1" V 8612 3350 50  0000 C CNN
+F 2 "NoRef_Footprints:C_0603_1608Metric_NoRef" H 8750 3350 50  0001 C CNN
+F 3 "~" H 8750 3350 50  0001 C CNN
+	1    8750 3350
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	6700 2050 6650 2050
+	8650 3350 8600 3350
 Wire Wire Line
-	6650 2050 6650 1950
+	8600 3350 8600 3250
 Wire Wire Line
-	6650 2050 6650 2150
-Connection ~ 6650 2050
+	8600 3350 8600 3450
+Connection ~ 8600 3350
 $Comp
 L power:GND #PWR?
 U 1 1 5F6323E3
-P 6950 2050
+P 8900 3350
 AR Path="/5F607AA2/5F6323E3" Ref="#PWR?"  Part="1" 
 AR Path="/60E33DBC/5F6323E3" Ref="#PWR0959"  Part="1" 
-F 0 "#PWR0959" H 6950 1800 50  0001 C CNN
-F 1 "GND" V 6955 1922 50  0000 R CNN
-F 2 "" H 6950 2050 50  0001 C CNN
-F 3 "" H 6950 2050 50  0001 C CNN
-	1    6950 2050
+F 0 "#PWR0959" H 8900 3100 50  0001 C CNN
+F 1 "GND" V 8905 3222 50  0000 R CNN
+F 2 "" H 8900 3350 50  0001 C CNN
+F 3 "" H 8900 3350 50  0001 C CNN
+	1    8900 3350
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	6950 2050 6900 2050
+	8900 3350 8850 3350
 $Comp
 L power:GND #PWR?
 U 1 1 5F6323EA
-P 6650 3800
+P 8600 5100
 AR Path="/5F607AA2/5F6323EA" Ref="#PWR?"  Part="1" 
 AR Path="/60E33DBC/5F6323EA" Ref="#PWR0958"  Part="1" 
-F 0 "#PWR0958" H 6650 3550 50  0001 C CNN
-F 1 "GND" V 6655 3672 50  0000 R CNN
-F 2 "" H 6650 3800 50  0001 C CNN
-F 3 "" H 6650 3800 50  0001 C CNN
-	1    6650 3800
+F 0 "#PWR0958" H 8600 4850 50  0001 C CNN
+F 1 "GND" V 8605 4972 50  0000 R CNN
+F 2 "" H 8600 5100 50  0001 C CNN
+F 3 "" H 8600 5100 50  0001 C CNN
+	1    8600 5100
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6650 3750 6650 3800
+	8600 5050 8600 5100
 Wire Wire Line
-	6150 2750 6050 2750
+	8100 4050 8000 4050
 Wire Wire Line
-	6050 2750 6050 2650
+	8000 4050 8000 3950
 Wire Wire Line
-	6050 2450 6150 2450
+	8000 3750 8100 3750
 Wire Wire Line
-	6150 2550 6050 2550
-Connection ~ 6050 2550
+	8100 3850 8000 3850
+Connection ~ 8000 3850
 Wire Wire Line
-	6050 2550 6050 2450
+	8000 3850 8000 3750
 Wire Wire Line
-	6150 2650 6050 2650
-Connection ~ 6050 2650
+	8100 3950 8000 3950
+Connection ~ 8000 3950
 Wire Wire Line
-	6050 2650 6050 2600
+	8000 3950 8000 3900
 $Comp
 L power:GND #PWR0956
 U 1 1 5F635745
-P 6000 2600
-F 0 "#PWR0956" H 6000 2350 50  0001 C CNN
-F 1 "GND" V 6005 2472 50  0000 R CNN
-F 2 "" H 6000 2600 50  0001 C CNN
-F 3 "" H 6000 2600 50  0001 C CNN
-	1    6000 2600
+P 7950 3900
+F 0 "#PWR0956" H 7950 3650 50  0001 C CNN
+F 1 "GND" V 7955 3772 50  0000 R CNN
+F 2 "" H 7950 3900 50  0001 C CNN
+F 3 "" H 7950 3900 50  0001 C CNN
+	1    7950 3900
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	6000 2600 6050 2600
-Connection ~ 6050 2600
+	7950 3900 8000 3900
+Connection ~ 8000 3900
 Wire Wire Line
-	6050 2600 6050 2550
+	8000 3900 8000 3850
 Wire Wire Line
-	6150 3050 6100 3050
+	8100 4350 8050 4350
 Wire Wire Line
-	6100 3050 6100 3150
+	8050 4350 8050 4450
 Wire Wire Line
-	6100 3150 6150 3150
-Text HLabel 2100 7000 0    50   Input ~ 0
+	8050 4450 8100 4450
+Text HLabel 4050 8300 0    50   Input ~ 0
 CLK
-Text HLabel 2100 7100 0    50   Input ~ 0
+Text HLabel 4050 8400 0    50   Input ~ 0
 ~RESET
 Wire Wire Line
-	2100 7000 2350 7000
+	4050 8300 4300 8300
 Wire Wire Line
-	2100 7100 2350 7100
-Text Label 2350 7000 2    50   ~ 0
+	4050 8400 4300 8400
+Text Label 4300 8300 2    50   ~ 0
 CLK
-Text Label 2350 7100 2    50   ~ 0
+Text Label 4300 8400 2    50   ~ 0
 ~R
 Wire Wire Line
-	2450 3850 2200 3850
+	4400 5050 4150 5050
 Wire Wire Line
-	2450 3750 2200 3750
-Text Label 2200 3850 0    50   ~ 0
+	4400 4950 4150 4950
+Text Label 4150 5050 0    50   ~ 0
 CLK
-Text Label 2200 3750 0    50   ~ 0
+Text Label 4150 4950 0    50   ~ 0
 ~R
 Wire Wire Line
-	4650 4050 4900 4050
+	7900 4550 8100 4550
 $Comp
 L 74HC161:74HC161 U?
 U 1 1 5F6323CD
-P 6650 2950
+P 8600 4250
 AR Path="/5F607AA2/5F6323CD" Ref="U?"  Part="1" 
 AR Path="/60E33DBC/5F6323CD" Ref="U217"  Part="1" 
 AR Path="/5F6323CD" Ref="U?"  Part="1" 
-F 0 "U217" H 6750 3700 50  0000 C CNN
-F 1 "SN74HC161PW" H 6950 3600 50  0000 C CNN
-F 2 "TSSOP-16_4.4x5mm_P0.65mm" H 6650 2950 50  0001 C CNN
-F 3 "http://www.ti.com/lit/gpn/sn74LS161" H 6650 2950 50  0001 C CNN
-	1    6650 2950
+F 0 "U217" H 8700 5000 50  0000 C CNN
+F 1 "SN74HC161PW" H 8900 4900 50  0000 C CNN
+F 2 "TSSOP-16_4.4x5mm_P0.65mm" H 8600 4250 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS161" H 8600 4250 50  0001 C CNN
+	1    8600 4250
 	1    0    0    -1  
 $EndComp
-NoConn ~ 7150 2750
-NoConn ~ 7150 2950
+NoConn ~ 9100 4050
+NoConn ~ 9100 4250
 $Comp
 L 74xGxx:74LVC1G04 U?
 U 1 1 5F656D7F
-P 5200 2950
+P 7150 4250
 AR Path="/5ED2705B/5F656D7F" Ref="U?"  Part="1" 
 AR Path="/5F1CE57C/5F656D7F" Ref="U?"  Part="1" 
 AR Path="/608BF85D/5F656D7F" Ref="U?"  Part="1" 
 AR Path="/60E33DBC/5F3D6AF9/5F656D7F" Ref="U?"  Part="1" 
 AR Path="/60E33DBC/5F656D7F" Ref="U216"  Part="1" 
-F 0 "U216" H 5350 2750 50  0000 C CNN
-F 1 "SN74LVC1G04DCK" H 5600 2850 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 5200 2950 50  0001 C CNN
-F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 5200 2950 50  0001 C CNN
-	1    5200 2950
+F 0 "U216" H 7300 4050 50  0000 C CNN
+F 1 "SN74LVC1G04DCK" H 7550 4150 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 7150 4250 50  0001 C CNN
+F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 7150 4250 50  0001 C CNN
+	1    7150 4250
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	5200 2850 5200 2750
-Connection ~ 5200 2750
+	7150 4150 7150 4050
+Connection ~ 7150 4050
 $Comp
 L power:+5V #PWR?
 U 1 1 5F656D87
-P 5200 2700
+P 7150 4000
 AR Path="/5ED2705B/5F656D87" Ref="#PWR?"  Part="1" 
 AR Path="/5F1CE57C/5F656D87" Ref="#PWR?"  Part="1" 
 AR Path="/608BF85D/5F656D87" Ref="#PWR?"  Part="1" 
 AR Path="/60E33DBC/5F3D6AF9/5F656D87" Ref="#PWR?"  Part="1" 
 AR Path="/60E33DBC/5F656D87" Ref="#PWR0952"  Part="1" 
-F 0 "#PWR0952" H 5200 2550 50  0001 C CNN
-F 1 "+5V" H 5142 2737 50  0000 R CNN
-F 2 "" H 5200 2700 50  0001 C CNN
-F 3 "" H 5200 2700 50  0001 C CNN
-	1    5200 2700
+F 0 "#PWR0952" H 7150 3850 50  0001 C CNN
+F 1 "+5V" H 7092 4037 50  0000 R CNN
+F 2 "" H 7150 4000 50  0001 C CNN
+F 3 "" H 7150 4000 50  0001 C CNN
+	1    7150 4000
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:C_Small C?
 U 1 1 5F656D8D
-P 5350 2750
+P 7300 4050
 AR Path="/5ED2705B/5F656D8D" Ref="C?"  Part="1" 
 AR Path="/5F1CE57C/5F656D8D" Ref="C?"  Part="1" 
 AR Path="/608BF85D/5F656D8D" Ref="C?"  Part="1" 
 AR Path="/60E33DBC/5F3D6AF9/5F656D8D" Ref="C?"  Part="1" 
 AR Path="/60E33DBC/5F656D8D" Ref="C220"  Part="1" 
-F 0 "C220" V 5121 2750 50  0000 C CNN
-F 1 "0u1" V 5212 2750 50  0000 C CNN
-F 2 "NoRef_Footprints:C_0603_1608Metric_NoRef" H 5350 2750 50  0001 C CNN
-F 3 "~" H 5350 2750 50  0001 C CNN
-	1    5350 2750
+F 0 "C220" V 7071 4050 50  0000 C CNN
+F 1 "0u1" V 7162 4050 50  0000 C CNN
+F 2 "NoRef_Footprints:C_0603_1608Metric_NoRef" H 7300 4050 50  0001 C CNN
+F 3 "~" H 7300 4050 50  0001 C CNN
+	1    7300 4050
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	5250 2750 5200 2750
+	7200 4050 7150 4050
 Wire Wire Line
-	5200 2750 5200 2700
+	7150 4050 7150 4000
 $Comp
 L power:GND #PWR?
 U 1 1 5F656D95
-P 5200 3150
+P 7150 4450
 AR Path="/5ED2705B/5F656D95" Ref="#PWR?"  Part="1" 
 AR Path="/5F1CE57C/5F656D95" Ref="#PWR?"  Part="1" 
 AR Path="/608BF85D/5F656D95" Ref="#PWR?"  Part="1" 
 AR Path="/60E33DBC/5F3D6AF9/5F656D95" Ref="#PWR?"  Part="1" 
 AR Path="/60E33DBC/5F656D95" Ref="#PWR0953"  Part="1" 
-F 0 "#PWR0953" H 5200 2900 50  0001 C CNN
-F 1 "GND" H 5205 2977 50  0000 C CNN
-F 2 "" H 5200 3150 50  0001 C CNN
-F 3 "" H 5200 3150 50  0001 C CNN
-	1    5200 3150
+F 0 "#PWR0953" H 7150 4200 50  0001 C CNN
+F 1 "GND" H 7155 4277 50  0000 C CNN
+F 2 "" H 7150 4450 50  0001 C CNN
+F 3 "" H 7150 4450 50  0001 C CNN
+	1    7150 4450
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	5200 3150 5200 3050
+	7150 4450 7150 4350
 Wire Wire Line
-	5500 2750 5450 2750
+	7450 4050 7400 4050
 $Comp
 L power:GND #PWR?
 U 1 1 5F656D9D
-P 5500 2750
+P 7450 4050
 AR Path="/5ED2705B/5F656D9D" Ref="#PWR?"  Part="1" 
 AR Path="/5F1CE57C/5F656D9D" Ref="#PWR?"  Part="1" 
 AR Path="/608BF85D/5F656D9D" Ref="#PWR?"  Part="1" 
 AR Path="/60E33DBC/5F3D6AF9/5F656D9D" Ref="#PWR?"  Part="1" 
 AR Path="/60E33DBC/5F656D9D" Ref="#PWR0955"  Part="1" 
-F 0 "#PWR0955" H 5500 2500 50  0001 C CNN
-F 1 "GND" V 5505 2622 50  0000 R CNN
-F 2 "" H 5500 2750 50  0001 C CNN
-F 3 "" H 5500 2750 50  0001 C CNN
-	1    5500 2750
+F 0 "#PWR0955" H 7450 3800 50  0001 C CNN
+F 1 "GND" V 7455 3922 50  0000 R CNN
+F 2 "" H 7450 4050 50  0001 C CNN
+F 3 "" H 7450 4050 50  0001 C CNN
+	1    7450 4050
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	6100 3150 5650 3150
+	8050 4450 7600 4450
 Wire Wire Line
-	5650 3150 5650 3400
-Connection ~ 6100 3150
-Text Label 4650 4050 0    50   ~ 0
+	7600 4450 7600 4700
+Connection ~ 8050 4450
+Text Label 7900 4550 0    50   ~ 0
 CLK
-Text Label 6050 3450 0    50   ~ 0
+Text Label 7900 4750 0    50   ~ 0
 ~R
 Wire Wire Line
-	6050 3450 6150 3450
-Text Notes 6100 1650 0    100  ~ 0
+	7900 4750 8100 4750
+Text Notes 8050 2950 0    100  ~ 0
 Sub-Instruction \nStep Counter
-Text HLabel 3400 1100 0    50   Input ~ 0
+Text HLabel 4750 2400 0    50   Input ~ 0
 Inst[0..15]
-Wire Bus Line
-	3400 1100 3450 1100
 $Sheet
-S 3450 1000 1200 750 
+S 5400 2300 1200 750 
 U 5F3D8E0D
 F0 "Inst_Decode_ROM" 50
 F1 "Inst_Decode_ROM.sch" 50
-F2 "Inst[0..15]" I L 3450 1100 50 
-F3 "InstCode3" O R 4650 1100 50 
-F4 "InstCode4" O R 4650 1200 50 
-F5 "InstCode5" O R 4650 1300 50 
-F6 "InstCode6" O R 4650 1400 50 
-F7 "InstCode7" O R 4650 1500 50 
-F8 "Interrupt" I L 3450 1200 50 
+F2 "Inst[0..15]" I L 5400 2400 50 
+F3 "InstCode3" O R 6600 2400 50 
+F4 "InstCode4" O R 6600 2500 50 
+F5 "InstCode5" O R 6600 2600 50 
+F6 "InstCode6" O R 6600 2700 50 
+F7 "InstCode7" O R 6600 2800 50 
+F8 "Interrupt" I L 5400 2500 50 
 $EndSheet
 Entry Wire Line
-	7700 2450 7800 2550
+	9650 3750 9750 3850
 Entry Wire Line
-	7700 2550 7800 2650
+	9650 3850 9750 3950
 Wire Wire Line
-	4650 1100 5200 1100
+	6600 2400 7150 2400
 Entry Wire Line
-	5200 1100 5300 1200
+	7150 2400 7250 2500
 Wire Wire Line
-	4650 1200 5200 1200
+	6600 2500 7150 2500
 Entry Wire Line
-	5200 1200 5300 1300
+	7150 2500 7250 2600
 Wire Wire Line
-	4650 1300 5200 1300
+	6600 2600 7150 2600
 Entry Wire Line
-	5200 1300 5300 1400
+	7150 2600 7250 2700
 Wire Wire Line
-	4650 1400 5200 1400
+	6600 2700 7150 2700
 Entry Wire Line
-	5200 1400 5300 1500
+	7150 2700 7250 2800
 Wire Wire Line
-	4650 1500 5200 1500
+	6600 2800 7150 2800
 Entry Wire Line
-	5200 1500 5300 1600
-Text Label 5200 1100 2    50   ~ 0
+	7150 2800 7250 2900
+Text Label 7150 2400 2    50   ~ 0
 InstCode3
-Text Label 5200 1200 2    50   ~ 0
+Text Label 7150 2500 2    50   ~ 0
 InstCode4
-Text Label 5200 1300 2    50   ~ 0
+Text Label 7150 2600 2    50   ~ 0
 InstCode5
-Text Label 5200 1400 2    50   ~ 0
+Text Label 7150 2700 2    50   ~ 0
 InstCode6
-Text Label 5200 1500 2    50   ~ 0
+Text Label 7150 2800 2    50   ~ 0
 InstCode7
 Entry Wire Line
-	7700 2650 7800 2750
+	9650 3950 9750 4050
 $Sheet
-S 6150 650  700  200 
+S 8100 1950 700  200 
 U 5F76BABD
 F0 "LEDs: InstCode" 50
 F1 "8BitLED.sch" 50
-F2 "VAL[0..7]" I L 6150 750 50 
+F2 "VAL[0..7]" I L 8100 2050 50 
 $EndSheet
-Text Label 5550 750  0    50   ~ 0
+Text Label 7500 2050 0    50   ~ 0
 InstCode[0..7]
 Wire Bus Line
-	5300 750  5300 1050
+	7250 2050 7250 2350
 Wire Bus Line
-	5300 750  6150 750 
-Connection ~ 5300 1050
+	7250 2050 8100 2050
+Connection ~ 7250 2350
 Wire Bus Line
-	8250 5500 8050 5500
+	10200 6750 10000 6750
 Wire Bus Line
-	8050 1050 8250 1050
+	10000 2350 10200 2350
 Wire Bus Line
-	8250 2150 8050 2150
-Connection ~ 8050 2150
+	10200 3450 10000 3450
+Connection ~ 10000 3450
 Wire Bus Line
-	8050 2150 8050 1050
+	10000 3450 10000 2350
 Wire Bus Line
-	8250 4400 8050 4400
-Connection ~ 8050 4400
-Connection ~ 8050 1050
+	10200 5650 10000 5650
+Connection ~ 10000 2350
 Wire Bus Line
-	8050 2150 8050 2800
+	10000 3450 10000 4100
 $Sheet
-S 8250 950  800  900 
+S 10200 2250 800  900 
 U 5F3D7BFA
 F0 "Control_Rom0" 50
 F1 "Control_Rom.sch" 50
-F2 "InstCode[0..7]" I L 8250 1050 50 
-F3 "0" O R 9050 1050 50 
-F4 "1" O R 9050 1150 50 
-F5 "2" O R 9050 1250 50 
-F6 "3" O R 9050 1350 50 
-F7 "4" O R 9050 1450 50 
-F8 "5" O R 9050 1550 50 
-F9 "6" O R 9050 1650 50 
-F10 "7" O R 9050 1750 50 
+F2 "InstCode[0..7]" I L 10200 2350 50 
+F3 "0" O R 11000 2350 50 
+F4 "1" O R 11000 2450 50 
+F5 "2" O R 11000 2550 50 
+F6 "3" O R 11000 2650 50 
+F7 "4" O R 11000 2750 50 
+F8 "5" O R 11000 2850 50 
+F9 "6" O R 11000 2950 50 
+F10 "7" O R 11000 3050 50 
 $EndSheet
 $Sheet
-S 8250 2050 800  900 
+S 10200 3350 800  900 
 U 5F765D85
 F0 "Control_Rom1" 50
 F1 "Control_Rom.sch" 50
-F2 "InstCode[0..7]" I L 8250 2150 50 
-F3 "0" O R 9050 2150 50 
-F4 "1" O R 9050 2250 50 
-F5 "2" O R 9050 2350 50 
-F6 "3" O R 9050 2450 50 
-F7 "4" O R 9050 2550 50 
-F8 "5" O R 9050 2650 50 
-F9 "6" O R 9050 2750 50 
-F10 "7" O R 9050 2850 50 
+F2 "InstCode[0..7]" I L 10200 3450 50 
+F3 "0" O R 11000 3450 50 
+F4 "1" O R 11000 3550 50 
+F5 "2" O R 11000 3650 50 
+F6 "3" O R 11000 3750 50 
+F7 "4" O R 11000 3850 50 
+F8 "5" O R 11000 3950 50 
+F9 "6" O R 11000 4050 50 
+F10 "7" O R 11000 4150 50 
 $EndSheet
 $Sheet
-S 8250 4300 800  900 
+S 10200 5550 800  900 
 U 5F767EF5
 F0 "Control_Rom3" 50
 F1 "Control_Rom.sch" 50
-F2 "InstCode[0..7]" I L 8250 4400 50 
-F3 "0" O R 9050 4400 50 
-F4 "1" O R 9050 4500 50 
-F5 "2" O R 9050 4600 50 
-F6 "3" O R 9050 4700 50 
-F7 "4" O R 9050 4800 50 
-F8 "5" O R 9050 4900 50 
-F9 "6" O R 9050 5000 50 
-F10 "7" O R 9050 5100 50 
+F2 "InstCode[0..7]" I L 10200 5650 50 
+F3 "0" O R 11000 5650 50 
+F4 "1" O R 11000 5750 50 
+F5 "2" O R 11000 5850 50 
+F6 "3" O R 11000 5950 50 
+F7 "4" O R 11000 6050 50 
+F8 "5" O R 11000 6150 50 
+F9 "6" O R 11000 6250 50 
+F10 "7" O R 11000 6350 50 
 $EndSheet
 $Sheet
-S 8250 5400 800  900 
+S 10200 6650 800  900 
 U 5F768DA1
 F0 "Control_Rom4" 50
 F1 "Control_Rom.sch" 50
-F2 "InstCode[0..7]" I L 8250 5500 50 
-F3 "0" O R 9050 5500 50 
-F4 "1" O R 9050 5600 50 
-F5 "2" O R 9050 5700 50 
-F6 "3" O R 9050 5800 50 
-F7 "4" O R 9050 5900 50 
-F8 "5" O R 9050 6000 50 
-F9 "6" O R 9050 6100 50 
-F10 "7" O R 9050 6200 50 
+F2 "InstCode[0..7]" I L 10200 6750 50 
+F3 "0" O R 11000 6750 50 
+F4 "1" O R 11000 6850 50 
+F5 "2" O R 11000 6950 50 
+F6 "3" O R 11000 7050 50 
+F7 "4" O R 11000 7150 50 
+F8 "5" O R 11000 7250 50 
+F9 "6" O R 11000 7350 50 
+F10 "7" O R 11000 7450 50 
 $EndSheet
 Wire Wire Line
-	9050 1650 9750 1650
+	11000 6150 11650 6150
 Wire Wire Line
-	9050 4900 9700 4900
+	11000 6350 11650 6350
 Wire Wire Line
-	9050 5500 9700 5500
+	11000 6750 11650 6750
 Wire Wire Line
-	9050 5600 9700 5600
-Wire Wire Line
-	9050 5700 9700 5700
-Text Label 9750 1050 2    50   ~ 0
+	11000 6850 11650 6850
+Text Label 11700 2350 2    50   ~ 0
 Next_Inst
-Text Label 9750 1150 2    50   ~ 0
+Text Label 11700 2450 2    50   ~ 0
 Halt
-Text Label 9750 1250 2    50   ~ 0
-InstReg_Latch_EN
 Wire Wire Line
-	9050 1250 9750 1250
+	11000 2750 11700 2750
 Wire Wire Line
-	9050 1150 9750 1150
+	11000 2450 11700 2450
 Wire Wire Line
-	9050 1050 9750 1050
-Text HLabel 9750 1350 2    50   Output ~ 0
-PC_Inc_EN
-Text HLabel 9750 1450 2    50   Output ~ 0
-PC_CondInc_EN
-Text HLabel 9750 1550 2    50   Output ~ 0
-PC_Latch_EN
-Text Label 9750 1650 2    50   ~ 0
-Halt_Clear
+	11000 2350 11700 2350
+Text HLabel 11700 2850 2    50   Output ~ 0
+PC_Inc
+Text HLabel 11700 2950 2    50   Output ~ 0
+PC_Cond_Inc
+Text HLabel 11700 3050 2    50   Output ~ 0
+PC_Latch
 Wire Wire Line
-	9050 1550 9750 1550
+	11000 3050 11700 3050
 Wire Wire Line
-	9050 1450 9750 1450
+	11000 2950 11700 2950
 Wire Wire Line
-	9050 1350 9750 1350
-Wire Wire Line
-	9050 2150 9750 2150
-Wire Wire Line
-	9050 2250 9750 2250
-Text HLabel 9750 2150 2    50   Output ~ 0
-RegA_Latch_EN
-Text HLabel 9750 2250 2    50   Output ~ 0
+	11000 2850 11700 2850
+Text HLabel 12850 3350 2    50   Output ~ 0
+RegA_Latch
+Text HLabel 12850 3450 2    50   Output ~ 0
 RegA_OE
-Text HLabel 9700 4900 2    50   Output ~ 0
+Text HLabel 11650 6150 2    50   Output ~ 0
 In[0..7]->DBus
-Text HLabel 9700 5500 2    50   Output ~ 0
-RAM_WAsync
-Text HLabel 9700 5600 2    50   Output ~ 0
-RAM_RAsync_LatchSafeA
-Text HLabel 9700 5700 2    50   Output ~ 0
-RAM_LatchSafeDA_EN
-Text HLabel 9750 1250 2    50   Output ~ 0
-InstReg_Latch_EN
-Text Label 1750 3250 0    50   ~ 0
-InstReg_Latch_EN
-Wire Wire Line
-	2450 3250 1750 3250
-Wire Wire Line
-	2450 3450 2000 3450
-Text Label 2000 3150 0    50   ~ 0
+Text HLabel 11650 6350 2    50   Output ~ 0
+RAM_W
+Text HLabel 11650 6750 2    50   Output ~ 0
+RAM_R_Sync_A
+Text HLabel 11650 6850 2    50   Output ~ 0
+RAM_Sync_D_A
+Text HLabel 11700 2750 2    50   Output ~ 0
+RegI_Latch
+Text Label 3850 4350 0    50   ~ 0
 Next_Inst
-Wire Wire Line
-	2450 3150 2000 3150
-Text Label 2000 3450 0    50   ~ 0
-Halt_Clear
-Text Label 2000 3350 0    50   ~ 0
+Text Label 3850 4650 0    50   ~ 0
 Halt
 Wire Wire Line
-	2450 3350 2000 3350
+	4400 4650 3850 4650
 Wire Bus Line
-	5300 1050 8050 1050
+	7250 2350 10000 2350
 Wire Bus Line
-	7800 2800 8050 2800
-Connection ~ 8050 2800
+	9750 4100 10000 4100
+Connection ~ 10000 4100
 Wire Bus Line
-	8050 2800 8050 3300
-$Comp
-L 74xGxx:74LVC1G04 U?
-U 1 1 5EF3D4C8
-P 5200 4050
-AR Path="/5ED2705B/5EF3D4C8" Ref="U?"  Part="1" 
-AR Path="/5F1CE57C/5EF3D4C8" Ref="U?"  Part="1" 
-AR Path="/608BF85D/5EF3D4C8" Ref="U?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AF9/5EF3D4C8" Ref="U?"  Part="1" 
-AR Path="/60E33DBC/5EF3D4C8" Ref="U215"  Part="1" 
-F 0 "U215" H 5300 3850 50  0000 C CNN
-F 1 "SN74LVC1G04DCK" H 5550 3950 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 5200 4050 50  0001 C CNN
-F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 5200 4050 50  0001 C CNN
-	1    5200 4050
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	5200 3950 5200 3850
-Connection ~ 5200 3850
-$Comp
-L power:+5V #PWR?
-U 1 1 5EF3D4D0
-P 5200 3800
-AR Path="/5ED2705B/5EF3D4D0" Ref="#PWR?"  Part="1" 
-AR Path="/5F1CE57C/5EF3D4D0" Ref="#PWR?"  Part="1" 
-AR Path="/608BF85D/5EF3D4D0" Ref="#PWR?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AF9/5EF3D4D0" Ref="#PWR?"  Part="1" 
-AR Path="/60E33DBC/5EF3D4D0" Ref="#PWR0950"  Part="1" 
-F 0 "#PWR0950" H 5200 3650 50  0001 C CNN
-F 1 "+5V" H 5142 3837 50  0000 R CNN
-F 2 "" H 5200 3800 50  0001 C CNN
-F 3 "" H 5200 3800 50  0001 C CNN
-	1    5200 3800
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C_Small C?
-U 1 1 5EF3D4D6
-P 5350 3850
-AR Path="/5ED2705B/5EF3D4D6" Ref="C?"  Part="1" 
-AR Path="/5F1CE57C/5EF3D4D6" Ref="C?"  Part="1" 
-AR Path="/608BF85D/5EF3D4D6" Ref="C?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AF9/5EF3D4D6" Ref="C?"  Part="1" 
-AR Path="/60E33DBC/5EF3D4D6" Ref="C219"  Part="1" 
-F 0 "C219" V 5121 3850 50  0000 C CNN
-F 1 "0u1" V 5212 3850 50  0000 C CNN
-F 2 "NoRef_Footprints:C_0603_1608Metric_NoRef" H 5350 3850 50  0001 C CNN
-F 3 "~" H 5350 3850 50  0001 C CNN
-	1    5350 3850
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	5250 3850 5200 3850
-Wire Wire Line
-	5200 3850 5200 3800
-$Comp
-L power:GND #PWR?
-U 1 1 5EF3D4DE
-P 5200 4250
-AR Path="/5ED2705B/5EF3D4DE" Ref="#PWR?"  Part="1" 
-AR Path="/5F1CE57C/5EF3D4DE" Ref="#PWR?"  Part="1" 
-AR Path="/608BF85D/5EF3D4DE" Ref="#PWR?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AF9/5EF3D4DE" Ref="#PWR?"  Part="1" 
-AR Path="/60E33DBC/5EF3D4DE" Ref="#PWR0951"  Part="1" 
-F 0 "#PWR0951" H 5200 4000 50  0001 C CNN
-F 1 "GND" H 5205 4077 50  0000 C CNN
-F 2 "" H 5200 4250 50  0001 C CNN
-F 3 "" H 5200 4250 50  0001 C CNN
-	1    5200 4250
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	5200 4250 5200 4150
-Wire Wire Line
-	5500 3850 5450 3850
-Wire Wire Line
-	5850 4050 5850 3250
-Wire Wire Line
-	5850 3250 6150 3250
-Wire Wire Line
-	5450 4050 5850 4050
-$Comp
-L power:GND #PWR?
-U 1 1 5EFB0519
-P 5500 3850
-AR Path="/5ED2705B/5EFB0519" Ref="#PWR?"  Part="1" 
-AR Path="/5F1CE57C/5EFB0519" Ref="#PWR?"  Part="1" 
-AR Path="/608BF85D/5EFB0519" Ref="#PWR?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AF9/5EFB0519" Ref="#PWR?"  Part="1" 
-AR Path="/60E33DBC/5EFB0519" Ref="#PWR0954"  Part="1" 
-F 0 "#PWR0954" H 5500 3600 50  0001 C CNN
-F 1 "GND" V 5505 3722 50  0000 R CNN
-F 2 "" H 5500 3850 50  0001 C CNN
-F 3 "" H 5500 3850 50  0001 C CNN
-	1    5500 3850
-	0    -1   -1   0   
-$EndComp
+	10000 4100 10000 4550
 $Sheet
-S 8250 3200 800  900 
+S 10200 4450 800  900 
 U 5F47FADF
 F0 "Control_Rom2" 50
 F1 "Control_Rom.sch" 50
-F2 "InstCode[0..7]" I L 8250 3300 50 
-F3 "0" O R 9050 3300 50 
-F4 "1" O R 9050 3400 50 
-F5 "2" O R 9050 3500 50 
-F6 "3" O R 9050 3600 50 
-F7 "4" O R 9050 3700 50 
-F8 "5" O R 9050 3800 50 
-F9 "6" O R 9050 3900 50 
-F10 "7" O R 9050 4000 50 
+F2 "InstCode[0..7]" I L 10200 4550 50 
+F3 "0" O R 11000 4550 50 
+F4 "1" O R 11000 4650 50 
+F5 "2" O R 11000 4750 50 
+F6 "3" O R 11000 4850 50 
+F7 "4" O R 11000 4950 50 
+F8 "5" O R 11000 5050 50 
+F9 "6" O R 11000 5150 50 
+F10 "7" O R 11000 5250 50 
 $EndSheet
 Wire Wire Line
-	9050 1750 9750 1750
+	11000 2550 11700 2550
 Wire Wire Line
-	9050 5800 9700 5800
+	11000 6950 11650 6950
 Wire Wire Line
-	9050 5900 9700 5900
+	11000 7050 11650 7050
 Wire Wire Line
-	9050 6000 9700 6000
+	11000 7150 11650 7150
 Wire Wire Line
-	9050 6100 9700 6100
+	11000 7250 11650 7250
 Wire Wire Line
-	9050 6200 9700 6200
+	11000 7350 11650 7350
 Wire Wire Line
-	9050 5000 9700 5000
+	11000 6250 11650 6250
 Wire Wire Line
-	9050 5100 9700 5100
+	11000 5650 11650 5650
 Wire Wire Line
-	9050 4400 9700 4400
+	11000 5750 11650 5750
 Wire Wire Line
-	9050 4500 9700 4500
+	11000 5850 11650 5850
 Wire Wire Line
-	9050 4600 9700 4600
+	11000 5950 11650 5950
 Wire Wire Line
-	9050 4700 9700 4700
-Wire Wire Line
-	9050 4800 9700 4800
-Text Label 9750 1750 2    50   ~ 0
-INT_Set
-Wire Wire Line
-	9050 2350 9750 2350
-Wire Wire Line
-	9050 2450 9750 2450
-Wire Wire Line
-	9050 2550 9750 2550
-Wire Wire Line
-	9050 2650 9750 2650
-Wire Wire Line
-	9050 2750 9750 2750
-Wire Wire Line
-	9050 2850 9750 2850
-Text HLabel 9750 2350 2    50   Output ~ 0
-RegB_Latch_EN
-Text HLabel 9750 2450 2    50   Output ~ 0
+	11000 6050 11650 6050
+Text Label 11700 2550 2    50   ~ 0
+Int_Clr
+Text HLabel 12850 3550 2    50   Output ~ 0
+RegB_Latch
+Text HLabel 12850 3650 2    50   Output ~ 0
 RegB_OE
-Text HLabel 9750 2550 2    50   Output ~ 0
-RegT_LatchL_EN
-Text HLabel 9750 2650 2    50   Output ~ 0
-RegT_LatchH_EN
-Text HLabel 9750 2650 2    50   Output ~ 0
-RegT_LatchH_EN
-Text HLabel 9750 2750 2    50   Output ~ 0
+Text HLabel 12850 4200 2    50   Output ~ 0
+RegT_LatchL
+Text HLabel 12850 4300 2    50   Output ~ 0
+RegT_LatchH
+Text HLabel 11700 4550 2    50   Output ~ 0
 RegT_OE_Adr
-Text HLabel 9750 2850 2    50   Output ~ 0
+Text HLabel 11700 4650 2    50   Output ~ 0
 RegT_OE_DataL
 Wire Wire Line
-	9050 3300 9750 3300
+	11000 4750 11700 4750
 Wire Wire Line
-	9050 3400 9750 3400
+	11000 4850 11700 4850
 Wire Wire Line
-	9050 3500 9750 3500
+	11000 4950 11700 4950
 Wire Wire Line
-	9050 3600 9750 3600
+	11000 5050 11700 5050
 Wire Wire Line
-	9050 3700 9750 3700
+	11000 5150 11700 5150
 Wire Wire Line
-	9050 3800 9750 3800
-Wire Wire Line
-	9050 3900 9750 3900
-Wire Wire Line
-	9050 4000 9750 4000
-Text HLabel 9750 3300 2    50   Output ~ 0
+	11000 5250 11700 5250
+Text HLabel 11700 4750 2    50   Output ~ 0
 ALU_DoBComp
-Text HLabel 9750 3400 2    50   Output ~ 0
+Text HLabel 11700 4850 2    50   Output ~ 0
 ALU_OE
-Text HLabel 9750 3500 2    50   Output ~ 0
-Status_LatchAdd_EN
-Text HLabel 9750 3600 2    50   Output ~ 0
-Status_LatchSub_EN
-Text HLabel 9750 3700 2    50   Output ~ 0
+Text HLabel 11700 4950 2    50   Output ~ 0
 Logic_Comp_OE
-Text HLabel 9750 3800 2    50   Output ~ 0
+Text HLabel 11700 5050 2    50   Output ~ 0
 Logic_Not_OE
-Text HLabel 9750 3900 2    50   Output ~ 0
+Text HLabel 11700 5150 2    50   Output ~ 0
 Logic_Dual_OE
-Text HLabel 9750 4000 2    50   Output ~ 0
+Text HLabel 11700 5250 2    50   Output ~ 0
 BarrelS_OE
-Text HLabel 9700 5800 2    50   Output ~ 0
+Text HLabel 11650 6950 2    50   Output ~ 0
 Stack_W
-Text HLabel 9700 5900 2    50   Output ~ 0
-Stack_RAsync
-Text HLabel 9700 6000 2    50   Output ~ 0
-Stack_PresentData
-Text HLabel 9700 6100 2    50   Output ~ 0
-Stack_Dec_EN
-Text HLabel 9700 6200 2    50   Output ~ 0
-Stack_Inc+LatchSafeD_EN
-Text HLabel 9700 4400 2    50   Output ~ 0
+Text HLabel 11650 7050 2    50   Output ~ 0
+Stack_R
+Text HLabel 11650 7150 2    50   Output ~ 0
+Stack_Present_Data
+Text HLabel 11650 7250 2    50   Output ~ 0
+Stack_Sync_Data
+Text HLabel 11650 7350 2    50   Output ~ 0
+Stack_Sync_Adr
+Text HLabel 11650 5650 2    50   Output ~ 0
 In[0..13]->ROMA
-Text HLabel 9700 4500 2    50   Output ~ 0
+Text HLabel 11650 5750 2    50   Output ~ 0
 PC[0..7]->DBus
-Text HLabel 9700 4600 2    50   Output ~ 0
+Text HLabel 11650 5850 2    50   Output ~ 0
 PC[8..13]->DBus
-Text HLabel 9700 4700 2    50   Output ~ 0
+Text HLabel 11650 5950 2    50   Output ~ 0
 In[0..7]->RAMA[0..7]
-Text HLabel 9700 4800 2    50   Output ~ 0
+Text HLabel 11650 6050 2    50   Output ~ 0
 RegB->RAMA[0..7]
-Text HLabel 9700 5000 2    50   Output ~ 0
-INTAdr->ROMA
-Text Label 9700 5100 2    50   ~ 0
-INT_Reset
+Text HLabel 11650 6250 2    50   Output ~ 0
+IntAdr->ROMA
+Text Label 11700 2650 2    50   ~ 0
+Int_Override_Clr
 Wire Bus Line
-	8250 3300 8050 3300
-Connection ~ 8050 3300
-Wire Bus Line
-	8050 3300 8050 4400
-Text Label 7700 2650 2    50   ~ 0
+	10200 4550 10000 4550
+Text Label 9650 3950 2    50   ~ 0
 InstCode2
-Text Label 7700 2550 2    50   ~ 0
+Text Label 9650 3850 2    50   ~ 0
 InstCode1
-Text Label 7700 2450 2    50   ~ 0
+Text Label 9650 3750 2    50   ~ 0
 InstCode0
 Wire Wire Line
-	7150 2650 7700 2650
+	9100 3950 9650 3950
 Wire Wire Line
-	7150 2550 7700 2550
+	9100 3850 9650 3850
 Wire Wire Line
-	7150 2450 7700 2450
+	9100 3750 9650 3750
 $Sheet
-S 3700 2050 900  200 
+S 5650 3350 900  200 
 U 61F011FA
 F0 "InstDisplay.sch" 50
 F1 "InstDisplay.sch" 50
-F2 "InstCode[0..7]" I R 4600 2150 50 
+F2 "InstCode[0..7]" I R 6550 3450 50 
 $EndSheet
 $Comp
 L 74xx_IEEE:74HC238 U214
 U 1 1 61F52B82
-P 4900 6800
+P 6850 8100
 AR Path="/60E33DBC/61F52B82" Ref="U214"  Part="1" 
 AR Path="/60E33DBC/61F011FA/61F52B82" Ref="U?"  Part="1" 
-F 0 "U214" H 5000 7250 50  0000 C CNN
-F 1 "CD74HC238PW" H 5200 7150 50  0000 C CNN
-F 2 "Package_SO:TSSOP-16_4.4x5mm_P0.65mm" H 4900 6800 50  0001 C CNN
-F 3 "" H 4900 6800 50  0001 C CNN
-	1    4900 6800
+F 0 "U214" H 6950 8550 50  0000 C CNN
+F 1 "CD74HC238PW" H 7150 8450 50  0000 C CNN
+F 2 "Package_SO:TSSOP-16_4.4x5mm_P0.65mm" H 6850 8100 50  0001 C CNN
+F 3 "" H 6850 8100 50  0001 C CNN
+	1    6850 8100
 	1    0    0    -1  
 $EndComp
-Connection ~ 4900 6200
+Connection ~ 6850 7500
 $Comp
 L power:+5V #PWR?
 U 1 1 61F52B89
-P 4900 6150
+P 6850 7450
 AR Path="/5ED2705B/61F52B89" Ref="#PWR?"  Part="1" 
 AR Path="/5F1CE57C/61F52B89" Ref="#PWR?"  Part="1" 
 AR Path="/608BF85D/61F52B89" Ref="#PWR?"  Part="1" 
 AR Path="/60E33DBC/5F3D6AF9/61F52B89" Ref="#PWR?"  Part="1" 
 AR Path="/60E33DBC/61F52B89" Ref="#PWR0948"  Part="1" 
 AR Path="/60E33DBC/61F011FA/61F52B89" Ref="#PWR?"  Part="1" 
-F 0 "#PWR0948" H 4900 6000 50  0001 C CNN
-F 1 "+5V" H 4750 6250 50  0000 C CNN
-F 2 "" H 4900 6150 50  0001 C CNN
-F 3 "" H 4900 6150 50  0001 C CNN
-	1    4900 6150
+F 0 "#PWR0948" H 6850 7300 50  0001 C CNN
+F 1 "+5V" H 6700 7550 50  0000 C CNN
+F 2 "" H 6850 7450 50  0001 C CNN
+F 3 "" H 6850 7450 50  0001 C CNN
+	1    6850 7450
 	-1   0    0    -1  
 $EndComp
 $Comp
 L Device:C_Small C?
 U 1 1 61F52B8F
-P 4750 6200
+P 6700 7500
 AR Path="/5ED2705B/61F52B8F" Ref="C?"  Part="1" 
 AR Path="/5F1CE57C/61F52B8F" Ref="C?"  Part="1" 
 AR Path="/608BF85D/61F52B8F" Ref="C?"  Part="1" 
 AR Path="/60E33DBC/5F3D6AF9/61F52B8F" Ref="C?"  Part="1" 
 AR Path="/60E33DBC/61F52B8F" Ref="C218"  Part="1" 
 AR Path="/60E33DBC/61F011FA/61F52B8F" Ref="C?"  Part="1" 
-F 0 "C218" V 4521 6200 50  0000 C CNN
-F 1 "0u1" V 4612 6200 50  0000 C CNN
-F 2 "NoRef_Footprints:C_0603_1608Metric_NoRef" H 4750 6200 50  0001 C CNN
-F 3 "~" H 4750 6200 50  0001 C CNN
-	1    4750 6200
+F 0 "C218" V 6471 7500 50  0000 C CNN
+F 1 "0u1" V 6562 7500 50  0000 C CNN
+F 2 "NoRef_Footprints:C_0603_1608Metric_NoRef" H 6700 7500 50  0001 C CNN
+F 3 "~" H 6700 7500 50  0001 C CNN
+	1    6700 7500
 	0    -1   1    0   
 $EndComp
 Wire Wire Line
-	4850 6200 4900 6200
+	6800 7500 6850 7500
 Wire Wire Line
-	4900 6200 4900 6150
+	6850 7500 6850 7450
 Wire Wire Line
-	4600 6200 4650 6200
+	6550 7500 6600 7500
 $Comp
 L power:GND #PWR?
 U 1 1 61F52B98
-P 4600 6200
+P 6550 7500
 AR Path="/5ED2705B/61F52B98" Ref="#PWR?"  Part="1" 
 AR Path="/5F1CE57C/61F52B98" Ref="#PWR?"  Part="1" 
 AR Path="/608BF85D/61F52B98" Ref="#PWR?"  Part="1" 
 AR Path="/60E33DBC/5F3D6AF9/61F52B98" Ref="#PWR?"  Part="1" 
 AR Path="/60E33DBC/61F52B98" Ref="#PWR0947"  Part="1" 
 AR Path="/60E33DBC/61F011FA/61F52B98" Ref="#PWR?"  Part="1" 
-F 0 "#PWR0947" H 4600 5950 50  0001 C CNN
-F 1 "GND" H 4605 6027 50  0000 C CNN
-F 2 "" H 4600 6200 50  0001 C CNN
-F 3 "" H 4600 6200 50  0001 C CNN
-	1    4600 6200
+F 0 "#PWR0947" H 6550 7250 50  0001 C CNN
+F 1 "GND" H 6555 7327 50  0000 C CNN
+F 2 "" H 6550 7500 50  0001 C CNN
+F 3 "" H 6550 7500 50  0001 C CNN
+	1    6550 7500
 	0    1    -1   0   
 $EndComp
 Wire Wire Line
-	4900 6200 4900 6500
+	6850 7500 6850 7800
 $Comp
 L power:GND #PWR?
 U 1 1 61F52B9F
-P 4900 7500
+P 6850 8800
 AR Path="/5ED2705B/61F52B9F" Ref="#PWR?"  Part="1" 
 AR Path="/5F1CE57C/61F52B9F" Ref="#PWR?"  Part="1" 
 AR Path="/608BF85D/61F52B9F" Ref="#PWR?"  Part="1" 
 AR Path="/60E33DBC/5F3D6AF9/61F52B9F" Ref="#PWR?"  Part="1" 
 AR Path="/60E33DBC/61F52B9F" Ref="#PWR0949"  Part="1" 
 AR Path="/60E33DBC/61F011FA/61F52B9F" Ref="#PWR?"  Part="1" 
-F 0 "#PWR0949" H 4900 7250 50  0001 C CNN
-F 1 "GND" H 4905 7327 50  0000 C CNN
-F 2 "" H 4900 7500 50  0001 C CNN
-F 3 "" H 4900 7500 50  0001 C CNN
-	1    4900 7500
+F 0 "#PWR0949" H 6850 8550 50  0001 C CNN
+F 1 "GND" H 6855 8627 50  0000 C CNN
+F 2 "" H 6850 8800 50  0001 C CNN
+F 3 "" H 6850 8800 50  0001 C CNN
+	1    6850 8800
 	-1   0    0    -1  
 $EndComp
 Wire Wire Line
-	4900 7400 4900 7500
+	6850 8700 6850 8800
 Wire Wire Line
-	4350 6750 4300 6750
+	6300 8050 6250 8050
 Wire Wire Line
-	4300 6750 4300 6600
+	6250 8050 6250 7900
 Wire Wire Line
-	4300 6600 4350 6600
+	6250 7900 6300 7900
 Wire Wire Line
-	4300 6600 4250 6600
-Connection ~ 4300 6600
+	6250 7900 6200 7900
+Connection ~ 6250 7900
 $Comp
 L power:GND #PWR?
 U 1 1 61F52BAB
-P 4250 6600
+P 6200 7900
 AR Path="/5ED2705B/61F52BAB" Ref="#PWR?"  Part="1" 
 AR Path="/5F1CE57C/61F52BAB" Ref="#PWR?"  Part="1" 
 AR Path="/608BF85D/61F52BAB" Ref="#PWR?"  Part="1" 
 AR Path="/60E33DBC/5F3D6AF9/61F52BAB" Ref="#PWR?"  Part="1" 
 AR Path="/60E33DBC/61F52BAB" Ref="#PWR0945"  Part="1" 
 AR Path="/60E33DBC/61F011FA/61F52BAB" Ref="#PWR?"  Part="1" 
-F 0 "#PWR0945" H 4250 6350 50  0001 C CNN
-F 1 "GND" H 4255 6427 50  0000 C CNN
-F 2 "" H 4250 6600 50  0001 C CNN
-F 3 "" H 4250 6600 50  0001 C CNN
-	1    4250 6600
+F 0 "#PWR0945" H 6200 7650 50  0001 C CNN
+F 1 "GND" H 6205 7727 50  0000 C CNN
+F 2 "" H 6200 7900 50  0001 C CNN
+F 3 "" H 6200 7900 50  0001 C CNN
+	1    6200 7900
 	0    1    -1   0   
 $EndComp
 $Comp
 L power:+5V #PWR?
 U 1 1 61F52BB1
-P 4250 6900
+P 6200 8200
 AR Path="/5ED2705B/61F52BB1" Ref="#PWR?"  Part="1" 
 AR Path="/5F1CE57C/61F52BB1" Ref="#PWR?"  Part="1" 
 AR Path="/608BF85D/61F52BB1" Ref="#PWR?"  Part="1" 
 AR Path="/60E33DBC/5F3D6AF9/61F52BB1" Ref="#PWR?"  Part="1" 
 AR Path="/60E33DBC/61F52BB1" Ref="#PWR0946"  Part="1" 
 AR Path="/60E33DBC/61F011FA/61F52BB1" Ref="#PWR?"  Part="1" 
-F 0 "#PWR0946" H 4250 6750 50  0001 C CNN
-F 1 "+5V" H 4265 7073 50  0000 C CNN
-F 2 "" H 4250 6900 50  0001 C CNN
-F 3 "" H 4250 6900 50  0001 C CNN
-	1    4250 6900
+F 0 "#PWR0946" H 6200 8050 50  0001 C CNN
+F 1 "+5V" H 6215 8373 50  0000 C CNN
+F 2 "" H 6200 8200 50  0001 C CNN
+F 3 "" H 6200 8200 50  0001 C CNN
+	1    6200 8200
 	0    -1   1    0   
 $EndComp
 Wire Wire Line
-	4250 6900 4350 6900
-Text Label 3850 7350 0    50   ~ 0
+	6200 8200 6300 8200
+Text Label 5800 8650 0    50   ~ 0
 InstCode2
-Text Label 3850 7250 0    50   ~ 0
+Text Label 5800 8550 0    50   ~ 0
 InstCode1
-Text Label 3850 7150 0    50   ~ 0
+Text Label 5800 8450 0    50   ~ 0
 InstCode0
 Wire Wire Line
-	4350 7350 3850 7350
+	6300 8650 5800 8650
 Wire Wire Line
-	4350 7250 3850 7250
+	6300 8550 5800 8550
 Wire Wire Line
-	4350 7150 3850 7150
+	6300 8450 5800 8450
 $Sheet
-S 6150 7400 700  200 
+S 8850 8700 700  200 
 U 61F52BBE
 F0 "InstStep" 50
 F1 "8BitLED.sch" 50
-F2 "VAL[0..7]" I L 6150 7500 50 
+F2 "VAL[0..7]" I L 8850 8800 50 
 $EndSheet
 Entry Wire Line
-	3750 7250 3850 7350
+	5700 8550 5800 8650
 Entry Wire Line
-	3750 7150 3850 7250
+	5700 8450 5800 8550
 Entry Wire Line
-	3750 7050 3850 7150
+	5700 8350 5800 8450
 Entry Wire Line
-	5650 6600 5750 6700
+	8350 7900 8450 8000
 Entry Wire Line
-	5650 6700 5750 6800
+	8350 8000 8450 8100
 Entry Wire Line
-	5650 6800 5750 6900
+	8350 8100 8450 8200
 Entry Wire Line
-	5650 6900 5750 7000
+	8350 8200 8450 8300
 Entry Wire Line
-	5650 7000 5750 7100
+	8350 8300 8450 8400
 Entry Wire Line
-	5650 7100 5750 7200
+	8350 8400 8450 8500
 Entry Wire Line
-	5650 7200 5750 7300
+	8350 8500 8450 8600
 Entry Wire Line
-	5650 7300 5750 7400
-Text Label 5650 6600 2    50   ~ 0
+	8350 8600 8450 8700
+Text Label 8350 7900 2    50   ~ 0
 VAL0
-Text Label 5650 6700 2    50   ~ 0
+Text Label 8350 8000 2    50   ~ 0
 VAL1
-Text Label 5650 6800 2    50   ~ 0
+Text Label 8350 8100 2    50   ~ 0
 VAL2
-Text Label 5650 6900 2    50   ~ 0
+Text Label 8350 8200 2    50   ~ 0
 VAL3
-Text Label 5650 7000 2    50   ~ 0
+Text Label 8350 8300 2    50   ~ 0
 VAL4
-Text Label 5650 7100 2    50   ~ 0
+Text Label 8350 8400 2    50   ~ 0
 VAL5
-Text Label 5650 7200 2    50   ~ 0
+Text Label 8350 8500 2    50   ~ 0
 VAL6
-Text Label 5650 7300 2    50   ~ 0
+Text Label 8350 8600 2    50   ~ 0
 VAL7
-Text Label 5800 7500 0    50   ~ 0
+Text Label 8500 8800 0    50   ~ 0
 VAL[0..7]
 Wire Bus Line
-	5750 7500 6150 7500
+	8450 8800 8850 8800
 Wire Bus Line
-	4600 2150 5300 2150
+	6550 3450 7250 3450
 $Sheet
-S 1450 1500 1050 750 
+S 2300 2350 1500 1250
 U 5FD12DEC
 F0 "Interrupts" 50
 F1 "Interrupts.sch" 50
-F2 "Interrupt_Override" O R 2500 1650 50 
-F3 "CLK" I L 1450 1650 50 
-F4 "INT_Assert" I L 1450 1750 50 
-F5 "INT_Set" I L 1450 1850 50 
-F6 "INT_Reset" I L 1450 1950 50 
-F7 "INT_Active" O R 2500 1800 50 
-F8 "InstReg_Latch_EN" I L 1450 2050 50 
-F9 "~RESET" I L 1450 1550 50 
-F10 "INT_EN" I L 1450 2150 50 
+F2 "Interrupt_Override" O R 3800 2500 50 
+F3 "CLK" I L 2300 2500 50 
+F4 "~RESET" I L 2300 2400 50 
+F5 "IReg_Latch" I L 2300 3300 50 
+F6 "Int_Clr" I L 2300 3100 50 
+F7 "Int_Override_Clr" I L 2300 3000 50 
+F8 "Int_Assert" I L 2300 2700 50 
+F9 "Int_EN" I L 2300 2800 50 
+F10 "Interrupt_Active" O R 3800 2700 50 
 $EndSheet
-Text HLabel 1800 3050 0    50   Input ~ 0
-INST_STEP
-Text HLabel 1800 2950 0    50   Input ~ 0
-INST_STEP_EN
-Wire Wire Line
-	3450 1200 3200 1200
-Wire Wire Line
-	3200 1200 3200 1650
+Text HLabel 3750 4450 0    50   Input ~ 0
+Inst_Step
+Text HLabel 3750 4550 0    50   Input ~ 0
+Inst_Step_EN
 Wire Bus Line
-	8050 4400 8050 5500
+	5700 7050 10000 7050
 Wire Wire Line
-	5450 6600 5650 6600
+	2300 2500 2050 2500
 Wire Wire Line
-	5450 6700 5650 6700
-Wire Wire Line
-	5450 6800 5650 6800
-Wire Wire Line
-	5450 6900 5650 6900
-Wire Wire Line
-	5450 7000 5650 7000
-Wire Wire Line
-	5450 7100 5650 7100
-Wire Wire Line
-	5450 7200 5650 7200
-Wire Wire Line
-	5450 7300 5650 7300
-Wire Bus Line
-	3750 5750 8050 5750
-Wire Bus Line
-	8050 5750 8050 5500
-Connection ~ 8050 5500
-Wire Wire Line
-	1450 1650 1200 1650
-Wire Wire Line
-	1450 1550 1200 1550
-Text Label 1200 1650 0    50   ~ 0
+	2300 2400 2050 2400
+Text Label 2050 2500 0    50   ~ 0
 CLK
-Text Label 1200 1550 0    50   ~ 0
+Text Label 2050 2400 0    50   ~ 0
 ~R
-Text Label 1050 1850 0    50   ~ 0
-INT_Set
-Text Label 1050 1950 0    50   ~ 0
-INT_Reset
 Wire Wire Line
-	1050 1950 1450 1950
+	2300 2700 1850 2700
 Wire Wire Line
-	1050 1850 1450 1850
-Text Label 750  2050 0    50   ~ 0
-InstReg_Latch_EN
-Wire Wire Line
-	750  2050 1450 2050
-Wire Wire Line
-	1450 1750 1000 1750
-Wire Wire Line
-	1450 2150 1000 2150
-Text HLabel 1000 1750 0    50   Input ~ 0
-INT_Assert
-Text HLabel 1000 2150 0    50   Input ~ 0
-INT_EN
-Wire Wire Line
-	2500 1800 2600 1800
-Text HLabel 2600 1800 2    50   Output ~ 0
-INT_Active
-Text HLabel 9700 5100 2    50   Output ~ 0
-INT_Reset
-Text HLabel 9750 1650 2    50   Output ~ 0
-Halt_Clr
-Text HLabel 9750 1750 2    50   Output ~ 0
-INT_Set
-Text HLabel 9750 1150 2    50   Output ~ 0
-Halt
-Text HLabel 9750 1050 2    50   Output ~ 0
-Next_Inst
-Text HLabel 3850 3250 2    50   Output ~ 0
+	2300 2800 1850 2800
+Text HLabel 1850 2700 0    50   Input ~ 0
+Int_Assert
+Text HLabel 1850 2800 0    50   Input ~ 0
+Int_EN
+Text HLabel 5800 4550 2    50   Output ~ 0
 UI_Halted
-Text HLabel 3850 3350 2    50   Output ~ 0
+Text HLabel 5800 4650 2    50   Output ~ 0
 UI_Halt_Inst
-Text HLabel 3850 3450 2    50   Output ~ 0
+Text HLabel 5800 4750 2    50   Output ~ 0
 UI_Halt_Step
-Text HLabel 3850 3550 2    50   Output ~ 0
+Text HLabel 5800 4850 2    50   Output ~ 0
 UI_Halt_Bkpt
 Wire Wire Line
-	3850 3250 3650 3250
+	5800 4550 5600 4550
 Wire Wire Line
-	3850 3350 3650 3350
+	5800 4650 5600 4650
 Wire Wire Line
-	3850 3450 3650 3450
+	5800 4750 5600 4750
 Wire Wire Line
-	3850 3550 3650 3550
+	5800 4850 5600 4850
 Wire Wire Line
-	4850 3400 5650 3400
-Text Notes 3750 850  0    100  ~ 0
+	6800 4700 7600 4700
+Text Notes 5700 2150 0    100  ~ 0
 Decode
 Wire Wire Line
-	5450 2950 6150 2950
+	7400 4250 8100 4250
 Wire Wire Line
-	4850 3400 4850 3050
+	6800 4700 6800 4350
 Wire Wire Line
-	4850 3050 3650 3050
+	6800 4350 5600 4350
 Wire Wire Line
-	3650 2950 4900 2950
-Wire Wire Line
-	2500 1650 3200 1650
-Text Notes 1600 1350 0    100  ~ 0
+	5600 4250 6850 4250
+Text Notes 2650 2200 0    100  ~ 0
 Interrupts
-Text Notes 2650 2700 0    100  ~ 0
+Text Notes 4600 4000 0    100  ~ 0
 Step Logic
-Wire Wire Line
-	2750 6400 2300 6400
-$Comp
-L Device:LED_Small D?
-U 1 1 629B315E
-P 2850 6400
-AR Path="/5ED2705B/5F30EEBC/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F1CE57C/5F4E66A6/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F1CE57C/5F5DFD05/629B315E" Ref="D?"  Part="1" 
-AR Path="/5ED2705B/5F5F12F1/629B315E" Ref="D?"  Part="1" 
-AR Path="/5ED2705B/5F5FD588/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F607AA2/5F61E0F9/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F607AA2/5F6223B6/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F607AA2/5F62248D/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F607AA2/5F622502/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F18F3CA/5F190609/629B315E" Ref="D?"  Part="1" 
-AR Path="/60A296EE/5F2A0B04/629B315E" Ref="D?"  Part="1" 
-AR Path="/60A296EE/5F2A8674/629B315E" Ref="D?"  Part="1" 
-AR Path="/5ED3C49A/5F31E1C9/629B315E" Ref="D?"  Part="1" 
-AR Path="/5ED3C49A/5F3261C9/629B315E" Ref="D?"  Part="1" 
-AR Path="/5ED3C49A/5F32E5C9/629B315E" Ref="D?"  Part="1" 
-AR Path="/609EB802/5F355201/629B315E" Ref="D?"  Part="1" 
-AR Path="/60E33DBC/5F872DA4/629B315E" Ref="D?"  Part="1" 
-AR Path="/60E33DBC/5F8756AE/629B315E" Ref="D?"  Part="1" 
-AR Path="/60E33DBC/5F87BE2E/629B315E" Ref="D?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AF9/5F8BAC6C/629B315E" Ref="D?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AF9/5F8C5BB6/629B315E" Ref="D?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AE0/5EE697A1/629B315E" Ref="D?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AE0/5EE697A4/629B315E" Ref="D?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AF9/5EECFBAD/629B315E" Ref="D?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AF9/5EEE0F09/629B315E" Ref="D?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AF9/5EEE6B09/629B315E" Ref="D?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AF9/5EF3226F/629B315E" Ref="D?"  Part="1" 
-AR Path="/608BF85D/608BF87D/5F0227B2/629B315E" Ref="D?"  Part="1" 
-AR Path="/608BF85D/608BF87D/5F0227B5/629B315E" Ref="D?"  Part="1" 
-AR Path="/608BF85D/608BF87D/5F03D817/629B315E" Ref="D?"  Part="1" 
-AR Path="/608BF85D/5EECC2BE/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F3ED0F9/5F5F12F1/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F3ED0F9/5F5FD588/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F394B96/5F41B94B/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F396002/5F5DFD05/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F28170E/6042814B/629B315E" Ref="D?"  Part="1" 
-AR Path="/6041A022/5F41B94B/629B315E" Ref="D?"  Part="1" 
-AR Path="/6041A022/60527AAC/629B315E" Ref="D?"  Part="1" 
-AR Path="/604F08FB/5F41B94B/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F3A2F3D/5F3AC269/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F3A2F3D/5F3EAFDA/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F3A2F3D/5F445181/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F575798/5F5B9F91/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F5CACFC/5F5D3F92/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F629530/5F6D359A/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F629530/5F6EC8C4/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F6FD493/5F7054A8/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F6FD493/5F7054B1/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F6FD493/5F7539F6/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F6FD493/5F753A50/629B315E" Ref="D?"  Part="1" 
-AR Path="/604F08FB/5FDB3530/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F43204F/5FDF7D74/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F43204F/5FE049B4/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F43204F/5FE6DBBD/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F43204F/5FE97196/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F43204F/5FE97199/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F43204F/5FEBEB17/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FF66C9F/600BE39A/6011677D/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FF66C9F/610BCFC2/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FF66C9F/610BD854/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FF66C9F/610E2DF8/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FF66C9F/610E2DFB/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FF66C9F/610E4698/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FF66C9F/610E469B/629B315E" Ref="D?"  Part="1" 
-AR Path="/612C5E2A/612C618C/629B315E" Ref="D?"  Part="1" 
-AR Path="/612C5E2A/614B1718/629B315E" Ref="D?"  Part="1" 
-AR Path="/612C5E2A/619F257F/629B315E" Ref="D?"  Part="1" 
-AR Path="/612C5E2A/61B44795/629B315E" Ref="D?"  Part="1" 
-AR Path="/60E33DBC/5FD12DEC/601D9677/629B315E" Ref="D?"  Part="1" 
-AR Path="/60E33DBC/5FD12DEC/601E5264/629B315E" Ref="D?"  Part="1" 
-AR Path="/60E33DBC/5FD12DEC/601F3391/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD4EE20/5FD4A0FE/5F0227B2/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD4EE20/5FD4A0FE/5F0227B5/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD4EE20/5FD4A0FE/5F03D817/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD4EE20/5FD6C7B8/5EE697A1/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD4EE20/5FD6C7B8/5EE697A4/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD4EE20/5FDB596E/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD4EE20/5FDB5971/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD4EE20/5FDB59D6/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD4EE20/5FDC1B90/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD4EE20/5FDC1B93/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD4EE20/5FEB2852/5FEC0ABA/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD4EE20/5FF140E5/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD4EE20/5FF2C57C/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD4EE20/5FF2C57F/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD4EE20/5FF5E0D0/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD4EE20/5FF5F4C0/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD6F3D6/5F2A0B04/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD6F3D6/5F2A8674/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F28170E/61010D3C/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD4EE20/5FF92472/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD4EE20/5FF933B8/629B315E" Ref="D?"  Part="1" 
-AR Path="/608BF85D/5FFAAF6D/5FFF707C/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD6B215/60119EFA/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD6B215/6011A842/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD6B215/6011B158/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD6B215/6011BA7C/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD6B215/6011C3F6/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD65262/601F4EE7/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD65262/6024637A/60250C64/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD65291/602624BF/60250C64/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD65308/60262671/60250C64/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD65291/6029209E/60250C64/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD65308/60297285/60250C64/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD65291/60489029/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD65291/60489030/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD65262/605B62FF/60250C64/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD65262/60F2FF16/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD65262/60F361D1/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD65262/60F387E1/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD65262/608BAC66/60F57E8D/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD65262/60DA00A1/60F57E8D/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD65262/608BAC66/60F5E815/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD65262/60DA00A1/60F5E815/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD65262/608BAC66/60F6E745/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD65262/60DA00A1/60F6E745/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD65262/608BAC66/60F74D31/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD65262/60DA00A1/60F74D31/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD6F26B/612E03D7/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD6EE9C/60588D71/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD6EE9C/60588D74/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD6EE9C/60588D77/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD6EE9C/608FE1FD/6094A956/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD6EE9C/608FE1FD/6094A959/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD6EE9C/608FE1FD/6094A95C/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD6EE9C/608FE1FD/6094A95F/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD6EE9C/60202DC8/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD6EE9C/60211EE4/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD6EE9C/60221FC5/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD6EE9C/602388B5/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD6EE9C/602487E3/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD6EE9C/60304D40/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD6EE9C/6030D5B2/629B315E" Ref="D?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AF9/60415E6E/629B315E" Ref="D?"  Part="1" 
-AR Path="/60E33DBC/6092F6E1/629B315E" Ref="D?"  Part="1" 
-AR Path="/60E33DBC/6092F6E4/629B315E" Ref="D?"  Part="1" 
-AR Path="/60E33DBC/6092F6E7/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD3CD07/602A39E5/629B315E" Ref="D?"  Part="1" 
-AR Path="/61C3CF7F/5F5F12F1/629B315E" Ref="D?"  Part="1" 
-AR Path="/61C3CF7F/5F5FD588/629B315E" Ref="D?"  Part="1" 
-AR Path="/61C3CF88/5F5F12F1/629B315E" Ref="D?"  Part="1" 
-AR Path="/61C3CF88/5F5FD588/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD65308/6053C227/629B315E" Ref="D?"  Part="1" 
-AR Path="/5FD65308/605425EC/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F394B96/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F43204F/629B315E" Ref="D?"  Part="1" 
-AR Path="/6041A022/629B315E" Ref="D?"  Part="1" 
-AR Path="/5ED3C49A/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F3A2F3D/629B315E" Ref="D?"  Part="1" 
-AR Path="/5F18F3CA/629B315E" Ref="D?"  Part="1" 
-AR Path="/60E33DBC/629B315E" Ref="D213"  Part="1" 
-F 0 "D213" H 2700 6350 50  0000 C CNN
-F 1 "Halt Clr" H 3100 6350 50  0000 C CNN
-F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 2850 6400 50  0001 C CNN
-F 3 "~" V 2850 6400 50  0001 C CNN
-	1    2850 6400
-	-1   0    0    1   
-$EndComp
-$Comp
-L Device:R_Small R?
-U 1 1 629B3158
-P 2200 6400
-AR Path="/5F1CE57C/5F5DFD05/629B3158" Ref="R?"  Part="1" 
-AR Path="/5ED2705B/5F5F12F1/629B3158" Ref="R?"  Part="1" 
-AR Path="/5ED2705B/5F5FD588/629B3158" Ref="R?"  Part="1" 
-AR Path="/5F607AA2/5F61E0F9/629B3158" Ref="R?"  Part="1" 
-AR Path="/5F607AA2/5F6223B6/629B3158" Ref="R?"  Part="1" 
-AR Path="/5F607AA2/5F62248D/629B3158" Ref="R?"  Part="1" 
-AR Path="/5F607AA2/5F622502/629B3158" Ref="R?"  Part="1" 
-AR Path="/5F18F3CA/5F190609/629B3158" Ref="R?"  Part="1" 
-AR Path="/60A296EE/5F2A0B04/629B3158" Ref="R?"  Part="1" 
-AR Path="/60A296EE/5F2A8674/629B3158" Ref="R?"  Part="1" 
-AR Path="/5ED3C49A/5F31E1C9/629B3158" Ref="R?"  Part="1" 
-AR Path="/5ED3C49A/5F3261C9/629B3158" Ref="R?"  Part="1" 
-AR Path="/5ED3C49A/5F32E5C9/629B3158" Ref="R?"  Part="1" 
-AR Path="/609EB802/5F355201/629B3158" Ref="R?"  Part="1" 
-AR Path="/60E33DBC/5F872DA4/629B3158" Ref="R?"  Part="1" 
-AR Path="/60E33DBC/5F8756AE/629B3158" Ref="R?"  Part="1" 
-AR Path="/60E33DBC/5F87BE2E/629B3158" Ref="R?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AF9/5F8BAC6C/629B3158" Ref="R?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AF9/5F8C5BB6/629B3158" Ref="R?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AE0/5EE697A1/629B3158" Ref="R?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AE0/5EE697A4/629B3158" Ref="R?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AF9/5EECFBAD/629B3158" Ref="R?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AF9/5EEE0F09/629B3158" Ref="R?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AF9/5EEE6B09/629B3158" Ref="R?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AF9/5EF3226F/629B3158" Ref="R?"  Part="1" 
-AR Path="/608BF85D/608BF87D/5F0227B2/629B3158" Ref="R?"  Part="1" 
-AR Path="/608BF85D/608BF87D/5F0227B5/629B3158" Ref="R?"  Part="1" 
-AR Path="/608BF85D/608BF87D/5F03D817/629B3158" Ref="R?"  Part="1" 
-AR Path="/608BF85D/5EECC2BE/629B3158" Ref="R?"  Part="1" 
-AR Path="/5F3ED0F9/5F5F12F1/629B3158" Ref="R?"  Part="1" 
-AR Path="/5F3ED0F9/5F5FD588/629B3158" Ref="R?"  Part="1" 
-AR Path="/5F394B96/5F41B94B/629B3158" Ref="R?"  Part="1" 
-AR Path="/5F396002/5F5DFD05/629B3158" Ref="R?"  Part="1" 
-AR Path="/5F28170E/6042814B/629B3158" Ref="R?"  Part="1" 
-AR Path="/6041A022/5F41B94B/629B3158" Ref="R?"  Part="1" 
-AR Path="/6041A022/60527AAC/629B3158" Ref="R?"  Part="1" 
-AR Path="/604F08FB/5F41B94B/629B3158" Ref="R?"  Part="1" 
-AR Path="/5F3A2F3D/5F3AC269/629B3158" Ref="R?"  Part="1" 
-AR Path="/5F3A2F3D/5F3EAFDA/629B3158" Ref="R?"  Part="1" 
-AR Path="/5F3A2F3D/5F445181/629B3158" Ref="R?"  Part="1" 
-AR Path="/5F575798/5F5B9F91/629B3158" Ref="R?"  Part="1" 
-AR Path="/5F5CACFC/5F5D3F92/629B3158" Ref="R?"  Part="1" 
-AR Path="/5F629530/5F6D359A/629B3158" Ref="R?"  Part="1" 
-AR Path="/5F629530/5F6EC8C4/629B3158" Ref="R?"  Part="1" 
-AR Path="/5F6FD493/5F7054A8/629B3158" Ref="R?"  Part="1" 
-AR Path="/5F6FD493/5F7054B1/629B3158" Ref="R?"  Part="1" 
-AR Path="/5F6FD493/5F7539F6/629B3158" Ref="R?"  Part="1" 
-AR Path="/5F6FD493/5F753A50/629B3158" Ref="R?"  Part="1" 
-AR Path="/604F08FB/5FDB3530/629B3158" Ref="R?"  Part="1" 
-AR Path="/5F43204F/5FDF7D74/629B3158" Ref="R?"  Part="1" 
-AR Path="/5F43204F/5FE049B4/629B3158" Ref="R?"  Part="1" 
-AR Path="/5F43204F/5FE6DBBD/629B3158" Ref="R?"  Part="1" 
-AR Path="/5F43204F/5FE97196/629B3158" Ref="R?"  Part="1" 
-AR Path="/5F43204F/5FE97199/629B3158" Ref="R?"  Part="1" 
-AR Path="/5F43204F/5FEBEB17/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FF66C9F/600BE39A/6011677D/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FF66C9F/610BCFC2/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FF66C9F/610BD854/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FF66C9F/610E2DF8/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FF66C9F/610E2DFB/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FF66C9F/610E4698/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FF66C9F/610E469B/629B3158" Ref="R?"  Part="1" 
-AR Path="/612C5E2A/612C618C/629B3158" Ref="R?"  Part="1" 
-AR Path="/612C5E2A/614B1718/629B3158" Ref="R?"  Part="1" 
-AR Path="/612C5E2A/619F257F/629B3158" Ref="R?"  Part="1" 
-AR Path="/612C5E2A/61B44795/629B3158" Ref="R?"  Part="1" 
-AR Path="/60E33DBC/5FD12DEC/601D9677/629B3158" Ref="R?"  Part="1" 
-AR Path="/60E33DBC/5FD12DEC/601E5264/629B3158" Ref="R?"  Part="1" 
-AR Path="/60E33DBC/5FD12DEC/601F3391/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD4EE20/5FD4A0FE/5F0227B2/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD4EE20/5FD4A0FE/5F0227B5/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD4EE20/5FD4A0FE/5F03D817/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD4EE20/5FD6C7B8/5EE697A1/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD4EE20/5FD6C7B8/5EE697A4/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD4EE20/5FDB596E/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD4EE20/5FDB5971/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD4EE20/5FDB59D6/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD4EE20/5FDC1B90/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD4EE20/5FDC1B93/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD4EE20/5FEB2852/5FEC0ABA/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD4EE20/5FF140E5/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD4EE20/5FF2C57C/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD4EE20/5FF2C57F/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD4EE20/5FF5E0D0/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD4EE20/5FF5F4C0/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD6F3D6/5F2A0B04/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD6F3D6/5F2A8674/629B3158" Ref="R?"  Part="1" 
-AR Path="/5F28170E/61010D3C/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD4EE20/5FF92472/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD4EE20/5FF933B8/629B3158" Ref="R?"  Part="1" 
-AR Path="/608BF85D/5FFAAF6D/5FFF707C/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD6B215/60119EFA/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD6B215/6011A842/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD6B215/6011B158/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD6B215/6011BA7C/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD6B215/6011C3F6/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD65262/601F4EE7/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD65262/6024637A/60250C64/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD65291/602624BF/60250C64/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD65308/60262671/60250C64/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD65291/6029209E/60250C64/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD65308/60297285/60250C64/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD65291/60489029/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD65291/60489030/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD65262/605B62FF/60250C64/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD65262/60F2FF16/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD65262/60F361D1/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD65262/60F387E1/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD65262/608BAC66/60F57E8D/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD65262/60DA00A1/60F57E8D/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD65262/608BAC66/60F5E815/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD65262/60DA00A1/60F5E815/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD65262/608BAC66/60F6E745/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD65262/60DA00A1/60F6E745/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD65262/608BAC66/60F74D31/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD65262/60DA00A1/60F74D31/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD6F26B/612E03D7/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD6EE9C/60588D71/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD6EE9C/60588D74/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD6EE9C/60588D77/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD6EE9C/608FE1FD/6094A956/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD6EE9C/608FE1FD/6094A959/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD6EE9C/608FE1FD/6094A95C/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD6EE9C/608FE1FD/6094A95F/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD6EE9C/60202DC8/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD6EE9C/60211EE4/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD6EE9C/60221FC5/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD6EE9C/602388B5/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD6EE9C/602487E3/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD6EE9C/60304D40/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD6EE9C/6030D5B2/629B3158" Ref="R?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AF9/60415E6E/629B3158" Ref="R?"  Part="1" 
-AR Path="/60E33DBC/6092F6E1/629B3158" Ref="R?"  Part="1" 
-AR Path="/60E33DBC/6092F6E4/629B3158" Ref="R?"  Part="1" 
-AR Path="/60E33DBC/6092F6E7/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD3CD07/602A39E5/629B3158" Ref="R?"  Part="1" 
-AR Path="/61C3CF7F/5F5F12F1/629B3158" Ref="R?"  Part="1" 
-AR Path="/61C3CF7F/5F5FD588/629B3158" Ref="R?"  Part="1" 
-AR Path="/61C3CF88/5F5F12F1/629B3158" Ref="R?"  Part="1" 
-AR Path="/61C3CF88/5F5FD588/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD65308/6053C227/629B3158" Ref="R?"  Part="1" 
-AR Path="/5FD65308/605425EC/629B3158" Ref="R?"  Part="1" 
-AR Path="/5ED3C49A/629B3158" Ref="R?"  Part="1" 
-AR Path="/5F18F3CA/629B3158" Ref="R?"  Part="1" 
-AR Path="/60E33DBC/629B3158" Ref="R217"  Part="1" 
-F 0 "R217" V 2004 6400 50  0000 C CNN
-F 1 "rled" V 2095 6400 50  0000 C CNN
-F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 2200 6400 50  0001 C CNN
-F 3 "~" H 2200 6400 50  0001 C CNN
-	1    2200 6400
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	3050 6400 3050 6450
-Wire Wire Line
-	2950 6400 3050 6400
-$Comp
-L power:GND #PWR?
-U 1 1 629B3150
-P 3050 6450
-AR Path="/5ED2705B/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F1CE57C/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F1CE57C/5F5DFD05/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5ED2705B/5F5F12F1/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5ED2705B/5F5FD588/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F607AA2/5F61E0F9/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F607AA2/5F6223B6/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F607AA2/5F62248D/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F607AA2/5F622502/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F18F3CA/5F190609/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/60A296EE/5F2A0B04/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/60A296EE/5F2A8674/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5ED3C49A/5F31E1C9/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5ED3C49A/5F3261C9/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5ED3C49A/5F32E5C9/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/609EB802/5F355201/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/60E33DBC/5F872DA4/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/60E33DBC/5F8756AE/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/60E33DBC/5F87BE2E/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AF9/5F8BAC6C/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AF9/5F8C5BB6/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AE0/5EE697A1/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AE0/5EE697A4/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AF9/5EECFBAD/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AF9/5EEE0F09/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AF9/5EEE6B09/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AF9/5EF3226F/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/608BF85D/608BF87D/5F0227B2/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/608BF85D/608BF87D/5F0227B5/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/608BF85D/608BF87D/5F03D817/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/608BF85D/5EECC2BE/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F3ED0F9/5F5F12F1/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F3ED0F9/5F5FD588/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F394B96/5F41B94B/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F396002/5F5DFD05/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F28170E/6042814B/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/6041A022/5F41B94B/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/6041A022/60527AAC/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/604F08FB/5F41B94B/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F3A2F3D/5F3AC269/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F3A2F3D/5F3EAFDA/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F3A2F3D/5F445181/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F575798/5F5B9F91/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F5CACFC/5F5D3F92/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F629530/5F6D359A/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F629530/5F6EC8C4/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F6FD493/5F7054A8/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F6FD493/5F7054B1/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F6FD493/5F7539F6/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F6FD493/5F753A50/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F43204F/5FDF7D74/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/604F08FB/5FDB3530/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F43204F/5FE049B4/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F43204F/5FE6DBBD/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F43204F/5FE97196/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F43204F/5FE97199/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F43204F/5FEBEB17/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FF66C9F/600BE39A/6011677D/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FF66C9F/610BCFC2/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FF66C9F/610BD854/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FF66C9F/610E2DF8/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FF66C9F/610E2DFB/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FF66C9F/610E4698/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FF66C9F/610E469B/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/612C5E2A/612C618C/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/612C5E2A/614B1718/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/612C5E2A/619F257F/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/612C5E2A/61B44795/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/60E33DBC/5FD12DEC/601D9677/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/60E33DBC/5FD12DEC/601E5264/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/60E33DBC/5FD12DEC/601F3391/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD4EE20/5FD4A0FE/5F0227B2/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD4EE20/5FD4A0FE/5F0227B5/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD4EE20/5FD4A0FE/5F03D817/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD4EE20/5FD6C7B8/5EE697A1/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD4EE20/5FD6C7B8/5EE697A4/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD4EE20/5FDB596E/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD4EE20/5FDB5971/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD4EE20/5FDB59D6/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD4EE20/5FDC1B90/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD4EE20/5FDC1B93/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD4EE20/5FEB2852/5FEC0ABA/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD4EE20/5FF140E5/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD4EE20/5FF2C57C/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD4EE20/5FF2C57F/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD4EE20/5FF5E0D0/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD4EE20/5FF5F4C0/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD6F3D6/5F2A0B04/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD6F3D6/5F2A8674/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F28170E/61010D3C/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD4EE20/5FF92472/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD4EE20/5FF933B8/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/608BF85D/5FFAAF6D/5FFF707C/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD6B215/60119EFA/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD6B215/6011A842/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD6B215/6011B158/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD6B215/6011BA7C/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD6B215/6011C3F6/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD65262/601F4EE7/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD65262/6024637A/60250C64/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD65291/602624BF/60250C64/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD65308/60262671/60250C64/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD65291/6029209E/60250C64/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD65308/60297285/60250C64/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD65291/60489029/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD65291/60489030/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD65262/605B62FF/60250C64/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD65262/60F2FF16/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD65262/60F361D1/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD65262/60F387E1/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD65262/608BAC66/60F57E8D/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD65262/60DA00A1/60F57E8D/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD65262/608BAC66/60F5E815/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD65262/60DA00A1/60F5E815/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD65262/608BAC66/60F6E745/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD65262/60DA00A1/60F6E745/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD65262/608BAC66/60F74D31/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD65262/60DA00A1/60F74D31/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD6F26B/612E03D7/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD6EE9C/60588D71/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD6EE9C/60588D74/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD6EE9C/60588D77/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD6EE9C/608FE1FD/6094A956/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD6EE9C/608FE1FD/6094A959/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD6EE9C/608FE1FD/6094A95C/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD6EE9C/608FE1FD/6094A95F/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD6EE9C/60202DC8/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD6EE9C/60211EE4/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD6EE9C/60221FC5/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD6EE9C/602388B5/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD6EE9C/602487E3/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD6EE9C/60304D40/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD6EE9C/6030D5B2/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AF9/60415E6E/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/60E33DBC/6092F6E1/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/60E33DBC/6092F6E4/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/60E33DBC/6092F6E7/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD3CD07/602A39E5/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/61C3CF7F/5F5F12F1/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/61C3CF7F/5F5FD588/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/61C3CF88/5F5F12F1/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/61C3CF88/5F5FD588/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD65308/6053C227/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5FD65308/605425EC/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/5F18F3CA/629B3150" Ref="#PWR?"  Part="1" 
-AR Path="/60E33DBC/629B3150" Ref="#PWR0944"  Part="1" 
-F 0 "#PWR0944" H 3050 6200 50  0001 C CNN
-F 1 "GND" H 3055 6277 50  0000 C CNN
-F 2 "" H 3050 6450 50  0001 C CNN
-F 3 "" H 3050 6450 50  0001 C CNN
-	1    3050 6450
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2750 6000 2300 6000
 $Comp
 L Device:LED_Small D?
 U 1 1 629A9AB5
-P 2850 6000
+P 4250 7300
 AR Path="/5ED2705B/5F30EEBC/629A9AB5" Ref="D?"  Part="1" 
 AR Path="/5F1CE57C/5F4E66A6/629A9AB5" Ref="D?"  Part="1" 
 AR Path="/5F1CE57C/5F5DFD05/629A9AB5" Ref="D?"  Part="1" 
@@ -1710,17 +1006,17 @@ AR Path="/5ED3C49A/629A9AB5" Ref="D?"  Part="1"
 AR Path="/5F3A2F3D/629A9AB5" Ref="D?"  Part="1" 
 AR Path="/5F18F3CA/629A9AB5" Ref="D?"  Part="1" 
 AR Path="/60E33DBC/629A9AB5" Ref="D212"  Part="1" 
-F 0 "D212" H 2700 5950 50  0000 C CNN
-F 1 "Halt" H 3050 5950 50  0000 C CNN
-F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 2850 6000 50  0001 C CNN
-F 3 "~" V 2850 6000 50  0001 C CNN
-	1    2850 6000
+F 0 "D212" H 4250 7093 50  0000 C CNN
+F 1 "LED" H 4250 7184 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 4250 7300 50  0001 C CNN
+F 3 "~" V 4250 7300 50  0001 C CNN
+	1    4250 7300
 	-1   0    0    1   
 $EndComp
 $Comp
 L Device:R_Small R?
 U 1 1 629A9AAF
-P 2200 6000
+P 3900 7300
 AR Path="/5F1CE57C/5F5DFD05/629A9AAF" Ref="R?"  Part="1" 
 AR Path="/5ED2705B/5F5F12F1/629A9AAF" Ref="R?"  Part="1" 
 AR Path="/5ED2705B/5F5FD588/629A9AAF" Ref="R?"  Part="1" 
@@ -1866,21 +1162,21 @@ AR Path="/5FD65308/605425EC/629A9AAF" Ref="R?"  Part="1"
 AR Path="/5ED3C49A/629A9AAF" Ref="R?"  Part="1" 
 AR Path="/5F18F3CA/629A9AAF" Ref="R?"  Part="1" 
 AR Path="/60E33DBC/629A9AAF" Ref="R216"  Part="1" 
-F 0 "R216" V 2004 6000 50  0000 C CNN
-F 1 "rled" V 2095 6000 50  0000 C CNN
-F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 2200 6000 50  0001 C CNN
-F 3 "~" H 2200 6000 50  0001 C CNN
-	1    2200 6000
+F 0 "R216" V 3704 7300 50  0000 C CNN
+F 1 "rled" V 3795 7300 50  0000 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 3900 7300 50  0001 C CNN
+F 3 "~" H 3900 7300 50  0001 C CNN
+	1    3900 7300
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	3050 6000 3050 6050
+	4450 7300 4450 7350
 Wire Wire Line
-	2950 6000 3050 6000
+	4350 7300 4450 7300
 $Comp
 L power:GND #PWR?
 U 1 1 629A9AA7
-P 3050 6050
+P 4450 7350
 AR Path="/5ED2705B/629A9AA7" Ref="#PWR?"  Part="1" 
 AR Path="/5F1CE57C/629A9AA7" Ref="#PWR?"  Part="1" 
 AR Path="/5F1CE57C/5F5DFD05/629A9AA7" Ref="#PWR?"  Part="1" 
@@ -2027,19 +1323,17 @@ AR Path="/5FD65308/6053C227/629A9AA7" Ref="#PWR?"  Part="1"
 AR Path="/5FD65308/605425EC/629A9AA7" Ref="#PWR?"  Part="1" 
 AR Path="/5F18F3CA/629A9AA7" Ref="#PWR?"  Part="1" 
 AR Path="/60E33DBC/629A9AA7" Ref="#PWR0943"  Part="1" 
-F 0 "#PWR0943" H 3050 5800 50  0001 C CNN
-F 1 "GND" H 3055 5877 50  0000 C CNN
-F 2 "" H 3050 6050 50  0001 C CNN
-F 3 "" H 3050 6050 50  0001 C CNN
-	1    3050 6050
+F 0 "#PWR0943" H 4450 7100 50  0001 C CNN
+F 1 "GND" H 4455 7177 50  0000 C CNN
+F 2 "" H 4450 7350 50  0001 C CNN
+F 3 "" H 4450 7350 50  0001 C CNN
+	1    4450 7350
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	2750 5600 2300 5600
 $Comp
 L Device:LED_Small D?
 U 1 1 629A0B69
-P 2850 5600
+P 4250 6900
 AR Path="/5ED2705B/5F30EEBC/629A0B69" Ref="D?"  Part="1" 
 AR Path="/5F1CE57C/5F4E66A6/629A0B69" Ref="D?"  Part="1" 
 AR Path="/5F1CE57C/5F5DFD05/629A0B69" Ref="D?"  Part="1" 
@@ -2191,17 +1485,17 @@ AR Path="/5ED3C49A/629A0B69" Ref="D?"  Part="1"
 AR Path="/5F3A2F3D/629A0B69" Ref="D?"  Part="1" 
 AR Path="/5F18F3CA/629A0B69" Ref="D?"  Part="1" 
 AR Path="/60E33DBC/629A0B69" Ref="D211"  Part="1" 
-F 0 "D211" H 2700 5550 50  0000 C CNN
-F 1 "Next Inst" H 3100 5550 50  0000 C CNN
-F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 2850 5600 50  0001 C CNN
-F 3 "~" V 2850 5600 50  0001 C CNN
-	1    2850 5600
+F 0 "D211" H 4250 6693 50  0000 C CNN
+F 1 "LED" H 4250 6784 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 4250 6900 50  0001 C CNN
+F 3 "~" V 4250 6900 50  0001 C CNN
+	1    4250 6900
 	-1   0    0    1   
 $EndComp
 $Comp
 L Device:R_Small R?
 U 1 1 629A0B63
-P 2200 5600
+P 3900 6900
 AR Path="/5F1CE57C/5F5DFD05/629A0B63" Ref="R?"  Part="1" 
 AR Path="/5ED2705B/5F5F12F1/629A0B63" Ref="R?"  Part="1" 
 AR Path="/5ED2705B/5F5FD588/629A0B63" Ref="R?"  Part="1" 
@@ -2347,21 +1641,21 @@ AR Path="/5FD65308/605425EC/629A0B63" Ref="R?"  Part="1"
 AR Path="/5ED3C49A/629A0B63" Ref="R?"  Part="1" 
 AR Path="/5F18F3CA/629A0B63" Ref="R?"  Part="1" 
 AR Path="/60E33DBC/629A0B63" Ref="R215"  Part="1" 
-F 0 "R215" V 2004 5600 50  0000 C CNN
-F 1 "rled" V 2095 5600 50  0000 C CNN
-F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 2200 5600 50  0001 C CNN
-F 3 "~" H 2200 5600 50  0001 C CNN
-	1    2200 5600
+F 0 "R215" V 3704 6900 50  0000 C CNN
+F 1 "rled" V 3795 6900 50  0000 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 3900 6900 50  0001 C CNN
+F 3 "~" H 3900 6900 50  0001 C CNN
+	1    3900 6900
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	3050 5600 3050 5650
+	4450 6900 4450 6950
 Wire Wire Line
-	2950 5600 3050 5600
+	4350 6900 4450 6900
 $Comp
 L power:GND #PWR?
 U 1 1 629A0B5B
-P 3050 5650
+P 4450 6950
 AR Path="/5ED2705B/629A0B5B" Ref="#PWR?"  Part="1" 
 AR Path="/5F1CE57C/629A0B5B" Ref="#PWR?"  Part="1" 
 AR Path="/5F1CE57C/5F5DFD05/629A0B5B" Ref="#PWR?"  Part="1" 
@@ -2508,31 +1802,220 @@ AR Path="/5FD65308/6053C227/629A0B5B" Ref="#PWR?"  Part="1"
 AR Path="/5FD65308/605425EC/629A0B5B" Ref="#PWR?"  Part="1" 
 AR Path="/5F18F3CA/629A0B5B" Ref="#PWR?"  Part="1" 
 AR Path="/60E33DBC/629A0B5B" Ref="#PWR0942"  Part="1" 
-F 0 "#PWR0942" H 3050 5400 50  0001 C CNN
-F 1 "GND" H 3055 5477 50  0000 C CNN
-F 2 "" H 3050 5650 50  0001 C CNN
-F 3 "" H 3050 5650 50  0001 C CNN
-	1    3050 5650
+F 0 "#PWR0942" H 4450 6700 50  0001 C CNN
+F 1 "GND" H 4455 6777 50  0000 C CNN
+F 2 "" H 4450 6950 50  0001 C CNN
+F 3 "" H 4450 6950 50  0001 C CNN
+	1    4450 6950
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2100 6000 1400 6000
-Text Label 1400 6000 0    50   ~ 0
+	3800 7300 3100 7300
+Text Label 3100 7300 0    50   ~ 0
 Halt
-Text Label 1400 6400 0    50   ~ 0
-Halt_Clear
 Wire Wire Line
-	2100 5600 1400 5600
-Text Label 1400 5600 0    50   ~ 0
+	3800 6900 3100 6900
+Text Label 3100 6900 0    50   ~ 0
 Next_Inst
+Wire Bus Line
+	10200 7850 10000 7850
+$Sheet
+S 10200 7750 800  900 
+U 609B0942
+F0 "Control_Rom5" 50
+F1 "Control_Rom.sch" 50
+F2 "InstCode[0..7]" I L 10200 7850 50 
+F3 "0" O R 11000 7850 50 
+F4 "1" O R 11000 7950 50 
+F5 "2" O R 11000 8050 50 
+F6 "3" O R 11000 8150 50 
+F7 "4" O R 11000 8250 50 
+F8 "5" O R 11000 8350 50 
+F9 "6" O R 11000 8450 50 
+F10 "7" O R 11000 8550 50 
+$EndSheet
 Wire Wire Line
-	2100 6400 1400 6400
+	11000 7450 11650 7450
+Wire Wire Line
+	11000 7850 11650 7850
+Wire Wire Line
+	11000 7950 11650 7950
+Wire Wire Line
+	11000 8050 11650 8050
+Wire Wire Line
+	11000 8150 11650 8150
+Wire Wire Line
+	11000 8250 11650 8250
+Wire Wire Line
+	11000 8350 11650 8350
+Wire Wire Line
+	11000 8450 11650 8450
+Connection ~ 10000 4550
+Connection ~ 10000 5650
+Connection ~ 10000 6750
 Wire Bus Line
-	7800 2550 7800 2800
+	10000 4550 10000 5650
 Wire Bus Line
-	3750 5750 3750 7250
+	10000 5650 10000 6750
 Wire Bus Line
-	5300 1050 5300 2150
+	10000 6750 10000 7050
 Wire Bus Line
-	5750 6700 5750 7500
+	10000 7850 10000 7050
+Connection ~ 10000 7050
+Wire Wire Line
+	11000 2650 11700 2650
+Wire Bus Line
+	4750 2400 5400 2400
+Text Label 4850 2400 0    50   ~ 0
+Inst[0..15]
+Text Label 11050 3350 0    50   ~ 0
+Inst[0..15]
+Wire Bus Line
+	11050 3350 11500 3350
+Wire Wire Line
+	11000 3450 11500 3450
+Wire Wire Line
+	11000 3550 11500 3550
+Wire Wire Line
+	11000 3650 11500 3650
+Wire Wire Line
+	11000 3750 11500 3750
+Wire Wire Line
+	11000 3850 11500 3850
+Wire Wire Line
+	11000 3950 11500 3950
+Wire Wire Line
+	12700 3350 12850 3350
+Wire Wire Line
+	12700 3450 12850 3450
+Wire Wire Line
+	12700 3550 12850 3550
+Wire Wire Line
+	12700 3650 12850 3650
+Wire Wire Line
+	11000 4050 11400 4050
+Wire Wire Line
+	11400 4050 11400 4200
+Wire Wire Line
+	11400 4200 12850 4200
+Wire Wire Line
+	11000 4150 11300 4150
+Wire Wire Line
+	11300 4150 11300 4300
+Wire Wire Line
+	11300 4300 12850 4300
+Wire Wire Line
+	11000 4550 11700 4550
+Wire Wire Line
+	11700 4650 11000 4650
+Text HLabel 11650 7450 2    50   Output ~ 0
+Stack_Ptr_Latch
+Text HLabel 11650 7850 2    50   Output ~ 0
+Stack_Ofs_1
+Text HLabel 11650 7950 2    50   Output ~ 0
+Stack_Ofs_-1
+Text HLabel 11650 8050 2    50   Output ~ 0
+Stack_Ofs_0
+Text HLabel 11650 8150 2    50   Output ~ 0
+Stack_Ofs_Sgn
+NoConn ~ 11650 8250
+NoConn ~ 11650 8350
+NoConn ~ 11650 8450
+Text Label 11700 2750 2    50   ~ 0
+RegI_Latch
+$Sheet
+S 11500 3300 1200 750 
+U 60AAEA82
+F0 "Reg_A_B_Switch" 50
+F1 "Reg_A_B_Switch.sch" 50
+F2 "RegA_Latch_in" I L 11500 3450 50 
+F3 "RegA_OE_in" I L 11500 3550 50 
+F4 "RegB_Latch_in" I L 11500 3650 50 
+F5 "RegB_OE_in" I L 11500 3750 50 
+F6 "RegAB_Latch_in" I L 11500 3850 50 
+F7 "RegAB_OE_in" I L 11500 3950 50 
+F8 "RegA_Latch" O R 12700 3350 50 
+F9 "RegA_OE" O R 12700 3450 50 
+F10 "RegB_Latch" O R 12700 3550 50 
+F11 "RegB_OE" O R 12700 3650 50 
+F12 "Inst[0..15]" I L 11500 3350 50 
+$EndSheet
+$Sheet
+S 4400 4150 1200 1100
+U 5F3D6AF9
+F0 "STEP_LOGIC" 50
+F1 "STEP_LOGIC.sch" 50
+F2 "Inst_Step_EN" I L 4400 4550 50 
+F3 "Halt" I L 4400 4650 50 
+F4 "Bkpt_Trig" I L 4400 4750 50 
+F5 "DO_INC" O R 5600 4350 50 
+F6 "DO_CLR" O R 5600 4250 50 
+F7 "CLK" I L 4400 5050 50 
+F8 "~RESET" I L 4400 4950 50 
+F9 "Inst_Step" I L 4400 4450 50 
+F10 "UI_Halted" O R 5600 4550 50 
+F11 "UI_Halt_Inst" O R 5600 4650 50 
+F12 "UI_Halt_Step" O R 5600 4750 50 
+F13 "UI_Halt_Bkpt" O R 5600 4850 50 
+F14 "Next_Inst" I L 4400 4350 50 
+F15 "Inst_Step_0" I L 4400 4250 50 
+$EndSheet
+Wire Wire Line
+	4400 4250 3850 4250
+Wire Wire Line
+	7400 7900 8350 7900
+Wire Wire Line
+	7400 8000 8350 8000
+Wire Wire Line
+	7400 8100 8350 8100
+Wire Wire Line
+	7400 8200 8350 8200
+Wire Wire Line
+	7400 8300 8350 8300
+Wire Wire Line
+	7400 8400 8350 8400
+Wire Wire Line
+	7400 8500 8350 8500
+Wire Wire Line
+	7400 8600 8350 8600
+Text Label 3850 4250 0    50   ~ 0
+Inst_Step_0
+Text Label 8000 7900 2    50   ~ 0
+Inst_Step_0
+Text Notes 4550 6900 0    50   ~ 0
+Next Inst
+Text Notes 4550 7300 0    50   ~ 0
+Halt
+Wire Wire Line
+	4150 6900 4000 6900
+Wire Wire Line
+	4000 7300 4150 7300
+Wire Wire Line
+	3800 2500 5400 2500
+Wire Wire Line
+	2300 3100 1600 3100
+Text Label 1600 3100 0    50   ~ 0
+Int_Clr
+Text Label 1600 3000 0    50   ~ 0
+Int_Override_Clr
+Wire Wire Line
+	2300 3000 1600 3000
+Text Label 1600 3300 0    50   ~ 0
+RegI_Latch
+Wire Wire Line
+	2300 3300 1600 3300
+Wire Wire Line
+	3850 4350 4400 4350
+Wire Wire Line
+	3800 2700 4100 2700
+Text HLabel 4100 2700 2    50   Output ~ 0
+Int_Active
+Wire Bus Line
+	9750 3850 9750 4100
+Wire Bus Line
+	5700 7050 5700 8550
+Wire Bus Line
+	7250 2350 7250 3450
+Wire Bus Line
+	8450 8000 8450 8800
 $EndSCHEMATC

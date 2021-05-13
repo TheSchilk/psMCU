@@ -3,10 +3,10 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 44 93
+Sheet 5 98
 Title "psMCU"
 Date "2021-03-30"
-Rev "v0.1"
+Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
@@ -33,12 +33,7 @@ Connection ~ 4250 3650
 Wire Wire Line
 	4250 3650 4250 3750
 Wire Wire Line
-	4350 2950 4250 2950
-Wire Wire Line
-	4250 2950 4250 3050
-Wire Wire Line
 	4350 3050 4250 3050
-Connection ~ 4250 3050
 Wire Wire Line
 	4250 3050 4250 3150
 Wire Wire Line
@@ -77,22 +72,20 @@ F 3 "" H 4200 3950 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	4200 3950 4250 3950
-Text Label 4050 2750 0    50   ~ 0
+Text Label 4050 2850 0    50   ~ 0
 Inst15
-Text Label 4050 2650 0    50   ~ 0
+Text Label 4050 2750 0    50   ~ 0
 Inst14
-Text Label 4050 2550 0    50   ~ 0
+Text Label 4050 2650 0    50   ~ 0
 Inst13
-Text Label 4050 2450 0    50   ~ 0
+Text Label 4050 2550 0    50   ~ 0
 Inst12
-Text Label 4050 2350 0    50   ~ 0
+Text Label 4050 2450 0    50   ~ 0
 Inst11
-Text Label 4050 2250 0    50   ~ 0
+Text Label 4050 2350 0    50   ~ 0
 Inst10
-Text Label 4050 2150 0    50   ~ 0
+Text Label 4050 2250 0    50   ~ 0
 Inst9
-Entry Wire Line
-	3950 2150 4050 2250
 Entry Wire Line
 	3950 2250 4050 2350
 Entry Wire Line
@@ -103,6 +96,8 @@ Entry Wire Line
 	3950 2550 4050 2650
 Entry Wire Line
 	3950 2650 4050 2750
+Entry Wire Line
+	3950 2750 4050 2850
 Wire Bus Line
 	3950 2050 3800 2050
 Wire Wire Line
@@ -158,9 +153,7 @@ $EndComp
 Wire Wire Line
 	4200 4150 4350 4150
 Entry Wire Line
-	3950 2050 4050 2150
-Wire Wire Line
-	4050 2150 4350 2150
+	3950 2150 4050 2250
 Wire Wire Line
 	4050 2250 4350 2250
 Wire Wire Line
@@ -171,6 +164,8 @@ Wire Wire Line
 	4050 2550 4350 2550
 Wire Wire Line
 	4050 2650 4350 2650
+Wire Wire Line
+	4050 2750 4350 2750
 Wire Wire Line
 	4250 3750 4250 3850
 Wire Wire Line
@@ -183,7 +178,7 @@ Connection ~ 4250 3850
 Wire Wire Line
 	4250 3850 4250 3950
 Wire Wire Line
-	4050 2750 4350 2750
+	4050 2850 4350 2850
 Wire Wire Line
 	4950 2050 4950 1850
 $Comp
@@ -260,10 +255,16 @@ F 3 "" H 5050 4800 50  0001 C CNN
 	1    4950 3350
 	1    0    0    -1  
 $EndComp
-Text HLabel 4200 2850 0    50   Input ~ 0
+Text HLabel 4200 2950 0    50   Input ~ 0
 Interrupt
 Wire Wire Line
-	4200 2850 4350 2850
+	4200 2950 4350 2950
+Text Label 4050 2150 0    50   ~ 0
+Inst8
+Entry Wire Line
+	3950 2050 4050 2150
+Wire Wire Line
+	4050 2150 4350 2150
 Wire Bus Line
-	3950 2050 3950 2650
+	3950 2050 3950 2750
 $EndSCHEMATC

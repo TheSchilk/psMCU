@@ -3,10 +3,10 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 35 93
+Sheet 44 98
 Title "psMCU"
 Date "2021-03-30"
-Rev "v0.1"
+Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
@@ -18,7 +18,7 @@ DB[0..7]
 Text HLabel 7050 900  2    50   Output ~ 0
 DB_SYNC[0..7]
 Text HLabel 2850 4350 0    50   Input ~ 0
-LATCH_EN
+Latch
 Entry Wire Line
 	4450 1150 4550 1250
 Entry Wire Line

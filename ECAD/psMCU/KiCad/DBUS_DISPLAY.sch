@@ -3,10 +3,10 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 11 93
+Sheet 60 98
 Title "psMCU"
 Date "2021-03-30"
-Rev "v0.1"
+Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
@@ -653,7 +653,7 @@ AR Path="/5FD65308/6053C227/61D0ACCB" Ref="D?"  Part="1"
 AR Path="/5FD65308/605425EC/61D0ACCB" Ref="D?"  Part="1" 
 AR Path="/5F394B96/61D0ACCB" Ref="D25"  Part="1" 
 F 0 "D25" H 3950 5093 50  0000 C CNN
-F 1 "DBUS Active" H 3950 5184 50  0000 C CNN
+F 1 "LED" H 3950 5184 50  0000 C CNN
 F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 3950 5300 50  0001 C CNN
 F 3 "~" V 3950 5300 50  0001 C CNN
 	1    3950 5300
@@ -976,6 +976,8 @@ Wire Wire Line
 Connection ~ 5100 2850
 Wire Wire Line
 	5100 2850 6750 2850
+Text Notes 4200 5300 0    50   ~ 0
+Active
 Wire Bus Line
 	4150 2750 4150 3450
 Wire Bus Line

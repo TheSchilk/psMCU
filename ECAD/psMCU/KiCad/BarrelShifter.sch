@@ -3,10 +3,10 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 3 93
+Sheet 56 98
 Title "psMCU"
 Date "2021-03-30"
-Rev "v0.1"
+Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 "shifted in. Direction is controlled by the current instruction."
 Comment2 "is achieved by swapping the bit order before and after shifting. A 1 or 0 can be "
@@ -848,12 +848,6 @@ $EndComp
 Wire Wire Line
 	7550 5450 7550 5350
 Wire Wire Line
-	7550 5750 7050 5750
-Wire Wire Line
-	7050 5750 7050 5250
-Wire Wire Line
-	7050 5250 7250 5250
-Wire Wire Line
 	7550 5750 7550 5950
 Wire Wire Line
 	7800 5250 8600 5250
@@ -861,7 +855,6 @@ Text HLabel 6600 5250 0    50   Input ~ 0
 OE
 Wire Wire Line
 	6600 5250 6700 5250
-Connection ~ 7050 5250
 Entry Wire Line
 	2400 7450 2500 7550
 Entry Wire Line
@@ -1001,8 +994,6 @@ Wire Wire Line
 Wire Wire Line
 	6700 4450 6700 5250
 Connection ~ 6700 5250
-Wire Wire Line
-	6700 5250 7050 5250
 Wire Wire Line
 	6700 2350 7800 2350
 Wire Wire Line
@@ -1239,8 +1230,8 @@ AR Path="/5FD65308/6053C227/61D3B64C" Ref="D?"  Part="1"
 AR Path="/5FD65308/605425EC/61D3B64C" Ref="D?"  Part="1" 
 AR Path="/5F394B96/61D3B64C" Ref="D?"  Part="1" 
 AR Path="/5F43204F/61D3B64C" Ref="D4"  Part="1" 
-F 0 "D4" H 8400 1500 50  0000 C CNN
-F 1 "Shift Right" H 8400 1250 50  0000 C CNN
+F 0 "D4" H 8400 1585 50  0000 C CNN
+F 1 "LED" H 8400 1494 50  0000 C CNN
 F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 8400 1350 50  0001 C CNN
 F 3 "~" V 8400 1350 50  0001 C CNN
 	1    8400 1350
@@ -1553,7 +1544,7 @@ AR Path="/5FD65308/605425EC/61D4A08F" Ref="D?"  Part="1"
 AR Path="/5F394B96/61D4A08F" Ref="D?"  Part="1" 
 AR Path="/5F43204F/61D4A08F" Ref="D5"  Part="1" 
 F 0 "D5" H 8400 1543 50  0000 C CNN
-F 1 "Shift In 1" H 8400 1634 50  0000 C CNN
+F 1 "LED" H 8400 1634 50  0000 C CNN
 F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 8400 1750 50  0001 C CNN
 F 3 "~" V 8400 1750 50  0001 C CNN
 	1    8400 1750
@@ -1866,7 +1857,7 @@ AR Path="/5FD65308/605425EC/61D66D1B" Ref="D?"  Part="1"
 AR Path="/5F394B96/61D66D1B" Ref="D?"  Part="1" 
 AR Path="/5F43204F/61D66D1B" Ref="D7"  Part="1" 
 F 0 "D7" H 8400 2143 50  0000 C CNN
-F 1 "Shift[0]" H 8400 2234 50  0000 C CNN
+F 1 "LED" H 8400 2234 50  0000 C CNN
 F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 8400 2350 50  0001 C CNN
 F 3 "~" V 8400 2350 50  0001 C CNN
 	1    8400 2350
@@ -2181,7 +2172,7 @@ AR Path="/5FD65308/605425EC/61D75581" Ref="D?"  Part="1"
 AR Path="/5F394B96/61D75581" Ref="D?"  Part="1" 
 AR Path="/5F43204F/61D75581" Ref="D8"  Part="1" 
 F 0 "D8" H 8400 2543 50  0000 C CNN
-F 1 "Shift[1]" H 8400 2634 50  0000 C CNN
+F 1 "LED" H 8400 2634 50  0000 C CNN
 F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 8400 2750 50  0001 C CNN
 F 3 "~" V 8400 2750 50  0001 C CNN
 	1    8400 2750
@@ -2496,7 +2487,7 @@ AR Path="/5FD65308/605425EC/61D8431E" Ref="D?"  Part="1"
 AR Path="/5F394B96/61D8431E" Ref="D?"  Part="1" 
 AR Path="/5F43204F/61D8431E" Ref="D9"  Part="1" 
 F 0 "D9" H 8400 2943 50  0000 C CNN
-F 1 "Shift[2]" H 8400 3034 50  0000 C CNN
+F 1 "LED" H 8400 3034 50  0000 C CNN
 F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 8400 3150 50  0001 C CNN
 F 3 "~" V 8400 3150 50  0001 C CNN
 	1    8400 3150
@@ -2810,8 +2801,8 @@ AR Path="/5FD65308/6053C227/61DB218D" Ref="D?"  Part="1"
 AR Path="/5FD65308/605425EC/61DB218D" Ref="D?"  Part="1" 
 AR Path="/5F394B96/61DB218D" Ref="D?"  Part="1" 
 AR Path="/5F43204F/61DB218D" Ref="D3"  Part="1" 
-F 0 "D3" H 8400 900 50  0000 C CNN
-F 1 "Shift Left" H 8400 1100 50  0000 C CNN
+F 0 "D3" H 8400 1235 50  0000 C CNN
+F 1 "LED" H 8400 1144 50  0000 C CNN
 F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 8400 1000 50  0001 C CNN
 F 3 "~" V 8400 1000 50  0001 C CNN
 	1    8400 1000
@@ -2824,7 +2815,7 @@ Wire Wire Line
 $Comp
 L power:GND #PWR?
 U 1 1 61E9A536
-P 7800 4500
+P 7450 4500
 AR Path="/5ED2705B/61E9A536" Ref="#PWR?"  Part="1" 
 AR Path="/5F1CE57C/61E9A536" Ref="#PWR?"  Part="1" 
 AR Path="/5F1CE57C/5F5DFD05/61E9A536" Ref="#PWR?"  Part="1" 
@@ -2970,21 +2961,21 @@ AR Path="/61C3CF88/5F5FD588/61E9A536" Ref="#PWR?"  Part="1"
 AR Path="/5FD65308/6053C227/61E9A536" Ref="#PWR?"  Part="1" 
 AR Path="/5FD65308/605425EC/61E9A536" Ref="#PWR?"  Part="1" 
 AR Path="/5F43204F/61E9A536" Ref="#PWR025"  Part="1" 
-F 0 "#PWR025" H 7800 4250 50  0001 C CNN
-F 1 "GND" H 7805 4327 50  0000 C CNN
-F 2 "" H 7800 4500 50  0001 C CNN
-F 3 "" H 7800 4500 50  0001 C CNN
-	1    7800 4500
+F 0 "#PWR025" H 7450 4250 50  0001 C CNN
+F 1 "GND" H 7455 4327 50  0000 C CNN
+F 2 "" H 7450 4500 50  0001 C CNN
+F 3 "" H 7450 4500 50  0001 C CNN
+	1    7450 4500
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	7700 4450 7800 4450
+	7350 4450 7450 4450
 Wire Wire Line
-	7800 4450 7800 4500
+	7450 4450 7450 4500
 $Comp
 L Device:LED_Small D?
 U 1 1 61E9A53E
-P 7600 4450
+P 7250 4450
 AR Path="/5ED2705B/5F30EEBC/61E9A53E" Ref="D?"  Part="1" 
 AR Path="/5F1CE57C/5F4E66A6/61E9A53E" Ref="D?"  Part="1" 
 AR Path="/5F1CE57C/5F5DFD05/61E9A53E" Ref="D?"  Part="1" 
@@ -3131,11 +3122,11 @@ AR Path="/5FD65308/6053C227/61E9A53E" Ref="D?"  Part="1"
 AR Path="/5FD65308/605425EC/61E9A53E" Ref="D?"  Part="1" 
 AR Path="/5F394B96/61E9A53E" Ref="D?"  Part="1" 
 AR Path="/5F43204F/61E9A53E" Ref="D2"  Part="1" 
-F 0 "D2" H 7500 4400 50  0000 C CNN
-F 1 "OE" H 7700 4400 50  0000 C CNN
-F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 7600 4450 50  0001 C CNN
-F 3 "~" V 7600 4450 50  0001 C CNN
-	1    7600 4450
+F 0 "D2" H 7250 4243 50  0000 C CNN
+F 1 "LED" H 7250 4334 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 7250 4450 50  0001 C CNN
+F 3 "~" V 7250 4450 50  0001 C CNN
+	1    7250 4450
 	-1   0    0    1   
 $EndComp
 $Comp
@@ -3292,8 +3283,6 @@ F 3 "~" H 6900 4450 50  0001 C CNN
 	1    6900 4450
 	0    1    1    0   
 $EndComp
-Wire Wire Line
-	7000 4450 7500 4450
 Wire Wire Line
 	8000 1750 8300 1750
 Text Label 6850 5250 0    50   ~ 0
@@ -3476,6 +3465,33 @@ Wire Wire Line
 	7800 1000 7400 1000
 Wire Wire Line
 	7400 1000 7400 1350
+Connection ~ 7400 1350
+Wire Wire Line
+	7400 1350 7800 1350
+Wire Wire Line
+	7150 4450 7000 4450
+Text Notes 7500 4450 0    50   ~ 0
+OE
+Wire Wire Line
+	6700 5250 7250 5250
+Wire Wire Line
+	6700 5750 6700 5250
+Wire Wire Line
+	6700 5750 7550 5750
+Wire Notes Line
+	8800 2200 8900 2200
+Wire Notes Line
+	8900 2200 8900 3200
+Wire Notes Line
+	8900 3200 8800 3200
+Text Notes 8900 1000 0    50   ~ 0
+Left
+Text Notes 8900 1350 0    50   ~ 0
+Right
+Text Notes 8900 1750 0    50   ~ 0
+OE
+Text Notes 9050 2700 0    50   ~ 0
+Shift Amount
 Wire Bus Line
 	6600 2250 6600 2450
 Wire Bus Line
@@ -3486,7 +3502,4 @@ Wire Bus Line
 	2500 7550 6100 7550
 Wire Bus Line
 	1900 600  5100 600 
-Connection ~ 7400 1350
-Wire Wire Line
-	7400 1350 7800 1350
 $EndSCHEMATC

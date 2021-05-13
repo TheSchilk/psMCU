@@ -4,5 +4,6 @@
   (lib (name IS62C256AL)(type Legacy)(uri ${KIPRJMOD}/IS62C256AL/Symbol/IS62C256AL.lib)(options "")(descr ""))
   (lib (name SST39SF0x0_TSOP)(type Legacy)(uri ${KIPRJMOD}/SST39SF0x0_TSOP/Symbol/SST39SF0x0_TSOP.lib)(options "")(descr ""))
   (lib (name ATF16V8C)(type Legacy)(uri ${KIPRJMOD}/ATF16V8C/Symbol/ATF16V8C.lib)(options "")(descr ""))
-  (lib (name BarrelPolarity)(type Legacy)(uri ${KIPRJMOD}/BarrelPolarity_3mm/Symbol/BarrelPolarity.lib)(options "")(descr ""))
+  (lib (name BarrelPolarity)(type Legacy)(uri ${KIPRJMOD}/BarrelPolarity/Symbol/BarrelPolarity.lib)(options "")(descr ""))
+  (lib (name 74HC594)(type Legacy)(uri ${KIPRJMOD}/74HC594/Symbol/74HC594.lib)(options "")(descr ""))
 )

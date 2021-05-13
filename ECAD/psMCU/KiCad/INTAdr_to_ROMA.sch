@@ -3,10 +3,10 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 21 93
+Sheet 30 98
 Title "psMCU"
 Date "2021-03-30"
-Rev "v0.1"
+Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
@@ -34,7 +34,7 @@ Wire Wire Line
 Wire Wire Line
 	2350 2150 2350 2750
 Text HLabel 2250 2150 0    50   Input ~ 0
-INTAdr->ROMA
+IntAdr->ROMA
 Text HLabel 2750 2950 2    50   3State ~ 0
 ROMA_OUT
 $Comp
@@ -661,7 +661,7 @@ AR Path="/5F3A2F3D/6213E7E9" Ref="D?"  Part="1"
 AR Path="/5F28170E/6213E7E9" Ref="D?"  Part="1" 
 AR Path="/5F575798/6213E7E9" Ref="D146"  Part="1" 
 F 0 "D146" H 3350 1343 50  0000 C CNN
-F 1 "INTAdr->ROMA" H 3350 1434 50  0000 C CNN
+F 1 "LED" H 3350 1434 50  0000 C CNN
 F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 3350 1550 50  0001 C CNN
 F 3 "~" V 3350 1550 50  0001 C CNN
 	1    3350 1550
@@ -727,4 +727,6 @@ F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 3950 2950 50  0001 C CNN
 	1    3950 2950
 	1    0    0    -1  
 $EndComp
+Text Notes 3650 1550 0    50   ~ 0
+IntAdr->ROMA
 $EndSCHEMATC

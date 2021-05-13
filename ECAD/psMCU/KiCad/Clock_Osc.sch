@@ -3,10 +3,10 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 76 93
+Sheet 77 98
 Title "psMCU"
 Date "2021-03-30"
-Rev "v0.1"
+Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
@@ -20,7 +20,7 @@ L Device:Jumper_NC_Small JP8
 U 1 1 5FFD11A0
 P 8050 3900
 F 0 "JP8" H 8050 4112 50  0000 C CNN
-F 1 "OSC" H 8050 4021 50  0000 C CNN
+F 1 "JMP" H 8050 4021 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" H 8050 3900 50  0001 C CNN
 F 3 "~" H 8050 3900 50  0001 C CNN
 	1    8050 3900
@@ -29,12 +29,12 @@ $EndComp
 $Comp
 L Device:Jumper_NO_Small JP9
 U 1 1 5FFD137F
-P 8050 4300
-F 0 "JP9" H 8050 4485 50  0000 C CNN
-F 1 "EXT OSC" H 8050 4394 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" H 8050 4300 50  0001 C CNN
-F 3 "~" H 8050 4300 50  0001 C CNN
-	1    8050 4300
+P 8050 5000
+F 0 "JP9" H 8050 5185 50  0000 C CNN
+F 1 "JMP" H 8050 5094 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 8050 5000 50  0001 C CNN
+F 3 "~" H 8050 5000 50  0001 C CNN
+	1    8050 5000
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -42,64 +42,61 @@ Wire Wire Line
 Wire Wire Line
 	8300 3900 8300 4100
 Wire Wire Line
-	8300 4300 8150 4300
-Connection ~ 8300 4100
-Wire Wire Line
-	8300 4100 8300 4300
+	8300 5000 8150 5000
 Wire Wire Line
 	8300 4100 8650 4100
 $Comp
 L Device:R_Small R401
 U 1 1 5FFD2F76
-P 7750 4650
-F 0 "R401" H 7809 4696 50  0000 L CNN
-F 1 "10K" H 7809 4605 50  0000 L CNN
-F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 7750 4650 50  0001 C CNN
-F 3 "~" H 7750 4650 50  0001 C CNN
-	1    7750 4650
+P 7750 5350
+F 0 "R401" H 7809 5396 50  0000 L CNN
+F 1 "10K" H 7809 5305 50  0000 L CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 7750 5350 50  0001 C CNN
+F 3 "~" H 7750 5350 50  0001 C CNN
+	1    7750 5350
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	7750 4550 7750 4300
+	7750 5250 7750 5000
 Wire Wire Line
-	7750 4750 7750 4800
+	7750 5450 7750 5500
 $Comp
 L power:GND #PWR01382
 U 1 1 5FFD37B1
-P 7750 4800
-F 0 "#PWR01382" H 7750 4550 50  0001 C CNN
-F 1 "GND" H 7755 4627 50  0000 C CNN
-F 2 "" H 7750 4800 50  0001 C CNN
-F 3 "" H 7750 4800 50  0001 C CNN
-	1    7750 4800
+P 7750 5500
+F 0 "#PWR01382" H 7750 5250 50  0001 C CNN
+F 1 "GND" H 7755 5327 50  0000 C CNN
+F 2 "" H 7750 5500 50  0001 C CNN
+F 3 "" H 7750 5500 50  0001 C CNN
+	1    7750 5500
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	7300 4300 7750 4300
+	7300 5000 7750 5000
 $Comp
 L Connector_Generic:Conn_01x02 J5
 U 1 1 5FFD6EBF
-P 7100 4400
-F 0 "J5" H 7018 4075 50  0000 C CNN
-F 1 " EXT" H 7018 4166 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 7100 4400 50  0001 C CNN
-F 3 "~" H 7100 4400 50  0001 C CNN
-	1    7100 4400
+P 7100 5100
+F 0 "J5" H 7018 4775 50  0000 C CNN
+F 1 "Ext" H 7018 4866 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 7100 5100 50  0001 C CNN
+F 3 "~" H 7100 5100 50  0001 C CNN
+	1    7100 5100
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	7300 4400 7500 4400
+	7300 5100 7500 5100
 Wire Wire Line
-	7500 4400 7500 4800
+	7500 5100 7500 5500
 $Comp
 L power:GND #PWR01381
 U 1 1 5FFD86B9
-P 7500 4800
-F 0 "#PWR01381" H 7500 4550 50  0001 C CNN
-F 1 "GND" H 7505 4627 50  0000 C CNN
-F 2 "" H 7500 4800 50  0001 C CNN
-F 3 "" H 7500 4800 50  0001 C CNN
-	1    7500 4800
+P 7500 5500
+F 0 "#PWR01381" H 7500 5250 50  0001 C CNN
+F 1 "GND" H 7505 5327 50  0000 C CNN
+F 2 "" H 7500 5500 50  0001 C CNN
+F 3 "" H 7500 5500 50  0001 C CNN
+	1    7500 5500
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -746,7 +743,7 @@ L Device:Jumper_NC_Small JP6
 U 1 1 602B8E17
 P 7000 3300
 F 0 "JP6" H 7000 3512 50  0000 C CNN
-F 1 "4Mhz" H 7000 3421 50  0000 C CNN
+F 1 "JMP" H 7000 3421 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" H 7000 3300 50  0001 C CNN
 F 3 "~" H 7000 3300 50  0001 C CNN
 	1    7000 3300
@@ -757,7 +754,7 @@ L Device:Jumper_NO_Small JP7
 U 1 1 602B8E1D
 P 7000 3900
 F 0 "JP7" H 7000 4085 50  0000 C CNN
-F 1 "2MHz" H 7000 3994 50  0000 C CNN
+F 1 "JMP" H 7000 3994 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" H 7000 3900 50  0001 C CNN
 F 3 "~" H 7000 3900 50  0001 C CNN
 	1    7000 3900
@@ -783,8 +780,8 @@ Wire Wire Line
 Wire Wire Line
 	7400 3900 7950 3900
 Wire Wire Line
-	7750 4300 7950 4300
-Connection ~ 7750 4300
+	7750 5000 7950 5000
+Connection ~ 7750 5000
 Wire Wire Line
 	9200 4100 10050 4100
 Text Notes 4150 1500 0    100  ~ 0
@@ -793,14 +790,14 @@ Text Notes 6600 1500 0    100  ~ 0
 Clock Source Selection
 Text Notes 9150 1500 0    100  ~ 0
 Output Buffer
-Text Notes 9150 4800 0    50   ~ 0
+Text Notes 8750 4850 0    50   ~ 0
 Probably not strictly necessary, \nbut better safe than sorry. \nAlso used to clean up the \nexternal clock input.
 $Comp
 L Device:Jumper_NO_Small JP5
 U 1 1 609040FB
 P 7000 2550
 F 0 "JP5" H 7000 2735 50  0000 C CNN
-F 1 "8MHz" H 7000 2644 50  0000 C CNN
+F 1 "JMP" H 7000 2644 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" H 7000 2550 50  0001 C CNN
 F 3 "~" H 7000 2550 50  0001 C CNN
 	1    7000 2550
@@ -818,4 +815,19 @@ Wire Wire Line
 Wire Wire Line
 	6900 3900 6100 3900
 Connection ~ 6100 3900
+Text Notes 6900 2700 0    50   ~ 0
+2Mhz
+Text Notes 6900 3450 0    50   ~ 0
+1Mhz
+Text Notes 6900 4050 0    50   ~ 0
+500kHz
+Text Notes 7900 4000 0    50   ~ 0
+Internal
+Text Notes 7900 5100 0    50   ~ 0
+External
+Text Notes 6600 2250 0    50   ~ 0
+Note: Frequency labels below\ntake into account the division-\nby-four intrinsic to the divider\nand clock control, and represent\nactual maximum clock speed.\n
+Wire Wire Line
+	8300 4100 8300 5000
+Connection ~ 8300 4100
 $EndSCHEMATC

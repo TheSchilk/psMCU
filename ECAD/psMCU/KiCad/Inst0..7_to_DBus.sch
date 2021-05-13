@@ -3,10 +3,10 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 2 93
+Sheet 2 98
 Title "psMCU"
 Date "2021-03-30"
-Rev "v0.1"
+Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
@@ -198,7 +198,7 @@ Wire Wire Line
 Wire Wire Line
 	1650 5600 1650 6200
 Text HLabel 1550 5600 0    50   Input ~ 0
-Inst[0..7]->DBus
+In[0..7]->DBus
 Text HLabel 1950 3100 0    50   Input ~ 0
 Inst[0..15]
 $Comp
@@ -771,7 +771,7 @@ AR Path="/5FD65308/605425EC/61D24045" Ref="D?"  Part="1"
 AR Path="/5F394B96/61D24045" Ref="D?"  Part="1" 
 AR Path="/609EB802/61D24045" Ref="D1"  Part="1" 
 F 0 "D1" H 2300 4643 50  0000 C CNN
-F 1 "In0..7->DBus" H 2300 4734 50  0000 C CNN
+F 1 "LED" H 2300 4734 50  0000 C CNN
 F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 2300 4850 50  0001 C CNN
 F 3 "~" V 2300 4850 50  0001 C CNN
 	1    2300 4850
@@ -970,6 +970,8 @@ Wire Wire Line
 	5000 4250 4800 4250
 Wire Wire Line
 	2950 5600 5000 5600
+Text Notes 2600 4900 0    50   ~ 0
+In0..7->DBus
 Wire Bus Line
 	5150 3350 5150 4050
 Wire Bus Line

@@ -3,10 +3,10 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 89 93
+Sheet 97 98
 Title "psMCU"
 Date "2021-03-30"
-Rev "v0.1"
+Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
@@ -127,8 +127,6 @@ Wire Wire Line
 	6300 2550 6550 2550
 Wire Wire Line
 	6300 3500 6550 3500
-Text HLabel 7550 4550 2    50   Output ~ 0
-ADR_MATCH
 Wire Wire Line
 	6400 4550 7550 4550
 Wire Wire Line
@@ -153,8 +151,38 @@ Entry Wire Line
 	3450 2250 3350 2150
 Text HLabel 2850 4450 0    50   Input ~ 0
 SET6
-Text HLabel 7550 4550 2    50   Output ~ 0
-ADR_MATCH
+Entry Wire Line
+	3450 4050 3350 3950
+Entry Wire Line
+	3450 3950 3350 3850
+Entry Wire Line
+	3450 3850 3350 3750
+Entry Wire Line
+	3450 3750 3350 3650
+Entry Wire Line
+	3450 1950 3350 1850
+Entry Wire Line
+	3450 2050 3350 1950
+Entry Wire Line
+	3450 2150 3350 2050
+Entry Wire Line
+	3450 2250 3350 2150
+Entry Wire Line
+	3450 4050 3350 3950
+Entry Wire Line
+	3450 3950 3350 3850
+Entry Wire Line
+	3450 3850 3350 3750
+Entry Wire Line
+	3450 3750 3350 3650
+Entry Wire Line
+	3450 1950 3350 1850
+Entry Wire Line
+	3450 2050 3350 1950
+Entry Wire Line
+	3450 2150 3350 2050
+Entry Wire Line
+	3450 2250 3350 2150
 Entry Wire Line
 	3450 4050 3350 3950
 Entry Wire Line
@@ -172,43 +200,7 @@ Entry Wire Line
 Entry Wire Line
 	3450 2250 3350 2150
 Text HLabel 7550 4550 2    50   Output ~ 0
-ADR_MATCH
-Entry Wire Line
-	3450 4050 3350 3950
-Entry Wire Line
-	3450 3950 3350 3850
-Entry Wire Line
-	3450 3850 3350 3750
-Entry Wire Line
-	3450 3750 3350 3650
-Entry Wire Line
-	3450 1950 3350 1850
-Entry Wire Line
-	3450 2050 3350 1950
-Entry Wire Line
-	3450 2150 3350 2050
-Entry Wire Line
-	3450 2250 3350 2150
-Text HLabel 7550 4550 2    50   Output ~ 0
-ADR_MATCH
-Entry Wire Line
-	3450 4050 3350 3950
-Entry Wire Line
-	3450 3950 3350 3850
-Entry Wire Line
-	3450 3850 3350 3750
-Entry Wire Line
-	3450 3750 3350 3650
-Entry Wire Line
-	3450 1950 3350 1850
-Entry Wire Line
-	3450 2050 3350 1950
-Entry Wire Line
-	3450 2150 3350 2050
-Entry Wire Line
-	3450 2250 3350 2150
-Text HLabel 7550 4550 2    50   Output ~ 0
-ADR_MATCH
+Match
 $Comp
 L power:+5V #PWR?
 U 1 1 60250BD0
@@ -488,12 +480,8 @@ F 3 "" H 6850 2800 50  0001 C CNN
 	1    6850 2800
 	1    0    0    -1  
 $EndComp
-Text HLabel 7550 3550 2    50   Output ~ 0
-W
 Text HLabel 7550 2600 2    50   Output ~ 0
 R
-Text HLabel 7550 4550 2    50   Output ~ 0
-ADR_MATCH
 Text HLabel 2850 4250 0    50   Input ~ 0
 SET4
 $Comp
@@ -557,25 +545,9 @@ F 3 "~" H 7000 2400 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 Text HLabel 2950 1650 0    50   Input ~ 0
-PERIPHA[0..7]
+PeriphA[0..7]
 Wire Wire Line
 	4950 4550 6400 4550
-Text Label 3450 1950 0    50   ~ 0
-PERIPHA0
-Text Label 3450 2050 0    50   ~ 0
-PERIPHA1
-Text Label 3450 2150 0    50   ~ 0
-PERIPHA2
-Text Label 3450 2250 0    50   ~ 0
-PERIPHA3
-Text Label 3450 3750 0    50   ~ 0
-PERIPHA4
-Text Label 3450 3850 0    50   ~ 0
-PERIPHA5
-Text Label 3450 3950 0    50   ~ 0
-PERIPHA6
-Text Label 3450 4050 0    50   ~ 0
-PERIPHA7
 Wire Wire Line
 	3450 1950 3950 1950
 Wire Wire Line
@@ -765,9 +737,27 @@ F 3 "~" H 7000 3350 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 Text HLabel 6300 2550 0    50   Input ~ 0
-PERIPH_R_ASYNC
+Periph_R
+Text HLabel 7550 3550 2    50   Output ~ 0
+W
 Text HLabel 6300 3500 0    50   Input ~ 0
-PERIPH_W_ASYNC
+Periph_W
+Text Label 3450 1950 0    50   ~ 0
+PeriphA0
+Text Label 3450 2050 0    50   ~ 0
+PeriphA1
+Text Label 3450 2150 0    50   ~ 0
+PeriphA2
+Text Label 3450 2250 0    50   ~ 0
+PeriphA3
+Text Label 3450 3750 0    50   ~ 0
+PeriphA4
+Text Label 3450 3850 0    50   ~ 0
+PeriphA5
+Text Label 3450 3950 0    50   ~ 0
+PeriphA6
+Text Label 3450 4050 0    50   ~ 0
+PeriphA7
 Wire Bus Line
 	3350 1650 3350 3950
 $EndSCHEMATC

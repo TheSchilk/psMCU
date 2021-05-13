@@ -3,10 +3,10 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 24 93
+Sheet 24 98
 Title "psMCU"
 Date "2021-03-30"
-Rev "v0.1"
+Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
@@ -956,7 +956,7 @@ Wire Wire Line
 Wire Wire Line
 	3850 4950 5500 4950
 Text HLabel 2450 4950 0    50   Input ~ 0
-Inst[0..7]->RAMA[0..7]
+In[0..7]->RAMA[0..7]
 $Comp
 L Device:LED_Small D?
 U 1 1 622E0116
@@ -1116,7 +1116,7 @@ AR Path="/5F5CACFC/622E0116" Ref="D?"  Part="1"
 AR Path="/5F629530/622E0116" Ref="D?"  Part="1" 
 AR Path="/5F6FD493/622E0116" Ref="D150"  Part="1" 
 F 0 "D150" H 3200 1443 50  0000 C CNN
-F 1 "RegB->RAMA0..7" H 3200 1534 50  0000 C CNN
+F 1 "LED" H 3200 1534 50  0000 C CNN
 F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 3200 1650 50  0001 C CNN
 F 3 "~" V 3200 1650 50  0001 C CNN
 	1    3200 1650
@@ -1602,7 +1602,7 @@ AR Path="/5F5CACFC/622FC5C3" Ref="D?"  Part="1"
 AR Path="/5F629530/622FC5C3" Ref="D?"  Part="1" 
 AR Path="/5F6FD493/622FC5C3" Ref="D151"  Part="1" 
 F 0 "D151" H 3200 5443 50  0000 C CNN
-F 1 "In0..7->RAMA0..7" H 3200 5534 50  0000 C CNN
+F 1 "LED" H 3200 5534 50  0000 C CNN
 F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 3200 5650 50  0001 C CNN
 F 3 "~" V 3200 5650 50  0001 C CNN
 	1    3200 5650
@@ -1933,4 +1933,8 @@ Wire Bus Line
 	5050 3650 5050 5650
 Wire Bus Line
 	7650 1750 7650 5200
+Text Notes 3450 1650 0    50   ~ 0
+RegB->RAMA0..7\n
+Text Notes 3550 5650 0    50   ~ 0
+In->RAMA0..7
 $EndSCHEMATC

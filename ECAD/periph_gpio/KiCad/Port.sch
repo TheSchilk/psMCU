@@ -1,0 +1,4809 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 2 4
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Connector_Generic:Conn_02x07_Odd_Even J?
+U 1 1 60A0407D
+P 9750 1250
+AR Path="/60A03AFC/60A0407D" Ref="J?"  Part="1" 
+AR Path="/62FACF10/60A0407D" Ref="J?"  Part="1" 
+F 0 "J?" H 9800 1767 50  0000 C CNN
+F 1 "PORT" H 9800 1676 50  0000 C CNN
+F 2 "" H 9750 1250 50  0001 C CNN
+F 3 "~" H 9750 1250 50  0001 C CNN
+	1    9750 1250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9550 950  9450 950 
+Wire Wire Line
+	10050 950  10150 950 
+$Comp
+L power:GND #PWR?
+U 1 1 60A05F94
+P 10150 950
+AR Path="/60A03AFC/60A05F94" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A05F94" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 10150 700 50  0001 C CNN
+F 1 "GND" V 10155 822 50  0000 R CNN
+F 2 "" H 10150 950 50  0001 C CNN
+F 3 "" H 10150 950 50  0001 C CNN
+	1    10150 950 
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 60A0691D
+P 9450 950
+AR Path="/60A03AFC/60A0691D" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A0691D" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 9450 700 50  0001 C CNN
+F 1 "GND" V 9455 822 50  0000 R CNN
+F 2 "" H 9450 950 50  0001 C CNN
+F 3 "" H 9450 950 50  0001 C CNN
+	1    9450 950 
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 60A06C4C
+P 10150 1550
+AR Path="/60A03AFC/60A06C4C" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A06C4C" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 10150 1400 50  0001 C CNN
+F 1 "+5V" V 10165 1678 50  0000 L CNN
+F 2 "" H 10150 1550 50  0001 C CNN
+F 3 "" H 10150 1550 50  0001 C CNN
+	1    10150 1550
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	10150 1550 10050 1550
+$Comp
+L power:+5V #PWR?
+U 1 1 60A07775
+P 9450 1550
+AR Path="/60A03AFC/60A07775" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A07775" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 9450 1400 50  0001 C CNN
+F 1 "+5V" V 9465 1678 50  0000 L CNN
+F 2 "" H 9450 1550 50  0001 C CNN
+F 3 "" H 9450 1550 50  0001 C CNN
+	1    9450 1550
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	9450 1550 9550 1550
+Wire Wire Line
+	10050 1250 10150 1250
+$Comp
+L power:GND #PWR?
+U 1 1 60A07A29
+P 10150 1250
+AR Path="/60A03AFC/60A07A29" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A07A29" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 10150 1000 50  0001 C CNN
+F 1 "GND" V 10155 1122 50  0000 R CNN
+F 2 "" H 10150 1250 50  0001 C CNN
+F 3 "" H 10150 1250 50  0001 C CNN
+	1    10150 1250
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 60A07E12
+P 9450 1250
+AR Path="/60A03AFC/60A07E12" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A07E12" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 9450 1100 50  0001 C CNN
+F 1 "+5V" V 9465 1378 50  0000 L CNN
+F 2 "" H 9450 1250 50  0001 C CNN
+F 3 "" H 9450 1250 50  0001 C CNN
+	1    9450 1250
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	9450 1250 9550 1250
+Wire Wire Line
+	9550 1050 9450 1050
+Wire Wire Line
+	9550 1150 9450 1150
+Wire Wire Line
+	9550 1350 9450 1350
+Wire Wire Line
+	9550 1450 9450 1450
+Wire Wire Line
+	10150 1350 10050 1350
+Wire Wire Line
+	10150 1450 10050 1450
+Wire Wire Line
+	10150 1050 10050 1050
+Wire Wire Line
+	10150 1150 10050 1150
+Text Label 9450 1050 0    50   ~ 0
+0
+Text Label 10150 1050 2    50   ~ 0
+1
+Text Label 9450 1150 0    50   ~ 0
+2
+Text Label 10150 1150 2    50   ~ 0
+3
+Text Label 9450 1350 0    50   ~ 0
+4
+Text Label 10150 1350 2    50   ~ 0
+5
+Text Label 9450 1450 0    50   ~ 0
+6
+Text Label 10150 1450 2    50   ~ 0
+7
+$Comp
+L 74xGxx:74LVC1G126 U?
+U 1 1 60A0B913
+P 7400 1000
+AR Path="/60A03AFC/60A0B913" Ref="U?"  Part="1" 
+AR Path="/62FACF10/60A0B913" Ref="U?"  Part="1" 
+F 0 "U?" H 7550 950 50  0000 C CNN
+F 1 "74LVC1G126" H 7750 850 50  0000 C CNN
+F 2 "" H 7400 1000 50  0001 C CNN
+F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 7400 1000 50  0001 C CNN
+	1    7400 1000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7450 800  7450 850 
+$Comp
+L Device:C_Small C?
+U 1 1 60A0BF5A
+P 7600 850
+AR Path="/60A03AFC/60A0BF5A" Ref="C?"  Part="1" 
+AR Path="/62FACF10/60A0BF5A" Ref="C?"  Part="1" 
+F 0 "C?" V 7371 850 50  0000 C CNN
+F 1 "0u1" V 7462 850 50  0000 C CNN
+F 2 "" H 7600 850 50  0001 C CNN
+F 3 "~" H 7600 850 50  0001 C CNN
+	1    7600 850 
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7500 850  7450 850 
+Connection ~ 7450 850 
+Wire Wire Line
+	7450 850  7450 950 
+$Comp
+L power:+5V #PWR?
+U 1 1 60A0C726
+P 7450 800
+AR Path="/60A03AFC/60A0C726" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A0C726" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7450 650 50  0001 C CNN
+F 1 "+5V" H 7300 900 50  0000 C CNN
+F 2 "" H 7450 800 50  0001 C CNN
+F 3 "" H 7450 800 50  0001 C CNN
+	1    7450 800 
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 60A0D1D7
+P 7750 850
+AR Path="/60A03AFC/60A0D1D7" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A0D1D7" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7750 600 50  0001 C CNN
+F 1 "GND" V 7755 722 50  0000 R CNN
+F 2 "" H 7750 850 50  0001 C CNN
+F 3 "" H 7750 850 50  0001 C CNN
+	1    7750 850 
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7750 850  7700 850 
+$Comp
+L power:GND #PWR?
+U 1 1 60A0DC7F
+P 7450 1100
+AR Path="/60A03AFC/60A0DC7F" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A0DC7F" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7450 850 50  0001 C CNN
+F 1 "GND" H 7455 927 50  0000 C CNN
+F 2 "" H 7450 1100 50  0001 C CNN
+F 3 "" H 7450 1100 50  0001 C CNN
+	1    7450 1100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7450 1100 7450 1050
+Wire Wire Line
+	7400 800  7400 650 
+Wire Wire Line
+	7400 650  7100 650 
+$Comp
+L 74xGxx:74LVC1G126 U?
+U 1 1 60A13E74
+P 7400 1750
+AR Path="/60A03AFC/60A13E74" Ref="U?"  Part="1" 
+AR Path="/62FACF10/60A13E74" Ref="U?"  Part="1" 
+F 0 "U?" H 7550 1700 50  0000 C CNN
+F 1 "74LVC1G126" H 7750 1600 50  0000 C CNN
+F 2 "" H 7400 1750 50  0001 C CNN
+F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 7400 1750 50  0001 C CNN
+	1    7400 1750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7450 1550 7450 1600
+$Comp
+L Device:C_Small C?
+U 1 1 60A13E7B
+P 7600 1600
+AR Path="/60A03AFC/60A13E7B" Ref="C?"  Part="1" 
+AR Path="/62FACF10/60A13E7B" Ref="C?"  Part="1" 
+F 0 "C?" V 7371 1600 50  0000 C CNN
+F 1 "0u1" V 7462 1600 50  0000 C CNN
+F 2 "" H 7600 1600 50  0001 C CNN
+F 3 "~" H 7600 1600 50  0001 C CNN
+	1    7600 1600
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7500 1600 7450 1600
+Connection ~ 7450 1600
+Wire Wire Line
+	7450 1600 7450 1700
+$Comp
+L power:+5V #PWR?
+U 1 1 60A13E84
+P 7450 1550
+AR Path="/60A03AFC/60A13E84" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A13E84" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7450 1400 50  0001 C CNN
+F 1 "+5V" H 7300 1650 50  0000 C CNN
+F 2 "" H 7450 1550 50  0001 C CNN
+F 3 "" H 7450 1550 50  0001 C CNN
+	1    7450 1550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 60A13E8A
+P 7750 1600
+AR Path="/60A03AFC/60A13E8A" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A13E8A" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7750 1350 50  0001 C CNN
+F 1 "GND" V 7755 1472 50  0000 R CNN
+F 2 "" H 7750 1600 50  0001 C CNN
+F 3 "" H 7750 1600 50  0001 C CNN
+	1    7750 1600
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7750 1600 7700 1600
+$Comp
+L power:GND #PWR?
+U 1 1 60A13E91
+P 7450 1850
+AR Path="/60A03AFC/60A13E91" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A13E91" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7450 1600 50  0001 C CNN
+F 1 "GND" H 7455 1677 50  0000 C CNN
+F 2 "" H 7450 1850 50  0001 C CNN
+F 3 "" H 7450 1850 50  0001 C CNN
+	1    7450 1850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7450 1850 7450 1800
+Wire Wire Line
+	7400 1550 7400 1400
+Wire Wire Line
+	7400 1400 7100 1400
+$Comp
+L 74xGxx:74LVC1G126 U?
+U 1 1 60A179DF
+P 7400 2500
+AR Path="/60A03AFC/60A179DF" Ref="U?"  Part="1" 
+AR Path="/62FACF10/60A179DF" Ref="U?"  Part="1" 
+F 0 "U?" H 7550 2450 50  0000 C CNN
+F 1 "74LVC1G126" H 7750 2350 50  0000 C CNN
+F 2 "" H 7400 2500 50  0001 C CNN
+F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 7400 2500 50  0001 C CNN
+	1    7400 2500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7450 2300 7450 2350
+$Comp
+L Device:C_Small C?
+U 1 1 60A179E6
+P 7600 2350
+AR Path="/60A03AFC/60A179E6" Ref="C?"  Part="1" 
+AR Path="/62FACF10/60A179E6" Ref="C?"  Part="1" 
+F 0 "C?" V 7371 2350 50  0000 C CNN
+F 1 "0u1" V 7462 2350 50  0000 C CNN
+F 2 "" H 7600 2350 50  0001 C CNN
+F 3 "~" H 7600 2350 50  0001 C CNN
+	1    7600 2350
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7500 2350 7450 2350
+Connection ~ 7450 2350
+Wire Wire Line
+	7450 2350 7450 2450
+$Comp
+L power:GND #PWR?
+U 1 1 60A179F5
+P 7750 2350
+AR Path="/60A03AFC/60A179F5" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A179F5" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7750 2100 50  0001 C CNN
+F 1 "GND" V 7755 2222 50  0000 R CNN
+F 2 "" H 7750 2350 50  0001 C CNN
+F 3 "" H 7750 2350 50  0001 C CNN
+	1    7750 2350
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7750 2350 7700 2350
+$Comp
+L power:GND #PWR?
+U 1 1 60A179FC
+P 7450 2600
+AR Path="/60A03AFC/60A179FC" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A179FC" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7450 2350 50  0001 C CNN
+F 1 "GND" H 7455 2427 50  0000 C CNN
+F 2 "" H 7450 2600 50  0001 C CNN
+F 3 "" H 7450 2600 50  0001 C CNN
+	1    7450 2600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7450 2600 7450 2550
+Wire Wire Line
+	7400 2300 7400 2150
+$Comp
+L 74xGxx:74LVC1G126 U?
+U 1 1 60A17A05
+P 7400 3250
+AR Path="/60A03AFC/60A17A05" Ref="U?"  Part="1" 
+AR Path="/62FACF10/60A17A05" Ref="U?"  Part="1" 
+F 0 "U?" H 7550 3200 50  0000 C CNN
+F 1 "74LVC1G126" H 7750 3100 50  0000 C CNN
+F 2 "" H 7400 3250 50  0001 C CNN
+F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 7400 3250 50  0001 C CNN
+	1    7400 3250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7450 3050 7450 3100
+$Comp
+L Device:C_Small C?
+U 1 1 60A17A0C
+P 7600 3100
+AR Path="/60A03AFC/60A17A0C" Ref="C?"  Part="1" 
+AR Path="/62FACF10/60A17A0C" Ref="C?"  Part="1" 
+F 0 "C?" V 7371 3100 50  0000 C CNN
+F 1 "0u1" V 7462 3100 50  0000 C CNN
+F 2 "" H 7600 3100 50  0001 C CNN
+F 3 "~" H 7600 3100 50  0001 C CNN
+	1    7600 3100
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7500 3100 7450 3100
+Connection ~ 7450 3100
+Wire Wire Line
+	7450 3100 7450 3200
+$Comp
+L power:+5V #PWR?
+U 1 1 60A17A15
+P 7450 3050
+AR Path="/60A03AFC/60A17A15" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A17A15" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7450 2900 50  0001 C CNN
+F 1 "+5V" H 7300 3150 50  0000 C CNN
+F 2 "" H 7450 3050 50  0001 C CNN
+F 3 "" H 7450 3050 50  0001 C CNN
+	1    7450 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 60A17A1B
+P 7750 3100
+AR Path="/60A03AFC/60A17A1B" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A17A1B" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7750 2850 50  0001 C CNN
+F 1 "GND" V 7755 2972 50  0000 R CNN
+F 2 "" H 7750 3100 50  0001 C CNN
+F 3 "" H 7750 3100 50  0001 C CNN
+	1    7750 3100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7750 3100 7700 3100
+$Comp
+L power:GND #PWR?
+U 1 1 60A17A22
+P 7450 3350
+AR Path="/60A03AFC/60A17A22" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A17A22" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7450 3100 50  0001 C CNN
+F 1 "GND" H 7455 3177 50  0000 C CNN
+F 2 "" H 7450 3350 50  0001 C CNN
+F 3 "" H 7450 3350 50  0001 C CNN
+	1    7450 3350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7450 3350 7450 3300
+Wire Wire Line
+	7400 3050 7400 2900
+Wire Wire Line
+	7400 2900 7100 2900
+$Comp
+L 74xGxx:74LVC1G126 U?
+U 1 1 60A1B7FF
+P 7450 4000
+AR Path="/60A03AFC/60A1B7FF" Ref="U?"  Part="1" 
+AR Path="/62FACF10/60A1B7FF" Ref="U?"  Part="1" 
+F 0 "U?" H 7600 3950 50  0000 C CNN
+F 1 "74LVC1G126" H 7800 3850 50  0000 C CNN
+F 2 "" H 7450 4000 50  0001 C CNN
+F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 7450 4000 50  0001 C CNN
+	1    7450 4000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7500 3800 7500 3850
+$Comp
+L Device:C_Small C?
+U 1 1 60A1B806
+P 7650 3850
+AR Path="/60A03AFC/60A1B806" Ref="C?"  Part="1" 
+AR Path="/62FACF10/60A1B806" Ref="C?"  Part="1" 
+F 0 "C?" V 7421 3850 50  0000 C CNN
+F 1 "0u1" V 7512 3850 50  0000 C CNN
+F 2 "" H 7650 3850 50  0001 C CNN
+F 3 "~" H 7650 3850 50  0001 C CNN
+	1    7650 3850
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7550 3850 7500 3850
+Connection ~ 7500 3850
+Wire Wire Line
+	7500 3850 7500 3950
+$Comp
+L power:+5V #PWR?
+U 1 1 60A1B80F
+P 7500 3800
+AR Path="/60A03AFC/60A1B80F" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A1B80F" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7500 3650 50  0001 C CNN
+F 1 "+5V" H 7350 3900 50  0000 C CNN
+F 2 "" H 7500 3800 50  0001 C CNN
+F 3 "" H 7500 3800 50  0001 C CNN
+	1    7500 3800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 60A1B815
+P 7800 3850
+AR Path="/60A03AFC/60A1B815" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A1B815" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7800 3600 50  0001 C CNN
+F 1 "GND" V 7805 3722 50  0000 R CNN
+F 2 "" H 7800 3850 50  0001 C CNN
+F 3 "" H 7800 3850 50  0001 C CNN
+	1    7800 3850
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7800 3850 7750 3850
+$Comp
+L power:GND #PWR?
+U 1 1 60A1B81C
+P 7500 4100
+AR Path="/60A03AFC/60A1B81C" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A1B81C" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7500 3850 50  0001 C CNN
+F 1 "GND" H 7505 3927 50  0000 C CNN
+F 2 "" H 7500 4100 50  0001 C CNN
+F 3 "" H 7500 4100 50  0001 C CNN
+	1    7500 4100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7500 4100 7500 4050
+Wire Wire Line
+	7450 3800 7450 3650
+Wire Wire Line
+	7450 3650 7150 3650
+$Comp
+L 74xGxx:74LVC1G126 U?
+U 1 1 60A1B825
+P 7450 4750
+AR Path="/60A03AFC/60A1B825" Ref="U?"  Part="1" 
+AR Path="/62FACF10/60A1B825" Ref="U?"  Part="1" 
+F 0 "U?" H 7600 4700 50  0000 C CNN
+F 1 "74LVC1G126" H 7800 4600 50  0000 C CNN
+F 2 "" H 7450 4750 50  0001 C CNN
+F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 7450 4750 50  0001 C CNN
+	1    7450 4750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7500 4550 7500 4600
+$Comp
+L Device:C_Small C?
+U 1 1 60A1B82C
+P 7650 4600
+AR Path="/60A03AFC/60A1B82C" Ref="C?"  Part="1" 
+AR Path="/62FACF10/60A1B82C" Ref="C?"  Part="1" 
+F 0 "C?" V 7421 4600 50  0000 C CNN
+F 1 "0u1" V 7512 4600 50  0000 C CNN
+F 2 "" H 7650 4600 50  0001 C CNN
+F 3 "~" H 7650 4600 50  0001 C CNN
+	1    7650 4600
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7550 4600 7500 4600
+Connection ~ 7500 4600
+Wire Wire Line
+	7500 4600 7500 4700
+$Comp
+L power:+5V #PWR?
+U 1 1 60A1B835
+P 7500 4550
+AR Path="/60A03AFC/60A1B835" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A1B835" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7500 4400 50  0001 C CNN
+F 1 "+5V" H 7350 4650 50  0000 C CNN
+F 2 "" H 7500 4550 50  0001 C CNN
+F 3 "" H 7500 4550 50  0001 C CNN
+	1    7500 4550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 60A1B83B
+P 7800 4600
+AR Path="/60A03AFC/60A1B83B" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A1B83B" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7800 4350 50  0001 C CNN
+F 1 "GND" V 7805 4472 50  0000 R CNN
+F 2 "" H 7800 4600 50  0001 C CNN
+F 3 "" H 7800 4600 50  0001 C CNN
+	1    7800 4600
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7800 4600 7750 4600
+$Comp
+L power:GND #PWR?
+U 1 1 60A1B842
+P 7500 4850
+AR Path="/60A03AFC/60A1B842" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A1B842" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7500 4600 50  0001 C CNN
+F 1 "GND" H 7505 4677 50  0000 C CNN
+F 2 "" H 7500 4850 50  0001 C CNN
+F 3 "" H 7500 4850 50  0001 C CNN
+	1    7500 4850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7500 4850 7500 4800
+Wire Wire Line
+	7450 4550 7450 4400
+Wire Wire Line
+	7450 4400 7150 4400
+Text Label 7750 1000 2    50   ~ 0
+0
+Wire Wire Line
+	7750 1000 7650 1000
+Wire Wire Line
+	7750 1750 7650 1750
+Text Label 7750 1750 2    50   ~ 0
+1
+Text Label 7750 3250 2    50   ~ 0
+3
+Wire Wire Line
+	7650 2500 7750 2500
+Text Label 7750 2500 2    50   ~ 0
+2
+Wire Wire Line
+	7700 4000 7800 4000
+Text Label 7800 4000 2    50   ~ 0
+4
+Text Label 7800 5450 2    50   ~ 0
+6
+Wire Wire Line
+	7800 4750 7700 4750
+Text Label 7800 4750 2    50   ~ 0
+5
+Text Label 7800 6200 2    50   ~ 0
+7
+Wire Wire Line
+	7750 3250 7650 3250
+$Comp
+L power:+5V #PWR?
+U 1 1 60A179EF
+P 7450 2300
+AR Path="/60A03AFC/60A179EF" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A179EF" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7450 2150 50  0001 C CNN
+F 1 "+5V" H 7300 2400 50  0000 C CNN
+F 2 "" H 7450 2300 50  0001 C CNN
+F 3 "" H 7450 2300 50  0001 C CNN
+	1    7450 2300
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74xGxx:74LVC1G126 U?
+U 1 1 60A713B0
+P 7450 5450
+AR Path="/60A03AFC/60A713B0" Ref="U?"  Part="1" 
+AR Path="/62FACF10/60A713B0" Ref="U?"  Part="1" 
+F 0 "U?" H 7600 5400 50  0000 C CNN
+F 1 "74LVC1G126" H 7800 5300 50  0000 C CNN
+F 2 "" H 7450 5450 50  0001 C CNN
+F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 7450 5450 50  0001 C CNN
+	1    7450 5450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7500 5250 7500 5300
+$Comp
+L Device:C_Small C?
+U 1 1 60A713B7
+P 7650 5300
+AR Path="/60A03AFC/60A713B7" Ref="C?"  Part="1" 
+AR Path="/62FACF10/60A713B7" Ref="C?"  Part="1" 
+F 0 "C?" V 7421 5300 50  0000 C CNN
+F 1 "0u1" V 7512 5300 50  0000 C CNN
+F 2 "" H 7650 5300 50  0001 C CNN
+F 3 "~" H 7650 5300 50  0001 C CNN
+	1    7650 5300
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7550 5300 7500 5300
+Connection ~ 7500 5300
+Wire Wire Line
+	7500 5300 7500 5400
+$Comp
+L power:+5V #PWR?
+U 1 1 60A713C0
+P 7500 5250
+AR Path="/60A03AFC/60A713C0" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A713C0" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7500 5100 50  0001 C CNN
+F 1 "+5V" H 7350 5350 50  0000 C CNN
+F 2 "" H 7500 5250 50  0001 C CNN
+F 3 "" H 7500 5250 50  0001 C CNN
+	1    7500 5250
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 60A713C6
+P 7800 5300
+AR Path="/60A03AFC/60A713C6" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A713C6" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7800 5050 50  0001 C CNN
+F 1 "GND" V 7805 5172 50  0000 R CNN
+F 2 "" H 7800 5300 50  0001 C CNN
+F 3 "" H 7800 5300 50  0001 C CNN
+	1    7800 5300
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7800 5300 7750 5300
+$Comp
+L power:GND #PWR?
+U 1 1 60A713CD
+P 7500 5550
+AR Path="/60A03AFC/60A713CD" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A713CD" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7500 5300 50  0001 C CNN
+F 1 "GND" H 7505 5377 50  0000 C CNN
+F 2 "" H 7500 5550 50  0001 C CNN
+F 3 "" H 7500 5550 50  0001 C CNN
+	1    7500 5550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7500 5550 7500 5500
+Wire Wire Line
+	7450 5250 7450 5100
+Wire Wire Line
+	7450 5100 7150 5100
+$Comp
+L 74xGxx:74LVC1G126 U?
+U 1 1 60A713D6
+P 7450 6200
+AR Path="/60A03AFC/60A713D6" Ref="U?"  Part="1" 
+AR Path="/62FACF10/60A713D6" Ref="U?"  Part="1" 
+F 0 "U?" H 7600 6150 50  0000 C CNN
+F 1 "74LVC1G126" H 7800 6050 50  0000 C CNN
+F 2 "" H 7450 6200 50  0001 C CNN
+F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 7450 6200 50  0001 C CNN
+	1    7450 6200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7500 6000 7500 6050
+$Comp
+L Device:C_Small C?
+U 1 1 60A713DD
+P 7650 6050
+AR Path="/60A03AFC/60A713DD" Ref="C?"  Part="1" 
+AR Path="/62FACF10/60A713DD" Ref="C?"  Part="1" 
+F 0 "C?" V 7421 6050 50  0000 C CNN
+F 1 "0u1" V 7512 6050 50  0000 C CNN
+F 2 "" H 7650 6050 50  0001 C CNN
+F 3 "~" H 7650 6050 50  0001 C CNN
+	1    7650 6050
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7550 6050 7500 6050
+Connection ~ 7500 6050
+Wire Wire Line
+	7500 6050 7500 6150
+$Comp
+L power:+5V #PWR?
+U 1 1 60A713E6
+P 7500 6000
+AR Path="/60A03AFC/60A713E6" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A713E6" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7500 5850 50  0001 C CNN
+F 1 "+5V" H 7350 6100 50  0000 C CNN
+F 2 "" H 7500 6000 50  0001 C CNN
+F 3 "" H 7500 6000 50  0001 C CNN
+	1    7500 6000
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 60A713EC
+P 7800 6050
+AR Path="/60A03AFC/60A713EC" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A713EC" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7800 5800 50  0001 C CNN
+F 1 "GND" V 7805 5922 50  0000 R CNN
+F 2 "" H 7800 6050 50  0001 C CNN
+F 3 "" H 7800 6050 50  0001 C CNN
+	1    7800 6050
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7800 6050 7750 6050
+$Comp
+L power:GND #PWR?
+U 1 1 60A713F3
+P 7500 6300
+AR Path="/60A03AFC/60A713F3" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A713F3" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7500 6050 50  0001 C CNN
+F 1 "GND" H 7505 6127 50  0000 C CNN
+F 2 "" H 7500 6300 50  0001 C CNN
+F 3 "" H 7500 6300 50  0001 C CNN
+	1    7500 6300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7500 6300 7500 6250
+Wire Wire Line
+	7450 6000 7450 5850
+Wire Wire Line
+	7450 5850 7150 5850
+Wire Wire Line
+	7700 5450 7800 5450
+Wire Wire Line
+	7800 6200 7700 6200
+$Comp
+L 74xx:74LS173 U?
+U 1 1 60A7FA7C
+P 2150 1950
+AR Path="/60A03AFC/60A7FA7C" Ref="U?"  Part="1" 
+AR Path="/62FACF10/60A7FA7C" Ref="U?"  Part="1" 
+F 0 "U?" H 2250 2800 50  0000 C CNN
+F 1 "74LS173" H 2350 2700 50  0000 C CNN
+F 2 "" H 2150 1950 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS173" H 2150 1950 50  0001 C CNN
+	1    2150 1950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2150 900  2150 950 
+$Comp
+L Device:C_Small C?
+U 1 1 60A817BB
+P 2300 950
+AR Path="/60A03AFC/60A817BB" Ref="C?"  Part="1" 
+AR Path="/62FACF10/60A817BB" Ref="C?"  Part="1" 
+F 0 "C?" V 2071 950 50  0000 C CNN
+F 1 "0u1" V 2162 950 50  0000 C CNN
+F 2 "" H 2300 950 50  0001 C CNN
+F 3 "~" H 2300 950 50  0001 C CNN
+	1    2300 950 
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2200 950  2150 950 
+Connection ~ 2150 950 
+Wire Wire Line
+	2150 950  2150 1050
+$Comp
+L power:+5V #PWR?
+U 1 1 60A817C4
+P 2150 900
+AR Path="/60A03AFC/60A817C4" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A817C4" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 2150 750 50  0001 C CNN
+F 1 "+5V" H 2150 1050 50  0000 C CNN
+F 2 "" H 2150 900 50  0001 C CNN
+F 3 "" H 2150 900 50  0001 C CNN
+	1    2150 900 
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 60A817CA
+P 2450 950
+AR Path="/60A03AFC/60A817CA" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A817CA" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 2450 700 50  0001 C CNN
+F 1 "GND" V 2455 822 50  0000 R CNN
+F 2 "" H 2450 950 50  0001 C CNN
+F 3 "" H 2450 950 50  0001 C CNN
+	1    2450 950 
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2450 950  2400 950 
+$Comp
+L power:GND #PWR?
+U 1 1 60A86325
+P 2150 2900
+AR Path="/60A03AFC/60A86325" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A86325" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 2150 2650 50  0001 C CNN
+F 1 "GND" H 2155 2727 50  0000 C CNN
+F 2 "" H 2150 2900 50  0001 C CNN
+F 3 "" H 2150 2900 50  0001 C CNN
+	1    2150 2900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2150 2900 2150 2850
+Wire Wire Line
+	1650 1850 1550 1850
+Wire Wire Line
+	1550 1850 1550 1950
+Wire Wire Line
+	1550 1950 1650 1950
+$Comp
+L power:GND #PWR?
+U 1 1 60A9AAC9
+P 1550 2000
+AR Path="/60A03AFC/60A9AAC9" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60A9AAC9" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 1550 1750 50  0001 C CNN
+F 1 "GND" H 1750 2000 50  0000 R CNN
+F 2 "" H 1550 2000 50  0001 C CNN
+F 3 "" H 1550 2000 50  0001 C CNN
+	1    1550 2000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1550 2000 1550 1950
+Connection ~ 1550 1950
+Wire Wire Line
+	1650 2150 1550 2150
+Wire Wire Line
+	1650 2250 1550 2250
+Wire Wire Line
+	1550 2250 1550 2150
+Connection ~ 1550 2150
+Wire Wire Line
+	1550 2150 1450 2150
+$Comp
+L 74xx:74LS173 U?
+U 1 1 60AB2211
+P 2150 4400
+AR Path="/60A03AFC/60AB2211" Ref="U?"  Part="1" 
+AR Path="/62FACF10/60AB2211" Ref="U?"  Part="1" 
+F 0 "U?" H 2250 5250 50  0000 C CNN
+F 1 "74LS173" H 2350 5150 50  0000 C CNN
+F 2 "" H 2150 4400 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS173" H 2150 4400 50  0001 C CNN
+	1    2150 4400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2150 3350 2150 3400
+$Comp
+L Device:C_Small C?
+U 1 1 60AB2218
+P 2300 3400
+AR Path="/60A03AFC/60AB2218" Ref="C?"  Part="1" 
+AR Path="/62FACF10/60AB2218" Ref="C?"  Part="1" 
+F 0 "C?" V 2071 3400 50  0000 C CNN
+F 1 "0u1" V 2162 3400 50  0000 C CNN
+F 2 "" H 2300 3400 50  0001 C CNN
+F 3 "~" H 2300 3400 50  0001 C CNN
+	1    2300 3400
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2200 3400 2150 3400
+Connection ~ 2150 3400
+Wire Wire Line
+	2150 3400 2150 3500
+$Comp
+L power:+5V #PWR?
+U 1 1 60AB2221
+P 2150 3350
+AR Path="/60A03AFC/60AB2221" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60AB2221" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 2150 3200 50  0001 C CNN
+F 1 "+5V" H 2150 3500 50  0000 C CNN
+F 2 "" H 2150 3350 50  0001 C CNN
+F 3 "" H 2150 3350 50  0001 C CNN
+	1    2150 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 60AB2227
+P 2450 3400
+AR Path="/60A03AFC/60AB2227" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60AB2227" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 2450 3150 50  0001 C CNN
+F 1 "GND" V 2455 3272 50  0000 R CNN
+F 2 "" H 2450 3400 50  0001 C CNN
+F 3 "" H 2450 3400 50  0001 C CNN
+	1    2450 3400
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2450 3400 2400 3400
+$Comp
+L power:GND #PWR?
+U 1 1 60AB222E
+P 2150 5350
+AR Path="/60A03AFC/60AB222E" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60AB222E" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 2150 5100 50  0001 C CNN
+F 1 "GND" H 2155 5177 50  0000 C CNN
+F 2 "" H 2150 5350 50  0001 C CNN
+F 3 "" H 2150 5350 50  0001 C CNN
+	1    2150 5350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2150 5350 2150 5300
+Wire Wire Line
+	1650 4300 1550 4300
+Wire Wire Line
+	1550 4300 1550 4400
+Wire Wire Line
+	1550 4400 1650 4400
+$Comp
+L power:GND #PWR?
+U 1 1 60AB2238
+P 1550 4450
+AR Path="/60A03AFC/60AB2238" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60AB2238" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 1550 4200 50  0001 C CNN
+F 1 "GND" H 1750 4450 50  0000 R CNN
+F 2 "" H 1550 4450 50  0001 C CNN
+F 3 "" H 1550 4450 50  0001 C CNN
+	1    1550 4450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1550 4450 1550 4400
+Connection ~ 1550 4400
+Wire Wire Line
+	1650 4600 1550 4600
+Wire Wire Line
+	1650 4700 1550 4700
+Wire Wire Line
+	1550 4700 1550 4600
+Connection ~ 1550 4600
+Wire Wire Line
+	1550 4600 1450 4600
+Wire Wire Line
+	1650 4800 1350 4800
+Wire Wire Line
+	1450 4600 1450 2150
+Wire Wire Line
+	1350 4800 1350 2350
+Wire Wire Line
+	1350 2350 1650 2350
+Wire Wire Line
+	1250 5000 1250 2550
+Wire Wire Line
+	1250 5000 1650 5000
+Wire Wire Line
+	1250 2550 1650 2550
+$Comp
+L 74xx:74LS173 U?
+U 1 1 60AE865F
+P 4200 1950
+AR Path="/60A03AFC/60AE865F" Ref="U?"  Part="1" 
+AR Path="/62FACF10/60AE865F" Ref="U?"  Part="1" 
+F 0 "U?" H 4300 2800 50  0000 C CNN
+F 1 "74LS173" H 4400 2700 50  0000 C CNN
+F 2 "" H 4200 1950 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS173" H 4200 1950 50  0001 C CNN
+	1    4200 1950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4200 900  4200 950 
+$Comp
+L Device:C_Small C?
+U 1 1 60AE8666
+P 4350 950
+AR Path="/60A03AFC/60AE8666" Ref="C?"  Part="1" 
+AR Path="/62FACF10/60AE8666" Ref="C?"  Part="1" 
+F 0 "C?" V 4121 950 50  0000 C CNN
+F 1 "0u1" V 4212 950 50  0000 C CNN
+F 2 "" H 4350 950 50  0001 C CNN
+F 3 "~" H 4350 950 50  0001 C CNN
+	1    4350 950 
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4250 950  4200 950 
+Connection ~ 4200 950 
+Wire Wire Line
+	4200 950  4200 1050
+$Comp
+L power:+5V #PWR?
+U 1 1 60AE866F
+P 4200 900
+AR Path="/60A03AFC/60AE866F" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60AE866F" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 4200 750 50  0001 C CNN
+F 1 "+5V" H 4200 1050 50  0000 C CNN
+F 2 "" H 4200 900 50  0001 C CNN
+F 3 "" H 4200 900 50  0001 C CNN
+	1    4200 900 
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 60AE8675
+P 4500 950
+AR Path="/60A03AFC/60AE8675" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60AE8675" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 4500 700 50  0001 C CNN
+F 1 "GND" V 4505 822 50  0000 R CNN
+F 2 "" H 4500 950 50  0001 C CNN
+F 3 "" H 4500 950 50  0001 C CNN
+	1    4500 950 
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4500 950  4450 950 
+$Comp
+L power:GND #PWR?
+U 1 1 60AE867C
+P 4200 2900
+AR Path="/60A03AFC/60AE867C" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60AE867C" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 4200 2650 50  0001 C CNN
+F 1 "GND" H 4205 2727 50  0000 C CNN
+F 2 "" H 4200 2900 50  0001 C CNN
+F 3 "" H 4200 2900 50  0001 C CNN
+	1    4200 2900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4200 2900 4200 2850
+Wire Wire Line
+	3700 1850 3600 1850
+Wire Wire Line
+	3600 1850 3600 1950
+Wire Wire Line
+	3600 1950 3700 1950
+$Comp
+L power:GND #PWR?
+U 1 1 60AE8686
+P 3600 2000
+AR Path="/60A03AFC/60AE8686" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60AE8686" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 3600 1750 50  0001 C CNN
+F 1 "GND" H 3800 2000 50  0000 R CNN
+F 2 "" H 3600 2000 50  0001 C CNN
+F 3 "" H 3600 2000 50  0001 C CNN
+	1    3600 2000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3600 2000 3600 1950
+Connection ~ 3600 1950
+Wire Wire Line
+	3700 2150 3600 2150
+Wire Wire Line
+	3700 2250 3600 2250
+Wire Wire Line
+	3600 2250 3600 2150
+Connection ~ 3600 2150
+Wire Wire Line
+	3600 2150 3500 2150
+$Comp
+L 74xx:74LS173 U?
+U 1 1 60AE8693
+P 4200 4400
+AR Path="/60A03AFC/60AE8693" Ref="U?"  Part="1" 
+AR Path="/62FACF10/60AE8693" Ref="U?"  Part="1" 
+F 0 "U?" H 4300 5250 50  0000 C CNN
+F 1 "74LS173" H 4400 5150 50  0000 C CNN
+F 2 "" H 4200 4400 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74LS173" H 4200 4400 50  0001 C CNN
+	1    4200 4400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4200 3350 4200 3400
+$Comp
+L Device:C_Small C?
+U 1 1 60AE869A
+P 4350 3400
+AR Path="/60A03AFC/60AE869A" Ref="C?"  Part="1" 
+AR Path="/62FACF10/60AE869A" Ref="C?"  Part="1" 
+F 0 "C?" V 4121 3400 50  0000 C CNN
+F 1 "0u1" V 4212 3400 50  0000 C CNN
+F 2 "" H 4350 3400 50  0001 C CNN
+F 3 "~" H 4350 3400 50  0001 C CNN
+	1    4350 3400
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4250 3400 4200 3400
+Connection ~ 4200 3400
+Wire Wire Line
+	4200 3400 4200 3500
+$Comp
+L power:+5V #PWR?
+U 1 1 60AE86A3
+P 4200 3350
+AR Path="/60A03AFC/60AE86A3" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60AE86A3" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 4200 3200 50  0001 C CNN
+F 1 "+5V" H 4200 3500 50  0000 C CNN
+F 2 "" H 4200 3350 50  0001 C CNN
+F 3 "" H 4200 3350 50  0001 C CNN
+	1    4200 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 60AE86A9
+P 4500 3400
+AR Path="/60A03AFC/60AE86A9" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60AE86A9" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 4500 3150 50  0001 C CNN
+F 1 "GND" V 4505 3272 50  0000 R CNN
+F 2 "" H 4500 3400 50  0001 C CNN
+F 3 "" H 4500 3400 50  0001 C CNN
+	1    4500 3400
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4500 3400 4450 3400
+$Comp
+L power:GND #PWR?
+U 1 1 60AE86B0
+P 4200 5350
+AR Path="/60A03AFC/60AE86B0" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60AE86B0" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 4200 5100 50  0001 C CNN
+F 1 "GND" H 4205 5177 50  0000 C CNN
+F 2 "" H 4200 5350 50  0001 C CNN
+F 3 "" H 4200 5350 50  0001 C CNN
+	1    4200 5350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4200 5350 4200 5300
+Wire Wire Line
+	3700 4300 3600 4300
+Wire Wire Line
+	3600 4300 3600 4400
+Wire Wire Line
+	3600 4400 3700 4400
+$Comp
+L power:GND #PWR?
+U 1 1 60AE86BA
+P 3600 4450
+AR Path="/60A03AFC/60AE86BA" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60AE86BA" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 3600 4200 50  0001 C CNN
+F 1 "GND" H 3800 4450 50  0000 R CNN
+F 2 "" H 3600 4450 50  0001 C CNN
+F 3 "" H 3600 4450 50  0001 C CNN
+	1    3600 4450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3600 4450 3600 4400
+Connection ~ 3600 4400
+Wire Wire Line
+	3700 4600 3600 4600
+Wire Wire Line
+	3700 4700 3600 4700
+Wire Wire Line
+	3600 4700 3600 4600
+Connection ~ 3600 4600
+Wire Wire Line
+	3600 4600 3500 4600
+Wire Wire Line
+	3700 4800 3400 4800
+Wire Wire Line
+	3500 4600 3500 2150
+Wire Wire Line
+	3400 4800 3400 2350
+Wire Wire Line
+	3400 2350 3700 2350
+Wire Wire Line
+	3300 5000 3300 2550
+Wire Wire Line
+	3300 5000 3700 5000
+Wire Wire Line
+	3300 2550 3700 2550
+Wire Wire Line
+	5950 2950 5950 3000
+$Comp
+L Device:C_Small C?
+U 1 1 60B152D4
+P 5800 3000
+AR Path="/60A03AFC/60B152D4" Ref="C?"  Part="1" 
+AR Path="/62FACF10/60B152D4" Ref="C?"  Part="1" 
+F 0 "C?" V 5650 3000 50  0000 C CNN
+F 1 "0u1" V 5650 3150 50  0000 C CNN
+F 2 "" H 5800 3000 50  0001 C CNN
+F 3 "~" H 5800 3000 50  0001 C CNN
+	1    5800 3000
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	5900 3000 5950 3000
+Connection ~ 5950 3000
+Wire Wire Line
+	5950 3000 5950 3100
+$Comp
+L power:+5V #PWR?
+U 1 1 60B152DD
+P 5950 2950
+AR Path="/60A03AFC/60B152DD" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60B152DD" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 5950 2800 50  0001 C CNN
+F 1 "+5V" H 5800 2900 50  0000 C CNN
+F 2 "" H 5950 2950 50  0001 C CNN
+F 3 "" H 5950 2950 50  0001 C CNN
+	1    5950 2950
+	-1   0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 60B152E3
+P 5650 3000
+AR Path="/60A03AFC/60B152E3" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60B152E3" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 5650 2750 50  0001 C CNN
+F 1 "GND" V 5655 2872 50  0000 R CNN
+F 2 "" H 5650 3000 50  0001 C CNN
+F 3 "" H 5650 3000 50  0001 C CNN
+	1    5650 3000
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	5650 3000 5700 3000
+$Comp
+L power:GND #PWR?
+U 1 1 60B241E3
+P 5950 4750
+AR Path="/60A03AFC/60B241E3" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60B241E3" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 5950 4500 50  0001 C CNN
+F 1 "GND" H 5800 4700 50  0000 C CNN
+F 2 "" H 5950 4750 50  0001 C CNN
+F 3 "" H 5950 4750 50  0001 C CNN
+	1    5950 4750
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	5950 4750 5950 4700
+$Comp
+L 74xx:74HC245 U?
+U 1 1 60B00150
+P 5950 3900
+AR Path="/60A03AFC/60B00150" Ref="U?"  Part="1" 
+AR Path="/62FACF10/60B00150" Ref="U?"  Part="1" 
+F 0 "U?" H 5600 4650 50  0000 C CNN
+F 1 "74HC245" H 5700 4550 50  0000 C CNN
+F 2 "" H 5950 3900 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74HC245" H 5950 3900 50  0001 C CNN
+	1    5950 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 60B3D8D7
+P 5400 4300
+AR Path="/60A03AFC/60B3D8D7" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60B3D8D7" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 5400 4050 50  0001 C CNN
+F 1 "GND" V 5405 4172 50  0000 R CNN
+F 2 "" H 5400 4300 50  0001 C CNN
+F 3 "" H 5400 4300 50  0001 C CNN
+	1    5400 4300
+	0    1    1    0   
+$EndComp
+Text Label 4950 1350 2    50   ~ 0
+TRI0
+Text Label 4950 1450 2    50   ~ 0
+TRI1
+Text Label 4950 1550 2    50   ~ 0
+TRI2
+Text Label 4950 1650 2    50   ~ 0
+TRI3
+Text Label 4950 3800 2    50   ~ 0
+TRI4
+Text Label 4950 3900 2    50   ~ 0
+TRI5
+Text Label 4950 4000 2    50   ~ 0
+TRI6
+Text Label 4950 4100 2    50   ~ 0
+TRI7
+Wire Wire Line
+	4700 1350 4950 1350
+Wire Wire Line
+	4700 1450 4950 1450
+Wire Wire Line
+	4700 1550 4950 1550
+Wire Wire Line
+	4700 1650 4950 1650
+Wire Wire Line
+	4700 3800 4950 3800
+Wire Wire Line
+	4700 3900 4950 3900
+Wire Wire Line
+	4700 4000 4950 4000
+Wire Wire Line
+	4700 4100 4950 4100
+Text Label 7100 650  0    50   ~ 0
+TRI0
+Text Label 7100 1400 0    50   ~ 0
+TRI1
+Text Label 7100 2150 0    50   ~ 0
+TRI2
+Text Label 7100 2900 0    50   ~ 0
+TRI3
+Text Label 7150 3650 0    50   ~ 0
+TRI4
+Text Label 7150 4400 0    50   ~ 0
+TRI5
+Text Label 7150 5100 0    50   ~ 0
+TRI6
+Text Label 7150 5850 0    50   ~ 0
+TRI7
+Wire Wire Line
+	7100 2150 7400 2150
+Wire Wire Line
+	2650 3800 2900 3800
+Wire Wire Line
+	2650 3900 2900 3900
+Wire Wire Line
+	2650 4000 2900 4000
+Wire Wire Line
+	2650 4100 2900 4100
+Text Label 2900 1350 2    50   ~ 0
+ODR0
+Text Label 2900 1450 2    50   ~ 0
+ODR1
+Text Label 2900 1550 2    50   ~ 0
+ODR2
+Text Label 2900 1650 2    50   ~ 0
+ODR3
+Text Label 2900 3800 2    50   ~ 0
+ODR4
+Text Label 2900 3900 2    50   ~ 0
+ODR5
+Text Label 2900 4000 2    50   ~ 0
+ODR6
+Text Label 2900 4100 2    50   ~ 0
+ODR7
+Wire Wire Line
+	7100 1000 6850 1000
+Wire Wire Line
+	7100 1750 6850 1750
+Wire Wire Line
+	7100 2500 6850 2500
+Wire Wire Line
+	7100 3250 6850 3250
+Wire Wire Line
+	7150 4000 6900 4000
+Wire Wire Line
+	7150 4750 6900 4750
+Wire Wire Line
+	7150 5450 6900 5450
+Wire Wire Line
+	7150 6200 6900 6200
+Text Label 6850 1000 0    50   ~ 0
+ODR0
+Text Label 6850 1750 0    50   ~ 0
+ODR1
+Text Label 6850 2500 0    50   ~ 0
+ODR2
+Text Label 6850 3250 0    50   ~ 0
+ODR3
+Text Label 6900 4000 0    50   ~ 0
+ODR4
+Text Label 6900 4750 0    50   ~ 0
+ODR5
+Text Label 6900 5450 0    50   ~ 0
+ODR6
+Text Label 6900 6200 0    50   ~ 0
+ODR7
+Entry Wire Line
+	950  1250 1050 1350
+Entry Wire Line
+	950  1350 1050 1450
+Entry Wire Line
+	950  1450 1050 1550
+Entry Wire Line
+	950  1550 1050 1650
+Entry Wire Line
+	950  3700 1050 3800
+Entry Wire Line
+	950  3800 1050 3900
+Entry Wire Line
+	950  3900 1050 4000
+Entry Wire Line
+	950  4000 1050 4100
+Entry Wire Line
+	3000 1250 3100 1350
+Entry Wire Line
+	3000 1350 3100 1450
+Entry Wire Line
+	3000 1450 3100 1550
+Entry Wire Line
+	3000 1550 3100 1650
+Entry Wire Line
+	3000 3700 3100 3800
+Entry Wire Line
+	3000 3800 3100 3900
+Entry Wire Line
+	3000 3900 3100 4000
+Entry Wire Line
+	3000 4000 3100 4100
+Wire Wire Line
+	5450 4300 5400 4300
+Wire Wire Line
+	3100 1350 3700 1350
+Wire Wire Line
+	3100 1450 3700 1450
+Wire Wire Line
+	3100 1550 3700 1550
+Wire Wire Line
+	3100 1650 3700 1650
+Wire Wire Line
+	3100 3800 3700 3800
+Wire Wire Line
+	3100 3900 3700 3900
+Wire Wire Line
+	3100 4000 3700 4000
+Wire Wire Line
+	3100 4100 3700 4100
+Text Label 3100 1350 0    50   ~ 0
+DB0
+Text Label 3100 1450 0    50   ~ 0
+DB1
+Text Label 3100 1550 0    50   ~ 0
+DB2
+Text Label 3100 1650 0    50   ~ 0
+DB3
+Text Label 3100 3800 0    50   ~ 0
+DB4
+Text Label 3100 3900 0    50   ~ 0
+DB5
+Text Label 3100 4000 0    50   ~ 0
+DB6
+Text Label 3100 4100 0    50   ~ 0
+DB7
+Text Label 1050 1350 0    50   ~ 0
+DB0
+Text Label 1050 1450 0    50   ~ 0
+DB1
+Text Label 1050 1550 0    50   ~ 0
+DB2
+Text Label 1050 1650 0    50   ~ 0
+DB3
+Text Label 1050 3800 0    50   ~ 0
+DB4
+Text Label 1050 3900 0    50   ~ 0
+DB5
+Text Label 1050 4000 0    50   ~ 0
+DB6
+Text Label 1050 4100 0    50   ~ 0
+DB7
+Wire Wire Line
+	1050 1350 1650 1350
+Wire Wire Line
+	1050 1450 1650 1450
+Wire Wire Line
+	1050 1550 1650 1550
+Wire Wire Line
+	1050 1650 1650 1650
+Wire Wire Line
+	1050 3800 1650 3800
+Wire Wire Line
+	1050 3900 1650 3900
+Wire Wire Line
+	1050 4000 1650 4000
+Wire Wire Line
+	1050 4100 1650 4100
+Wire Bus Line
+	950  600  3000 600 
+Wire Wire Line
+	5950 900  5950 950 
+$Comp
+L Device:C_Small C?
+U 1 1 6143D916
+P 5800 950
+AR Path="/60A03AFC/6143D916" Ref="C?"  Part="1" 
+AR Path="/62FACF10/6143D916" Ref="C?"  Part="1" 
+F 0 "C?" V 5571 950 50  0000 C CNN
+F 1 "0u1" V 5662 950 50  0000 C CNN
+F 2 "" H 5800 950 50  0001 C CNN
+F 3 "~" H 5800 950 50  0001 C CNN
+	1    5800 950 
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	5900 950  5950 950 
+Connection ~ 5950 950 
+Wire Wire Line
+	5950 950  5950 1050
+$Comp
+L power:+5V #PWR?
+U 1 1 6143D91F
+P 5950 900
+AR Path="/60A03AFC/6143D91F" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/6143D91F" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 5950 750 50  0001 C CNN
+F 1 "+5V" H 5950 1050 50  0000 C CNN
+F 2 "" H 5950 900 50  0001 C CNN
+F 3 "" H 5950 900 50  0001 C CNN
+	1    5950 900 
+	-1   0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 6143D925
+P 5650 950
+AR Path="/60A03AFC/6143D925" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/6143D925" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 5650 700 50  0001 C CNN
+F 1 "GND" V 5655 822 50  0000 R CNN
+F 2 "" H 5650 950 50  0001 C CNN
+F 3 "" H 5650 950 50  0001 C CNN
+	1    5650 950 
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	5650 950  5700 950 
+$Comp
+L power:GND #PWR?
+U 1 1 6143D92C
+P 5950 2700
+AR Path="/60A03AFC/6143D92C" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/6143D92C" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 5950 2450 50  0001 C CNN
+F 1 "GND" H 5750 2650 50  0000 C CNN
+F 2 "" H 5950 2700 50  0001 C CNN
+F 3 "" H 5950 2700 50  0001 C CNN
+	1    5950 2700
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	5950 2700 5950 2650
+$Comp
+L 74xx:74HC245 U?
+U 1 1 6143D933
+P 5950 1850
+AR Path="/60A03AFC/6143D933" Ref="U?"  Part="1" 
+AR Path="/62FACF10/6143D933" Ref="U?"  Part="1" 
+F 0 "U?" H 5600 2600 50  0000 C CNN
+F 1 "74HC245" H 5700 2500 50  0000 C CNN
+F 2 "" H 5950 1850 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74HC245" H 5950 1850 50  0001 C CNN
+	1    5950 1850
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 6143D939
+P 5400 2250
+AR Path="/60A03AFC/6143D939" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/6143D939" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 5400 2000 50  0001 C CNN
+F 1 "GND" V 5405 2122 50  0000 R CNN
+F 2 "" H 5400 2250 50  0001 C CNN
+F 3 "" H 5400 2250 50  0001 C CNN
+	1    5400 2250
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5450 2250 5400 2250
+Text Label 5150 1350 0    50   ~ 0
+DB0
+Text Label 5150 1450 0    50   ~ 0
+DB1
+Text Label 5150 1550 0    50   ~ 0
+DB2
+Text Label 5150 1650 0    50   ~ 0
+DB3
+Text Label 5150 1750 0    50   ~ 0
+DB4
+Text Label 5150 1850 0    50   ~ 0
+DB5
+Text Label 5150 1950 0    50   ~ 0
+DB6
+Text Label 5150 2050 0    50   ~ 0
+DB7
+Wire Wire Line
+	2650 1650 2900 1650
+Wire Wire Line
+	2650 1550 2900 1550
+Wire Wire Line
+	2650 1450 2900 1450
+Wire Wire Line
+	2650 1350 2900 1350
+Entry Wire Line
+	5050 1250 5150 1350
+Entry Wire Line
+	5050 1350 5150 1450
+Entry Wire Line
+	5050 1450 5150 1550
+Entry Wire Line
+	5050 1550 5150 1650
+Entry Wire Line
+	5050 1650 5150 1750
+Entry Wire Line
+	5050 1750 5150 1850
+Entry Wire Line
+	5050 1850 5150 1950
+Entry Wire Line
+	5050 1950 5150 2050
+Wire Wire Line
+	5150 1350 5450 1350
+Wire Wire Line
+	5150 1450 5450 1450
+Wire Wire Line
+	5150 1550 5450 1550
+Wire Wire Line
+	5150 1650 5450 1650
+Wire Wire Line
+	5150 1750 5450 1750
+Wire Wire Line
+	5150 1850 5450 1850
+Wire Wire Line
+	5150 1950 5450 1950
+Wire Wire Line
+	5150 2050 5450 2050
+Wire Wire Line
+	5950 5050 5950 5100
+$Comp
+L Device:C_Small C?
+U 1 1 619088A7
+P 5800 5100
+AR Path="/60A03AFC/619088A7" Ref="C?"  Part="1" 
+AR Path="/62FACF10/619088A7" Ref="C?"  Part="1" 
+F 0 "C?" V 5650 5100 50  0000 C CNN
+F 1 "0u1" V 5650 5250 50  0000 C CNN
+F 2 "" H 5800 5100 50  0001 C CNN
+F 3 "~" H 5800 5100 50  0001 C CNN
+	1    5800 5100
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	5900 5100 5950 5100
+Connection ~ 5950 5100
+Wire Wire Line
+	5950 5100 5950 5200
+$Comp
+L power:+5V #PWR?
+U 1 1 619088B0
+P 5950 5050
+AR Path="/60A03AFC/619088B0" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/619088B0" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 5950 4900 50  0001 C CNN
+F 1 "+5V" H 5800 5000 50  0000 C CNN
+F 2 "" H 5950 5050 50  0001 C CNN
+F 3 "" H 5950 5050 50  0001 C CNN
+	1    5950 5050
+	-1   0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 619088B6
+P 5650 5100
+AR Path="/60A03AFC/619088B6" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/619088B6" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 5650 4850 50  0001 C CNN
+F 1 "GND" V 5655 4972 50  0000 R CNN
+F 2 "" H 5650 5100 50  0001 C CNN
+F 3 "" H 5650 5100 50  0001 C CNN
+	1    5650 5100
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	5650 5100 5700 5100
+$Comp
+L power:GND #PWR?
+U 1 1 619088BD
+P 5950 6850
+AR Path="/60A03AFC/619088BD" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/619088BD" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 5950 6600 50  0001 C CNN
+F 1 "GND" H 5800 6800 50  0000 C CNN
+F 2 "" H 5950 6850 50  0001 C CNN
+F 3 "" H 5950 6850 50  0001 C CNN
+	1    5950 6850
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	5950 6850 5950 6800
+$Comp
+L 74xx:74HC245 U?
+U 1 1 619088C4
+P 5950 6000
+AR Path="/60A03AFC/619088C4" Ref="U?"  Part="1" 
+AR Path="/62FACF10/619088C4" Ref="U?"  Part="1" 
+F 0 "U?" H 5600 6750 50  0000 C CNN
+F 1 "74HC245" H 5700 6650 50  0000 C CNN
+F 2 "" H 5950 6000 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74HC245" H 5950 6000 50  0001 C CNN
+	1    5950 6000
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 619088CA
+P 5400 6400
+AR Path="/60A03AFC/619088CA" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/619088CA" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 5400 6150 50  0001 C CNN
+F 1 "GND" V 5405 6272 50  0000 R CNN
+F 2 "" H 5400 6400 50  0001 C CNN
+F 3 "" H 5400 6400 50  0001 C CNN
+	1    5400 6400
+	0    1    1    0   
+$EndComp
+Text Label 6700 5500 2    50   ~ 0
+0
+Text Label 6700 5600 2    50   ~ 0
+1
+Text Label 6700 5700 2    50   ~ 0
+2
+Text Label 6700 5800 2    50   ~ 0
+3
+Text Label 6700 5900 2    50   ~ 0
+4
+Text Label 6700 6000 2    50   ~ 0
+5
+Text Label 6700 6100 2    50   ~ 0
+6
+Text Label 6700 6200 2    50   ~ 0
+7
+Wire Wire Line
+	5450 6400 5400 6400
+Wire Wire Line
+	6450 5500 6700 5500
+Wire Wire Line
+	6450 5600 6700 5600
+Wire Wire Line
+	6450 5700 6700 5700
+Wire Wire Line
+	6450 5800 6700 5800
+Wire Wire Line
+	6450 5900 6700 5900
+Wire Wire Line
+	6450 6000 6700 6000
+Wire Wire Line
+	6450 6100 6700 6100
+Wire Wire Line
+	6450 6200 6700 6200
+Text Label 5150 3400 0    50   ~ 0
+DB0
+Text Label 5150 3500 0    50   ~ 0
+DB1
+Text Label 5150 3600 0    50   ~ 0
+DB2
+Text Label 5150 3700 0    50   ~ 0
+DB3
+Text Label 5150 3800 0    50   ~ 0
+DB4
+Text Label 5150 3900 0    50   ~ 0
+DB5
+Text Label 5150 4000 0    50   ~ 0
+DB6
+Text Label 5150 4100 0    50   ~ 0
+DB7
+Entry Wire Line
+	5050 3300 5150 3400
+Entry Wire Line
+	5050 3400 5150 3500
+Entry Wire Line
+	5050 3500 5150 3600
+Entry Wire Line
+	5050 3600 5150 3700
+Entry Wire Line
+	5050 3700 5150 3800
+Entry Wire Line
+	5050 3800 5150 3900
+Entry Wire Line
+	5050 3900 5150 4000
+Entry Wire Line
+	5050 4000 5150 4100
+Wire Wire Line
+	5150 3400 5450 3400
+Wire Wire Line
+	5150 3500 5450 3500
+Wire Wire Line
+	5150 3600 5450 3600
+Wire Wire Line
+	5150 3700 5450 3700
+Wire Wire Line
+	5150 3800 5450 3800
+Wire Wire Line
+	5150 3900 5450 3900
+Wire Wire Line
+	5150 4000 5450 4000
+Wire Wire Line
+	5150 4100 5450 4100
+Text Label 5150 5500 0    50   ~ 0
+DB0
+Text Label 5150 5600 0    50   ~ 0
+DB1
+Text Label 5150 5700 0    50   ~ 0
+DB2
+Text Label 5150 5800 0    50   ~ 0
+DB3
+Text Label 5150 5900 0    50   ~ 0
+DB4
+Text Label 5150 6000 0    50   ~ 0
+DB5
+Text Label 5150 6100 0    50   ~ 0
+DB6
+Text Label 5150 6200 0    50   ~ 0
+DB7
+Entry Wire Line
+	5050 5400 5150 5500
+Entry Wire Line
+	5050 5500 5150 5600
+Entry Wire Line
+	5050 5600 5150 5700
+Entry Wire Line
+	5050 5700 5150 5800
+Entry Wire Line
+	5050 5800 5150 5900
+Entry Wire Line
+	5050 5900 5150 6000
+Entry Wire Line
+	5050 6000 5150 6100
+Entry Wire Line
+	5050 6100 5150 6200
+Wire Wire Line
+	5150 5500 5450 5500
+Wire Wire Line
+	5150 5600 5450 5600
+Wire Wire Line
+	5150 5700 5450 5700
+Wire Wire Line
+	5150 5800 5450 5800
+Wire Wire Line
+	5150 5900 5450 5900
+Wire Wire Line
+	5150 6000 5450 6000
+Wire Wire Line
+	5150 6100 5450 6100
+Wire Wire Line
+	5150 6200 5450 6200
+Wire Wire Line
+	6450 1750 6700 1750
+Wire Wire Line
+	6450 1850 6700 1850
+Wire Wire Line
+	6450 1950 6700 1950
+Wire Wire Line
+	6450 2050 6700 2050
+Text Label 6700 1350 2    50   ~ 0
+ODR0
+Text Label 6700 1450 2    50   ~ 0
+ODR1
+Text Label 6700 1550 2    50   ~ 0
+ODR2
+Text Label 6700 1650 2    50   ~ 0
+ODR3
+Text Label 6700 1750 2    50   ~ 0
+ODR4
+Text Label 6700 1850 2    50   ~ 0
+ODR5
+Text Label 6700 1950 2    50   ~ 0
+ODR6
+Text Label 6700 2050 2    50   ~ 0
+ODR7
+Wire Wire Line
+	6450 1650 6700 1650
+Wire Wire Line
+	6450 1550 6700 1550
+Wire Wire Line
+	6450 1450 6700 1450
+Wire Wire Line
+	6450 1350 6700 1350
+Text Label 6700 3400 2    50   ~ 0
+TRI0
+Text Label 6700 3500 2    50   ~ 0
+TRI1
+Text Label 6700 3600 2    50   ~ 0
+TRI2
+Text Label 6700 3700 2    50   ~ 0
+TRI3
+Text Label 6700 3800 2    50   ~ 0
+TRI4
+Text Label 6700 3900 2    50   ~ 0
+TRI5
+Text Label 6700 4000 2    50   ~ 0
+TRI6
+Text Label 6700 4100 2    50   ~ 0
+TRI7
+Wire Wire Line
+	6450 3400 6700 3400
+Wire Wire Line
+	6450 3500 6700 3500
+Wire Wire Line
+	6450 3600 6700 3600
+Wire Wire Line
+	6450 3700 6700 3700
+Wire Wire Line
+	6450 3800 6700 3800
+Wire Wire Line
+	6450 3900 6700 3900
+Wire Wire Line
+	6450 4000 6700 4000
+Wire Wire Line
+	6450 4100 6700 4100
+Text Label 3450 4800 0    50   ~ 0
+CLK
+Text Label 5600 7500 2    50   ~ 0
+R
+Text Label 1400 4800 0    50   ~ 0
+CLK
+Text Label 3450 5000 0    50   ~ 0
+R
+Text Label 1400 5000 0    50   ~ 0
+R
+Text Label 5600 7400 2    50   ~ 0
+CLK
+Text HLabel 5400 7400 0    50   Input ~ 0
+CLK
+Text HLabel 5400 7500 0    50   Input ~ 0
+RESET
+Wire Wire Line
+	5600 7400 5400 7400
+Wire Wire Line
+	5600 7500 5400 7500
+Wire Bus Line
+	3000 600  5050 600 
+Connection ~ 3000 600 
+$Comp
+L 74xGxx:74LVC1G04 U?
+U 1 1 61B760A5
+P 9800 2150
+AR Path="/60A03AFC/61B760A5" Ref="U?"  Part="1" 
+AR Path="/62FACF10/61B760A5" Ref="U?"  Part="1" 
+F 0 "U?" H 9950 2250 50  0000 C CNN
+F 1 "74LVC1G04" H 10100 2050 50  0000 C CNN
+F 2 "" H 9800 2150 50  0001 C CNN
+F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 9800 2150 50  0001 C CNN
+	1    9800 2150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9800 1900 9800 1950
+$Comp
+L Device:C_Small C?
+U 1 1 61B77776
+P 9950 1950
+AR Path="/60A03AFC/61B77776" Ref="C?"  Part="1" 
+AR Path="/62FACF10/61B77776" Ref="C?"  Part="1" 
+F 0 "C?" V 9721 1950 50  0000 C CNN
+F 1 "0u1" V 9812 1950 50  0000 C CNN
+F 2 "" H 9950 1950 50  0001 C CNN
+F 3 "~" H 9950 1950 50  0001 C CNN
+	1    9950 1950
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	9850 1950 9800 1950
+Connection ~ 9800 1950
+Wire Wire Line
+	9800 1950 9800 2050
+$Comp
+L power:+5V #PWR?
+U 1 1 61B7777F
+P 9800 1900
+AR Path="/60A03AFC/61B7777F" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/61B7777F" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 9800 1750 50  0001 C CNN
+F 1 "+5V" H 9815 2073 50  0000 C CNN
+F 2 "" H 9800 1900 50  0001 C CNN
+F 3 "" H 9800 1900 50  0001 C CNN
+	1    9800 1900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 61B77785
+P 10100 1950
+AR Path="/60A03AFC/61B77785" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/61B77785" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 10100 1700 50  0001 C CNN
+F 1 "GND" V 10105 1822 50  0000 R CNN
+F 2 "" H 10100 1950 50  0001 C CNN
+F 3 "" H 10100 1950 50  0001 C CNN
+	1    10100 1950
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	10100 1950 10050 1950
+$Comp
+L power:GND #PWR?
+U 1 1 61BA55F4
+P 9800 2300
+AR Path="/60A03AFC/61BA55F4" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/61BA55F4" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 9800 2050 50  0001 C CNN
+F 1 "GND" H 9805 2127 50  0000 C CNN
+F 2 "" H 9800 2300 50  0001 C CNN
+F 3 "" H 9800 2300 50  0001 C CNN
+	1    9800 2300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9800 2300 9800 2250
+$Comp
+L 74xGxx:74LVC1G04 U?
+U 1 1 61BDAD31
+P 9800 3050
+AR Path="/60A03AFC/61BDAD31" Ref="U?"  Part="1" 
+AR Path="/62FACF10/61BDAD31" Ref="U?"  Part="1" 
+F 0 "U?" H 9950 3150 50  0000 C CNN
+F 1 "74LVC1G04" H 10100 2950 50  0000 C CNN
+F 2 "" H 9800 3050 50  0001 C CNN
+F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 9800 3050 50  0001 C CNN
+	1    9800 3050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9800 2800 9800 2850
+$Comp
+L Device:C_Small C?
+U 1 1 61BDAD38
+P 9950 2850
+AR Path="/60A03AFC/61BDAD38" Ref="C?"  Part="1" 
+AR Path="/62FACF10/61BDAD38" Ref="C?"  Part="1" 
+F 0 "C?" V 9721 2850 50  0000 C CNN
+F 1 "0u1" V 9812 2850 50  0000 C CNN
+F 2 "" H 9950 2850 50  0001 C CNN
+F 3 "~" H 9950 2850 50  0001 C CNN
+	1    9950 2850
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	9850 2850 9800 2850
+Connection ~ 9800 2850
+Wire Wire Line
+	9800 2850 9800 2950
+$Comp
+L power:+5V #PWR?
+U 1 1 61BDAD41
+P 9800 2800
+AR Path="/60A03AFC/61BDAD41" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/61BDAD41" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 9800 2650 50  0001 C CNN
+F 1 "+5V" H 9815 2973 50  0000 C CNN
+F 2 "" H 9800 2800 50  0001 C CNN
+F 3 "" H 9800 2800 50  0001 C CNN
+	1    9800 2800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 61BDAD47
+P 10100 2850
+AR Path="/60A03AFC/61BDAD47" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/61BDAD47" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 10100 2600 50  0001 C CNN
+F 1 "GND" V 10105 2722 50  0000 R CNN
+F 2 "" H 10100 2850 50  0001 C CNN
+F 3 "" H 10100 2850 50  0001 C CNN
+	1    10100 2850
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	10100 2850 10050 2850
+$Comp
+L power:GND #PWR?
+U 1 1 61BDAD4E
+P 9800 3200
+AR Path="/60A03AFC/61BDAD4E" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/61BDAD4E" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 9800 2950 50  0001 C CNN
+F 1 "GND" H 9805 3027 50  0000 C CNN
+F 2 "" H 9800 3200 50  0001 C CNN
+F 3 "" H 9800 3200 50  0001 C CNN
+	1    9800 3200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9800 3200 9800 3150
+Text HLabel 9450 2150 0    50   Input ~ 0
+Latch_ODR
+Text HLabel 9450 3050 0    50   Input ~ 0
+Latch_TRI
+Wire Wire Line
+	9500 3050 9450 3050
+Wire Wire Line
+	9500 2150 9450 2150
+$Comp
+L 74xGxx:74LVC1G04 U?
+U 1 1 61CD7072
+P 9800 3900
+AR Path="/60A03AFC/61CD7072" Ref="U?"  Part="1" 
+AR Path="/62FACF10/61CD7072" Ref="U?"  Part="1" 
+F 0 "U?" H 9950 4000 50  0000 C CNN
+F 1 "74LVC1G04" H 10100 3800 50  0000 C CNN
+F 2 "" H 9800 3900 50  0001 C CNN
+F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 9800 3900 50  0001 C CNN
+	1    9800 3900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9800 3650 9800 3700
+$Comp
+L Device:C_Small C?
+U 1 1 61CD7079
+P 9950 3700
+AR Path="/60A03AFC/61CD7079" Ref="C?"  Part="1" 
+AR Path="/62FACF10/61CD7079" Ref="C?"  Part="1" 
+F 0 "C?" V 9721 3700 50  0000 C CNN
+F 1 "0u1" V 9812 3700 50  0000 C CNN
+F 2 "" H 9950 3700 50  0001 C CNN
+F 3 "~" H 9950 3700 50  0001 C CNN
+	1    9950 3700
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	9850 3700 9800 3700
+Connection ~ 9800 3700
+Wire Wire Line
+	9800 3700 9800 3800
+$Comp
+L power:+5V #PWR?
+U 1 1 61CD7082
+P 9800 3650
+AR Path="/60A03AFC/61CD7082" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/61CD7082" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 9800 3500 50  0001 C CNN
+F 1 "+5V" H 9815 3823 50  0000 C CNN
+F 2 "" H 9800 3650 50  0001 C CNN
+F 3 "" H 9800 3650 50  0001 C CNN
+	1    9800 3650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 61CD7088
+P 10100 3700
+AR Path="/60A03AFC/61CD7088" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/61CD7088" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 10100 3450 50  0001 C CNN
+F 1 "GND" V 10105 3572 50  0000 R CNN
+F 2 "" H 10100 3700 50  0001 C CNN
+F 3 "" H 10100 3700 50  0001 C CNN
+	1    10100 3700
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	10100 3700 10050 3700
+$Comp
+L power:GND #PWR?
+U 1 1 61CD708F
+P 9800 4050
+AR Path="/60A03AFC/61CD708F" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/61CD708F" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 9800 3800 50  0001 C CNN
+F 1 "GND" H 9805 3877 50  0000 C CNN
+F 2 "" H 9800 4050 50  0001 C CNN
+F 3 "" H 9800 4050 50  0001 C CNN
+	1    9800 4050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9800 4050 9800 4000
+$Comp
+L 74xGxx:74LVC1G04 U?
+U 1 1 61CD7096
+P 9800 4750
+AR Path="/60A03AFC/61CD7096" Ref="U?"  Part="1" 
+AR Path="/62FACF10/61CD7096" Ref="U?"  Part="1" 
+F 0 "U?" H 9950 4850 50  0000 C CNN
+F 1 "74LVC1G04" H 10100 4650 50  0000 C CNN
+F 2 "" H 9800 4750 50  0001 C CNN
+F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 9800 4750 50  0001 C CNN
+	1    9800 4750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9800 4500 9800 4550
+$Comp
+L Device:C_Small C?
+U 1 1 61CD709D
+P 9950 4550
+AR Path="/60A03AFC/61CD709D" Ref="C?"  Part="1" 
+AR Path="/62FACF10/61CD709D" Ref="C?"  Part="1" 
+F 0 "C?" V 9721 4550 50  0000 C CNN
+F 1 "0u1" V 9812 4550 50  0000 C CNN
+F 2 "" H 9950 4550 50  0001 C CNN
+F 3 "~" H 9950 4550 50  0001 C CNN
+	1    9950 4550
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	9850 4550 9800 4550
+Connection ~ 9800 4550
+Wire Wire Line
+	9800 4550 9800 4650
+$Comp
+L power:+5V #PWR?
+U 1 1 61CD70A6
+P 9800 4500
+AR Path="/60A03AFC/61CD70A6" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/61CD70A6" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 9800 4350 50  0001 C CNN
+F 1 "+5V" H 9815 4673 50  0000 C CNN
+F 2 "" H 9800 4500 50  0001 C CNN
+F 3 "" H 9800 4500 50  0001 C CNN
+	1    9800 4500
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 61CD70AC
+P 10100 4550
+AR Path="/60A03AFC/61CD70AC" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/61CD70AC" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 10100 4300 50  0001 C CNN
+F 1 "GND" V 10105 4422 50  0000 R CNN
+F 2 "" H 10100 4550 50  0001 C CNN
+F 3 "" H 10100 4550 50  0001 C CNN
+	1    10100 4550
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	10100 4550 10050 4550
+$Comp
+L power:GND #PWR?
+U 1 1 61CD70B3
+P 9800 4900
+AR Path="/60A03AFC/61CD70B3" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/61CD70B3" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 9800 4650 50  0001 C CNN
+F 1 "GND" H 9805 4727 50  0000 C CNN
+F 2 "" H 9800 4900 50  0001 C CNN
+F 3 "" H 9800 4900 50  0001 C CNN
+	1    9800 4900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9800 4900 9800 4850
+Wire Wire Line
+	9500 4750 9450 4750
+Wire Wire Line
+	9500 3900 9450 3900
+$Comp
+L 74xGxx:74LVC1G04 U?
+U 1 1 61D1129E
+P 9800 5600
+AR Path="/60A03AFC/61D1129E" Ref="U?"  Part="1" 
+AR Path="/62FACF10/61D1129E" Ref="U?"  Part="1" 
+F 0 "U?" H 9950 5700 50  0000 C CNN
+F 1 "74LVC1G04" H 10100 5500 50  0000 C CNN
+F 2 "" H 9800 5600 50  0001 C CNN
+F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 9800 5600 50  0001 C CNN
+	1    9800 5600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9800 5350 9800 5400
+$Comp
+L Device:C_Small C?
+U 1 1 61D112A5
+P 9950 5400
+AR Path="/60A03AFC/61D112A5" Ref="C?"  Part="1" 
+AR Path="/62FACF10/61D112A5" Ref="C?"  Part="1" 
+F 0 "C?" V 9721 5400 50  0000 C CNN
+F 1 "0u1" V 9812 5400 50  0000 C CNN
+F 2 "" H 9950 5400 50  0001 C CNN
+F 3 "~" H 9950 5400 50  0001 C CNN
+	1    9950 5400
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	9850 5400 9800 5400
+Connection ~ 9800 5400
+Wire Wire Line
+	9800 5400 9800 5500
+$Comp
+L power:+5V #PWR?
+U 1 1 61D112AE
+P 9800 5350
+AR Path="/60A03AFC/61D112AE" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/61D112AE" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 9800 5200 50  0001 C CNN
+F 1 "+5V" H 9815 5523 50  0000 C CNN
+F 2 "" H 9800 5350 50  0001 C CNN
+F 3 "" H 9800 5350 50  0001 C CNN
+	1    9800 5350
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 61D112B4
+P 10100 5400
+AR Path="/60A03AFC/61D112B4" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/61D112B4" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 10100 5150 50  0001 C CNN
+F 1 "GND" V 10105 5272 50  0000 R CNN
+F 2 "" H 10100 5400 50  0001 C CNN
+F 3 "" H 10100 5400 50  0001 C CNN
+	1    10100 5400
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	10100 5400 10050 5400
+$Comp
+L power:GND #PWR?
+U 1 1 61D112BB
+P 9800 5750
+AR Path="/60A03AFC/61D112BB" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/61D112BB" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 9800 5500 50  0001 C CNN
+F 1 "GND" H 9805 5577 50  0000 C CNN
+F 2 "" H 9800 5750 50  0001 C CNN
+F 3 "" H 9800 5750 50  0001 C CNN
+	1    9800 5750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9800 5750 9800 5700
+Wire Wire Line
+	9500 5600 9450 5600
+Text HLabel 9450 3900 0    50   Input ~ 0
+OE_ODR
+Text HLabel 9450 4750 0    50   Input ~ 0
+OE_TRI
+Text HLabel 9450 5600 0    50   Input ~ 0
+OE_IDR
+Wire Wire Line
+	10050 2150 10500 2150
+Wire Wire Line
+	10050 3050 10500 3050
+Wire Wire Line
+	10050 3900 10500 3900
+Wire Wire Line
+	10050 4750 10500 4750
+Wire Wire Line
+	10050 5600 10500 5600
+Text Label 10500 2150 2    50   ~ 0
+~Latch_ODR
+Text Label 800  4600 0    50   ~ 0
+~Latch_ODR
+Wire Wire Line
+	800  4600 1450 4600
+Connection ~ 1450 4600
+Text Label 10500 3050 2    50   ~ 0
+~Latch_TRI
+Text Label 2900 4600 0    50   ~ 0
+~Latch_TRI
+Wire Wire Line
+	2900 4600 3500 4600
+Connection ~ 3500 4600
+Text Label 10500 3900 2    50   ~ 0
+~OE_ODR
+Text Label 5400 2650 1    50   ~ 0
+~OE_ODR
+Wire Wire Line
+	5400 2650 5400 2350
+Wire Wire Line
+	5400 2350 5450 2350
+Text Label 10500 4750 2    50   ~ 0
+~OE_TRI
+Text Label 5400 4700 1    50   ~ 0
+~OE_TRI
+Wire Wire Line
+	5400 4700 5400 4400
+Wire Wire Line
+	5400 4400 5450 4400
+Text Label 10500 5600 2    50   ~ 0
+~OE_IDR
+Text Label 5400 6800 1    50   ~ 0
+~OE_IDR
+Wire Wire Line
+	5400 6800 5400 6500
+Wire Wire Line
+	5400 6500 5450 6500
+Text Label 9500 6150 0    50   ~ 0
+0
+Text Label 9500 6250 0    50   ~ 0
+1
+Text Label 9500 6350 0    50   ~ 0
+2
+Text Label 9500 6450 0    50   ~ 0
+3
+Wire Wire Line
+	9750 6150 9500 6150
+Wire Wire Line
+	9750 6250 9500 6250
+Wire Wire Line
+	9750 6350 9500 6350
+Wire Wire Line
+	9750 6450 9500 6450
+Text HLabel 9750 6150 2    50   Output ~ 0
+0
+Text HLabel 9750 6250 2    50   Output ~ 0
+1
+Text HLabel 9750 6350 2    50   Output ~ 0
+2
+Text HLabel 9750 6450 2    50   Output ~ 0
+3
+$Comp
+L Device:LED_Small D?
+U 1 1 60378283
+P 2050 5700
+AR Path="/5ED2705B/5F30EEBC/60378283" Ref="D?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/60378283" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/60378283" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/60378283" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/60378283" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/60378283" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F6B5353/60378283" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/60378283" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/60378283" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/60378283" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/60378283" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/60378283" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/5F30EEBC/60378283" Ref="D?"  Part="1" 
+AR Path="/5F394B96/5F41E955/60378283" Ref="D?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/60378283" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/60378283" Ref="D?"  Part="1" 
+AR Path="/5F396002/60363512/60378283" Ref="D?"  Part="1" 
+AR Path="/604F08FB/5F41E955/60378283" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61E5606F/60378283" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/61F25961/60378283" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/60378283" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/620BE5A9/60378283" Ref="D?"  Part="1" 
+AR Path="/5FD65308/603CC273/60378283" Ref="D?"  Part="1" 
+AR Path="/5FD65291/60488F3E/60378283" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60491F62/60378283" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60494872/60378283" Ref="D?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/60378283" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60368D5B/60378283" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60368D5B/60378283" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60376771/60378283" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60376771/60378283" Ref="D?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/60378283" Ref="D?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/60378283" Ref="D?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/60378283" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/60378283" Ref="D?"  Part="1" 
+AR Path="/60A03AFC/60378283" Ref="D?"  Part="1" 
+AR Path="/62FACF10/60378283" Ref="D?"  Part="1" 
+F 0 "D?" H 1800 5650 50  0000 C CNN
+F 1 "LED" H 2200 5650 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 2050 5700 50  0001 C CNN
+F 3 "~" V 2050 5700 50  0001 C CNN
+	1    2050 5700
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED_Small D?
+U 1 1 60378284
+P 2150 5800
+AR Path="/5ED2705B/5F30EEBC/60378284" Ref="D?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/60378284" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/60378284" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/60378284" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/60378284" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/60378284" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F6B5353/60378284" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/60378284" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/60378284" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/60378284" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/60378284" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/60378284" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/5F30EEBC/60378284" Ref="D?"  Part="1" 
+AR Path="/5F394B96/5F41E955/60378284" Ref="D?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/60378284" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/60378284" Ref="D?"  Part="1" 
+AR Path="/5F396002/60363512/60378284" Ref="D?"  Part="1" 
+AR Path="/604F08FB/5F41E955/60378284" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61E5606F/60378284" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/61F25961/60378284" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/60378284" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/620BE5A9/60378284" Ref="D?"  Part="1" 
+AR Path="/5FD65308/603CC273/60378284" Ref="D?"  Part="1" 
+AR Path="/5FD65291/60488F3E/60378284" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60491F62/60378284" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60494872/60378284" Ref="D?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/60378284" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60368D5B/60378284" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60368D5B/60378284" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60376771/60378284" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60376771/60378284" Ref="D?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/60378284" Ref="D?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/60378284" Ref="D?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/60378284" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/60378284" Ref="D?"  Part="1" 
+AR Path="/60A03AFC/60378284" Ref="D?"  Part="1" 
+AR Path="/62FACF10/60378284" Ref="D?"  Part="1" 
+F 0 "D?" H 2000 5750 50  0000 C CNN
+F 1 "LED" H 2400 5750 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 2150 5800 50  0001 C CNN
+F 3 "~" V 2150 5800 50  0001 C CNN
+	1    2150 5800
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED_Small D?
+U 1 1 60378275
+P 2050 5900
+AR Path="/5ED2705B/5F30EEBC/60378275" Ref="D?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/60378275" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/60378275" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/60378275" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/60378275" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/60378275" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F6B5353/60378275" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/60378275" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/60378275" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/60378275" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/60378275" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/60378275" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/5F30EEBC/60378275" Ref="D?"  Part="1" 
+AR Path="/5F394B96/5F41E955/60378275" Ref="D?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/60378275" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/60378275" Ref="D?"  Part="1" 
+AR Path="/5F396002/60363512/60378275" Ref="D?"  Part="1" 
+AR Path="/604F08FB/5F41E955/60378275" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61E5606F/60378275" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/61F25961/60378275" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/60378275" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/620BE5A9/60378275" Ref="D?"  Part="1" 
+AR Path="/5FD65308/603CC273/60378275" Ref="D?"  Part="1" 
+AR Path="/5FD65291/60488F3E/60378275" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60491F62/60378275" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60494872/60378275" Ref="D?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/60378275" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60368D5B/60378275" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60368D5B/60378275" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60376771/60378275" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60376771/60378275" Ref="D?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/60378275" Ref="D?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/60378275" Ref="D?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/60378275" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/60378275" Ref="D?"  Part="1" 
+AR Path="/60A03AFC/60378275" Ref="D?"  Part="1" 
+AR Path="/62FACF10/60378275" Ref="D?"  Part="1" 
+F 0 "D?" H 1800 5850 50  0000 C CNN
+F 1 "LED" H 2200 5850 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 2050 5900 50  0001 C CNN
+F 3 "~" V 2050 5900 50  0001 C CNN
+	1    2050 5900
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED_Small D?
+U 1 1 5F5C55D2
+P 2150 6000
+AR Path="/5ED2705B/5F30EEBC/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F6B5353/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/5F30EEBC/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/5F394B96/5F41E955/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/5F396002/60363512/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/604F08FB/5F41E955/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61E5606F/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/61F25961/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/620BE5A9/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/5FD65308/603CC273/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/5FD65291/60488F3E/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60491F62/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60494872/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60368D5B/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60368D5B/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60376771/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60376771/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/60A03AFC/5F5C55D2" Ref="D?"  Part="1" 
+AR Path="/62FACF10/5F5C55D2" Ref="D?"  Part="1" 
+F 0 "D?" H 2000 5950 50  0000 C CNN
+F 1 "LED" H 2400 5950 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 2150 6000 50  0001 C CNN
+F 3 "~" V 2150 6000 50  0001 C CNN
+	1    2150 6000
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED_Small D?
+U 1 1 5F5C6722
+P 2050 6100
+AR Path="/5ED2705B/5F30EEBC/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F6B5353/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/5F30EEBC/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/5F394B96/5F41E955/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/5F396002/60363512/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/604F08FB/5F41E955/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61E5606F/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/61F25961/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/620BE5A9/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/5FD65308/603CC273/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/5FD65291/60488F3E/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60491F62/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60494872/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60368D5B/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60368D5B/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60376771/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60376771/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/60A03AFC/5F5C6722" Ref="D?"  Part="1" 
+AR Path="/62FACF10/5F5C6722" Ref="D?"  Part="1" 
+F 0 "D?" H 1800 6050 50  0000 C CNN
+F 1 "LED" H 2200 6050 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 2050 6100 50  0001 C CNN
+F 3 "~" V 2050 6100 50  0001 C CNN
+	1    2050 6100
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED_Small D?
+U 1 1 60378278
+P 2150 6200
+AR Path="/5ED2705B/5F30EEBC/60378278" Ref="D?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/60378278" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/60378278" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/60378278" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/60378278" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/60378278" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F6B5353/60378278" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/60378278" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/60378278" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/60378278" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/60378278" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/60378278" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/5F30EEBC/60378278" Ref="D?"  Part="1" 
+AR Path="/5F394B96/5F41E955/60378278" Ref="D?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/60378278" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/60378278" Ref="D?"  Part="1" 
+AR Path="/5F396002/60363512/60378278" Ref="D?"  Part="1" 
+AR Path="/604F08FB/5F41E955/60378278" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61E5606F/60378278" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/61F25961/60378278" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/60378278" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/620BE5A9/60378278" Ref="D?"  Part="1" 
+AR Path="/5FD65308/603CC273/60378278" Ref="D?"  Part="1" 
+AR Path="/5FD65291/60488F3E/60378278" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60491F62/60378278" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60494872/60378278" Ref="D?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/60378278" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60368D5B/60378278" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60368D5B/60378278" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60376771/60378278" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60376771/60378278" Ref="D?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/60378278" Ref="D?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/60378278" Ref="D?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/60378278" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/60378278" Ref="D?"  Part="1" 
+AR Path="/60A03AFC/60378278" Ref="D?"  Part="1" 
+AR Path="/62FACF10/60378278" Ref="D?"  Part="1" 
+F 0 "D?" H 2000 6150 50  0000 C CNN
+F 1 "LED" H 2400 6150 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 2150 6200 50  0001 C CNN
+F 3 "~" V 2150 6200 50  0001 C CNN
+	1    2150 6200
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED_Small D?
+U 1 1 60378279
+P 2050 6300
+AR Path="/5ED2705B/5F30EEBC/60378279" Ref="D?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/60378279" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/60378279" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/60378279" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/60378279" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/60378279" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F6B5353/60378279" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/60378279" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/60378279" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/60378279" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/60378279" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/60378279" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/5F30EEBC/60378279" Ref="D?"  Part="1" 
+AR Path="/5F394B96/5F41E955/60378279" Ref="D?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/60378279" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/60378279" Ref="D?"  Part="1" 
+AR Path="/5F396002/60363512/60378279" Ref="D?"  Part="1" 
+AR Path="/604F08FB/5F41E955/60378279" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61E5606F/60378279" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/61F25961/60378279" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/60378279" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/620BE5A9/60378279" Ref="D?"  Part="1" 
+AR Path="/5FD65308/603CC273/60378279" Ref="D?"  Part="1" 
+AR Path="/5FD65291/60488F3E/60378279" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60491F62/60378279" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60494872/60378279" Ref="D?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/60378279" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60368D5B/60378279" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60368D5B/60378279" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60376771/60378279" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60376771/60378279" Ref="D?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/60378279" Ref="D?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/60378279" Ref="D?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/60378279" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/60378279" Ref="D?"  Part="1" 
+AR Path="/60A03AFC/60378279" Ref="D?"  Part="1" 
+AR Path="/62FACF10/60378279" Ref="D?"  Part="1" 
+F 0 "D?" H 1800 6250 50  0000 C CNN
+F 1 "LED" H 2200 6250 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 2050 6300 50  0001 C CNN
+F 3 "~" V 2050 6300 50  0001 C CNN
+	1    2050 6300
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED_Small D?
+U 1 1 60527AB0
+P 2150 6400
+AR Path="/5ED2705B/5F30EEBC/60527AB0" Ref="D?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/60527AB0" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/60527AB0" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/60527AB0" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/60527AB0" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/60527AB0" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F6B5353/60527AB0" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/60527AB0" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/60527AB0" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/60527AB0" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/60527AB0" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/60527AB0" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/5F30EEBC/60527AB0" Ref="D?"  Part="1" 
+AR Path="/5F394B96/5F41E955/60527AB0" Ref="D?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/60527AB0" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/60527AB0" Ref="D?"  Part="1" 
+AR Path="/5F396002/60363512/60527AB0" Ref="D?"  Part="1" 
+AR Path="/604F08FB/5F41E955/60527AB0" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61E5606F/60527AB0" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/61F25961/60527AB0" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/60527AB0" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/620BE5A9/60527AB0" Ref="D?"  Part="1" 
+AR Path="/5FD65308/603CC273/60527AB0" Ref="D?"  Part="1" 
+AR Path="/5FD65291/60488F3E/60527AB0" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60491F62/60527AB0" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60494872/60527AB0" Ref="D?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/60527AB0" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60368D5B/60527AB0" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60368D5B/60527AB0" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60376771/60527AB0" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60376771/60527AB0" Ref="D?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/60527AB0" Ref="D?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/60527AB0" Ref="D?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/60527AB0" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/60527AB0" Ref="D?"  Part="1" 
+AR Path="/60A03AFC/60527AB0" Ref="D?"  Part="1" 
+AR Path="/62FACF10/60527AB0" Ref="D?"  Part="1" 
+F 0 "D?" H 2000 6350 50  0000 C CNN
+F 1 "LED" H 2400 6350 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 2150 6400 50  0001 C CNN
+F 3 "~" V 2150 6400 50  0001 C CNN
+	1    2150 6400
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	2150 5700 2450 5700
+Wire Wire Line
+	2250 5800 2450 5800
+Wire Wire Line
+	2150 5900 2450 5900
+Wire Wire Line
+	2250 6000 2450 6000
+Wire Wire Line
+	2150 6100 2450 6100
+Wire Wire Line
+	2250 6200 2450 6200
+Wire Wire Line
+	2150 6300 2450 6300
+Wire Wire Line
+	2250 6400 2450 6400
+Wire Wire Line
+	2450 5700 2450 5800
+Connection ~ 2450 5800
+Wire Wire Line
+	2450 5800 2450 5900
+Connection ~ 2450 5900
+Wire Wire Line
+	2450 5900 2450 6000
+Connection ~ 2450 6000
+Wire Wire Line
+	2450 6000 2450 6100
+Connection ~ 2450 6100
+Wire Wire Line
+	2450 6100 2450 6200
+Connection ~ 2450 6200
+Wire Wire Line
+	2450 6200 2450 6300
+Connection ~ 2450 6300
+Wire Wire Line
+	2450 6300 2450 6400
+Wire Wire Line
+	2450 6400 2450 6450
+Connection ~ 2450 6400
+$Comp
+L power:GND #PWR?
+U 1 1 60527ABA
+P 2450 6450
+AR Path="/5ED2705B/5F30EEBC/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/5F6B5353/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/5F3ED0F9/5F30EEBC/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/5F394B96/5F41E955/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/5F396002/60363512/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/604F08FB/5F41E955/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/61E5606F/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/61F25961/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/620BE5A9/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/5FD65308/603CC273/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/5FD65291/60488F3E/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/5FD65308/60491F62/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/5FD65308/60494872/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/5ED2705B/60368D5B/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/5F3ED0F9/60368D5B/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/5ED2705B/60376771/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/5F3ED0F9/60376771/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/60A03AFC/60527ABA" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/60527ABA" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 2450 6200 50  0001 C CNN
+F 1 "GND" H 2600 6400 50  0000 C CNN
+F 2 "" H 2450 6450 50  0001 C CNN
+F 3 "" H 2450 6450 50  0001 C CNN
+	1    2450 6450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 665AE0E8
+P 1450 5700
+AR Path="/5F394B96/5F41E955/665AE0E8" Ref="R?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/665AE0E8" Ref="R?"  Part="1" 
+AR Path="/5FD65291/60488F3E/665AE0E8" Ref="R?"  Part="1" 
+AR Path="/5FD65308/603CC273/665AE0E8" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60491F62/665AE0E8" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60494872/665AE0E8" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/665AE0E8" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/665AE0E8" Ref="R?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/665AE0E8" Ref="R?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/665AE0E8" Ref="R?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/665AE0E8" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/665AE0E8" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/665AE0E8" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/665AE0E8" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/665AE0E8" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/665AE0E8" Ref="R?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/665AE0E8" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/665AE0E8" Ref="R?"  Part="1" 
+AR Path="/60A03AFC/665AE0E8" Ref="R?"  Part="1" 
+AR Path="/62FACF10/665AE0E8" Ref="R?"  Part="1" 
+F 0 "R?" V 1400 5900 50  0000 C CNN
+F 1 "rled" V 1400 5550 50  0000 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 1450 5700 50  0001 C CNN
+F 3 "~" H 1450 5700 50  0001 C CNN
+	1    1450 5700
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 665B3697
+P 1450 5800
+AR Path="/5F394B96/5F41E955/665B3697" Ref="R?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/665B3697" Ref="R?"  Part="1" 
+AR Path="/5FD65291/60488F3E/665B3697" Ref="R?"  Part="1" 
+AR Path="/5FD65308/603CC273/665B3697" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60491F62/665B3697" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60494872/665B3697" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/665B3697" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/665B3697" Ref="R?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/665B3697" Ref="R?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/665B3697" Ref="R?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/665B3697" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/665B3697" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/665B3697" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/665B3697" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/665B3697" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/665B3697" Ref="R?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/665B3697" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/665B3697" Ref="R?"  Part="1" 
+AR Path="/60A03AFC/665B3697" Ref="R?"  Part="1" 
+AR Path="/62FACF10/665B3697" Ref="R?"  Part="1" 
+F 0 "R?" V 1400 6000 50  0000 C CNN
+F 1 "rled" V 1400 5650 50  0000 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 1450 5800 50  0001 C CNN
+F 3 "~" H 1450 5800 50  0001 C CNN
+	1    1450 5800
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 665B39F4
+P 1450 5900
+AR Path="/5F394B96/5F41E955/665B39F4" Ref="R?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/665B39F4" Ref="R?"  Part="1" 
+AR Path="/5FD65291/60488F3E/665B39F4" Ref="R?"  Part="1" 
+AR Path="/5FD65308/603CC273/665B39F4" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60491F62/665B39F4" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60494872/665B39F4" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/665B39F4" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/665B39F4" Ref="R?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/665B39F4" Ref="R?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/665B39F4" Ref="R?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/665B39F4" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/665B39F4" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/665B39F4" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/665B39F4" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/665B39F4" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/665B39F4" Ref="R?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/665B39F4" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/665B39F4" Ref="R?"  Part="1" 
+AR Path="/60A03AFC/665B39F4" Ref="R?"  Part="1" 
+AR Path="/62FACF10/665B39F4" Ref="R?"  Part="1" 
+F 0 "R?" V 1400 6100 50  0000 C CNN
+F 1 "rled" V 1400 5750 50  0000 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 1450 5900 50  0001 C CNN
+F 3 "~" H 1450 5900 50  0001 C CNN
+	1    1450 5900
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 665B4197
+P 1450 6000
+AR Path="/5F394B96/5F41E955/665B4197" Ref="R?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/665B4197" Ref="R?"  Part="1" 
+AR Path="/5FD65291/60488F3E/665B4197" Ref="R?"  Part="1" 
+AR Path="/5FD65308/603CC273/665B4197" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60491F62/665B4197" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60494872/665B4197" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/665B4197" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/665B4197" Ref="R?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/665B4197" Ref="R?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/665B4197" Ref="R?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/665B4197" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/665B4197" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/665B4197" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/665B4197" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/665B4197" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/665B4197" Ref="R?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/665B4197" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/665B4197" Ref="R?"  Part="1" 
+AR Path="/60A03AFC/665B4197" Ref="R?"  Part="1" 
+AR Path="/62FACF10/665B4197" Ref="R?"  Part="1" 
+F 0 "R?" V 1400 6200 50  0000 C CNN
+F 1 "rled" V 1400 5850 50  0000 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 1450 6000 50  0001 C CNN
+F 3 "~" H 1450 6000 50  0001 C CNN
+	1    1450 6000
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 665B43F3
+P 1450 6100
+AR Path="/5F394B96/5F41E955/665B43F3" Ref="R?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/665B43F3" Ref="R?"  Part="1" 
+AR Path="/5FD65291/60488F3E/665B43F3" Ref="R?"  Part="1" 
+AR Path="/5FD65308/603CC273/665B43F3" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60491F62/665B43F3" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60494872/665B43F3" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/665B43F3" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/665B43F3" Ref="R?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/665B43F3" Ref="R?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/665B43F3" Ref="R?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/665B43F3" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/665B43F3" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/665B43F3" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/665B43F3" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/665B43F3" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/665B43F3" Ref="R?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/665B43F3" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/665B43F3" Ref="R?"  Part="1" 
+AR Path="/60A03AFC/665B43F3" Ref="R?"  Part="1" 
+AR Path="/62FACF10/665B43F3" Ref="R?"  Part="1" 
+F 0 "R?" V 1400 6300 50  0000 C CNN
+F 1 "rled" V 1400 5950 50  0000 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 1450 6100 50  0001 C CNN
+F 3 "~" H 1450 6100 50  0001 C CNN
+	1    1450 6100
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 665B4656
+P 1450 6200
+AR Path="/5F394B96/5F41E955/665B4656" Ref="R?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/665B4656" Ref="R?"  Part="1" 
+AR Path="/5FD65291/60488F3E/665B4656" Ref="R?"  Part="1" 
+AR Path="/5FD65308/603CC273/665B4656" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60491F62/665B4656" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60494872/665B4656" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/665B4656" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/665B4656" Ref="R?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/665B4656" Ref="R?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/665B4656" Ref="R?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/665B4656" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/665B4656" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/665B4656" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/665B4656" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/665B4656" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/665B4656" Ref="R?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/665B4656" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/665B4656" Ref="R?"  Part="1" 
+AR Path="/60A03AFC/665B4656" Ref="R?"  Part="1" 
+AR Path="/62FACF10/665B4656" Ref="R?"  Part="1" 
+F 0 "R?" V 1400 6400 50  0000 C CNN
+F 1 "rled" V 1400 6050 50  0000 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 1450 6200 50  0001 C CNN
+F 3 "~" H 1450 6200 50  0001 C CNN
+	1    1450 6200
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 665B49AB
+P 1450 6300
+AR Path="/5F394B96/5F41E955/665B49AB" Ref="R?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/665B49AB" Ref="R?"  Part="1" 
+AR Path="/5FD65291/60488F3E/665B49AB" Ref="R?"  Part="1" 
+AR Path="/5FD65308/603CC273/665B49AB" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60491F62/665B49AB" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60494872/665B49AB" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/665B49AB" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/665B49AB" Ref="R?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/665B49AB" Ref="R?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/665B49AB" Ref="R?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/665B49AB" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/665B49AB" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/665B49AB" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/665B49AB" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/665B49AB" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/665B49AB" Ref="R?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/665B49AB" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/665B49AB" Ref="R?"  Part="1" 
+AR Path="/60A03AFC/665B49AB" Ref="R?"  Part="1" 
+AR Path="/62FACF10/665B49AB" Ref="R?"  Part="1" 
+F 0 "R?" V 1400 6500 50  0000 C CNN
+F 1 "rled" V 1400 6150 50  0000 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 1450 6300 50  0001 C CNN
+F 3 "~" H 1450 6300 50  0001 C CNN
+	1    1450 6300
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 665B4D42
+P 1450 6400
+AR Path="/5F394B96/5F41E955/665B4D42" Ref="R?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/665B4D42" Ref="R?"  Part="1" 
+AR Path="/5FD65291/60488F3E/665B4D42" Ref="R?"  Part="1" 
+AR Path="/5FD65308/603CC273/665B4D42" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60491F62/665B4D42" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60494872/665B4D42" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/665B4D42" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/665B4D42" Ref="R?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/665B4D42" Ref="R?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/665B4D42" Ref="R?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/665B4D42" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/665B4D42" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/665B4D42" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/665B4D42" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/665B4D42" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/665B4D42" Ref="R?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/665B4D42" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/665B4D42" Ref="R?"  Part="1" 
+AR Path="/60A03AFC/665B4D42" Ref="R?"  Part="1" 
+AR Path="/62FACF10/665B4D42" Ref="R?"  Part="1" 
+F 0 "R?" V 1400 6600 50  0000 C CNN
+F 1 "rled" V 1400 6250 50  0000 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 1450 6400 50  0001 C CNN
+F 3 "~" H 1450 6400 50  0001 C CNN
+	1    1450 6400
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	1550 5700 1950 5700
+Wire Wire Line
+	1550 5900 1950 5900
+Wire Wire Line
+	1550 6100 1950 6100
+Wire Wire Line
+	1550 6300 1950 6300
+Wire Wire Line
+	1550 6400 2050 6400
+Wire Wire Line
+	1550 6200 2050 6200
+Wire Wire Line
+	1550 6000 2050 6000
+Wire Wire Line
+	1550 5800 2050 5800
+$Comp
+L Device:LED_Small D?
+U 1 1 6256F08E
+P 3700 5700
+AR Path="/5ED2705B/5F30EEBC/6256F08E" Ref="D?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/6256F08E" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/6256F08E" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/6256F08E" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/6256F08E" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/6256F08E" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F6B5353/6256F08E" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/6256F08E" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/6256F08E" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/6256F08E" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/6256F08E" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/6256F08E" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/5F30EEBC/6256F08E" Ref="D?"  Part="1" 
+AR Path="/5F394B96/5F41E955/6256F08E" Ref="D?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/6256F08E" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/6256F08E" Ref="D?"  Part="1" 
+AR Path="/5F396002/60363512/6256F08E" Ref="D?"  Part="1" 
+AR Path="/604F08FB/5F41E955/6256F08E" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61E5606F/6256F08E" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/61F25961/6256F08E" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/6256F08E" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/620BE5A9/6256F08E" Ref="D?"  Part="1" 
+AR Path="/5FD65308/603CC273/6256F08E" Ref="D?"  Part="1" 
+AR Path="/5FD65291/60488F3E/6256F08E" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60491F62/6256F08E" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60494872/6256F08E" Ref="D?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/6256F08E" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60368D5B/6256F08E" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60368D5B/6256F08E" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60376771/6256F08E" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60376771/6256F08E" Ref="D?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/6256F08E" Ref="D?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/6256F08E" Ref="D?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/6256F08E" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/6256F08E" Ref="D?"  Part="1" 
+AR Path="/60A03AFC/6256F08E" Ref="D?"  Part="1" 
+AR Path="/62FACF10/6256F08E" Ref="D?"  Part="1" 
+F 0 "D?" H 3450 5650 50  0000 C CNN
+F 1 "LED" H 3850 5650 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 3700 5700 50  0001 C CNN
+F 3 "~" V 3700 5700 50  0001 C CNN
+	1    3700 5700
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED_Small D?
+U 1 1 6256F094
+P 3800 5800
+AR Path="/5ED2705B/5F30EEBC/6256F094" Ref="D?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/6256F094" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/6256F094" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/6256F094" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/6256F094" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/6256F094" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F6B5353/6256F094" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/6256F094" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/6256F094" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/6256F094" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/6256F094" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/6256F094" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/5F30EEBC/6256F094" Ref="D?"  Part="1" 
+AR Path="/5F394B96/5F41E955/6256F094" Ref="D?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/6256F094" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/6256F094" Ref="D?"  Part="1" 
+AR Path="/5F396002/60363512/6256F094" Ref="D?"  Part="1" 
+AR Path="/604F08FB/5F41E955/6256F094" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61E5606F/6256F094" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/61F25961/6256F094" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/6256F094" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/620BE5A9/6256F094" Ref="D?"  Part="1" 
+AR Path="/5FD65308/603CC273/6256F094" Ref="D?"  Part="1" 
+AR Path="/5FD65291/60488F3E/6256F094" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60491F62/6256F094" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60494872/6256F094" Ref="D?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/6256F094" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60368D5B/6256F094" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60368D5B/6256F094" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60376771/6256F094" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60376771/6256F094" Ref="D?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/6256F094" Ref="D?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/6256F094" Ref="D?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/6256F094" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/6256F094" Ref="D?"  Part="1" 
+AR Path="/60A03AFC/6256F094" Ref="D?"  Part="1" 
+AR Path="/62FACF10/6256F094" Ref="D?"  Part="1" 
+F 0 "D?" H 3650 5750 50  0000 C CNN
+F 1 "LED" H 4050 5750 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 3800 5800 50  0001 C CNN
+F 3 "~" V 3800 5800 50  0001 C CNN
+	1    3800 5800
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED_Small D?
+U 1 1 6256F09A
+P 3700 5900
+AR Path="/5ED2705B/5F30EEBC/6256F09A" Ref="D?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/6256F09A" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/6256F09A" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/6256F09A" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/6256F09A" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/6256F09A" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F6B5353/6256F09A" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/6256F09A" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/6256F09A" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/6256F09A" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/6256F09A" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/6256F09A" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/5F30EEBC/6256F09A" Ref="D?"  Part="1" 
+AR Path="/5F394B96/5F41E955/6256F09A" Ref="D?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/6256F09A" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/6256F09A" Ref="D?"  Part="1" 
+AR Path="/5F396002/60363512/6256F09A" Ref="D?"  Part="1" 
+AR Path="/604F08FB/5F41E955/6256F09A" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61E5606F/6256F09A" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/61F25961/6256F09A" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/6256F09A" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/620BE5A9/6256F09A" Ref="D?"  Part="1" 
+AR Path="/5FD65308/603CC273/6256F09A" Ref="D?"  Part="1" 
+AR Path="/5FD65291/60488F3E/6256F09A" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60491F62/6256F09A" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60494872/6256F09A" Ref="D?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/6256F09A" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60368D5B/6256F09A" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60368D5B/6256F09A" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60376771/6256F09A" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60376771/6256F09A" Ref="D?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/6256F09A" Ref="D?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/6256F09A" Ref="D?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/6256F09A" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/6256F09A" Ref="D?"  Part="1" 
+AR Path="/60A03AFC/6256F09A" Ref="D?"  Part="1" 
+AR Path="/62FACF10/6256F09A" Ref="D?"  Part="1" 
+F 0 "D?" H 3450 5850 50  0000 C CNN
+F 1 "LED" H 3850 5850 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 3700 5900 50  0001 C CNN
+F 3 "~" V 3700 5900 50  0001 C CNN
+	1    3700 5900
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED_Small D?
+U 1 1 6256F0A0
+P 3800 6000
+AR Path="/5ED2705B/5F30EEBC/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F6B5353/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/5F30EEBC/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/5F394B96/5F41E955/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/5F396002/60363512/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/604F08FB/5F41E955/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61E5606F/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/61F25961/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/620BE5A9/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/5FD65308/603CC273/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/5FD65291/60488F3E/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60491F62/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60494872/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60368D5B/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60368D5B/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60376771/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60376771/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/60A03AFC/6256F0A0" Ref="D?"  Part="1" 
+AR Path="/62FACF10/6256F0A0" Ref="D?"  Part="1" 
+F 0 "D?" H 3650 5950 50  0000 C CNN
+F 1 "LED" H 4050 5950 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 3800 6000 50  0001 C CNN
+F 3 "~" V 3800 6000 50  0001 C CNN
+	1    3800 6000
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED_Small D?
+U 1 1 6256F0A6
+P 3700 6100
+AR Path="/5ED2705B/5F30EEBC/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F6B5353/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/5F30EEBC/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/5F394B96/5F41E955/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/5F396002/60363512/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/604F08FB/5F41E955/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61E5606F/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/61F25961/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/620BE5A9/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/5FD65308/603CC273/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/5FD65291/60488F3E/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60491F62/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60494872/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60368D5B/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60368D5B/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60376771/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60376771/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/60A03AFC/6256F0A6" Ref="D?"  Part="1" 
+AR Path="/62FACF10/6256F0A6" Ref="D?"  Part="1" 
+F 0 "D?" H 3450 6050 50  0000 C CNN
+F 1 "LED" H 3850 6050 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 3700 6100 50  0001 C CNN
+F 3 "~" V 3700 6100 50  0001 C CNN
+	1    3700 6100
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED_Small D?
+U 1 1 6256F0AC
+P 3800 6200
+AR Path="/5ED2705B/5F30EEBC/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F6B5353/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/5F30EEBC/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/5F394B96/5F41E955/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/5F396002/60363512/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/604F08FB/5F41E955/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61E5606F/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/61F25961/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/620BE5A9/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/5FD65308/603CC273/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/5FD65291/60488F3E/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60491F62/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60494872/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60368D5B/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60368D5B/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60376771/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60376771/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/60A03AFC/6256F0AC" Ref="D?"  Part="1" 
+AR Path="/62FACF10/6256F0AC" Ref="D?"  Part="1" 
+F 0 "D?" H 3650 6150 50  0000 C CNN
+F 1 "LED" H 4050 6150 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 3800 6200 50  0001 C CNN
+F 3 "~" V 3800 6200 50  0001 C CNN
+	1    3800 6200
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED_Small D?
+U 1 1 6256F0B2
+P 3700 6300
+AR Path="/5ED2705B/5F30EEBC/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F6B5353/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/5F30EEBC/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/5F394B96/5F41E955/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/5F396002/60363512/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/604F08FB/5F41E955/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61E5606F/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/61F25961/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/620BE5A9/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/5FD65308/603CC273/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/5FD65291/60488F3E/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60491F62/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60494872/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60368D5B/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60368D5B/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60376771/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60376771/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/60A03AFC/6256F0B2" Ref="D?"  Part="1" 
+AR Path="/62FACF10/6256F0B2" Ref="D?"  Part="1" 
+F 0 "D?" H 3450 6250 50  0000 C CNN
+F 1 "LED" H 3850 6250 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 3700 6300 50  0001 C CNN
+F 3 "~" V 3700 6300 50  0001 C CNN
+	1    3700 6300
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED_Small D?
+U 1 1 6256F0B8
+P 3800 6400
+AR Path="/5ED2705B/5F30EEBC/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F6B5353/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/5F30EEBC/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/5F394B96/5F41E955/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/5F396002/60363512/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/604F08FB/5F41E955/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61E5606F/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/61F25961/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/620BE5A9/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/5FD65308/603CC273/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/5FD65291/60488F3E/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60491F62/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60494872/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60368D5B/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60368D5B/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60376771/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60376771/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/60A03AFC/6256F0B8" Ref="D?"  Part="1" 
+AR Path="/62FACF10/6256F0B8" Ref="D?"  Part="1" 
+F 0 "D?" H 3650 6350 50  0000 C CNN
+F 1 "LED" H 4050 6350 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 3800 6400 50  0001 C CNN
+F 3 "~" V 3800 6400 50  0001 C CNN
+	1    3800 6400
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	3800 5700 4100 5700
+Wire Wire Line
+	3900 5800 4100 5800
+Wire Wire Line
+	3800 5900 4100 5900
+Wire Wire Line
+	3900 6000 4100 6000
+Wire Wire Line
+	3800 6100 4100 6100
+Wire Wire Line
+	3900 6200 4100 6200
+Wire Wire Line
+	3800 6300 4100 6300
+Wire Wire Line
+	3900 6400 4100 6400
+Wire Wire Line
+	4100 5700 4100 5800
+Connection ~ 4100 5800
+Wire Wire Line
+	4100 5800 4100 5900
+Connection ~ 4100 5900
+Wire Wire Line
+	4100 5900 4100 6000
+Connection ~ 4100 6000
+Wire Wire Line
+	4100 6000 4100 6100
+Connection ~ 4100 6100
+Wire Wire Line
+	4100 6100 4100 6200
+Connection ~ 4100 6200
+Wire Wire Line
+	4100 6200 4100 6300
+Connection ~ 4100 6300
+Wire Wire Line
+	4100 6300 4100 6400
+Wire Wire Line
+	4100 6400 4100 6450
+Connection ~ 4100 6400
+$Comp
+L power:GND #PWR?
+U 1 1 6256F0D5
+P 4100 6450
+AR Path="/5ED2705B/5F30EEBC/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/5F6B5353/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/5F3ED0F9/5F30EEBC/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/5F394B96/5F41E955/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/5F396002/60363512/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/604F08FB/5F41E955/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/61E5606F/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/61F25961/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/620BE5A9/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/5FD65308/603CC273/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/5FD65291/60488F3E/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/5FD65308/60491F62/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/5FD65308/60494872/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/5ED2705B/60368D5B/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/5F3ED0F9/60368D5B/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/5ED2705B/60376771/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/5F3ED0F9/60376771/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/60A03AFC/6256F0D5" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/6256F0D5" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 4100 6200 50  0001 C CNN
+F 1 "GND" H 4250 6400 50  0000 C CNN
+F 2 "" H 4100 6450 50  0001 C CNN
+F 3 "" H 4100 6450 50  0001 C CNN
+	1    4100 6450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 6256F0DB
+P 3100 5700
+AR Path="/5F394B96/5F41E955/6256F0DB" Ref="R?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/6256F0DB" Ref="R?"  Part="1" 
+AR Path="/5FD65291/60488F3E/6256F0DB" Ref="R?"  Part="1" 
+AR Path="/5FD65308/603CC273/6256F0DB" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60491F62/6256F0DB" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60494872/6256F0DB" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/6256F0DB" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/6256F0DB" Ref="R?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/6256F0DB" Ref="R?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/6256F0DB" Ref="R?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/6256F0DB" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/6256F0DB" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/6256F0DB" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/6256F0DB" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/6256F0DB" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/6256F0DB" Ref="R?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/6256F0DB" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/6256F0DB" Ref="R?"  Part="1" 
+AR Path="/60A03AFC/6256F0DB" Ref="R?"  Part="1" 
+AR Path="/62FACF10/6256F0DB" Ref="R?"  Part="1" 
+F 0 "R?" V 3050 5900 50  0000 C CNN
+F 1 "rled" V 3050 5550 50  0000 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 3100 5700 50  0001 C CNN
+F 3 "~" H 3100 5700 50  0001 C CNN
+	1    3100 5700
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 6256F0E1
+P 3100 5800
+AR Path="/5F394B96/5F41E955/6256F0E1" Ref="R?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/6256F0E1" Ref="R?"  Part="1" 
+AR Path="/5FD65291/60488F3E/6256F0E1" Ref="R?"  Part="1" 
+AR Path="/5FD65308/603CC273/6256F0E1" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60491F62/6256F0E1" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60494872/6256F0E1" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/6256F0E1" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/6256F0E1" Ref="R?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/6256F0E1" Ref="R?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/6256F0E1" Ref="R?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/6256F0E1" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/6256F0E1" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/6256F0E1" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/6256F0E1" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/6256F0E1" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/6256F0E1" Ref="R?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/6256F0E1" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/6256F0E1" Ref="R?"  Part="1" 
+AR Path="/60A03AFC/6256F0E1" Ref="R?"  Part="1" 
+AR Path="/62FACF10/6256F0E1" Ref="R?"  Part="1" 
+F 0 "R?" V 3050 6000 50  0000 C CNN
+F 1 "rled" V 3050 5650 50  0000 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 3100 5800 50  0001 C CNN
+F 3 "~" H 3100 5800 50  0001 C CNN
+	1    3100 5800
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 6256F0E7
+P 3100 5900
+AR Path="/5F394B96/5F41E955/6256F0E7" Ref="R?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/6256F0E7" Ref="R?"  Part="1" 
+AR Path="/5FD65291/60488F3E/6256F0E7" Ref="R?"  Part="1" 
+AR Path="/5FD65308/603CC273/6256F0E7" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60491F62/6256F0E7" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60494872/6256F0E7" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/6256F0E7" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/6256F0E7" Ref="R?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/6256F0E7" Ref="R?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/6256F0E7" Ref="R?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/6256F0E7" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/6256F0E7" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/6256F0E7" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/6256F0E7" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/6256F0E7" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/6256F0E7" Ref="R?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/6256F0E7" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/6256F0E7" Ref="R?"  Part="1" 
+AR Path="/60A03AFC/6256F0E7" Ref="R?"  Part="1" 
+AR Path="/62FACF10/6256F0E7" Ref="R?"  Part="1" 
+F 0 "R?" V 3050 6100 50  0000 C CNN
+F 1 "rled" V 3050 5750 50  0000 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 3100 5900 50  0001 C CNN
+F 3 "~" H 3100 5900 50  0001 C CNN
+	1    3100 5900
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 6256F0ED
+P 3100 6000
+AR Path="/5F394B96/5F41E955/6256F0ED" Ref="R?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/6256F0ED" Ref="R?"  Part="1" 
+AR Path="/5FD65291/60488F3E/6256F0ED" Ref="R?"  Part="1" 
+AR Path="/5FD65308/603CC273/6256F0ED" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60491F62/6256F0ED" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60494872/6256F0ED" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/6256F0ED" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/6256F0ED" Ref="R?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/6256F0ED" Ref="R?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/6256F0ED" Ref="R?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/6256F0ED" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/6256F0ED" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/6256F0ED" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/6256F0ED" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/6256F0ED" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/6256F0ED" Ref="R?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/6256F0ED" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/6256F0ED" Ref="R?"  Part="1" 
+AR Path="/60A03AFC/6256F0ED" Ref="R?"  Part="1" 
+AR Path="/62FACF10/6256F0ED" Ref="R?"  Part="1" 
+F 0 "R?" V 3050 6200 50  0000 C CNN
+F 1 "rled" V 3050 5850 50  0000 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 3100 6000 50  0001 C CNN
+F 3 "~" H 3100 6000 50  0001 C CNN
+	1    3100 6000
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 6256F0F3
+P 3100 6100
+AR Path="/5F394B96/5F41E955/6256F0F3" Ref="R?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/6256F0F3" Ref="R?"  Part="1" 
+AR Path="/5FD65291/60488F3E/6256F0F3" Ref="R?"  Part="1" 
+AR Path="/5FD65308/603CC273/6256F0F3" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60491F62/6256F0F3" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60494872/6256F0F3" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/6256F0F3" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/6256F0F3" Ref="R?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/6256F0F3" Ref="R?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/6256F0F3" Ref="R?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/6256F0F3" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/6256F0F3" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/6256F0F3" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/6256F0F3" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/6256F0F3" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/6256F0F3" Ref="R?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/6256F0F3" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/6256F0F3" Ref="R?"  Part="1" 
+AR Path="/60A03AFC/6256F0F3" Ref="R?"  Part="1" 
+AR Path="/62FACF10/6256F0F3" Ref="R?"  Part="1" 
+F 0 "R?" V 3050 6300 50  0000 C CNN
+F 1 "rled" V 3050 5950 50  0000 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 3100 6100 50  0001 C CNN
+F 3 "~" H 3100 6100 50  0001 C CNN
+	1    3100 6100
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 6256F0F9
+P 3100 6200
+AR Path="/5F394B96/5F41E955/6256F0F9" Ref="R?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/6256F0F9" Ref="R?"  Part="1" 
+AR Path="/5FD65291/60488F3E/6256F0F9" Ref="R?"  Part="1" 
+AR Path="/5FD65308/603CC273/6256F0F9" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60491F62/6256F0F9" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60494872/6256F0F9" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/6256F0F9" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/6256F0F9" Ref="R?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/6256F0F9" Ref="R?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/6256F0F9" Ref="R?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/6256F0F9" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/6256F0F9" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/6256F0F9" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/6256F0F9" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/6256F0F9" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/6256F0F9" Ref="R?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/6256F0F9" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/6256F0F9" Ref="R?"  Part="1" 
+AR Path="/60A03AFC/6256F0F9" Ref="R?"  Part="1" 
+AR Path="/62FACF10/6256F0F9" Ref="R?"  Part="1" 
+F 0 "R?" V 3050 6400 50  0000 C CNN
+F 1 "rled" V 3050 6050 50  0000 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 3100 6200 50  0001 C CNN
+F 3 "~" H 3100 6200 50  0001 C CNN
+	1    3100 6200
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 6256F0FF
+P 3100 6300
+AR Path="/5F394B96/5F41E955/6256F0FF" Ref="R?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/6256F0FF" Ref="R?"  Part="1" 
+AR Path="/5FD65291/60488F3E/6256F0FF" Ref="R?"  Part="1" 
+AR Path="/5FD65308/603CC273/6256F0FF" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60491F62/6256F0FF" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60494872/6256F0FF" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/6256F0FF" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/6256F0FF" Ref="R?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/6256F0FF" Ref="R?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/6256F0FF" Ref="R?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/6256F0FF" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/6256F0FF" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/6256F0FF" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/6256F0FF" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/6256F0FF" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/6256F0FF" Ref="R?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/6256F0FF" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/6256F0FF" Ref="R?"  Part="1" 
+AR Path="/60A03AFC/6256F0FF" Ref="R?"  Part="1" 
+AR Path="/62FACF10/6256F0FF" Ref="R?"  Part="1" 
+F 0 "R?" V 3050 6500 50  0000 C CNN
+F 1 "rled" V 3050 6150 50  0000 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 3100 6300 50  0001 C CNN
+F 3 "~" H 3100 6300 50  0001 C CNN
+	1    3100 6300
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 6256F105
+P 3100 6400
+AR Path="/5F394B96/5F41E955/6256F105" Ref="R?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/6256F105" Ref="R?"  Part="1" 
+AR Path="/5FD65291/60488F3E/6256F105" Ref="R?"  Part="1" 
+AR Path="/5FD65308/603CC273/6256F105" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60491F62/6256F105" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60494872/6256F105" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/6256F105" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/6256F105" Ref="R?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/6256F105" Ref="R?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/6256F105" Ref="R?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/6256F105" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/6256F105" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/6256F105" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/6256F105" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/6256F105" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/6256F105" Ref="R?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/6256F105" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/6256F105" Ref="R?"  Part="1" 
+AR Path="/60A03AFC/6256F105" Ref="R?"  Part="1" 
+AR Path="/62FACF10/6256F105" Ref="R?"  Part="1" 
+F 0 "R?" V 3050 6600 50  0000 C CNN
+F 1 "rled" V 3050 6250 50  0000 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 3100 6400 50  0001 C CNN
+F 3 "~" H 3100 6400 50  0001 C CNN
+	1    3100 6400
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3200 5700 3600 5700
+Wire Wire Line
+	3200 5900 3600 5900
+Wire Wire Line
+	3200 6100 3600 6100
+Wire Wire Line
+	3200 6300 3600 6300
+Wire Wire Line
+	3200 6400 3700 6400
+Wire Wire Line
+	3200 6200 3700 6200
+Wire Wire Line
+	3200 6000 3700 6000
+Wire Wire Line
+	3200 5800 3700 5800
+$Comp
+L Device:LED_Small D?
+U 1 1 625A1BE2
+P 3700 6750
+AR Path="/5ED2705B/5F30EEBC/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F6B5353/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/5F30EEBC/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/5F394B96/5F41E955/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/5F396002/60363512/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/604F08FB/5F41E955/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61E5606F/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/61F25961/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/620BE5A9/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/5FD65308/603CC273/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/5FD65291/60488F3E/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60491F62/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60494872/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60368D5B/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60368D5B/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60376771/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60376771/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/60A03AFC/625A1BE2" Ref="D?"  Part="1" 
+AR Path="/62FACF10/625A1BE2" Ref="D?"  Part="1" 
+F 0 "D?" H 3450 6700 50  0000 C CNN
+F 1 "LED" H 3850 6700 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 3700 6750 50  0001 C CNN
+F 3 "~" V 3700 6750 50  0001 C CNN
+	1    3700 6750
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED_Small D?
+U 1 1 625A1BE8
+P 3800 6850
+AR Path="/5ED2705B/5F30EEBC/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F6B5353/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/5F30EEBC/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/5F394B96/5F41E955/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/5F396002/60363512/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/604F08FB/5F41E955/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61E5606F/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/61F25961/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/620BE5A9/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/5FD65308/603CC273/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/5FD65291/60488F3E/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60491F62/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60494872/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60368D5B/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60368D5B/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60376771/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60376771/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/60A03AFC/625A1BE8" Ref="D?"  Part="1" 
+AR Path="/62FACF10/625A1BE8" Ref="D?"  Part="1" 
+F 0 "D?" H 3650 6800 50  0000 C CNN
+F 1 "LED" H 4050 6800 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 3800 6850 50  0001 C CNN
+F 3 "~" V 3800 6850 50  0001 C CNN
+	1    3800 6850
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED_Small D?
+U 1 1 625A1BEE
+P 3700 6950
+AR Path="/5ED2705B/5F30EEBC/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F6B5353/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/5F30EEBC/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/5F394B96/5F41E955/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/5F396002/60363512/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/604F08FB/5F41E955/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61E5606F/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/61F25961/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/620BE5A9/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/5FD65308/603CC273/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/5FD65291/60488F3E/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60491F62/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60494872/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60368D5B/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60368D5B/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60376771/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60376771/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/60A03AFC/625A1BEE" Ref="D?"  Part="1" 
+AR Path="/62FACF10/625A1BEE" Ref="D?"  Part="1" 
+F 0 "D?" H 3450 6900 50  0000 C CNN
+F 1 "LED" H 3850 6900 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 3700 6950 50  0001 C CNN
+F 3 "~" V 3700 6950 50  0001 C CNN
+	1    3700 6950
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED_Small D?
+U 1 1 625A1BF4
+P 3800 7050
+AR Path="/5ED2705B/5F30EEBC/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F6B5353/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/5F30EEBC/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/5F394B96/5F41E955/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/5F396002/60363512/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/604F08FB/5F41E955/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61E5606F/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/61F25961/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/620BE5A9/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/5FD65308/603CC273/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/5FD65291/60488F3E/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60491F62/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60494872/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60368D5B/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60368D5B/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60376771/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60376771/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/60A03AFC/625A1BF4" Ref="D?"  Part="1" 
+AR Path="/62FACF10/625A1BF4" Ref="D?"  Part="1" 
+F 0 "D?" H 3650 7000 50  0000 C CNN
+F 1 "LED" H 4050 7000 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 3800 7050 50  0001 C CNN
+F 3 "~" V 3800 7050 50  0001 C CNN
+	1    3800 7050
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED_Small D?
+U 1 1 625A1BFA
+P 3700 7150
+AR Path="/5ED2705B/5F30EEBC/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F6B5353/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/5F30EEBC/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/5F394B96/5F41E955/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/5F396002/60363512/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/604F08FB/5F41E955/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61E5606F/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/61F25961/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/620BE5A9/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/5FD65308/603CC273/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/5FD65291/60488F3E/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60491F62/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60494872/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60368D5B/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60368D5B/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60376771/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60376771/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/60A03AFC/625A1BFA" Ref="D?"  Part="1" 
+AR Path="/62FACF10/625A1BFA" Ref="D?"  Part="1" 
+F 0 "D?" H 3450 7100 50  0000 C CNN
+F 1 "LED" H 3850 7100 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 3700 7150 50  0001 C CNN
+F 3 "~" V 3700 7150 50  0001 C CNN
+	1    3700 7150
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED_Small D?
+U 1 1 625A1C00
+P 3800 7250
+AR Path="/5ED2705B/5F30EEBC/625A1C00" Ref="D?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/625A1C00" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/625A1C00" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/625A1C00" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/625A1C00" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/625A1C00" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F6B5353/625A1C00" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/625A1C00" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/625A1C00" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/625A1C00" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/625A1C00" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/625A1C00" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/5F30EEBC/625A1C00" Ref="D?"  Part="1" 
+AR Path="/5F394B96/5F41E955/625A1C00" Ref="D?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/625A1C00" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/625A1C00" Ref="D?"  Part="1" 
+AR Path="/5F396002/60363512/625A1C00" Ref="D?"  Part="1" 
+AR Path="/604F08FB/5F41E955/625A1C00" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61E5606F/625A1C00" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/61F25961/625A1C00" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/625A1C00" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/620BE5A9/625A1C00" Ref="D?"  Part="1" 
+AR Path="/5FD65308/603CC273/625A1C00" Ref="D?"  Part="1" 
+AR Path="/5FD65291/60488F3E/625A1C00" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60491F62/625A1C00" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60494872/625A1C00" Ref="D?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/625A1C00" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60368D5B/625A1C00" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60368D5B/625A1C00" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60376771/625A1C00" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60376771/625A1C00" Ref="D?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/625A1C00" Ref="D?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/625A1C00" Ref="D?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/625A1C00" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/625A1C00" Ref="D?"  Part="1" 
+AR Path="/60A03AFC/625A1C00" Ref="D?"  Part="1" 
+AR Path="/62FACF10/625A1C00" Ref="D?"  Part="1" 
+F 0 "D?" H 3650 7200 50  0000 C CNN
+F 1 "LED" H 4050 7200 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 3800 7250 50  0001 C CNN
+F 3 "~" V 3800 7250 50  0001 C CNN
+	1    3800 7250
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED_Small D?
+U 1 1 625A1C06
+P 3700 7350
+AR Path="/5ED2705B/5F30EEBC/625A1C06" Ref="D?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/625A1C06" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/625A1C06" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/625A1C06" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/625A1C06" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/625A1C06" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F6B5353/625A1C06" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/625A1C06" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/625A1C06" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/625A1C06" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/625A1C06" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/625A1C06" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/5F30EEBC/625A1C06" Ref="D?"  Part="1" 
+AR Path="/5F394B96/5F41E955/625A1C06" Ref="D?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/625A1C06" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/625A1C06" Ref="D?"  Part="1" 
+AR Path="/5F396002/60363512/625A1C06" Ref="D?"  Part="1" 
+AR Path="/604F08FB/5F41E955/625A1C06" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61E5606F/625A1C06" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/61F25961/625A1C06" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/625A1C06" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/620BE5A9/625A1C06" Ref="D?"  Part="1" 
+AR Path="/5FD65308/603CC273/625A1C06" Ref="D?"  Part="1" 
+AR Path="/5FD65291/60488F3E/625A1C06" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60491F62/625A1C06" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60494872/625A1C06" Ref="D?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/625A1C06" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60368D5B/625A1C06" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60368D5B/625A1C06" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60376771/625A1C06" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60376771/625A1C06" Ref="D?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/625A1C06" Ref="D?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/625A1C06" Ref="D?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/625A1C06" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/625A1C06" Ref="D?"  Part="1" 
+AR Path="/60A03AFC/625A1C06" Ref="D?"  Part="1" 
+AR Path="/62FACF10/625A1C06" Ref="D?"  Part="1" 
+F 0 "D?" H 3450 7300 50  0000 C CNN
+F 1 "LED" H 3850 7300 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 3700 7350 50  0001 C CNN
+F 3 "~" V 3700 7350 50  0001 C CNN
+	1    3700 7350
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED_Small D?
+U 1 1 625A1C0C
+P 3800 7450
+AR Path="/5ED2705B/5F30EEBC/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F6B5353/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/5F30EEBC/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/5F394B96/5F41E955/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/5F396002/60363512/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/604F08FB/5F41E955/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61E5606F/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/61F25961/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/620BE5A9/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/5FD65308/603CC273/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/5FD65291/60488F3E/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60491F62/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/5FD65308/60494872/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60368D5B/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60368D5B/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/5ED2705B/60376771/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/5F3ED0F9/60376771/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/60A03AFC/625A1C0C" Ref="D?"  Part="1" 
+AR Path="/62FACF10/625A1C0C" Ref="D?"  Part="1" 
+F 0 "D?" H 3650 7400 50  0000 C CNN
+F 1 "LED" H 4050 7400 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 3800 7450 50  0001 C CNN
+F 3 "~" V 3800 7450 50  0001 C CNN
+	1    3800 7450
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	3800 6750 4100 6750
+Wire Wire Line
+	3900 6850 4100 6850
+Wire Wire Line
+	3800 6950 4100 6950
+Wire Wire Line
+	3900 7050 4100 7050
+Wire Wire Line
+	3800 7150 4100 7150
+Wire Wire Line
+	3900 7250 4100 7250
+Wire Wire Line
+	3800 7350 4100 7350
+Wire Wire Line
+	3900 7450 4100 7450
+Wire Wire Line
+	4100 6750 4100 6850
+Connection ~ 4100 6850
+Wire Wire Line
+	4100 6850 4100 6950
+Connection ~ 4100 6950
+Wire Wire Line
+	4100 6950 4100 7050
+Connection ~ 4100 7050
+Wire Wire Line
+	4100 7050 4100 7150
+Connection ~ 4100 7150
+Wire Wire Line
+	4100 7150 4100 7250
+Connection ~ 4100 7250
+Wire Wire Line
+	4100 7250 4100 7350
+Connection ~ 4100 7350
+Wire Wire Line
+	4100 7350 4100 7450
+Wire Wire Line
+	4100 7450 4100 7500
+Connection ~ 4100 7450
+$Comp
+L power:GND #PWR?
+U 1 1 625A1C29
+P 4100 7500
+AR Path="/5ED2705B/5F30EEBC/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/5F6B5353/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/5F3ED0F9/5F30EEBC/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/5F394B96/5F41E955/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/5F396002/60363512/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/604F08FB/5F41E955/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/61E5606F/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/61F25961/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/61F011FA/620BE5A9/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/5FD65308/603CC273/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/5FD65291/60488F3E/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/5FD65308/60491F62/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/5FD65308/60494872/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/5ED2705B/60368D5B/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/5F3ED0F9/60368D5B/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/5ED2705B/60376771/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/5F3ED0F9/60376771/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/60A03AFC/625A1C29" Ref="#PWR?"  Part="1" 
+AR Path="/62FACF10/625A1C29" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 4100 7250 50  0001 C CNN
+F 1 "GND" H 4250 7450 50  0000 C CNN
+F 2 "" H 4100 7500 50  0001 C CNN
+F 3 "" H 4100 7500 50  0001 C CNN
+	1    4100 7500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 625A1C2F
+P 3100 6750
+AR Path="/5F394B96/5F41E955/625A1C2F" Ref="R?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/625A1C2F" Ref="R?"  Part="1" 
+AR Path="/5FD65291/60488F3E/625A1C2F" Ref="R?"  Part="1" 
+AR Path="/5FD65308/603CC273/625A1C2F" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60491F62/625A1C2F" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60494872/625A1C2F" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/625A1C2F" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/625A1C2F" Ref="R?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/625A1C2F" Ref="R?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/625A1C2F" Ref="R?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/625A1C2F" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/625A1C2F" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/625A1C2F" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/625A1C2F" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/625A1C2F" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/625A1C2F" Ref="R?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/625A1C2F" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/625A1C2F" Ref="R?"  Part="1" 
+AR Path="/60A03AFC/625A1C2F" Ref="R?"  Part="1" 
+AR Path="/62FACF10/625A1C2F" Ref="R?"  Part="1" 
+F 0 "R?" V 3050 6950 50  0000 C CNN
+F 1 "rled" V 3050 6600 50  0000 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 3100 6750 50  0001 C CNN
+F 3 "~" H 3100 6750 50  0001 C CNN
+	1    3100 6750
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 625A1C35
+P 3100 6850
+AR Path="/5F394B96/5F41E955/625A1C35" Ref="R?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/625A1C35" Ref="R?"  Part="1" 
+AR Path="/5FD65291/60488F3E/625A1C35" Ref="R?"  Part="1" 
+AR Path="/5FD65308/603CC273/625A1C35" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60491F62/625A1C35" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60494872/625A1C35" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/625A1C35" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/625A1C35" Ref="R?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/625A1C35" Ref="R?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/625A1C35" Ref="R?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/625A1C35" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/625A1C35" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/625A1C35" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/625A1C35" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/625A1C35" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/625A1C35" Ref="R?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/625A1C35" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/625A1C35" Ref="R?"  Part="1" 
+AR Path="/60A03AFC/625A1C35" Ref="R?"  Part="1" 
+AR Path="/62FACF10/625A1C35" Ref="R?"  Part="1" 
+F 0 "R?" V 3050 7050 50  0000 C CNN
+F 1 "rled" V 3050 6700 50  0000 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 3100 6850 50  0001 C CNN
+F 3 "~" H 3100 6850 50  0001 C CNN
+	1    3100 6850
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 625A1C3B
+P 3100 6950
+AR Path="/5F394B96/5F41E955/625A1C3B" Ref="R?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/625A1C3B" Ref="R?"  Part="1" 
+AR Path="/5FD65291/60488F3E/625A1C3B" Ref="R?"  Part="1" 
+AR Path="/5FD65308/603CC273/625A1C3B" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60491F62/625A1C3B" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60494872/625A1C3B" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/625A1C3B" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/625A1C3B" Ref="R?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/625A1C3B" Ref="R?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/625A1C3B" Ref="R?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/625A1C3B" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/625A1C3B" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/625A1C3B" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/625A1C3B" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/625A1C3B" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/625A1C3B" Ref="R?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/625A1C3B" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/625A1C3B" Ref="R?"  Part="1" 
+AR Path="/60A03AFC/625A1C3B" Ref="R?"  Part="1" 
+AR Path="/62FACF10/625A1C3B" Ref="R?"  Part="1" 
+F 0 "R?" V 3050 7150 50  0000 C CNN
+F 1 "rled" V 3050 6800 50  0000 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 3100 6950 50  0001 C CNN
+F 3 "~" H 3100 6950 50  0001 C CNN
+	1    3100 6950
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 625A1C41
+P 3100 7050
+AR Path="/5F394B96/5F41E955/625A1C41" Ref="R?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/625A1C41" Ref="R?"  Part="1" 
+AR Path="/5FD65291/60488F3E/625A1C41" Ref="R?"  Part="1" 
+AR Path="/5FD65308/603CC273/625A1C41" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60491F62/625A1C41" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60494872/625A1C41" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/625A1C41" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/625A1C41" Ref="R?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/625A1C41" Ref="R?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/625A1C41" Ref="R?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/625A1C41" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/625A1C41" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/625A1C41" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/625A1C41" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/625A1C41" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/625A1C41" Ref="R?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/625A1C41" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/625A1C41" Ref="R?"  Part="1" 
+AR Path="/60A03AFC/625A1C41" Ref="R?"  Part="1" 
+AR Path="/62FACF10/625A1C41" Ref="R?"  Part="1" 
+F 0 "R?" V 3050 7250 50  0000 C CNN
+F 1 "rled" V 3050 6900 50  0000 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 3100 7050 50  0001 C CNN
+F 3 "~" H 3100 7050 50  0001 C CNN
+	1    3100 7050
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 625A1C47
+P 3100 7150
+AR Path="/5F394B96/5F41E955/625A1C47" Ref="R?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/625A1C47" Ref="R?"  Part="1" 
+AR Path="/5FD65291/60488F3E/625A1C47" Ref="R?"  Part="1" 
+AR Path="/5FD65308/603CC273/625A1C47" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60491F62/625A1C47" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60494872/625A1C47" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/625A1C47" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/625A1C47" Ref="R?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/625A1C47" Ref="R?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/625A1C47" Ref="R?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/625A1C47" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/625A1C47" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/625A1C47" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/625A1C47" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/625A1C47" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/625A1C47" Ref="R?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/625A1C47" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/625A1C47" Ref="R?"  Part="1" 
+AR Path="/60A03AFC/625A1C47" Ref="R?"  Part="1" 
+AR Path="/62FACF10/625A1C47" Ref="R?"  Part="1" 
+F 0 "R?" V 3050 7350 50  0000 C CNN
+F 1 "rled" V 3050 7000 50  0000 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 3100 7150 50  0001 C CNN
+F 3 "~" H 3100 7150 50  0001 C CNN
+	1    3100 7150
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 625A1C4D
+P 3100 7250
+AR Path="/5F394B96/5F41E955/625A1C4D" Ref="R?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/625A1C4D" Ref="R?"  Part="1" 
+AR Path="/5FD65291/60488F3E/625A1C4D" Ref="R?"  Part="1" 
+AR Path="/5FD65308/603CC273/625A1C4D" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60491F62/625A1C4D" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60494872/625A1C4D" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/625A1C4D" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/625A1C4D" Ref="R?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/625A1C4D" Ref="R?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/625A1C4D" Ref="R?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/625A1C4D" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/625A1C4D" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/625A1C4D" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/625A1C4D" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/625A1C4D" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/625A1C4D" Ref="R?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/625A1C4D" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/625A1C4D" Ref="R?"  Part="1" 
+AR Path="/60A03AFC/625A1C4D" Ref="R?"  Part="1" 
+AR Path="/62FACF10/625A1C4D" Ref="R?"  Part="1" 
+F 0 "R?" V 3050 7450 50  0000 C CNN
+F 1 "rled" V 3050 7100 50  0000 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 3100 7250 50  0001 C CNN
+F 3 "~" H 3100 7250 50  0001 C CNN
+	1    3100 7250
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 625A1C53
+P 3100 7350
+AR Path="/5F394B96/5F41E955/625A1C53" Ref="R?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/625A1C53" Ref="R?"  Part="1" 
+AR Path="/5FD65291/60488F3E/625A1C53" Ref="R?"  Part="1" 
+AR Path="/5FD65308/603CC273/625A1C53" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60491F62/625A1C53" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60494872/625A1C53" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/625A1C53" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/625A1C53" Ref="R?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/625A1C53" Ref="R?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/625A1C53" Ref="R?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/625A1C53" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/625A1C53" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/625A1C53" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/625A1C53" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/625A1C53" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/625A1C53" Ref="R?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/625A1C53" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/625A1C53" Ref="R?"  Part="1" 
+AR Path="/60A03AFC/625A1C53" Ref="R?"  Part="1" 
+AR Path="/62FACF10/625A1C53" Ref="R?"  Part="1" 
+F 0 "R?" V 3050 7550 50  0000 C CNN
+F 1 "rled" V 3050 7200 50  0000 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 3100 7350 50  0001 C CNN
+F 3 "~" H 3100 7350 50  0001 C CNN
+	1    3100 7350
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 625A1C59
+P 3100 7450
+AR Path="/5F394B96/5F41E955/625A1C59" Ref="R?"  Part="1" 
+AR Path="/5F396002/5F4E66A6/625A1C59" Ref="R?"  Part="1" 
+AR Path="/5FD65291/60488F3E/625A1C59" Ref="R?"  Part="1" 
+AR Path="/5FD65308/603CC273/625A1C59" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60491F62/625A1C59" Ref="R?"  Part="1" 
+AR Path="/5FD65308/60494872/625A1C59" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F76BABD/625A1C59" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/61F52BBE/625A1C59" Ref="R?"  Part="1" 
+AR Path="/61C3CF7F/5F30EEBC/625A1C59" Ref="R?"  Part="1" 
+AR Path="/61C3CF88/5F30EEBC/625A1C59" Ref="R?"  Part="1" 
+AR Path="/608BF85D/60010AFF/60538469/625A1C59" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F3D7BFA/5F82FFCD/625A1C59" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F47FADF/5F82FFCD/625A1C59" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F765D85/5F82FFCD/625A1C59" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F767EF5/5F82FFCD/625A1C59" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/5F768DA1/5F82FFCD/625A1C59" Ref="R?"  Part="1" 
+AR Path="/5FF66C9F/604DCD27/625A1C59" Ref="R?"  Part="1" 
+AR Path="/60E33DBC/609B0942/5F82FFCD/625A1C59" Ref="R?"  Part="1" 
+AR Path="/60A03AFC/625A1C59" Ref="R?"  Part="1" 
+AR Path="/62FACF10/625A1C59" Ref="R?"  Part="1" 
+F 0 "R?" V 3050 7650 50  0000 C CNN
+F 1 "rled" V 3050 7300 50  0000 C CNN
+F 2 "NoRef_Footprints:R_0603_1608Metric_NoRef" H 3100 7450 50  0001 C CNN
+F 3 "~" H 3100 7450 50  0001 C CNN
+	1    3100 7450
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3200 6750 3600 6750
+Wire Wire Line
+	3200 6950 3600 6950
+Wire Wire Line
+	3200 7150 3600 7150
+Wire Wire Line
+	3200 7350 3600 7350
+Wire Wire Line
+	3200 7450 3700 7450
+Wire Wire Line
+	3200 7250 3700 7250
+Wire Wire Line
+	3200 7050 3700 7050
+Wire Wire Line
+	3200 6850 3700 6850
+Text Label 950  5700 0    50   ~ 0
+ODR0
+Text Label 950  5800 0    50   ~ 0
+ODR1
+Text Label 950  5900 0    50   ~ 0
+ODR2
+Text Label 950  6000 0    50   ~ 0
+ODR3
+Text Label 950  6100 0    50   ~ 0
+ODR4
+Text Label 950  6200 0    50   ~ 0
+ODR5
+Text Label 950  6300 0    50   ~ 0
+ODR6
+Text Label 950  6400 0    50   ~ 0
+ODR7
+Wire Wire Line
+	950  5700 1350 5700
+Wire Wire Line
+	950  5800 1350 5800
+Wire Wire Line
+	950  5900 1350 5900
+Wire Wire Line
+	950  6000 1350 6000
+Wire Wire Line
+	950  6100 1350 6100
+Wire Wire Line
+	950  6200 1350 6200
+Wire Wire Line
+	950  6300 1350 6300
+Wire Wire Line
+	950  6400 1350 6400
+Text Label 2650 6400 0    50   ~ 0
+TRI0
+Text Label 2650 6300 0    50   ~ 0
+TRI1
+Text Label 2650 6200 0    50   ~ 0
+TRI2
+Text Label 2650 6100 0    50   ~ 0
+TRI3
+Text Label 2650 6000 0    50   ~ 0
+TRI4
+Text Label 2650 5900 0    50   ~ 0
+TRI5
+Text Label 2650 5800 0    50   ~ 0
+TRI6
+Text Label 2650 5700 0    50   ~ 0
+TRI7
+Wire Wire Line
+	2650 5700 3000 5700
+Wire Wire Line
+	2650 5800 3000 5800
+Wire Wire Line
+	2650 5900 3000 5900
+Wire Wire Line
+	2650 6000 3000 6000
+Wire Wire Line
+	2650 6100 3000 6100
+Wire Wire Line
+	2650 6200 3000 6200
+Wire Wire Line
+	2650 6300 3000 6300
+Wire Wire Line
+	2650 6400 3000 6400
+Wire Wire Line
+	2650 6750 3000 6750
+Wire Wire Line
+	2650 6850 3000 6850
+Wire Wire Line
+	2650 6950 3000 6950
+Wire Wire Line
+	2650 7050 3000 7050
+Wire Wire Line
+	2650 7150 3000 7150
+Wire Wire Line
+	2650 7250 3000 7250
+Wire Wire Line
+	2650 7350 3000 7350
+Wire Wire Line
+	2650 7450 3000 7450
+Text Label 2650 7450 0    50   ~ 0
+0
+Text Label 2650 7350 0    50   ~ 0
+1
+Text Label 2650 7250 0    50   ~ 0
+2
+Text Label 2650 7150 0    50   ~ 0
+3
+Text Label 2650 7050 0    50   ~ 0
+4
+Text Label 2650 6950 0    50   ~ 0
+5
+Text Label 2650 6850 0    50   ~ 0
+6
+Text Label 2650 6750 0    50   ~ 0
+7
+Text HLabel 900  600  0    50   Input ~ 0
+DB[7..0]
+Wire Bus Line
+	900  600  950  600 
+Connection ~ 950  600 
+Wire Bus Line
+	3000 600  3000 4000
+Wire Bus Line
+	950  600  950  4000
+Wire Bus Line
+	5050 600  5050 6100
+$EndSCHEMATC

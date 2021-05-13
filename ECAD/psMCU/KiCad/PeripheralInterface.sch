@@ -3,10 +3,10 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 83 93
+Sheet 51 98
 Title "psMCU"
 Date "2021-03-30"
-Rev "v0.1"
+Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
@@ -18,11 +18,11 @@ DB[0..7]
 Text HLabel 9900 1950 2    50   Input ~ 0
 CLK
 Text HLabel 2500 2700 0    50   Input ~ 0
-LatchSafeDA_EN
+RAM_Sync_D_A
 Text HLabel 2500 3600 0    50   Input ~ 0
-W_ASYNC
+RAM_W
 Text HLabel 2500 4500 0    50   Input ~ 0
-R_ASYNC
+RAM_R_Sync_A
 $Comp
 L 74xGxx:74LVC1G08 U?
 U 1 1 5FD41C76
@@ -302,14 +302,8 @@ Wire Wire Line
 	4450 3650 3300 3650
 Text HLabel 9900 1850 2    50   3State ~ 0
 DB_OUT
-Text HLabel 4450 2750 2    50   Output ~ 0
-PERIPH_LATCHSAFEDA_EN
 Text HLabel 4450 3650 2    50   Output ~ 0
-PERIPH_W_ASYNC
-Text HLabel 4500 4550 2    50   Output ~ 0
-PERIPH_R_ASYNC
-Wire Wire Line
-	3300 2750 4450 2750
+Periph_W
 Text HLabel 1950 800  0    50   BiDi ~ 0
 RAMA[0..8]
 Entry Wire Line
@@ -370,40 +364,8 @@ Wire Wire Line
 	2600 1700 2600 2800
 Wire Wire Line
 	2200 1700 2600 1700
-Wire Wire Line
-	2200 900  2900 900 
-Wire Wire Line
-	2200 1000 2900 1000
-Wire Wire Line
-	2200 1100 2900 1100
-Wire Wire Line
-	2200 1200 2900 1200
-Wire Wire Line
-	2200 1300 2900 1300
-Wire Wire Line
-	2200 1400 2900 1400
-Wire Wire Line
-	2200 1500 2900 1500
-Wire Wire Line
-	2200 1600 2900 1600
-Text Label 2900 900  2    50   ~ 0
-PERIPHA0
-Text Label 2900 1000 2    50   ~ 0
-PERIPHA1
-Text Label 2900 1100 2    50   ~ 0
-PERIPHA2
-Text Label 2900 1200 2    50   ~ 0
-PERIPHA3
-Text Label 2900 1300 2    50   ~ 0
-PERIPHA4
-Text Label 2900 1400 2    50   ~ 0
-PERIPHA5
-Text Label 2900 1500 2    50   ~ 0
-PERIPHA6
-Text Label 2900 1600 2    50   ~ 0
-PERIPHA7
 Text HLabel 3850 800  2    50   Output ~ 0
-PERIPHA[0..7]
+PeriphA[0..7]
 Wire Bus Line
 	3000 800  3850 800 
 $Comp
@@ -411,36 +373,18 @@ L Connector_Generic:Conn_02x15_Odd_Even J6
 U 1 1 6012B19C
 P 8750 2150
 F 0 "J6" V 8800 3000 50  0000 C CNN
-F 1 "PERIPH_INTERFACE_1" V 8700 3300 50  0000 C CNN
+F 1 "PERIPH_INTERFACE" V 8700 3300 50  0000 C CNN
 F 2 "Connector_IDC:IDC-Header_2x15_P2.54mm_Vertical" H 8750 2150 50  0001 C CNN
 F 3 "~" H 8750 2150 50  0001 C CNN
 	1    8750 2150
 	1    0    0    -1  
 $EndComp
-Text Label 7600 2250 0    50   ~ 0
-PERIPHA0
-Text Label 7600 2150 0    50   ~ 0
-PERIPHA1
-Text Label 7600 2050 0    50   ~ 0
-PERIPHA2
-Text Label 7600 1950 0    50   ~ 0
-PERIPHA3
-Text Label 7600 1850 0    50   ~ 0
-PERIPHA4
-Text Label 7600 1750 0    50   ~ 0
-PERIPHA5
-Text Label 7600 1650 0    50   ~ 0
-PERIPHA6
-Text Label 7600 1550 0    50   ~ 0
-PERIPHA7
-Text Label 3150 800  0    50   ~ 0
-PERIPHA[0..7]
-Text Label 3350 2750 0    50   ~ 0
-PERIPH_LATCHSAFEDA_EN
+Text Label 4050 2750 2    50   ~ 0
+Periph_Sync_D_A
 Text Label 3350 3650 0    50   ~ 0
-PERIPH_W_ASYNC
+Periph_W
 Text Label 3350 4550 0    50   ~ 0
-PERIPH_R_ASYNC
+Periph_R
 Entry Wire Line
 	7500 1450 7600 1550
 Entry Wire Line
@@ -460,25 +404,13 @@ Entry Wire Line
 Wire Bus Line
 	6900 1300 7500 1300
 Text Label 6900 1300 0    50   ~ 0
-PERIPHA[0..7]
-Text Label 7600 2450 0    50   ~ 0
-PERIPH_LATCHSAFEDA_EN
-Text Label 7600 2550 0    50   ~ 0
-PERIPH_W_ASYNC
-Text Label 7600 2650 0    50   ~ 0
-PERIPH_R_ASYNC
+PeriphA[0..7]
 Text HLabel 9900 1650 2    50   Input ~ 0
-INT_Active
+Int_Active
 Text HLabel 9900 1750 2    50   BiDi ~ 0
-INT_Assert
+Int_Assert
 Text HLabel 9900 1550 2    50   Input ~ 0
-INT_EN
-Wire Wire Line
-	7600 2450 8550 2450
-Wire Wire Line
-	7600 2550 8550 2550
-Wire Wire Line
-	7600 2650 8550 2650
+Int_EN
 Wire Wire Line
 	9050 2150 9800 2150
 Wire Wire Line
@@ -593,6 +525,86 @@ F 3 "" H 8500 2950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
+	9050 1550 9900 1550
+Wire Wire Line
+	9050 1650 9900 1650
+Wire Wire Line
+	9050 1750 9900 1750
+Wire Wire Line
+	9050 1850 9900 1850
+Wire Wire Line
+	9050 1950 9900 1950
+Wire Wire Line
+	9050 2050 9800 2050
+Text HLabel 7600 2350 0    50   Input ~ 0
+~RESET
+Wire Wire Line
+	7600 2350 8550 2350
+Text HLabel 4500 4550 2    50   Output ~ 0
+Periph_R_Sync_A
+Text Label 7600 2450 0    50   ~ 0
+Periph_Sync_D_A
+Text Label 7600 2550 0    50   ~ 0
+Periph_W
+Text Label 7600 2650 0    50   ~ 0
+Periph_R
+Wire Wire Line
+	7600 2450 8550 2450
+Wire Wire Line
+	7600 2550 8550 2550
+Wire Wire Line
+	7600 2650 8550 2650
+Text Label 3150 800  0    50   ~ 0
+PeriphA[0..7]
+Wire Wire Line
+	2200 900  2900 900 
+Wire Wire Line
+	2200 1000 2900 1000
+Wire Wire Line
+	2200 1100 2900 1100
+Wire Wire Line
+	2200 1200 2900 1200
+Wire Wire Line
+	2200 1300 2900 1300
+Wire Wire Line
+	2200 1400 2900 1400
+Wire Wire Line
+	2200 1500 2900 1500
+Wire Wire Line
+	2200 1600 2900 1600
+Text Label 2900 900  2    50   ~ 0
+PeriphA0
+Text Label 2900 1000 2    50   ~ 0
+PeriphA1
+Text Label 2900 1100 2    50   ~ 0
+PeriphA2
+Text Label 2900 1200 2    50   ~ 0
+PeriphA3
+Text Label 2900 1300 2    50   ~ 0
+PeriphA4
+Text Label 2900 1400 2    50   ~ 0
+PeriphA5
+Text Label 2900 1500 2    50   ~ 0
+PeriphA6
+Text Label 2900 1600 2    50   ~ 0
+PeriphA7
+Text Label 7600 1550 0    50   ~ 0
+PeriphA0
+Text Label 7600 1650 0    50   ~ 0
+PeriphA1
+Text Label 7600 1750 0    50   ~ 0
+PeriphA2
+Text Label 7600 1850 0    50   ~ 0
+PeriphA3
+Text Label 7600 1950 0    50   ~ 0
+PeriphA4
+Text Label 7600 2050 0    50   ~ 0
+PeriphA5
+Text Label 7600 2150 0    50   ~ 0
+PeriphA6
+Text Label 7600 2250 0    50   ~ 0
+PeriphA7
+Wire Wire Line
 	7600 1550 8550 1550
 Wire Wire Line
 	7600 1650 8550 1650
@@ -609,33 +621,7 @@ Wire Wire Line
 Wire Wire Line
 	7600 2250 8550 2250
 Wire Wire Line
-	9050 1550 9900 1550
-Wire Wire Line
-	9050 1650 9900 1650
-Wire Wire Line
-	9050 1750 9900 1750
-Wire Wire Line
-	9050 1850 9900 1850
-Wire Wire Line
-	9050 1950 9900 1950
-Wire Wire Line
-	9050 2050 9800 2050
-Text HLabel 7600 2350 0    50   Input ~ 0
-~RESET
-Wire Wire Line
-	7600 2350 8550 2350
-Text Label 7600 2350 0    50   ~ 0
-~RESET
-Text Label 9800 1550 2    50   ~ 0
-INT_EN
-Text Label 9800 1650 2    50   ~ 0
-INT_Active
-Text Label 9800 1750 2    50   ~ 0
-INT_Assert
-Text Label 9800 1850 2    50   ~ 0
-DB_OUT
-Text Label 9800 1950 2    50   ~ 0
-CLK
+	3300 2750 4050 2750
 Wire Bus Line
 	7500 1300 7500 2150
 Wire Bus Line

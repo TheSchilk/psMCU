@@ -3,10 +3,10 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 16 93
+Sheet 16 98
 Title "psMCU"
 Date "2021-03-30"
-Rev "v0.1"
+Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
@@ -14,7 +14,7 @@ Comment3 ""
 Comment4 "16Bit register, that stores the instruction currently being executed."
 $EndDescr
 Text HLabel 1350 8700 0    50   Input ~ 0
-LATCH_EN
+Latch
 Wire Wire Line
 	1350 8700 1500 8700
 Text HLabel 2900 7450 0    50   Input ~ 0
@@ -818,7 +818,7 @@ VAL[0..15]
 $Comp
 L power:GND #PWR?
 U 1 1 61FD4C25
-P 2600 8750
+P 2200 8750
 AR Path="/5ED2705B/61FD4C25" Ref="#PWR?"  Part="1" 
 AR Path="/5F1CE57C/61FD4C25" Ref="#PWR?"  Part="1" 
 AR Path="/5F1CE57C/5F5DFD05/61FD4C25" Ref="#PWR?"  Part="1" 
@@ -964,17 +964,17 @@ AR Path="/61C3CF88/5F5FD588/61FD4C25" Ref="#PWR?"  Part="1"
 AR Path="/5FD65308/6053C227/61FD4C25" Ref="#PWR?"  Part="1" 
 AR Path="/5FD65308/605425EC/61FD4C25" Ref="#PWR?"  Part="1" 
 AR Path="/5F18F3CA/61FD4C25" Ref="#PWR0309"  Part="1" 
-F 0 "#PWR0309" H 2600 8500 50  0001 C CNN
-F 1 "GND" H 2605 8577 50  0000 C CNN
-F 2 "" H 2600 8750 50  0001 C CNN
-F 3 "" H 2600 8750 50  0001 C CNN
-	1    2600 8750
+F 0 "#PWR0309" H 2200 8500 50  0001 C CNN
+F 1 "GND" H 2205 8577 50  0000 C CNN
+F 2 "" H 2200 8750 50  0001 C CNN
+F 3 "" H 2200 8750 50  0001 C CNN
+	1    2200 8750
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2500 8700 2600 8700
+	2100 8700 2200 8700
 Wire Wire Line
-	2600 8700 2600 8750
+	2200 8700 2200 8750
 $Comp
 L Device:R_Small R?
 U 1 1 61FD4C2D
@@ -1133,7 +1133,7 @@ $EndComp
 $Comp
 L Device:LED_Small D?
 U 1 1 61FD4C33
-P 2400 8700
+P 2000 8700
 AR Path="/5ED2705B/5F30EEBC/61FD4C33" Ref="D?"  Part="1" 
 AR Path="/5F1CE57C/5F4E66A6/61FD4C33" Ref="D?"  Part="1" 
 AR Path="/5F1CE57C/5F5DFD05/61FD4C33" Ref="D?"  Part="1" 
@@ -1284,15 +1284,13 @@ AR Path="/6041A022/61FD4C33" Ref="D?"  Part="1"
 AR Path="/5ED3C49A/61FD4C33" Ref="D?"  Part="1" 
 AR Path="/5F3A2F3D/61FD4C33" Ref="D?"  Part="1" 
 AR Path="/5F18F3CA/61FD4C33" Ref="D53"  Part="1" 
-F 0 "D53" H 2400 8493 50  0000 C CNN
-F 1 "Latch EN" H 2400 8584 50  0000 C CNN
-F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 2400 8700 50  0001 C CNN
-F 3 "~" V 2400 8700 50  0001 C CNN
-	1    2400 8700
+F 0 "D53" H 2000 8493 50  0000 C CNN
+F 1 "LED" H 2000 8584 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 2000 8700 50  0001 C CNN
+F 3 "~" V 2000 8700 50  0001 C CNN
+	1    2000 8700
 	-1   0    0    1   
 $EndComp
-Wire Wire Line
-	2300 8700 1850 8700
 $Comp
 L 74xx:74LS173 U?
 U 1 1 612C6187
@@ -1306,10 +1304,14 @@ F 3 "http://www.ti.com/lit/gpn/sn74LS173" H 4450 8550 50  0001 C CNN
 	1    4450 8550
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	1900 8700 1850 8700
 Wire Bus Line
 	5400 600  5400 3100
 Wire Bus Line
 	5400 3100 5400 8350
 Wire Bus Line
 	3450 600  3450 8150
+Text Notes 2250 8750 0    50   ~ 0
+Latch
 $EndSCHEMATC

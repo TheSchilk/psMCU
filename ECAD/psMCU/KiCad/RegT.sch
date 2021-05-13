@@ -3,10 +3,10 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 31 93
+Sheet 2 98
 Title "psMCU"
 Date "2021-03-30"
-Rev "v0.1"
+Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 "current content can be read to the ROMA bus, or the lower 8 bits can be read to the DBus. "
@@ -14,7 +14,7 @@ Comment3 "few other instructions. The DBus can be latched into the higher or low
 Comment4 "A 16 bit register used during return instructions, to swap register contents, and during a "
 $EndDescr
 Text HLabel 1150 7300 0    50   Input ~ 0
-LATCHL_EN
+LatchL
 Wire Wire Line
 	1100 8850 1250 8850
 Text HLabel 2650 7600 0    50   Input ~ 0
@@ -844,7 +844,7 @@ DB6
 Text Label 3300 8400 0    50   ~ 0
 DB7
 Text HLabel 1100 8850 0    50   Input ~ 0
-LATCHH_EN
+LatchH
 Wire Wire Line
 	1150 7300 1300 7300
 $Comp
@@ -2037,11 +2037,11 @@ $EndComp
 Wire Wire Line
 	2050 6350 2000 6350
 Text HLabel 1150 5750 0    50   Input ~ 0
-OE_ADR
+OE_Adr
 Wire Wire Line
 	1150 5750 1350 5750
 Text HLabel 1100 3350 0    50   Input ~ 0
-OE_DATAL
+OE_DataL
 Wire Wire Line
 	1100 3350 1350 3350
 Connection ~ 1350 3350
@@ -2525,7 +2525,7 @@ AR Path="/5F6FD493/62360A58" Ref="D?"  Part="1"
 AR Path="/5FF66C9F/62360A58" Ref="D?"  Part="1" 
 AR Path="/612C5E2A/62360A58" Ref="D157"  Part="1" 
 F 0 "D157" H 2150 3143 50  0000 C CNN
-F 1 "OE DataL" H 2150 3234 50  0000 C CNN
+F 1 "LED" H 2150 3234 50  0000 C CNN
 F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 2150 3350 50  0001 C CNN
 F 3 "~" V 2150 3350 50  0001 C CNN
 	1    2150 3350
@@ -2856,7 +2856,7 @@ AR Path="/5F6FD493/623EA044" Ref="D?"  Part="1"
 AR Path="/5FF66C9F/623EA044" Ref="D?"  Part="1" 
 AR Path="/612C5E2A/623EA044" Ref="D158"  Part="1" 
 F 0 "D158" H 2250 5543 50  0000 C CNN
-F 1 "OE Adr" H 2250 5634 50  0000 C CNN
+F 1 "LED" H 2250 5634 50  0000 C CNN
 F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 2250 5750 50  0001 C CNN
 F 3 "~" V 2250 5750 50  0001 C CNN
 	1    2250 5750
@@ -3187,7 +3187,7 @@ AR Path="/5F6FD493/624166C0" Ref="D?"  Part="1"
 AR Path="/5FF66C9F/624166C0" Ref="D?"  Part="1" 
 AR Path="/612C5E2A/624166C0" Ref="D159"  Part="1" 
 F 0 "D159" H 2250 7093 50  0000 C CNN
-F 1 "LatchL En" H 2250 7184 50  0000 C CNN
+F 1 "LED" H 2250 7184 50  0000 C CNN
 F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 2250 7300 50  0001 C CNN
 F 3 "~" V 2250 7300 50  0001 C CNN
 	1    2250 7300
@@ -3518,7 +3518,7 @@ AR Path="/5F6FD493/62443E55" Ref="D?"  Part="1"
 AR Path="/5FF66C9F/62443E55" Ref="D?"  Part="1" 
 AR Path="/612C5E2A/62443E55" Ref="D160"  Part="1" 
 F 0 "D160" H 2250 8643 50  0000 C CNN
-F 1 "LatchH En" H 2250 8734 50  0000 C CNN
+F 1 "LED" H 2250 8734 50  0000 C CNN
 F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 2250 8850 50  0001 C CNN
 F 3 "~" V 2250 8850 50  0001 C CNN
 	1    2250 8850
@@ -4022,6 +4022,14 @@ F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 1750 4200 50  0001 C CNN
 	1    1750 4200
 	1    0    0    1   
 $EndComp
+Text Notes 2350 3400 0    50   ~ 0
+OE DataL
+Text Notes 2450 5750 0    50   ~ 0
+OE Adr
+Text Notes 2450 7300 0    50   ~ 0
+LatchL
+Text Notes 2500 8850 0    50   ~ 0
+LatchH
 Wire Bus Line
 	6950 750  6950 3050
 Wire Bus Line

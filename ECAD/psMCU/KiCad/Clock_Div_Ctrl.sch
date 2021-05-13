@@ -3,10 +3,10 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
-Sheet 77 93
+Sheet 76 98
 Title "psMCU"
 Date "2021-03-30"
-Rev "v0.1"
+Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 "1-of-8/one-hot signal. "
 Comment2 "setting during power-on is configurable with jumpers. Output encoded as "
@@ -1809,11 +1809,11 @@ Text Label 11700 4600 0    50   ~ 0
 F_SET_NUM1
 Text Label 11700 4700 0    50   ~ 0
 F_SET_NUM2
-Text Label 10250 7300 2    50   ~ 0
+Text Label 9800 7500 0    50   ~ 0
 F_SET_NUM0
-Text Label 10250 7400 2    50   ~ 0
+Text Label 9800 7400 0    50   ~ 0
 F_SET_NUM1
-Text Label 10250 7500 2    50   ~ 0
+Text Label 9800 7300 0    50   ~ 0
 F_SET_NUM2
 Entry Wire Line
 	10250 7300 10350 7400
@@ -1821,16 +1821,14 @@ Entry Wire Line
 	10250 7400 10350 7500
 Entry Wire Line
 	10250 7500 10350 7600
-Wire Bus Line
-	10350 7750 10500 7750
-Text HLabel 10500 7750 2    50   Output ~ 0
-F_SET_NUM[0..2]
-Wire Wire Line
-	9800 7500 10250 7500
-Wire Wire Line
-	10250 7400 9800 7400
+Text HLabel 11000 7750 2    50   Output ~ 0
+CLK_F[0..2]
 Wire Wire Line
 	10250 7300 9800 7300
+Wire Wire Line
+	9800 7400 10250 7400
+Wire Wire Line
+	9800 7500 10250 7500
 Wire Wire Line
 	2250 5050 3100 5050
 Connection ~ 3100 5050
@@ -1841,6 +1839,10 @@ Wire Wire Line
 	7350 4750 9450 4750
 Wire Wire Line
 	8100 5300 8550 5300
+Text Label 10450 7750 0    50   ~ 0
+CLK_F[0..2]
+Wire Bus Line
+	10350 7750 11000 7750
 Wire Bus Line
 	14150 4950 14150 8400
 Wire Bus Line

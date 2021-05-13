@@ -3,10 +3,10 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 81 93
+Sheet 47 98
 Title "psMCU"
 Date "2021-03-30"
-Rev "v0.1"
+Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
@@ -606,7 +606,7 @@ AR Path="/60E33DBC/5FD12DEC/62BFBAA3" Ref="D?"  Part="1"
 AR Path="/61C3CF7F/62BFBAA3" Ref="D?"  Part="1" 
 AR Path="/604F08FB/62BFBAA3" Ref="D380"  Part="1" 
 F 0 "D380" H 3650 5193 50  0000 C CNN
-F 1 "RAMA Active" H 3650 5284 50  0000 C CNN
+F 1 "LED" H 3650 5284 50  0000 C CNN
 F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 3650 5400 50  0001 C CNN
 F 3 "~" V 3650 5400 50  0001 C CNN
 	1    3650 5400
@@ -1135,4 +1135,6 @@ Wire Bus Line
 	4700 2850 4700 4800
 Wire Bus Line
 	8600 3050 8600 5200
+Text Notes 3850 5400 0    50   ~ 0
+RAMA Out
 $EndSCHEMATC

@@ -3,10 +3,10 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 74 93
+Sheet 73 98
 Title "psMCU"
 Date "2021-03-30"
-Rev "v0.1"
+Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
@@ -14,23 +14,23 @@ Comment3 ""
 Comment4 "Variable frequency clock generation."
 $EndDescr
 Text HLabel 8450 2250 0    50   Input ~ 0
-CLK_STEP_EN
+Clk_Step_EN
 Text HLabel 8450 2350 0    50   Input ~ 0
-CLK_STEP
+Clk_Step
 Text HLabel 3950 2900 0    50   Input ~ 0
-INC_CLK_F
+Inc_Clk_F
 Text HLabel 3950 2800 0    50   Input ~ 0
-DEC_CLK_F
+Dec_Clk_F
 $Sheet
 S 8550 2050 950  600 
 U 5FFAAF6D
 F0 "Clock_Step" 50
 F1 "Clock_Step.sch" 50
 F2 "CLK" O R 9500 2150 50 
-F3 "CLK_STEP_EN" I L 8550 2250 50 
-F4 "CLK_STEP" I L 8550 2350 50 
-F5 "CONT_CLK" I L 8550 2150 50 
-F6 "~RESET" I L 8550 2550 50 
+F3 "CONT_CLK" I L 8550 2150 50 
+F4 "~RESET" I L 8550 2550 50 
+F5 "Clk_Step_EN" I L 8550 2250 50 
+F6 "Clk_Step" I L 8550 2350 50 
 $EndSheet
 $Sheet
 S 1900 2050 1700 500 
@@ -52,7 +52,7 @@ Wire Wire Line
 Wire Wire Line
 	4050 2900 3950 2900
 Text HLabel 3950 3000 0    50   Input ~ 0
-POWER_ON_RESET
+PWR_Reset
 $Sheet
 S 4050 2600 1350 500 
 U 60010AFF
@@ -63,7 +63,7 @@ F3 "DEC_CLK_F" I L 4050 2800 50
 F4 "OSC_IN" I L 4050 2700 50 
 F5 "POWER_ON_RESET" I L 4050 3000 50 
 F6 "F_SET[0..7]" O R 5400 2700 50 
-F7 "F_SET_NUM[0..2]" O R 5400 2800 50 
+F7 "CLK_F[0..2]" O R 5400 2800 50 
 $EndSheet
 Wire Wire Line
 	3950 3000 4050 3000
@@ -104,5 +104,5 @@ Wire Bus Line
 Wire Bus Line
 	5650 3200 6000 3200
 Text HLabel 6000 3200 2    50   Output ~ 0
-F_SET_NUM[0..2]
+CLK_F[0..2]
 $EndSCHEMATC

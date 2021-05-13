@@ -3,10 +3,10 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 15 93
+Sheet 15 98
 Title "psMCU"
 Date "2021-03-30"
-Rev "v0.1"
+Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
@@ -1368,7 +1368,7 @@ AR Path="/6041A022/61FABA77" Ref="D?"  Part="1"
 AR Path="/5ED3C49A/61FABA77" Ref="D?"  Part="1" 
 AR Path="/5F3A2F3D/61FABA77" Ref="D51"  Part="1" 
 F 0 "D51" H 3450 1643 50  0000 C CNN
-F 1 "PC0..7->DB" H 3450 1734 50  0000 C CNN
+F 1 "LED" H 3450 1734 50  0000 C CNN
 F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 3450 1850 50  0001 C CNN
 F 3 "~" V 3450 1850 50  0001 C CNN
 	1    3450 1850
@@ -1847,7 +1847,7 @@ AR Path="/6041A022/61FB865F" Ref="D?"  Part="1"
 AR Path="/5ED3C49A/61FB865F" Ref="D?"  Part="1" 
 AR Path="/5F3A2F3D/61FB865F" Ref="D52"  Part="1" 
 F 0 "D52" H 3450 5643 50  0000 C CNN
-F 1 "PC8..13->DB" H 3450 5734 50  0000 C CNN
+F 1 "LED" H 3450 5734 50  0000 C CNN
 F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 3450 5850 50  0001 C CNN
 F 3 "~" V 3450 5850 50  0001 C CNN
 	1    3450 5850
@@ -1861,4 +1861,8 @@ Wire Bus Line
 	4850 1700 4850 4400
 Wire Bus Line
 	7600 1950 7600 4800
+Text Notes 3700 1850 0    50   ~ 0
+PC0..7->DB
+Text Notes 3700 5850 0    50   ~ 0
+PC8..13->DB
 $EndSCHEMATC

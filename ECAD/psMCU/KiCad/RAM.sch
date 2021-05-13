@@ -3,36 +3,22 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 13 93
+Sheet 40 98
 Title "psMCU"
 Date "2021-03-30"
-Rev "v0.1"
+Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 "clock transitions. Some bus-rerouting is done to interface with the bidirectional port."
 Comment3 "interface, some latches/registers should prevent accidental writes due to glitches on "
 Comment4 "4Kb of Heap RAM, split into 16 pages. Because the RAM IC only has an asynchronous "
 $EndDescr
-$Sheet
-S 3800 1200 1250 650 
-U 5ED3C508
-F0 "SyncRegisters" 50
-F1 "SyncRegisters.sch" 50
-F2 "DB[0..7]" I L 3800 1300 50 
-F3 "DB_SYNC[0..7]" O R 5050 1300 50 
-F4 "LATCH_D_EN" I L 3800 1500 50 
-F5 "LATCH_A_EN" I L 3800 1600 50 
-F6 "CLK" I L 3800 1700 50 
-F7 "RAMA[0..7]" I L 3800 1400 50 
-F8 "RAMA_SYNC[0..7]" O R 5050 1400 50 
-F9 "RESET" I L 3800 1800 50 
-$EndSheet
 Text HLabel 1600 4100 0    50   Input ~ 0
-LatchSafeDA_EN
+Sync_D_A
 Text HLabel 1600 5000 0    50   Input ~ 0
-W_ASYNC
+W
 Text HLabel 1600 5900 0    50   Input ~ 0
-R_ASYNC
+R_Sync_A
 Text HLabel 1050 1300 0    50   3State ~ 0
 DB[0..7]
 Text HLabel 1050 1650 0    50   BiDi ~ 0
@@ -126,8 +112,8 @@ RAMA8
 Text HLabel 1050 1050 0    50   Input ~ 0
 CLK
 Wire Wire Line
-	1050 1050 1200 1050
-Text Label 1200 1050 2    50   ~ 0
+	1050 1050 1350 1050
+Text Label 1350 1050 2    50   ~ 0
 CLK
 Wire Wire Line
 	3800 1700 3650 1700
@@ -678,12 +664,7 @@ Entry Wire Line
 Wire Wire Line
 	6500 3850 6600 3850
 Wire Wire Line
-	6600 3650 6500 3650
-Wire Wire Line
-	6500 3650 6500 3750
-Wire Wire Line
 	6600 3750 6500 3750
-Connection ~ 6500 3750
 Wire Wire Line
 	6500 3750 6500 3850
 Wire Wire Line
@@ -1528,7 +1509,7 @@ Entry Wire Line
 Entry Wire Line
 	5950 3550 5850 3650
 Text HLabel 5900 4000 2    50   Input ~ 0
-PAGE[0..3]
+PAGE[0..4]
 Wire Bus Line
 	5850 4000 5900 4000
 Text HLabel 6150 6500 2    50   3State ~ 0
@@ -1662,8 +1643,8 @@ Connection ~ 5500 5950
 Wire Wire Line
 	5500 5950 7150 5950
 Wire Wire Line
-	1050 950  1400 950 
-Text Label 1400 950  2    50   ~ 0
+	1050 950  1350 950 
+Text Label 1350 950  2    50   ~ 0
 ~RESET
 Text Label 4200 3700 2    50   ~ 0
 ~RESET
@@ -1694,7 +1675,7 @@ Wire Wire Line
 $Comp
 L power:GND #PWR?
 U 1 1 61EC8E6F
-P 4150 4200
+P 3750 4200
 AR Path="/5ED2705B/61EC8E6F" Ref="#PWR?"  Part="1" 
 AR Path="/5F1CE57C/61EC8E6F" Ref="#PWR?"  Part="1" 
 AR Path="/5F1CE57C/5F5DFD05/61EC8E6F" Ref="#PWR?"  Part="1" 
@@ -1840,17 +1821,17 @@ AR Path="/61C3CF88/5F5FD588/61EC8E6F" Ref="#PWR?"  Part="1"
 AR Path="/5FD65308/6053C227/61EC8E6F" Ref="#PWR?"  Part="1" 
 AR Path="/5FD65308/605425EC/61EC8E6F" Ref="#PWR?"  Part="1" 
 AR Path="/5ED3C49A/61EC8E6F" Ref="#PWR0226"  Part="1" 
-F 0 "#PWR0226" H 4150 3950 50  0001 C CNN
-F 1 "GND" H 4155 4027 50  0000 C CNN
-F 2 "" H 4150 4200 50  0001 C CNN
-F 3 "" H 4150 4200 50  0001 C CNN
-	1    4150 4200
+F 0 "#PWR0226" H 3750 3950 50  0001 C CNN
+F 1 "GND" H 3755 4027 50  0000 C CNN
+F 2 "" H 3750 4200 50  0001 C CNN
+F 3 "" H 3750 4200 50  0001 C CNN
+	1    3750 4200
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4050 4150 4150 4150
+	3650 4150 3750 4150
 Wire Wire Line
-	4150 4150 4150 4200
+	3750 4150 3750 4200
 $Comp
 L Device:R_Small R?
 U 1 1 61EC8E77
@@ -2005,12 +1986,10 @@ F 3 "~" H 3200 4150 50  0001 C CNN
 	1    3200 4150
 	0    1    1    0   
 $EndComp
-Wire Wire Line
-	3300 4150 3850 4150
 $Comp
 L Device:LED_Small D?
 U 1 1 61EC8E7F
-P 3950 4150
+P 3550 4150
 AR Path="/5ED2705B/5F30EEBC/61EC8E7F" Ref="D?"  Part="1" 
 AR Path="/5F1CE57C/5F4E66A6/61EC8E7F" Ref="D?"  Part="1" 
 AR Path="/5F1CE57C/5F5DFD05/61EC8E7F" Ref="D?"  Part="1" 
@@ -2159,11 +2138,11 @@ AR Path="/5F394B96/61EC8E7F" Ref="D?"  Part="1"
 AR Path="/5F43204F/61EC8E7F" Ref="D?"  Part="1" 
 AR Path="/6041A022/61EC8E7F" Ref="D?"  Part="1" 
 AR Path="/5ED3C49A/61EC8E7F" Ref="D48"  Part="1" 
-F 0 "D48" H 3950 3943 50  0000 C CNN
-F 1 "LatchSafe D" H 3950 4034 50  0000 C CNN
-F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 3950 4150 50  0001 C CNN
-F 3 "~" V 3950 4150 50  0001 C CNN
-	1    3950 4150
+F 0 "D48" H 3550 3943 50  0000 C CNN
+F 1 "LED" H 3550 4034 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 3550 4150 50  0001 C CNN
+F 3 "~" V 3550 4150 50  0001 C CNN
+	1    3550 4150
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
@@ -2174,7 +2153,7 @@ Wire Wire Line
 $Comp
 L power:GND #PWR?
 U 1 1 61F22462
-P 4150 4800
+P 3750 4800
 AR Path="/5ED2705B/61F22462" Ref="#PWR?"  Part="1" 
 AR Path="/5F1CE57C/61F22462" Ref="#PWR?"  Part="1" 
 AR Path="/5F1CE57C/5F5DFD05/61F22462" Ref="#PWR?"  Part="1" 
@@ -2320,17 +2299,17 @@ AR Path="/61C3CF88/5F5FD588/61F22462" Ref="#PWR?"  Part="1"
 AR Path="/5FD65308/6053C227/61F22462" Ref="#PWR?"  Part="1" 
 AR Path="/5FD65308/605425EC/61F22462" Ref="#PWR?"  Part="1" 
 AR Path="/5ED3C49A/61F22462" Ref="#PWR0227"  Part="1" 
-F 0 "#PWR0227" H 4150 4550 50  0001 C CNN
-F 1 "GND" H 4155 4627 50  0000 C CNN
-F 2 "" H 4150 4800 50  0001 C CNN
-F 3 "" H 4150 4800 50  0001 C CNN
-	1    4150 4800
+F 0 "#PWR0227" H 3750 4550 50  0001 C CNN
+F 1 "GND" H 3755 4627 50  0000 C CNN
+F 2 "" H 3750 4800 50  0001 C CNN
+F 3 "" H 3750 4800 50  0001 C CNN
+	1    3750 4800
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4050 4750 4150 4750
+	3650 4750 3750 4750
 Wire Wire Line
-	4150 4750 4150 4800
+	3750 4750 3750 4800
 $Comp
 L Device:R_Small R?
 U 1 1 61F2246A
@@ -2488,7 +2467,7 @@ $EndComp
 $Comp
 L Device:LED_Small D?
 U 1 1 61F22472
-P 3950 4750
+P 3550 4750
 AR Path="/5ED2705B/5F30EEBC/61F22472" Ref="D?"  Part="1" 
 AR Path="/5F1CE57C/5F4E66A6/61F22472" Ref="D?"  Part="1" 
 AR Path="/5F1CE57C/5F5DFD05/61F22472" Ref="D?"  Part="1" 
@@ -2637,23 +2616,21 @@ AR Path="/5F394B96/61F22472" Ref="D?"  Part="1"
 AR Path="/5F43204F/61F22472" Ref="D?"  Part="1" 
 AR Path="/6041A022/61F22472" Ref="D?"  Part="1" 
 AR Path="/5ED3C49A/61F22472" Ref="D49"  Part="1" 
-F 0 "D49" H 3950 4543 50  0000 C CNN
-F 1 "W Async" H 3950 4634 50  0000 C CNN
-F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 3950 4750 50  0001 C CNN
-F 3 "~" V 3950 4750 50  0001 C CNN
-	1    3950 4750
+F 0 "D49" H 3550 4543 50  0000 C CNN
+F 1 "LED" H 3550 4634 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 3550 4750 50  0001 C CNN
+F 3 "~" V 3550 4750 50  0001 C CNN
+	1    3550 4750
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
 	3000 4750 3100 4750
 Wire Wire Line
-	3850 4750 3300 4750
-Wire Wire Line
 	2850 5950 3000 5950
 $Comp
 L power:GND #PWR?
 U 1 1 61F83F56
-P 4150 5700
+P 3800 5700
 AR Path="/5ED2705B/61F83F56" Ref="#PWR?"  Part="1" 
 AR Path="/5F1CE57C/61F83F56" Ref="#PWR?"  Part="1" 
 AR Path="/5F1CE57C/5F5DFD05/61F83F56" Ref="#PWR?"  Part="1" 
@@ -2799,17 +2776,17 @@ AR Path="/61C3CF88/5F5FD588/61F83F56" Ref="#PWR?"  Part="1"
 AR Path="/5FD65308/6053C227/61F83F56" Ref="#PWR?"  Part="1" 
 AR Path="/5FD65308/605425EC/61F83F56" Ref="#PWR?"  Part="1" 
 AR Path="/5ED3C49A/61F83F56" Ref="#PWR0228"  Part="1" 
-F 0 "#PWR0228" H 4150 5450 50  0001 C CNN
-F 1 "GND" H 4155 5527 50  0000 C CNN
-F 2 "" H 4150 5700 50  0001 C CNN
-F 3 "" H 4150 5700 50  0001 C CNN
-	1    4150 5700
+F 0 "#PWR0228" H 3800 5450 50  0001 C CNN
+F 1 "GND" H 3805 5527 50  0000 C CNN
+F 2 "" H 3800 5700 50  0001 C CNN
+F 3 "" H 3800 5700 50  0001 C CNN
+	1    3800 5700
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4050 5650 4150 5650
+	3700 5650 3800 5650
 Wire Wire Line
-	4150 5650 4150 5700
+	3800 5650 3800 5700
 $Comp
 L Device:R_Small R?
 U 1 1 61F83F5E
@@ -2967,7 +2944,7 @@ $EndComp
 $Comp
 L Device:LED_Small D?
 U 1 1 61F83F64
-P 3950 5650
+P 3600 5650
 AR Path="/5ED2705B/5F30EEBC/61F83F64" Ref="D?"  Part="1" 
 AR Path="/5F1CE57C/5F4E66A6/61F83F64" Ref="D?"  Part="1" 
 AR Path="/5F1CE57C/5F5DFD05/61F83F64" Ref="D?"  Part="1" 
@@ -3116,17 +3093,15 @@ AR Path="/5F394B96/61F83F64" Ref="D?"  Part="1"
 AR Path="/5F43204F/61F83F64" Ref="D?"  Part="1" 
 AR Path="/6041A022/61F83F64" Ref="D?"  Part="1" 
 AR Path="/5ED3C49A/61F83F64" Ref="D50"  Part="1" 
-F 0 "D50" H 3950 5443 50  0000 C CNN
-F 1 "R Async" H 3950 5534 50  0000 C CNN
-F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 3950 5650 50  0001 C CNN
-F 3 "~" V 3950 5650 50  0001 C CNN
-	1    3950 5650
+F 0 "D50" H 3600 5443 50  0000 C CNN
+F 1 "LED" H 3600 5534 50  0000 C CNN
+F 2 "NoRef_Footprints:D_0603_1608Metric_NoRef" V 3600 5650 50  0001 C CNN
+F 3 "~" V 3600 5650 50  0001 C CNN
+	1    3600 5650
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
 	3000 5650 3100 5650
-Wire Wire Line
-	3850 5650 3300 5650
 Wire Wire Line
 	3000 5650 3000 5950
 Connection ~ 3000 5950
@@ -3170,6 +3145,38 @@ F 3 "" H 10500 4050 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	10500 4050 10450 4050
+Text Label 5950 3650 0    50   ~ 0
+PAGE4
+Wire Wire Line
+	5950 3650 6600 3650
+Entry Wire Line
+	5950 3650 5850 3750
+Wire Wire Line
+	3500 5650 3300 5650
+Wire Wire Line
+	3300 4750 3450 4750
+Wire Wire Line
+	3300 4150 3450 4150
+Text Notes 3850 4200 0    50   ~ 0
+Sync DA
+Text Notes 3900 4700 0    50   ~ 0
+W
+Text Notes 3950 5650 0    50   ~ 0
+R Sync A
+$Sheet
+S 3800 1200 1250 650 
+U 5ED3C508
+F0 "SyncRegisters" 50
+F1 "SyncRegisters.sch" 50
+F2 "DB[0..7]" I L 3800 1300 50 
+F3 "DB_SYNC[0..7]" O R 5050 1300 50 
+F4 "CLK" I L 3800 1700 50 
+F5 "RAMA[0..7]" I L 3800 1400 50 
+F6 "RAMA_SYNC[0..7]" O R 5050 1400 50 
+F7 "RESET" I L 3800 1800 50 
+F8 "Latch_D" I L 3800 1500 50 
+F9 "Latch_A" I L 3800 1600 50 
+$EndSheet
 Wire Bus Line
 	5850 3350 5850 4000
 Wire Bus Line

@@ -1,5 +1,5 @@
 (fp_lib_table
   (lib (name IS62C256AL)(type KiCad)(uri ${KIPRJMOD}/IS62C256AL/Footprint/IS62C256AL.pretty)(options "")(descr ""))
   (lib (name NoRef_Footprints)(type KiCad)(uri ${KIPRJMOD}/NoRef_Footprints/Footprint/NoRef_Footprints.pretty)(options "")(descr ""))
-  (lib (name BarrelPolarity_3mm)(type KiCad)(uri ${KIPRJMOD}/BarrelPolarity_3mm/Footprint/BarrelPolarity_3mm.pretty)(options "")(descr ""))
+  (lib (name BarrelPolarity)(type KiCad)(uri ${KIPRJMOD}/BarrelPolarity/Footprint/BarrelPolarity.pretty)(options "")(descr ""))
 )
