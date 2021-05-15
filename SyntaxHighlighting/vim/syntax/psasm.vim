@@ -21,7 +21,8 @@ syn match psASM_Comment '#.*$'
 syn match psASM_PreProc '^\s*@.*$'
 
 " Line Labels
-syn match psASMP_Label  '^\s*[a-zA-Z0-9_]\+\s*:'
+syn match psASM_Label_Global '^\s*[a-zA-Z0-9_]\+\s*:'
+syn match psASM_Label_Local '^\s*\.[a-zA-Z0-9_]\+\s*:'
 
 " " Decimal literals
 " syn match psASM_Literal '\d\+' 
@@ -43,7 +44,8 @@ hi def link psASM_Inst_Mem  Function
 
 hi def link psASM_Comment Comment
 hi def link psASM_PreProc PreProc
-hi def link psASMP_Label Tag 
+hi def link psASM_Label_Global Tag 
+hi def link psASM_Label_Local Debug
 
 " hi def link psASM_Literal Constant
 
