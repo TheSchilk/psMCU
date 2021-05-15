@@ -1,5 +1,5 @@
 # Main .psASM file name:
-MAIN_SOURCE_NAME = combined.psASM
+MAIN_SOURCE_NAME = full_test.psASM
 
 # Build Directory:
 BUILD_DIR = build

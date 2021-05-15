@@ -1,0 +1,1291 @@
+@include StdLib.psASM
+
+MAIN:
+    # Test 1: LITA LITB HALT
+    TEST1:
+    LITA 0x01
+    LITA 0x02
+    LITA 0x04
+    LITA 0x08
+    LITA 0x10
+    LITA 0x20
+    LITA 0x40 
+    LITA 0x80
+    LITA 0xFF
+
+    LITB 0x01
+    LITB 0x02
+    LITB 0x04
+    LITB 0x08
+    LITB 0x10
+    LITB 0x20
+    LITB 0x40 
+    LITB 0x80
+    LITB 0xFF
+
+    LITA 0xFF
+    LITB 0xFF
+    HALT
+
+
+
+
+
+
+    # Test 2: CPY SWP
+    TEST2:
+    LITB 0
+    LITA 0xff
+
+    SWP
+
+    SWP
+
+    SWP
+
+    SWP
+
+    CPY
+
+    LITA 0xFF
+    LITB 0xFF
+    HALT
+
+
+
+
+
+    # Test 3: JMP CALL (Should count in A: 0-1-2-3-4-5-ff)
+    TEST3:
+    LITA 0
+    LITB 0
+    JMP SKIP3
+    
+    J3: 
+        CALL ADD1
+        JMP J4
+
+    J4:
+        CALL ADD1
+        JMP J5
+
+    J2: 
+        LITA 2
+        JMP J3
+
+    ADD1:
+        ADDLA 1
+        RTRN
+    
+    J1:
+        LITA 1
+        JMP J2
+
+    J5:
+        LITA 5
+        JMP J6
+
+    J6:
+        LITA 0xFF
+        JMP END3
+
+    SKIP3:
+        JMP J1
+    
+    END3:
+    
+    LITA 0xFF
+    LITB 0xFF
+    HALT
+
+
+
+
+
+
+    # Test 4: Conditionals (IFSM IFSA IFRM IFRA)
+    # Should only halt at END4OK
+    TEST4: 
+    LITA 0x80 # Set A bit 7
+
+    # Test if A bit 7 is set (it should be)
+    IFSA 7
+        JMP T4_OK_1
+    HALT
+    T4_OK_1:
+
+    # Test if A bit 6 is set (it should not be)
+    IFSA 6
+        HALT
+
+    LITA 0x01 # Set A bit 0
+
+    # Test if A bit 1 is reset (it should be)
+    IFRA 1
+        JMP T4_OK_2
+    HALT
+    T4_OK_2:
+
+    # Test if A bit 0 is reset (it should not be)
+    IFRA 0
+        HALT
+
+    @define T4_TEST_ADR 0x12
+
+    LITA 0x10
+    SVA T4_TEST_ADR # Set bit 4 in memory
+
+    # Test if bit 4 is set (it should be)
+    IFSM T4_TEST_ADR, 4
+        JMP T4_OK_3
+    HALT
+    T4_OK_3:
+
+    # Test if bit 3 is set (it should not be)
+    IFSM T4_TEST_ADR, 3
+        HALT
+
+    LITA 0x08 # Set A bit 3
+    SVA T4_TEST_ADR # Set bit 3 in memory
+
+    # Test if A bit 4 is reset (it should be)
+    IFRM T4_TEST_ADR, 4
+        JMP T4_OK_4
+    HALT
+    T4_OK_4:
+
+    # Test if A bit 3 is reset (it should not be)
+    IFRM T4_TEST_ADR, 3
+        HALT
+
+    LITA 0xFF
+    LITB 0xFF
+    END4OK: HALT
+
+
+
+
+
+
+
+    # Test 5: Comparator (should only halt at END5OK)
+    TEST5:
+    # A = B
+    LITA 0x55
+    LITB 0x55
+   
+    # Halt if not equal
+    IFRM SYS3, S3_AB 
+        HALT
+
+    # Halt if A>B
+    IFSM SYS3, S3_AgreaterB
+        HALT
+
+    # Halt if A<B
+    IFSM SYS3, S3_AlessB
+        HALT
+
+    # A > B
+
+    LITA 0xf1
+    LITB 0xf0
+   
+    # Halt if equal
+    IFSM SYS3, S3_AB 
+        HALT
+
+    # Halt if not A>B
+    IFRM SYS3, S3_AgreaterB
+        HALT
+
+    # Halt if A<B
+    IFSM SYS3, S3_AlessB
+        HALT
+
+    # A < B
+
+    LITA 0xfe
+    LITB 0xff
+   
+    # Halt if equal
+    IFSM SYS3, S3_AB 
+        HALT
+
+    # Halt if A>B
+    IFSM SYS3, S3_AgreaterB
+        HALT
+
+    # Halt if not A<B
+    IFRM SYS3, S3_AlessB
+        HALT
+
+    # A = 0
+    LITA 0
+
+    # Halt if not A=0:
+    IFRM SYS3, S3_A0
+        HALT
+    
+    # A != 0
+    LITA 1
+
+    # Halt if A=0:
+    IFSM SYS3, S3_A0
+        HALT
+
+    # B = 0
+    LITB 0
+
+    # Halt if not B=0:
+    IFRM SYS3, S3_B0
+        HALT
+
+    # B != 0
+    LITB 1
+
+    # Halt if B=0:
+    IFSM SYS3, S3_B0
+        HALT
+
+    LITA 0xFF
+    LITB 0xFF
+    HALT
+
+
+
+
+
+    # Test 6: (Should count up every interrupt, until 6)
+    TEST6:
+    # Enable interrupts
+    LDA SYS3
+    ORL 0x1
+    SVA SYS3
+
+    # Setup compar value and start
+    LITA 0
+    LITB 5
+    JMP T6_SKIP_INT
+
+    INTERRUPT:
+        IFRM SYS3, 1 # Do not add to A if BTN Interrupt flag is not set.
+            RTRNI
+
+        ADDLA 1 # Add one to A
+
+        PUSHA # Clear BTN flag
+        LDA SYS3
+        ANDL 0b11111101
+        SVA SYS3
+        POPA
+
+        RTRNI
+
+    T6_SKIP_INT: # Loop unti A >= 6
+        IFSM SYS3, S3_AgreaterB
+            JMP T6_END
+        JMP T6_SKIP_INT
+
+    T6_END:
+
+    # Disable Interrupts
+    LDA SYS3
+    ANDL 0xFE
+    SVA SYS3
+
+    LITA 0xFF
+    LITB 0xFF
+    HALT
+
+    
+
+
+
+    # Test 7: Shifting 
+    TEST7: 
+    LITA 0
+    LITB 0
+
+    # A = 1, << by 1,2,4
+    LITA 1
+    SHFTLL 1
+    SHFTLL 2
+    SHFTLL 4
+    
+    # Shift back right using SHFTR and B register
+    LITB 1
+    SHFTR
+    LITB 2
+    SHFTR 
+    LITB 4
+    SHFTR
+
+    # Repeat, with shift-in = 1:
+    LITB 1
+    SVB SYS1
+    
+    LITA 1
+    SHFTLL 1
+    SHFTLL 2
+    SHFTLL 4
+
+    LITB 0
+    SVB SYS1
+
+    SHFTRL 4
+    SHFTRL 2
+    SHFTRL 1
+
+
+    LITA 0xFF
+    LITB 0xFF
+    HALT
+
+
+
+
+
+    
+    # Test 8: Logic Operations (Should only halt at end)
+    TEST8:
+    # AND + ANDL
+
+    LITA 0x55
+    LITB 0x0F 
+    AND # A should equal  0x05
+
+    # Confirm:
+    LITB 0x05
+    IFRM SYS3, S3_AB
+        HALT
+
+    LITA 0x55
+    ANDL 0x0F # A should equal  0x05
+
+    # Confirm:
+    LITB 0x05
+    IFRM SYS3, S3_AB
+        HALT
+
+
+    # OR + ORL
+
+    LITA 0x55
+    LITB 0x0F 
+    OR # A should equal  0x5F
+
+    # Confirm:
+    LITB 0x5F
+    IFRM SYS3, S3_AB
+        HALT
+
+    LITA 0x55
+    ORL 0x0F # A should equal  0x5F
+
+    # Confirm:
+    LITB 0x5F
+    IFRM SYS3, S3_AB
+        HALT
+
+    # XOR + XORL
+
+    LITA 0x55
+    LITB 0x0F 
+    XOR # A should equal  0x5A
+
+    # Confirm:
+    LITB 0x5A
+    IFRM SYS3, S3_AB
+        HALT
+
+    LITA 0x55
+    XORL 0x0F # A should equal  0x5A
+
+    # Confirm:
+    LITB 0x5A
+    IFRM SYS3, S3_AB
+        HALT
+
+    # NOT
+
+    LITA 0x55
+    NOTA # A should equal 0xaa
+    
+    # Confirm:
+    LITB 0xAA
+    IFRM SYS3, S3_AB
+        HALT
+
+
+    LITA 0xFF
+    LITB 0xFF
+    HALT 
+
+
+
+
+
+
+
+    # Test 9: Saving/Loading from all RAM pages
+    TEST9:
+    @define T9_TEST_ADR 0x44
+
+    # Sanity check SVA->LDA SVB->LDB
+    LITA 0x55
+    SVA T9_TEST_ADR
+    LITA 0
+    LDA T9_TEST_ADR
+
+    LITB 0xaa
+    SVB T9_TEST_ADR
+    LITB 0
+    LDB T9_TEST_ADR
+
+    # Write 0 to page 0, 1 to page 1, usw
+    LITA 0
+    SVA SYS2 
+    SVA T9_TEST_ADR
+
+    LITA 1
+    SVA SYS2 
+    SVA T9_TEST_ADR
+
+    LITA 2
+    SVA SYS2 
+    SVA T9_TEST_ADR
+
+    LITA 3
+    SVA SYS2 
+    SVA T9_TEST_ADR
+
+    LITA 4
+    SVA SYS2 
+    SVA T9_TEST_ADR
+
+    LITA 5
+    SVA SYS2 
+    SVA T9_TEST_ADR
+
+    LITA 6
+    SVA SYS2 
+    SVA T9_TEST_ADR
+
+    LITA 7
+    SVA SYS2 
+    SVA T9_TEST_ADR
+
+    LITA 8
+    SVA SYS2 
+    SVA T9_TEST_ADR
+
+    LITA 9
+    SVA SYS2 
+    SVA T9_TEST_ADR
+
+    LITA 10
+    SVA SYS2 
+    SVA T9_TEST_ADR
+
+    LITA 11
+    SVA SYS2 
+    SVA T9_TEST_ADR
+
+    LITA 12
+    SVA SYS2 
+    SVA T9_TEST_ADR
+
+    LITA 13
+    SVA SYS2 
+    SVA T9_TEST_ADR
+
+    LITA 14
+    SVA SYS2 
+    SVA T9_TEST_ADR
+
+    LITA 15
+    SVA SYS2 
+    SVA T9_TEST_ADR
+
+
+    # Retrieve all into B:
+     
+    LITA 0
+    SVA SYS2
+    LDB T9_TEST_ADR
+
+    LITA 1
+    SVA SYS2
+    LDB T9_TEST_ADR
+
+    LITA 2
+    SVA SYS2
+    LDB T9_TEST_ADR
+
+    LITA 3
+    SVA SYS2
+    LDB T9_TEST_ADR
+
+    LITA 4
+    SVA SYS2
+    LDB T9_TEST_ADR
+
+    LITA 5
+    SVA SYS2
+    LDB T9_TEST_ADR
+
+    LITA 6
+    SVA SYS2
+    LDB T9_TEST_ADR
+
+    LITA 7
+    SVA SYS2
+    LDB T9_TEST_ADR
+    
+    LITA 8
+    SVA SYS2
+    LDB T9_TEST_ADR
+
+    LITA 9
+    SVA SYS2
+    LDB T9_TEST_ADR
+
+    LITA 10
+    SVA SYS2
+    LDB T9_TEST_ADR
+
+    LITA 11
+    SVA SYS2
+    LDB T9_TEST_ADR
+    
+    LITA 12
+    SVA SYS2
+    LDB T9_TEST_ADR
+
+    LITA 13
+    SVA SYS2
+    LDB T9_TEST_ADR
+
+    LITA 14
+    SVA SYS2
+    LDB T9_TEST_ADR
+
+    LITA 15
+    SVA SYS2
+    LDB T9_TEST_ADR
+
+    LITA 0xFF
+    LITB 0xFF
+    HALT
+
+
+
+
+
+
+
+    # Test 10: Dynamic Load + Save
+    TEST10: 
+    # Make sure SVDP and LDDP work by storing and loading from SYS2
+    LITA 0x0A
+    LITB 0x01
+    SVDP
+    LITA 0
+    LDDP
+
+    # Save Increasing Numbers at increasing Adrs:
+    LITA 0
+    LITB 0
+    SVDR 
+    ADDLA 1
+    ADDLB 1
+    SVDR
+    ADDLA 1
+    ADDLB 1
+    SVDR
+    ADDLA 1
+    ADDLB 1
+    SVDR
+    ADDLA 1
+    ADDLB 1
+    SVDR
+    
+    # Retrieve again:
+    LITB 0
+    LDDR
+    LITB 1
+    LDDR
+    LITB 2
+    LDDR
+    LITB 3
+    LDDR
+    LITB 4
+    LDDR
+
+    LITA 0xFF
+    LITB 0xFF
+    HALT
+
+
+
+
+
+
+    
+    # Test 11:  Simple stack push + pop
+    TEST11:
+    # Push 1,2,3,4 from A 
+    LITA 1
+    PUSHA
+    LITA 2
+    PUSHA 
+    LITA 3
+    PUSHA
+    LITA 4
+    PUSHA
+
+    # Pop back into A
+    POPA
+    POPA
+    POPA
+    POPA
+
+    # Push 1,2,3,4 from B 
+    LITB 1
+    PUSHB
+    LITB 2
+    PUSHB 
+    LITB 3
+    PUSHB
+    LITB 4
+    PUSHB
+
+    # Pop back into B
+    POPB
+    POPB
+    POPB
+    POPB
+
+    # Push 1,2,3,4 from SYS2
+    LITA 1
+    SVA SYS2
+    PUSHM SYS2
+    LITA 2
+    SVA SYS2
+    PUSHM SYS2
+    LITA 3
+    SVA SYS2
+    PUSHM SYS2
+    LITA 4
+    SVA SYS2
+    PUSHM SYS2
+
+    # Pop back into SYS2
+    POPM SYS2
+    POPM SYS2
+    POPM SYS2
+    POPM SYS2
+
+    LITA 0xFF
+    LITB 0xFF
+    HALT
+
+
+
+
+    # Test 12: Stack access using grow/shrink + get/set ops
+    TEST12: 
+    # Add first frame using pushes 
+    LITA 0x01
+    PUSHA
+    LITA 0x02
+    PUSHA
+    LITA 0x03
+    PUSHA
+    LITA 0x04
+    PUSHA
+    
+    # Add second frame using grow + STSA
+    GROW 4
+    
+    LITA 0x11
+    STSA -4
+    LITA 0x12
+    STSA -3
+    LITA 0x13
+    STSA -2
+    LITA 0x14
+    STSA -1
+
+    # Add third frame using grow + STSB
+    GROW 4
+    
+    LITB 0x21
+    STSB -4
+    LITB 0x22
+    STSB -3
+    LITB 0x23
+    STSB -2
+    LITB 0x24
+    STSB -1
+
+    # Get third frame using STLA, then shrink
+
+    STLA -1
+    STLA -2
+    STLA -3
+    STLA -4
+
+    SHRINK -4
+
+    # Get second and first frame using STLB, then shrink
+
+    STLB -1
+    STLB -2
+    STLB -3
+    STLB -4
+    STLB -5
+    STLB -6
+    STLB -7
+    STLB -8
+    
+    SHRINK -8
+    
+
+    LITA 0xFF
+    LITB 0xFF
+    HALT
+
+
+
+
+    
+    # Test 13: Additions w/o carry + Addition flags
+    TEST13:
+    # Calc 1: 0xFF + 0xFF = 0xFE  | C:1 HC:1 OVF:0 => SYS1 = 0x06 | 
+    # Calc 2: -128 + -1 = 0x7F    | C:1 HC:0 OVF:1 => SYS1 = 0x0a | 
+    # Calc 3: 0x0F + 0x1 = 0x10   | C:0 HC:1 OVF:0 => SYS1 = 0x04 | 
+
+    # Clear SYS1 Reg
+    LITA 0
+    SVA SYS1
+
+
+    # Calc 1 with ADD
+    LITA 0xFF
+    LITB 0xFF 
+    ADD 
+
+    LITB 0xFE # Make sure result is correct
+    IFRM SYS3, S3_AB
+        HALT
+
+    LDA SYS1 # Make sure flags are correct
+    LITB 0x06
+    IFRM SYS3, S3_AB
+        HALT
+    
+    # Calc 1 with ADDLA
+    LITA 0xFF
+    ADDLA 0xFF
+
+    LITB 0xFE # Make sure result is correct
+    IFRM SYS3, S3_AB
+        HALT
+
+    LDA SYS1 # Make sure flags are correct
+    LITB 0x06
+    IFRM SYS3, S3_AB
+        HALT
+
+
+    # Calc 1 with ADDLB
+    LITB 0xFF
+    ADDLB 0xFF
+
+    LITA 0xFE # Make sure result is correct
+    IFRM SYS3, S3_AB
+        HALT
+
+    LDA SYS1 # Make sure flags are correct
+    LITB 0x06
+    IFRM SYS3, S3_AB
+        HALT
+
+
+
+    # Calc 2 with ADD
+    LITA -128
+    LITB -1
+    ADD 
+
+    LITB 0x7F # Make sure result is correct
+    IFRM SYS3, S3_AB
+        HALT
+
+    LDA SYS1 # Make sure flags are correct
+    LITB 0x0a
+    IFRM SYS3, S3_AB
+        HALT
+    
+    # Calc 2 with ADDLA
+    LITA -128 
+    ADDLA -1
+
+    LITB 0x7F # Make sure result is correct
+    IFRM SYS3, S3_AB
+        HALT
+
+    LDA SYS1 # Make sure flags are correct
+    LITB 0x0a
+    IFRM SYS3, S3_AB
+        HALT
+
+    # Calc 2 with ADDLB
+    LITB -128
+    ADDLB -1
+
+    LITA 0x7F # Make sure result is correct
+    IFRM SYS3, S3_AB
+        HALT
+
+    LDA SYS1 # Make sure flags are correct
+    LITB 0x0a
+    IFRM SYS3, S3_AB
+        HALT
+
+
+
+    # Calc 3 with ADD
+    LITA 0x0F
+    LITB 0x01
+    ADD 
+
+    LITB 0x10 # Make sure result is correct
+    IFRM SYS3, S3_AB
+        HALT
+
+    LDA SYS1 # Make sure flags are correct
+    LITB 0x04
+    IFRM SYS3, S3_AB
+        HALT
+    
+    # Calc 3 with ADDLA
+    LITA 0x0F 
+    ADDLA 0x01
+
+    LITB 0x10 # Make sure result is correct
+    IFRM SYS3, S3_AB
+        HALT
+
+    LDA SYS1 # Make sure flags are correct
+    LITB 0x04
+    IFRM SYS3, S3_AB
+        HALT
+
+    # Calc 3 with ADDLB
+    LITB 0x0F
+    ADDLB 0x1
+
+    LITA 0x10 # Make sure result is correct
+    IFRM SYS3, S3_AB
+        HALT
+
+    LDA SYS1 # Make sure flags are correct
+    LITB 0x04
+    IFRM SYS3, S3_AB
+        HALT
+
+
+    LITA 0xFF
+    LITB 0xFF
+    HALT
+
+
+
+
+
+
+
+    
+    # Test 14: ADDC ADDLBC ADDLAC
+    TEST14:
+    # Clear Carry bit
+    LITA 0
+    SVA SYS1
+    
+    LITA 0
+    LITB 0
+    ADDC   # Add 0+0 = 0
+
+    LITB 0x00
+    IFRM SYS3, S3_AB
+        HALT
+
+    LITA 0xFF
+    SVA SYS1
+    LITA 0
+    LITB 0
+    ADDC # Add 0+0+C = 1
+
+    LITB 0x01
+    IFRM SYS3, S3_AB
+        HALT
+
+    LITA 0
+    SVA SYS1
+    LITA 0
+    ADDLAC 0 # Add 0+0 = 0
+
+    LITB 0x00
+    IFRM SYS3, S3_AB
+        HALT
+
+
+    LITA 0xFF
+    SVA SYS1
+    LITA 0
+    ADDLAC 0 # Add 0+0+C = 1
+
+    LITB 0x01
+    IFRM SYS3, S3_AB
+        HALT
+
+    LITA 0
+    SVA SYS1
+    LITB 0
+    ADDLBC 0 # Add 0+0 = 0
+
+    LITA 0x00
+    IFRM SYS3, S3_AB
+        HALT
+
+    LITA 0xFF
+    SVA SYS1
+    LITB 0
+    ADDLBC 0 # Add 0+0+C = 1
+
+    LITA 0x1
+    IFRM SYS3, S3_AB
+        HALT
+
+    LITA 0xFF
+    LITB 0xFF
+    HALT
+
+
+
+
+
+
+    # Test 15: SUB/SUBL
+    TEST15:
+    # Calc 1: 0xFF - 0xFF = 0     | C: 1 HC: 1 OVF: 0 COMP_C: 0 => SYS1 = 0x6 | 
+    # Calc 2: -128 - 1    = 0x7F  | C: 1 HC: 0 OVF: 1 COMP_C: 0 => SYS1 = 0xa | 
+    # Calc 3: 0xaa - 0    = 0xaa  | C: 0 HC: 0 OVF: 0 COMP_C: 1 => SYS1 = 0x10| 
+    
+    LITA 0
+    SVA SYS1
+
+    # Calc 1 with SUB
+    LITA 0xFF
+    LITB 0xFF 
+    SUB 
+
+    LITB 0x00 # Make sure result is correct
+    IFRM SYS3, S3_AB
+        HALT
+
+    LDA SYS1 # Make sure flags are correct
+    LITB 0x06
+    IFRM SYS3, S3_AB
+        HALT
+
+    # Calc 1 with SUBL
+    LITA 0xFF
+    SUBL 0xFF
+
+    LITB 0x00 # Make sure result is correct
+    IFRM SYS3, S3_AB
+        HALT
+
+    LDA SYS1 # Make sure flags are correct
+    LITB 0x06
+    IFRM SYS3, S3_AB
+        HALT
+
+
+    # Calc 2 with SUB
+    LITA -128
+    LITB 1 
+    SUB 
+
+    LITB 0x7F # Make sure result is correct
+    IFRM SYS3, S3_AB
+        HALT
+
+    LDA SYS1 # Make sure flags are correct
+    LITB 0x0a
+    IFRM SYS3, S3_AB
+        HALT
+
+    # Calc 2 with SUBL
+    LITA -128
+    SUBL 1
+
+    LITB 0x7F # Make sure result is correct
+    IFRM SYS3, S3_AB
+        HALT
+
+    LDA SYS1 # Make sure flags are correct
+    LITB 0x0a
+    IFRM SYS3, S3_AB
+        HALT
+
+
+    # Calc 3 with SUB
+    LITA 0xaa
+    LITB 0 
+    SUB 
+
+    LITB 0xaa # Make sure result is correct
+    IFRM SYS3, S3_AB
+        HALT
+
+    LDA SYS1 # Make sure flags are correct
+    LITB 0x10
+    IFRM SYS3, S3_AB
+        HALT
+
+    # Calc 3 with SUBL
+    LITA 0xaa
+    SUBL 0
+
+    LITB 0xaa # Make sure result is correct
+    IFRM SYS3, S3_AB
+        HALT
+
+    LDA SYS1 # Make sure flags are correct
+    LITB 0x10
+    IFRM SYS3, S3_AB
+        HALT
+
+
+    # Test 16: SUBC/SUBLC
+    
+    # C = 0, COMP_C = 0, with SUBC 
+    LITA 0
+    SVA SYS1
+
+    LITA 0xAA
+    LITB 0xFF
+    SUBC
+
+    LITB 0xaa # Make sure result is correct
+    IFRM SYS3, S3_AB
+        HALT
+
+    LDA SYS1 # Make sure flags are correct
+    LITB 0x0
+    IFRM SYS3, S3_AB
+        HALT
+    
+    # C = 0, COMP_C = 0, with SUBLC 
+    LITA 0
+    SVA SYS1
+
+    LITA 0xAA
+    SUBLC 0xFF
+
+    LITB 0xaa # Make sure result is correct
+    IFRM SYS3, S3_AB
+        HALT
+
+    LDA SYS1 # Make sure flags are correct
+    LITB 0x0
+    IFRM SYS3, S3_AB
+        HALT
+
+
+    # C = 1, COMP_C = 0, with SUBC 
+    LITA 0x2
+    SVA SYS1
+
+    LITA 0xAA
+    LITB 0xFF
+    SUBC
+
+    LITB 0xab # Make sure result is correct
+    IFRM SYS3, S3_AB
+        HALT
+
+    LDA SYS1 # Make sure flags are correct
+    LITB 0x0
+    IFRM SYS3, S3_AB
+        HALT
+
+    # C = 1, COMP_C = 0, with SUBLC 
+    LITA 0x2
+    SVA SYS1
+
+    LITA 0xAA
+    SUBLC 0xFF
+
+    LITB 0xab # Make sure result is correct
+    IFRM SYS3, S3_AB
+        HALT
+
+    LDA SYS1 # Make sure flags are correct
+    LITB 0x0
+    IFRM SYS3, S3_AB
+        HALT
+
+
+    # C = 0, COMP_C = 1, with SUBC 
+    LITA 0x10 
+    SVA SYS1
+
+    LITA 0xAA
+    LITB 0xFF
+    SUBC
+
+    LITB 0xab # Make sure result is correct
+    IFRM SYS3, S3_AB
+        HALT
+
+    LDA SYS1 # Make sure flags are correct
+    LITB 0x0
+    IFRM SYS3, S3_AB
+        HALT
+
+    # C = 0, COMP_C = 1, with SUBLC 
+    LITA 0x10
+    SVA SYS1
+
+    LITA 0xAA
+    SUBLC 0xFF
+
+    LITB 0xab # Make sure result is correct
+    IFRM SYS3, S3_AB
+        HALT
+
+    LDA SYS1 # Make sure flags are correct
+    LITB 0x0
+    IFRM SYS3, S3_AB
+        HALT
+
+
+    # C = 1, COMP_C = 1, with SUBC 
+    LITA 0xFE # Set other flags to make sure they get cleared
+    SVA SYS1
+
+    LITA 0xAA
+    LITB 0xFF
+    SUBC
+
+    LITB 0xac # Make sure result is correct
+    IFRM SYS3, S3_AB
+        HALT
+
+    LDA SYS1 # Make sure flags are correct
+    LITB 0x0
+    IFRM SYS3, S3_AB
+        HALT
+
+
+    # C = 1, COMP_C = 1, with SUBLC 
+    LITA 0xFE # Set other flags to make sure they get cleared
+    SVA SYS1
+
+    LITA 0xAA
+    SUBLC 0xFF
+
+    LITB 0xac # Make sure result is correct
+    IFRM SYS3, S3_AB
+        HALT
+
+    LDA SYS1 # Make sure flags are correct
+    LITB 0x0
+    IFRM SYS3, S3_AB
+        HALT
+  
+    
+    LITA 0xFF
+    LITB 0xFF
+    HALT
+
+
+
+
+
+
+    # Test 16: COMPB COMPBC
+    TEST16: 
+
+    # COMPB 0xff -> 1 | COMPC = 0 |
+    LITA 0x10 # make sure flag is cleared
+    SVA SYS1
+    
+    LITB 0xFF
+    COMPB
+
+    LITA 0x01 # Make sure result is correct
+    IFRM SYS3, S3_AB
+        HALT
+
+    LDA SYS1 # Make sure flags are correct
+    LITB 0x0
+    IFRM SYS3, S3_AB
+        HALT
+
+    # COMPB 0x0 -> 0 | COMPC = 1 |
+    LITA 0x0E # set all other ALU flags, make sure not affected
+    SVA SYS1
+
+    LITB 0x0
+    COMPB
+
+    LITA 0x00 # Make sure result is correct
+    IFRM SYS3, S3_AB
+        HALT
+
+    LDA SYS1 # Make sure flags are correct
+    LITB 0x1E
+    IFRM SYS3, S3_AB
+        HALT
+    
+    # COMPC = 0, COMPBC 0xff -> 0 | COMPC = 0|
+    LITA 0x0E # set all other ALU flags, make sure not affected
+    SVA SYS1
+
+    LITB 0xff
+    COMPBC
+    
+    LITA 0x00 # Make sure result is correct
+    IFRM SYS3, S3_AB
+        HALT
+
+    LDA SYS1 # Make sure flags are correct
+    LITB 0x0E
+    IFRM SYS3, S3_AB
+        HALT
+
+    # COMPC = 1, COMPBC 0xff -> 1 | COMPC = 0|
+    LITA 0x10 
+    SVA SYS1
+
+    LITB 0xff
+    COMPBC
+    
+    LITA 0x01 # Make sure result is correct
+    IFRM SYS3, S3_AB
+        HALT
+
+    LDA SYS1 # Make sure flags are correct
+    LITB 0x00
+    IFRM SYS3, S3_AB
+        HALT
+
+JMP MAIN
+
