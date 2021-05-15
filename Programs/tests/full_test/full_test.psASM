@@ -508,7 +508,70 @@ MAIN:
     SVA SYS2 
     SVA T9_TEST_ADR
 
+    LITA 16
+    SVA SYS2 
+    SVA T9_TEST_ADR
+    
+    LITA 17
+    SVA SYS2 
+    SVA T9_TEST_ADR
+    
+    LITA 18
+    SVA SYS2 
+    SVA T9_TEST_ADR
+    
+    LITA 19
+    SVA SYS2 
+    SVA T9_TEST_ADR
 
+    LITA 20
+    SVA SYS2 
+    SVA T9_TEST_ADR
+    
+    LITA 21
+    SVA SYS2 
+    SVA T9_TEST_ADR
+    
+    LITA 22
+    SVA SYS2 
+    SVA T9_TEST_ADR
+    
+    LITA 23
+    SVA SYS2 
+    SVA T9_TEST_ADR
+    
+    LITA 24
+    SVA SYS2 
+    SVA T9_TEST_ADR
+    
+    LITA 25
+    SVA SYS2 
+    SVA T9_TEST_ADR
+    
+    LITA 26
+    SVA SYS2 
+    SVA T9_TEST_ADR
+    
+    LITA 27
+    SVA SYS2 
+    SVA T9_TEST_ADR
+
+    LITA 28
+    SVA SYS2 
+    SVA T9_TEST_ADR
+    
+    LITA 29
+    SVA SYS2 
+    SVA T9_TEST_ADR
+    
+    LITA 30
+    SVA SYS2 
+    SVA T9_TEST_ADR
+    
+    LITA 31
+    SVA SYS2 
+    SVA T9_TEST_ADR
+    
     # Retrieve all into B:
      
     LITA 0
@@ -575,9 +638,75 @@ MAIN:
     SVA SYS2
     LDB T9_TEST_ADR
 
+    LITA 16
+    SVA SYS2 
+    LDB T9_TEST_ADR
+    
+    LITA 17
+    SVA SYS2 
+    LDB T9_TEST_ADR
+    
+    LITA 18
+    SVA SYS2 
+    LDB T9_TEST_ADR
+    
+    LITA 19
+    SVA SYS2 
+    LDB T9_TEST_ADR
+
+    LITA 20
+    SVA SYS2 
+    LDB T9_TEST_ADR
+    
+    LITA 21
+    SVA SYS2 
+    LDB T9_TEST_ADR
+    
+    LITA 22
+    SVA SYS2 
+    LDB T9_TEST_ADR
+    
+    LITA 23
+    SVA SYS2 
+    LDB T9_TEST_ADR
+    
+    LITA 24
+    SVA SYS2 
+    LDB T9_TEST_ADR
+    
+    LITA 25
+    SVA SYS2 
+    LDB T9_TEST_ADR
+    
+    LITA 26
+    SVA SYS2 
+    LDB T9_TEST_ADR
+    
+    LITA 27
+    SVA SYS2 
+    LDB T9_TEST_ADR
+
+    LITA 28
+    SVA SYS2 
+    LDB T9_TEST_ADR
+    
+    LITA 29
+    SVA SYS2 
+    LDB T9_TEST_ADR
+    
+    LITA 30
+    SVA SYS2 
+    LDB T9_TEST_ADR
+    
+    LITA 31
+    SVA SYS2 
+    LDB T9_TEST_ADR
+    
     LITA 0xFF
     LITB 0xFF
     HALT
+
+
 
 
 

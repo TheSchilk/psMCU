@@ -38,16 +38,15 @@
 @define SYS2           0x101    # (R/W) System Register 2.
 
 # Bits:
-                                # [0..3] (R/W) RAM Page.
-                                # [4..6] (R) Clock Frequency.
-                                # [7] (R) Reserved. Always Reads 0.
+                                # [0..4] (R/W) RAM Page.
+                                # [5..7] (R) Clock Frequency.
 
 # Shifts and Masks:
 @define S2_PAGE_S      0        # PAGE field shift.
-@define S2_PAGE_M      0xf      # PAGE field mask.
+@define S2_PAGE_M      0x1f     # PAGE field mask.
 
-@define S2_FREQ_S      4        # FREQ field shift.
-@define S2_FREQ_M      0x70     # FREQ field shift.
+@define S2_FREQ_S      5        # FREQ field shift.
+@define S2_FREQ_M      0xe0     # FREQ field shift.
 
 # ############### SYS3 ##################
 @define SYS3           0x102    # (R/W) System Register 3
