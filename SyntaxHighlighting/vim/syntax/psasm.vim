@@ -5,26 +5,45 @@ if exists("b:current_syntax")
     finish
 endif
 
-syn keyword psASM_OP_CTRL NOP HALT
-syn keyword psASM_OP_JMP JMP CALL IFSA IFRA IFSM IFRM RTRN RTRNI
-syn keyword psASM_OP_OP AND ANDL OR ORL XOR XORL SHFTR SHFTRL SHFTL SHFTLL COMPB COMPBC ADD ADDC ADDLA ADDLAC ADDLB ADDLBC NOTA SUB SUBC SUBL SUBLC LITA LITB CPY SWP
-syn keyword psASM_OP_DATA SVA SVB LDA LDB SVDP SVDR LDDP LDDR POPA PUSHA POPB PUSHB POPM PUSHM GROW SHRINK STSA STSB STLA STLB
+" Instructions related to execution-flow
+syn keyword psASM_Inst_Flow NOP HALT JMP CALL IFSA IFRA IFSM IFRM RTRN RTRNI
 
+" Instructions related to data manipulation
+syn keyword psASM_Inst_Data AND ANDL OR ORL XOR XORL SHFTR SHFTRL SHFTL SHFTLL COMPB COMPBC ADD ADDC ADDLA ADDLAC ADDLB ADDLBC NOTA SUB SUBC SUBL SUBLC LITA LITB CPY SWP
+
+" Instructions related to memory/stack access
+syn keyword psASM_Inst_Mem SVA SVB LDA LDB SVDP SVDR LDDP LDDR POPA PUSHA POPB PUSHB POPM PUSHM GROW SHRINK STSA STSB STLA STLB
+
+" Comments
 syn match psASM_Comment '#.*$'
-syn match psASM_PRE '^\s*@.*$'
-syn match psASM_LIT '\d\+' " An unsigned literal
-syn match psASM_LIT '(+|-)\d\+' " A signed literal
-syn match psASM_LIT '0x[\dabcdefABCDEF]\+' " A hex literal
-syn match psASM_LIT '0b[01]\+'
+
+" Preprocessor statemnts:
+syn match psASM_PreProc '^\s*@.*$'
+
+" Line Labels
+syn match psASMP_Label  '^\s*[a-zA-Z0-9_]\+\s*:'
+
+" " Decimal literals
+" syn match psASM_Literal '\d\+' 
+" syn match psASM_Literal '(+|-)\d\+'
+" 
+" " Hex literals
+" syn match psASM_Literal '0x[\dabcdefABCDEF]\+'
+" 
+" " Binary literals
+" syn match psASM_Literal '0b[01]\+'
 
 
-" Highlighting:
+" Highlighting
 let b:current_syntax = "cel"
+
+hi def link psASM_Inst_Flow Function
+hi def link psASM_Inst_Data Function
+hi def link psASM_Inst_Mem  Function
+
 hi def link psASM_Comment Comment
-hi def link psASM_PRE PreProc
-hi def link psASM_OP_CTRL Statement
-hi def link psASM_OP_JMP Statement
-hi def link psASM_OP_OP Statement
-hi def link psASM_OP_DATA Statement
-" hi def link psASM_LIT Constant
+hi def link psASM_PreProc PreProc
+hi def link psASMP_Label Tag 
+
+" hi def link psASM_Literal Constant
 
