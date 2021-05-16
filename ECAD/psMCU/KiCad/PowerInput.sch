@@ -210,8 +210,8 @@ L Connector_Generic:Conn_01x02 J?
 U 1 1 60CE5970
 P 7100 3300
 AR Path="/60CE5970" Ref="J?"  Part="1" 
-AR Path="/62043340/60CE5970" Ref="J?"  Part="1" 
-F 0 "J?" H 7400 3300 50  0000 C CNN
+AR Path="/62043340/60CE5970" Ref="J3"  Part="1" 
+F 0 "J3" H 7400 3300 50  0000 C CNN
 F 1 "PWR_IN" H 7300 3200 50  0000 C CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 7100 3300 50  0001 C CNN
 F 3 "~" H 7100 3300 50  0001 C CNN
@@ -239,10 +239,10 @@ Wire Wire Line
 Wire Wire Line
 	6650 2950 7950 2950
 $Comp
-L Jumper:Jumper_3_Bridged12 JP?
+L Jumper:Jumper_3_Bridged12 JP16
 U 1 1 60CEC624
 P 3300 3050
-F 0 "JP?" V 3254 3116 50  0000 L CNN
+F 0 "JP16" V 3254 3116 50  0000 L CNN
 F 1 "JMP" V 3345 3116 50  0000 L CNN
 F 2 "Jumper:SolderJumper-3_P1.3mm_Bridged12_Pad1.0x1.5mm" H 3300 3050 50  0001 C CNN
 F 3 "~" H 3300 3050 50  0001 C CNN
@@ -252,10 +252,10 @@ $EndComp
 Wire Wire Line
 	2800 3050 3150 3050
 $Comp
-L Jumper:Jumper_3_Bridged12 JP?
+L Jumper:Jumper_3_Bridged12 JP17
 U 1 1 60CF11C2
 P 3950 3350
-F 0 "JP?" V 3996 3416 50  0000 L CNN
+F 0 "JP17" V 3996 3416 50  0000 L CNN
 F 1 "JMP" V 3905 3416 50  0000 L CNN
 F 2 "Jumper:SolderJumper-3_P1.3mm_Bridged12_Pad1.0x1.5mm" H 3950 3350 50  0001 C CNN
 F 3 "~" H 3950 3350 50  0001 C CNN
@@ -282,10 +282,10 @@ Wire Wire Line
 	3950 3650 5400 3650
 Connection ~ 3950 3650
 $Comp
-L BarrelPolarity:BarrelPolarity_CenterNeg G?
+L BarrelPolarity:BarrelPolarity_CenterNeg G2
 U 1 1 60D1CAE3
 P 4300 4550
-F 0 "G?" H 4581 4596 50  0000 L CNN
+F 0 "G2" H 4581 4596 50  0000 L CNN
 F 1 "BarrelPolarity_CenterNeg" H 4581 4505 50  0000 L CNN
 F 2 "BarrelPolarity:BarrelPolarity_1mm_CenterNeg" H 4300 4550 50  0001 C CNN
 F 3 "" H 4300 4550 50  0001 C CNN
@@ -293,10 +293,10 @@ F 3 "" H 4300 4550 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L BarrelPolarity:BarrelPolarity_CenterPos G?
+L BarrelPolarity:BarrelPolarity_CenterPos G1
 U 1 1 60D1DB0E
 P 4300 4300
-F 0 "G?" H 4581 4346 50  0000 L CNN
+F 0 "G1" H 4581 4346 50  0000 L CNN
 F 1 "BarrelPolarity_CenterPos" H 4581 4255 50  0000 L CNN
 F 2 "BarrelPolarity:BarrelPolarity_1mm_CenterPos" H 4300 4300 50  0001 C CNN
 F 3 "" H 4300 4300 50  0001 C CNN
