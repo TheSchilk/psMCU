@@ -387,26 +387,6 @@ Wire Wire Line
 	4000 2300 4000 2400
 Wire Wire Line
 	4000 2600 4000 2700
-$Comp
-L power:GND #PWR?
-U 1 1 6102C7A0
-P 4000 2700
-AR Path="/60F73904/6102C7A0" Ref="#PWR?"  Part="1" 
-AR Path="/60FA12D6/6102C7A0" Ref="#PWR?"  Part="1" 
-AR Path="/60FA686E/6102C7A0" Ref="#PWR?"  Part="1" 
-AR Path="/60FA7824/6102C7A0" Ref="#PWR?"  Part="1" 
-AR Path="/60FA8167/6102C7A0" Ref="#PWR?"  Part="1" 
-AR Path="/60FA8857/6102C7A0" Ref="#PWR?"  Part="1" 
-AR Path="/60FAB88D/6102C7A0" Ref="#PWR?"  Part="1" 
-AR Path="/60FAB893/6102C7A0" Ref="#PWR?"  Part="1" 
-AR Path="/6102C7A0" Ref="#PWR0108"  Part="1" 
-F 0 "#PWR0108" H 4000 2450 50  0001 C CNN
-F 1 "GND" H 4005 2527 50  0000 C CNN
-F 2 "" H 4000 2700 50  0001 C CNN
-F 3 "" H 4000 2700 50  0001 C CNN
-	1    4000 2700
-	-1   0    0    -1  
-$EndComp
 Wire Wire Line
 	3550 2300 3350 2300
 Wire Wire Line
@@ -846,5 +826,16 @@ F 2 "Connector_IDC:IDC-Header_2x10_P2.54mm_Vertical" H 1600 6850 50  0001 C CNN
 F 3 "~" H 1600 6850 50  0001 C CNN
 	1    1600 6850
 	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 60A16264
+P 4000 2700
+F 0 "#PWR?" H 4000 2550 50  0001 C CNN
+F 1 "+5V" H 4015 2873 50  0000 C CNN
+F 2 "" H 4000 2700 50  0001 C CNN
+F 3 "" H 4000 2700 50  0001 C CNN
+	1    4000 2700
+	-1   0    0    1   
 $EndComp
 $EndSCHEMATC
