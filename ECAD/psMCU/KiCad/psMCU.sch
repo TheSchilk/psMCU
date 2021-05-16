@@ -176,14 +176,6 @@ Text Label 15850 4100 2    50   ~ 0
 IntAdr->ROMA
 Wire Wire Line
 	15000 4100 15850 4100
-Text Label 7900 3400 0    50   ~ 0
-PC[8..13]->DBus
-Text Label 7900 3500 0    50   ~ 0
-PC[0..7]->DBus
-Wire Wire Line
-	8700 3400 7900 3400
-Wire Wire Line
-	8700 3500 7900 3500
 Text Label 15850 3700 2    50   ~ 0
 PC[8..13]->DBus
 Text Label 15850 3600 2    50   ~ 0
@@ -360,8 +352,6 @@ Wire Notes Line
 Wire Bus Line
 	12800 1400 13400 1400
 Wire Wire Line
-	10100 2300 10000 2300
-Wire Wire Line
 	10100 1900 10100 2300
 Wire Wire Line
 	10000 1900 10100 1900
@@ -370,27 +360,9 @@ Wire Wire Line
 Wire Wire Line
 	10200 2400 10200 1800
 Wire Wire Line
-	10000 2400 10200 2400
-Wire Wire Line
-	10300 2500 10000 2500
-Wire Wire Line
 	10300 1700 10300 2500
 Wire Wire Line
 	10000 1700 10300 1700
-Connection ~ 8550 2300
-Wire Bus Line
-	8550 2300 8550 3150
-$Sheet
-S 8700 2200 1300 650 
-U 5FD6F3D6
-F0 "Breakpoint" 50
-F1 "Breakpoint.sch" 50
-F2 "PC[0..13]" I L 8700 2300 50 
-F3 "BKPT_RCLK" I R 10000 2500 50 
-F4 "BKPT_SER" I R 10000 2400 50 
-F5 "BKPT_SCLK" I R 10000 2300 50 
-F6 "Bkpt_Trig" O R 10000 2750 50 
-$EndSheet
 Wire Bus Line
 	8550 1400 8700 1400
 Connection ~ 8550 1400
@@ -410,12 +382,6 @@ Text Label 10500 2550 0    50   ~ 0
 DB[0..7]
 Wire Bus Line
 	10850 2550 10500 2550
-Wire Bus Line
-	8550 3150 8700 3150
-Text Label 10350 3150 2    50   ~ 0
-DB[0..7]
-Wire Bus Line
-	10000 3150 10350 3150
 Text Label 6600 1700 2    50   ~ 0
 DB[0..7]
 Wire Bus Line
@@ -440,14 +406,8 @@ Text Label 10500 2650 0    50   ~ 0
 DB_OUT
 Wire Wire Line
 	10850 2650 10500 2650
-Text Label 10350 3250 2    50   ~ 0
-DB_OUT
-Wire Wire Line
-	10000 3250 10350 3250
-Text Label 10350 2750 2    50   ~ 0
+Text Label 10350 2800 2    50   ~ 0
 Bkpt_Trig
-Wire Wire Line
-	10000 2750 10350 2750
 Text Label 10600 1800 0    50   ~ 0
 CLK
 Wire Wire Line
@@ -466,8 +426,6 @@ Text Label 4650 1900 0    50   ~ 0
 CLK
 Wire Wire Line
 	4900 1900 4650 1900
-Wire Bus Line
-	8550 2300 8700 2300
 $Sheet
 S 10850 3750 1200 400 
 U 5F5CACFC
@@ -525,17 +483,6 @@ F5 "RESET" I L 10850 1900 50
 F6 "Latch" I L 10850 1600 50 
 $EndSheet
 $Sheet
-S 8700 3050 1300 550 
-U 5F3A2F3D
-F0 "PC[0..7]/[8..13] ->  DBus" 50
-F1 "PC_to_DBus.sch" 50
-F2 "PC[0..7]->DBus" I L 8700 3500 50 
-F3 "PC[0..13]" I L 8700 3150 50 
-F4 "DB_OUT" T R 10000 3250 50 
-F5 "DB[0..7]" T R 10000 3150 50 
-F6 "PC[8..13]->DBus" I L 8700 3400 50 
-$EndSheet
-$Sheet
 S 7350 2600 1050 300 
 U 6041A022
 F0 "ROMA Bus Display" 50
@@ -548,10 +495,10 @@ S 10850 2450 1200 400
 U 609EB802
 F0 "Inst[0..7]->DBus" 50
 F1 "Inst0..7_to_DBus.sch" 50
-F2 "Inst[0..7]->DBus" I R 12050 2750 50 
-F3 "Inst[0..15]" I R 12050 2550 50 
-F4 "DB[0..7]" T L 10850 2550 50 
-F5 "DB_OUT" T L 10850 2650 50 
+F2 "Inst[0..15]" I R 12050 2550 50 
+F3 "DB[0..7]" T L 10850 2550 50 
+F4 "DB_OUT" T L 10850 2650 50 
+F5 "In[0..7]->DBus" I R 12050 2750 50 
 $EndSheet
 Wire Bus Line
 	5950 10450 5400 10450
@@ -594,7 +541,7 @@ F7 "In[0..7]->RAMA[0..7]" I R 5400 10750 50
 $EndSheet
 Wire Wire Line
 	1300 8400 1050 8400
-Text Label 1050 8300 0    50   ~ 0
+Text Label 1050 8400 0    50   ~ 0
 CLK
 Wire Wire Line
 	1300 8500 1050 8500
@@ -658,7 +605,7 @@ Wire Wire Line
 	2800 9300 3150 9300
 Wire Wire Line
 	1300 9700 850  9700
-Text Label 1050 9900 0    50   ~ 0
+Text Label 1050 10000 0    50   ~ 0
 CLK
 Wire Wire Line
 	1300 10000 1050 10000
@@ -711,12 +658,12 @@ F2 "DB_OUT" T R 5400 7400 50
 F3 "DB[0..7]" T R 5400 7300 50 
 F4 "RESET" I L 4050 8050 50 
 F5 "CLK" I L 4050 7950 50 
-F6 "PeriphA[0..7]" I L 4050 7300 50 
-F7 "Periph_W" I L 4050 7500 50 
-F8 "Periph_R" I L 4050 7600 50 
-F9 "CLK_F[0..2]" I L 4050 7800 50 
-F10 "PAGE[0..4]" O R 5400 7500 50 
-F11 "~RESET" I L 4050 8150 50 
+F6 "Periph_W" I L 4050 7500 50 
+F7 "Periph_R" I L 4050 7600 50 
+F8 "CLK_F[0..2]" I L 4050 7800 50 
+F9 "PAGE[0..4]" O R 5400 7500 50 
+F10 "~RESET" I L 4050 8150 50 
+F11 "PeriphA[0..7]" I L 4050 7300 50 
 $EndSheet
 Text Notes 3200 5200 0    50   ~ 0
 \n\n
@@ -756,7 +703,7 @@ Wire Wire Line
 	1300 9800 850  9800
 Text Label 850  9800 0    50   ~ 0
 Int_Active
-Text Label 850  9500 0    50   ~ 0
+Text Label 850  9600 0    50   ~ 0
 Int_EN
 Wire Wire Line
 	850  9600 1300 9600
@@ -808,7 +755,7 @@ Text Label 3750 6200 0    50   ~ 0
 C
 Wire Wire Line
 	1300 9200 700  9200
-Text Label 700  9100 0    50   ~ 0
+Text Label 700  9200 0    50   ~ 0
 RAM_W
 Text Label 700  9300 0    50   ~ 0
 RAM_R_Sync_A
@@ -1521,7 +1468,7 @@ Text Label 700  8000 0    50   ~ 0
 RAM_Sync_D_A
 Text Label 700  8200 0    50   ~ 0
 RAM_R_Sync_A
-Text Label 700  8000 0    50   ~ 0
+Text Label 700  8100 0    50   ~ 0
 RAM_W
 Wire Wire Line
 	1300 8100 700  8100
@@ -1647,4 +1594,67 @@ F15 "Ofs_1" I L 1300 6100 50
 F16 "Sync_Adr" I L 1300 5900 50 
 F17 "Ptr_Latch" I L 1300 6000 50 
 $EndSheet
+Text Label 10350 2600 2    50   ~ 0
+~RESET
+$Sheet
+S 8700 3100 1300 550 
+U 5F3A2F3D
+F0 "PC[0..7]/[8..13] ->  DBus" 50
+F1 "PC_to_DBus.sch" 50
+F2 "PC[0..7]->DBus" I L 8700 3550 50 
+F3 "PC[0..13]" I L 8700 3200 50 
+F4 "DB_OUT" T R 10000 3300 50 
+F5 "DB[0..7]" T R 10000 3200 50 
+F6 "PC[8..13]->DBus" I L 8700 3450 50 
+$EndSheet
+Wire Wire Line
+	10000 3300 10350 3300
+Text Label 10350 3300 2    50   ~ 0
+DB_OUT
+Wire Bus Line
+	10000 3200 10350 3200
+Text Label 10350 3200 2    50   ~ 0
+DB[0..7]
+Wire Bus Line
+	8550 3200 8700 3200
+Wire Wire Line
+	8700 3500 7900 3500
+Wire Wire Line
+	8700 3450 7900 3450
+Text Label 7900 3550 0    50   ~ 0
+PC[0..7]->DBus
+Text Label 7900 3450 0    50   ~ 0
+PC[8..13]->DBus
+Wire Bus Line
+	8550 2300 8550 3200
+Connection ~ 8550 2300
+Wire Wire Line
+	10000 2600 10350 2600
+Wire Wire Line
+	10000 2800 10350 2800
+Wire Wire Line
+	10100 2300 10000 2300
+Wire Wire Line
+	10000 2400 10200 2400
+Wire Wire Line
+	10300 2500 10000 2500
+Wire Bus Line
+	8550 2300 8700 2300
+$Sheet
+S 8700 2200 1300 700 
+U 5FD6F3D6
+F0 "Breakpoint" 50
+F1 "Breakpoint.sch" 50
+F2 "PC[0..13]" I L 8700 2300 50 
+F3 "BKPT_RCLK" I R 10000 2500 50 
+F4 "BKPT_SER" I R 10000 2400 50 
+F5 "BKPT_SCLK" I R 10000 2300 50 
+F6 "Bkpt_Trig" O R 10000 2800 50 
+F7 "~RESET" I R 10000 2600 50 
+$EndSheet
+Wire Bus Line
+	2800 9000 3350 9000
+Wire Bus Line
+	3350 9000 3350 8550
+Connection ~ 3350 8550
 $EndSCHEMATC

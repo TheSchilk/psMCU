@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
-Sheet 94 98
+Sheet 91 98
 Title "psMCU"
 Date "2021-03-30"
 Rev "v1.0"
@@ -3691,66 +3691,6 @@ Text HLabel 5800 8550 0    50   Input ~ 0
 Ofs_Sgn
 Wire Bus Line
 	4200 3800 3900 3800
-Entry Wire Line
-	7400 8550 7500 8650
-Entry Wire Line
-	7400 8650 7500 8750
-Entry Wire Line
-	7400 8750 7500 8850
-Entry Wire Line
-	7400 8850 7500 8950
-Entry Wire Line
-	7400 8950 7500 9050
-Entry Wire Line
-	7400 9050 7500 9150
-Entry Wire Line
-	7400 9150 7500 9250
-Entry Wire Line
-	7400 9250 7500 9350
-Entry Wire Line
-	7400 9350 7500 9450
-Entry Wire Line
-	7400 9450 7500 9550
-Entry Wire Line
-	7400 9550 7500 9650
-Entry Wire Line
-	7400 9650 7500 9750
-Entry Wire Line
-	7400 9750 7500 9850
-Entry Wire Line
-	7400 9850 7500 9950
-Entry Wire Line
-	7400 9950 7500 10050
-Text Label 7400 9950 2    50   ~ 0
-Offset0
-Text Label 7400 9850 2    50   ~ 0
-Offset1
-Text Label 7400 9750 2    50   ~ 0
-Offset2
-Text Label 7400 9650 2    50   ~ 0
-Offset3
-Text Label 7400 9550 2    50   ~ 0
-Offset4
-Text Label 7400 9450 2    50   ~ 0
-Offset5
-Text Label 7400 9350 2    50   ~ 0
-Offset6
-Text Label 7400 9250 2    50   ~ 0
-Offset7
-Text Label 7400 9150 2    50   ~ 0
-Offset8
-Text Label 7400 9050 2    50   ~ 0
-Offset9
-Text Label 7400 8950 2    50   ~ 0
-Offset10
-Text Label 7400 8850 2    50   ~ 0
-Offset11
-Text Label 7400 8750 2    50   ~ 0
-Offset12
-Text Label 7400 8650 2    50   ~ 0
-Offset13
-Text Label 7400 8550 2    50   ~ 0
-Offset14
 Wire Wire Line
 	6850 9050 6850 8950
 Wire Wire Line
@@ -7221,6 +7161,66 @@ Text Label 10650 5700 0    50   ~ 0
 Adr_Sync13
 Text Label 10650 5800 0    50   ~ 0
 Adr_Sync14
+Text Label 7400 9950 2    50   ~ 0
+Offset0
+Text Label 7400 9850 2    50   ~ 0
+Offset1
+Text Label 7400 9750 2    50   ~ 0
+Offset2
+Text Label 7400 9650 2    50   ~ 0
+Offset3
+Text Label 7400 9550 2    50   ~ 0
+Offset4
+Text Label 7400 9450 2    50   ~ 0
+Offset5
+Text Label 7400 9350 2    50   ~ 0
+Offset6
+Text Label 7400 9250 2    50   ~ 0
+Offset7
+Text Label 7400 9150 2    50   ~ 0
+Offset8
+Text Label 7400 9050 2    50   ~ 0
+Offset9
+Text Label 7400 8950 2    50   ~ 0
+Offset10
+Text Label 7400 8850 2    50   ~ 0
+Offset11
+Text Label 7400 8750 2    50   ~ 0
+Offset12
+Text Label 7400 8650 2    50   ~ 0
+Offset13
+Text Label 7400 8550 2    50   ~ 0
+Offset14
+Entry Wire Line
+	7400 8550 7500 8650
+Entry Wire Line
+	7400 8650 7500 8750
+Entry Wire Line
+	7400 8750 7500 8850
+Entry Wire Line
+	7400 8850 7500 8950
+Entry Wire Line
+	7400 8950 7500 9050
+Entry Wire Line
+	7400 9050 7500 9150
+Entry Wire Line
+	7400 9150 7500 9250
+Entry Wire Line
+	7400 9250 7500 9350
+Entry Wire Line
+	7400 9350 7500 9450
+Entry Wire Line
+	7400 9450 7500 9550
+Entry Wire Line
+	7400 9550 7500 9650
+Entry Wire Line
+	7400 9650 7500 9750
+Entry Wire Line
+	7400 9750 7500 9850
+Entry Wire Line
+	7400 9850 7500 9950
+Entry Wire Line
+	7400 9950 7500 10050
 Wire Bus Line
 	2950 9150 2950 9850
 Wire Bus Line
@@ -7231,4 +7231,6 @@ Wire Bus Line
 	10550 3700 10550 5700
 Wire Bus Line
 	7500 5150 7500 10050
+Text Label 4000 5150 0    50   ~ 0
+Offset[14..0]
 $EndSCHEMATC

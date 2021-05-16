@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 64 98
+Sheet 45 98
 Title "psMCU"
 Date "2021-03-30"
 Rev "v1.0"
@@ -54,7 +54,7 @@ F 3 "" H 1200 7350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1200 6450 1200 6750
+	1200 6450 1200 6650
 $Comp
 L power:+5V #PWR?
 U 1 1 602A1723
@@ -2878,10 +2878,15 @@ Text Notes 3850 5700 0    50   ~ 0
 W
 Text Notes 3850 6250 0    50   ~ 0
 R
+Wire Wire Line
+	1300 6650 1200 6650
 Wire Bus Line
 	2000 950  2000 3350
 Wire Bus Line
 	9200 950  9200 3600
 Wire Bus Line
 	7400 2300 7400 4900
+Connection ~ 1200 6650
+Wire Wire Line
+	1200 6650 1200 6750
 $EndSCHEMATC

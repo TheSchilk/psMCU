@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 49 98
+Sheet 42 98
 Title "psMCU"
 Date "2021-03-30"
 Rev "v1.0"
@@ -731,30 +731,8 @@ Text Label 4750 1800 0    50   ~ 0
 VAL[0..4]
 Text HLabel 5150 1800 2    50   Output ~ 0
 PAGE[0..4]
-$Sheet
-S 1200 7800 1200 1300
-U 6029209E
-F0 "SYS2 AdrComparator" 50
-F1 "AdrComparator.sch" 50
-F2 "SET0" I L 1200 8300 50 
-F3 "SET1" I L 1200 8400 50 
-F4 "SET2" I L 1200 8500 50 
-F5 "SET3" I L 1200 8600 50 
-F6 "SET7" I L 1200 9000 50 
-F7 "SET6" I L 1200 8900 50 
-F8 "SET5" I L 1200 8800 50 
-F9 "SET4" I L 1200 8700 50 
-F10 "Match" O R 2400 7900 50 
-F11 "R" O R 2400 8100 50 
-F12 "PeriphA[0..7]" I L 1200 7900 50 
-F13 "Periph_R" I L 1200 8100 50 
-F14 "W" O R 2400 8000 50 
-F15 "Periph_W" I L 1200 8000 50 
-$EndSheet
 Wire Wire Line
 	2400 8000 2550 8000
-Text HLabel 1050 7900 0    50   Input ~ 0
-PeriphA[0..7]
 Text HLabel 1050 8000 0    50   Input ~ 0
 Periph_W
 Text HLabel 1050 8100 0    50   Input ~ 0
@@ -2730,6 +2708,7 @@ Text Label 2700 3100 0    50   ~ 0
 ~Latch
 Wire Wire Line
 	3000 3100 2700 3100
+Connection ~ 3000 3100
 Wire Bus Line
 	3700 6850 3700 7150
 Wire Bus Line
@@ -2738,5 +2717,26 @@ Wire Bus Line
 	6400 1450 6400 4100
 Wire Bus Line
 	4700 1800 4700 9200
-Connection ~ 3000 3100
+Text HLabel 1050 7900 0    50   Input ~ 0
+PeriphA[0..7]
+$Sheet
+S 1200 7800 1200 1300
+U 6029209E
+F0 "SYS2 AdrComparator" 50
+F1 "AdrComparator.sch" 50
+F2 "Match" O R 2400 7900 50 
+F3 "R" O R 2400 8100 50 
+F4 "Periph_R" I L 1200 8100 50 
+F5 "W" O R 2400 8000 50 
+F6 "Periph_W" I L 1200 8000 50 
+F7 "SET6" I L 1200 8900 50 
+F8 "SET0" I L 1200 8300 50 
+F9 "SET1" I L 1200 8400 50 
+F10 "SET3" I L 1200 8600 50 
+F11 "SET7" I L 1200 9000 50 
+F12 "SET5" I L 1200 8800 50 
+F13 "SET4" I L 1200 8700 50 
+F14 "PeriphA[0..7]" I L 1200 7900 50 
+F15 "SET2" I L 1200 8500 50 
+$EndSheet
 $EndSCHEMATC

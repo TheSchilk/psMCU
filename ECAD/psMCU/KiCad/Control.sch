@@ -153,7 +153,7 @@ AR Path="/60E33DBC/5F6323CD" Ref="U217"  Part="1"
 AR Path="/5F6323CD" Ref="U?"  Part="1" 
 F 0 "U217" H 8700 5000 50  0000 C CNN
 F 1 "SN74HC161PW" H 8900 4900 50  0000 C CNN
-F 2 "TSSOP-16_4.4x5mm_P0.65mm" H 8600 4250 50  0001 C CNN
+F 2 "Package_SO:TSSOP-16_4.4x5mm_P0.65mm" H 8600 4250 50  0001 C CNN
 F 3 "http://www.ti.com/lit/gpn/sn74LS161" H 8600 4250 50  0001 C CNN
 	1    8600 4250
 	1    0    0    -1  
@@ -1844,12 +1844,6 @@ Wire Wire Line
 	11000 8050 11650 8050
 Wire Wire Line
 	11000 8150 11650 8150
-Wire Wire Line
-	11000 8250 11650 8250
-Wire Wire Line
-	11000 8350 11650 8350
-Wire Wire Line
-	11000 8450 11650 8450
 Connection ~ 10000 4550
 Connection ~ 10000 5650
 Connection ~ 10000 6750
@@ -1918,9 +1912,6 @@ Text HLabel 11650 8050 2    50   Output ~ 0
 Stack_Ofs_0
 Text HLabel 11650 8150 2    50   Output ~ 0
 Stack_Ofs_Sgn
-NoConn ~ 11650 8250
-NoConn ~ 11650 8350
-NoConn ~ 11650 8450
 Text Label 11700 2750 2    50   ~ 0
 RegI_Latch
 $Sheet
