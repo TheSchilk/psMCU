@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
-Sheet 91 98
+Sheet 90 98
 Title "psMCU"
 Date "2021-03-30"
 Rev "v1.0"
@@ -3164,13 +3164,13 @@ F3 "Ptr[14..0]" I L 4200 3600 50
 F4 "Offset[14..0]" I L 4200 3800 50 
 $EndSheet
 Wire Bus Line
-	2750 3600 4200 3600
+	2750 3600 3900 3600
 Wire Bus Line
-	5300 3700 5300 3150
+	5300 3700 5300 2550
 Wire Bus Line
-	5300 3150 1300 3150
+	5300 2550 1300 2550
 Wire Bus Line
-	1300 3150 1300 3600
+	1300 2550 1300 3600
 Wire Bus Line
 	1300 3600 1750 3600
 Wire Bus Line
@@ -7221,6 +7221,22 @@ Entry Wire Line
 	7400 9850 7500 9950
 Entry Wire Line
 	7400 9950 7500 10050
+Text Label 4000 5150 0    50   ~ 0
+Offset[14..0]
+$Sheet
+S 4200 2900 800  200 
+U 60B0EA32
+F0 "Stack Ptr LEDs" 50
+F1 "15BitLed.sch" 50
+F2 "Out[14..0]" I L 4200 3000 50 
+$EndSheet
+Wire Bus Line
+	4200 3000 3900 3000
+Wire Bus Line
+	3900 3000 3900 3600
+Connection ~ 3900 3600
+Wire Bus Line
+	3900 3600 4200 3600
 Wire Bus Line
 	2950 9150 2950 9850
 Wire Bus Line
@@ -7231,6 +7247,4 @@ Wire Bus Line
 	10550 3700 10550 5700
 Wire Bus Line
 	7500 5150 7500 10050
-Text Label 4000 5150 0    50   ~ 0
-Offset[14..0]
 $EndSCHEMATC
