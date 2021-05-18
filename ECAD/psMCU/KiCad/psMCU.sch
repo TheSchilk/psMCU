@@ -1214,7 +1214,7 @@ Wire Wire Line
 	8250 10300 9050 10300
 Wire Wire Line
 	8250 10400 9050 10400
-Text Notes 6450 8900 0    315  Italic 0
+Text Notes 6500 8900 0    315  Italic 0
 System Control:
 $Sheet
 S 7000 9200 1250 1300
