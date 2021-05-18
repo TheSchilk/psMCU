@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 74 98
+Sheet 64 98
 Title "psMCU"
 Date "2021-03-30"
 Rev "v1.0"
@@ -26,8 +26,6 @@ F 3 "~" H 7950 3250 50  0001 C CNN
 	1    7950 3250
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	7950 3100 7950 3050
 $Comp
 L power:GND #PWR?
 U 1 1 62072220
@@ -46,18 +44,16 @@ Wire Wire Line
 $Comp
 L power:+5V #PWR?
 U 1 1 62072227
-P 7950 2900
+P 7950 2300
 AR Path="/62072227" Ref="#PWR?"  Part="1" 
 AR Path="/62043340/62072227" Ref="#PWR01207"  Part="1" 
-F 0 "#PWR01207" H 7950 2750 50  0001 C CNN
-F 1 "+5V" H 7965 3073 50  0000 C CNN
-F 2 "" H 7950 2900 50  0001 C CNN
-F 3 "" H 7950 2900 50  0001 C CNN
-	1    7950 2900
+F 0 "#PWR01207" H 7950 2150 50  0001 C CNN
+F 1 "+5V" H 7965 2473 50  0000 C CNN
+F 2 "" H 7950 2300 50  0001 C CNN
+F 3 "" H 7950 2300 50  0001 C CNN
+	1    7950 2300
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	7950 2900 7950 2950
 $Comp
 L power:PWR_FLAG #FLG?
 U 1 1 6207222E
@@ -79,14 +75,14 @@ Wire Wire Line
 $Comp
 L Connector:Barrel_Jack J?
 U 1 1 6207223D
-P 2500 3150
+P 4050 3050
 AR Path="/6207223D" Ref="J?"  Part="1" 
 AR Path="/62043340/6207223D" Ref="J2"  Part="1" 
-F 0 "J2" H 2250 3450 50  0000 C CNN
-F 1 "PWR_IN" H 2350 3350 50  0000 C CNN
-F 2 "Connector_BarrelJack:BarrelJack_Horizontal" H 2550 3110 50  0001 C CNN
-F 3 "~" H 2550 3110 50  0001 C CNN
-	1    2500 3150
+F 0 "J2" H 4050 3350 50  0000 C CNN
+F 1 "PWR_IN" H 4050 3250 50  0000 C CNN
+F 2 "Connector_BarrelJack:BarrelJack_Horizontal" H 4100 3010 50  0001 C CNN
+F 3 "~" H 4100 3010 50  0001 C CNN
+	1    4050 3050
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -103,11 +99,7 @@ F 3 "~" H 4850 2950 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	4750 2950 4600 2950
-Wire Wire Line
 	6350 3250 6350 3650
-Wire Wire Line
-	7950 3400 7950 3500
 Wire Wire Line
 	5950 2950 5950 3000
 Wire Wire Line
@@ -125,21 +117,7 @@ F 3 "http://www.st.com/content/ccc/resource/technical/document/datasheet/41/4f/b
 	1    6350 2950
 	1    0    0    -1  
 $EndComp
-$Comp
-L Device:D_Small D?
-U 1 1 6207225A
-P 4500 2950
-AR Path="/6207225A" Ref="D?"  Part="1" 
-AR Path="/62043340/6207225A" Ref="D360"  Part="1" 
-F 0 "D360" H 4500 2743 50  0000 C CNN
-F 1 "1N4001" H 4500 2834 50  0000 C CNN
-F 2 "Diode_SMD:D_SOD-123F" V 4500 2950 50  0001 C CNN
-F 3 "~" V 4500 2950 50  0001 C CNN
-	1    4500 2950
-	-1   0    0    1   
-$EndComp
 Connection ~ 7950 3650
-Connection ~ 7950 2950
 $Comp
 L Device:CP C?
 U 1 1 62072267
@@ -208,112 +186,41 @@ Connection ~ 6350 3650
 $Comp
 L Connector_Generic:Conn_01x02 J?
 U 1 1 60CE5970
-P 7100 3300
+P 3050 3100
 AR Path="/60CE5970" Ref="J?"  Part="1" 
 AR Path="/62043340/60CE5970" Ref="J3"  Part="1" 
-F 0 "J3" H 7400 3300 50  0000 C CNN
-F 1 "PWR_IN" H 7300 3200 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 7100 3300 50  0001 C CNN
-F 3 "~" H 7100 3300 50  0001 C CNN
-	1    7100 3300
+F 0 "J3" H 3000 2800 50  0000 C CNN
+F 1 "PWR_IN" H 3000 2900 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 3050 3100 50  0001 C CNN
+F 3 "~" H 3050 3100 50  0001 C CNN
+	1    3050 3100
 	-1   0    0    1   
 $EndComp
-Wire Wire Line
-	7500 3200 7300 3200
-Wire Wire Line
-	7500 3200 7500 3050
-Wire Wire Line
-	7500 3050 7950 3050
-Connection ~ 7950 3050
-Wire Wire Line
-	7950 3050 7950 2950
-Wire Wire Line
-	7300 3300 7500 3300
-Wire Wire Line
-	7500 3300 7500 3500
-Wire Wire Line
-	7500 3500 7950 3500
-Connection ~ 7950 3500
-Wire Wire Line
-	7950 3500 7950 3650
-Wire Wire Line
-	6650 2950 7950 2950
 $Comp
 L Jumper:Jumper_3_Bridged12 JP16
 U 1 1 60CEC624
-P 3300 3050
-F 0 "JP16" V 3254 3116 50  0000 L CNN
-F 1 "JMP" V 3345 3116 50  0000 L CNN
-F 2 "Jumper:SolderJumper-3_P1.3mm_Bridged12_Pad1.0x1.5mm" H 3300 3050 50  0001 C CNN
-F 3 "~" H 3300 3050 50  0001 C CNN
-	1    3300 3050
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	2800 3050 3150 3050
-$Comp
-L Jumper:Jumper_3_Bridged12 JP17
-U 1 1 60CF11C2
-P 3950 3350
-F 0 "JP17" V 3996 3416 50  0000 L CNN
-F 1 "JMP" V 3905 3416 50  0000 L CNN
-F 2 "Jumper:SolderJumper-3_P1.3mm_Bridged12_Pad1.0x1.5mm" H 3950 3350 50  0001 C CNN
-F 3 "~" H 3950 3350 50  0001 C CNN
-	1    3950 3350
-	0    1    -1   0   
-$EndComp
-Wire Wire Line
-	3950 2750 3300 2750
-Wire Wire Line
-	3300 2750 3300 2800
-Wire Wire Line
-	3800 3350 3150 3350
-Wire Wire Line
-	3150 3350 3150 3250
-Wire Wire Line
-	2800 3250 3150 3250
-Wire Wire Line
-	3300 3300 3300 3650
-Wire Wire Line
-	3300 3650 3950 3650
-Wire Wire Line
-	3950 3650 3950 3600
-Wire Wire Line
-	3950 3650 5400 3650
-Connection ~ 3950 3650
-$Comp
-L BarrelPolarity:BarrelPolarity_CenterNeg G2
-U 1 1 60D1CAE3
-P 4300 4550
-F 0 "G2" H 4581 4596 50  0000 L CNN
-F 1 "BarrelPolarity_CenterNeg" H 4581 4505 50  0000 L CNN
-F 2 "BarrelPolarity:BarrelPolarity_1mm_CenterNeg" H 4300 4550 50  0001 C CNN
-F 3 "" H 4300 4550 50  0001 C CNN
-	1    4300 4550
-	1    0    0    -1  
+P 6950 2550
+F 0 "JP16" V 6904 2616 50  0000 L CNN
+F 1 "JMP" V 6995 2616 50  0000 L CNN
+F 2 "Jumper:SolderJumper-3_P1.3mm_Bridged12_Pad1.0x1.5mm" H 6950 2550 50  0001 C CNN
+F 3 "~" H 6950 2550 50  0001 C CNN
+	1    6950 2550
+	0    -1   -1   0   
 $EndComp
 $Comp
 L BarrelPolarity:BarrelPolarity_CenterPos G1
 U 1 1 60D1DB0E
-P 4300 4300
-F 0 "G1" H 4581 4346 50  0000 L CNN
-F 1 "BarrelPolarity_CenterPos" H 4581 4255 50  0000 L CNN
-F 2 "BarrelPolarity:BarrelPolarity_1mm_CenterPos" H 4300 4300 50  0001 C CNN
-F 3 "" H 4300 4300 50  0001 C CNN
-	1    4300 4300
+P 4050 2300
+F 0 "G1" H 4200 2200 50  0000 L CNN
+F 1 "BarrelPolarity_CenterPos" H 3600 2100 50  0000 L CNN
+F 2 "BarrelPolarity:BarrelPolarity_3mm_CenterPos" H 4050 2300 50  0001 C CNN
+F 3 "" H 4050 2300 50  0001 C CNN
+	1    4050 2300
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3950 2750 3950 2950
-Wire Wire Line
 	4950 2950 5400 2950
-Connection ~ 3950 2950
-Wire Wire Line
-	3950 2950 3950 3100
-Wire Wire Line
-	4400 2950 3950 2950
 Connection ~ 5400 2950
-Connection ~ 5400 3650
 Wire Wire Line
 	5400 3650 5950 3650
 Wire Wire Line
@@ -331,6 +238,62 @@ F 3 "~" H 5950 3000 50  0001 C CNN
 	1    5950 3000
 	-1   0    0    1   
 $EndComp
-Text Notes 3250 2550 0    50   ~ 0
-Barrel Jack \nPolarity Select
+Wire Wire Line
+	7950 3400 7950 3650
+Wire Wire Line
+	7100 2550 7950 2550
+Wire Wire Line
+	7950 2300 7950 2550
+Connection ~ 7950 2550
+Wire Wire Line
+	7950 2550 7950 3100
+Wire Wire Line
+	6650 2950 6950 2950
+Wire Wire Line
+	6950 2950 6950 2800
+Wire Wire Line
+	6950 2300 6950 2100
+Wire Wire Line
+	6950 2100 5400 2100
+Wire Wire Line
+	5400 2100 5400 2950
+Wire Wire Line
+	3250 3000 3400 3000
+Wire Wire Line
+	3400 3000 3400 2600
+Wire Wire Line
+	3400 2600 4500 2600
+Wire Wire Line
+	4500 2600 4500 2950
+Wire Wire Line
+	4500 2950 4350 2950
+Wire Wire Line
+	3250 3100 3400 3100
+Wire Wire Line
+	3400 3100 3400 3450
+Wire Wire Line
+	3400 3450 4500 3450
+Wire Wire Line
+	4500 3450 4500 3150
+Wire Wire Line
+	4500 3150 4350 3150
+$Comp
+L power:GND #PWR?
+U 1 1 62F904A2
+P 4500 3700
+AR Path="/62F904A2" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/62F904A2" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 4500 3450 50  0001 C CNN
+F 1 "GND" H 4505 3527 50  0000 C CNN
+F 2 "" H 4500 3700 50  0001 C CNN
+F 3 "" H 4500 3700 50  0001 C CNN
+	1    4500 3700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4500 3700 4500 3450
+Connection ~ 4500 3450
+Wire Wire Line
+	4750 2950 4500 2950
+Connection ~ 4500 2950
 $EndSCHEMATC
