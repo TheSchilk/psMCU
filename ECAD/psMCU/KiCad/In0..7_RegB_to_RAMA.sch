@@ -548,7 +548,7 @@ Wire Wire Line
 Wire Wire Line
 	2550 2650 2550 3250
 Text HLabel 2450 2650 0    50   Input ~ 0
-RegB->RAMA[0..7]
+RegB->RAMA
 $Comp
 L power:+5V #PWR?
 U 1 1 5F7539B6
@@ -956,7 +956,7 @@ Wire Wire Line
 Wire Wire Line
 	3850 4950 5500 4950
 Text HLabel 2450 4950 0    50   Input ~ 0
-In[0..7]->RAMA[0..7]
+In[0..7]->RAMA
 $Comp
 L Device:LED_Small D?
 U 1 1 622E0116

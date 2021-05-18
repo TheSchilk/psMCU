@@ -15,10 +15,10 @@ Comment4 "Calculate the 2's complement (*-1) of Operand B. Can carry-into the ad
 $EndDescr
 Text HLabel 11600 2200 2    50   3State ~ 0
 DB[0..7]
-Text HLabel 9550 4300 0    50   Input ~ 0
+Text HLabel 9550 4050 0    50   Input ~ 0
 OE
 Wire Wire Line
-	9700 4300 9550 4300
+	9700 4050 9550 4050
 Wire Bus Line
 	11250 2200 11600 2200
 $Comp
@@ -367,8 +367,6 @@ Wire Wire Line
 Wire Wire Line
 	9700 3450 9700 4050
 Connection ~ 9700 4050
-Wire Wire Line
-	9700 4050 9700 4300
 Text HLabel 2750 3100 0    50   Input ~ 0
 B[0..7]
 Wire Bus Line

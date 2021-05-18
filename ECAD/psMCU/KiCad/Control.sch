@@ -554,9 +554,9 @@ PC[0..7]->DBus
 Text HLabel 11650 5850 2    50   Output ~ 0
 PC[8..13]->DBus
 Text HLabel 11650 5950 2    50   Output ~ 0
-In[0..7]->RAMA[0..7]
+In[0..7]->RAMA
 Text HLabel 11650 6050 2    50   Output ~ 0
-RegB->RAMA[0..7]
+RegB->RAMA
 Text HLabel 11650 6250 2    50   Output ~ 0
 IntAdr->ROMA
 Text Label 11700 2650 2    50   ~ 0
@@ -783,7 +783,7 @@ Wire Bus Line
 Wire Bus Line
 	6550 3450 7250 3450
 $Sheet
-S 2300 2350 1500 1250
+S 2300 2350 1500 1050
 U 5FD12DEC
 F0 "Interrupts" 50
 F1 "Interrupts.sch" 50
@@ -1986,14 +1986,6 @@ Wire Wire Line
 	3800 2700 4100 2700
 Text HLabel 4100 2700 2    50   Output ~ 0
 Int_Active
-Wire Bus Line
-	9750 3850 9750 4100
-Wire Bus Line
-	5700 7050 5700 8550
-Wire Bus Line
-	7250 2350 7250 3450
-Wire Bus Line
-	8450 8000 8450 8800
 $Sheet
 S 10200 7750 800  500 
 U 609B0942
@@ -2005,4 +1997,12 @@ F4 "1" O R 11000 7950 50
 F5 "2" O R 11000 8050 50 
 F6 "3" O R 11000 8150 50 
 $EndSheet
+Wire Bus Line
+	9750 3850 9750 4100
+Wire Bus Line
+	5700 7050 5700 8550
+Wire Bus Line
+	7250 2350 7250 3450
+Wire Bus Line
+	8450 8000 8450 8800
 $EndSCHEMATC

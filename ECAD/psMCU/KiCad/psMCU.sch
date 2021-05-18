@@ -113,9 +113,9 @@ Wire Wire Line
 Wire Wire Line
 	15000 1400 15850 1400
 Text Label 15850 3900 2    50   ~ 0
-RegB->RAMA[0..7]
+RegB->RAMA
 Text Label 15850 3800 2    50   ~ 0
-In[0..7]->RAMA[0..7]
+In[0..7]->RAMA
 Wire Wire Line
 	15000 3900 15850 3900
 Wire Wire Line
@@ -327,25 +327,25 @@ F30 "Stack_Sync_Adr" O R 15000 5000 50
 F31 "In[0..13]->ROMA" O R 15000 3500 50 
 F32 "PC[0..7]->DBus" O R 15000 3600 50 
 F33 "PC[8..13]->DBus" O R 15000 3700 50 
-F34 "In[0..7]->RAMA[0..7]" O R 15000 3800 50 
-F35 "RegB->RAMA[0..7]" O R 15000 3900 50 
-F36 "Inst_Step" I L 13400 1700 50 
-F37 "Inst_Step_EN" I L 13400 1800 50 
-F38 "Int_Assert" I L 13400 2000 50 
-F39 "Int_EN" I L 13400 2100 50 
-F40 "UI_Halted" O R 15000 5800 50 
-F41 "UI_Halt_Inst" O R 15000 5900 50 
-F42 "UI_Halt_Step" O R 15000 6000 50 
-F43 "UI_Halt_Bkpt" O R 15000 6100 50 
-F44 "Stack_Ptr_Latch" O R 15000 5100 50 
-F45 "Stack_Ofs_1" O R 15000 5300 50 
-F46 "Stack_Ofs_-1" O R 15000 5400 50 
-F47 "Stack_Ofs_0" O R 15000 5500 50 
-F48 "RegT_OE_Adr" O R 15000 2600 50 
-F49 "RegT_OE_DataL" O R 15000 2700 50 
-F50 "Int_Active" O R 15000 6200 50 
-F51 "IntAdr->ROMA" O R 15000 4100 50 
-F52 "Stack_Ofs_Sgn" O R 15000 5600 50 
+F34 "Inst_Step" I L 13400 1700 50 
+F35 "Inst_Step_EN" I L 13400 1800 50 
+F36 "Int_Assert" I L 13400 2000 50 
+F37 "Int_EN" I L 13400 2100 50 
+F38 "UI_Halted" O R 15000 5800 50 
+F39 "UI_Halt_Inst" O R 15000 5900 50 
+F40 "UI_Halt_Step" O R 15000 6000 50 
+F41 "UI_Halt_Bkpt" O R 15000 6100 50 
+F42 "Stack_Ptr_Latch" O R 15000 5100 50 
+F43 "Stack_Ofs_1" O R 15000 5300 50 
+F44 "Stack_Ofs_-1" O R 15000 5400 50 
+F45 "Stack_Ofs_0" O R 15000 5500 50 
+F46 "RegT_OE_Adr" O R 15000 2600 50 
+F47 "RegT_OE_DataL" O R 15000 2700 50 
+F48 "Int_Active" O R 15000 6200 50 
+F49 "IntAdr->ROMA" O R 15000 4100 50 
+F50 "Stack_Ofs_Sgn" O R 15000 5600 50 
+F51 "In[0..7]->RAMA" O R 15000 3800 50 
+F52 "RegB->RAMA" O R 15000 3900 50 
 $EndSheet
 Wire Notes Line
 	14100 1350 14200 1350
@@ -536,8 +536,8 @@ F2 "Inst[0..15]" I R 5500 10350 50
 F3 "RegB[0..7]" I R 5500 10450 50 
 F4 "RAMA[0..8]" B L 4150 10650 50 
 F5 "RAMA_OUT" T L 4150 10750 50 
-F6 "RegB->RAMA[0..7]" I R 5500 10650 50 
-F7 "In[0..7]->RAMA[0..7]" I R 5500 10750 50 
+F6 "RegB->RAMA" I R 5500 10650 50 
+F7 "In[0..7]->RAMA" I R 5500 10750 50 
 $EndSheet
 Wire Wire Line
 	1400 8400 1150 8400
@@ -857,14 +857,6 @@ Text Label 6050 10350 2    50   ~ 0
 Inst[0..15]
 Wire Bus Line
 	700  7200 1400 7200
-Text Label 6350 10650 2    50   ~ 0
-RegB->RAMA[0..7]
-Text Label 6350 10750 2    50   ~ 0
-In[0..7]->RAMA[0..7]
-Wire Wire Line
-	5500 10650 6350 10650
-Wire Wire Line
-	5500 10750 6350 10750
 Text Notes 700  2950 0    79   ~ 0
  - 8bit Processor\n - 1MHz Clock\n - 8kB Heap RAM, \n - 32kB Stack RAM\n - 16kB Program ROM\n - Interrupts
 Text Notes 2200 2150 0    118  ~ 0
@@ -1657,4 +1649,12 @@ Wire Bus Line
 	8500 5300 8500 5600
 Wire Bus Line
 	8500 6100 8500 7150
+Text Label 6050 10650 2    50   ~ 0
+RegB->RAMA
+Text Label 6150 10750 2    50   ~ 0
+In[0..7]->RAMA
+Wire Wire Line
+	5500 10650 6050 10650
+Wire Wire Line
+	5500 10750 6150 10750
 $EndSCHEMATC
