@@ -3,13 +3,13 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 64 98
+Sheet 56 98
 Title "psMCU"
 Date "2021-03-30"
 Rev "v1.0"
 Comp "Philipp Schilk"
-Comment1 ""
-Comment2 "module. Provides various status/overflow flags."
+Comment1 "by current instruciton."
+Comment2 "module. Provides Carry, Half-Carry, and Overflow flag. Can carry-in if enabled"
 Comment3 "the 2's complement of Operand B, which is provided by the Logical Operations"
 Comment4 "ALU that can Add/Subtract Reg A and Operand B. Subtraction is performed by using"
 $EndDescr

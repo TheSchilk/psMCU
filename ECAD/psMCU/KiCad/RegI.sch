@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 16 98
+Sheet 31 98
 Title "psMCU"
 Date "2021-03-30"
 Rev "v1.0"
@@ -1306,12 +1306,12 @@ F 3 "http://www.ti.com/lit/gpn/sn74LS173" H 4450 8550 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	1900 8700 1850 8700
+Text Notes 2250 8750 0    50   ~ 0
+Latch
 Wire Bus Line
 	5400 600  5400 3100
 Wire Bus Line
 	5400 3100 5400 8350
 Wire Bus Line
 	3450 600  3450 8150
-Text Notes 2250 8750 0    50   ~ 0
-Latch
 $EndSCHEMATC

@@ -3,15 +3,15 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
-Sheet 91 98
+Sheet 87 98
 Title "psMCU"
 Date "2021-03-30"
 Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
-Comment3 ""
-Comment4 "Calculate the 2's complement (*-1) of Operand B"
+Comment3 "if instruction requires."
+Comment4 "Calculate the 2's complement (*-1) of Operand B. Can carry-into the addition"
 $EndDescr
 Text HLabel 11600 2200 2    50   3State ~ 0
 DB[0..7]

@@ -3,15 +3,15 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 26 98
+Sheet 24 98
 Title "psMCU"
 Date "2021-03-30"
 Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
-Comment3 " "
-Comment4 "Handles control of the sub-instruction step counter, and single instruction stepping."
+Comment3 "stepping."
+Comment4 "Handles control of the sub-instruction step counter, halting, and single instruction"
 $EndDescr
 Text HLabel 1100 4500 0    50   Input ~ 0
 Inst_Step_EN

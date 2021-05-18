@@ -3,15 +3,15 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 45 98
+Sheet 44 98
 Title "psMCU"
 Date "2021-03-30"
 Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
-Comment3 "(read-only)"
-Comment4 "System Register 3 (Adr. 0x6). Contains the Interrupt EN (read-write) and comparator flags "
+Comment3 "(r/w) and comparator outputs (r)."
+Comment4 "System Register 3 (Adr. 0x102). Contains the Interrupt EN (r/w), Button Interupt flag"
 $EndDescr
 Wire Wire Line
 	1300 7150 1200 7150
@@ -2880,13 +2880,13 @@ Text Notes 3850 6250 0    50   ~ 0
 R
 Wire Wire Line
 	1300 6650 1200 6650
+Connection ~ 1200 6650
+Wire Wire Line
+	1200 6650 1200 6750
 Wire Bus Line
 	2000 950  2000 3350
 Wire Bus Line
 	9200 950  9200 3600
 Wire Bus Line
 	7400 2300 7400 4900
-Connection ~ 1200 6650
-Wire Wire Line
-	1200 6650 1200 6750
 $EndSCHEMATC

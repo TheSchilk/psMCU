@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 24 98
+Sheet 38 98
 Title "psMCU"
 Date "2021-03-30"
 Rev "v1.0"
@@ -1927,14 +1927,14 @@ Wire Wire Line
 	3400 5650 3400 5700
 Wire Wire Line
 	2800 5650 3100 5650
+Text Notes 3450 1650 0    50   ~ 0
+RegB->RAMA0..7\n
+Text Notes 3550 5650 0    50   ~ 0
+In->RAMA0..7
 Wire Bus Line
 	5000 1450 5000 2250
 Wire Bus Line
 	5050 3650 5050 5650
 Wire Bus Line
 	7650 1750 7650 5200
-Text Notes 3450 1650 0    50   ~ 0
-RegB->RAMA0..7\n
-Text Notes 3550 5650 0    50   ~ 0
-In->RAMA0..7
 $EndSCHEMATC

@@ -3,13 +3,13 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 11693 16535 portrait
 encoding utf-8
-Sheet 33 98
+Sheet 30 98
 Title "psMCU"
 Date "2021-03-30"
 Rev "v1.0"
 Comp "Philipp Schilk"
-Comment1 "reading to memory. To reduce pin count, programming is done serially with shift registers.  "
-Comment2 "external programmer can reroute the IO of the ROM ICs to allow writing and"
+Comment1 "reading. To reduce pin count, programming is done serially with shift registers.  "
+Comment2 "external programmer can reroute the IO of the ROM ICs to allow programming and"
 Comment3 "operation, the current instruction is read out based on the program counter. The "
 Comment4 "ROM that stores the 16-bit instructions and programming interface. During normal "
 $EndDescr

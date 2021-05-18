@@ -3,15 +3,15 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 42 98
+Sheet 41 98
 Title "psMCU"
 Date "2021-03-30"
 Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
-Comment3 "Clock frequency (read-only)"
-Comment4 "System Register 2 (Adr. 0x5). Contains the current RAM Page (read-write) and "
+Comment3 "and clock frequency (r)."
+Comment4 "System Register 2 (Adr. 0x101). Contains the current RAM Page (r/w)"
 $EndDescr
 Wire Wire Line
 	1200 9000 1100 9000
@@ -2709,14 +2709,6 @@ Text Label 2700 3100 0    50   ~ 0
 Wire Wire Line
 	3000 3100 2700 3100
 Connection ~ 3000 3100
-Wire Bus Line
-	3700 6850 3700 7150
-Wire Bus Line
-	1950 1450 1950 4700
-Wire Bus Line
-	6400 1450 6400 4100
-Wire Bus Line
-	4700 1800 4700 9200
 Text HLabel 1050 7900 0    50   Input ~ 0
 PeriphA[0..7]
 $Sheet
@@ -2739,4 +2731,12 @@ F13 "SET4" I L 1200 8700 50
 F14 "PeriphA[0..7]" I L 1200 7900 50 
 F15 "SET2" I L 1200 8500 50 
 $EndSheet
+Wire Bus Line
+	3700 6850 3700 7150
+Wire Bus Line
+	1950 1450 1950 4700
+Wire Bus Line
+	6400 1450 6400 4100
+Wire Bus Line
+	4700 1800 4700 9200
 $EndSCHEMATC

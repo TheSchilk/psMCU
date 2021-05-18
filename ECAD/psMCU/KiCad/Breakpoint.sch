@@ -10,7 +10,7 @@ Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
-Comment3 "DIP-switches. Can be enabled/disabled."
+Comment3 "a serial interface from the programmer. Can be enabled/disabled."
 Comment4 "Compares current program counter value against a breakpoint-address settable using "
 $EndDescr
 $Comp

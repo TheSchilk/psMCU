@@ -8,10 +8,10 @@ Title "psMCU"
 Date "2021-03-30"
 Rev "v1.0"
 Comp "Philipp Schilk"
-Comment1 ""
-Comment2 "transitions. An up/down handles the stack pointer."
+Comment1 "stack pointer, or at an offset to the current stack pointer."
+Comment2 "transitions. This module support access of the value at the saved at the current"
 Comment3 "some latches/registers should prevent accidental writes due to glitches on clock "
-Comment4 "4Kb of Stack memory. Because the RAM IC only has an asynchronous interfaces, "
+Comment4 "32kB of stack RAM. Because the RAM IC only has an asynchronous interfaces, "
 $EndDescr
 Text HLabel 8950 750  0    50   3State ~ 0
 DB[0..7]

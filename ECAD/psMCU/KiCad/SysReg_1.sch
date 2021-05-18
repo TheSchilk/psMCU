@@ -3,15 +3,15 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
-Sheet 89 98
+Sheet 88 98
 Title "psMCU"
 Date "2021-03-30"
 Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
-Comment3 "(read only). The 4 ALU flags feature a shadow register that is swapped-in during interrupt. "
-Comment4 "System Register 1 (Adr. 0x4). Contains the 'ShiftIn' (read-write) and 4 ALU flags "
+Comment3 "complement carry flag (r/w)."
+Comment4 "System Register 1 (Adr. 0x100). Contains the 'ShiftIn' bit (r/w), ALU flags (r/w), and "
 $EndDescr
 Wire Wire Line
 	4200 6300 4100 6300
