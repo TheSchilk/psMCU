@@ -699,8 +699,6 @@ Wire Wire Line
 	3650 2000 4100 2000
 Wire Wire Line
 	3550 2100 4100 2100
-Wire Bus Line
-	1500 1200 1500 1950
 Wire Wire Line
 	4300 2100 4900 2100
 Wire Wire Line
@@ -803,4 +801,6 @@ F 3 "~" V 4900 1800 50  0001 C CNN
 	1    4900 1800
 	-1   0    0    1   
 $EndComp
+Wire Bus Line
+	1500 1200 1500 1950
 $EndSCHEMATC
