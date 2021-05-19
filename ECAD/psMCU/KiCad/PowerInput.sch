@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 64 98
+Sheet 62 97
 Title "psMCU"
 Date "2021-03-30"
 Rev "v1.0"
@@ -241,7 +241,7 @@ $EndComp
 Wire Wire Line
 	7950 3400 7950 3650
 Wire Wire Line
-	7100 2550 7950 2550
+	7100 2550 7500 2550
 Wire Wire Line
 	7950 2300 7950 2550
 Connection ~ 7950 2550
@@ -296,4 +296,22 @@ Connection ~ 4500 3450
 Wire Wire Line
 	4750 2950 4500 2950
 Connection ~ 4500 2950
+$Comp
+L power:PWR_FLAG #FLG?
+U 1 1 63B89052
+P 7500 2500
+AR Path="/63B89052" Ref="#FLG?"  Part="1" 
+AR Path="/62043340/63B89052" Ref="#FLG0101"  Part="1" 
+F 0 "#FLG0101" H 7500 2575 50  0001 C CNN
+F 1 "PWR_FLAG" H 7500 2673 50  0000 C CNN
+F 2 "" H 7500 2500 50  0001 C CNN
+F 3 "~" H 7500 2500 50  0001 C CNN
+	1    7500 2500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7500 2500 7500 2550
+Connection ~ 7500 2550
+Wire Wire Line
+	7500 2550 7950 2550
 $EndSCHEMATC
