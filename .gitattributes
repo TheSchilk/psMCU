@@ -1,4 +1,6 @@
-# Ignore HTML BOMs in Github's Language Stats
+# Ignore HTML BOMs in Github's language stats:
 *.html linguist-detectable=false
 
+# Ignore STM32 HAL/Drivers/usw in Github's language stats:
+psPROG/Firmware/Drivers/* linguist-vendored
 
