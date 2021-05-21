@@ -4,3 +4,5 @@
 # Ignore STM32 HAL/Drivers/usw in Github's language stats:
 psPROG/Firmware/Drivers/* linguist-vendored
 
+# This is a C project....
+*.h linguist-language=C
