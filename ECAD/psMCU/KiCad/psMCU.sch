@@ -108,12 +108,12 @@ Wire Wire Line
 Wire Wire Line
 	4150 1600 4800 1600
 Wire Wire Line
-	4150 1500 4800 1500
-Wire Wire Line
 	4150 1400 4800 1400
-Text Label 4150 1400 0    50   ~ 0
-RegT_LatchH
+Wire Wire Line
+	4150 1500 4800 1500
 Text Label 4150 1500 0    50   ~ 0
+RegT_LatchH
+Text Label 4150 1400 0    50   ~ 0
 RegT_LatchL
 Text Label 4150 1700 0    50   ~ 0
 RegT_OE_DataL
