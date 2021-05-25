@@ -448,7 +448,7 @@ Wire Wire Line
 Wire Wire Line
 	15500 9400 15650 9400
 Text Label 15650 9500 2    50   ~ 0
-R
+Rst
 Text Label 15650 9400 2    50   ~ 0
 ~R
 Wire Wire Line
@@ -457,8 +457,6 @@ Text Label 9150 1250 0    50   ~ 0
 CLK
 Wire Wire Line
 	9300 1350 9150 1350
-Text Label 9150 1350 0    50   ~ 0
-R
 $Comp
 L 74xx:74HC245 U?
 U 1 1 60588C60
@@ -3181,8 +3179,6 @@ Text Label 1600 3800 0    50   ~ 0
 CLK
 Wire Wire Line
 	1750 3900 1600 3900
-Text Label 1600 3900 0    50   ~ 0
-R
 Wire Wire Line
 	1750 3700 1500 3700
 Wire Wire Line
@@ -6556,8 +6552,6 @@ Text Label 6700 3900 0    50   ~ 0
 CLK
 Wire Wire Line
 	6850 4000 6700 4000
-Text Label 6700 4000 0    50   ~ 0
-R
 Wire Wire Line
 	6850 3800 6600 3800
 Wire Wire Line
@@ -7237,6 +7231,12 @@ Wire Bus Line
 Connection ~ 3900 3600
 Wire Bus Line
 	3900 3600 4200 3600
+Text Label 9150 1350 0    50   ~ 0
+Rst
+Text Label 6700 4000 0    50   ~ 0
+Rst
+Text Label 1600 3900 0    50   ~ 0
+Rst
 Wire Bus Line
 	2950 9150 2950 9850
 Wire Bus Line
