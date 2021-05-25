@@ -3,15 +3,15 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 60 97
+Sheet 50 97
 Title "psMCU"
-Date "2021-03-30"
+Date "2021-05-25"
 Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
-Comment3 "by the DBUS_OUT signal). Features both a binary and 7seg. display."
-Comment4 "Displays the current value on the DBus, if a different module is providing one (indicated "
+Comment3 "by the DBUS_OUT signal). "
+Comment4 "Displays the current value on the DBus if a different module is providing one (indicated "
 $EndDescr
 $Comp
 L 74xx:74HC245 U?

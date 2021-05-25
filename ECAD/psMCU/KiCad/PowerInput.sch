@@ -5,13 +5,13 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 62 97
 Title "psMCU"
-Date "2021-03-30"
+Date "2021-05-25"
 Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 "4 M4 mounting holes."
-Comment4 "Power input connectors, reverse polarity protection, voltage regulation. Also includes the"
+Comment4 "Power input connectors and voltage regulation. Also includes the"
 $EndDescr
 $Comp
 L Device:CP C?

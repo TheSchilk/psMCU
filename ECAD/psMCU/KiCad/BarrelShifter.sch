@@ -3,9 +3,9 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 46 97
+Sheet 44 97
 Title "psMCU"
-Date "2021-03-30"
+Date "2021-05-25"
 Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 "shifted in. Direction is controlled by the current instruction."
@@ -80,7 +80,7 @@ $EndSheet
 $Sheet
 S 1900 6300 3550 600 
 U 5F923C0C
-F0 "Swap" 50
+F0 "Post-Swap" 50
 F1 "BarrelShifter_Line.sch" 50
 F2 "0_In0" I T 5200 6300 50 
 F3 "0_In1" I T 4800 6300 50 
@@ -1011,7 +1011,7 @@ Wire Wire Line
 $Sheet
 S 1900 1700 3550 600 
 U 5F7FB56D
-F0 "Line: Swap" 50
+F0 "Pre-Swap" 50
 F1 "BarrelShifter_Line.sch" 50
 F2 "0_In0" I T 5200 1700 50 
 F3 "0_In1" I T 4800 1700 50 

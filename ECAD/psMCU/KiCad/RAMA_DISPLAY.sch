@@ -3,15 +3,15 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 39 97
+Sheet 37 97
 Title "psMCU"
-Date "2021-03-30"
+Date "2021-05-25"
 Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 "(indicated by the RAMA_OUT signal)"
-Comment4 "Displays the current value on the RAMA bus, if a different module is providing one "
+Comment4 "Displays the current value on the RAMA bus if a different module is providing one "
 $EndDescr
 Wire Wire Line
 	7300 2650 7300 2550

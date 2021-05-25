@@ -5,7 +5,7 @@ $Descr A3 16535 11693
 encoding utf-8
 Sheet 86 97
 Title "psMCU"
-Date "2021-03-30"
+Date "2021-05-25"
 Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
@@ -5720,9 +5720,9 @@ F 3 "" H 13500 4150 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	13500 4150 13550 4150
+Connection ~ 13550 4150
 Wire Bus Line
 	9500 1050 9500 7750
 Wire Bus Line
 	14950 1050 14950 4150
-Connection ~ 13550 4150
 $EndSCHEMATC

@@ -3,15 +3,15 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 44 97
+Sheet 41 97
 Title "psMCU"
-Date "2021-03-30"
+Date "2021-05-25"
 Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 ""
-Comment4 "2 Identical Peripheral Connectors. Also pre-filters RAMA addresses for peripherals."
+Comment4 "Peripheral Connector. Also pre-filters RAMA addresses for peripherals."
 $EndDescr
 Text HLabel 10100 3000 2    50   3State ~ 0
 DB[0..7]

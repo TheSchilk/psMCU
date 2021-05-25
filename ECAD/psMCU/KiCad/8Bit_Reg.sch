@@ -3,15 +3,15 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 44 97
+Sheet 89 97
 Title "psMCU"
-Date "2021-03-30"
+Date "2021-05-25"
 Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 ""
-Comment4 "Registers to latch data into, for Stack access."
+Comment4 "Registers to latch data into for Stack access."
 $EndDescr
 Text HLabel 3500 1000 0    50   Input ~ 0
 DB[0..7]

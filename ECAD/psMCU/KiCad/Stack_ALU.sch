@@ -3,15 +3,15 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 93 97
-Title ""
-Date ""
-Rev ""
-Comp ""
+Sheet 90 97
+Title "psMCU"
+Date "2021-05-25"
+Rev "v1.0"
+Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 ""
-Comment4 ""
+Comment4 "15 bit ALU to add offsets to the current stack pointer."
 $EndDescr
 Text HLabel 6000 1100 2    50   Output ~ 0
 Adr[14..0]

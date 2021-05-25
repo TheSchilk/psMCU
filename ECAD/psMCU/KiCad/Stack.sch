@@ -5,7 +5,7 @@ $Descr A3 16535 11693
 encoding utf-8
 Sheet 88 97
 Title "psMCU"
-Date "2021-03-30"
+Date "2021-05-25"
 Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 "stack pointer, or at an offset to the current stack pointer."
@@ -3146,7 +3146,7 @@ Entry Wire Line
 $Sheet
 S 9300 950  1100 500 
 U 60720D05
-F0 "DataSyncRegister" 50
+F0 "Data Sync Register" 50
 F1 "8Bit_Reg.sch" 50
 F2 "DB[0..7]" I L 9300 1050 50 
 F3 "DB_SYNC[0..7]" O R 10400 1050 50 
@@ -7065,7 +7065,7 @@ Sync_Adr
 $Sheet
 S 6850 3600 1000 500 
 U 62D35337
-F0 "sheet62D35330" 50
+F0 "Adr Sync Reg" 50
 F1 "15Bit_Reg.sch" 50
 F2 "Latch" I L 6850 3800 50 
 F3 "CLK" I L 6850 3900 50 
@@ -7076,7 +7076,7 @@ $EndSheet
 $Sheet
 S 1750 3500 1000 500 
 U 6136D858
-F0 "sheet6136D853" 50
+F0 "Pointer Register" 50
 F1 "15Bit_Reg.sch" 50
 F2 "Latch" I L 1750 3700 50 
 F3 "CLK" I L 1750 3800 50 

@@ -3,15 +3,15 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 31 97
+Sheet 29 97
 Title "psMCU"
-Date "2021-03-30"
+Date "2021-05-25"
 Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 ""
-Comment4 "16Bit register, that stores the instruction currently being executed."
+Comment4 "16Bit register that stores the instruction currently being executed."
 $EndDescr
 Text HLabel 1350 8700 0    50   Input ~ 0
 Latch

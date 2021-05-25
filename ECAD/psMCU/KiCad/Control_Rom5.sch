@@ -5,13 +5,13 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 25 97
 Title "psMCU"
-Date "2021-03-30"
+Date "2021-05-25"
 Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
-Comment3 "instruction."
-Comment4 "Microcode ROM, stores what control signals are needed for each sub-step of each "
+Comment3 ""
+Comment4 "Microcode ROM, stores control signals needed for each sub-step of each instruction."
 $EndDescr
 Text HLabel 1350 1200 0    50   Input ~ 0
 InstCode[0..7]

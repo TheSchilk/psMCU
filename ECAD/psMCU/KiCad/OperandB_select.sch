@@ -3,15 +3,15 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 23 97
+Sheet 52 97
 Title "psMCU"
-Date "2021-03-30"
+Date "2021-05-25"
 Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 ""
-Comment4 "Select if OperandB is RegB or a literal from the current Instruction."
+Comment4 "Select if OperandB is RegB or a literal from the current instruction."
 $EndDescr
 Entry Wire Line
 	5150 3750 5250 3850
@@ -1577,12 +1577,12 @@ Wire Wire Line
 	5250 2400 6400 2400
 Text Notes 2550 6100 0    50   ~ 0
 Inst Selected
+Text Notes 4600 6750 0    50   ~ 0
+B Selected
 Wire Bus Line
 	5150 1500 5150 2300
 Wire Bus Line
 	5150 3700 5150 5250
 Wire Bus Line
 	7750 1800 7750 5250
-Text Notes 4600 6750 0    50   ~ 0
-B Selected
 $EndSCHEMATC

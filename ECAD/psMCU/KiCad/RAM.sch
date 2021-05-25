@@ -3,13 +3,13 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 36 97
+Sheet 34 97
 Title "psMCU"
-Date "2021-03-30"
+Date "2021-05-25"
 Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
-Comment2 "clock transitions. Some bus-rerouting is done to interface with the bidirectional port."
+Comment2 "clock transitions. Bus-switching is done to interface with the bidirectional port."
 Comment3 "interface, some latches/registers should prevent accidental writes due to glitches on "
 Comment4 "8kB of Heap RAM, split into 16 pages. Because the RAM IC only has an asynchronous "
 $EndDescr

@@ -3,15 +3,15 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 9 97
+Sheet 31 97
 Title "psMCU"
-Date "2021-03-30"
+Date "2021-05-25"
 Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 "is providing one (indicated by the ROMA_OUT signal)"
-Comment4 "Displays the current value on the ROMA bus, if a different module "
+Comment4 "Displays the current value on the ROMA bus if a different module "
 $EndDescr
 Wire Wire Line
 	1850 5600 1850 5550

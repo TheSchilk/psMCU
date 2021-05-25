@@ -3,15 +3,15 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 41 97
+Sheet 35 97
 Title "psMCU"
-Date "2021-03-30"
+Date "2021-05-25"
 Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 ""
-Comment4 "Registers to latch data/adr into, for RAM access."
+Comment4 "Registers to latch data/adr for RAM access."
 $EndDescr
 Text HLabel 2100 950  0    50   Input ~ 0
 DB[0..7]
