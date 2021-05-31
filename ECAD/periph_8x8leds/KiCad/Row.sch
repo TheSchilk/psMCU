@@ -4,10 +4,10 @@ EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
 Sheet 3 9
-Title ""
-Date ""
-Rev ""
-Comp ""
+Title "8x8 LED Periph"
+Date "2021-05-31"
+Rev "v1.0"
+Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 ""
