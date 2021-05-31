@@ -7,7 +7,7 @@
       "Application": "Pcbnew",
       "Version":     "(5.1.9)-1"
     },
-    "CreationDate":  "2021-03-30T23:32:36+02:00"
+    "CreationDate":  "2021-05-31T10:48:31+02:00"
   },
   "GeneralSpecs":
   {
@@ -15,7 +15,7 @@
     {
       "Name": "Programmer",
       "GUID": "50726f67-7261-46d6-9d65-722e6b696361",
-      "Revision": "v0.1"
+      "Revision": "v1.0"
     },
     "Size":
     {
