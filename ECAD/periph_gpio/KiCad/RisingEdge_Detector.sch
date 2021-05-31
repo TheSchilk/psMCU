@@ -4,10 +4,10 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 5 5
-Title ""
+Title "GPIO periph"
 Date ""
-Rev ""
-Comp ""
+Rev "v1.0"
+Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 ""
