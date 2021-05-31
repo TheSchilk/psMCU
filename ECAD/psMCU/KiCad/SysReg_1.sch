@@ -5,7 +5,7 @@ $Descr A3 16535 11693
 encoding utf-8
 Sheet 86 97
 Title "psMCU"
-Date "2021-05-25"
+Date "2021-05-31"
 Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 ""
@@ -5710,8 +5710,8 @@ AR Path="/5ED2705B/61253C8C" Ref="#PWR?"  Part="1"
 AR Path="/5F3ED0F9/61253C8C" Ref="#PWR?"  Part="1" 
 AR Path="/61C3CF7F/61253C8C" Ref="#PWR?"  Part="1" 
 AR Path="/61C3CF88/61253C8C" Ref="#PWR?"  Part="1" 
-AR Path="/5FD65262/61253C8C" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 13500 3900 50  0001 C CNN
+AR Path="/5FD65262/61253C8C" Ref="#PWR0108"  Part="1" 
+F 0 "#PWR0108" H 13500 3900 50  0001 C CNN
 F 1 "GND" V 13505 4022 50  0000 R CNN
 F 2 "" H 13500 4150 50  0001 C CNN
 F 3 "" H 13500 4150 50  0001 C CNN

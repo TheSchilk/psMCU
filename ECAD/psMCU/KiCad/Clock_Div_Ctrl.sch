@@ -5,7 +5,7 @@ $Descr A3 16535 11693
 encoding utf-8
 Sheet 66 97
 Title "psMCU"
-Date "2021-05-25"
+Date "2021-05-31"
 Rev "v1.0"
 Comp "Philipp Schilk"
 Comment1 "1-of-8/one-hot signal. "
