@@ -15,7 +15,7 @@ def main(args):
     parser.add_argument('input_file', help='Input main psASM file.')
     parser.add_argument('-o', required=False, help='Output name.')
     parser.add_argument('-B', required=False, action="store_true", help='Generate binary file. (Default if no other output '
-                                                                        'is enaled)')
+                                                                        'is enabled)')
     parser.add_argument('-L', required=False, action="store_true", help='Generate logisim file.')
     parser.add_argument('-S', required=False, action="store_true", help='Generate split binary files.')
     parser.add_argument('-M', required=False, action="store_true", help='Generate map file.')
