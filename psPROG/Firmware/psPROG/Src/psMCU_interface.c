@@ -148,14 +148,13 @@ psprog_error_t psMCUinter_set_BKPT(bool enabled, uint16_t adr) {
   }
 
   // Format data
-  uint8_t tx_buffer[3] = {
-       [0] = enabled,
-       [1] = (adr >> 8) & 0xff,
-       [2] = (adr & 0xff)
+  uint8_t tx_buffer[2] = {
+       [0] = ((adr >> 8) & 0x3f) | ((enabled & 0x1) << 7),
+       [1] = (adr & 0xff)
   };
 
   // Transmit
-  if (HAL_SPI_Transmit(spi, tx_buffer, 3, PSMCUINTER_SPI_TIMEOUT) != HAL_OK) {
+  if (HAL_SPI_Transmit(spi, tx_buffer, 2, PSMCUINTER_SPI_TIMEOUT) != HAL_OK) {
     err |= PSPROG_COM_ERROR;
     return err;
   }
