@@ -1,4 +1,10 @@
-# Main .psASM file name:
+########################################
+#                                      #
+# psASM Makefile for psMCU Development #
+#           Philipp Schilk             #
+#                                      #
+########################################
+
 MAIN_SOURCE_NAME = full_test.psASM
 
 # Build Directory:
@@ -8,8 +14,8 @@ BUILD_DIR = build
 # The same as MAIN_SOURCE_NAME by default:
 OUTPUT_NAME = $(MAIN_SOURCE_NAME:.psASM=)
 
-# Additional Flags:
-ASM_FLAGS =
+# Additional Flags
+ASM_FLAGS = 
 
 .PHONY: all
 all: bin logisim info
@@ -22,6 +28,10 @@ clean:
 bin:
 	@mkdir -p $(BUILD_DIR)
 	psASM $(MAIN_SOURCE_NAME) -o $(BUILD_DIR)/$(OUTPUT_NAME) -B $(ASM_FLAGS)
+
+.PHONY: flash
+flash: bin
+	psPROG -w 0 $(BUILD_DIR)/$(OUTPUT_NAME).bin
 
 .PHONY: logisim
 logisim:
@@ -46,7 +56,6 @@ defs:
 
 usage:
 	psASM $(MAIN_SOURCE_NAME) -U
-
 
 
 

@@ -45,7 +45,6 @@ SWP
 POPA
 JMP loop
 
-# Infinite Loop to stop
 Display:
 LITA 0
 LITB 0

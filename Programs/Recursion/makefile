@@ -1,4 +1,11 @@
-MAIN_SOURCE_NAME = recursion.psASM
+########################################
+#                                      #
+# psASM Makefile for psMCU Development #
+#           Philipp Schilk             #
+#                                      #
+########################################
+
+MAIN_SOURCE_NAME = Recursion.psASM
 
 # Build Directory:
 BUILD_DIR = build
@@ -21,6 +28,10 @@ clean:
 bin:
 	@mkdir -p $(BUILD_DIR)
 	psASM $(MAIN_SOURCE_NAME) -o $(BUILD_DIR)/$(OUTPUT_NAME) -B $(ASM_FLAGS)
+
+.PHONY: flash
+flash: bin
+	psPROG -w 0 $(BUILD_DIR)/$(OUTPUT_NAME).bin
 
 .PHONY: logisim
 logisim:
