@@ -1,4 +1,12 @@
-class ArgumentRangeException(Exception):
+class psASMException(Exception):
+    def __init__(self, error_text):
+        self.error_text = error_text
+
+    def __str__(self):
+        return self.error_text
+
+
+class ArgumentRangeException(psASMException):
     def __init__(self, line, num, arg_setup):
         self.line = line
         self.num = num
@@ -12,7 +20,7 @@ class ArgumentRangeException(Exception):
         return msg
 
 
-class DefinitionException(Exception):
+class DefinitionException(psASMException):
     def __init__(self, msg, alias):
         self.msg = msg
         self.alias = alias
@@ -21,7 +29,7 @@ class DefinitionException(Exception):
         return self.msg + " (" + str(self.alias) + ")"
 
 
-class ParsingException(Exception):
+class ParsingException(psASMException):
     def __init__(self, line, error_text):
         self.line = line
         self.error_text = error_text

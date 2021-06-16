@@ -1,4 +1,3 @@
-from re import A
 from Line import Line
 from Errors import ParsingException
 from StdLib import StdLib
@@ -9,7 +8,6 @@ class Listing:
         self.file_name = file_name
         self.sub_listings = []
         self.Lines = []
-
         if file_name == "StdLib.psASM":
             self.initial_parse(namespace, StdLib, "StdLib.psASM-[INTERNAL]")
         else:

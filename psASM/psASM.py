@@ -1,32 +1,16 @@
 #!/usr/bin/env python3
 import sys
-import argparse
 import Output
 from Namespace import Namespace
 from Listing import Listing
 from Errors import ParsingException
 from Errors import DefinitionException
 from Errors import ArgumentRangeException
+from args import parse_args
 
 
 def main(args):
-    # arg-parse:
-    parser = argparse.ArgumentParser(prog="psASM.py", description="psASM Assembler for psMCU.")
-    parser.add_argument('input_file', help='Input main psASM file.')
-    parser.add_argument('-o', required=False, help='Output name.')
-    parser.add_argument('-B', required=False, action="store_true", help='Generate binary file. (Default if no other output '
-                                                                        'is enabled)')
-    parser.add_argument('-L', required=False, action="store_true", help='Generate logisim file.')
-    parser.add_argument('-S', required=False, action="store_true", help='Generate split binary files.')
-    parser.add_argument('-M', required=False, action="store_true", help='Generate map file.')
-    parser.add_argument('-D', required=False, action="store_true", help='Generate definitions file.')
-    parser.add_argument('-U', required=False, action="store_true", help='Report memory usage.')
-    parser.add_argument('-w', required=False, action="store_true", help='Strip line whitespace/indents in map file.')
-    parser.add_argument('-c', required=False, action="store_true", help='Strip line comments in map file.')
-
-    parser.add_argument('-f', required=False, action="store_true", help="Do not add program footer")
-
-    cmdline_args = parser.parse_args(args)
+    cmdline_args = parse_args(args)
 
     # Parse and assemble program:
     namespace = Namespace()
@@ -57,16 +41,16 @@ def main(args):
 
     except ParsingException as e:
         print(e)
-        sys.exit(1)
+        sys.exit(-1)
     except DefinitionException as e:
         print(e)
-        sys.exit(1)
+        sys.exit(-1)
     except ArgumentRangeException as e:
         print(e)
-        sys.exit(1)
+        sys.exit(-1)
     except FileNotFoundError as e:
-        print("File not found!")
-        sys.exit(1)
+        print("File %s not found!" % e.filename)
+        sys.exit(-1)
 
     # Generate Output Files
     if cmdline_args.o is None:

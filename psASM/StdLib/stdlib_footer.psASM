@@ -1,0 +1,8 @@
+#
+# StdLib Footer File for psMCU
+# 
+
+# Provides a stop at the end of a program to avoid over-run.
+
+$END_HALT: HALT # Stop - Prevent overrun. 
+JMP $END_HALT   # Jump to stop.
