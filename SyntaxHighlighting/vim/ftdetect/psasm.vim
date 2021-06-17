@@ -1,4 +1,5 @@
 " Automatically detect '.psASM' files for syntax highlighting
 
-au BufRead,BufNewFile *.psASM set filetype=psasm
-au FileType psasm setlocal commentstring=#\ %s
+au BufRead,BufNewFile *.psASM set filetype=psASM
+au FileType psASM setlocal commentstring=#\ %s
+
