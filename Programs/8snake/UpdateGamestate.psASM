@@ -10,9 +10,9 @@
 @define GS_dir        0x43
 @define GS_board_dec  0x44 
 
-@define INPUT        0x1f7
-@define INP_L        0
-@define INP_R        1
+@define INPUT        0x104
+@define INP_L        4
+@define INP_R        6
 
 @define GS_apple_pos_increase 35
 
@@ -69,7 +69,7 @@ UPDATE_GAMESTATE:
         SVA GS_headpos
 
         # If we did not underflow, we are good to continue: 
-        IFRM SYS1, S1_BORROW
+        IFSA 7 
             JMP UGS_DIR_DONE
 
         # If we did underflow, we collided against a wall. The game is over

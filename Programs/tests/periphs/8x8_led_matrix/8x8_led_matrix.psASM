@@ -1,0 +1,49 @@
+
+@define adr0 0x108
+@define adr1 0x109
+@define adr2 0x10a
+@define adr3 0x10b
+@define adr4 0x10c
+@define adr5 0x10d
+@define adr6 0x10e
+@define adr7 0x10f
+
+
+MAIN:
+    LITA 0xaa
+    SVA adr0
+    LITA 0x55
+    SVA adr1
+    LITA 0xaa
+    SVA adr2
+    LITA 0x55
+    SVA adr3
+    LITA 0xaa
+    SVA adr4
+    LITA 0x55
+    SVA adr5
+    LITA 0xaa
+    SVA adr6
+    LITA 0x55
+    SVA adr7
+    HALT
+    
+    LITA 0xff
+    SVA adr0
+    LITA 0xff
+    SVA adr1
+    LITA 0xff
+    SVA adr2
+    LITA 0xff
+    SVA adr3
+    LITA 0xff
+    SVA adr4
+    LITA 0xff
+    SVA adr5
+    LITA 0xff
+    SVA adr6
+    LITA 0xff
+    SVA adr7
+    HALT
+
+    JMP MAIN

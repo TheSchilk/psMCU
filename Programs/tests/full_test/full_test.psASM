@@ -34,6 +34,9 @@ MAIN:
 
     # Test 2: CPY SWP
     TEST2:
+    LITA 0x2
+    SVA SYS2
+
     LITB 0
     LITA 0xff
 
@@ -57,6 +60,9 @@ MAIN:
 
     # Test 3: JMP CALL (Should count in A: 0-1-2-3-4-5-ff)
     TEST3:
+    LITA 0x3
+    SVA SYS2
+
     LITA 0
     LITB 0
     JMP SKIP3
@@ -106,6 +112,9 @@ MAIN:
     # Test 4: Conditionals (IFSM IFSA IFRM IFRA)
     # Should only halt at END4OK
     TEST4: 
+    LITA 0x4
+    SVA SYS2
+
     LITA 0x80 # Set A bit 7
 
     # Test if A bit 7 is set (it should be)
@@ -170,6 +179,9 @@ MAIN:
 
     # Test 5: Comparator (should only halt at END5OK)
     TEST5:
+    LITA 0x5
+    SVA SYS2
+    
     # A = B
     LITA 0x55
     LITB 0x55
@@ -258,6 +270,9 @@ MAIN:
 
     # Test 6: (Should count up every interrupt, until 6)
     TEST6:
+    LITA 0x6
+    SVA SYS2
+    
     # Enable interrupts
     LDA SYS3
     ORL 0x1
@@ -304,6 +319,9 @@ MAIN:
 
     # Test 7: Shifting 
     TEST7: 
+    LITA 0x7
+    SVA SYS2
+
     LITA 0
     LITB 0
 
@@ -349,6 +367,9 @@ MAIN:
     
     # Test 8: Logic Operations (Should only halt at end)
     TEST8:
+    LITA 0x8
+    SVA SYS2
+
     # AND + ANDL
 
     LITA 0x55
@@ -430,6 +451,8 @@ MAIN:
 
     # Test 9: Saving/Loading from all RAM pages
     TEST9:
+    LITA 0x9
+    SVA SYS2
     @define T9_TEST_ADR 0x44
 
     # Sanity check SVA->LDA SVB->LDB
@@ -691,7 +714,7 @@ MAIN:
     LDB T9_TEST_ADR
     
     LITA 29
-    SVA SYS2 
+    SVA SYS2
     LDB T9_TEST_ADR
     
     LITA 30
@@ -716,6 +739,9 @@ MAIN:
 
     # Test 10: Dynamic Load + Save
     TEST10: 
+    LITA 0xa
+    SVA SYS2
+
     # Make sure SVDP and LDDP work by storing and loading from SYS2
     LITA 0x0A
     LITB 0x01
@@ -764,6 +790,9 @@ MAIN:
     
     # Test 11:  Simple stack push + pop
     TEST11:
+    LITA 0xb
+    SVA SYS2
+
     # Push 1,2,3,4 from A 
     LITA 1
     PUSHA
@@ -825,6 +854,9 @@ MAIN:
 
     # Test 12: Stack access using grow/shrink + get/set ops
     TEST12: 
+    LITA 0xc
+    SVA SYS2
+
     # Add first frame using pushes 
     LITA 0x01
     PUSHA
@@ -892,6 +924,9 @@ MAIN:
     
     # Test 13: Additions w/o carry + Addition flags
     TEST13:
+    LITA 0xd
+    SVA SYS2
+
     # Calc 1: 0xFF + 0xFF = 0xFE  | C:1 HC:1 OVF:0 => SYS1 = 0x06 | 
     # Calc 2: -128 + -1 = 0x7F    | C:1 HC:0 OVF:1 => SYS1 = 0x0a | 
     # Calc 3: 0x0F + 0x1 = 0x10   | C:0 HC:1 OVF:0 => SYS1 = 0x04 | 
@@ -1040,6 +1075,8 @@ MAIN:
     
     # Test 14: ADDC ADDLBC ADDLAC
     TEST14:
+    LITA 0xd
+    SVA SYS2
     # Clear Carry bit
     LITA 0
     SVA SYS1
@@ -1110,6 +1147,8 @@ MAIN:
 
     # Test 15: SUB/SUBL
     TEST15:
+    LITA 0xe
+    SVA SYS2
     # Calc 1: 0xFF - 0xFF = 0     | C: 1 HC: 1 OVF: 0 COMP_C: 0 => SYS1 = 0x6 | 
     # Calc 2: -128 - 1    = 0x7F  | C: 1 HC: 0 OVF: 1 COMP_C: 0 => SYS1 = 0xa | 
     # Calc 3: 0xaa - 0    = 0xaa  | C: 0 HC: 0 OVF: 0 COMP_C: 1 => SYS1 = 0x10| 
@@ -1351,6 +1390,8 @@ MAIN:
 
     # Test 16: COMPB COMPBC
     TEST16: 
+    LITA 0xf
+    SVA SYS2
 
     # COMPB 0xff -> 1 | COMPC = 0 |
     LITA 0x10 # make sure flag is cleared

@@ -17,16 +17,53 @@ MAIN:
 
 # Game Loop:
 MAIN_LOOP: 
-    CALL UPDATE_BOARD
-    CALL RENDER
     CALL UPDATE_GAMESTATE
     
     # Check game over
     IFRM SYS3,S3_A0
         JMP GAME_OVER
+   
+    CALL UPDATE_BOARD
+    CALL RENDER
+    
+    # DELAY
+    CALL DELAY_DELAY
+    CALL DELAY_DELAY
+    CALL DELAY_DELAY
 
     JMP MAIN_LOOP
 
 GAME_OVER: 
+    CALL RENDER_GAME_OVER
     HALT
     JMP MAIN
+
+
+DELAY_DELAY:
+    PUSHA
+    
+    LITA 255
+   
+   delay_delay_loop:
+        SUBL 1
+        CALL DELAY
+        IFSM SYS3,S3_A0
+            JMP delay_delay_done
+        JMP delay_delay_loop
+    
+    delay_delay_done:
+    POPA
+    RTRN
+
+DELAY:
+    PUSHA
+    LITA 255
+    delay_loop: 
+        SUBL 1
+        IFSM SYS3,S3_A0
+            JMP delay_done
+        JMP delay_loop
+    delay_done:
+    POPA
+    RTRN
+

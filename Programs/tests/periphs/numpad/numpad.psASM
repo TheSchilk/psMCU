@@ -1,0 +1,8 @@
+@define adr_low  0x104
+@define adr_high 0x105
+
+MAIN:
+    LDA adr_low  
+    LDB adr_high
+    JMP MAIN
+    

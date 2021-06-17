@@ -1,0 +1,286 @@
+
+@define num0 0x104
+@define num1 0x105
+
+@define led0 0x108
+@define led1 0x109
+@define led2 0x10a
+@define led3 0x10b
+@define led4 0x10c
+@define led5 0x10d
+@define led6 0x10e
+@define led7 0x10f
+
+
+MAIN:
+    LDA num0 
+    
+    IFSA 0
+        JMP draw_0
+    IFSA 1
+        JMP draw_1
+    IFSA 2
+        JMP draw_2
+    IFSA 3
+        JMP draw_3
+    IFSA 4
+        JMP draw_4
+    IFSA 5
+        JMP draw_5
+    IFSA 6
+        JMP draw_6
+    IFSA 7
+        JMP draw_7
+
+    LDA num1
+    IFSA 0 
+        JMP draw_8
+    IFSA 1
+        JMP draw_9
+    IFSA 2
+        JMP draw_back
+    IFSA 3
+        JMP draw_enter
+
+    JMP clear
+
+clear:
+    LITA 0x00
+    SVA led0
+    SVA led1
+    SVA led2
+    SVA led3
+    SVA led4
+    SVA led5
+    SVA led6
+    SVA led7
+    JMP MAIN
+
+draw_0:
+    LITA 0x00
+    SVA led0
+    LITA 0x18
+    SVA led1
+    LITA 0x24
+    SVA led2
+    LITA 0x24
+    SVA led3
+    LITA 0x24
+    SVA led4
+    LITA 0x24
+    SVA led5
+    LITA 0x18
+    SVA led6
+    LITA 0x00
+    SVA led7
+    JMP MAIN
+
+draw_1:
+    LITA 0x00
+    SVA led0
+    LITA 0x08
+    SVA led1
+    LITA 0x18
+    SVA led2
+    LITA 0x08
+    SVA led3
+    LITA 0x08
+    SVA led4
+    LITA 0x08
+    SVA led5
+    LITA 0x1c
+    SVA led6
+    LITA 0x00
+    SVA led7
+    JMP MAIN
+
+draw_2:
+    LITA 0x00
+    SVA led0
+    LITA 0x18
+    SVA led1
+    LITA 0x24
+    SVA led2
+    LITA 0x04
+    SVA led3
+    LITA 0x08
+    SVA led4
+    LITA 0x10
+    SVA led5
+    LITA 0x3c
+    SVA led6
+    LITA 0x00
+    SVA led7
+    JMP MAIN
+
+draw_3:
+    LITA 0x00
+    SVA led0
+    LITA 0x18
+    SVA led1
+    LITA 0x24
+    SVA led2
+    LITA 0x08
+    SVA led3
+    LITA 0x04
+    SVA led4
+    LITA 0x24
+    SVA led5
+    LITA 0x18
+    SVA led6
+    LITA 0x00
+    SVA led7
+    JMP MAIN
+
+draw_4:
+    LITA 0x00
+    SVA led0
+    LITA 0x20
+    SVA led1
+    LITA 0x20
+    SVA led2
+    LITA 0x28
+    SVA led3
+    LITA 0x3C
+    SVA led4
+    LITA 0x08
+    SVA led5
+    LITA 0x08
+    SVA led6
+    LITA 0x00
+    SVA led7
+    JMP MAIN
+
+draw_5:
+    LITA 0x00
+    SVA led0
+    LITA 0x3c
+    SVA led1
+    LITA 0x20
+    SVA led2
+    LITA 0x38
+    SVA led3
+    LITA 0x04
+    SVA led4
+    LITA 0x04
+    SVA led5
+    LITA 0x38
+    SVA led6
+    LITA 0x00
+    SVA led7
+    JMP MAIN
+
+draw_6:
+    LITA 0x00
+    SVA led0
+    LITA 0x1c
+    SVA led1
+    LITA 0x20
+    SVA led2
+    LITA 0x38
+    SVA led3
+    LITA 0x24
+    SVA led4
+    LITA 0x24
+    SVA led5
+    LITA 0x18
+    SVA led6
+    LITA 0x00
+    SVA led7
+    JMP MAIN
+
+draw_7:
+    LITA 0x00
+    SVA led0
+    LITA 0x3c
+    SVA led1
+    LITA 0x04
+    SVA led2
+    LITA 0x04
+    SVA led3
+    LITA 0x08
+    SVA led4
+    LITA 0x08
+    SVA led5
+    LITA 0x08
+    SVA led6
+    LITA 0x00
+    SVA led7
+    JMP MAIN
+
+draw_8:
+    LITA 0x00
+    SVA led0
+    LITA 0x18
+    SVA led1
+    LITA 0x24
+    SVA led2
+    LITA 0x18
+    SVA led3
+    LITA 0x24
+    SVA led4
+    LITA 0x24
+    SVA led5
+    LITA 0x18
+    SVA led6
+    LITA 0x00
+    SVA led7
+    JMP MAIN
+
+draw_9:
+    LITA 0x00
+    SVA led0
+    LITA 0x18
+    SVA led1
+    LITA 0x24
+    SVA led2
+    LITA 0x24
+    SVA led3
+    LITA 0x1c
+    SVA led4
+    LITA 0x04
+    SVA led5
+    LITA 0x18
+    SVA led6
+    LITA 0x00
+    SVA led7
+    JMP MAIN
+
+draw_enter:
+    LITA 0x00
+    SVA led0
+    LITA 0x3c
+    SVA led1
+    LITA 0x20
+    SVA led2
+    LITA 0x38
+    SVA led3
+    LITA 0x20
+    SVA led4
+    LITA 0x20
+    SVA led5
+    LITA 0x3c
+    SVA led6
+    LITA 0x00
+    SVA led7
+    JMP MAIN
+
+draw_back:
+    LITA 0x00
+    SVA led2
+    LITA 0x10
+    SVA led1
+    LITA 0x20
+    SVA led2
+    LITA 0x7E
+    SVA led3
+    LITA 0x20
+    SVA led4
+    LITA 0x10
+    SVA led5
+    LITA 0x00
+    SVA led6
+    LITA 0x00
+    SVA led7
+    JMP MAIN
+
