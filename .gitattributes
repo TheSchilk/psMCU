@@ -8,3 +8,6 @@ psPROG/Firmware/Core/Src/main.c -linguist-vendored
 
 # This is a C project....
 *.h linguist-language=C
+
+# psASM is assembly
+*.psASM linguist-language=Assembly
