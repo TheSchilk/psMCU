@@ -80,14 +80,14 @@ RENDER:
     # An unrolled loop is shorter and faster at this size
    
     RENDER_LOOP_DONE: 
-    POPM 0x108
-    POPM 0x109
-    POPM 0x10a
-    POPM 0x10b
-    POPM 0x10c
-    POPM 0x10d
-    POPM 0x10e
     POPM 0x10f
+    POPM 0x10e
+    POPM 0x10d
+    POPM 0x10c
+    POPM 0x10b
+    POPM 0x10a
+    POPM 0x109
+    POPM 0x108
 
     RTRN
 

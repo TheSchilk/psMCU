@@ -10,6 +10,9 @@
 @define GS_dir        0x43
 @define GS_board_dec  0x44 
 
+@define GS_headpos_x  0x50
+@define GS_headpos_y  0x51
+
 @define INPUT        0x104
 @define INP_L        4
 @define INP_R        6
@@ -49,7 +52,7 @@ UPDATE_GAMESTATE:
     UGS_RIGHT_DONE:
 
     # === Update headpos based on direction: ====
-    # switch(GS_pos) 
+    # switch(GS_pos) (0 = UP, 1 = RIGHT, 2 = DOWN, 3 = LEFT)
     LDA GS_dir
     LITB 0
     IFSM SYS3, S3_AB
@@ -64,44 +67,41 @@ UPDATE_GAMESTATE:
 
     UGS_DIR_UP:
         # Next head position
-        LDA GS_headpos
-        SUBL 8
-        SVA GS_headpos
+        LDA GS_headpos_y
+        SUBL 1
+        SVA GS_headpos_y
 
         # If we did not underflow, we are good to continue: 
-        IFSA 7 
+        IFRA 7 
             JMP UGS_DIR_DONE
-
+        
         # If we did underflow, we collided against a wall. The game is over
         LITA 1
         RTRN # Return with A = 1
 
     UGS_DIR_RIGHT:
         # Check if this would cause a wall collision
-        LDA GS_headpos
-        ANDL 0b0111
-        IFSM SYS3, S3_A0
-            JMP UGS_DIR_RIGHT_COLLISION
-        
-        # Calculate next position
-        LDA GS_headpos
+        LDA GS_headpos_x
         SUBL 1
-        SVA GS_headpos
-        JMP UGS_DIR_DONE
-
-        UGS_DIR_RIGHT_COLLISION:
+        SVA GS_headpos_x
+        
+        # If we did not underflow, we are good to continue: 
+        IFRA 7 
+            JMP UGS_DIR_DONE
+        
+        # If we did underflow, we collided against a wall. The game is over
         LITA 1
-        RTRN # Return with  A = 1
+        RTRN # Return with A = 1
 
     UGS_DIR_DOWN:
         # Next head position
-        LDA GS_headpos
-        ADDLA 8
-        SVA GS_headpos
+        LDA GS_headpos_y
+        ADDLA 1
+        SVA GS_headpos_y
 
         # Check that we did collide:
-        LITB 63
-        IFRM SYS3,S3_AgreaterB
+        LITB 8
+        IFSM SYS3,S3_AlessB
             JMP UGS_DIR_DONE
 
         # We collided:
@@ -109,25 +109,30 @@ UPDATE_GAMESTATE:
         RTRN # Return with A = 1
 
     UGS_DIR_LEFT:
-        # Check if this would cause a wall collision
-        LDA GS_headpos
-        ANDL 0b0111
-        LITB 0b0111
-        IFSM SYS3,S3_AB
-            JMP UGS_DIR_LEFT_COLLISION
-
-        # Calculate next position:
-        LDA GS_headpos
+        # Next head position
+        LDA GS_headpos_x
         ADDLA 1
-        SVA GS_headpos
-        JMP UGS_DIR_DONE
+        SVA GS_headpos_x
 
-        UGS_DIR_LEFT_COLLISION:
+        # Check that we did collide:
+        LITB 8
+        IFSM SYS3,S3_AlessB
+            JMP UGS_DIR_DONE
+
+        # We collided:
         LITA 1
         RTRN # Return with A = 1
 
     UGS_DIR_DONE:
     
+    # Calculte GS_headpos based on x and y:
+    # GS_headpos = (GS_headpos_y * 8) + GS_headpos_x
+    LDA GS_headpos_y
+    SHFTLL 3 # times 8
+    LDB GS_headpos_x
+    ADD
+    SVA GS_headpos
+
     #### Make sure we did not collide with snake body: ####
     
     # Load board mem at location GS_headpos into A:
@@ -184,19 +189,19 @@ UPDATE_GAMESTATE:
     SWP
 
     
-    # Check if this spot is already taken. 
-    # If it is already take, increase by 1 and try again
-    GS_APPLE_KEEP_STEPPING:
-        LDDR # Load board mem at apple position to A
-        IFSM SYS3, S3_A0
-            JMP UGS_APPLE_POSITION_FOUND # Position OK
+    # # Check if this spot is already taken. 
+    # # If it is already take, increase by 1 and try again
+    # GS_APPLE_KEEP_STEPPING:
+    #     LDDR # Load board mem at apple position to A
+    #     IFSM SYS3, S3_A0
+    #         JMP UGS_APPLE_POSITION_FOUND # Position OK
 
-        # Position not OK. keep iterating.
-        SWP 
-        ADDLA 1
-        ANDL 0x3F
-        SWP
-        JMP GS_APPLE_KEEP_STEPPING
+    #     # Position not OK. keep iterating.
+    #     SWP 
+    #     ADDLA 1
+    #     ANDL 0x3F
+    #     SWP
+    #     JMP GS_APPLE_KEEP_STEPPING
     
     UGS_APPLE_POSITION_FOUND:
     SVB GS_applepos

@@ -10,39 +10,46 @@
 @include UpdateBoard.psASM
 @include UpdateGamestate.psASM
 
-# Entry Point:
+# Entry point
 MAIN:
+    CALL GAME_OVER
+    JMP GAME
+
+
+# Game Start:
+GAME:
     CALL SETUP
     JMP MAIN_LOOP
 
-# Game Loop:
-MAIN_LOOP: 
-    CALL UPDATE_GAMESTATE
-    
-    # Check game over
-    IFRM SYS3,S3_A0
-        JMP GAME_OVER
-   
-    CALL UPDATE_BOARD
-    CALL RENDER
-    
-    # DELAY
-    CALL DELAY_DELAY
-    CALL DELAY_DELAY
-    CALL DELAY_DELAY
+    # Game Loop:
+    MAIN_LOOP: 
+        CALL UPDATE_GAMESTATE
+        
+        # Check game over
+        IFRM SYS3,S3_A0
+            JMP GAME_OVER
+       
+        CALL UPDATE_BOARD
+        CALL RENDER
+        
+        # DELAY
+        CALL DELAY_DELAY
 
-    JMP MAIN_LOOP
+        JMP MAIN_LOOP
 
 GAME_OVER: 
     CALL RENDER_GAME_OVER
-    HALT
-    JMP MAIN
+    IFSM 0x105, 3 # If Enter is pressed
+        JMP GAME
+    JMP GAME_OVER
 
+
+# #############
 
 DELAY_DELAY:
     PUSHA
     
-    LITA 255
+    LITA 200
    
    delay_delay_loop:
         SUBL 1
