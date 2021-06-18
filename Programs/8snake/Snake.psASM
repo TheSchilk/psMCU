@@ -47,19 +47,20 @@ GAME_OVER:
 # #############
 
 DELAY_DELAY:
-    PUSHA
+    PUSHB
     
-    LITA 200
+    LITB 200
    
    delay_delay_loop:
-        SUBL 1
+        ADDLB -1
         CALL DELAY
-        IFSM SYS3,S3_A0
+        IFSM SYS3,S3_B0
             JMP delay_delay_done
         JMP delay_delay_loop
     
     delay_delay_done:
-    POPA
+
+    POPB
     RTRN
 
 DELAY:
