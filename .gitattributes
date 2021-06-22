@@ -6,8 +6,12 @@ psPROG/Firmware/Drivers/** linguist-vendored
 psPROG/Firmware/Core/** linguist-vendored
 psPROG/Firmware/Core/Src/main.c -linguist-vendored
 
+# Ignore antlr4 parser in Github's language stats:
+psASM/Parsing/psASMantlr4/** linguist-vendored
+
 # This is a C project....
 *.h linguist-language=C
 
 # psASM is assembly
 *.psASM linguist-language=Assembly
+

@@ -1,0 +1,7 @@
+#
+# psMCU Footer
+#
+
+# Catch accidental overrun:
+_stop: HALT
+JMP _stop

@@ -6,9 +6,10 @@ class psASMException(Exception):
         return "Error: " + self.text
 
 
-class ParsingException(psASMException):
-    def __init__(self, text, file_id=None, line_id=None, source_files=None, error_col=None):
+class LocatedException(psASMException):
+    def __init__(self, text, exception_name, file_id=None, line_id=None, source_files=None, error_col=None):
         super().__init__(text)
+        self.exception_name = exception_name
         self.file_id = file_id
         self.line_id = line_id
         self.source_files = source_files
@@ -35,7 +36,7 @@ class ParsingException(psASMException):
         if self._location_defined():
             # Generate error message with location information:
 
-            result = "Parsing Error: " + self.text + '\n'
+            result = self.exception_name + ": " + self.text + '\n'
 
             line_text_prefix = self.source_files.location_str(self.file_id, self.line_id, self.error_col) + ": "
 
@@ -50,3 +51,13 @@ class ParsingException(psASMException):
             result = "Parsing Error: " + self.text
 
         return result
+
+
+class ParsingException(LocatedException):
+    def __init__(self, text, file_id=None, line_id=None, source_files=None, error_col=None):
+        super().__init__(text, "Parsing Error", file_id, line_id, source_files, error_col)
+
+
+class EvalException(LocatedException):
+    def __init__(self, text, file_id=None, line_id=None, source_files=None, error_col=None):
+        super().__init__(text, "Evaluation  Error", file_id, line_id, source_files, error_col)

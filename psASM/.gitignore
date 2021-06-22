@@ -83,3 +83,5 @@ dmypy.json
 
 # Test psASM files:
 test*.psASM
+test_prog/*
+

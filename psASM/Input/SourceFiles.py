@@ -1,6 +1,6 @@
-import os
-from Util.Errors import ParsingException
-from Input.AsmFile import AsmFile
+from Util.Errors import LocatedException
+from Input.SourceFile import SourceFile
+import Input.StdLib
 
 
 class SourceFiles:
@@ -10,21 +10,27 @@ class SourceFiles:
         self.files = files
 
     @classmethod
-    def from_root_file(cls, root_file_path):
-        """Generate from a root file and all included files."""
+    def from_root_file(cls, root_file_path, settings):
+        """generate from a root file and all included files."""
         file_space = cls()
         paths_to_add = [root_file_path]
 
+        # Unless no startup/footer is selected, ensure that the files are included:
+        if not settings['no_startup']:
+            paths_to_add.append(Input.StdLib.stdlib_startup_name)
+        if not settings['no_footer']:
+            paths_to_add.append(Input.StdLib.stdlib_footer_name)
+
         for path in paths_to_add:
             # Open this file and add it to the filespace:
-            file = AsmFile.from_file(file_space.next_id(), path)
+            file = SourceFile.from_file(file_space.next_id(), path)
             file_space.add_file(file)
 
             # Look for any includes in this new file and include any
             # files that have not yet been included:
             try:
                 include_paths = file.get_included_paths()
-            except ParsingException as e:
+            except LocatedException as e:
                 e.decorate_source_files(file_space)
                 raise e
 
@@ -35,7 +41,7 @@ class SourceFiles:
         return file_space
 
     @classmethod
-    def from_psOBJ(cls, root_file_path):
+    def from_obj(cls, root_file_path):
         # TODO
         pass
 

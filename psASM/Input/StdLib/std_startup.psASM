@@ -1,0 +1,14 @@
+# 
+# psMCU Startup 
+#
+
+# Entry point. If 'MAIN' is defined jump to MAIN, otherwise jump to the end of this file.
+JMP defined(MAIN) ? MAIN : _EOF
+
+# Interrupt Handler: If one is provided by the program, use it, otherwise use the fallback handler.
+JMP defined(INTERRUPT) ? INTERRUPT : _fallback_handler
+
+# Fallback interrupt handler.
+_fallback_handler: RTRNI
+
+_EOF: NOP

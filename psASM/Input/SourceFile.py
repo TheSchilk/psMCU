@@ -1,5 +1,5 @@
 import re
-from Util.Errors import ParsingException
+from Util.Errors import ParsingException, LocatedException
 import Input.StdLib
 
 
@@ -27,7 +27,7 @@ def _extract_include(text) -> str:
     file_string = parts[1]
 
     # Validate file_string
-    if not re.match(r'^\"\w+\.psASM\"$', file_string):
+    if not re.match(r'^\"[\w\/\\]+\.psASM\"$', file_string):
         raise ParsingException("Malformed @include file name.")
 
     file_name = file_string.replace('"', '')
@@ -35,7 +35,7 @@ def _extract_include(text) -> str:
     return file_name
 
 
-class AsmFile:
+class SourceFile:
     """A .psASM file."""
 
     def __init__(self, file_id, path, content=[], stdlib_file=False):
@@ -76,7 +76,7 @@ class AsmFile:
                 if _is_include(line):
                     included_paths.append(_extract_include(line))
 
-            except ParsingException as e:
+            except LocatedException as e:
                 e.decorate_location(self.file_id, line_id)
                 raise e
 
