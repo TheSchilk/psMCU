@@ -3,6 +3,8 @@
 # Contains Register addresses and bit indexes.
 #
 
+@include_once
+
 # #######################################
 # ########## System Registers ###########
 # #######################################

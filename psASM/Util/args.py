@@ -1,5 +1,6 @@
 import argparse
 import sys
+import re
 
 
 def parse_args(args):
@@ -19,7 +20,10 @@ def parse_args(args):
     output_format.add_argument('-S', '--gen_split', required=False, action="store_true", help='Generate split binary files.')
     output_format.add_argument('-M', '--gen_map', required=False, action="store_true", help='Generate map file.')
     output_format.add_argument('-U', '--gen_usage', required=False, action="store_true", help='Report memory usage.')
-    # parser.add_argument('-D', '--gen_bin', required=False, action="store_true", help='Generate definitions file.')
+    # parser.add_argument('-?', '--gen_defs', required=False, action="store_true", help='Generate definitions file.')
+
+    parser.add_argument('-D', '--define', required=False, action="append", type=str,
+                        help='Add a global definition. Can be either just a name, or name and value (-D One=1)')
 
     parser.add_argument('-w', '--no_ws', required=False, action="store_true", help='Strip line whitespace/indents in information files.')
     parser.add_argument('-c', '--no_comments', required=False, action="store_true", help='Strip line comments in information files.')
@@ -44,6 +48,32 @@ def parse_args(args):
         if parsed_args['gen_psOBJ']:
             print('Error: Cannot generate a .psOBJ file from a .psOBJ file!')
             sys.exit(-1)
+
+    # Ensure 'define' is an empty list if no defines were passed.
+    if not parsed_args['define']:
+        parsed_args['define'] = []
+
+    # Validate and reformat defines:
+    defines = []
+    for define in parsed_args['define']:
+        if not re.match(r"^[a-zA-Z][a-zA-Z0-9_\-]*(=((0b[01]+)|(0x[0-9a-fA-F]+)|([0-9]+)|('[ -~]')))?$", define):
+            print("Error: Malformed definition %s passed via -D flag.")
+            sys.exit()
+
+        if '=' in define:
+            define = define.split('=')
+            name = define[0]
+            value = define[1]
+        else:
+            name = define
+            value = None
+
+        defines.append([name, value])
+
+    # Replace defines with formatted name/value lists
+    parsed_args['define'] = defines
+
+    print(defines)
 
     # If no output file is selected, select binary output.
     default_output = 'gen_bin'

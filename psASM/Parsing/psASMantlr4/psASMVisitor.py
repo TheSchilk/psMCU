@@ -50,6 +50,10 @@ class psASMVisitor(ParseTreeVisitor):
     def visitPreproc_include(self, ctx: psASMParser.Preproc_includeContext):
         return self.visitChildren(ctx)
 
+    # Visit a parse tree produced by psASMParser#preproc_include_once.
+    def visitPreproc_include_once(self, ctx: psASMParser.Preproc_include_onceContext):
+        return self.visitChildren(ctx)
+
     # Visit a parse tree produced by psASMParser#preproc_if.
     def visitPreproc_if(self, ctx: psASMParser.Preproc_ifContext):
         return self.visitChildren(ctx)
@@ -74,8 +78,8 @@ class psASMVisitor(ParseTreeVisitor):
     def visitPreproc_endif(self, ctx: psASMParser.Preproc_endifContext):
         return self.visitChildren(ctx)
 
-    # Visit a parse tree produced by psASMParser#preproc_warning.
-    def visitPreproc_warning(self, ctx: psASMParser.Preproc_warningContext):
+    # Visit a parse tree produced by psASMParser#preproc_print.
+    def visitPreproc_print(self, ctx: psASMParser.Preproc_printContext):
         return self.visitChildren(ctx)
 
     # Visit a parse tree produced by psASMParser#preproc_error.

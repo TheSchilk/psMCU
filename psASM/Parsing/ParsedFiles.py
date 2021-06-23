@@ -13,6 +13,9 @@ class ParsedFiles:
             parsed_files.files.append(parsed_file)
         return parsed_files
 
+    def parse_add_file(self, file):
+        self.files.append((Parser.parse_file(file)))
+
     def __len__(self):
         return len(self.files)
 

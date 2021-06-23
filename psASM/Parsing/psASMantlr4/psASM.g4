@@ -40,13 +40,14 @@ COMMA: ',' ;
 preproc_directive
     : preproc_define 
     | preproc_include 
+    | preproc_include_once
     | preproc_if 
     | preproc_ifdef 
     | preproc_ifndef 
     | preproc_elif 
     | preproc_else 
     | preproc_endif 
-    | preproc_warning 
+    | preproc_print 
     | preproc_error 
     | preproc_ascii_heap 
     | preproc_ascii_stack 
@@ -61,6 +62,10 @@ preproc_define
 
 preproc_include
     : INCLUDE STRING_LITERAL
+    ;
+
+preproc_include_once
+    : INCLUDE_ONCE
     ;
 
 preproc_if
@@ -87,8 +92,8 @@ preproc_endif
     : ENDIF
     ;
 
-preproc_warning
-    : WARNING STRING_LITERAL
+preproc_print
+    : PRINT STRING_LITERAL (COMMA expr)*
     ;
 
 preproc_error
@@ -116,9 +121,10 @@ preproc_macro_expansion
     ;
 
 DEFINE: '@define' ;
-REDEFINE: '@redefine' ;
 
 INCLUDE: '@include' ;
+
+INCLUDE_ONCE: '@include_once';
 
 IF: '@if' ;
 IFDEF: '@ifdef' ;
@@ -127,7 +133,7 @@ ELIF: '@elif' ;
 ELSE: '@else' ;
 ENDIF: '@endif' ;
 
-WARNING: '@warning';
+PRINT: '@print';
 ERROR: '@error' ;
 
 ASCII_HEAP: '@ascii_heap' ;

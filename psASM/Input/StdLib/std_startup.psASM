@@ -2,13 +2,29 @@
 # psMCU Startup 
 #
 
-# Entry point. If 'MAIN' is defined jump to MAIN, otherwise jump to the end of this file.
-JMP defined(MAIN) ? MAIN : _EOF
+# Include guard
+@ifndef SYSTEM_STARTUP_HEADER
+    # This is the first time the startup file is included. 
+    @define SYSTEM_STARTUP_HEADER
 
-# Interrupt Handler: If one is provided by the program, use it, otherwise use the fallback handler.
-JMP defined(INTERRUPT) ? INTERRUPT : _fallback_handler
+    # Entry point:
+    # If 'MAIN' is defined jump to MAIN, otherwise jump to the first instructio beyond this line.
+    JMP defined(MAIN) ? MAIN : _last_startup_inst + 1
 
-# Fallback interrupt handler.
-_fallback_handler: RTRNI
+    # Interrupt Handler:
+    # If the program defines an interrupt handler, use it. Otherwise fall back onto the fall-back 
+    # handler defined below.
+    JMP defined(INTERRUPT) ? INTERRUPT : _fallback_handler
 
-_EOF: NOP
+    # Fallback interrupt handler.
+    _fallback_handler, _last_startup_inst: RTRNI
+
+@else
+    # This startup file was included more than once.
+    @print "Error: std_startup.psASM was included more than once!"
+    @print "The assembler automatically includes the startup file unless the -s flag is set."
+    @print "Remove all manual inclues of this file or set the -s flag."
+    @error "Aborting."
+
+@endif
+

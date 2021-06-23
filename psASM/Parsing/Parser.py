@@ -19,9 +19,6 @@ def parse_file(source_file: SourceFile):
     parsed_lines = []
     for line_id, source_line in enumerate(source_file):
         parsed_line = parse_line(source_line, source_file.file_id, line_id)
-        if isinstance(parsed_line, ParsedLine.EmptyLine):
-            continue
-        # print(source_line.rstrip().lstrip() + "=" + str(parsed_line))
         parsed_lines.append(parsed_line)
     return ParsedFile(source_file.file_id, parsed_lines)
 
@@ -30,18 +27,18 @@ def parse_line(text: str, file_id, line_id):
 
     error_listener = psASMErrorListener()
 
-    # psASM Lexer
+    # antlr4 psASM Lexer
     lexer = psASMLexer(InputStream(text))
     lexer.removeErrorListeners()
     lexer.addErrorListener(error_listener)
     stream = antlr4.CommonTokenStream(lexer)
 
-    # psASM Parser
+    # antlr4 psASM Parser
     parser = psASMParser(stream)
     parser.removeErrorListeners()
     parser.addErrorListener(error_listener)
 
-    # Parse
+    # Parse and extract with visitor:
     tree = parser.line()
     parsed_line = psASMOutputVisitor().visit(tree)
     parsed_line.file_id = file_id
@@ -165,6 +162,10 @@ class psASMOutputVisitor(psASMVisitor):
 
         return ParsedLine.IncludeDirective(file)
 
+    # Visit a parse tree produced by psASMParser#preproc_include_once.
+    def visitPreproc_include_once(self, ctx: psASMParser.Preproc_include_onceContext):
+        return ParsedLine.IncludeOnceDirective()
+
     # Visit a parse tree produced by psASMParser#preproc_if.
     def visitPreproc_if(self, ctx: psASMParser.Preproc_ifContext):
         # 'IF expr'
@@ -227,18 +228,31 @@ class psASMOutputVisitor(psASMVisitor):
         # 'ENDIF'
         return ParsedLine.EndIfDirective()
 
-    # Visit a parse tree produced by psASMParser#preproc_warning.
-    def visitPreproc_warning(self, ctx: psASMParser.Preproc_warningContext):
-        # 'WARNING STRING_LITERAL'
+    # Visit a parse tree produced by psASMParser#preproc_print.
+    def visitPreproc_print(self, ctx: psASMParser.Preproc_printContext):
+        # 'PRINT STRING_LITERAL (expr (COMMA expr)*)?'
         children_queue = list(ctx.getChildren())
 
-        # First child is '@warning'
+        # First child is '@print'
         children_queue.pop(0)
 
-        # Second child is STRING_LITERAL message:
-        msg = str(children_queue.pop(0))
+        # Second child is string literal
+        string = str(children_queue.pop(0))
 
-        return ParsedLine.WarningDirective(msg)
+        # If not finished, next must be a comma:
+        if children_queue:
+            children_queue.pop(0)
+
+        # Comma-seperated args:
+        args = []
+        while children_queue:
+            args.append(self.visit(children_queue.pop(0)))
+
+            # If the stack is not empty, the argument must be followed by a comma:
+            if children_queue:
+                children_queue.pop(0)
+
+        return ParsedLine.PrintDirective(string, args)
 
     # Visit a parse tree produced by psASMParser#preproc_error.
     def visitPreproc_error(self, ctx: psASMParser.Preproc_errorContext):
