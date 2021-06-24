@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 import sys
 from Util.args import parse_args
-from Util.Errors import psASMException
-from Input.SourceFiles import SourceFiles
-from Parsing.ParsedFiles import ParsedFiles
+from Util.Errors import psASMException, LocatedException
+from Input.SourceFile import SourceFiles
+import Parsing.Parser as Parser
 from Output import OutputGenerator
 
 
@@ -14,15 +14,20 @@ def main(args):
 
     try:
         if settings['input_type'] == 'psASM':
-            # If the input is a source file, parse, process, and assemble a psOBJ:
+            try:
+                # If the input is a source file, parse, process, and assemble a psOBJ:
+                source_files = None
 
-            # Discover all needed source files:
-            source_files = SourceFiles.from_root_file(settings['input_file'], settings)
+                # Discover all needed source files:
+                source_files = SourceFiles.from_root_file(settings['input_file'], settings)
 
-            # Parse all source files:
-            parsed_files = ParsedFiles.from_source_files(source_files)
+                # Parse all source files:
+                parsed_files = Parser.parse_source_files(source_files)
 
-            psOBJ = None
+                psOBJ = None
+            except LocatedException as e:
+                e.decorate_source_files(source_files)
+                raise e
         else:
             # If the input is already a psOBJ, import it:
             psOBJ = None

@@ -169,11 +169,12 @@ class PrintDirective(PreProcDirective):
         super().__init__()
         self.msg = msg
         self.args = args
+        print(self.text(None))
 
     def __str__(self):
         result = ('@print %s' % self.msg)
         if self.args:
-            result += ' ' + comma_seperated_list(self.args)
+            result += ', ' + comma_seperated_list(self.args)
 
         return result
 
@@ -184,18 +185,23 @@ class PrintDirective(PreProcDirective):
 
     def text(self, context):
         text = self.msg
+
+        # Remove ":
+        text = text[1:-1]
+
         arg_index = 0
-        print(self.args)
         while "%i" in text:
             # Ensure there is an argument left
             if arg_index >= len(self.args):
                 # No more arguments left.
                 # Determine error_col:
+
+                # TODO this does not work -> need context.
                 original_text = self.msg
                 if arg_index != 0:
                     original_text = original_text.replace("%i", "__", arg_index)
-                error_col = original_text.find("%i")
-
+                error_col_start = original_text.find("%i")
+                error_col = (error_col_start, error_col_start+1)
                 raise ParsingException("Print string contains format specifier but there are no more arguments!", error_col=error_col)
 
             # Insert argumet
@@ -243,6 +249,10 @@ class MacroDirective(PreProcDirective):
         super().__init__()
         self.name = name
         self.args = args
+
+        for arg in args:
+            if not arg.startswith('$'):
+                raise ParsingException("Macro expansion argument identifiers must start with '$'")
 
     def __str__(self):
         result = self.name

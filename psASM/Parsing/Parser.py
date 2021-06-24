@@ -4,22 +4,32 @@ from antlr4.error.ErrorListener import ErrorListener
 from Parsing.psASMantlr4.psASMLexer import psASMLexer
 from Parsing.psASMantlr4.psASMParser import psASMParser
 from Parsing.psASMantlr4.psASMVisitor import psASMVisitor
-from Input.SourceFile import SourceFile
-from Parsing.ParsedFile import ParsedFile
+from Input.SourceFile import SourceFile, SourceFiles
+from Parsing.ParsedFile import ParsedFile, ParsedFiles
 import Parsing.ExpressionTree as ExpressionTree
 import Parsing.ParsedLine as ParsedLine
-from Util.Errors import ParsingException
+from Util.Errors import ParsingException, LocatedException
 
 
 def peek(stack: []):
     return stack[0]
 
 
-def parse_file(source_file: SourceFile):
+def parse_source_files(source_files: SourceFiles):
+    parsed_files = ParsedFiles()
+    for file in source_files:
+        parsed_files.add_parsed_file(parse_source_file(file))
+    return parsed_files
+
+
+def parse_source_file(source_file: SourceFile):
     parsed_lines = []
     for line_id, source_line in enumerate(source_file):
         parsed_line = parse_line(source_line, source_file.file_id, line_id)
         parsed_lines.append(parsed_line)
+        # DEBUG:
+        print("%s = %s" % (source_line.lstrip().rstrip(), str(parsed_line)))
+
     return ParsedFile(source_file.file_id, parsed_lines)
 
 
@@ -39,8 +49,13 @@ def parse_line(text: str, file_id, line_id):
     parser.addErrorListener(error_listener)
 
     # Parse and extract with visitor:
-    tree = parser.line()
-    parsed_line = psASMOutputVisitor().visit(tree)
+    try:
+        tree = parser.line()
+        parsed_line = psASMOutputVisitor().visit(tree)
+    except LocatedException as e:
+        e.decorate_location(file_id, line_id)
+        raise e
+
     parsed_line.file_id = file_id
     parsed_line.line_id = line_id
 
@@ -53,32 +68,17 @@ class psASMErrorListener(ErrorListener):
 
 
 class psASMOutputVisitor(psASMVisitor):
-    # Visit a parse tree produced by psASMParser#line.
-    def visitLine(self, ctx: psASMParser.LineContext):
-        # 'line_content EOL'
-
-        # Visit the line_content child.
-        return self.visit(ctx.getChild(0))
-
-    # Visit a parse tree produced by psASMParser#preproc_line.
-    def visitPreproc_line(self, ctx: psASMParser.Preproc_lineContext):
-        # 'preproc_directive'
-
-        # Visit the preproc_directive
-        return self.visit(ctx.getChild(0))
-
-    # Visit a parse tree produced by psASMParser#instruction_line.
-    def visitInstruction_line(self, ctx: psASMParser.Instruction_lineContext):
-        # 'instruction'
-
-        # Visit instruciton
-        return self.visit(ctx.getChild(0))
+    # Override default handler:
+    # Setup default rule handler to only visit and return first child.
+    def visitChildren(self, node):
+        if node.getChildCount() > 0:
+            return self.visit(node.getChild(0))
+        else:
+            return None
 
     # Visit a parse tree produced by psASMParser#labels_line.
     def visitLabels_line(self, ctx: psASMParser.Labels_lineContext):
         # 'labels'
-
-        # Visit labels
         labels = self.visit(ctx.getChild(0))
         return ParsedLine.LabelsLine(labels)
 
@@ -88,62 +88,29 @@ class psASMOutputVisitor(psASMVisitor):
 
     # Visit a parse tree produced by psASMParser#instruction.
     def visitInstruction(self, ctx: psASMParser.InstructionContext):
-        # '(labels)? INST (expr (COMMA expr)*)?'
-        children_queue = list(ctx.getChildren())
-
-        # Optional labels:
-        if isinstance(peek(children_queue), psASMParser.LabelsContext):
-            # This instruction-line is labeled:
-            labels = self.visit(children_queue.pop(0))
+        # '(lbls=labels)? inst=INST (args+=expr (COMMA args+=expr)*)?'
+        if ctx.lbls is None:
+            lbls = []
         else:
-            # This instruction is not labeled.
-            labels = []
+            lbls = self.visit(ctx.lbls)
 
-        # Instruction:
-        inst = str(children_queue.pop(0))
+        inst = ctx.inst.text
 
-        # Comma-seperated args:
-        args = []
-        while children_queue:
-            args.append(self.visit(children_queue.pop(0)))
+        args = [self.visit(arg) for arg in ctx.args]
 
-            # If the stack is not empty, the argument must be followed by a comma:
-            if children_queue:
-                children_queue.pop(0)
-
-        return ParsedLine.InstructionLine(labels, inst, args)
+        return ParsedLine.InstructionLine(lbls, inst, args)
 
     # Visit a parse tree produced by psASMParser#labels.
     def visitLabels(self, ctx: psASMParser.LabelsContext):
-        # 'IDENTIFIER (COMMA IDENTIFIER)* COLON'
-        children_queue = list(ctx.getChildren())
-
-        labels = []
-        # The first child must be an identifier (label):
-        labels.append(str(children_queue.pop(0)))
-
-        # More, comma-seperated, args:
-        while not str(peek(children_queue)) == ':':
-            child = children_queue.pop(0)
-            if not str(child) == ',':
-                labels.append(str(child))
-
-        return labels
+        # 'lbls+=IDENTIFIER (COMMA lbls+=IDENTIFIER)* COLON'
+        return [lbl.text for lbl in ctx.lbls]
 
     # Visit a parse tree produced by psASMParser#preproc_define.
     def visitPreproc_define(self, ctx: psASMParser.Preproc_defineContext):
-        # 'DEFINE IDENTIFIER expr?'
-        children_queue = list(ctx.getChildren())
-
-        # First child is '@define'
-        children_queue.pop(0)
-
-        # Second child is name:
-        name = str(children_queue.pop(0))
-
-        # If there is a third child, it is the value-expression:
-        if children_queue:
-            value = self.visit(children_queue.pop(0))
+        # 'DEFINE name=IDENTIFIER (value=expr)?'
+        name = ctx.name.text
+        if ctx.value is not None:
+            value = self.visit(ctx.value)
         else:
             value = None
 
@@ -151,15 +118,8 @@ class psASMOutputVisitor(psASMVisitor):
 
     # Visit a parse tree produced by psASMParser#preproc_include.
     def visitPreproc_include(self, ctx: psASMParser.Preproc_includeContext):
-        # 'INCLUDE STRING_LITERAL'
-        children_queue = list(ctx.getChildren())
-
-        # First child is '@include'
-        children_queue.pop(0)
-
-        # Second child is file-name StringLiteral:
-        file = str(children_queue.pop(0))
-
+        # 'INCLUDE file_str=STRING_LITERAL'
+        file = ctx.file_str.text
         return ParsedLine.IncludeDirective(file)
 
     # Visit a parse tree produced by psASMParser#preproc_include_once.
@@ -168,54 +128,26 @@ class psASMOutputVisitor(psASMVisitor):
 
     # Visit a parse tree produced by psASMParser#preproc_if.
     def visitPreproc_if(self, ctx: psASMParser.Preproc_ifContext):
-        # 'IF expr'
-        children_queue = list(ctx.getChildren())
-
-        # First child is '@if'
-        children_queue.pop(0)
-
-        # Second child is condition expression:
-        condition = self.visit(children_queue.pop(0))
-
+        # 'IF cond=expr'
+        condition = self.visit(ctx.cond)
         return ParsedLine.IfDirective(condition)
 
     # Visit a parse tree produced by psASMParser#preproc_ifdef.
     def visitPreproc_ifdef(self, ctx: psASMParser.Preproc_ifdefContext):
-        # 'IFDEF IDENTIFIER'
-        children_queue = list(ctx.getChildren())
-
-        # First child is '@ifdef'
-        children_queue.pop(0)
-
-        # Second child is identifier:
-        identifier = str(children_queue.pop(0))
-
+        # 'IFDEF arg=IDENTIFIER'
+        identifier = ctx.arg.text
         return ParsedLine.IfDefDirective(identifier)
 
     # Visit a parse tree produced by psASMParser#preproc_ifndef.
     def visitPreproc_ifndef(self, ctx: psASMParser.Preproc_ifndefContext):
-        # 'IFNDEF IDENTIFIER'
-        children_queue = list(ctx.getChildren())
-
-        # First child is '@ifndef'
-        children_queue.pop(0)
-
-        # Second child is identifier:
-        identifier = str(children_queue.pop(0))
-
+        # 'IFNDEF arg=IDENTIFIER'
+        identifier = ctx.arg.text
         return ParsedLine.IfnDefDirective(identifier)
 
     # Visit a parse tree produced by psASMParser#preproc_elif.
     def visitPreproc_elif(self, ctx: psASMParser.Preproc_elifContext):
-        # 'ELIF expr'
-        children_queue = list(ctx.getChildren())
-
-        # First child is '@elif'
-        children_queue.pop(0)
-
-        # Second child is condition expression:
-        condition = self.visit(children_queue.pop(0))
-
+        # 'ELIF cond=expr'
+        condition = self.visit(ctx.cond)
         return ParsedLine.ElIfDirective(condition)
 
     # Visit a parse tree produced by psASMParser#preproc_else.
@@ -230,93 +162,38 @@ class psASMOutputVisitor(psASMVisitor):
 
     # Visit a parse tree produced by psASMParser#preproc_print.
     def visitPreproc_print(self, ctx: psASMParser.Preproc_printContext):
-        # 'PRINT STRING_LITERAL (expr (COMMA expr)*)?'
-        children_queue = list(ctx.getChildren())
-
-        # First child is '@print'
-        children_queue.pop(0)
-
-        # Second child is string literal
-        string = str(children_queue.pop(0))
-
-        # If not finished, next must be a comma:
-        if children_queue:
-            children_queue.pop(0)
-
-        # Comma-seperated args:
-        args = []
-        while children_queue:
-            args.append(self.visit(children_queue.pop(0)))
-
-            # If the stack is not empty, the argument must be followed by a comma:
-            if children_queue:
-                children_queue.pop(0)
-
-        return ParsedLine.PrintDirective(string, args)
+        # 'PRINT msg=STRING_LITERAL (COMMA args+=expr)*'
+        msg = ctx.msg.text
+        args = [self.visit(arg) for arg in ctx.args]
+        return ParsedLine.PrintDirective(msg, args)
 
     # Visit a parse tree produced by psASMParser#preproc_error.
     def visitPreproc_error(self, ctx: psASMParser.Preproc_errorContext):
-        # 'ERROR STRING_LITERAL'
-        children_queue = list(ctx.getChildren())
-
-        # First child is '@error'
-        children_queue.pop(0)
-
-        # Second child is STRING_LITERAL message:
-        msg = str(children_queue.pop(0))
-
+        # 'ERROR (msg=STRING_LITERAL)?'
+        if ctx.msg is None:
+            msg = '""'
+        else:
+            msg = ctx.msg.text
         return ParsedLine.ErrorDirective(msg)
 
     # Visit a parse tree produced by psASMParser#preproc_ascii_heap.
     def visitPreproc_ascii_heap(self, ctx: psASMParser.Preproc_ascii_heapContext):
-        # 'ASCII_HEAP STRING_LITERAL COMMA expr'
-        children_queue = list(ctx.getChildren())
-
-        # First child is '@ascii_heap'
-        children_queue.pop(0)
-
-        # Second child is STRING_LITERAL:
-        string = str(children_queue.pop(0))
-
-        # Third child is comma:
-        children_queue.pop(0)
-
-        # Fourth child is adr expression
-        adr = self.visit(children_queue.pop(0))
-
+        # 'ASCII_HEAP txt=STRING_LITERAL COMMA adr=expr'
+        string = ctx.txt.text
+        adr = self.visit(ctx.adr)
         return ParsedLine.AsciiHeapDirective(string, adr)
 
     # Visit a parse tree produced by psASMParser#preproc_ascii_stack.
     def visitPreproc_ascii_stack(self, ctx: psASMParser.Preproc_ascii_stackContext):
-        # 'ASCII_STACK STRING_LITERAL'
-        children_queue = list(ctx.getChildren())
-
-        # First child is '@ascii_stack'
-        children_queue.pop(0)
-
-        # Second child is STRING_LITERAL:
-        string = str(children_queue.pop(0))
-
+        # 'ASCII_STACK txt=STRING_LITERAL'
+        string = ctx.txt.text
         return ParsedLine.AsciiStackDirective(string)
 
     # Visit a parse tree produced by psASMParser#preproc_macro.
     def visitPreproc_macro(self, ctx: psASMParser.Preproc_macroContext):
-        # 'MACRO IDENTIFIER (IDENTIFIER (COMMA IDENTIFIER)*)?
-        children_queue = list(ctx.getChildren())
-
-        # First child is '@macro'
-        children_queue.pop(0)
-
-        # Second child is the macro-name identifier
-        name = str(children_queue.pop(0))
-
-        args = []
-        # Comma-seperated args-identifiers:
-        while children_queue:
-            child = children_queue.pop(0)
-            if not str(child) == ',':
-                args.append(str(child))
-
+        # 'MACRO macro_name=IDENTIFIER (args+=IDENTIFIER (COMMA args+=IDENTIFIER)*)?'
+        name = ctx.macro_name.text
+        args = [arg.text for arg in ctx.args]
         return ParsedLine.MacroDirective(name, args)
 
     # Visit a parse tree produced by psASMParser#preproc_endmacro.
@@ -326,283 +203,157 @@ class psASMOutputVisitor(psASMVisitor):
 
     # Visit a parse tree produced by psASMParser#preproc_macro_expansion.
     def visitPreproc_macro_expansion(self, ctx: psASMParser.Preproc_macro_expansionContext):
-        # '(labels)? IDENTIFIER (expr (COMMA expr)*)?'
-        children_queue = list(ctx.getChildren())
-
-        # Optional labels:
-        if isinstance(peek(children_queue), psASMParser.LabelsContext):
-            # This instruction-line is labeled:
-            labels = self.visit(children_queue.pop(0))
+        # '(lbls=labels)? macro_name=IDENTIFIER (args+=expr (COMMA args+=expr)*)?'
+        if ctx.lbls is None:
+            lbls = []
         else:
-            # This instruction is not labeled.
-            labels = []
-
-        # Macro-name identifier:
-        macro_name = str(children_queue.pop(0))
-
-        # Optional, comma-seperated list of argument expressions:
-        args = []
-        while children_queue:
-            args.append(self.visit(children_queue.pop(0)))
-
-            # If the stack is not empty, the argument must be followed by a comma:
-            if children_queue:
-                children_queue.pop(0)
-
-        return ParsedLine.MacroExpansionDirective(labels, macro_name, args)
+            lbls = self.visit(ctx.lbls)
+        name = ctx.macro_name.text
+        args = [self.visit(arg) for arg in ctx.args]
+        return ParsedLine.MacroExpansionDirective(lbls, name, args)
 
     # Visit a parse tree produced by psASMParser#compare_expr.
     def visitCompare_expr(self, ctx: psASMParser.Compare_exprContext):
-        # 'expr (LESS | LESS_EQ | GREATER | GREATER_EQ) expr'
-        children_queue = list(ctx.getChildren())
+        # 'child1=expr op=(LESS | LESS_EQ | GREATER | GREATER_EQ) child2=expr'
+        child1 = self.visit(ctx.child1)
+        child2 = self.visit(ctx.child2)
 
-        # first child is first expression:
-        expr1 = self.visit(children_queue.pop(0))
-
-        # second child is operator:
-        operator = str(children_queue.pop(0))
-
-        # third child is second expression
-        expr2 = self.visit(children_queue.pop(0))
-
-        if operator == '<':
-            return ExpressionTree.LessExpression(expr1, expr2)
-        elif operator == '<=':
-            return ExpressionTree.LessEqExpression(expr1, expr2)
-        elif operator == '>':
-            return ExpressionTree.GreaterExpression(expr1, expr2)
-        elif operator == '>=':
-            return ExpressionTree.GreaterEqExpression(expr1, expr2)
+        if ctx.op.type == psASMParser.LESS:
+            return ExpressionTree.LessExpression(child1, child2)
+        elif ctx.op.type == psASMParser.LESS_EQ:
+            return ExpressionTree.LessEqExpression(child1, child2)
+        elif ctx.op.type == psASMParser.GREATER:
+            return ExpressionTree.GreaterExpression(child1, child2)
+        elif ctx.op.type == psASMParser.GREATER_EQ:
+            return ExpressionTree.GreaterEqExpression(child1, child2)
+        else:
+            raise Exception("Unhandeled Operator.")
 
     # Visit a parse tree produced by psASMParser#add_expr.
     def visitAdd_expr(self, ctx: psASMParser.Add_exprContext):
-        # 'expr (PLUS | MINUS) expr'
-        children_queue = list(ctx.getChildren())
-
-        # first child is first expression:
-        expr1 = self.visit(children_queue.pop(0))
-
-        # second child is operator:
-        operator = str(children_queue.pop(0))
-
-        # third child is second expression:
-        expr2 = self.visit(children_queue.pop(0))
-
-        if operator == '+':
-            return ExpressionTree.AddExpression(expr1, expr2)
-        elif operator == '-':
-            return ExpressionTree.SubExpression(expr1, expr2)
+        # 'child1=expr op=(PLUS | MINUS) child2=expr'
+        child1 = self.visit(ctx.child1)
+        child2 = self.visit(ctx.child2)
+        if ctx.op.type == psASMParser.PLUS:
+            return ExpressionTree.AddExpression(child1, child2)
+        elif ctx.op.type == psASMParser.MINUS:
+            return ExpressionTree.SubExpression(child1, child2)
+        else:
+            raise Exception("Unhandeled Operator.")
 
     # Visit a parse tree produced by psASMParser#bitxor_expr.
     def visitBitxor_expr(self, ctx: psASMParser.Bitxor_exprContext):
-        # 'expr BIT_XOR expr'
-        children_queue = list(ctx.getChildren())
-
-        # first child is first expression:
-        expr1 = self.visit(children_queue.pop(0))
-
-        # second child is operator:
-        children_queue.pop(0)
-
-        # third child is second expression:
-        expr2 = self.visit(children_queue.pop(0))
-
-        return ExpressionTree.BitXORExpression(expr1, expr2)
+        # 'child1=expr BIT_XOR child2=expr'
+        child1 = self.visit(ctx.child1)
+        child2 = self.visit(ctx.child2)
+        return ExpressionTree.BitXORExpression(child1, child2)
 
     # Visit a parse tree produced by psASMParser#shift_expr.
     def visitShift_expr(self, ctx: psASMParser.Shift_exprContext):
-        # 'expr (LSHIFT | RSHIFT) expr'
-        children_queue = list(ctx.getChildren())
-
-        # first child is first expression:
-        expr1 = self.visit(children_queue.pop(0))
-
-        # second child is operator:
-        operator = str(children_queue.pop(0))
-
-        # third child is second expression:
-        expr2 = self.visit(children_queue.pop(0))
-
-        if operator == '<<':
-            return ExpressionTree.LShiftExpression(expr1, expr2)
-        elif operator == '>>':
-            return ExpressionTree.RShiftExpression(expr1, expr2)
+        # 'child1=expr op=(LSHFIT | RSHIFT) child2=expr'
+        child1 = self.visit(ctx.child1)
+        child2 = self.visit(ctx.child2)
+        if ctx.op.type == psASMParser.LSHFIT:
+            return ExpressionTree.LShiftExpression(child1, child2)
+        elif ctx.op.type == psASMParser.RSHIFT:
+            return ExpressionTree.RShiftExpression(child1, child2)
+        else:
+            raise Exception("Unhandeled Operator.")
 
     # Visit a parse tree produced by psASMParser#mult_expr.
     def visitMult_expr(self, ctx: psASMParser.Mult_exprContext):
-        # 'expr (DIV | MUL | MOD) expr'
-        children_queue = list(ctx.getChildren())
-
-        # first child is first expression:
-        expr1 = self.visit(children_queue.pop(0))
-
-        # second child is operator:
-        operator = str(children_queue.pop(0))
-
-        # third child is second expression:
-        expr2 = self.visit(children_queue.pop(0))
-
-        if operator == '*':
-            return ExpressionTree.MulExpression(expr1, expr2)
-        elif operator == '/':
-            return ExpressionTree.DivExpression(expr1, expr2)
-        elif operator == '%':
-            return ExpressionTree.ModExpression(expr1, expr2)
+        # 'child1=expr op=(DIV | MUL | MOD) child2=expr'
+        child1 = self.visit(ctx.child1)
+        child2 = self.visit(ctx.child2)
+        if ctx.op.type == psASMParser.MUL:
+            return ExpressionTree.MulExpression(child1, child2)
+        elif ctx.op.type == psASMParser.DIV:
+            return ExpressionTree.DivExpression(child1, child2)
+        elif ctx.op.type == psASMParser.MOD:
+            return ExpressionTree.ModExpression(child1, child2)
+        else:
+            raise Exception("Unhandeled Operator.")
 
     # Visit a parse tree produced by psASMParser#unary_expr.
     def visitUnary_expr(self, ctx: psASMParser.Unary_exprContext):
-        # '(PLUS | MINUS | NOT | BIT_NOT) expr'
-        children_queue = list(ctx.getChildren())
-
-        # first child is operator:
-        operator = str(children_queue.pop(0))
-
-        # second child is second expression:
-        expr = self.visit(children_queue.pop(0))
-
-        if operator == '+':
-            return ExpressionTree.PosExpression(expr)
-        elif operator == '-':
-            return ExpressionTree.NegExpression(expr)
-        elif operator == '!':
-            return ExpressionTree.NotExpression(expr)
-        elif operator == '~':
-            return ExpressionTree.BitNotExpression(expr)
+        # 'op=(PLUS | MINUS | NOT | BIT_NOT)child1=expr'
+        child1 = self.visit(ctx.child1)
+        if ctx.op.type == psASMParser.PLUS:
+            return ExpressionTree.PosExpression(child1)
+        elif ctx.op.type == psASMParser.MINUS:
+            return ExpressionTree.NegExpression(child1)
+        elif ctx.op.type == psASMParser.NOT:
+            return ExpressionTree.NotExpression(child1)
+        elif ctx.op.type == psASMParser.BIT_NOT:
+            return ExpressionTree.BitNotExpression(child1)
+        else:
+            raise Exception("Unhandeled Operator.")
 
     # Visit a parse tree produced by psASMParser#and_expr.
     def visitAnd_expr(self, ctx: psASMParser.And_exprContext):
-        # 'expr AND expr'
-        children_queue = list(ctx.getChildren())
-
-        # first child is first expression:
-        expr1 = self.visit(children_queue.pop(0))
-
-        # second child is operator:
-        children_queue.pop(0)
-
-        # third child is second expression:
-        expr2 = self.visit(children_queue.pop(0))
-
-        return ExpressionTree.AndExpression(expr1, expr2)
+        # 'child1=expr AND child2=expr'
+        child1 = self.visit(ctx.child1)
+        child2 = self.visit(ctx.child2)
+        return ExpressionTree.AndExpression(child1, child2)
 
     # Visit a parse tree produced by psASMParser#bitand_expr.
     def visitBitand_expr(self, ctx: psASMParser.Bitand_exprContext):
-        # 'expr BIT_AND expr'
-        children_queue = list(ctx.getChildren())
-
-        # first child is first expression:
-        expr1 = self.visit(children_queue.pop(0))
-
-        # second child is operator:
-        children_queue.pop(0)
-
-        # third child is second expression:
-        expr2 = self.visit(children_queue.pop(0))
-
-        return ExpressionTree.BitAndExpression(expr1, expr2)
+        # 'child1=expr BIT_AND child2=expr'
+        child1 = self.visit(ctx.child1)
+        child2 = self.visit(ctx.child2)
+        return ExpressionTree.BitAndExpression(child1, child2)
 
     # Visit a parse tree produced by psASMParser#condit_expr.
     def visitCondit_expr(self, ctx: psASMParser.Condit_exprContext):
-        # 'expr QUEST expr COLON expr'
-        children_queue = list(ctx.getChildren())
-
-        # first child is first expression:
-        expr1 = self.visit(children_queue.pop(0))
-
-        # second child is '?' operator:
-        children_queue.pop(0)
-
-        # third child is second expression:
-        expr2 = self.visit(children_queue.pop(0))
-
-        # fourth child is second expression:
-        children_queue.pop(0)
-
-        # fifth child is second expression:
-        expr3 = self.visit(children_queue.pop(0))
-
-        return ExpressionTree.ConditionalExpression(expr1, expr2, expr3)
-
-    # Visit a parse tree produced by psASMParser#atom_expr.
-    def visitAtom_expr(self, ctx: psASMParser.Atom_exprContext):
-        # 'atom'
-        return self.visit(ctx.getChild(0))
+        # 'child1=expr QUEST child2=expr COLON child3=expr'
+        child1 = self.visit(ctx.child1)
+        child2 = self.visit(ctx.child2)
+        child3 = self.visit(ctx.child3)
+        return ExpressionTree.ConditionalExpression(child1, child2, child3)
 
     # Visit a parse tree produced by psASMParser#or_expr.
     def visitOr_expr(self, ctx: psASMParser.Or_exprContext):
-        # 'expr OR expr'
-        children_queue = list(ctx.getChildren())
-
-        # first child is first expression:
-        expr1 = self.visit(children_queue.pop(0))
-
-        # second child is operator:
-        children_queue.pop(0)
-
-        # third child is second expression:
-        expr2 = self.visit(children_queue.pop(0))
-
-        return ExpressionTree.OrExpression(expr1, expr2)
+        # 'child1=expr OR child2=expr'
+        child1 = self.visit(ctx.child1)
+        child2 = self.visit(ctx.child2)
+        return ExpressionTree.OrExpression(child1, child2)
 
     # Visit a parse tree produced by psASMParser#bitor_expr.
     def visitBitor_expr(self, ctx: psASMParser.Bitor_exprContext):
-        # 'expr BIT_OR expr'
-        children_queue = list(ctx.getChildren())
-
-        # first child is first expression:
-        expr1 = self.visit(children_queue.pop(0))
-
-        # second child is operator:
-        children_queue.pop(0)
-
-        # third child is second expression:
-        expr2 = self.visit(children_queue.pop(0))
-
-        return ExpressionTree.BitOrExpression(expr1, expr2)
+        # 'child1=expr BIT_OR child2=expr'
+        child1 = self.visit(ctx.child1)
+        child2 = self.visit(ctx.child2)
+        return ExpressionTree.BitOrExpression(child1, child2)
 
     # Visit a parse tree produced by psASMParser#equate_expr.
     def visitEquate_expr(self, ctx: psASMParser.Equate_exprContext):
-        # 'expr (EQ | NEQ) expr'
-        children_queue = list(ctx.getChildren())
-
-        # first child is first expression:
-        expr1 = self.visit(children_queue.pop(0))
-
-        # second child is operator:
-        operator = str(children_queue.pop(0))
-
-        # third child is second expression:
-        expr2 = self.visit(children_queue.pop(0))
-
-        if operator == '==':
-            return ExpressionTree.EqExpression(expr1, expr2)
-        elif operator == '!=':
-            return ExpressionTree.NEqExpression(expr1, expr2)
+        # 'child1=expr op=(EQ | NEQ) child2=expr'
+        child1 = self.visit(ctx.child1)
+        child2 = self.visit(ctx.child2)
+        if ctx.op.type == psASMParser.EQ:
+            return ExpressionTree.EqExpression(child1, child2)
+        elif ctx.op.type == psASMParser.NEQ:
+            return ExpressionTree.NEqExpression(child1, child2)
 
     # Visit a parse tree produced by psASMParser#expr_atom.
     def visitExpr_atom(self, ctx: psASMParser.Expr_atomContext):
-        # 'LPAREN expr RPAREN'
-        return self.visit(ctx.getChild(1))
-
-    # Visit a parse tree produced by psASMParser#numerical_atom.
-    def visitNumerical_atom(self, ctx: psASMParser.Numerical_atomContext):
-        # 'numerical_literal'
-        return self.visit(ctx.getChild(0))
+        # 'LPAREN child1=expr RPAREN'
+        return self.visit(ctx.child1)
 
     # Visit a parse tree produced by psASMParser#defined_atom.
     def visitDefined_atom(self, ctx: psASMParser.Defined_atomContext):
-        # 'DEFINED LPAREN IDENTIFIER RPAREN'
-        identifier = str(ctx.getChild(2))
+        # 'DEFINED LPAREN arg=IDENTIFIER RPAREN'
+        identifier = ctx.arg.text
         return ExpressionTree.isDefinedExpression(identifier)
 
     # Visit a parse tree produced by psASMParser#identifier_atom.
     def visitIdentifier_atom(self, ctx: psASMParser.Identifier_atomContext):
-        # 'IDENTIFIER'
-        identifier = str(ctx.getChild(0))
+        # 'arg=IDENTIFIER'
+        identifier = ctx.arg.text
         return ExpressionTree.IdentifierExpression(identifier)
 
     # Visit a parse tree produced by psASMParser#numerical_literal.
     def visitNumerical_literal(self, ctx: psASMParser.Numerical_literalContext):
-        # (BINARY_LITERAL | HEX_LITERAL | DEC_LITERAL | CHAR_LITERAL)
-        literal = str(ctx.getChild(0))
+        # 'lit = ( BINARY_LITERAL | HEX_LITERAL | DEC_LITERAL | CHAR_LITERAL )'
+        literal = ctx.lit.text
         return ExpressionTree.NumLiteralExpression(literal)

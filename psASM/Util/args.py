@@ -73,8 +73,6 @@ def parse_args(args):
     # Replace defines with formatted name/value lists
     parsed_args['define'] = defines
 
-    print(defines)
-
     # If no output file is selected, select binary output.
     default_output = 'gen_bin'
     # First, find all 'generate_output' flags:

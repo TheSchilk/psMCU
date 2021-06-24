@@ -15,15 +15,22 @@ class LocatedException(psASMException):
         self.source_files = source_files
         self.error_col = error_col
 
-    def decorate_location(self, file_id, line_id):
-        self.file_id = file_id
-        self.line_id = line_id
+    # Note: Decorations do not override, as information is usually more precise, the deeper it was
+    # decorated. Overrides can still be forced
 
-    def decorate_source_files(self, source_files):
-        self.source_files = source_files
+    def decorate_location(self, file_id, line_id, replace=False):
+        if self.file_id is None or replace:
+            self.file_id = file_id
+        if self.line_id is None or replace:
+            self.line_id = line_id
 
-    def decorate_error_col(self, error_col):
-        self.error_col = error_col
+    def decorate_source_files(self, source_files, replace=False):
+        if self.source_files is None or replace:
+            self.source_files = source_files
+
+    def decorate_error_col(self, error_col, replace=False):
+        if self.error_col is None or replace:
+            self.error_col = error_col
 
     def _location_defined(self):
         have_location = self.file_id is not None and self.line_id is not None
@@ -38,13 +45,24 @@ class LocatedException(psASMException):
 
             result = self.exception_name + ": " + self.text + '\n'
 
-            line_text_prefix = self.source_files.location_str(self.file_id, self.line_id, self.error_col) + ": "
+            if type(self.error_col) == tuple:
+                line_text_prefix = self.source_files.location_str(self.file_id, self.line_id, self.error_col[0]) + ": "
+            else:
+                line_text_prefix = self.source_files.location_str(self.file_id, self.line_id, self.error_col) + ": "
 
             result += line_text_prefix + self.source_files.line_text(self.file_id, self.line_id).rstrip()
 
             # If the column is known, add a small arrow to indicate from below
-            if self.error_col is not None:
-                result += (" " * (self.error_col+len(line_text_prefix))) + "^\n"
+            prefix_len = len(line_text_prefix)
+            if type(self.error_col) == int:
+                result += "\n"
+                result += (" " * (self.error_col+prefix_len)) + "^" + "\n"
+            elif type(self.error_col) == tuple:
+                if len(self.error_col) != 2:
+                    raise Exception("Error-col tuple is not of length 2.")
+                result += "\n"
+                mark_length = self.error_col[1] - self.error_col[0] + 1
+                result += (" " * (self.error_col[0]+len(line_text_prefix))) + ("^"*mark_length)
 
         else:
             # No location information available:

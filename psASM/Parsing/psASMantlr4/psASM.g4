@@ -15,11 +15,11 @@ line_content: preproc_directive #preproc_line
 // ======= Instruction =======
 
 instruction
-    : (labels)? INST (expr (COMMA expr)*)?
+    : (lbls=labels)? inst=INST (args+=expr (COMMA args+=expr)*)?
     ;
 
 labels
-    : IDENTIFIER (COMMA IDENTIFIER)* COLON
+    : lbls+=IDENTIFIER (COMMA lbls+=IDENTIFIER)* COLON
     ;
 
 INST 
@@ -57,11 +57,11 @@ preproc_directive
     ;
     
 preproc_define
-    : DEFINE IDENTIFIER expr? 
+    : DEFINE name=IDENTIFIER (value=expr)? 
     ;
 
 preproc_include
-    : INCLUDE STRING_LITERAL
+    : INCLUDE file_str=STRING_LITERAL
     ;
 
 preproc_include_once
@@ -69,19 +69,19 @@ preproc_include_once
     ;
 
 preproc_if
-    : IF expr
+    : IF cond=expr
     ;
 
 preproc_ifdef
-    : IFDEF IDENTIFIER
+    : IFDEF arg=IDENTIFIER
     ;
 
 preproc_ifndef
-    : IFNDEF IDENTIFIER
+    : IFNDEF arg=IDENTIFIER
     ;
 
 preproc_elif
-    : ELIF expr
+    : ELIF cond=expr
     ;
 
 preproc_else
@@ -93,23 +93,23 @@ preproc_endif
     ;
 
 preproc_print
-    : PRINT STRING_LITERAL (COMMA expr)*
+    : PRINT msg=STRING_LITERAL (COMMA args+=expr)*
     ;
 
 preproc_error
-    : ERROR STRING_LITERAL
+    : ERROR (msg=STRING_LITERAL)?
     ;
 
 preproc_ascii_heap
-    : ASCII_HEAP STRING_LITERAL COMMA expr
+    : ASCII_HEAP txt=STRING_LITERAL COMMA adr=expr
     ;
 
 preproc_ascii_stack
-    : ASCII_STACK STRING_LITERAL
+    : ASCII_STACK txt=STRING_LITERAL
     ;
 
 preproc_macro
-    : MACRO IDENTIFIER (IDENTIFIER (COMMA IDENTIFIER)*)?
+    : MACRO macro_name=IDENTIFIER (args+=IDENTIFIER (COMMA args+=IDENTIFIER)*)?
     ;
 
 preproc_endmacro
@@ -117,7 +117,7 @@ preproc_endmacro
     ;
 
 preproc_macro_expansion
-    : (labels)? IDENTIFIER (expr (COMMA expr)*)?
+    : (lbls=labels)? macro_name=IDENTIFIER (args+=expr (COMMA args+=expr)*)?
     ;
 
 DEFINE: '@define' ;
@@ -146,26 +146,26 @@ ENDMACRO: '@endmacro' ;
 // ======= Expressions =======
 
 expr
-   : (PLUS | MINUS | NOT | BIT_NOT) expr #unary_expr
-   | expr (DIV | MUL | MOD) expr #mult_expr
-   | expr (PLUS | MINUS) expr #add_expr
-   | expr (LSHFIT | RSHIFT) expr #shift_expr
-   | expr (LESS | LESS_EQ | GREATER | GREATER_EQ) expr #compare_expr
-   | expr (EQ | NEQ) expr #equate_expr
-   | expr BIT_AND expr #bitand_expr
-   | expr BIT_XOR expr #bitxor_expr
-   | expr BIT_OR expr #bitor_expr
-   | expr AND expr #and_expr
-   | expr OR expr #or_expr
-   | expr QUEST expr COLON expr #condit_expr
+   : op=(PLUS | MINUS | NOT | BIT_NOT)child1=expr #unary_expr
+   | child1=expr op=(DIV | MUL | MOD) child2=expr #mult_expr
+   | child1=expr op=(PLUS | MINUS) child2=expr #add_expr
+   | child1=expr op=(LSHFIT | RSHIFT) child2=expr #shift_expr
+   | child1=expr op=(LESS | LESS_EQ | GREATER | GREATER_EQ) child2=expr #compare_expr
+   | child1=expr op=(EQ | NEQ) child2=expr #equate_expr
+   | child1=expr BIT_AND child2=expr #bitand_expr
+   | child1=expr BIT_XOR child2=expr #bitxor_expr
+   | child1=expr BIT_OR child2=expr #bitor_expr
+   | child1=expr AND child2=expr #and_expr
+   | child1=expr OR child2=expr #or_expr
+   | child1=expr QUEST child2=expr COLON child3=expr #condit_expr
    | atom #atom_expr
    ;
 
 atom
-   : LPAREN expr RPAREN #expr_atom
+   : LPAREN child1=expr RPAREN #expr_atom
    | numerical_literal #numerical_atom
-   | DEFINED LPAREN IDENTIFIER RPAREN #defined_atom
-   | IDENTIFIER #identifier_atom
+   | DEFINED LPAREN arg=IDENTIFIER RPAREN #defined_atom
+   | arg=IDENTIFIER #identifier_atom
    ;
 
 DEFINED: 'defined' ;
@@ -207,10 +207,10 @@ COLON: ':' ;
 // ======= Literals =======
 
 numerical_literal
-   : BINARY_LITERAL 
-   | HEX_LITERAL 
-   | DEC_LITERAL 
-   | CHAR_LITERAL
+   : lit = ( BINARY_LITERAL 
+   |         HEX_LITERAL 
+   |         DEC_LITERAL 
+   |         CHAR_LITERAL )
    ;
 
 CHAR_LITERAL
@@ -252,14 +252,14 @@ IDENTIFIER_FIRST_CHAR
 
 fragment
 IDENTIFIER_OTHER_CHAR
-   : [a-zA-Z0-9_\-]
+   : [a-zA-Z0-9_]
    ;
 
 IDENTIFIER
    : IDENTIFIER_FIRST_CHAR (IDENTIFIER_OTHER_CHAR+)?
    ;
 
-// ======= Others =======
+// ======= thers =======
 
 COMMENT
    : '#' ~[\r\n]* -> skip

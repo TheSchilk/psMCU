@@ -9,7 +9,7 @@ import sys
 def serializedATN():
     with StringIO() as buf:
         buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\66")
-        buf.write("\u00ed\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
+        buf.write("\u00ee\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write("\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\4\16")
         buf.write("\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22\4\23\t\23")
         buf.write("\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31")
@@ -20,94 +20,95 @@ def serializedATN():
         buf.write("\6d\n\6\3\7\3\7\3\7\5\7i\n\7\3\b\3\b\3\b\3\t\3\t\3\n\3")
         buf.write("\n\3\n\3\13\3\13\3\13\3\f\3\f\3\f\3\r\3\r\3\r\3\16\3\16")
         buf.write("\3\17\3\17\3\20\3\20\3\20\3\20\7\20\u0084\n\20\f\20\16")
-        buf.write("\20\u0087\13\20\3\21\3\21\3\21\3\22\3\22\3\22\3\22\3\22")
-        buf.write("\3\23\3\23\3\23\3\24\3\24\3\24\3\24\3\24\7\24\u0099\n")
-        buf.write("\24\f\24\16\24\u009c\13\24\5\24\u009e\n\24\3\25\3\25\3")
-        buf.write("\26\5\26\u00a3\n\26\3\26\3\26\3\26\3\26\7\26\u00a9\n\26")
-        buf.write("\f\26\16\26\u00ac\13\26\5\26\u00ae\n\26\3\27\3\27\3\27")
-        buf.write("\3\27\5\27\u00b4\n\27\3\27\3\27\3\27\3\27\3\27\3\27\3")
+        buf.write("\20\u0087\13\20\3\21\3\21\5\21\u008b\n\21\3\22\3\22\3")
+        buf.write("\22\3\22\3\22\3\23\3\23\3\23\3\24\3\24\3\24\3\24\3\24")
+        buf.write("\7\24\u009a\n\24\f\24\16\24\u009d\13\24\5\24\u009f\n\24")
+        buf.write("\3\25\3\25\3\26\5\26\u00a4\n\26\3\26\3\26\3\26\3\26\7")
+        buf.write("\26\u00aa\n\26\f\26\16\26\u00ad\13\26\5\26\u00af\n\26")
+        buf.write("\3\27\3\27\3\27\3\27\5\27\u00b5\n\27\3\27\3\27\3\27\3")
         buf.write("\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27")
         buf.write("\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27")
-        buf.write("\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\7\27\u00da\n")
-        buf.write("\27\f\27\16\27\u00dd\13\27\3\30\3\30\3\30\3\30\3\30\3")
-        buf.write("\30\3\30\3\30\3\30\3\30\5\30\u00e9\n\30\3\31\3\31\3\31")
-        buf.write("\2\3,\32\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(")
-        buf.write("*,.\60\2\t\4\2\27\30\34\35\3\2\31\33\3\2\34\35\3\2\36")
-        buf.write("\37\3\2 #\3\2$%\3\2-\60\2\u0100\2\62\3\2\2\2\49\3\2\2")
-        buf.write("\2\6<\3\2\2\2\bI\3\2\2\2\nc\3\2\2\2\fe\3\2\2\2\16j\3\2")
-        buf.write("\2\2\20m\3\2\2\2\22o\3\2\2\2\24r\3\2\2\2\26u\3\2\2\2\30")
-        buf.write("x\3\2\2\2\32{\3\2\2\2\34}\3\2\2\2\36\177\3\2\2\2 \u0088")
-        buf.write("\3\2\2\2\"\u008b\3\2\2\2$\u0090\3\2\2\2&\u0093\3\2\2\2")
-        buf.write("(\u009f\3\2\2\2*\u00a2\3\2\2\2,\u00b3\3\2\2\2.\u00e8\3")
-        buf.write("\2\2\2\60\u00ea\3\2\2\2\62\63\5\4\3\2\63\64\7\65\2\2\64")
-        buf.write("\3\3\2\2\2\65:\5\n\6\2\66:\5\6\4\2\67:\5\b\5\28:\3\2\2")
-        buf.write("\29\65\3\2\2\29\66\3\2\2\29\67\3\2\2\298\3\2\2\2:\5\3")
-        buf.write("\2\2\2;=\5\b\5\2<;\3\2\2\2<=\3\2\2\2=>\3\2\2\2>G\7\3\2")
-        buf.write("\2?D\5,\27\2@A\7\4\2\2AC\5,\27\2B@\3\2\2\2CF\3\2\2\2D")
-        buf.write("B\3\2\2\2DE\3\2\2\2EH\3\2\2\2FD\3\2\2\2G?\3\2\2\2GH\3")
-        buf.write("\2\2\2H\7\3\2\2\2IN\7\62\2\2JK\7\4\2\2KM\7\62\2\2LJ\3")
-        buf.write("\2\2\2MP\3\2\2\2NL\3\2\2\2NO\3\2\2\2OQ\3\2\2\2PN\3\2\2")
-        buf.write("\2QR\7,\2\2R\t\3\2\2\2Sd\5\f\7\2Td\5\16\b\2Ud\5\20\t\2")
-        buf.write("Vd\5\22\n\2Wd\5\24\13\2Xd\5\26\f\2Yd\5\30\r\2Zd\5\32\16")
-        buf.write("\2[d\5\34\17\2\\d\5\36\20\2]d\5 \21\2^d\5\"\22\2_d\5$")
-        buf.write("\23\2`d\5&\24\2ad\5*\26\2bd\5(\25\2cS\3\2\2\2cT\3\2\2")
-        buf.write("\2cU\3\2\2\2cV\3\2\2\2cW\3\2\2\2cX\3\2\2\2cY\3\2\2\2c")
-        buf.write("Z\3\2\2\2c[\3\2\2\2c\\\3\2\2\2c]\3\2\2\2c^\3\2\2\2c_\3")
-        buf.write("\2\2\2c`\3\2\2\2ca\3\2\2\2cb\3\2\2\2d\13\3\2\2\2ef\7\5")
-        buf.write("\2\2fh\7\62\2\2gi\5,\27\2hg\3\2\2\2hi\3\2\2\2i\r\3\2\2")
-        buf.write("\2jk\7\6\2\2kl\7\61\2\2l\17\3\2\2\2mn\7\7\2\2n\21\3\2")
-        buf.write("\2\2op\7\b\2\2pq\5,\27\2q\23\3\2\2\2rs\7\t\2\2st\7\62")
-        buf.write("\2\2t\25\3\2\2\2uv\7\n\2\2vw\7\62\2\2w\27\3\2\2\2xy\7")
-        buf.write("\13\2\2yz\5,\27\2z\31\3\2\2\2{|\7\f\2\2|\33\3\2\2\2}~")
-        buf.write("\7\r\2\2~\35\3\2\2\2\177\u0080\7\16\2\2\u0080\u0085\7")
-        buf.write("\61\2\2\u0081\u0082\7\4\2\2\u0082\u0084\5,\27\2\u0083")
-        buf.write("\u0081\3\2\2\2\u0084\u0087\3\2\2\2\u0085\u0083\3\2\2\2")
-        buf.write("\u0085\u0086\3\2\2\2\u0086\37\3\2\2\2\u0087\u0085\3\2")
-        buf.write("\2\2\u0088\u0089\7\17\2\2\u0089\u008a\7\61\2\2\u008a!")
-        buf.write("\3\2\2\2\u008b\u008c\7\20\2\2\u008c\u008d\7\61\2\2\u008d")
-        buf.write("\u008e\7\4\2\2\u008e\u008f\5,\27\2\u008f#\3\2\2\2\u0090")
-        buf.write("\u0091\7\21\2\2\u0091\u0092\7\61\2\2\u0092%\3\2\2\2\u0093")
-        buf.write("\u0094\7\22\2\2\u0094\u009d\7\62\2\2\u0095\u009a\7\62")
-        buf.write("\2\2\u0096\u0097\7\4\2\2\u0097\u0099\7\62\2\2\u0098\u0096")
-        buf.write("\3\2\2\2\u0099\u009c\3\2\2\2\u009a\u0098\3\2\2\2\u009a")
-        buf.write("\u009b\3\2\2\2\u009b\u009e\3\2\2\2\u009c\u009a\3\2\2\2")
-        buf.write("\u009d\u0095\3\2\2\2\u009d\u009e\3\2\2\2\u009e\'\3\2\2")
-        buf.write("\2\u009f\u00a0\7\23\2\2\u00a0)\3\2\2\2\u00a1\u00a3\5\b")
-        buf.write("\5\2\u00a2\u00a1\3\2\2\2\u00a2\u00a3\3\2\2\2\u00a3\u00a4")
-        buf.write("\3\2\2\2\u00a4\u00ad\7\62\2\2\u00a5\u00aa\5,\27\2\u00a6")
-        buf.write("\u00a7\7\4\2\2\u00a7\u00a9\5,\27\2\u00a8\u00a6\3\2\2\2")
-        buf.write("\u00a9\u00ac\3\2\2\2\u00aa\u00a8\3\2\2\2\u00aa\u00ab\3")
-        buf.write("\2\2\2\u00ab\u00ae\3\2\2\2\u00ac\u00aa\3\2\2\2\u00ad\u00a5")
-        buf.write("\3\2\2\2\u00ad\u00ae\3\2\2\2\u00ae+\3\2\2\2\u00af\u00b0")
-        buf.write("\b\27\1\2\u00b0\u00b1\t\2\2\2\u00b1\u00b4\5,\27\17\u00b2")
-        buf.write("\u00b4\5.\30\2\u00b3\u00af\3\2\2\2\u00b3\u00b2\3\2\2\2")
-        buf.write("\u00b4\u00db\3\2\2\2\u00b5\u00b6\f\16\2\2\u00b6\u00b7")
-        buf.write("\t\3\2\2\u00b7\u00da\5,\27\17\u00b8\u00b9\f\r\2\2\u00b9")
-        buf.write("\u00ba\t\4\2\2\u00ba\u00da\5,\27\16\u00bb\u00bc\f\f\2")
-        buf.write("\2\u00bc\u00bd\t\5\2\2\u00bd\u00da\5,\27\r\u00be\u00bf")
-        buf.write("\f\13\2\2\u00bf\u00c0\t\6\2\2\u00c0\u00da\5,\27\f\u00c1")
-        buf.write("\u00c2\f\n\2\2\u00c2\u00c3\t\7\2\2\u00c3\u00da\5,\27\13")
-        buf.write("\u00c4\u00c5\f\t\2\2\u00c5\u00c6\7&\2\2\u00c6\u00da\5")
-        buf.write(",\27\n\u00c7\u00c8\f\b\2\2\u00c8\u00c9\7\'\2\2\u00c9\u00da")
-        buf.write("\5,\27\t\u00ca\u00cb\f\7\2\2\u00cb\u00cc\7(\2\2\u00cc")
-        buf.write("\u00da\5,\27\b\u00cd\u00ce\f\6\2\2\u00ce\u00cf\7)\2\2")
-        buf.write("\u00cf\u00da\5,\27\7\u00d0\u00d1\f\5\2\2\u00d1\u00d2\7")
-        buf.write("*\2\2\u00d2\u00da\5,\27\6\u00d3\u00d4\f\4\2\2\u00d4\u00d5")
-        buf.write("\7+\2\2\u00d5\u00d6\5,\27\2\u00d6\u00d7\7,\2\2\u00d7\u00d8")
-        buf.write("\5,\27\5\u00d8\u00da\3\2\2\2\u00d9\u00b5\3\2\2\2\u00d9")
-        buf.write("\u00b8\3\2\2\2\u00d9\u00bb\3\2\2\2\u00d9\u00be\3\2\2\2")
-        buf.write("\u00d9\u00c1\3\2\2\2\u00d9\u00c4\3\2\2\2\u00d9\u00c7\3")
-        buf.write("\2\2\2\u00d9\u00ca\3\2\2\2\u00d9\u00cd\3\2\2\2\u00d9\u00d0")
-        buf.write("\3\2\2\2\u00d9\u00d3\3\2\2\2\u00da\u00dd\3\2\2\2\u00db")
-        buf.write("\u00d9\3\2\2\2\u00db\u00dc\3\2\2\2\u00dc-\3\2\2\2\u00dd")
-        buf.write("\u00db\3\2\2\2\u00de\u00df\7\25\2\2\u00df\u00e0\5,\27")
-        buf.write("\2\u00e0\u00e1\7\26\2\2\u00e1\u00e9\3\2\2\2\u00e2\u00e9")
-        buf.write("\5\60\31\2\u00e3\u00e4\7\24\2\2\u00e4\u00e5\7\25\2\2\u00e5")
-        buf.write("\u00e6\7\62\2\2\u00e6\u00e9\7\26\2\2\u00e7\u00e9\7\62")
-        buf.write("\2\2\u00e8\u00de\3\2\2\2\u00e8\u00e2\3\2\2\2\u00e8\u00e3")
-        buf.write("\3\2\2\2\u00e8\u00e7\3\2\2\2\u00e9/\3\2\2\2\u00ea\u00eb")
-        buf.write("\t\b\2\2\u00eb\61\3\2\2\2\239<DGNch\u0085\u009a\u009d")
-        buf.write("\u00a2\u00aa\u00ad\u00b3\u00d9\u00db\u00e8")
+        buf.write("\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27")
+        buf.write("\7\27\u00db\n\27\f\27\16\27\u00de\13\27\3\30\3\30\3\30")
+        buf.write("\3\30\3\30\3\30\3\30\3\30\3\30\3\30\5\30\u00ea\n\30\3")
+        buf.write("\31\3\31\3\31\2\3,\32\2\4\6\b\n\f\16\20\22\24\26\30\32")
+        buf.write("\34\36 \"$&(*,.\60\2\t\4\2\27\30\34\35\3\2\31\33\3\2\34")
+        buf.write("\35\3\2\36\37\3\2 #\3\2$%\3\2-\60\2\u0102\2\62\3\2\2\2")
+        buf.write("\49\3\2\2\2\6<\3\2\2\2\bI\3\2\2\2\nc\3\2\2\2\fe\3\2\2")
+        buf.write("\2\16j\3\2\2\2\20m\3\2\2\2\22o\3\2\2\2\24r\3\2\2\2\26")
+        buf.write("u\3\2\2\2\30x\3\2\2\2\32{\3\2\2\2\34}\3\2\2\2\36\177\3")
+        buf.write("\2\2\2 \u0088\3\2\2\2\"\u008c\3\2\2\2$\u0091\3\2\2\2&")
+        buf.write("\u0094\3\2\2\2(\u00a0\3\2\2\2*\u00a3\3\2\2\2,\u00b4\3")
+        buf.write("\2\2\2.\u00e9\3\2\2\2\60\u00eb\3\2\2\2\62\63\5\4\3\2\63")
+        buf.write("\64\7\65\2\2\64\3\3\2\2\2\65:\5\n\6\2\66:\5\6\4\2\67:")
+        buf.write("\5\b\5\28:\3\2\2\29\65\3\2\2\29\66\3\2\2\29\67\3\2\2\2")
+        buf.write("98\3\2\2\2:\5\3\2\2\2;=\5\b\5\2<;\3\2\2\2<=\3\2\2\2=>")
+        buf.write("\3\2\2\2>G\7\3\2\2?D\5,\27\2@A\7\4\2\2AC\5,\27\2B@\3\2")
+        buf.write("\2\2CF\3\2\2\2DB\3\2\2\2DE\3\2\2\2EH\3\2\2\2FD\3\2\2\2")
+        buf.write("G?\3\2\2\2GH\3\2\2\2H\7\3\2\2\2IN\7\62\2\2JK\7\4\2\2K")
+        buf.write("M\7\62\2\2LJ\3\2\2\2MP\3\2\2\2NL\3\2\2\2NO\3\2\2\2OQ\3")
+        buf.write("\2\2\2PN\3\2\2\2QR\7,\2\2R\t\3\2\2\2Sd\5\f\7\2Td\5\16")
+        buf.write("\b\2Ud\5\20\t\2Vd\5\22\n\2Wd\5\24\13\2Xd\5\26\f\2Yd\5")
+        buf.write("\30\r\2Zd\5\32\16\2[d\5\34\17\2\\d\5\36\20\2]d\5 \21\2")
+        buf.write("^d\5\"\22\2_d\5$\23\2`d\5&\24\2ad\5*\26\2bd\5(\25\2cS")
+        buf.write("\3\2\2\2cT\3\2\2\2cU\3\2\2\2cV\3\2\2\2cW\3\2\2\2cX\3\2")
+        buf.write("\2\2cY\3\2\2\2cZ\3\2\2\2c[\3\2\2\2c\\\3\2\2\2c]\3\2\2")
+        buf.write("\2c^\3\2\2\2c_\3\2\2\2c`\3\2\2\2ca\3\2\2\2cb\3\2\2\2d")
+        buf.write("\13\3\2\2\2ef\7\5\2\2fh\7\62\2\2gi\5,\27\2hg\3\2\2\2h")
+        buf.write("i\3\2\2\2i\r\3\2\2\2jk\7\6\2\2kl\7\61\2\2l\17\3\2\2\2")
+        buf.write("mn\7\7\2\2n\21\3\2\2\2op\7\b\2\2pq\5,\27\2q\23\3\2\2\2")
+        buf.write("rs\7\t\2\2st\7\62\2\2t\25\3\2\2\2uv\7\n\2\2vw\7\62\2\2")
+        buf.write("w\27\3\2\2\2xy\7\13\2\2yz\5,\27\2z\31\3\2\2\2{|\7\f\2")
+        buf.write("\2|\33\3\2\2\2}~\7\r\2\2~\35\3\2\2\2\177\u0080\7\16\2")
+        buf.write("\2\u0080\u0085\7\61\2\2\u0081\u0082\7\4\2\2\u0082\u0084")
+        buf.write("\5,\27\2\u0083\u0081\3\2\2\2\u0084\u0087\3\2\2\2\u0085")
+        buf.write("\u0083\3\2\2\2\u0085\u0086\3\2\2\2\u0086\37\3\2\2\2\u0087")
+        buf.write("\u0085\3\2\2\2\u0088\u008a\7\17\2\2\u0089\u008b\7\61\2")
+        buf.write("\2\u008a\u0089\3\2\2\2\u008a\u008b\3\2\2\2\u008b!\3\2")
+        buf.write("\2\2\u008c\u008d\7\20\2\2\u008d\u008e\7\61\2\2\u008e\u008f")
+        buf.write("\7\4\2\2\u008f\u0090\5,\27\2\u0090#\3\2\2\2\u0091\u0092")
+        buf.write("\7\21\2\2\u0092\u0093\7\61\2\2\u0093%\3\2\2\2\u0094\u0095")
+        buf.write("\7\22\2\2\u0095\u009e\7\62\2\2\u0096\u009b\7\62\2\2\u0097")
+        buf.write("\u0098\7\4\2\2\u0098\u009a\7\62\2\2\u0099\u0097\3\2\2")
+        buf.write("\2\u009a\u009d\3\2\2\2\u009b\u0099\3\2\2\2\u009b\u009c")
+        buf.write("\3\2\2\2\u009c\u009f\3\2\2\2\u009d\u009b\3\2\2\2\u009e")
+        buf.write("\u0096\3\2\2\2\u009e\u009f\3\2\2\2\u009f\'\3\2\2\2\u00a0")
+        buf.write("\u00a1\7\23\2\2\u00a1)\3\2\2\2\u00a2\u00a4\5\b\5\2\u00a3")
+        buf.write("\u00a2\3\2\2\2\u00a3\u00a4\3\2\2\2\u00a4\u00a5\3\2\2\2")
+        buf.write("\u00a5\u00ae\7\62\2\2\u00a6\u00ab\5,\27\2\u00a7\u00a8")
+        buf.write("\7\4\2\2\u00a8\u00aa\5,\27\2\u00a9\u00a7\3\2\2\2\u00aa")
+        buf.write("\u00ad\3\2\2\2\u00ab\u00a9\3\2\2\2\u00ab\u00ac\3\2\2\2")
+        buf.write("\u00ac\u00af\3\2\2\2\u00ad\u00ab\3\2\2\2\u00ae\u00a6\3")
+        buf.write("\2\2\2\u00ae\u00af\3\2\2\2\u00af+\3\2\2\2\u00b0\u00b1")
+        buf.write("\b\27\1\2\u00b1\u00b2\t\2\2\2\u00b2\u00b5\5,\27\17\u00b3")
+        buf.write("\u00b5\5.\30\2\u00b4\u00b0\3\2\2\2\u00b4\u00b3\3\2\2\2")
+        buf.write("\u00b5\u00dc\3\2\2\2\u00b6\u00b7\f\16\2\2\u00b7\u00b8")
+        buf.write("\t\3\2\2\u00b8\u00db\5,\27\17\u00b9\u00ba\f\r\2\2\u00ba")
+        buf.write("\u00bb\t\4\2\2\u00bb\u00db\5,\27\16\u00bc\u00bd\f\f\2")
+        buf.write("\2\u00bd\u00be\t\5\2\2\u00be\u00db\5,\27\r\u00bf\u00c0")
+        buf.write("\f\13\2\2\u00c0\u00c1\t\6\2\2\u00c1\u00db\5,\27\f\u00c2")
+        buf.write("\u00c3\f\n\2\2\u00c3\u00c4\t\7\2\2\u00c4\u00db\5,\27\13")
+        buf.write("\u00c5\u00c6\f\t\2\2\u00c6\u00c7\7&\2\2\u00c7\u00db\5")
+        buf.write(",\27\n\u00c8\u00c9\f\b\2\2\u00c9\u00ca\7\'\2\2\u00ca\u00db")
+        buf.write("\5,\27\t\u00cb\u00cc\f\7\2\2\u00cc\u00cd\7(\2\2\u00cd")
+        buf.write("\u00db\5,\27\b\u00ce\u00cf\f\6\2\2\u00cf\u00d0\7)\2\2")
+        buf.write("\u00d0\u00db\5,\27\7\u00d1\u00d2\f\5\2\2\u00d2\u00d3\7")
+        buf.write("*\2\2\u00d3\u00db\5,\27\6\u00d4\u00d5\f\4\2\2\u00d5\u00d6")
+        buf.write("\7+\2\2\u00d6\u00d7\5,\27\2\u00d7\u00d8\7,\2\2\u00d8\u00d9")
+        buf.write("\5,\27\5\u00d9\u00db\3\2\2\2\u00da\u00b6\3\2\2\2\u00da")
+        buf.write("\u00b9\3\2\2\2\u00da\u00bc\3\2\2\2\u00da\u00bf\3\2\2\2")
+        buf.write("\u00da\u00c2\3\2\2\2\u00da\u00c5\3\2\2\2\u00da\u00c8\3")
+        buf.write("\2\2\2\u00da\u00cb\3\2\2\2\u00da\u00ce\3\2\2\2\u00da\u00d1")
+        buf.write("\3\2\2\2\u00da\u00d4\3\2\2\2\u00db\u00de\3\2\2\2\u00dc")
+        buf.write("\u00da\3\2\2\2\u00dc\u00dd\3\2\2\2\u00dd-\3\2\2\2\u00de")
+        buf.write("\u00dc\3\2\2\2\u00df\u00e0\7\25\2\2\u00e0\u00e1\5,\27")
+        buf.write("\2\u00e1\u00e2\7\26\2\2\u00e2\u00ea\3\2\2\2\u00e3\u00ea")
+        buf.write("\5\60\31\2\u00e4\u00e5\7\24\2\2\u00e5\u00e6\7\25\2\2\u00e6")
+        buf.write("\u00e7\7\62\2\2\u00e7\u00ea\7\26\2\2\u00e8\u00ea\7\62")
+        buf.write("\2\2\u00e9\u00df\3\2\2\2\u00e9\u00e3\3\2\2\2\u00e9\u00e4")
+        buf.write("\3\2\2\2\u00e9\u00e8\3\2\2\2\u00ea/\3\2\2\2\u00eb\u00ec")
+        buf.write("\t\b\2\2\u00ec\61\3\2\2\2\249<DGNch\u0085\u008a\u009b")
+        buf.write("\u009e\u00a3\u00ab\u00ae\u00b4\u00da\u00dc\u00e9")
         return buf.getvalue()
 
 
@@ -390,6 +391,10 @@ class psASMParser (Parser):
         def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
+            self.lbls = None  # LabelsContext
+            self.inst = None  # Token
+            self._expr = None  # ExprContext
+            self.args = list()  # of ExprContexts
 
         def INST(self):
             return self.getToken(psASMParser.INST, 0)
@@ -430,16 +435,17 @@ class psASMParser (Parser):
             _la = self._input.LA(1)
             if _la == psASMParser.IDENTIFIER:
                 self.state = 57
-                self.labels()
+                localctx.lbls = self.labels()
 
             self.state = 60
-            self.match(psASMParser.INST)
+            localctx.inst = self.match(psASMParser.INST)
             self.state = 69
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << psASMParser.DEFINED) | (1 << psASMParser.LPAREN) | (1 << psASMParser.NOT) | (1 << psASMParser.BIT_NOT) | (1 << psASMParser.PLUS) | (1 << psASMParser.MINUS) | (1 << psASMParser.CHAR_LITERAL) | (1 << psASMParser.BINARY_LITERAL) | (1 << psASMParser.HEX_LITERAL) | (1 << psASMParser.DEC_LITERAL) | (1 << psASMParser.IDENTIFIER))) != 0):
                 self.state = 61
-                self.expr(0)
+                localctx._expr = self.expr(0)
+                localctx.args.append(localctx._expr)
                 self.state = 66
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
@@ -447,7 +453,8 @@ class psASMParser (Parser):
                     self.state = 62
                     self.match(psASMParser.COMMA)
                     self.state = 63
-                    self.expr(0)
+                    localctx._expr = self.expr(0)
+                    localctx.args.append(localctx._expr)
                     self.state = 68
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
@@ -465,15 +472,17 @@ class psASMParser (Parser):
         def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
+            self._IDENTIFIER = None  # Token
+            self.lbls = list()  # of Tokens
+
+        def COLON(self):
+            return self.getToken(psASMParser.COLON, 0)
 
         def IDENTIFIER(self, i: int = None):
             if i is None:
                 return self.getTokens(psASMParser.IDENTIFIER)
             else:
                 return self.getToken(psASMParser.IDENTIFIER, i)
-
-        def COLON(self):
-            return self.getToken(psASMParser.COLON, 0)
 
         def COMMA(self, i: int = None):
             if i is None:
@@ -498,7 +507,8 @@ class psASMParser (Parser):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 71
-            self.match(psASMParser.IDENTIFIER)
+            localctx._IDENTIFIER = self.match(psASMParser.IDENTIFIER)
+            localctx.lbls.append(localctx._IDENTIFIER)
             self.state = 76
             self._errHandler.sync(self)
             _la = self._input.LA(1)
@@ -506,7 +516,8 @@ class psASMParser (Parser):
                 self.state = 72
                 self.match(psASMParser.COMMA)
                 self.state = 73
-                self.match(psASMParser.IDENTIFIER)
+                localctx._IDENTIFIER = self.match(psASMParser.IDENTIFIER)
+                localctx.lbls.append(localctx._IDENTIFIER)
                 self.state = 78
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
@@ -688,6 +699,8 @@ class psASMParser (Parser):
         def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
+            self.name = None  # Token
+            self.value = None  # ExprContext
 
         def DEFINE(self):
             return self.getToken(psASMParser.DEFINE, 0)
@@ -717,13 +730,13 @@ class psASMParser (Parser):
             self.state = 99
             self.match(psASMParser.DEFINE)
             self.state = 100
-            self.match(psASMParser.IDENTIFIER)
+            localctx.name = self.match(psASMParser.IDENTIFIER)
             self.state = 102
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << psASMParser.DEFINED) | (1 << psASMParser.LPAREN) | (1 << psASMParser.NOT) | (1 << psASMParser.BIT_NOT) | (1 << psASMParser.PLUS) | (1 << psASMParser.MINUS) | (1 << psASMParser.CHAR_LITERAL) | (1 << psASMParser.BINARY_LITERAL) | (1 << psASMParser.HEX_LITERAL) | (1 << psASMParser.DEC_LITERAL) | (1 << psASMParser.IDENTIFIER))) != 0):
                 self.state = 101
-                self.expr(0)
+                localctx.value = self.expr(0)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -738,6 +751,7 @@ class psASMParser (Parser):
         def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
+            self.file_str = None  # Token
 
         def INCLUDE(self):
             return self.getToken(psASMParser.INCLUDE, 0)
@@ -763,7 +777,7 @@ class psASMParser (Parser):
             self.state = 104
             self.match(psASMParser.INCLUDE)
             self.state = 105
-            self.match(psASMParser.STRING_LITERAL)
+            localctx.file_str = self.match(psASMParser.STRING_LITERAL)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -811,6 +825,7 @@ class psASMParser (Parser):
         def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
+            self.cond = None  # ExprContext
 
         def IF(self):
             return self.getToken(psASMParser.IF, 0)
@@ -836,7 +851,7 @@ class psASMParser (Parser):
             self.state = 109
             self.match(psASMParser.IF)
             self.state = 110
-            self.expr(0)
+            localctx.cond = self.expr(0)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -850,6 +865,7 @@ class psASMParser (Parser):
         def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
+            self.arg = None  # Token
 
         def IFDEF(self):
             return self.getToken(psASMParser.IFDEF, 0)
@@ -875,7 +891,7 @@ class psASMParser (Parser):
             self.state = 112
             self.match(psASMParser.IFDEF)
             self.state = 113
-            self.match(psASMParser.IDENTIFIER)
+            localctx.arg = self.match(psASMParser.IDENTIFIER)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -889,6 +905,7 @@ class psASMParser (Parser):
         def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
+            self.arg = None  # Token
 
         def IFNDEF(self):
             return self.getToken(psASMParser.IFNDEF, 0)
@@ -914,7 +931,7 @@ class psASMParser (Parser):
             self.state = 115
             self.match(psASMParser.IFNDEF)
             self.state = 116
-            self.match(psASMParser.IDENTIFIER)
+            localctx.arg = self.match(psASMParser.IDENTIFIER)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -928,6 +945,7 @@ class psASMParser (Parser):
         def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
+            self.cond = None  # ExprContext
 
         def ELIF(self):
             return self.getToken(psASMParser.ELIF, 0)
@@ -953,7 +971,7 @@ class psASMParser (Parser):
             self.state = 118
             self.match(psASMParser.ELIF)
             self.state = 119
-            self.expr(0)
+            localctx.cond = self.expr(0)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1035,6 +1053,9 @@ class psASMParser (Parser):
         def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
+            self.msg = None  # Token
+            self._expr = None  # ExprContext
+            self.args = list()  # of ExprContexts
 
         def PRINT(self):
             return self.getToken(psASMParser.PRINT, 0)
@@ -1073,7 +1094,7 @@ class psASMParser (Parser):
             self.state = 125
             self.match(psASMParser.PRINT)
             self.state = 126
-            self.match(psASMParser.STRING_LITERAL)
+            localctx.msg = self.match(psASMParser.STRING_LITERAL)
             self.state = 131
             self._errHandler.sync(self)
             _la = self._input.LA(1)
@@ -1081,7 +1102,8 @@ class psASMParser (Parser):
                 self.state = 127
                 self.match(psASMParser.COMMA)
                 self.state = 128
-                self.expr(0)
+                localctx._expr = self.expr(0)
+                localctx.args.append(localctx._expr)
                 self.state = 133
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
@@ -1099,6 +1121,7 @@ class psASMParser (Parser):
         def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
+            self.msg = None  # Token
 
         def ERROR(self):
             return self.getToken(psASMParser.ERROR, 0)
@@ -1119,12 +1142,18 @@ class psASMParser (Parser):
 
         localctx = psASMParser.Preproc_errorContext(self, self._ctx, self.state)
         self.enterRule(localctx, 30, self.RULE_preproc_error)
+        self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 134
             self.match(psASMParser.ERROR)
-            self.state = 135
-            self.match(psASMParser.STRING_LITERAL)
+            self.state = 136
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            if _la == psASMParser.STRING_LITERAL:
+                self.state = 135
+                localctx.msg = self.match(psASMParser.STRING_LITERAL)
+
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1138,15 +1167,17 @@ class psASMParser (Parser):
         def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
+            self.txt = None  # Token
+            self.adr = None  # ExprContext
 
         def ASCII_HEAP(self):
             return self.getToken(psASMParser.ASCII_HEAP, 0)
 
-        def STRING_LITERAL(self):
-            return self.getToken(psASMParser.STRING_LITERAL, 0)
-
         def COMMA(self):
             return self.getToken(psASMParser.COMMA, 0)
+
+        def STRING_LITERAL(self):
+            return self.getToken(psASMParser.STRING_LITERAL, 0)
 
         def expr(self):
             return self.getTypedRuleContext(psASMParser.ExprContext, 0)
@@ -1166,14 +1197,14 @@ class psASMParser (Parser):
         self.enterRule(localctx, 32, self.RULE_preproc_ascii_heap)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 137
-            self.match(psASMParser.ASCII_HEAP)
             self.state = 138
-            self.match(psASMParser.STRING_LITERAL)
+            self.match(psASMParser.ASCII_HEAP)
             self.state = 139
-            self.match(psASMParser.COMMA)
+            localctx.txt = self.match(psASMParser.STRING_LITERAL)
             self.state = 140
-            self.expr(0)
+            self.match(psASMParser.COMMA)
+            self.state = 141
+            localctx.adr = self.expr(0)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1187,6 +1218,7 @@ class psASMParser (Parser):
         def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
+            self.txt = None  # Token
 
         def ASCII_STACK(self):
             return self.getToken(psASMParser.ASCII_STACK, 0)
@@ -1209,10 +1241,10 @@ class psASMParser (Parser):
         self.enterRule(localctx, 34, self.RULE_preproc_ascii_stack)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 142
-            self.match(psASMParser.ASCII_STACK)
             self.state = 143
-            self.match(psASMParser.STRING_LITERAL)
+            self.match(psASMParser.ASCII_STACK)
+            self.state = 144
+            localctx.txt = self.match(psASMParser.STRING_LITERAL)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1226,6 +1258,9 @@ class psASMParser (Parser):
         def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
+            self.macro_name = None  # Token
+            self._IDENTIFIER = None  # Token
+            self.args = list()  # of Tokens
 
         def MACRO(self):
             return self.getToken(psASMParser.MACRO, 0)
@@ -1258,25 +1293,27 @@ class psASMParser (Parser):
         self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 145
-            self.match(psASMParser.MACRO)
             self.state = 146
-            self.match(psASMParser.IDENTIFIER)
-            self.state = 155
+            self.match(psASMParser.MACRO)
+            self.state = 147
+            localctx.macro_name = self.match(psASMParser.IDENTIFIER)
+            self.state = 156
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la == psASMParser.IDENTIFIER:
-                self.state = 147
-                self.match(psASMParser.IDENTIFIER)
-                self.state = 152
+                self.state = 148
+                localctx._IDENTIFIER = self.match(psASMParser.IDENTIFIER)
+                localctx.args.append(localctx._IDENTIFIER)
+                self.state = 153
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la == psASMParser.COMMA:
-                    self.state = 148
-                    self.match(psASMParser.COMMA)
                     self.state = 149
-                    self.match(psASMParser.IDENTIFIER)
-                    self.state = 154
+                    self.match(psASMParser.COMMA)
+                    self.state = 150
+                    localctx._IDENTIFIER = self.match(psASMParser.IDENTIFIER)
+                    localctx.args.append(localctx._IDENTIFIER)
+                    self.state = 155
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
@@ -1312,7 +1349,7 @@ class psASMParser (Parser):
         self.enterRule(localctx, 38, self.RULE_preproc_endmacro)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 157
+            self.state = 158
             self.match(psASMParser.ENDMACRO)
         except RecognitionException as re:
             localctx.exception = re
@@ -1327,6 +1364,10 @@ class psASMParser (Parser):
         def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
+            self.lbls = None  # LabelsContext
+            self.macro_name = None  # Token
+            self._expr = None  # ExprContext
+            self.args = list()  # of ExprContexts
 
         def IDENTIFIER(self):
             return self.getToken(psASMParser.IDENTIFIER, 0)
@@ -1362,30 +1403,32 @@ class psASMParser (Parser):
         self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 160
+            self.state = 161
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input, 10, self._ctx)
+            la_ = self._interp.adaptivePredict(self._input, 11, self._ctx)
             if la_ == 1:
-                self.state = 159
-                self.labels()
+                self.state = 160
+                localctx.lbls = self.labels()
 
-            self.state = 162
-            self.match(psASMParser.IDENTIFIER)
-            self.state = 171
+            self.state = 163
+            localctx.macro_name = self.match(psASMParser.IDENTIFIER)
+            self.state = 172
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << psASMParser.DEFINED) | (1 << psASMParser.LPAREN) | (1 << psASMParser.NOT) | (1 << psASMParser.BIT_NOT) | (1 << psASMParser.PLUS) | (1 << psASMParser.MINUS) | (1 << psASMParser.CHAR_LITERAL) | (1 << psASMParser.BINARY_LITERAL) | (1 << psASMParser.HEX_LITERAL) | (1 << psASMParser.DEC_LITERAL) | (1 << psASMParser.IDENTIFIER))) != 0):
-                self.state = 163
-                self.expr(0)
-                self.state = 168
+                self.state = 164
+                localctx._expr = self.expr(0)
+                localctx.args.append(localctx._expr)
+                self.state = 169
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la == psASMParser.COMMA:
-                    self.state = 164
-                    self.match(psASMParser.COMMA)
                     self.state = 165
-                    self.expr(0)
-                    self.state = 170
+                    self.match(psASMParser.COMMA)
+                    self.state = 166
+                    localctx._expr = self.expr(0)
+                    localctx.args.append(localctx._expr)
+                    self.state = 171
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
@@ -1413,6 +1456,9 @@ class psASMParser (Parser):
 
         def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.ExprContext
             super().__init__(parser)
+            self.child1 = None  # ExprContext
+            self.op = None  # Token
+            self.child2 = None  # ExprContext
             self.copyFrom(ctx)
 
         def expr(self, i: int = None):
@@ -1443,6 +1489,9 @@ class psASMParser (Parser):
 
         def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.ExprContext
             super().__init__(parser)
+            self.child1 = None  # ExprContext
+            self.op = None  # Token
+            self.child2 = None  # ExprContext
             self.copyFrom(ctx)
 
         def expr(self, i: int = None):
@@ -1467,16 +1516,18 @@ class psASMParser (Parser):
 
         def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.ExprContext
             super().__init__(parser)
+            self.child1 = None  # ExprContext
+            self.child2 = None  # ExprContext
             self.copyFrom(ctx)
+
+        def BIT_XOR(self):
+            return self.getToken(psASMParser.BIT_XOR, 0)
 
         def expr(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(psASMParser.ExprContext)
             else:
                 return self.getTypedRuleContext(psASMParser.ExprContext, i)
-
-        def BIT_XOR(self):
-            return self.getToken(psASMParser.BIT_XOR, 0)
 
         def accept(self, visitor: ParseTreeVisitor):
             if hasattr(visitor, "visitBitxor_expr"):
@@ -1488,6 +1539,9 @@ class psASMParser (Parser):
 
         def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.ExprContext
             super().__init__(parser)
+            self.child1 = None  # ExprContext
+            self.op = None  # Token
+            self.child2 = None  # ExprContext
             self.copyFrom(ctx)
 
         def expr(self, i: int = None):
@@ -1512,6 +1566,9 @@ class psASMParser (Parser):
 
         def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.ExprContext
             super().__init__(parser)
+            self.child1 = None  # ExprContext
+            self.op = None  # Token
+            self.child2 = None  # ExprContext
             self.copyFrom(ctx)
 
         def expr(self, i: int = None):
@@ -1539,6 +1596,8 @@ class psASMParser (Parser):
 
         def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.ExprContext
             super().__init__(parser)
+            self.op = None  # Token
+            self.child1 = None  # ExprContext
             self.copyFrom(ctx)
 
         def expr(self):
@@ -1566,16 +1625,18 @@ class psASMParser (Parser):
 
         def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.ExprContext
             super().__init__(parser)
+            self.child1 = None  # ExprContext
+            self.child2 = None  # ExprContext
             self.copyFrom(ctx)
+
+        def AND(self):
+            return self.getToken(psASMParser.AND, 0)
 
         def expr(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(psASMParser.ExprContext)
             else:
                 return self.getTypedRuleContext(psASMParser.ExprContext, i)
-
-        def AND(self):
-            return self.getToken(psASMParser.AND, 0)
 
         def accept(self, visitor: ParseTreeVisitor):
             if hasattr(visitor, "visitAnd_expr"):
@@ -1587,16 +1648,18 @@ class psASMParser (Parser):
 
         def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.ExprContext
             super().__init__(parser)
+            self.child1 = None  # ExprContext
+            self.child2 = None  # ExprContext
             self.copyFrom(ctx)
+
+        def BIT_AND(self):
+            return self.getToken(psASMParser.BIT_AND, 0)
 
         def expr(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(psASMParser.ExprContext)
             else:
                 return self.getTypedRuleContext(psASMParser.ExprContext, i)
-
-        def BIT_AND(self):
-            return self.getToken(psASMParser.BIT_AND, 0)
 
         def accept(self, visitor: ParseTreeVisitor):
             if hasattr(visitor, "visitBitand_expr"):
@@ -1608,19 +1671,22 @@ class psASMParser (Parser):
 
         def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.ExprContext
             super().__init__(parser)
+            self.child1 = None  # ExprContext
+            self.child2 = None  # ExprContext
+            self.child3 = None  # ExprContext
             self.copyFrom(ctx)
-
-        def expr(self, i: int = None):
-            if i is None:
-                return self.getTypedRuleContexts(psASMParser.ExprContext)
-            else:
-                return self.getTypedRuleContext(psASMParser.ExprContext, i)
 
         def QUEST(self):
             return self.getToken(psASMParser.QUEST, 0)
 
         def COLON(self):
             return self.getToken(psASMParser.COLON, 0)
+
+        def expr(self, i: int = None):
+            if i is None:
+                return self.getTypedRuleContexts(psASMParser.ExprContext)
+            else:
+                return self.getTypedRuleContext(psASMParser.ExprContext, i)
 
         def accept(self, visitor: ParseTreeVisitor):
             if hasattr(visitor, "visitCondit_expr"):
@@ -1647,16 +1713,18 @@ class psASMParser (Parser):
 
         def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.ExprContext
             super().__init__(parser)
+            self.child1 = None  # ExprContext
+            self.child2 = None  # ExprContext
             self.copyFrom(ctx)
+
+        def OR(self):
+            return self.getToken(psASMParser.OR, 0)
 
         def expr(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(psASMParser.ExprContext)
             else:
                 return self.getTypedRuleContext(psASMParser.ExprContext, i)
-
-        def OR(self):
-            return self.getToken(psASMParser.OR, 0)
 
         def accept(self, visitor: ParseTreeVisitor):
             if hasattr(visitor, "visitOr_expr"):
@@ -1668,16 +1736,18 @@ class psASMParser (Parser):
 
         def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.ExprContext
             super().__init__(parser)
+            self.child1 = None  # ExprContext
+            self.child2 = None  # ExprContext
             self.copyFrom(ctx)
+
+        def BIT_OR(self):
+            return self.getToken(psASMParser.BIT_OR, 0)
 
         def expr(self, i: int = None):
             if i is None:
                 return self.getTypedRuleContexts(psASMParser.ExprContext)
             else:
                 return self.getTypedRuleContext(psASMParser.ExprContext, i)
-
-        def BIT_OR(self):
-            return self.getToken(psASMParser.BIT_OR, 0)
 
         def accept(self, visitor: ParseTreeVisitor):
             if hasattr(visitor, "visitBitor_expr"):
@@ -1689,6 +1759,9 @@ class psASMParser (Parser):
 
         def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.ExprContext
             super().__init__(parser)
+            self.child1 = None  # ExprContext
+            self.op = None  # Token
+            self.child2 = None  # ExprContext
             self.copyFrom(ctx)
 
         def expr(self, i: int = None):
@@ -1719,7 +1792,7 @@ class psASMParser (Parser):
         self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 177
+            self.state = 178
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [psASMParser.NOT, psASMParser.BIT_NOT, psASMParser.PLUS, psASMParser.MINUS]:
@@ -1727,213 +1800,230 @@ class psASMParser (Parser):
                 self._ctx = localctx
                 _prevctx = localctx
 
-                self.state = 174
+                self.state = 175
+                localctx.op = self._input.LT(1)
                 _la = self._input.LA(1)
                 if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << psASMParser.NOT) | (1 << psASMParser.BIT_NOT) | (1 << psASMParser.PLUS) | (1 << psASMParser.MINUS))) != 0)):
-                    self._errHandler.recoverInline(self)
+                    localctx.op = self._errHandler.recoverInline(self)
                 else:
                     self._errHandler.reportMatch(self)
                     self.consume()
-                self.state = 175
-                self.expr(13)
+                self.state = 176
+                localctx.child1 = self.expr(13)
                 pass
             elif token in [psASMParser.DEFINED, psASMParser.LPAREN, psASMParser.CHAR_LITERAL, psASMParser.BINARY_LITERAL, psASMParser.HEX_LITERAL, psASMParser.DEC_LITERAL, psASMParser.IDENTIFIER]:
                 localctx = psASMParser.Atom_exprContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 176
+                self.state = 177
                 self.atom()
                 pass
             else:
                 raise NoViableAltException(self)
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 217
+            self.state = 218
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input, 15, self._ctx)
+            _alt = self._interp.adaptivePredict(self._input, 16, self._ctx)
             while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
                 if _alt == 1:
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    self.state = 215
+                    self.state = 216
                     self._errHandler.sync(self)
-                    la_ = self._interp.adaptivePredict(self._input, 14, self._ctx)
+                    la_ = self._interp.adaptivePredict(self._input, 15, self._ctx)
                     if la_ == 1:
                         localctx = psASMParser.Mult_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 179
+                        self.state = 180
                         if not self.precpred(self._ctx, 12):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 12)")
-                        self.state = 180
+                        self.state = 181
+                        localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << psASMParser.DIV) | (1 << psASMParser.MUL) | (1 << psASMParser.MOD))) != 0)):
-                            self._errHandler.recoverInline(self)
+                            localctx.op = self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 181
-                        self.expr(13)
+                        self.state = 182
+                        localctx.child2 = self.expr(13)
                         pass
 
                     elif la_ == 2:
                         localctx = psASMParser.Add_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 182
+                        self.state = 183
                         if not self.precpred(self._ctx, 11):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 11)")
-                        self.state = 183
+                        self.state = 184
+                        localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not(_la == psASMParser.PLUS or _la == psASMParser.MINUS):
-                            self._errHandler.recoverInline(self)
+                            localctx.op = self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 184
-                        self.expr(12)
+                        self.state = 185
+                        localctx.child2 = self.expr(12)
                         pass
 
                     elif la_ == 3:
                         localctx = psASMParser.Shift_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 185
+                        self.state = 186
                         if not self.precpred(self._ctx, 10):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 10)")
-                        self.state = 186
+                        self.state = 187
+                        localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not(_la == psASMParser.LSHFIT or _la == psASMParser.RSHIFT):
-                            self._errHandler.recoverInline(self)
+                            localctx.op = self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 187
-                        self.expr(11)
+                        self.state = 188
+                        localctx.child2 = self.expr(11)
                         pass
 
                     elif la_ == 4:
                         localctx = psASMParser.Compare_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 188
+                        self.state = 189
                         if not self.precpred(self._ctx, 9):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 9)")
-                        self.state = 189
+                        self.state = 190
+                        localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << psASMParser.LESS) | (1 << psASMParser.LESS_EQ) | (1 << psASMParser.GREATER) | (1 << psASMParser.GREATER_EQ))) != 0)):
-                            self._errHandler.recoverInline(self)
+                            localctx.op = self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 190
-                        self.expr(10)
+                        self.state = 191
+                        localctx.child2 = self.expr(10)
                         pass
 
                     elif la_ == 5:
                         localctx = psASMParser.Equate_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 191
+                        self.state = 192
                         if not self.precpred(self._ctx, 8):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 8)")
-                        self.state = 192
+                        self.state = 193
+                        localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not(_la == psASMParser.EQ or _la == psASMParser.NEQ):
-                            self._errHandler.recoverInline(self)
+                            localctx.op = self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 193
-                        self.expr(9)
+                        self.state = 194
+                        localctx.child2 = self.expr(9)
                         pass
 
                     elif la_ == 6:
                         localctx = psASMParser.Bitand_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 194
+                        self.state = 195
                         if not self.precpred(self._ctx, 7):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 7)")
-                        self.state = 195
-                        self.match(psASMParser.BIT_AND)
                         self.state = 196
-                        self.expr(8)
+                        self.match(psASMParser.BIT_AND)
+                        self.state = 197
+                        localctx.child2 = self.expr(8)
                         pass
 
                     elif la_ == 7:
                         localctx = psASMParser.Bitxor_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 197
+                        self.state = 198
                         if not self.precpred(self._ctx, 6):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 6)")
-                        self.state = 198
-                        self.match(psASMParser.BIT_XOR)
                         self.state = 199
-                        self.expr(7)
+                        self.match(psASMParser.BIT_XOR)
+                        self.state = 200
+                        localctx.child2 = self.expr(7)
                         pass
 
                     elif la_ == 8:
                         localctx = psASMParser.Bitor_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 200
+                        self.state = 201
                         if not self.precpred(self._ctx, 5):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 5)")
-                        self.state = 201
-                        self.match(psASMParser.BIT_OR)
                         self.state = 202
-                        self.expr(6)
+                        self.match(psASMParser.BIT_OR)
+                        self.state = 203
+                        localctx.child2 = self.expr(6)
                         pass
 
                     elif la_ == 9:
                         localctx = psASMParser.And_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 203
+                        self.state = 204
                         if not self.precpred(self._ctx, 4):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 4)")
-                        self.state = 204
-                        self.match(psASMParser.AND)
                         self.state = 205
-                        self.expr(5)
+                        self.match(psASMParser.AND)
+                        self.state = 206
+                        localctx.child2 = self.expr(5)
                         pass
 
                     elif la_ == 10:
                         localctx = psASMParser.Or_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 206
+                        self.state = 207
                         if not self.precpred(self._ctx, 3):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 3)")
-                        self.state = 207
-                        self.match(psASMParser.OR)
                         self.state = 208
-                        self.expr(4)
+                        self.match(psASMParser.OR)
+                        self.state = 209
+                        localctx.child2 = self.expr(4)
                         pass
 
                     elif la_ == 11:
                         localctx = psASMParser.Condit_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 209
+                        self.state = 210
                         if not self.precpred(self._ctx, 2):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 2)")
-                        self.state = 210
-                        self.match(psASMParser.QUEST)
                         self.state = 211
-                        self.expr(0)
+                        self.match(psASMParser.QUEST)
                         self.state = 212
-                        self.match(psASMParser.COLON)
+                        localctx.child2 = self.expr(0)
                         self.state = 213
-                        self.expr(3)
+                        self.match(psASMParser.COLON)
+                        self.state = 214
+                        localctx.child3 = self.expr(3)
                         pass
 
-                self.state = 219
+                self.state = 220
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input, 15, self._ctx)
+                _alt = self._interp.adaptivePredict(self._input, 16, self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -1959,6 +2049,7 @@ class psASMParser (Parser):
 
         def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.AtomContext
             super().__init__(parser)
+            self.arg = None  # Token
             self.copyFrom(ctx)
 
         def DEFINED(self):
@@ -1967,11 +2058,11 @@ class psASMParser (Parser):
         def LPAREN(self):
             return self.getToken(psASMParser.LPAREN, 0)
 
-        def IDENTIFIER(self):
-            return self.getToken(psASMParser.IDENTIFIER, 0)
-
         def RPAREN(self):
             return self.getToken(psASMParser.RPAREN, 0)
+
+        def IDENTIFIER(self):
+            return self.getToken(psASMParser.IDENTIFIER, 0)
 
         def accept(self, visitor: ParseTreeVisitor):
             if hasattr(visitor, "visitDefined_atom"):
@@ -1983,6 +2074,7 @@ class psASMParser (Parser):
 
         def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.AtomContext
             super().__init__(parser)
+            self.arg = None  # Token
             self.copyFrom(ctx)
 
         def IDENTIFIER(self):
@@ -1998,16 +2090,17 @@ class psASMParser (Parser):
 
         def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.AtomContext
             super().__init__(parser)
+            self.child1 = None  # ExprContext
             self.copyFrom(ctx)
 
         def LPAREN(self):
             return self.getToken(psASMParser.LPAREN, 0)
 
-        def expr(self):
-            return self.getTypedRuleContext(psASMParser.ExprContext, 0)
-
         def RPAREN(self):
             return self.getToken(psASMParser.RPAREN, 0)
+
+        def expr(self):
+            return self.getTypedRuleContext(psASMParser.ExprContext, 0)
 
         def accept(self, visitor: ParseTreeVisitor):
             if hasattr(visitor, "visitExpr_atom"):
@@ -2035,42 +2128,42 @@ class psASMParser (Parser):
         localctx = psASMParser.AtomContext(self, self._ctx, self.state)
         self.enterRule(localctx, 44, self.RULE_atom)
         try:
-            self.state = 230
+            self.state = 231
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [psASMParser.LPAREN]:
                 localctx = psASMParser.Expr_atomContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 220
-                self.match(psASMParser.LPAREN)
                 self.state = 221
-                self.expr(0)
+                self.match(psASMParser.LPAREN)
                 self.state = 222
+                localctx.child1 = self.expr(0)
+                self.state = 223
                 self.match(psASMParser.RPAREN)
                 pass
             elif token in [psASMParser.CHAR_LITERAL, psASMParser.BINARY_LITERAL, psASMParser.HEX_LITERAL, psASMParser.DEC_LITERAL]:
                 localctx = psASMParser.Numerical_atomContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 224
+                self.state = 225
                 self.numerical_literal()
                 pass
             elif token in [psASMParser.DEFINED]:
                 localctx = psASMParser.Defined_atomContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
-                self.state = 225
-                self.match(psASMParser.DEFINED)
                 self.state = 226
-                self.match(psASMParser.LPAREN)
+                self.match(psASMParser.DEFINED)
                 self.state = 227
-                self.match(psASMParser.IDENTIFIER)
+                self.match(psASMParser.LPAREN)
                 self.state = 228
+                localctx.arg = self.match(psASMParser.IDENTIFIER)
+                self.state = 229
                 self.match(psASMParser.RPAREN)
                 pass
             elif token in [psASMParser.IDENTIFIER]:
                 localctx = psASMParser.Identifier_atomContext(self, localctx)
                 self.enterOuterAlt(localctx, 4)
-                self.state = 229
-                self.match(psASMParser.IDENTIFIER)
+                self.state = 230
+                localctx.arg = self.match(psASMParser.IDENTIFIER)
                 pass
             else:
                 raise NoViableAltException(self)
@@ -2088,6 +2181,7 @@ class psASMParser (Parser):
         def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
+            self.lit = None  # Token
 
         def BINARY_LITERAL(self):
             return self.getToken(psASMParser.BINARY_LITERAL, 0)
@@ -2117,10 +2211,11 @@ class psASMParser (Parser):
         self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 232
+            self.state = 233
+            localctx.lit = self._input.LT(1)
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << psASMParser.CHAR_LITERAL) | (1 << psASMParser.BINARY_LITERAL) | (1 << psASMParser.HEX_LITERAL) | (1 << psASMParser.DEC_LITERAL))) != 0)):
-                self._errHandler.recoverInline(self)
+                localctx.lit = self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
                 self.consume()
