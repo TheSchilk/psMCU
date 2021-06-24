@@ -1,4 +1,4 @@
-# Generated from psASM.g4 by ANTLR 4.7.2
+# Generated from psASMParser.g4 by ANTLR 4.7.2
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
@@ -8,113 +8,135 @@ import sys
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\66")
-        buf.write("\u00ee\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3>")
+        buf.write("\u0114\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write("\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\4\16")
         buf.write("\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22\4\23\t\23")
         buf.write("\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31")
-        buf.write("\t\31\3\2\3\2\3\2\3\3\3\3\3\3\3\3\5\3:\n\3\3\4\5\4=\n")
-        buf.write("\4\3\4\3\4\3\4\3\4\7\4C\n\4\f\4\16\4F\13\4\5\4H\n\4\3")
-        buf.write("\5\3\5\3\5\7\5M\n\5\f\5\16\5P\13\5\3\5\3\5\3\6\3\6\3\6")
-        buf.write("\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\5")
-        buf.write("\6d\n\6\3\7\3\7\3\7\5\7i\n\7\3\b\3\b\3\b\3\t\3\t\3\n\3")
-        buf.write("\n\3\n\3\13\3\13\3\13\3\f\3\f\3\f\3\r\3\r\3\r\3\16\3\16")
-        buf.write("\3\17\3\17\3\20\3\20\3\20\3\20\7\20\u0084\n\20\f\20\16")
-        buf.write("\20\u0087\13\20\3\21\3\21\5\21\u008b\n\21\3\22\3\22\3")
-        buf.write("\22\3\22\3\22\3\23\3\23\3\23\3\24\3\24\3\24\3\24\3\24")
-        buf.write("\7\24\u009a\n\24\f\24\16\24\u009d\13\24\5\24\u009f\n\24")
-        buf.write("\3\25\3\25\3\26\5\26\u00a4\n\26\3\26\3\26\3\26\3\26\7")
-        buf.write("\26\u00aa\n\26\f\26\16\26\u00ad\13\26\5\26\u00af\n\26")
-        buf.write("\3\27\3\27\3\27\3\27\5\27\u00b5\n\27\3\27\3\27\3\27\3")
-        buf.write("\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27")
+        buf.write("\t\31\4\32\t\32\4\33\t\33\3\2\3\2\3\2\3\3\3\3\3\3\3\3")
+        buf.write("\5\3>\n\3\3\4\5\4A\n\4\3\4\3\4\3\4\3\4\7\4G\n\4\f\4\16")
+        buf.write("\4J\13\4\5\4L\n\4\3\5\3\5\3\5\7\5Q\n\5\f\5\16\5T\13\5")
+        buf.write("\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3")
+        buf.write("\6\3\6\3\6\3\6\3\6\5\6h\n\6\3\7\3\7\3\7\5\7m\n\7\3\b\3")
+        buf.write("\b\3\b\3\t\3\t\3\n\3\n\3\n\3\13\3\13\3\13\3\f\3\f\3\f")
+        buf.write("\3\r\3\r\3\r\3\16\3\16\3\17\3\17\3\20\3\20\5\20\u0086")
+        buf.write("\n\20\3\21\3\21\5\21\u008a\n\21\3\22\3\22\3\22\3\22\3")
+        buf.write("\22\3\23\3\23\3\23\3\24\3\24\3\24\3\24\3\24\7\24\u0099")
+        buf.write("\n\24\f\24\16\24\u009c\13\24\5\24\u009e\n\24\3\25\3\25")
+        buf.write("\3\26\5\26\u00a3\n\26\3\26\3\26\3\26\3\26\7\26\u00a9\n")
+        buf.write("\26\f\26\16\26\u00ac\13\26\5\26\u00ae\n\26\3\27\3\27\3")
+        buf.write("\27\3\27\5\27\u00b4\n\27\3\27\3\27\3\27\3\27\3\27\3\27")
         buf.write("\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27")
         buf.write("\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27")
-        buf.write("\7\27\u00db\n\27\f\27\16\27\u00de\13\27\3\30\3\30\3\30")
-        buf.write("\3\30\3\30\3\30\3\30\3\30\3\30\3\30\5\30\u00ea\n\30\3")
-        buf.write("\31\3\31\3\31\2\3,\32\2\4\6\b\n\f\16\20\22\24\26\30\32")
-        buf.write("\34\36 \"$&(*,.\60\2\t\4\2\27\30\34\35\3\2\31\33\3\2\34")
-        buf.write("\35\3\2\36\37\3\2 #\3\2$%\3\2-\60\2\u0102\2\62\3\2\2\2")
-        buf.write("\49\3\2\2\2\6<\3\2\2\2\bI\3\2\2\2\nc\3\2\2\2\fe\3\2\2")
-        buf.write("\2\16j\3\2\2\2\20m\3\2\2\2\22o\3\2\2\2\24r\3\2\2\2\26")
-        buf.write("u\3\2\2\2\30x\3\2\2\2\32{\3\2\2\2\34}\3\2\2\2\36\177\3")
-        buf.write("\2\2\2 \u0088\3\2\2\2\"\u008c\3\2\2\2$\u0091\3\2\2\2&")
-        buf.write("\u0094\3\2\2\2(\u00a0\3\2\2\2*\u00a3\3\2\2\2,\u00b4\3")
-        buf.write("\2\2\2.\u00e9\3\2\2\2\60\u00eb\3\2\2\2\62\63\5\4\3\2\63")
-        buf.write("\64\7\65\2\2\64\3\3\2\2\2\65:\5\n\6\2\66:\5\6\4\2\67:")
-        buf.write("\5\b\5\28:\3\2\2\29\65\3\2\2\29\66\3\2\2\29\67\3\2\2\2")
-        buf.write("98\3\2\2\2:\5\3\2\2\2;=\5\b\5\2<;\3\2\2\2<=\3\2\2\2=>")
-        buf.write("\3\2\2\2>G\7\3\2\2?D\5,\27\2@A\7\4\2\2AC\5,\27\2B@\3\2")
-        buf.write("\2\2CF\3\2\2\2DB\3\2\2\2DE\3\2\2\2EH\3\2\2\2FD\3\2\2\2")
-        buf.write("G?\3\2\2\2GH\3\2\2\2H\7\3\2\2\2IN\7\62\2\2JK\7\4\2\2K")
-        buf.write("M\7\62\2\2LJ\3\2\2\2MP\3\2\2\2NL\3\2\2\2NO\3\2\2\2OQ\3")
-        buf.write("\2\2\2PN\3\2\2\2QR\7,\2\2R\t\3\2\2\2Sd\5\f\7\2Td\5\16")
-        buf.write("\b\2Ud\5\20\t\2Vd\5\22\n\2Wd\5\24\13\2Xd\5\26\f\2Yd\5")
-        buf.write("\30\r\2Zd\5\32\16\2[d\5\34\17\2\\d\5\36\20\2]d\5 \21\2")
-        buf.write("^d\5\"\22\2_d\5$\23\2`d\5&\24\2ad\5*\26\2bd\5(\25\2cS")
-        buf.write("\3\2\2\2cT\3\2\2\2cU\3\2\2\2cV\3\2\2\2cW\3\2\2\2cX\3\2")
-        buf.write("\2\2cY\3\2\2\2cZ\3\2\2\2c[\3\2\2\2c\\\3\2\2\2c]\3\2\2")
-        buf.write("\2c^\3\2\2\2c_\3\2\2\2c`\3\2\2\2ca\3\2\2\2cb\3\2\2\2d")
-        buf.write("\13\3\2\2\2ef\7\5\2\2fh\7\62\2\2gi\5,\27\2hg\3\2\2\2h")
-        buf.write("i\3\2\2\2i\r\3\2\2\2jk\7\6\2\2kl\7\61\2\2l\17\3\2\2\2")
-        buf.write("mn\7\7\2\2n\21\3\2\2\2op\7\b\2\2pq\5,\27\2q\23\3\2\2\2")
-        buf.write("rs\7\t\2\2st\7\62\2\2t\25\3\2\2\2uv\7\n\2\2vw\7\62\2\2")
-        buf.write("w\27\3\2\2\2xy\7\13\2\2yz\5,\27\2z\31\3\2\2\2{|\7\f\2")
-        buf.write("\2|\33\3\2\2\2}~\7\r\2\2~\35\3\2\2\2\177\u0080\7\16\2")
-        buf.write("\2\u0080\u0085\7\61\2\2\u0081\u0082\7\4\2\2\u0082\u0084")
-        buf.write("\5,\27\2\u0083\u0081\3\2\2\2\u0084\u0087\3\2\2\2\u0085")
-        buf.write("\u0083\3\2\2\2\u0085\u0086\3\2\2\2\u0086\37\3\2\2\2\u0087")
-        buf.write("\u0085\3\2\2\2\u0088\u008a\7\17\2\2\u0089\u008b\7\61\2")
-        buf.write("\2\u008a\u0089\3\2\2\2\u008a\u008b\3\2\2\2\u008b!\3\2")
-        buf.write("\2\2\u008c\u008d\7\20\2\2\u008d\u008e\7\61\2\2\u008e\u008f")
-        buf.write("\7\4\2\2\u008f\u0090\5,\27\2\u0090#\3\2\2\2\u0091\u0092")
-        buf.write("\7\21\2\2\u0092\u0093\7\61\2\2\u0093%\3\2\2\2\u0094\u0095")
-        buf.write("\7\22\2\2\u0095\u009e\7\62\2\2\u0096\u009b\7\62\2\2\u0097")
-        buf.write("\u0098\7\4\2\2\u0098\u009a\7\62\2\2\u0099\u0097\3\2\2")
-        buf.write("\2\u009a\u009d\3\2\2\2\u009b\u0099\3\2\2\2\u009b\u009c")
-        buf.write("\3\2\2\2\u009c\u009f\3\2\2\2\u009d\u009b\3\2\2\2\u009e")
-        buf.write("\u0096\3\2\2\2\u009e\u009f\3\2\2\2\u009f\'\3\2\2\2\u00a0")
-        buf.write("\u00a1\7\23\2\2\u00a1)\3\2\2\2\u00a2\u00a4\5\b\5\2\u00a3")
-        buf.write("\u00a2\3\2\2\2\u00a3\u00a4\3\2\2\2\u00a4\u00a5\3\2\2\2")
-        buf.write("\u00a5\u00ae\7\62\2\2\u00a6\u00ab\5,\27\2\u00a7\u00a8")
-        buf.write("\7\4\2\2\u00a8\u00aa\5,\27\2\u00a9\u00a7\3\2\2\2\u00aa")
-        buf.write("\u00ad\3\2\2\2\u00ab\u00a9\3\2\2\2\u00ab\u00ac\3\2\2\2")
-        buf.write("\u00ac\u00af\3\2\2\2\u00ad\u00ab\3\2\2\2\u00ae\u00a6\3")
-        buf.write("\2\2\2\u00ae\u00af\3\2\2\2\u00af+\3\2\2\2\u00b0\u00b1")
-        buf.write("\b\27\1\2\u00b1\u00b2\t\2\2\2\u00b2\u00b5\5,\27\17\u00b3")
-        buf.write("\u00b5\5.\30\2\u00b4\u00b0\3\2\2\2\u00b4\u00b3\3\2\2\2")
-        buf.write("\u00b5\u00dc\3\2\2\2\u00b6\u00b7\f\16\2\2\u00b7\u00b8")
-        buf.write("\t\3\2\2\u00b8\u00db\5,\27\17\u00b9\u00ba\f\r\2\2\u00ba")
-        buf.write("\u00bb\t\4\2\2\u00bb\u00db\5,\27\16\u00bc\u00bd\f\f\2")
-        buf.write("\2\u00bd\u00be\t\5\2\2\u00be\u00db\5,\27\r\u00bf\u00c0")
-        buf.write("\f\13\2\2\u00c0\u00c1\t\6\2\2\u00c1\u00db\5,\27\f\u00c2")
-        buf.write("\u00c3\f\n\2\2\u00c3\u00c4\t\7\2\2\u00c4\u00db\5,\27\13")
-        buf.write("\u00c5\u00c6\f\t\2\2\u00c6\u00c7\7&\2\2\u00c7\u00db\5")
-        buf.write(",\27\n\u00c8\u00c9\f\b\2\2\u00c9\u00ca\7\'\2\2\u00ca\u00db")
-        buf.write("\5,\27\t\u00cb\u00cc\f\7\2\2\u00cc\u00cd\7(\2\2\u00cd")
-        buf.write("\u00db\5,\27\b\u00ce\u00cf\f\6\2\2\u00cf\u00d0\7)\2\2")
-        buf.write("\u00d0\u00db\5,\27\7\u00d1\u00d2\f\5\2\2\u00d2\u00d3\7")
-        buf.write("*\2\2\u00d3\u00db\5,\27\6\u00d4\u00d5\f\4\2\2\u00d5\u00d6")
-        buf.write("\7+\2\2\u00d6\u00d7\5,\27\2\u00d7\u00d8\7,\2\2\u00d8\u00d9")
-        buf.write("\5,\27\5\u00d9\u00db\3\2\2\2\u00da\u00b6\3\2\2\2\u00da")
-        buf.write("\u00b9\3\2\2\2\u00da\u00bc\3\2\2\2\u00da\u00bf\3\2\2\2")
-        buf.write("\u00da\u00c2\3\2\2\2\u00da\u00c5\3\2\2\2\u00da\u00c8\3")
-        buf.write("\2\2\2\u00da\u00cb\3\2\2\2\u00da\u00ce\3\2\2\2\u00da\u00d1")
-        buf.write("\3\2\2\2\u00da\u00d4\3\2\2\2\u00db\u00de\3\2\2\2\u00dc")
-        buf.write("\u00da\3\2\2\2\u00dc\u00dd\3\2\2\2\u00dd-\3\2\2\2\u00de")
-        buf.write("\u00dc\3\2\2\2\u00df\u00e0\7\25\2\2\u00e0\u00e1\5,\27")
-        buf.write("\2\u00e1\u00e2\7\26\2\2\u00e2\u00ea\3\2\2\2\u00e3\u00ea")
-        buf.write("\5\60\31\2\u00e4\u00e5\7\24\2\2\u00e5\u00e6\7\25\2\2\u00e6")
-        buf.write("\u00e7\7\62\2\2\u00e7\u00ea\7\26\2\2\u00e8\u00ea\7\62")
-        buf.write("\2\2\u00e9\u00df\3\2\2\2\u00e9\u00e3\3\2\2\2\u00e9\u00e4")
-        buf.write("\3\2\2\2\u00e9\u00e8\3\2\2\2\u00ea/\3\2\2\2\u00eb\u00ec")
-        buf.write("\t\b\2\2\u00ec\61\3\2\2\2\249<DGNch\u0085\u008a\u009b")
-        buf.write("\u009e\u00a3\u00ab\u00ae\u00b4\u00da\u00dc\u00e9")
+        buf.write("\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27\7\27\u00da\n")
+        buf.write("\27\f\27\16\27\u00dd\13\27\3\30\3\30\3\30\3\30\3\30\3")
+        buf.write("\30\3\30\3\30\3\30\3\30\3\30\3\30\3\30\3\30\3\30\7\30")
+        buf.write("\u00ee\n\30\f\30\16\30\u00f1\13\30\3\30\3\30\3\30\3\30")
+        buf.write("\3\30\3\30\3\30\3\30\5\30\u00fb\n\30\3\31\3\31\3\31\3")
+        buf.write("\31\5\31\u0101\n\31\3\32\3\32\3\32\7\32\u0106\n\32\f\32")
+        buf.write("\16\32\u0109\13\32\3\32\3\32\3\33\3\33\3\33\5\33\u0110")
+        buf.write("\n\33\3\33\3\33\3\33\2\3,\34\2\4\6\b\n\f\16\20\22\24\26")
+        buf.write("\30\32\34\36 \"$&(*,.\60\62\64\2\b\4\2\31\32\36\37\3\2")
+        buf.write("\33\35\3\2\36\37\3\2 !\3\2\"%\3\2&\'\2\u0130\2\66\3\2")
+        buf.write("\2\2\4=\3\2\2\2\6@\3\2\2\2\bM\3\2\2\2\ng\3\2\2\2\fi\3")
+        buf.write("\2\2\2\16n\3\2\2\2\20q\3\2\2\2\22s\3\2\2\2\24v\3\2\2\2")
+        buf.write("\26y\3\2\2\2\30|\3\2\2\2\32\177\3\2\2\2\34\u0081\3\2\2")
+        buf.write("\2\36\u0083\3\2\2\2 \u0087\3\2\2\2\"\u008b\3\2\2\2$\u0090")
+        buf.write("\3\2\2\2&\u0093\3\2\2\2(\u009f\3\2\2\2*\u00a2\3\2\2\2")
+        buf.write(",\u00b3\3\2\2\2.\u00fa\3\2\2\2\60\u0100\3\2\2\2\62\u0102")
+        buf.write("\3\2\2\2\64\u010c\3\2\2\2\66\67\5\4\3\2\678\7=\2\28\3")
+        buf.write("\3\2\2\29>\5\n\6\2:>\5\6\4\2;>\5\b\5\2<>\3\2\2\2=9\3\2")
+        buf.write("\2\2=:\3\2\2\2=;\3\2\2\2=<\3\2\2\2>\5\3\2\2\2?A\5\b\5")
+        buf.write("\2@?\3\2\2\2@A\3\2\2\2AB\3\2\2\2BK\7\3\2\2CH\5,\27\2D")
+        buf.write("E\7\4\2\2EG\5,\27\2FD\3\2\2\2GJ\3\2\2\2HF\3\2\2\2HI\3")
+        buf.write("\2\2\2IL\3\2\2\2JH\3\2\2\2KC\3\2\2\2KL\3\2\2\2L\7\3\2")
+        buf.write("\2\2MR\7:\2\2NO\7\4\2\2OQ\7:\2\2PN\3\2\2\2QT\3\2\2\2R")
+        buf.write("P\3\2\2\2RS\3\2\2\2SU\3\2\2\2TR\3\2\2\2UV\7.\2\2V\t\3")
+        buf.write("\2\2\2Wh\5\f\7\2Xh\5\16\b\2Yh\5\20\t\2Zh\5\22\n\2[h\5")
+        buf.write("\24\13\2\\h\5\26\f\2]h\5\30\r\2^h\5\32\16\2_h\5\34\17")
+        buf.write("\2`h\5\36\20\2ah\5 \21\2bh\5\"\22\2ch\5$\23\2dh\5&\24")
+        buf.write("\2eh\5*\26\2fh\5(\25\2gW\3\2\2\2gX\3\2\2\2gY\3\2\2\2g")
+        buf.write("Z\3\2\2\2g[\3\2\2\2g\\\3\2\2\2g]\3\2\2\2g^\3\2\2\2g_\3")
+        buf.write("\2\2\2g`\3\2\2\2ga\3\2\2\2gb\3\2\2\2gc\3\2\2\2gd\3\2\2")
+        buf.write("\2ge\3\2\2\2gf\3\2\2\2h\13\3\2\2\2ij\7\5\2\2jl\7:\2\2")
+        buf.write("km\5,\27\2lk\3\2\2\2lm\3\2\2\2m\r\3\2\2\2no\7\6\2\2op")
+        buf.write("\5\62\32\2p\17\3\2\2\2qr\7\7\2\2r\21\3\2\2\2st\7\b\2\2")
+        buf.write("tu\5,\27\2u\23\3\2\2\2vw\7\t\2\2wx\7:\2\2x\25\3\2\2\2")
+        buf.write("yz\7\n\2\2z{\7:\2\2{\27\3\2\2\2|}\7\13\2\2}~\5,\27\2~")
+        buf.write("\31\3\2\2\2\177\u0080\7\f\2\2\u0080\33\3\2\2\2\u0081\u0082")
+        buf.write("\7\r\2\2\u0082\35\3\2\2\2\u0083\u0085\7\16\2\2\u0084\u0086")
+        buf.write("\5,\27\2\u0085\u0084\3\2\2\2\u0085\u0086\3\2\2\2\u0086")
+        buf.write("\37\3\2\2\2\u0087\u0089\7\17\2\2\u0088\u008a\5,\27\2\u0089")
+        buf.write("\u0088\3\2\2\2\u0089\u008a\3\2\2\2\u008a!\3\2\2\2\u008b")
+        buf.write("\u008c\7\20\2\2\u008c\u008d\5,\27\2\u008d\u008e\7\4\2")
+        buf.write("\2\u008e\u008f\5,\27\2\u008f#\3\2\2\2\u0090\u0091\7\21")
+        buf.write("\2\2\u0091\u0092\5,\27\2\u0092%\3\2\2\2\u0093\u0094\7")
+        buf.write("\22\2\2\u0094\u009d\7:\2\2\u0095\u009a\7:\2\2\u0096\u0097")
+        buf.write("\7\4\2\2\u0097\u0099\7:\2\2\u0098\u0096\3\2\2\2\u0099")
+        buf.write("\u009c\3\2\2\2\u009a\u0098\3\2\2\2\u009a\u009b\3\2\2\2")
+        buf.write("\u009b\u009e\3\2\2\2\u009c\u009a\3\2\2\2\u009d\u0095\3")
+        buf.write("\2\2\2\u009d\u009e\3\2\2\2\u009e\'\3\2\2\2\u009f\u00a0")
+        buf.write("\7\23\2\2\u00a0)\3\2\2\2\u00a1\u00a3\5\b\5\2\u00a2\u00a1")
+        buf.write("\3\2\2\2\u00a2\u00a3\3\2\2\2\u00a3\u00a4\3\2\2\2\u00a4")
+        buf.write("\u00ad\7:\2\2\u00a5\u00aa\5,\27\2\u00a6\u00a7\7\4\2\2")
+        buf.write("\u00a7\u00a9\5,\27\2\u00a8\u00a6\3\2\2\2\u00a9\u00ac\3")
+        buf.write("\2\2\2\u00aa\u00a8\3\2\2\2\u00aa\u00ab\3\2\2\2\u00ab\u00ae")
+        buf.write("\3\2\2\2\u00ac\u00aa\3\2\2\2\u00ad\u00a5\3\2\2\2\u00ad")
+        buf.write("\u00ae\3\2\2\2\u00ae+\3\2\2\2\u00af\u00b0\b\27\1\2\u00b0")
+        buf.write("\u00b1\t\2\2\2\u00b1\u00b4\5,\27\17\u00b2\u00b4\5.\30")
+        buf.write("\2\u00b3\u00af\3\2\2\2\u00b3\u00b2\3\2\2\2\u00b4\u00db")
+        buf.write("\3\2\2\2\u00b5\u00b6\f\16\2\2\u00b6\u00b7\t\3\2\2\u00b7")
+        buf.write("\u00da\5,\27\17\u00b8\u00b9\f\r\2\2\u00b9\u00ba\t\4\2")
+        buf.write("\2\u00ba\u00da\5,\27\16\u00bb\u00bc\f\f\2\2\u00bc\u00bd")
+        buf.write("\t\5\2\2\u00bd\u00da\5,\27\r\u00be\u00bf\f\13\2\2\u00bf")
+        buf.write("\u00c0\t\6\2\2\u00c0\u00da\5,\27\f\u00c1\u00c2\f\n\2\2")
+        buf.write("\u00c2\u00c3\t\7\2\2\u00c3\u00da\5,\27\13\u00c4\u00c5")
+        buf.write("\f\t\2\2\u00c5\u00c6\7(\2\2\u00c6\u00da\5,\27\n\u00c7")
+        buf.write("\u00c8\f\b\2\2\u00c8\u00c9\7)\2\2\u00c9\u00da\5,\27\t")
+        buf.write("\u00ca\u00cb\f\7\2\2\u00cb\u00cc\7*\2\2\u00cc\u00da\5")
+        buf.write(",\27\b\u00cd\u00ce\f\6\2\2\u00ce\u00cf\7+\2\2\u00cf\u00da")
+        buf.write("\5,\27\7\u00d0\u00d1\f\5\2\2\u00d1\u00d2\7,\2\2\u00d2")
+        buf.write("\u00da\5,\27\6\u00d3\u00d4\f\4\2\2\u00d4\u00d5\7-\2\2")
+        buf.write("\u00d5\u00d6\5,\27\2\u00d6\u00d7\7.\2\2\u00d7\u00d8\5")
+        buf.write(",\27\5\u00d8\u00da\3\2\2\2\u00d9\u00b5\3\2\2\2\u00d9\u00b8")
+        buf.write("\3\2\2\2\u00d9\u00bb\3\2\2\2\u00d9\u00be\3\2\2\2\u00d9")
+        buf.write("\u00c1\3\2\2\2\u00d9\u00c4\3\2\2\2\u00d9\u00c7\3\2\2\2")
+        buf.write("\u00d9\u00ca\3\2\2\2\u00d9\u00cd\3\2\2\2\u00d9\u00d0\3")
+        buf.write("\2\2\2\u00d9\u00d3\3\2\2\2\u00da\u00dd\3\2\2\2\u00db\u00d9")
+        buf.write("\3\2\2\2\u00db\u00dc\3\2\2\2\u00dc-\3\2\2\2\u00dd\u00db")
+        buf.write("\3\2\2\2\u00de\u00df\7\27\2\2\u00df\u00e0\5,\27\2\u00e0")
+        buf.write("\u00e1\7\30\2\2\u00e1\u00fb\3\2\2\2\u00e2\u00fb\5\60\31")
+        buf.write("\2\u00e3\u00fb\5\62\32\2\u00e4\u00e5\7\24\2\2\u00e5\u00e6")
+        buf.write("\7\27\2\2\u00e6\u00e7\7:\2\2\u00e7\u00fb\7\30\2\2\u00e8")
+        buf.write("\u00e9\7\25\2\2\u00e9\u00ea\7\27\2\2\u00ea\u00ef\5,\27")
+        buf.write("\2\u00eb\u00ec\7\4\2\2\u00ec\u00ee\5,\27\2\u00ed\u00eb")
+        buf.write("\3\2\2\2\u00ee\u00f1\3\2\2\2\u00ef\u00ed\3\2\2\2\u00ef")
+        buf.write("\u00f0\3\2\2\2\u00f0\u00f2\3\2\2\2\u00f1\u00ef\3\2\2\2")
+        buf.write("\u00f2\u00f3\7\30\2\2\u00f3\u00fb\3\2\2\2\u00f4\u00f5")
+        buf.write("\7\26\2\2\u00f5\u00f6\7\27\2\2\u00f6\u00f7\5,\27\2\u00f7")
+        buf.write("\u00f8\7\30\2\2\u00f8\u00fb\3\2\2\2\u00f9\u00fb\7:\2\2")
+        buf.write("\u00fa\u00de\3\2\2\2\u00fa\u00e2\3\2\2\2\u00fa\u00e3\3")
+        buf.write("\2\2\2\u00fa\u00e4\3\2\2\2\u00fa\u00e8\3\2\2\2\u00fa\u00f4")
+        buf.write("\3\2\2\2\u00fa\u00f9\3\2\2\2\u00fb/\3\2\2\2\u00fc\u0101")
+        buf.write("\7/\2\2\u00fd\u0101\7\60\2\2\u00fe\u0101\7\61\2\2\u00ff")
+        buf.write("\u0101\5\64\33\2\u0100\u00fc\3\2\2\2\u0100\u00fd\3\2\2")
+        buf.write("\2\u0100\u00fe\3\2\2\2\u0100\u00ff\3\2\2\2\u0101\61\3")
+        buf.write("\2\2\2\u0102\u0107\7\66\2\2\u0103\u0106\7\67\2\2\u0104")
+        buf.write("\u0106\78\2\2\u0105\u0103\3\2\2\2\u0105\u0104\3\2\2\2")
+        buf.write("\u0106\u0109\3\2\2\2\u0107\u0105\3\2\2\2\u0107\u0108\3")
+        buf.write("\2\2\2\u0108\u010a\3\2\2\2\u0109\u0107\3\2\2\2\u010a\u010b")
+        buf.write("\79\2\2\u010b\63\3\2\2\2\u010c\u010f\7\62\2\2\u010d\u0110")
+        buf.write("\7\63\2\2\u010e\u0110\7\64\2\2\u010f\u010d\3\2\2\2\u010f")
+        buf.write("\u010e\3\2\2\2\u0110\u0111\3\2\2\2\u0111\u0112\7\65\2")
+        buf.write("\2\u0112\65\3\2\2\2\31=@HKRgl\u0085\u0089\u009a\u009d")
+        buf.write("\u00a2\u00aa\u00ad\u00b3\u00d9\u00db\u00ef\u00fa\u0100")
+        buf.write("\u0105\u0107\u010f")
         return buf.getvalue()
 
 
 class psASMParser (Parser):
 
-    grammarFileName = "psASM.g4"
+    grammarFileName = "psASMParser.g4"
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
@@ -126,21 +148,23 @@ class psASMParser (Parser):
                     "'@include_once'", "'@if'", "'@ifdef'", "'@ifndef'",
                     "'@elif'", "'@else'", "'@endif'", "'@print'", "'@error'",
                     "'@ascii_heap'", "'@ascii_stack'", "'@macro'", "'@endmacro'",
-                    "'defined'", "'('", "')'", "'!'", "'~'", "'/'", "'*'",
-                    "'%'", "'+'", "'-'", "'<<'", "'>>'", "'<'", "'<='",
-                    "'>'", "'>='", "'=='", "'!='", "'&'", "'^'", "'|'",
-                    "'&&'", "'||'", "'?'", "':'"]
+                    "'defined'", "'sprintf'", "'strlen'", "'('", "')'",
+                    "'!'", "'~'", "'/'", "'*'", "'%'", "'+'", "'-'", "'<<'",
+                    "'>>'", "'<'", "'<='", "'>'", "'>='", "'=='", "'!='",
+                    "'&'", "'^'", "'|'", "'&&'", "'||'", "'?'", "':'"]
 
     symbolicNames = ["<INVALID>", "INST", "COMMA", "DEFINE", "INCLUDE",
                      "INCLUDE_ONCE", "IF", "IFDEF", "IFNDEF", "ELIF", "ELSE",
                      "ENDIF", "PRINT", "ERROR", "ASCII_HEAP", "ASCII_STACK",
-                     "MACRO", "ENDMACRO", "DEFINED", "LPAREN", "RPAREN",
-                     "NOT", "BIT_NOT", "DIV", "MUL", "MOD", "PLUS", "MINUS",
-                     "LSHFIT", "RSHIFT", "LESS", "LESS_EQ", "GREATER",
-                     "GREATER_EQ", "EQ", "NEQ", "BIT_AND", "BIT_XOR", "BIT_OR",
-                     "AND", "OR", "QUEST", "COLON", "CHAR_LITERAL", "BINARY_LITERAL",
-                     "HEX_LITERAL", "DEC_LITERAL", "STRING_LITERAL", "IDENTIFIER",
-                     "COMMENT", "WS", "EOL", "ERROR_CHAR"]
+                     "MACRO", "ENDMACRO", "DEFINED", "SPRINTF", "STRLEN",
+                     "LPAREN", "RPAREN", "NOT", "BIT_NOT", "DIV", "MUL",
+                     "MOD", "PLUS", "MINUS", "LSHFIT", "RSHIFT", "LESS",
+                     "LESS_EQ", "GREATER", "GREATER_EQ", "EQ", "NEQ", "BIT_AND",
+                     "BIT_XOR", "BIT_OR", "AND", "OR", "QUEST", "COLON",
+                     "BINARY_LITERAL", "HEX_LITERAL", "DEC_LITERAL", "CHAR_START",
+                     "CHAR_ESCAPE", "CHAR", "CHAR_END", "STRING_START",
+                     "STRING_CHAR_ESCAPE", "STRING_CHAR", "STRING_END",
+                     "IDENTIFIER", "COMMENT", "WS", "EOL", "ERROR_CHAR"]
 
     RULE_line = 0
     RULE_line_content = 1
@@ -166,6 +190,8 @@ class psASMParser (Parser):
     RULE_expr = 21
     RULE_atom = 22
     RULE_numerical_literal = 23
+    RULE_string_literal = 24
+    RULE_char_literal = 25
 
     ruleNames = ["line", "line_content", "instruction", "labels", "preproc_directive",
                  "preproc_define", "preproc_include", "preproc_include_once",
@@ -173,7 +199,7 @@ class psASMParser (Parser):
                  "preproc_else", "preproc_endif", "preproc_print", "preproc_error",
                  "preproc_ascii_heap", "preproc_ascii_stack", "preproc_macro",
                  "preproc_endmacro", "preproc_macro_expansion", "expr",
-                 "atom", "numerical_literal"]
+                 "atom", "numerical_literal", "string_literal", "char_literal"]
 
     EOF = Token.EOF
     INST = 1
@@ -194,40 +220,48 @@ class psASMParser (Parser):
     MACRO = 16
     ENDMACRO = 17
     DEFINED = 18
-    LPAREN = 19
-    RPAREN = 20
-    NOT = 21
-    BIT_NOT = 22
-    DIV = 23
-    MUL = 24
-    MOD = 25
-    PLUS = 26
-    MINUS = 27
-    LSHFIT = 28
-    RSHIFT = 29
-    LESS = 30
-    LESS_EQ = 31
-    GREATER = 32
-    GREATER_EQ = 33
-    EQ = 34
-    NEQ = 35
-    BIT_AND = 36
-    BIT_XOR = 37
-    BIT_OR = 38
-    AND = 39
-    OR = 40
-    QUEST = 41
-    COLON = 42
-    CHAR_LITERAL = 43
-    BINARY_LITERAL = 44
-    HEX_LITERAL = 45
-    DEC_LITERAL = 46
-    STRING_LITERAL = 47
-    IDENTIFIER = 48
-    COMMENT = 49
-    WS = 50
-    EOL = 51
-    ERROR_CHAR = 52
+    SPRINTF = 19
+    STRLEN = 20
+    LPAREN = 21
+    RPAREN = 22
+    NOT = 23
+    BIT_NOT = 24
+    DIV = 25
+    MUL = 26
+    MOD = 27
+    PLUS = 28
+    MINUS = 29
+    LSHFIT = 30
+    RSHIFT = 31
+    LESS = 32
+    LESS_EQ = 33
+    GREATER = 34
+    GREATER_EQ = 35
+    EQ = 36
+    NEQ = 37
+    BIT_AND = 38
+    BIT_XOR = 39
+    BIT_OR = 40
+    AND = 41
+    OR = 42
+    QUEST = 43
+    COLON = 44
+    BINARY_LITERAL = 45
+    HEX_LITERAL = 46
+    DEC_LITERAL = 47
+    CHAR_START = 48
+    CHAR_ESCAPE = 49
+    CHAR = 50
+    CHAR_END = 51
+    STRING_START = 52
+    STRING_CHAR_ESCAPE = 53
+    STRING_CHAR = 54
+    STRING_END = 55
+    IDENTIFIER = 56
+    COMMENT = 57
+    WS = 58
+    EOL = 59
+    ERROR_CHAR = 60
 
     def __init__(self, input: TokenStream, output: TextIO = sys.stdout):
         super().__init__(input, output)
@@ -262,9 +296,9 @@ class psASMParser (Parser):
         self.enterRule(localctx, 0, self.RULE_line)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 48
+            self.state = 52
             self.line_content()
-            self.state = 49
+            self.state = 53
             self.match(psASMParser.EOL)
         except RecognitionException as re:
             localctx.exception = re
@@ -348,27 +382,27 @@ class psASMParser (Parser):
         localctx = psASMParser.Line_contentContext(self, self._ctx, self.state)
         self.enterRule(localctx, 2, self.RULE_line_content)
         try:
-            self.state = 55
+            self.state = 59
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input, 0, self._ctx)
             if la_ == 1:
                 localctx = psASMParser.Preproc_lineContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 51
+                self.state = 55
                 self.preproc_directive()
                 pass
 
             elif la_ == 2:
                 localctx = psASMParser.Instruction_lineContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 52
+                self.state = 56
                 self.instruction()
                 pass
 
             elif la_ == 3:
                 localctx = psASMParser.Labels_lineContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
-                self.state = 53
+                self.state = 57
                 self.labels()
                 pass
 
@@ -430,32 +464,32 @@ class psASMParser (Parser):
         self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 58
+            self.state = 62
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la == psASMParser.IDENTIFIER:
-                self.state = 57
+                self.state = 61
                 localctx.lbls = self.labels()
 
-            self.state = 60
+            self.state = 64
             localctx.inst = self.match(psASMParser.INST)
-            self.state = 69
+            self.state = 73
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << psASMParser.DEFINED) | (1 << psASMParser.LPAREN) | (1 << psASMParser.NOT) | (1 << psASMParser.BIT_NOT) | (1 << psASMParser.PLUS) | (1 << psASMParser.MINUS) | (1 << psASMParser.CHAR_LITERAL) | (1 << psASMParser.BINARY_LITERAL) | (1 << psASMParser.HEX_LITERAL) | (1 << psASMParser.DEC_LITERAL) | (1 << psASMParser.IDENTIFIER))) != 0):
-                self.state = 61
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << psASMParser.DEFINED) | (1 << psASMParser.SPRINTF) | (1 << psASMParser.STRLEN) | (1 << psASMParser.LPAREN) | (1 << psASMParser.NOT) | (1 << psASMParser.BIT_NOT) | (1 << psASMParser.PLUS) | (1 << psASMParser.MINUS) | (1 << psASMParser.BINARY_LITERAL) | (1 << psASMParser.HEX_LITERAL) | (1 << psASMParser.DEC_LITERAL) | (1 << psASMParser.CHAR_START) | (1 << psASMParser.STRING_START) | (1 << psASMParser.IDENTIFIER))) != 0):
+                self.state = 65
                 localctx._expr = self.expr(0)
                 localctx.args.append(localctx._expr)
-                self.state = 66
+                self.state = 70
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la == psASMParser.COMMA:
-                    self.state = 62
+                    self.state = 66
                     self.match(psASMParser.COMMA)
-                    self.state = 63
+                    self.state = 67
                     localctx._expr = self.expr(0)
                     localctx.args.append(localctx._expr)
-                    self.state = 68
+                    self.state = 72
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
@@ -506,23 +540,23 @@ class psASMParser (Parser):
         self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 71
+            self.state = 75
             localctx._IDENTIFIER = self.match(psASMParser.IDENTIFIER)
             localctx.lbls.append(localctx._IDENTIFIER)
-            self.state = 76
+            self.state = 80
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la == psASMParser.COMMA:
-                self.state = 72
+                self.state = 76
                 self.match(psASMParser.COMMA)
-                self.state = 73
+                self.state = 77
                 localctx._IDENTIFIER = self.match(psASMParser.IDENTIFIER)
                 localctx.lbls.append(localctx._IDENTIFIER)
-                self.state = 78
+                self.state = 82
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 79
+            self.state = 83
             self.match(psASMParser.COLON)
         except RecognitionException as re:
             localctx.exception = re
@@ -600,87 +634,87 @@ class psASMParser (Parser):
         localctx = psASMParser.Preproc_directiveContext(self, self._ctx, self.state)
         self.enterRule(localctx, 8, self.RULE_preproc_directive)
         try:
-            self.state = 97
+            self.state = 101
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [psASMParser.DEFINE]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 81
+                self.state = 85
                 self.preproc_define()
                 pass
             elif token in [psASMParser.INCLUDE]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 82
+                self.state = 86
                 self.preproc_include()
                 pass
             elif token in [psASMParser.INCLUDE_ONCE]:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 83
+                self.state = 87
                 self.preproc_include_once()
                 pass
             elif token in [psASMParser.IF]:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 84
+                self.state = 88
                 self.preproc_if()
                 pass
             elif token in [psASMParser.IFDEF]:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 85
+                self.state = 89
                 self.preproc_ifdef()
                 pass
             elif token in [psASMParser.IFNDEF]:
                 self.enterOuterAlt(localctx, 6)
-                self.state = 86
+                self.state = 90
                 self.preproc_ifndef()
                 pass
             elif token in [psASMParser.ELIF]:
                 self.enterOuterAlt(localctx, 7)
-                self.state = 87
+                self.state = 91
                 self.preproc_elif()
                 pass
             elif token in [psASMParser.ELSE]:
                 self.enterOuterAlt(localctx, 8)
-                self.state = 88
+                self.state = 92
                 self.preproc_else()
                 pass
             elif token in [psASMParser.ENDIF]:
                 self.enterOuterAlt(localctx, 9)
-                self.state = 89
+                self.state = 93
                 self.preproc_endif()
                 pass
             elif token in [psASMParser.PRINT]:
                 self.enterOuterAlt(localctx, 10)
-                self.state = 90
+                self.state = 94
                 self.preproc_print()
                 pass
             elif token in [psASMParser.ERROR]:
                 self.enterOuterAlt(localctx, 11)
-                self.state = 91
+                self.state = 95
                 self.preproc_error()
                 pass
             elif token in [psASMParser.ASCII_HEAP]:
                 self.enterOuterAlt(localctx, 12)
-                self.state = 92
+                self.state = 96
                 self.preproc_ascii_heap()
                 pass
             elif token in [psASMParser.ASCII_STACK]:
                 self.enterOuterAlt(localctx, 13)
-                self.state = 93
+                self.state = 97
                 self.preproc_ascii_stack()
                 pass
             elif token in [psASMParser.MACRO]:
                 self.enterOuterAlt(localctx, 14)
-                self.state = 94
+                self.state = 98
                 self.preproc_macro()
                 pass
             elif token in [psASMParser.IDENTIFIER]:
                 self.enterOuterAlt(localctx, 15)
-                self.state = 95
+                self.state = 99
                 self.preproc_macro_expansion()
                 pass
             elif token in [psASMParser.ENDMACRO]:
                 self.enterOuterAlt(localctx, 16)
-                self.state = 96
+                self.state = 100
                 self.preproc_endmacro()
                 pass
             else:
@@ -727,15 +761,15 @@ class psASMParser (Parser):
         self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 99
+            self.state = 103
             self.match(psASMParser.DEFINE)
-            self.state = 100
+            self.state = 104
             localctx.name = self.match(psASMParser.IDENTIFIER)
-            self.state = 102
+            self.state = 106
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << psASMParser.DEFINED) | (1 << psASMParser.LPAREN) | (1 << psASMParser.NOT) | (1 << psASMParser.BIT_NOT) | (1 << psASMParser.PLUS) | (1 << psASMParser.MINUS) | (1 << psASMParser.CHAR_LITERAL) | (1 << psASMParser.BINARY_LITERAL) | (1 << psASMParser.HEX_LITERAL) | (1 << psASMParser.DEC_LITERAL) | (1 << psASMParser.IDENTIFIER))) != 0):
-                self.state = 101
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << psASMParser.DEFINED) | (1 << psASMParser.SPRINTF) | (1 << psASMParser.STRLEN) | (1 << psASMParser.LPAREN) | (1 << psASMParser.NOT) | (1 << psASMParser.BIT_NOT) | (1 << psASMParser.PLUS) | (1 << psASMParser.MINUS) | (1 << psASMParser.BINARY_LITERAL) | (1 << psASMParser.HEX_LITERAL) | (1 << psASMParser.DEC_LITERAL) | (1 << psASMParser.CHAR_START) | (1 << psASMParser.STRING_START) | (1 << psASMParser.IDENTIFIER))) != 0):
+                self.state = 105
                 localctx.value = self.expr(0)
 
         except RecognitionException as re:
@@ -751,13 +785,13 @@ class psASMParser (Parser):
         def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.file_str = None  # Token
+            self.file_str = None  # String_literalContext
 
         def INCLUDE(self):
             return self.getToken(psASMParser.INCLUDE, 0)
 
-        def STRING_LITERAL(self):
-            return self.getToken(psASMParser.STRING_LITERAL, 0)
+        def string_literal(self):
+            return self.getTypedRuleContext(psASMParser.String_literalContext, 0)
 
         def getRuleIndex(self):
             return psASMParser.RULE_preproc_include
@@ -774,10 +808,10 @@ class psASMParser (Parser):
         self.enterRule(localctx, 12, self.RULE_preproc_include)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 104
+            self.state = 108
             self.match(psASMParser.INCLUDE)
-            self.state = 105
-            localctx.file_str = self.match(psASMParser.STRING_LITERAL)
+            self.state = 109
+            localctx.file_str = self.string_literal()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -810,7 +844,7 @@ class psASMParser (Parser):
         self.enterRule(localctx, 14, self.RULE_preproc_include_once)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 107
+            self.state = 111
             self.match(psASMParser.INCLUDE_ONCE)
         except RecognitionException as re:
             localctx.exception = re
@@ -848,9 +882,9 @@ class psASMParser (Parser):
         self.enterRule(localctx, 16, self.RULE_preproc_if)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 109
+            self.state = 113
             self.match(psASMParser.IF)
-            self.state = 110
+            self.state = 114
             localctx.cond = self.expr(0)
         except RecognitionException as re:
             localctx.exception = re
@@ -888,9 +922,9 @@ class psASMParser (Parser):
         self.enterRule(localctx, 18, self.RULE_preproc_ifdef)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 112
+            self.state = 116
             self.match(psASMParser.IFDEF)
-            self.state = 113
+            self.state = 117
             localctx.arg = self.match(psASMParser.IDENTIFIER)
         except RecognitionException as re:
             localctx.exception = re
@@ -928,9 +962,9 @@ class psASMParser (Parser):
         self.enterRule(localctx, 20, self.RULE_preproc_ifndef)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 115
+            self.state = 119
             self.match(psASMParser.IFNDEF)
-            self.state = 116
+            self.state = 120
             localctx.arg = self.match(psASMParser.IDENTIFIER)
         except RecognitionException as re:
             localctx.exception = re
@@ -968,9 +1002,9 @@ class psASMParser (Parser):
         self.enterRule(localctx, 22, self.RULE_preproc_elif)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 118
+            self.state = 122
             self.match(psASMParser.ELIF)
-            self.state = 119
+            self.state = 123
             localctx.cond = self.expr(0)
         except RecognitionException as re:
             localctx.exception = re
@@ -1004,7 +1038,7 @@ class psASMParser (Parser):
         self.enterRule(localctx, 24, self.RULE_preproc_else)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 121
+            self.state = 125
             self.match(psASMParser.ELSE)
         except RecognitionException as re:
             localctx.exception = re
@@ -1038,7 +1072,7 @@ class psASMParser (Parser):
         self.enterRule(localctx, 26, self.RULE_preproc_endif)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 123
+            self.state = 127
             self.match(psASMParser.ENDIF)
         except RecognitionException as re:
             localctx.exception = re
@@ -1053,27 +1087,13 @@ class psASMParser (Parser):
         def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.msg = None  # Token
-            self._expr = None  # ExprContext
-            self.args = list()  # of ExprContexts
+            self.txt = None  # ExprContext
 
         def PRINT(self):
             return self.getToken(psASMParser.PRINT, 0)
 
-        def STRING_LITERAL(self):
-            return self.getToken(psASMParser.STRING_LITERAL, 0)
-
-        def COMMA(self, i: int = None):
-            if i is None:
-                return self.getTokens(psASMParser.COMMA)
-            else:
-                return self.getToken(psASMParser.COMMA, i)
-
-        def expr(self, i: int = None):
-            if i is None:
-                return self.getTypedRuleContexts(psASMParser.ExprContext)
-            else:
-                return self.getTypedRuleContext(psASMParser.ExprContext, i)
+        def expr(self):
+            return self.getTypedRuleContext(psASMParser.ExprContext, 0)
 
         def getRuleIndex(self):
             return psASMParser.RULE_preproc_print
@@ -1091,22 +1111,14 @@ class psASMParser (Parser):
         self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 125
+            self.state = 129
             self.match(psASMParser.PRINT)
-            self.state = 126
-            localctx.msg = self.match(psASMParser.STRING_LITERAL)
             self.state = 131
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la == psASMParser.COMMA:
-                self.state = 127
-                self.match(psASMParser.COMMA)
-                self.state = 128
-                localctx._expr = self.expr(0)
-                localctx.args.append(localctx._expr)
-                self.state = 133
-                self._errHandler.sync(self)
-                _la = self._input.LA(1)
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << psASMParser.DEFINED) | (1 << psASMParser.SPRINTF) | (1 << psASMParser.STRLEN) | (1 << psASMParser.LPAREN) | (1 << psASMParser.NOT) | (1 << psASMParser.BIT_NOT) | (1 << psASMParser.PLUS) | (1 << psASMParser.MINUS) | (1 << psASMParser.BINARY_LITERAL) | (1 << psASMParser.HEX_LITERAL) | (1 << psASMParser.DEC_LITERAL) | (1 << psASMParser.CHAR_START) | (1 << psASMParser.STRING_START) | (1 << psASMParser.IDENTIFIER))) != 0):
+                self.state = 130
+                localctx.txt = self.expr(0)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -1121,13 +1133,13 @@ class psASMParser (Parser):
         def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.msg = None  # Token
+            self.txt = None  # ExprContext
 
         def ERROR(self):
             return self.getToken(psASMParser.ERROR, 0)
 
-        def STRING_LITERAL(self):
-            return self.getToken(psASMParser.STRING_LITERAL, 0)
+        def expr(self):
+            return self.getTypedRuleContext(psASMParser.ExprContext, 0)
 
         def getRuleIndex(self):
             return psASMParser.RULE_preproc_error
@@ -1145,14 +1157,14 @@ class psASMParser (Parser):
         self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 134
+            self.state = 133
             self.match(psASMParser.ERROR)
-            self.state = 136
+            self.state = 135
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la == psASMParser.STRING_LITERAL:
-                self.state = 135
-                localctx.msg = self.match(psASMParser.STRING_LITERAL)
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << psASMParser.DEFINED) | (1 << psASMParser.SPRINTF) | (1 << psASMParser.STRLEN) | (1 << psASMParser.LPAREN) | (1 << psASMParser.NOT) | (1 << psASMParser.BIT_NOT) | (1 << psASMParser.PLUS) | (1 << psASMParser.MINUS) | (1 << psASMParser.BINARY_LITERAL) | (1 << psASMParser.HEX_LITERAL) | (1 << psASMParser.DEC_LITERAL) | (1 << psASMParser.CHAR_START) | (1 << psASMParser.STRING_START) | (1 << psASMParser.IDENTIFIER))) != 0):
+                self.state = 134
+                localctx.txt = self.expr(0)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -1167,7 +1179,7 @@ class psASMParser (Parser):
         def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.txt = None  # Token
+            self.txt = None  # ExprContext
             self.adr = None  # ExprContext
 
         def ASCII_HEAP(self):
@@ -1176,11 +1188,11 @@ class psASMParser (Parser):
         def COMMA(self):
             return self.getToken(psASMParser.COMMA, 0)
 
-        def STRING_LITERAL(self):
-            return self.getToken(psASMParser.STRING_LITERAL, 0)
-
-        def expr(self):
-            return self.getTypedRuleContext(psASMParser.ExprContext, 0)
+        def expr(self, i: int = None):
+            if i is None:
+                return self.getTypedRuleContexts(psASMParser.ExprContext)
+            else:
+                return self.getTypedRuleContext(psASMParser.ExprContext, i)
 
         def getRuleIndex(self):
             return psASMParser.RULE_preproc_ascii_heap
@@ -1197,13 +1209,13 @@ class psASMParser (Parser):
         self.enterRule(localctx, 32, self.RULE_preproc_ascii_heap)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 138
+            self.state = 137
             self.match(psASMParser.ASCII_HEAP)
+            self.state = 138
+            localctx.txt = self.expr(0)
             self.state = 139
-            localctx.txt = self.match(psASMParser.STRING_LITERAL)
-            self.state = 140
             self.match(psASMParser.COMMA)
-            self.state = 141
+            self.state = 140
             localctx.adr = self.expr(0)
         except RecognitionException as re:
             localctx.exception = re
@@ -1218,13 +1230,13 @@ class psASMParser (Parser):
         def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.txt = None  # Token
+            self.txt = None  # ExprContext
 
         def ASCII_STACK(self):
             return self.getToken(psASMParser.ASCII_STACK, 0)
 
-        def STRING_LITERAL(self):
-            return self.getToken(psASMParser.STRING_LITERAL, 0)
+        def expr(self):
+            return self.getTypedRuleContext(psASMParser.ExprContext, 0)
 
         def getRuleIndex(self):
             return psASMParser.RULE_preproc_ascii_stack
@@ -1241,10 +1253,10 @@ class psASMParser (Parser):
         self.enterRule(localctx, 34, self.RULE_preproc_ascii_stack)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 143
+            self.state = 142
             self.match(psASMParser.ASCII_STACK)
-            self.state = 144
-            localctx.txt = self.match(psASMParser.STRING_LITERAL)
+            self.state = 143
+            localctx.txt = self.expr(0)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1293,27 +1305,27 @@ class psASMParser (Parser):
         self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 146
+            self.state = 145
             self.match(psASMParser.MACRO)
-            self.state = 147
+            self.state = 146
             localctx.macro_name = self.match(psASMParser.IDENTIFIER)
-            self.state = 156
+            self.state = 155
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la == psASMParser.IDENTIFIER:
-                self.state = 148
+                self.state = 147
                 localctx._IDENTIFIER = self.match(psASMParser.IDENTIFIER)
                 localctx.args.append(localctx._IDENTIFIER)
-                self.state = 153
+                self.state = 152
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la == psASMParser.COMMA:
-                    self.state = 149
+                    self.state = 148
                     self.match(psASMParser.COMMA)
-                    self.state = 150
+                    self.state = 149
                     localctx._IDENTIFIER = self.match(psASMParser.IDENTIFIER)
                     localctx.args.append(localctx._IDENTIFIER)
-                    self.state = 155
+                    self.state = 154
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
@@ -1349,7 +1361,7 @@ class psASMParser (Parser):
         self.enterRule(localctx, 38, self.RULE_preproc_endmacro)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 158
+            self.state = 157
             self.match(psASMParser.ENDMACRO)
         except RecognitionException as re:
             localctx.exception = re
@@ -1403,32 +1415,32 @@ class psASMParser (Parser):
         self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 161
+            self.state = 160
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input, 11, self._ctx)
             if la_ == 1:
-                self.state = 160
+                self.state = 159
                 localctx.lbls = self.labels()
 
-            self.state = 163
+            self.state = 162
             localctx.macro_name = self.match(psASMParser.IDENTIFIER)
-            self.state = 172
+            self.state = 171
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << psASMParser.DEFINED) | (1 << psASMParser.LPAREN) | (1 << psASMParser.NOT) | (1 << psASMParser.BIT_NOT) | (1 << psASMParser.PLUS) | (1 << psASMParser.MINUS) | (1 << psASMParser.CHAR_LITERAL) | (1 << psASMParser.BINARY_LITERAL) | (1 << psASMParser.HEX_LITERAL) | (1 << psASMParser.DEC_LITERAL) | (1 << psASMParser.IDENTIFIER))) != 0):
-                self.state = 164
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << psASMParser.DEFINED) | (1 << psASMParser.SPRINTF) | (1 << psASMParser.STRLEN) | (1 << psASMParser.LPAREN) | (1 << psASMParser.NOT) | (1 << psASMParser.BIT_NOT) | (1 << psASMParser.PLUS) | (1 << psASMParser.MINUS) | (1 << psASMParser.BINARY_LITERAL) | (1 << psASMParser.HEX_LITERAL) | (1 << psASMParser.DEC_LITERAL) | (1 << psASMParser.CHAR_START) | (1 << psASMParser.STRING_START) | (1 << psASMParser.IDENTIFIER))) != 0):
+                self.state = 163
                 localctx._expr = self.expr(0)
                 localctx.args.append(localctx._expr)
-                self.state = 169
+                self.state = 168
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la == psASMParser.COMMA:
-                    self.state = 165
+                    self.state = 164
                     self.match(psASMParser.COMMA)
-                    self.state = 166
+                    self.state = 165
                     localctx._expr = self.expr(0)
                     localctx.args.append(localctx._expr)
-                    self.state = 171
+                    self.state = 170
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
@@ -1792,7 +1804,7 @@ class psASMParser (Parser):
         self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 178
+            self.state = 177
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [psASMParser.NOT, psASMParser.BIT_NOT, psASMParser.PLUS, psASMParser.MINUS]:
@@ -1800,7 +1812,7 @@ class psASMParser (Parser):
                 self._ctx = localctx
                 _prevctx = localctx
 
-                self.state = 175
+                self.state = 174
                 localctx.op = self._input.LT(1)
                 _la = self._input.LA(1)
                 if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << psASMParser.NOT) | (1 << psASMParser.BIT_NOT) | (1 << psASMParser.PLUS) | (1 << psASMParser.MINUS))) != 0)):
@@ -1808,21 +1820,21 @@ class psASMParser (Parser):
                 else:
                     self._errHandler.reportMatch(self)
                     self.consume()
-                self.state = 176
+                self.state = 175
                 localctx.child1 = self.expr(13)
                 pass
-            elif token in [psASMParser.DEFINED, psASMParser.LPAREN, psASMParser.CHAR_LITERAL, psASMParser.BINARY_LITERAL, psASMParser.HEX_LITERAL, psASMParser.DEC_LITERAL, psASMParser.IDENTIFIER]:
+            elif token in [psASMParser.DEFINED, psASMParser.SPRINTF, psASMParser.STRLEN, psASMParser.LPAREN, psASMParser.BINARY_LITERAL, psASMParser.HEX_LITERAL, psASMParser.DEC_LITERAL, psASMParser.CHAR_START, psASMParser.STRING_START, psASMParser.IDENTIFIER]:
                 localctx = psASMParser.Atom_exprContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 177
+                self.state = 176
                 self.atom()
                 pass
             else:
                 raise NoViableAltException(self)
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 218
+            self.state = 217
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input, 16, self._ctx)
             while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
@@ -1830,18 +1842,18 @@ class psASMParser (Parser):
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    self.state = 216
+                    self.state = 215
                     self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input, 15, self._ctx)
                     if la_ == 1:
                         localctx = psASMParser.Mult_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 180
+                        self.state = 179
                         if not self.precpred(self._ctx, 12):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 12)")
-                        self.state = 181
+                        self.state = 180
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << psASMParser.DIV) | (1 << psASMParser.MUL) | (1 << psASMParser.MOD))) != 0)):
@@ -1849,7 +1861,7 @@ class psASMParser (Parser):
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 182
+                        self.state = 181
                         localctx.child2 = self.expr(13)
                         pass
 
@@ -1857,11 +1869,11 @@ class psASMParser (Parser):
                         localctx = psASMParser.Add_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 183
+                        self.state = 182
                         if not self.precpred(self._ctx, 11):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 11)")
-                        self.state = 184
+                        self.state = 183
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not(_la == psASMParser.PLUS or _la == psASMParser.MINUS):
@@ -1869,7 +1881,7 @@ class psASMParser (Parser):
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 185
+                        self.state = 184
                         localctx.child2 = self.expr(12)
                         pass
 
@@ -1877,11 +1889,11 @@ class psASMParser (Parser):
                         localctx = psASMParser.Shift_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 186
+                        self.state = 185
                         if not self.precpred(self._ctx, 10):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 10)")
-                        self.state = 187
+                        self.state = 186
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not(_la == psASMParser.LSHFIT or _la == psASMParser.RSHIFT):
@@ -1889,7 +1901,7 @@ class psASMParser (Parser):
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 188
+                        self.state = 187
                         localctx.child2 = self.expr(11)
                         pass
 
@@ -1897,11 +1909,11 @@ class psASMParser (Parser):
                         localctx = psASMParser.Compare_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 189
+                        self.state = 188
                         if not self.precpred(self._ctx, 9):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 9)")
-                        self.state = 190
+                        self.state = 189
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << psASMParser.LESS) | (1 << psASMParser.LESS_EQ) | (1 << psASMParser.GREATER) | (1 << psASMParser.GREATER_EQ))) != 0)):
@@ -1909,7 +1921,7 @@ class psASMParser (Parser):
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 191
+                        self.state = 190
                         localctx.child2 = self.expr(10)
                         pass
 
@@ -1917,11 +1929,11 @@ class psASMParser (Parser):
                         localctx = psASMParser.Equate_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 192
+                        self.state = 191
                         if not self.precpred(self._ctx, 8):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 8)")
-                        self.state = 193
+                        self.state = 192
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not(_la == psASMParser.EQ or _la == psASMParser.NEQ):
@@ -1929,7 +1941,7 @@ class psASMParser (Parser):
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 194
+                        self.state = 193
                         localctx.child2 = self.expr(9)
                         pass
 
@@ -1937,13 +1949,13 @@ class psASMParser (Parser):
                         localctx = psASMParser.Bitand_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 195
+                        self.state = 194
                         if not self.precpred(self._ctx, 7):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 7)")
-                        self.state = 196
+                        self.state = 195
                         self.match(psASMParser.BIT_AND)
-                        self.state = 197
+                        self.state = 196
                         localctx.child2 = self.expr(8)
                         pass
 
@@ -1951,13 +1963,13 @@ class psASMParser (Parser):
                         localctx = psASMParser.Bitxor_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 198
+                        self.state = 197
                         if not self.precpred(self._ctx, 6):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 6)")
-                        self.state = 199
+                        self.state = 198
                         self.match(psASMParser.BIT_XOR)
-                        self.state = 200
+                        self.state = 199
                         localctx.child2 = self.expr(7)
                         pass
 
@@ -1965,13 +1977,13 @@ class psASMParser (Parser):
                         localctx = psASMParser.Bitor_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 201
+                        self.state = 200
                         if not self.precpred(self._ctx, 5):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 5)")
-                        self.state = 202
+                        self.state = 201
                         self.match(psASMParser.BIT_OR)
-                        self.state = 203
+                        self.state = 202
                         localctx.child2 = self.expr(6)
                         pass
 
@@ -1979,13 +1991,13 @@ class psASMParser (Parser):
                         localctx = psASMParser.And_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 204
+                        self.state = 203
                         if not self.precpred(self._ctx, 4):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 4)")
-                        self.state = 205
+                        self.state = 204
                         self.match(psASMParser.AND)
-                        self.state = 206
+                        self.state = 205
                         localctx.child2 = self.expr(5)
                         pass
 
@@ -1993,13 +2005,13 @@ class psASMParser (Parser):
                         localctx = psASMParser.Or_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 207
+                        self.state = 206
                         if not self.precpred(self._ctx, 3):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 3)")
-                        self.state = 208
+                        self.state = 207
                         self.match(psASMParser.OR)
-                        self.state = 209
+                        self.state = 208
                         localctx.child2 = self.expr(4)
                         pass
 
@@ -2007,21 +2019,21 @@ class psASMParser (Parser):
                         localctx = psASMParser.Condit_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 210
+                        self.state = 209
                         if not self.precpred(self._ctx, 2):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 2)")
-                        self.state = 211
+                        self.state = 210
                         self.match(psASMParser.QUEST)
-                        self.state = 212
+                        self.state = 211
                         localctx.child2 = self.expr(0)
-                        self.state = 213
+                        self.state = 212
                         self.match(psASMParser.COLON)
-                        self.state = 214
+                        self.state = 213
                         localctx.child3 = self.expr(3)
                         pass
 
-                self.state = 220
+                self.state = 219
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input, 16, self._ctx)
 
@@ -2070,6 +2082,67 @@ class psASMParser (Parser):
             else:
                 return visitor.visitChildren(self)
 
+    class Strlen_atomContext(AtomContext):
+
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.AtomContext
+            super().__init__(parser)
+            self.txt = None  # ExprContext
+            self.copyFrom(ctx)
+
+        def STRLEN(self):
+            return self.getToken(psASMParser.STRLEN, 0)
+
+        def LPAREN(self):
+            return self.getToken(psASMParser.LPAREN, 0)
+
+        def RPAREN(self):
+            return self.getToken(psASMParser.RPAREN, 0)
+
+        def expr(self):
+            return self.getTypedRuleContext(psASMParser.ExprContext, 0)
+
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitStrlen_atom"):
+                return visitor.visitStrlen_atom(self)
+            else:
+                return visitor.visitChildren(self)
+
+    class Sprintf_atomContext(AtomContext):
+
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.AtomContext
+            super().__init__(parser)
+            self.txt = None  # ExprContext
+            self._expr = None  # ExprContext
+            self.args = list()  # of ExprContexts
+            self.copyFrom(ctx)
+
+        def SPRINTF(self):
+            return self.getToken(psASMParser.SPRINTF, 0)
+
+        def LPAREN(self):
+            return self.getToken(psASMParser.LPAREN, 0)
+
+        def RPAREN(self):
+            return self.getToken(psASMParser.RPAREN, 0)
+
+        def expr(self, i: int = None):
+            if i is None:
+                return self.getTypedRuleContexts(psASMParser.ExprContext)
+            else:
+                return self.getTypedRuleContext(psASMParser.ExprContext, i)
+
+        def COMMA(self, i: int = None):
+            if i is None:
+                return self.getTokens(psASMParser.COMMA)
+            else:
+                return self.getToken(psASMParser.COMMA, i)
+
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitSprintf_atom"):
+                return visitor.visitSprintf_atom(self)
+            else:
+                return visitor.visitChildren(self)
+
     class Identifier_atomContext(AtomContext):
 
         def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.AtomContext
@@ -2108,6 +2181,21 @@ class psASMParser (Parser):
             else:
                 return visitor.visitChildren(self)
 
+    class String_atomContext(AtomContext):
+
+        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.AtomContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def string_literal(self):
+            return self.getTypedRuleContext(psASMParser.String_literalContext, 0)
+
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitString_atom"):
+                return visitor.visitString_atom(self)
+            else:
+                return visitor.visitChildren(self)
+
     class Numerical_atomContext(AtomContext):
 
         def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.AtomContext
@@ -2127,29 +2215,36 @@ class psASMParser (Parser):
 
         localctx = psASMParser.AtomContext(self, self._ctx, self.state)
         self.enterRule(localctx, 44, self.RULE_atom)
+        self._la = 0  # Token type
         try:
-            self.state = 231
+            self.state = 248
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [psASMParser.LPAREN]:
                 localctx = psASMParser.Expr_atomContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 221
+                self.state = 220
                 self.match(psASMParser.LPAREN)
-                self.state = 222
+                self.state = 221
                 localctx.child1 = self.expr(0)
-                self.state = 223
+                self.state = 222
                 self.match(psASMParser.RPAREN)
                 pass
-            elif token in [psASMParser.CHAR_LITERAL, psASMParser.BINARY_LITERAL, psASMParser.HEX_LITERAL, psASMParser.DEC_LITERAL]:
+            elif token in [psASMParser.BINARY_LITERAL, psASMParser.HEX_LITERAL, psASMParser.DEC_LITERAL, psASMParser.CHAR_START]:
                 localctx = psASMParser.Numerical_atomContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 225
+                self.state = 224
                 self.numerical_literal()
+                pass
+            elif token in [psASMParser.STRING_START]:
+                localctx = psASMParser.String_atomContext(self, localctx)
+                self.enterOuterAlt(localctx, 3)
+                self.state = 225
+                self.string_literal()
                 pass
             elif token in [psASMParser.DEFINED]:
                 localctx = psASMParser.Defined_atomContext(self, localctx)
-                self.enterOuterAlt(localctx, 3)
+                self.enterOuterAlt(localctx, 4)
                 self.state = 226
                 self.match(psASMParser.DEFINED)
                 self.state = 227
@@ -2159,10 +2254,47 @@ class psASMParser (Parser):
                 self.state = 229
                 self.match(psASMParser.RPAREN)
                 pass
+            elif token in [psASMParser.SPRINTF]:
+                localctx = psASMParser.Sprintf_atomContext(self, localctx)
+                self.enterOuterAlt(localctx, 5)
+                self.state = 230
+                self.match(psASMParser.SPRINTF)
+                self.state = 231
+                self.match(psASMParser.LPAREN)
+                self.state = 232
+                localctx.txt = self.expr(0)
+                self.state = 237
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                while _la == psASMParser.COMMA:
+                    self.state = 233
+                    self.match(psASMParser.COMMA)
+                    self.state = 234
+                    localctx._expr = self.expr(0)
+                    localctx.args.append(localctx._expr)
+                    self.state = 239
+                    self._errHandler.sync(self)
+                    _la = self._input.LA(1)
+
+                self.state = 240
+                self.match(psASMParser.RPAREN)
+                pass
+            elif token in [psASMParser.STRLEN]:
+                localctx = psASMParser.Strlen_atomContext(self, localctx)
+                self.enterOuterAlt(localctx, 6)
+                self.state = 242
+                self.match(psASMParser.STRLEN)
+                self.state = 243
+                self.match(psASMParser.LPAREN)
+                self.state = 244
+                localctx.txt = self.expr(0)
+                self.state = 245
+                self.match(psASMParser.RPAREN)
+                pass
             elif token in [psASMParser.IDENTIFIER]:
                 localctx = psASMParser.Identifier_atomContext(self, localctx)
-                self.enterOuterAlt(localctx, 4)
-                self.state = 230
+                self.enterOuterAlt(localctx, 7)
+                self.state = 247
                 localctx.arg = self.match(psASMParser.IDENTIFIER)
                 pass
             else:
@@ -2181,7 +2313,6 @@ class psASMParser (Parser):
         def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.lit = None  # Token
 
         def BINARY_LITERAL(self):
             return self.getToken(psASMParser.BINARY_LITERAL, 0)
@@ -2192,8 +2323,8 @@ class psASMParser (Parser):
         def DEC_LITERAL(self):
             return self.getToken(psASMParser.DEC_LITERAL, 0)
 
-        def CHAR_LITERAL(self):
-            return self.getToken(psASMParser.CHAR_LITERAL, 0)
+        def char_literal(self):
+            return self.getTypedRuleContext(psASMParser.Char_literalContext, 0)
 
         def getRuleIndex(self):
             return psASMParser.RULE_numerical_literal
@@ -2208,17 +2339,172 @@ class psASMParser (Parser):
 
         localctx = psASMParser.Numerical_literalContext(self, self._ctx, self.state)
         self.enterRule(localctx, 46, self.RULE_numerical_literal)
+        try:
+            self.state = 254
+            self._errHandler.sync(self)
+            token = self._input.LA(1)
+            if token in [psASMParser.BINARY_LITERAL]:
+                self.enterOuterAlt(localctx, 1)
+                self.state = 250
+                self.match(psASMParser.BINARY_LITERAL)
+                pass
+            elif token in [psASMParser.HEX_LITERAL]:
+                self.enterOuterAlt(localctx, 2)
+                self.state = 251
+                self.match(psASMParser.HEX_LITERAL)
+                pass
+            elif token in [psASMParser.DEC_LITERAL]:
+                self.enterOuterAlt(localctx, 3)
+                self.state = 252
+                self.match(psASMParser.DEC_LITERAL)
+                pass
+            elif token in [psASMParser.CHAR_START]:
+                self.enterOuterAlt(localctx, 4)
+                self.state = 253
+                self.char_literal()
+                pass
+            else:
+                raise NoViableAltException(self)
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+    class String_literalContext(ParserRuleContext):
+
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+            self._STRING_CHAR_ESCAPE = None  # Token
+            self.txt = list()  # of Tokens
+            self._STRING_CHAR = None  # Token
+
+        def STRING_START(self):
+            return self.getToken(psASMParser.STRING_START, 0)
+
+        def STRING_END(self):
+            return self.getToken(psASMParser.STRING_END, 0)
+
+        def STRING_CHAR_ESCAPE(self, i: int = None):
+            if i is None:
+                return self.getTokens(psASMParser.STRING_CHAR_ESCAPE)
+            else:
+                return self.getToken(psASMParser.STRING_CHAR_ESCAPE, i)
+
+        def STRING_CHAR(self, i: int = None):
+            if i is None:
+                return self.getTokens(psASMParser.STRING_CHAR)
+            else:
+                return self.getToken(psASMParser.STRING_CHAR, i)
+
+        def getRuleIndex(self):
+            return psASMParser.RULE_string_literal
+
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitString_literal"):
+                return visitor.visitString_literal(self)
+            else:
+                return visitor.visitChildren(self)
+
+    def string_literal(self):
+
+        localctx = psASMParser.String_literalContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 48, self.RULE_string_literal)
         self._la = 0  # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 233
-            localctx.lit = self._input.LT(1)
+            self.state = 256
+            self.match(psASMParser.STRING_START)
+            self.state = 261
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << psASMParser.CHAR_LITERAL) | (1 << psASMParser.BINARY_LITERAL) | (1 << psASMParser.HEX_LITERAL) | (1 << psASMParser.DEC_LITERAL))) != 0)):
-                localctx.lit = self._errHandler.recoverInline(self)
+            while _la == psASMParser.STRING_CHAR_ESCAPE or _la == psASMParser.STRING_CHAR:
+                self.state = 259
+                self._errHandler.sync(self)
+                token = self._input.LA(1)
+                if token in [psASMParser.STRING_CHAR_ESCAPE]:
+                    self.state = 257
+                    localctx._STRING_CHAR_ESCAPE = self.match(psASMParser.STRING_CHAR_ESCAPE)
+                    localctx.txt.append(localctx._STRING_CHAR_ESCAPE)
+                    pass
+                elif token in [psASMParser.STRING_CHAR]:
+                    self.state = 258
+                    localctx._STRING_CHAR = self.match(psASMParser.STRING_CHAR)
+                    localctx.txt.append(localctx._STRING_CHAR)
+                    pass
+                else:
+                    raise NoViableAltException(self)
+
+                self.state = 263
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+
+            self.state = 264
+            self.match(psASMParser.STRING_END)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+    class Char_literalContext(ParserRuleContext):
+
+        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+            self.txt = None  # Token
+
+        def CHAR_START(self):
+            return self.getToken(psASMParser.CHAR_START, 0)
+
+        def CHAR_END(self):
+            return self.getToken(psASMParser.CHAR_END, 0)
+
+        def CHAR_ESCAPE(self):
+            return self.getToken(psASMParser.CHAR_ESCAPE, 0)
+
+        def CHAR(self):
+            return self.getToken(psASMParser.CHAR, 0)
+
+        def getRuleIndex(self):
+            return psASMParser.RULE_char_literal
+
+        def accept(self, visitor: ParseTreeVisitor):
+            if hasattr(visitor, "visitChar_literal"):
+                return visitor.visitChar_literal(self)
             else:
-                self._errHandler.reportMatch(self)
-                self.consume()
+                return visitor.visitChildren(self)
+
+    def char_literal(self):
+
+        localctx = psASMParser.Char_literalContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 50, self.RULE_char_literal)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 266
+            self.match(psASMParser.CHAR_START)
+            self.state = 269
+            self._errHandler.sync(self)
+            token = self._input.LA(1)
+            if token in [psASMParser.CHAR_ESCAPE]:
+                self.state = 267
+                localctx.txt = self.match(psASMParser.CHAR_ESCAPE)
+                pass
+            elif token in [psASMParser.CHAR]:
+                self.state = 268
+                localctx.txt = self.match(psASMParser.CHAR)
+                pass
+            else:
+                raise NoViableAltException(self)
+
+            self.state = 271
+            self.match(psASMParser.CHAR_END)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)

@@ -3,7 +3,7 @@ from antlr4.InputStream import InputStream
 from antlr4.error.ErrorListener import ErrorListener
 from Parsing.psASMantlr4.psASMLexer import psASMLexer
 from Parsing.psASMantlr4.psASMParser import psASMParser
-from Parsing.psASMantlr4.psASMVisitor import psASMVisitor
+from Parsing.psASMantlr4.psASMParserVisitor import psASMParserVisitor
 from Input.SourceFile import SourceFile, SourceFiles
 from Parsing.ParsedFile import ParsedFile, ParsedFiles
 import Parsing.ExpressionTree as ExpressionTree
@@ -67,7 +67,7 @@ class psASMErrorListener(ErrorListener):
         raise ParsingException(msg, error_col=column)
 
 
-class psASMOutputVisitor(psASMVisitor):
+class psASMOutputVisitor(psASMParserVisitor):
     # Override default handler:
     # Setup default rule handler to only visit and return first child.
     def visitChildren(self, node):
@@ -118,8 +118,8 @@ class psASMOutputVisitor(psASMVisitor):
 
     # Visit a parse tree produced by psASMParser#preproc_include.
     def visitPreproc_include(self, ctx: psASMParser.Preproc_includeContext):
-        # 'INCLUDE file_str=STRING_LITERAL'
-        file = ctx.file_str.text
+        # 'INCLUDE file_str=string_literal'
+        file = self.visit(ctx.file_str)
         return ParsedLine.IncludeDirective(file)
 
     # Visit a parse tree produced by psASMParser#preproc_include_once.
@@ -162,32 +162,34 @@ class psASMOutputVisitor(psASMVisitor):
 
     # Visit a parse tree produced by psASMParser#preproc_print.
     def visitPreproc_print(self, ctx: psASMParser.Preproc_printContext):
-        # 'PRINT msg=STRING_LITERAL (COMMA args+=expr)*'
-        msg = ctx.msg.text
-        args = [self.visit(arg) for arg in ctx.args]
-        return ParsedLine.PrintDirective(msg, args)
+        # 'PRINT (txt=expr)?'
+        if ctx.txt is not None:
+            txt = self.visit(ctx.txt)
+        else:
+            txt = ""
+        return ParsedLine.PrintDirective(txt)
 
     # Visit a parse tree produced by psASMParser#preproc_error.
     def visitPreproc_error(self, ctx: psASMParser.Preproc_errorContext):
-        # 'ERROR (msg=STRING_LITERAL)?'
-        if ctx.msg is None:
-            msg = '""'
+        # 'ERROR (txt=expr)?'
+        if ctx.txt is not None:
+            txt = self.visit(ctx.txt)
         else:
-            msg = ctx.msg.text
-        return ParsedLine.ErrorDirective(msg)
+            txt = ""
+        return ParsedLine.ErrorDirective(txt)
 
     # Visit a parse tree produced by psASMParser#preproc_ascii_heap.
     def visitPreproc_ascii_heap(self, ctx: psASMParser.Preproc_ascii_heapContext):
-        # 'ASCII_HEAP txt=STRING_LITERAL COMMA adr=expr'
-        string = ctx.txt.text
+        # 'ASCII_HEAP txt=expr COMMA adr=expr'
+        txt = self.visit(ctx.txt)
         adr = self.visit(ctx.adr)
-        return ParsedLine.AsciiHeapDirective(string, adr)
+        return ParsedLine.AsciiHeapDirective(txt, adr)
 
     # Visit a parse tree produced by psASMParser#preproc_ascii_stack.
     def visitPreproc_ascii_stack(self, ctx: psASMParser.Preproc_ascii_stackContext):
-        # 'ASCII_STACK txt=STRING_LITERAL'
-        string = ctx.txt.text
-        return ParsedLine.AsciiStackDirective(string)
+        # 'ASCII_STACK txt=expr'
+        txt = self.visit(ctx.txt)
+        return ParsedLine.AsciiStackDirective(txt)
 
     # Visit a parse tree produced by psASMParser#preproc_macro.
     def visitPreproc_macro(self, ctx: psASMParser.Preproc_macroContext):
@@ -219,13 +221,13 @@ class psASMOutputVisitor(psASMVisitor):
         child2 = self.visit(ctx.child2)
 
         if ctx.op.type == psASMParser.LESS:
-            return ExpressionTree.LessExpression(child1, child2)
+            return ExpressionTree.LessExpression(ctx, child1, child2)
         elif ctx.op.type == psASMParser.LESS_EQ:
-            return ExpressionTree.LessEqExpression(child1, child2)
+            return ExpressionTree.LessEqExpression(ctx, child1, child2)
         elif ctx.op.type == psASMParser.GREATER:
-            return ExpressionTree.GreaterExpression(child1, child2)
+            return ExpressionTree.GreaterExpression(ctx, child1, child2)
         elif ctx.op.type == psASMParser.GREATER_EQ:
-            return ExpressionTree.GreaterEqExpression(child1, child2)
+            return ExpressionTree.GreaterEqExpression(ctx, child1, child2)
         else:
             raise Exception("Unhandeled Operator.")
 
@@ -235,9 +237,9 @@ class psASMOutputVisitor(psASMVisitor):
         child1 = self.visit(ctx.child1)
         child2 = self.visit(ctx.child2)
         if ctx.op.type == psASMParser.PLUS:
-            return ExpressionTree.AddExpression(child1, child2)
+            return ExpressionTree.AddExpression(ctx, child1, child2)
         elif ctx.op.type == psASMParser.MINUS:
-            return ExpressionTree.SubExpression(child1, child2)
+            return ExpressionTree.SubExpression(ctx, child1, child2)
         else:
             raise Exception("Unhandeled Operator.")
 
@@ -246,7 +248,7 @@ class psASMOutputVisitor(psASMVisitor):
         # 'child1=expr BIT_XOR child2=expr'
         child1 = self.visit(ctx.child1)
         child2 = self.visit(ctx.child2)
-        return ExpressionTree.BitXORExpression(child1, child2)
+        return ExpressionTree.BitXORExpression(ctx, child1, child2)
 
     # Visit a parse tree produced by psASMParser#shift_expr.
     def visitShift_expr(self, ctx: psASMParser.Shift_exprContext):
@@ -254,9 +256,9 @@ class psASMOutputVisitor(psASMVisitor):
         child1 = self.visit(ctx.child1)
         child2 = self.visit(ctx.child2)
         if ctx.op.type == psASMParser.LSHFIT:
-            return ExpressionTree.LShiftExpression(child1, child2)
+            return ExpressionTree.LShiftExpression(ctx, child1, child2)
         elif ctx.op.type == psASMParser.RSHIFT:
-            return ExpressionTree.RShiftExpression(child1, child2)
+            return ExpressionTree.RShiftExpression(ctx, child1, child2)
         else:
             raise Exception("Unhandeled Operator.")
 
@@ -266,11 +268,11 @@ class psASMOutputVisitor(psASMVisitor):
         child1 = self.visit(ctx.child1)
         child2 = self.visit(ctx.child2)
         if ctx.op.type == psASMParser.MUL:
-            return ExpressionTree.MulExpression(child1, child2)
+            return ExpressionTree.MulExpression(ctx, child1, child2)
         elif ctx.op.type == psASMParser.DIV:
-            return ExpressionTree.DivExpression(child1, child2)
+            return ExpressionTree.DivExpression(ctx, child1, child2)
         elif ctx.op.type == psASMParser.MOD:
-            return ExpressionTree.ModExpression(child1, child2)
+            return ExpressionTree.ModExpression(ctx, child1, child2)
         else:
             raise Exception("Unhandeled Operator.")
 
@@ -279,13 +281,13 @@ class psASMOutputVisitor(psASMVisitor):
         # 'op=(PLUS | MINUS | NOT | BIT_NOT)child1=expr'
         child1 = self.visit(ctx.child1)
         if ctx.op.type == psASMParser.PLUS:
-            return ExpressionTree.PosExpression(child1)
+            return ExpressionTree.PosExpression(ctx, child1)
         elif ctx.op.type == psASMParser.MINUS:
-            return ExpressionTree.NegExpression(child1)
+            return ExpressionTree.NegExpression(ctx, child1)
         elif ctx.op.type == psASMParser.NOT:
-            return ExpressionTree.NotExpression(child1)
+            return ExpressionTree.NotExpression(ctx, child1)
         elif ctx.op.type == psASMParser.BIT_NOT:
-            return ExpressionTree.BitNotExpression(child1)
+            return ExpressionTree.BitNotExpression(ctx, child1)
         else:
             raise Exception("Unhandeled Operator.")
 
@@ -294,14 +296,14 @@ class psASMOutputVisitor(psASMVisitor):
         # 'child1=expr AND child2=expr'
         child1 = self.visit(ctx.child1)
         child2 = self.visit(ctx.child2)
-        return ExpressionTree.AndExpression(child1, child2)
+        return ExpressionTree.AndExpression(ctx, child1, child2)
 
     # Visit a parse tree produced by psASMParser#bitand_expr.
     def visitBitand_expr(self, ctx: psASMParser.Bitand_exprContext):
         # 'child1=expr BIT_AND child2=expr'
         child1 = self.visit(ctx.child1)
         child2 = self.visit(ctx.child2)
-        return ExpressionTree.BitAndExpression(child1, child2)
+        return ExpressionTree.BitAndExpression(ctx, child1, child2)
 
     # Visit a parse tree produced by psASMParser#condit_expr.
     def visitCondit_expr(self, ctx: psASMParser.Condit_exprContext):
@@ -309,21 +311,21 @@ class psASMOutputVisitor(psASMVisitor):
         child1 = self.visit(ctx.child1)
         child2 = self.visit(ctx.child2)
         child3 = self.visit(ctx.child3)
-        return ExpressionTree.ConditionalExpression(child1, child2, child3)
+        return ExpressionTree.ConditionalExpression(ctx, child1, child2, child3)
 
     # Visit a parse tree produced by psASMParser#or_expr.
     def visitOr_expr(self, ctx: psASMParser.Or_exprContext):
         # 'child1=expr OR child2=expr'
         child1 = self.visit(ctx.child1)
         child2 = self.visit(ctx.child2)
-        return ExpressionTree.OrExpression(child1, child2)
+        return ExpressionTree.OrExpression(ctx, child1, child2)
 
     # Visit a parse tree produced by psASMParser#bitor_expr.
     def visitBitor_expr(self, ctx: psASMParser.Bitor_exprContext):
         # 'child1=expr BIT_OR child2=expr'
         child1 = self.visit(ctx.child1)
         child2 = self.visit(ctx.child2)
-        return ExpressionTree.BitOrExpression(child1, child2)
+        return ExpressionTree.BitOrExpression(ctx, child1, child2)
 
     # Visit a parse tree produced by psASMParser#equate_expr.
     def visitEquate_expr(self, ctx: psASMParser.Equate_exprContext):
@@ -331,9 +333,9 @@ class psASMOutputVisitor(psASMVisitor):
         child1 = self.visit(ctx.child1)
         child2 = self.visit(ctx.child2)
         if ctx.op.type == psASMParser.EQ:
-            return ExpressionTree.EqExpression(child1, child2)
+            return ExpressionTree.EqExpression(ctx, child1, child2)
         elif ctx.op.type == psASMParser.NEQ:
-            return ExpressionTree.NEqExpression(child1, child2)
+            return ExpressionTree.NEqExpression(ctx, child1, child2)
 
     # Visit a parse tree produced by psASMParser#expr_atom.
     def visitExpr_atom(self, ctx: psASMParser.Expr_atomContext):
@@ -343,17 +345,49 @@ class psASMOutputVisitor(psASMVisitor):
     # Visit a parse tree produced by psASMParser#defined_atom.
     def visitDefined_atom(self, ctx: psASMParser.Defined_atomContext):
         # 'DEFINED LPAREN arg=IDENTIFIER RPAREN'
-        identifier = ctx.arg.text
-        return ExpressionTree.isDefinedExpression(identifier)
+        arg = ctx.arg.text
+        return ExpressionTree.isDefinedExpression(ctx, arg)
+
+    # Visit a parse tree produced by psASMParser#sprintf_atom.
+    def visitSprintf_atom(self, ctx: psASMParser.Sprintf_atomContext):
+        # 'SPRINTF LPAREN txt=expr (COMMA args+= expr)* RPAREN'
+        txt = self.visit(ctx.txt)
+        args = [self.visit(arg) for arg in ctx.args]
+        return ExpressionTree.SprintfExpression(ctx, txt, args)
+
+    # Visit a parse tree produced by psASMParser#strlen_atom.
+    def visitStrlen_atom(self, ctx: psASMParser.Strlen_atomContext):
+        # 'STRLEN LPAREN txt=expr RPAREN'
+        txt = self.visit(ctx.txt)
+        return ExpressionTree.StrlenExpression(ctx, txt)
 
     # Visit a parse tree produced by psASMParser#identifier_atom.
     def visitIdentifier_atom(self, ctx: psASMParser.Identifier_atomContext):
         # 'arg=IDENTIFIER'
-        identifier = ctx.arg.text
-        return ExpressionTree.IdentifierExpression(identifier)
+        arg = ctx.arg.text
+        return ExpressionTree.IdentifierExpression(ctx, arg)
 
     # Visit a parse tree produced by psASMParser#numerical_literal.
     def visitNumerical_literal(self, ctx: psASMParser.Numerical_literalContext):
-        # 'lit = ( BINARY_LITERAL | HEX_LITERAL | DEC_LITERAL | CHAR_LITERAL )'
-        literal = ctx.lit.text
-        return ExpressionTree.NumLiteralExpression(literal)
+        # 'BINARY_LITERAL | HEX_LITERAL | DEC_LITERAL | char_literal '
+
+        child = ctx.getChild(0)
+
+        if isinstance(child, psASMParser.Char_literalContext):
+            return self.visit(child)
+        else:
+            return ExpressionTree.NumLiteralExpression(ctx, str(child))
+
+    # Visit a parse tree produced by psASMParser#string_literal.
+    def visitString_literal(self, ctx: psASMParser.String_literalContext):
+        # 'STRING_START (txt+=STRING_CHAR_ESCAPE | txt+=STRING_CHAR)* STRING_END'
+        txt = ""
+        for piece in ctx.txt:
+            txt += piece.text
+        return ExpressionTree.StringLiteralExpression(ctx, txt)
+
+    # Visit a parse tree produced by psASMParser#char_literal.
+    def visitChar_literal(self, ctx: psASMParser.Char_literalContext):
+        # 'CHAR_START (txt=CHAR_ESCAPE | txt=CHAR) CHAR_END'
+        txt = ctx.txt.text
+        return ExpressionTree.CharLiteralExpression(ctx, txt)

@@ -1,4 +1,4 @@
-# Generated from psASM.g4 by ANTLR 4.7.2
+# Generated from psASMParser.g4 by ANTLR 4.7.2
 from antlr4 import *
 if __name__ is not None and "." in __name__:
     from .psASMParser import psASMParser
@@ -8,7 +8,7 @@ else:
 # This class defines a complete generic visitor for a parse tree produced by psASMParser.
 
 
-class psASMVisitor(ParseTreeVisitor):
+class psASMParserVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by psASMParser#line.
     def visitLine(self, ctx: psASMParser.LineContext):
@@ -166,8 +166,20 @@ class psASMVisitor(ParseTreeVisitor):
     def visitNumerical_atom(self, ctx: psASMParser.Numerical_atomContext):
         return self.visitChildren(ctx)
 
+    # Visit a parse tree produced by psASMParser#string_atom.
+    def visitString_atom(self, ctx: psASMParser.String_atomContext):
+        return self.visitChildren(ctx)
+
     # Visit a parse tree produced by psASMParser#defined_atom.
     def visitDefined_atom(self, ctx: psASMParser.Defined_atomContext):
+        return self.visitChildren(ctx)
+
+    # Visit a parse tree produced by psASMParser#sprintf_atom.
+    def visitSprintf_atom(self, ctx: psASMParser.Sprintf_atomContext):
+        return self.visitChildren(ctx)
+
+    # Visit a parse tree produced by psASMParser#strlen_atom.
+    def visitStrlen_atom(self, ctx: psASMParser.Strlen_atomContext):
         return self.visitChildren(ctx)
 
     # Visit a parse tree produced by psASMParser#identifier_atom.
@@ -176,6 +188,14 @@ class psASMVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by psASMParser#numerical_literal.
     def visitNumerical_literal(self, ctx: psASMParser.Numerical_literalContext):
+        return self.visitChildren(ctx)
+
+    # Visit a parse tree produced by psASMParser#string_literal.
+    def visitString_literal(self, ctx: psASMParser.String_literalContext):
+        return self.visitChildren(ctx)
+
+    # Visit a parse tree produced by psASMParser#char_literal.
+    def visitChar_literal(self, ctx: psASMParser.Char_literalContext):
         return self.visitChildren(ctx)
 
 

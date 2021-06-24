@@ -1,12 +1,6 @@
-from Parsing.ExpressionTree import Expression, isDefinedExpression, NotExpression
+from Parsing.ExpressionTree import Expression, isDefinedExpression, NotExpression, IdentifierExpression
 from Util.Formatting import comma_seperated_list
-from Util.Errors import ParsingException
-
-
-def _replace_in_list(list, find, replace):
-    for i, item in enumerate(list):
-        if item == find:
-            list[i] == replace
+from Util.Errors import ParsingException, EvalException
 
 
 class ParsedLine():
@@ -45,7 +39,14 @@ class InstructionLine(ParsedLine):
 
     def macro_arg_replacement(self, find, replace):
         # Replace in labels:
-        _replace_in_list(self.labels, find, replace)
+        for label in self.labels:
+            if label == find:
+                # Found a label that should be replaced
+                # Ensure that replacement is an IdentifierExpression
+                if not isinstance(replace, IdentifierExpression):
+                    raise EvalException('Can only replace label during macro expansion if the replacement is an identifier.')
+                else:
+                    self.label = replace.text
 
         # Replace in arguments:
         for arg in self.args:
@@ -62,7 +63,14 @@ class LabelsLine(ParsedLine):
 
     def macro_arg_replacement(self, find, replace):
         # Replace in labels:
-        _replace_in_list(self.labels, find, replace)
+        for label in self.labels:
+            if label == find:
+                # Found a label that should be replaced
+                # Ensure that replacement is an IdentifierExpression
+                if not isinstance(replace, IdentifierExpression):
+                    raise EvalException('Can only replace label during macro expansion if the replacement is an identifier.')
+                else:
+                    self.label = replace.text
 
 
 class PreProcDirective(ParsedLine):
@@ -80,18 +88,24 @@ class DefineDirective(PreProcDirective):
         return ('@define %s %s' % (self.name, str(self.value)))
 
     def macro_arg_replacement(self, find, replace):
-        # Replace in name
         if self.name == find:
-            self.name = replace
+            # Ensure that replacement is an IdentifierExpression
+            if not isinstance(replace, IdentifierExpression):
+                raise EvalException('Can only replace definition name during macro expansion if the replacement is an identifier.')
+            else:
+                self.name = replace.text
 
         # Replace in value:
         self.value.macro_arg_replacement(find, replace)
 
 
 class IncludeDirective(PreProcDirective):
-    def __init__(self, file_name: str):
+    def __init__(self, file_name: Expression):
         super().__init__()
         self.file_name = file_name
+
+    def get_file_name(self, context):
+        return self.file_name.eval_str(context)
 
     def __str__(self):
         return ('@include %s' % (self.file_name))
@@ -122,14 +136,14 @@ class IfDirective(PreProcDirective):
 
 class IfDefDirective(IfDirective):
     def __init__(self, identifier: str):
-        is_defined = isDefinedExpression(identifier)
+        is_defined = isDefinedExpression(None, identifier)
         super().__init__(is_defined)
 
 
 class IfnDefDirective(IfDirective):
     def __init__(self, identifier: str):
-        is_defined = isDefinedExpression(identifier)
-        is_not_defined = NotExpression(is_defined)
+        is_defined = isDefinedExpression(None, identifier)
+        is_not_defined = NotExpression(None, is_defined)
         super().__init__(is_not_defined)
 
 
@@ -165,49 +179,18 @@ class EndIfDirective(PreProcDirective):
 
 
 class PrintDirective(PreProcDirective):
-    def __init__(self, msg: str, args: [Expression]):
+    def __init__(self, msg: Expression):
         super().__init__()
         self.msg = msg
-        self.args = args
-        print(self.text(None))
 
     def __str__(self):
-        result = ('@print %s' % self.msg)
-        if self.args:
-            result += ', ' + comma_seperated_list(self.args)
-
-        return result
+        return ('@print %s' % str(self.msg))
 
     def macro_arg_replacement(self, find, replace):
-        # Replace in arguments:
-        for arg in self.args:
-            arg.macro_arg_replacement(find, replace)
+        self.msg.macro_arg_replacement(find, replace)
 
     def text(self, context):
-        text = self.msg
-
-        # Remove ":
-        text = text[1:-1]
-
-        arg_index = 0
-        while "%i" in text:
-            # Ensure there is an argument left
-            if arg_index >= len(self.args):
-                # No more arguments left.
-                # Determine error_col:
-
-                # TODO this does not work -> need context.
-                original_text = self.msg
-                if arg_index != 0:
-                    original_text = original_text.replace("%i", "__", arg_index)
-                error_col_start = original_text.find("%i")
-                error_col = (error_col_start, error_col_start+1)
-                raise ParsingException("Print string contains format specifier but there are no more arguments!", error_col=error_col)
-
-            # Insert argumet
-            text = text.replace("%i", str(self.args[arg_index].eval(context)), 1)
-            arg_index += 1
-        return text
+        return self.msg.eval_str(context)
 
 
 class ErrorDirective(PreProcDirective):
@@ -284,7 +267,14 @@ class MacroExpansionDirective(PreProcDirective):
 
     def macro_arg_replacement(self, find, replace):
         # Replace in labels:
-        _replace_in_list(self.labels, find, replace)
+        for label in self.labels:
+            if label == find:
+                # Found a label that should be replaced
+                # Ensure that replacement is an IdentifierExpression
+                if not isinstance(replace, IdentifierExpression):
+                    raise EvalException('Can only replace label during macro expansion if the replacement is an identifier.')
+                else:
+                    self.label = replace.text
 
         # Replace in arguments:
         for arg in self.args:
