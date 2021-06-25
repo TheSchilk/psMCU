@@ -1,13 +1,17 @@
 import antlr4
 from antlr4.InputStream import InputStream
 from antlr4.error.ErrorListener import ErrorListener
+
+from Input.SourceFile import SourceFile, SourceFiles
+
+import Parsing.ParsedLine as ParsedLine
 from Parsing.psASMantlr4.psASMLexer import psASMLexer
 from Parsing.psASMantlr4.psASMParser import psASMParser
 from Parsing.psASMantlr4.psASMParserVisitor import psASMParserVisitor
-from Input.SourceFile import SourceFile, SourceFiles
 from Parsing.ParsedFile import ParsedFile, ParsedFiles
-import Parsing.ExpressionTree as ExpressionTree
-import Parsing.ParsedLine as ParsedLine
+
+import PreProc.ExpressionTree as ExpressionTree
+
 from Util.Errors import ParsingException, LocatedException
 
 
@@ -75,17 +79,17 @@ class psASMOutputVisitor(psASMParserVisitor):
             return None
 
     # Visit a parse tree produced by psASMParser#labels_line.
-    def visitLabels_line(self, ctx: psASMParser.Labels_lineContext):
+    def visitLabels_line(self, ctx: psASMParser.Labels_lineContext) -> ParsedLine.LabelsLine:
         # 'labels'
         labels = self.visit(ctx.getChild(0))
         return ParsedLine.LabelsLine(labels)
 
     # Visit a parse tree produced by psASMParser#empty_line.
-    def visitEmpty_line(self, ctx: psASMParser.Empty_lineContext):
+    def visitEmpty_line(self, ctx: psASMParser.Empty_lineContext) -> ParsedLine.EmptyLine:
         return ParsedLine.EmptyLine()
 
     # Visit a parse tree produced by psASMParser#instruction.
-    def visitInstruction(self, ctx: psASMParser.InstructionContext):
+    def visitInstruction(self, ctx: psASMParser.InstructionContext) -> ParsedLine.InstructionLine:
         # '(lbls=labels)? inst=INST (args+=expr (COMMA args+=expr)*)?'
         if ctx.lbls is None:
             lbls = []
@@ -99,12 +103,12 @@ class psASMOutputVisitor(psASMParserVisitor):
         return ParsedLine.InstructionLine(lbls, inst, args)
 
     # Visit a parse tree produced by psASMParser#labels.
-    def visitLabels(self, ctx: psASMParser.LabelsContext):
+    def visitLabels(self, ctx: psASMParser.LabelsContext) -> [str]:
         # 'lbls+=IDENTIFIER (COMMA lbls+=IDENTIFIER)* COLON'
         return [lbl.text for lbl in ctx.lbls]
 
     # Visit a parse tree produced by psASMParser#preproc_define.
-    def visitPreproc_define(self, ctx: psASMParser.Preproc_defineContext):
+    def visitPreproc_define(self, ctx: psASMParser.Preproc_defineContext) -> ParsedLine.DefineDirective:
         # 'DEFINE name=IDENTIFIER (value=expr)?'
         name = ctx.name.text
         if ctx.value is not None:
@@ -115,51 +119,51 @@ class psASMOutputVisitor(psASMParserVisitor):
         return ParsedLine.DefineDirective(name, value)
 
     # Visit a parse tree produced by psASMParser#preproc_include.
-    def visitPreproc_include(self, ctx: psASMParser.Preproc_includeContext):
+    def visitPreproc_include(self, ctx: psASMParser.Preproc_includeContext) -> ParsedLine.IncludeDirective:
         # 'INCLUDE file_str=string_literal'
         file = self.visit(ctx.file_str)
         return ParsedLine.IncludeDirective(file)
 
     # Visit a parse tree produced by psASMParser#preproc_include_once.
-    def visitPreproc_include_once(self, ctx: psASMParser.Preproc_include_onceContext):
+    def visitPreproc_include_once(self, ctx: psASMParser.Preproc_include_onceContext) -> ParsedLine.IncludeOnceDirective:
         return ParsedLine.IncludeOnceDirective()
 
     # Visit a parse tree produced by psASMParser#preproc_if.
-    def visitPreproc_if(self, ctx: psASMParser.Preproc_ifContext):
+    def visitPreproc_if(self, ctx: psASMParser.Preproc_ifContext) -> ParsedLine.IfDirective:
         # 'IF cond=expr'
         condition = self.visit(ctx.cond)
         return ParsedLine.IfDirective(condition)
 
     # Visit a parse tree produced by psASMParser#preproc_ifdef.
-    def visitPreproc_ifdef(self, ctx: psASMParser.Preproc_ifdefContext):
+    def visitPreproc_ifdef(self, ctx: psASMParser.Preproc_ifdefContext) -> ParsedLine.IfDefDirective:
         # 'IFDEF arg=IDENTIFIER'
         identifier = ctx.arg.text
         return ParsedLine.IfDefDirective(identifier)
 
     # Visit a parse tree produced by psASMParser#preproc_ifndef.
-    def visitPreproc_ifndef(self, ctx: psASMParser.Preproc_ifndefContext):
+    def visitPreproc_ifndef(self, ctx: psASMParser.Preproc_ifndefContext) -> ParsedLine.IfnDefDirective:
         # 'IFNDEF arg=IDENTIFIER'
         identifier = ctx.arg.text
         return ParsedLine.IfnDefDirective(identifier)
 
     # Visit a parse tree produced by psASMParser#preproc_elif.
-    def visitPreproc_elif(self, ctx: psASMParser.Preproc_elifContext):
+    def visitPreproc_elif(self, ctx: psASMParser.Preproc_elifContext) -> ParsedLine.ElIfDirective:
         # 'ELIF cond=expr'
         condition = self.visit(ctx.cond)
         return ParsedLine.ElIfDirective(condition)
 
     # Visit a parse tree produced by psASMParser#preproc_else.
-    def visitPreproc_else(self, ctx: psASMParser.Preproc_elseContext):
+    def visitPreproc_else(self, ctx: psASMParser.Preproc_elseContext) -> ParsedLine.ElseDirective:
         # 'ELSE'
         return ParsedLine.ElseDirective()
 
     # Visit a parse tree produced by psASMParser#preproc_endif.
-    def visitPreproc_endif(self, ctx: psASMParser.Preproc_endifContext):
+    def visitPreproc_endif(self, ctx: psASMParser.Preproc_endifContext) -> ParsedLine.EndIfDirective:
         # 'ENDIF'
         return ParsedLine.EndIfDirective()
 
     # Visit a parse tree produced by psASMParser#preproc_print.
-    def visitPreproc_print(self, ctx: psASMParser.Preproc_printContext):
+    def visitPreproc_print(self, ctx: psASMParser.Preproc_printContext) -> ParsedLine.PrintDirective:
         # 'PRINT (txt=expr)?'
         if ctx.txt is not None:
             txt = self.visit(ctx.txt)
@@ -168,7 +172,7 @@ class psASMOutputVisitor(psASMParserVisitor):
         return ParsedLine.PrintDirective(txt)
 
     # Visit a parse tree produced by psASMParser#preproc_error.
-    def visitPreproc_error(self, ctx: psASMParser.Preproc_errorContext):
+    def visitPreproc_error(self, ctx: psASMParser.Preproc_errorContext) -> ParsedLine.ErrorDirective:
         # 'ERROR (txt=expr)?'
         if ctx.txt is not None:
             txt = self.visit(ctx.txt)
@@ -177,32 +181,32 @@ class psASMOutputVisitor(psASMParserVisitor):
         return ParsedLine.ErrorDirective(txt)
 
     # Visit a parse tree produced by psASMParser#preproc_ascii_heap.
-    def visitPreproc_ascii_heap(self, ctx: psASMParser.Preproc_ascii_heapContext):
+    def visitPreproc_ascii_heap(self, ctx: psASMParser.Preproc_ascii_heapContext) -> ParsedLine.AsciiHeapDirective:
         # 'ASCII_HEAP txt=expr COMMA adr=expr'
         txt = self.visit(ctx.txt)
         adr = self.visit(ctx.adr)
         return ParsedLine.AsciiHeapDirective(txt, adr)
 
     # Visit a parse tree produced by psASMParser#preproc_ascii_stack.
-    def visitPreproc_ascii_stack(self, ctx: psASMParser.Preproc_ascii_stackContext):
+    def visitPreproc_ascii_stack(self, ctx: psASMParser.Preproc_ascii_stackContext) -> ParsedLine.AsciiStackDirective:
         # 'ASCII_STACK txt=expr'
         txt = self.visit(ctx.txt)
         return ParsedLine.AsciiStackDirective(txt)
 
     # Visit a parse tree produced by psASMParser#preproc_macro.
-    def visitPreproc_macro(self, ctx: psASMParser.Preproc_macroContext):
+    def visitPreproc_macro(self, ctx: psASMParser.Preproc_macroContext) -> ParsedLine.MacroDirective:
         # 'MACRO macro_name=IDENTIFIER (args+=IDENTIFIER (COMMA args+=IDENTIFIER)*)?'
         name = ctx.macro_name.text
         args = [arg.text for arg in ctx.args]
         return ParsedLine.MacroDirective(name, args)
 
     # Visit a parse tree produced by psASMParser#preproc_endmacro.
-    def visitPreproc_endmacro(self, ctx: psASMParser.Preproc_endmacroContext):
+    def visitPreproc_endmacro(self, ctx: psASMParser.Preproc_endmacroContext) -> ParsedLine.EndMacroDirective:
         # 'ENDMACRO'
         return ParsedLine.EndMacroDirective()
 
     # Visit a parse tree produced by psASMParser#preproc_macro_expansion.
-    def visitPreproc_macro_expansion(self, ctx: psASMParser.Preproc_macro_expansionContext):
+    def visitPreproc_macro_expansion(self, ctx: psASMParser.Preproc_macro_expansionContext) -> ParsedLine.MacroExpansionDirective:
         # '(lbls=labels)? macro_name=IDENTIFIER (args+=expr (COMMA args+=expr)*)?'
         if ctx.lbls is None:
             lbls = []

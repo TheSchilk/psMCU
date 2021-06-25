@@ -1,3 +1,3 @@
 
-def generate(args, psOBJ):
+def generate(settings, psOBJ):
     pass

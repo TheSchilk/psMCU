@@ -46,7 +46,7 @@ class SourceFile:
 
     @classmethod
     def from_file(cls, file_id, file_path):
-        """Generate a AsmFile from a given path."""
+        """Generate a SourceFile from a given path."""
         if Input.StdLib.is_stdlib_file(file_path):
             return cls.from_stdlib_file(file_id, file_path)
         else:
@@ -58,6 +58,7 @@ class SourceFile:
 
     @classmethod
     def from_stdlib_file(cls, file_id, stdlib_file):
+        """Generate a SourceFile from an included stdlib file."""
         content = Input.StdLib.get_stdlib_file(stdlib_file)
         asm_file = cls(file_id, stdlib_file, stdlib_file=True, content=content)
         return asm_file
@@ -69,6 +70,7 @@ class SourceFile:
         return self.content[position]
 
     def get_included_paths(self):
+        """Return list of paths of files directly included in this file."""
         included_paths = []
 
         for line_id, line in enumerate(self):
@@ -83,6 +85,7 @@ class SourceFile:
         return included_paths
 
     def append(self, text):
+        """Add a line."""
         self.content.append(text)
 
 
@@ -92,10 +95,8 @@ class SourceFiles:
     def __init__(self, files=[]):
         self.files = files
 
-    @classmethod
-    def from_root_file(cls, root_file_path, settings):
-        """generate from a root file and all included files."""
-        file_space = cls()
+    def add_from_root_file(self, root_file_path, settings):
+        """Add a root file and all included files."""
         paths_to_add = [root_file_path]
 
         # Unless no startup/footer is selected, ensure that the files are included:
@@ -106,27 +107,16 @@ class SourceFiles:
 
         for path in paths_to_add:
             # Open this file and add it to the filespace:
-            file = SourceFile.from_file(file_space.next_id(), path)
-            file_space.add_file(file)
+            file = SourceFile.from_file(self.next_id(), path)
+            self.add_file(file)
 
             # Look for any includes in this new file and include any
             # files that have not yet been included:
-            try:
-                include_paths = file.get_included_paths()
-            except LocatedException as e:
-                e.decorate_source_files(file_space)
-                raise e
+            include_paths = file.get_included_paths()
 
             for included_path in include_paths:
-                if not file_space.contains_path(included_path):
+                if not self.contains_path(included_path):
                     paths_to_add.append(included_path)
-
-        return file_space
-
-    @classmethod
-    def from_obj(cls, root_file_path):
-        # TODO
-        pass
 
     def __len__(self):
         return len(self.files)
@@ -135,32 +125,39 @@ class SourceFiles:
         return self.files[position]
 
     def contains_path(self, path):
+        """Check if a given path is already present."""
         for file in self.files:
-            # TODO improve path comparison: ./thisfile.psASM and thisfile.psASM would be classified as different
+            # TODO improve path comparison: ./thisfile.psASM and thisfile.psASM would probably be classified as
+            #  different
             if path == file.path:
                 return True
         return False
 
     def next_id(self):
+        """Get the next unused fil id."""
         return len(self.files)
 
     def add_file(self, file):
+        """Add a new file."""
         self.files.append(file)
 
+    def get_line_text(self, file_id, line_id):
+        """Get the text of a source line given file and line id."""
+        file = self[file_id]
+        return file.content[line_id]
+
     def get_file_path(self, file_id):
+        """Get the path associated with a file id."""
         for file in self.files:
             if file.file_id == file_id:
                 return file.path
         raise KeyError('File ID not found.')
 
     def location_str(self, file_id, line_id, col=None):
+        """Generate typical location string (ie: file.psASM:43:10)"""
         file_path = self.get_file_path(file_id)
         result = ("%s:%i" % (file_path, line_id + 1))
         if col is not None:
             result += (":%i" % (col + 1))
 
         return result
-
-    def line_text(self, file_id, line_id):
-        file = self[file_id]
-        return file.content[line_id]
