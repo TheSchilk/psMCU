@@ -1,18 +1,37 @@
-from Util.Errors import EvalException, psASMException
+from Util.Errors import EvalException
 import Util.Formatting as Formatting
+import re
+
+
+def _get_ctx_start(token):
+    result = token.start
+    while hasattr(result, 'start'):
+        result = result.start
+    return result
+
+
+def _get_ctx_stop(token):
+    result = token.stop
+    while hasattr(result, 'stop'):
+        result = result.stop
+    return result
 
 
 class Expression:
-    def __init__(self, name, error_col=None, children=[]):
+    def __init__(self, name, parse_ctx=None, error_col=None, children=[]):
         self.children = children
         self.name = name
+        self.parse_ctx = parse_ctx
         self.error_col = error_col
 
+        if parse_ctx is not None and error_col is None:
+            self.error_col = (_get_ctx_start(parse_ctx), _get_ctx_stop(parse_ctx))
+
     def eval_int(self, context) -> int:
-        raise psASMException("%s cannot be evaluated as an integer." % self.name, error_col=self.error_col)
+        raise EvalException("%s cannot be evaluated as an integer." % self.name, error_col=self.error_col)
 
     def eval_str(self, context) -> str:
-        raise psASMException("%s cannot be evaluated as a string." % self.name, error_col=self.error_col)
+        raise EvalException("%s cannot be evaluated as a string." % self.name, error_col=self.error_col)
 
     def macro_arg_replacement(self, find: str, replace):
         for child in self.children:
@@ -23,10 +42,7 @@ class Expression:
 
 class NumLiteralExpression(Expression):
     def __init__(self, parse_ctx, text: str):
-        super().__init__('Numerical Literal')
-        # self.error_col = TODO
-        self.parse_ctx = parse_ctx
-
+        super().__init__('Numerical Literal', parse_ctx=parse_ctx)
         self.text = text
 
     def eval_int(self, context) -> int:
@@ -42,8 +58,7 @@ class NumLiteralExpression(Expression):
 class CharLiteralExpression(Expression):
     def __init__(self, parse_ctx, char: str):
         super().__init__('Char Literal')
-        # self.error_col = TODO
-        self.parse_ctx = parse_ctx
+        self.char = char
 
     def eval_int(self, context) -> int:
         char = self.char[1]
@@ -56,8 +71,6 @@ class CharLiteralExpression(Expression):
 class IdentifierExpression(Expression):
     def __init__(self, parse_ctx, text: str):
         super().__init__('Identifier')
-        # self.error_col = TODO
-        self.parse_ctx = parse_ctx
 
         self.text = text
 
@@ -93,8 +106,6 @@ class IdentifierExpression(Expression):
 class StringLiteralExpression(Expression):
     def __init__(self, parse_ctx, text: str):
         super().__init__('String Literal')
-        # self.error_col = TODO
-        self.parse_ctx = parse_ctx
 
         self.text = text
 
@@ -108,8 +119,6 @@ class StringLiteralExpression(Expression):
 class isDefinedExpression(Expression):
     def __init__(self, parse_ctx, text: str):
         super().__init__("defined Operator")
-        # self.error_col = TODO
-        self.parse_ctx = parse_ctx
 
         self.text = text
 
@@ -124,20 +133,35 @@ class isDefinedExpression(Expression):
 class SprintfExpression(Expression):
     def __init__(self, parse_ctx, text: Expression, args: [Expression]):
         super().__init__('sprintf Operator')
+        self.parse_ctx = parse_ctx
+        self.error_col = (_get_ctx_start(parse_ctx), _get_ctx_stop(parse_ctx))
 
         self.text = text
         self.args = args
 
     def eval_str(self, context) -> str:
-        text = self.text
+        original_text = self.text.eval_str(context)
+        text = original_text
 
         arg_index = 0
         while "%i" in text or "%s" in text:
             # Ensure there is an argument left
             if arg_index >= len(self.args):
                 # No more arguments left.
-                # TODO determine error_col
-                raise EvalException("Print string contains format specifier but there are no more arguments!")
+
+                if isinstance(self.text, StringLiteralExpression):
+                    # If the string is provided directly, we can determine the error_col:
+                    string_start_col = self.text.parse_ctx.start.start + 1
+
+                    specifiers = list(re.finditer(r'%[is]', original_text))
+                    specifier_index = specifiers[arg_index].start()
+                    error_col = string_start_col + specifier_index
+                    error_col = (error_col, error_col+1)  # Specifier is two chars long
+
+                else:
+                    error_col = None
+
+                raise EvalException("Format string contains format specifier but there are no more arguments!", error_col=error_col)
 
             # Insert argument:
 
@@ -146,15 +170,15 @@ class SprintfExpression(Expression):
             have_s = '%s' in text
 
             if have_i and not have_s:
-                text = text.replace('%i', self.args[arg_index].eval_int(context))
+                text = text.replace('%i', str(self.args[arg_index].eval_int(context)), 1)
             elif have_s and not have_i:
-                text = text.replace('%s', self.args[arg_index].eval_str(context))
+                text = text.replace('%s', self.args[arg_index].eval_str(context), 1)
             else:
                 # See what the next specifier is:
                 if text.find('%s') < text.find('%i'):
-                    text = text.replace('%s', self.args[arg_index].eval_str(context))
+                    text = text.replace('%s', self.args[arg_index].eval_str(context), 1)
                 else:
-                    text = text.replace('%i', self.args[arg_index].eval_int(context))
+                    text = text.replace('%i', str(self.args[arg_index].eval_int(context)), 1)
 
             arg_index += 1
 
@@ -176,7 +200,8 @@ class SprintfExpression(Expression):
 
 class StrlenExpression(Expression):
     def __init__(self, parse_ctx, arg: Expression):
-        super().__init__('strlen Operator', children=[arg])
+        super().__init__('strlen Operator', parse_ctx=parse_ctx, children=[arg])
+        self.parse_ctx = parse_ctx
 
     def eval_int(self, context) -> int:
         return len(self.children[0].eval_str())
@@ -190,9 +215,7 @@ class StrlenExpression(Expression):
 
 class PosExpression(Expression):
     def __init__(self, parse_ctx, child1: Expression):
-        super().__init__('Unary-Plus Operator', children=[child1])
-        # self.error_col = TODO
-        self.parse_ctx = parse_ctx
+        super().__init__('Unary-Plus Operator', parse_ctx=parse_ctx, children=[child1])
 
     def eval_int(self, context) -> int:
         return self.children[0].eval_int(context)
@@ -203,9 +226,7 @@ class PosExpression(Expression):
 
 class NegExpression(Expression):
     def __init__(self, parse_ctx, child1: Expression):
-        super().__init__('Unary-Minus Operator', children=[child1])
-        # self.error_col = TODO
-        self.parse_ctx = parse_ctx
+        super().__init__('Unary-Minus Operator', parse_ctx=parse_ctx, children=[child1])
 
     def eval_int(self, context) -> int:
         return self.children[0].eval_int(context) * -1
@@ -216,9 +237,7 @@ class NegExpression(Expression):
 
 class NotExpression(Expression):
     def __init__(self, parse_ctx, child1: Expression):
-        super().__init__('Not Operator', children=[child1])
-        # self.error_col = TODO
-        self.parse_ctx = parse_ctx
+        super().__init__('Not Operator', parse_ctx=parse_ctx, children=[child1])
 
     def eval_int(self, context) -> int:
         child1_eval = self.children[0].eval_int(context)
@@ -233,9 +252,7 @@ class NotExpression(Expression):
 
 class BitNotExpression(Expression):
     def __init__(self, parse_ctx, child1: Expression):
-        super().__init__('Bitwise-Not Operator', children=[child1])
-        # self.error_col = TODO
-        self.parse_ctx = parse_ctx
+        super().__init__('Bitwise-Not Operator', parse_ctx=parse_ctx, children=[child1])
 
     def eval_int(self, context) -> int:
         return ~self.children[0].eval_int(context)
@@ -248,9 +265,7 @@ class BitNotExpression(Expression):
 
 class DivExpression(Expression):
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
-        super().__init__('Division Operator', children=[child1, child2])
-        # self.error_col = TODO
-        self.parse_ctx = parse_ctx
+        super().__init__('Division Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
     def eval_int(self, context) -> int:
         return self.children[0].eval_int(context) // self.children[1].eval_int(context)
@@ -261,9 +276,7 @@ class DivExpression(Expression):
 
 class MulExpression(Expression):
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
-        super().__init__('Multiplication Operator', children=[child1, child2])
-        # self.error_col = TODO
-        self.parse_ctx = parse_ctx
+        super().__init__('Multiplication Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
     def eval_int(self, context) -> int:
         return self.children[0].eval_int(context) * self.children[1].eval_int(context)
@@ -274,9 +287,7 @@ class MulExpression(Expression):
 
 class ModExpression(Expression):
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
-        super().__init__('Modulo Operator', children=[child1, child2])
-        # self.error_col = TODO
-        self.parse_ctx = parse_ctx
+        super().__init__('Modulo Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
     def eval_int(self, context) -> int:
         return self.children[0].eval_int(context) % self.children[1].eval_int(context)
@@ -287,9 +298,9 @@ class ModExpression(Expression):
 
 class AddExpression(Expression):
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
-        super().__init__('Addition Operator', children=[child1, child2])
-        # self.error_col = TODO
+        super().__init__('Addition Operator', parse_ctx=parse_ctx, children=[child1, child2])
         self.parse_ctx = parse_ctx
+        self.error_col = (_get_ctx_start(parse_ctx), _get_ctx_stop(parse_ctx))
 
     def eval_int(self, context) -> int:
         return self.children[0].eval_int(context) + self.children[1].eval_int(context)
@@ -300,9 +311,7 @@ class AddExpression(Expression):
 
 class SubExpression(Expression):
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
-        super().__init__('Subtraction Operator', children=[child1, child2])
-        # self.error_col = TODO
-        self.parse_ctx = parse_ctx
+        super().__init__('Subtraction Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
     def eval_int(self, context) -> int:
         return self.children[0].eval_int(context) - self.children[1].eval_int(context)
@@ -313,9 +322,7 @@ class SubExpression(Expression):
 
 class LShiftExpression(Expression):
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
-        super().__init__('Left-Shift Operator', children=[child1, child2])
-        # self.error_col = TODO
-        self.parse_ctx = parse_ctx
+        super().__init__('Left-Shift Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
     def eval_int(self, context) -> int:
         return self.children[0].eval_int(context) << self.children[1].eval_int(context)
@@ -326,9 +333,7 @@ class LShiftExpression(Expression):
 
 class RShiftExpression(Expression):
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
-        super().__init__('Right-Shift Operator', children=[child1, child2])
-        # self.error_col = TODO
-        self.parse_ctx = parse_ctx
+        super().__init__('Right-Shift Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
     def eval_int(self, context) -> int:
         return self.children[0].eval_int(context) >> self.children[1].eval_int(context)
@@ -339,9 +344,7 @@ class RShiftExpression(Expression):
 
 class LessExpression(Expression):
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
-        super().__init__('Less Operator', children=[child1, child2])
-        # self.error_col = TODO
-        self.parse_ctx = parse_ctx
+        super().__init__('Less Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
     def eval_int(self, context) -> int:
         child1_eval = self.children[0].eval_int(context)
@@ -357,9 +360,7 @@ class LessExpression(Expression):
 
 class LessEqExpression(Expression):
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
-        super().__init__('Less-Or-Equals Operator', children=[child1, child2])
-        # self.error_col = TODO
-        self.parse_ctx = parse_ctx
+        super().__init__('Less-Or-Equals Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
     def eval_int(self, context) -> int:
         child1_eval = self.children[0].eval_int(context)
@@ -375,9 +376,7 @@ class LessEqExpression(Expression):
 
 class GreaterExpression(Expression):
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
-        super().__init__('Greater Operator', children=[child1, child2])
-        # self.error_col = TODO
-        self.parse_ctx = parse_ctx
+        super().__init__('Greater Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
     def eval_int(self, context) -> int:
         child1_eval = self.children[0].eval_int(context)
@@ -393,9 +392,7 @@ class GreaterExpression(Expression):
 
 class GreaterEqExpression(Expression):
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
-        super().__init__('Greater-Or-Equals Operator', children=[child1, child2])
-        # self.error_col = TODO
-        self.parse_ctx = parse_ctx
+        super().__init__('Greater-Or-Equals Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
     def eval_int(self, context) -> int:
         child1_eval = self.children[0].eval_int(context)
@@ -411,9 +408,7 @@ class GreaterEqExpression(Expression):
 
 class EqExpression(Expression):
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
-        super().__init__('Equals Operator', children=[child1, child2])
-        # self.error_col = TODO
-        self.parse_ctx = parse_ctx
+        super().__init__('Equals Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
     def eval_int(self, context) -> int:
         child1_eval = self.children[0].eval_int(context)
@@ -429,9 +424,7 @@ class EqExpression(Expression):
 
 class NEqExpression(Expression):
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
-        super().__init__('Not-Equals Operator', children=[child1, child2])
-        # self.error_col = TODO
-        self.parse_ctx = parse_ctx
+        super().__init__('Not-Equals Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
     def eval_int(self, context) -> int:
         child1_eval = self.children[0].eval_int(context)
@@ -447,9 +440,7 @@ class NEqExpression(Expression):
 
 class BitAndExpression(Expression):
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
-        super().__init__('Bitwise-And Operator', children=[child1, child2])
-        # self.error_col = TODO
-        self.parse_ctx = parse_ctx
+        super().__init__('Bitwise-And Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
     def eval_int(self, context) -> int:
         return self.children[0].eval_int(context) & self.children[1].eval_int(context)
@@ -460,9 +451,7 @@ class BitAndExpression(Expression):
 
 class BitOrExpression(Expression):
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
-        super().__init__('Bitwise-Or Operator', children=[child1, child2])
-        # self.error_col = TODO
-        self.parse_ctx = parse_ctx
+        super().__init__('Bitwise-Or Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
     def eval_int(self, context) -> int:
         return self.children[0].eval_int(context) | self.children[1].eval_int(context)
@@ -473,9 +462,7 @@ class BitOrExpression(Expression):
 
 class BitXORExpression(Expression):
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
-        super().__init__('Bitwise-Xor Operator', children=[child1, child2])
-        # self.error_col = TODO
-        self.parse_ctx = parse_ctx
+        super().__init__('Bitwise-Xor Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
     def eval_int(self, context) -> int:
         return self.children[0].eval_int(context) ^ self.children[1].eval_int(context)
@@ -486,9 +473,7 @@ class BitXORExpression(Expression):
 
 class AndExpression(Expression):
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
-        super().__init__('And Operator', children=[child1, child2])
-        # self.error_col = TODO
-        self.parse_ctx = parse_ctx
+        super().__init__('And Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
     def eval_int(self, context) -> int:
         # Short-circuit eval:
@@ -507,9 +492,7 @@ class AndExpression(Expression):
 
 class OrExpression(Expression):
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
-        super().__init__('Or Operator', children=[child1, child2])
-        # self.error_col = TODO
-        self.parse_ctx = parse_ctx
+        super().__init__('Or Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
     def eval_int(self, context) -> int:
         # Short-circuit eval:
@@ -530,9 +513,7 @@ class OrExpression(Expression):
 
 class ConditionalExpression(Expression):
     def __init__(self, parse_ctx, child1: Expression, child2: Expression, child3: Expression):
-        super().__init__('Multiplication Operator', children=[child1, child2, child3])
-        # self.error_col = TODO
-        self.parse_ctx = parse_ctx
+        super().__init__('Multiplication Operator', parse_ctx=parse_ctx, children=[child1, child2, child3])
 
     def eval_int(self, context) -> int:
         if self.children[0].eval_int(context) == 0:

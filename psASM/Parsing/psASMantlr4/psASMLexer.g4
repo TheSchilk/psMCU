@@ -124,6 +124,9 @@ CHAR_END
    : '\'' -> popMode
    ;
 
+// Better errors in chars:
+CHAR_EOL: [\r\n]+ ;
+CHAR_ERROR_CHAR: . ;
 
 mode DEFAULT_MODE;
 
@@ -150,6 +153,9 @@ STRING_END
    : '"' -> popMode
    ;
 
+// Better errors in strings:
+STRING_EOL: [\r\n]+ ;
+STRING_ERROR_CHAR: . ;
 
 mode DEFAULT_MODE;
 
@@ -169,7 +175,7 @@ IDENTIFIER
    : IDENTIFIER_FIRST_CHAR (IDENTIFIER_OTHER_CHAR+)?
    ;
 
-// ======= thers =======
+// ======= Others =======
 
 COMMENT
    : '#' ~[\r\n]* -> skip
@@ -178,8 +184,9 @@ COMMENT
 WS: [ \t]+ -> skip ;
 EOL: [\r\n]+ ;
 
+ERROR_CHAR: . ;
+
 // ======= Error Detection =======
 
 // Capture any character that did not match a token
 // Moves error from lexer to parser.
-ERROR_CHAR: . ;

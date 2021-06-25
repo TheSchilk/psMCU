@@ -25,10 +25,12 @@ def parse_source_files(source_files: SourceFiles):
 def parse_source_file(source_file: SourceFile):
     parsed_lines = []
     for line_id, source_line in enumerate(source_file):
-        parsed_line = parse_line(source_line, source_file.file_id, line_id)
-        parsed_lines.append(parsed_line)
-        # DEBUG:
-        print("%s = %s" % (source_line.lstrip().rstrip(), str(parsed_line)))
+        try:
+            parsed_line = parse_line(source_line, source_file.file_id, line_id)
+            parsed_lines.append(parsed_line)
+        except LocatedException as e:
+            e.decorate_location(source_file.file_id, line_id)
+            raise e
 
     return ParsedFile(source_file.file_id, parsed_lines)
 
@@ -49,12 +51,8 @@ def parse_line(text: str, file_id, line_id):
     parser.addErrorListener(error_listener)
 
     # Parse and extract with visitor:
-    try:
-        tree = parser.line()
-        parsed_line = psASMOutputVisitor().visit(tree)
-    except LocatedException as e:
-        e.decorate_location(file_id, line_id)
-        raise e
+    tree = parser.line()
+    parsed_line = psASMOutputVisitor().visit(tree)
 
     parsed_line.file_id = file_id
     parsed_line.line_id = line_id

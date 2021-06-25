@@ -85,7 +85,10 @@ class DefineDirective(PreProcDirective):
         self.value = value
 
     def __str__(self):
-        return ('@define %s %s' % (self.name, str(self.value)))
+        if self.value is not None:
+            return ('@define %s %s' % (self.name, str(self.value)))
+        else:
+            return ('@define %s' % (self.name))
 
     def macro_arg_replacement(self, find, replace):
         if self.name == find:

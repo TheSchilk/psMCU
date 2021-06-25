@@ -8,7 +8,7 @@ import sys
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3>")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3B")
         buf.write("\u0114\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write("\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\4\16")
         buf.write("\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22\4\23\t\23")
@@ -44,13 +44,13 @@ def serializedATN():
         buf.write("\2\36\u0083\3\2\2\2 \u0087\3\2\2\2\"\u008b\3\2\2\2$\u0090")
         buf.write("\3\2\2\2&\u0093\3\2\2\2(\u009f\3\2\2\2*\u00a2\3\2\2\2")
         buf.write(",\u00b3\3\2\2\2.\u00fa\3\2\2\2\60\u0100\3\2\2\2\62\u0102")
-        buf.write("\3\2\2\2\64\u010c\3\2\2\2\66\67\5\4\3\2\678\7=\2\28\3")
+        buf.write("\3\2\2\2\64\u010c\3\2\2\2\66\67\5\4\3\2\678\7A\2\28\3")
         buf.write("\3\2\2\29>\5\n\6\2:>\5\6\4\2;>\5\b\5\2<>\3\2\2\2=9\3\2")
         buf.write("\2\2=:\3\2\2\2=;\3\2\2\2=<\3\2\2\2>\5\3\2\2\2?A\5\b\5")
         buf.write("\2@?\3\2\2\2@A\3\2\2\2AB\3\2\2\2BK\7\3\2\2CH\5,\27\2D")
         buf.write("E\7\4\2\2EG\5,\27\2FD\3\2\2\2GJ\3\2\2\2HF\3\2\2\2HI\3")
         buf.write("\2\2\2IL\3\2\2\2JH\3\2\2\2KC\3\2\2\2KL\3\2\2\2L\7\3\2")
-        buf.write("\2\2MR\7:\2\2NO\7\4\2\2OQ\7:\2\2PN\3\2\2\2QT\3\2\2\2R")
+        buf.write("\2\2MR\7>\2\2NO\7\4\2\2OQ\7>\2\2PN\3\2\2\2QT\3\2\2\2R")
         buf.write("P\3\2\2\2RS\3\2\2\2SU\3\2\2\2TR\3\2\2\2UV\7.\2\2V\t\3")
         buf.write("\2\2\2Wh\5\f\7\2Xh\5\16\b\2Yh\5\20\t\2Zh\5\22\n\2[h\5")
         buf.write("\24\13\2\\h\5\26\f\2]h\5\30\r\2^h\5\32\16\2_h\5\34\17")
@@ -58,11 +58,11 @@ def serializedATN():
         buf.write("\2eh\5*\26\2fh\5(\25\2gW\3\2\2\2gX\3\2\2\2gY\3\2\2\2g")
         buf.write("Z\3\2\2\2g[\3\2\2\2g\\\3\2\2\2g]\3\2\2\2g^\3\2\2\2g_\3")
         buf.write("\2\2\2g`\3\2\2\2ga\3\2\2\2gb\3\2\2\2gc\3\2\2\2gd\3\2\2")
-        buf.write("\2ge\3\2\2\2gf\3\2\2\2h\13\3\2\2\2ij\7\5\2\2jl\7:\2\2")
+        buf.write("\2ge\3\2\2\2gf\3\2\2\2h\13\3\2\2\2ij\7\5\2\2jl\7>\2\2")
         buf.write("km\5,\27\2lk\3\2\2\2lm\3\2\2\2m\r\3\2\2\2no\7\6\2\2op")
         buf.write("\5\62\32\2p\17\3\2\2\2qr\7\7\2\2r\21\3\2\2\2st\7\b\2\2")
-        buf.write("tu\5,\27\2u\23\3\2\2\2vw\7\t\2\2wx\7:\2\2x\25\3\2\2\2")
-        buf.write("yz\7\n\2\2z{\7:\2\2{\27\3\2\2\2|}\7\13\2\2}~\5,\27\2~")
+        buf.write("tu\5,\27\2u\23\3\2\2\2vw\7\t\2\2wx\7>\2\2x\25\3\2\2\2")
+        buf.write("yz\7\n\2\2z{\7>\2\2{\27\3\2\2\2|}\7\13\2\2}~\5,\27\2~")
         buf.write("\31\3\2\2\2\177\u0080\7\f\2\2\u0080\33\3\2\2\2\u0081\u0082")
         buf.write("\7\r\2\2\u0082\35\3\2\2\2\u0083\u0085\7\16\2\2\u0084\u0086")
         buf.write("\5,\27\2\u0085\u0084\3\2\2\2\u0085\u0086\3\2\2\2\u0086")
@@ -71,14 +71,14 @@ def serializedATN():
         buf.write("\u008c\7\20\2\2\u008c\u008d\5,\27\2\u008d\u008e\7\4\2")
         buf.write("\2\u008e\u008f\5,\27\2\u008f#\3\2\2\2\u0090\u0091\7\21")
         buf.write("\2\2\u0091\u0092\5,\27\2\u0092%\3\2\2\2\u0093\u0094\7")
-        buf.write("\22\2\2\u0094\u009d\7:\2\2\u0095\u009a\7:\2\2\u0096\u0097")
-        buf.write("\7\4\2\2\u0097\u0099\7:\2\2\u0098\u0096\3\2\2\2\u0099")
+        buf.write("\22\2\2\u0094\u009d\7>\2\2\u0095\u009a\7>\2\2\u0096\u0097")
+        buf.write("\7\4\2\2\u0097\u0099\7>\2\2\u0098\u0096\3\2\2\2\u0099")
         buf.write("\u009c\3\2\2\2\u009a\u0098\3\2\2\2\u009a\u009b\3\2\2\2")
         buf.write("\u009b\u009e\3\2\2\2\u009c\u009a\3\2\2\2\u009d\u0095\3")
         buf.write("\2\2\2\u009d\u009e\3\2\2\2\u009e\'\3\2\2\2\u009f\u00a0")
         buf.write("\7\23\2\2\u00a0)\3\2\2\2\u00a1\u00a3\5\b\5\2\u00a2\u00a1")
         buf.write("\3\2\2\2\u00a2\u00a3\3\2\2\2\u00a3\u00a4\3\2\2\2\u00a4")
-        buf.write("\u00ad\7:\2\2\u00a5\u00aa\5,\27\2\u00a6\u00a7\7\4\2\2")
+        buf.write("\u00ad\7>\2\2\u00a5\u00aa\5,\27\2\u00a6\u00a7\7\4\2\2")
         buf.write("\u00a7\u00a9\5,\27\2\u00a8\u00a6\3\2\2\2\u00a9\u00ac\3")
         buf.write("\2\2\2\u00aa\u00a8\3\2\2\2\u00aa\u00ab\3\2\2\2\u00ab\u00ae")
         buf.write("\3\2\2\2\u00ac\u00aa\3\2\2\2\u00ad\u00a5\3\2\2\2\u00ad")
@@ -107,25 +107,25 @@ def serializedATN():
         buf.write("\3\2\2\2\u00de\u00df\7\27\2\2\u00df\u00e0\5,\27\2\u00e0")
         buf.write("\u00e1\7\30\2\2\u00e1\u00fb\3\2\2\2\u00e2\u00fb\5\60\31")
         buf.write("\2\u00e3\u00fb\5\62\32\2\u00e4\u00e5\7\24\2\2\u00e5\u00e6")
-        buf.write("\7\27\2\2\u00e6\u00e7\7:\2\2\u00e7\u00fb\7\30\2\2\u00e8")
+        buf.write("\7\27\2\2\u00e6\u00e7\7>\2\2\u00e7\u00fb\7\30\2\2\u00e8")
         buf.write("\u00e9\7\25\2\2\u00e9\u00ea\7\27\2\2\u00ea\u00ef\5,\27")
         buf.write("\2\u00eb\u00ec\7\4\2\2\u00ec\u00ee\5,\27\2\u00ed\u00eb")
         buf.write("\3\2\2\2\u00ee\u00f1\3\2\2\2\u00ef\u00ed\3\2\2\2\u00ef")
         buf.write("\u00f0\3\2\2\2\u00f0\u00f2\3\2\2\2\u00f1\u00ef\3\2\2\2")
         buf.write("\u00f2\u00f3\7\30\2\2\u00f3\u00fb\3\2\2\2\u00f4\u00f5")
         buf.write("\7\26\2\2\u00f5\u00f6\7\27\2\2\u00f6\u00f7\5,\27\2\u00f7")
-        buf.write("\u00f8\7\30\2\2\u00f8\u00fb\3\2\2\2\u00f9\u00fb\7:\2\2")
+        buf.write("\u00f8\7\30\2\2\u00f8\u00fb\3\2\2\2\u00f9\u00fb\7>\2\2")
         buf.write("\u00fa\u00de\3\2\2\2\u00fa\u00e2\3\2\2\2\u00fa\u00e3\3")
         buf.write("\2\2\2\u00fa\u00e4\3\2\2\2\u00fa\u00e8\3\2\2\2\u00fa\u00f4")
         buf.write("\3\2\2\2\u00fa\u00f9\3\2\2\2\u00fb/\3\2\2\2\u00fc\u0101")
         buf.write("\7/\2\2\u00fd\u0101\7\60\2\2\u00fe\u0101\7\61\2\2\u00ff")
         buf.write("\u0101\5\64\33\2\u0100\u00fc\3\2\2\2\u0100\u00fd\3\2\2")
         buf.write("\2\u0100\u00fe\3\2\2\2\u0100\u00ff\3\2\2\2\u0101\61\3")
-        buf.write("\2\2\2\u0102\u0107\7\66\2\2\u0103\u0106\7\67\2\2\u0104")
-        buf.write("\u0106\78\2\2\u0105\u0103\3\2\2\2\u0105\u0104\3\2\2\2")
-        buf.write("\u0106\u0109\3\2\2\2\u0107\u0105\3\2\2\2\u0107\u0108\3")
-        buf.write("\2\2\2\u0108\u010a\3\2\2\2\u0109\u0107\3\2\2\2\u010a\u010b")
-        buf.write("\79\2\2\u010b\63\3\2\2\2\u010c\u010f\7\62\2\2\u010d\u0110")
+        buf.write("\2\2\2\u0102\u0107\78\2\2\u0103\u0106\79\2\2\u0104\u0106")
+        buf.write("\7:\2\2\u0105\u0103\3\2\2\2\u0105\u0104\3\2\2\2\u0106")
+        buf.write("\u0109\3\2\2\2\u0107\u0105\3\2\2\2\u0107\u0108\3\2\2\2")
+        buf.write("\u0108\u010a\3\2\2\2\u0109\u0107\3\2\2\2\u010a\u010b\7")
+        buf.write(";\2\2\u010b\63\3\2\2\2\u010c\u010f\7\62\2\2\u010d\u0110")
         buf.write("\7\63\2\2\u010e\u0110\7\64\2\2\u010f\u010d\3\2\2\2\u010f")
         buf.write("\u010e\3\2\2\2\u0110\u0111\3\2\2\2\u0111\u0112\7\65\2")
         buf.write("\2\u0112\65\3\2\2\2\31=@HKRgl\u0085\u0089\u009a\u009d")
@@ -162,9 +162,10 @@ class psASMParser (Parser):
                      "LESS_EQ", "GREATER", "GREATER_EQ", "EQ", "NEQ", "BIT_AND",
                      "BIT_XOR", "BIT_OR", "AND", "OR", "QUEST", "COLON",
                      "BINARY_LITERAL", "HEX_LITERAL", "DEC_LITERAL", "CHAR_START",
-                     "CHAR_ESCAPE", "CHAR", "CHAR_END", "STRING_START",
-                     "STRING_CHAR_ESCAPE", "STRING_CHAR", "STRING_END",
-                     "IDENTIFIER", "COMMENT", "WS", "EOL", "ERROR_CHAR"]
+                     "CHAR_ESCAPE", "CHAR", "CHAR_END", "CHAR_EOL", "CHAR_ERROR_CHAR",
+                     "STRING_START", "STRING_CHAR_ESCAPE", "STRING_CHAR",
+                     "STRING_END", "STRING_EOL", "STRING_ERROR_CHAR", "IDENTIFIER",
+                     "COMMENT", "WS", "EOL", "ERROR_CHAR"]
 
     RULE_line = 0
     RULE_line_content = 1
@@ -253,15 +254,19 @@ class psASMParser (Parser):
     CHAR_ESCAPE = 49
     CHAR = 50
     CHAR_END = 51
-    STRING_START = 52
-    STRING_CHAR_ESCAPE = 53
-    STRING_CHAR = 54
-    STRING_END = 55
-    IDENTIFIER = 56
-    COMMENT = 57
-    WS = 58
-    EOL = 59
-    ERROR_CHAR = 60
+    CHAR_EOL = 52
+    CHAR_ERROR_CHAR = 53
+    STRING_START = 54
+    STRING_CHAR_ESCAPE = 55
+    STRING_CHAR = 56
+    STRING_END = 57
+    STRING_EOL = 58
+    STRING_ERROR_CHAR = 59
+    IDENTIFIER = 60
+    COMMENT = 61
+    WS = 62
+    EOL = 63
+    ERROR_CHAR = 64
 
     def __init__(self, input: TokenStream, output: TextIO = sys.stdout):
         super().__init__(input, output)

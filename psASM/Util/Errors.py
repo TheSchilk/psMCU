@@ -43,7 +43,7 @@ class LocatedException(psASMException):
         if self._location_defined():
             # Generate error message with location information:
 
-            result = self.exception_name + ": " + self.text + '\n'
+            result = '\n' + self.exception_name + ": " + self.text + '\n\n'
 
             if type(self.error_col) == tuple:
                 line_text_prefix = self.source_files.location_str(self.file_id, self.line_id, self.error_col[0]) + ": "
@@ -62,7 +62,11 @@ class LocatedException(psASMException):
                     raise Exception("Error-col tuple is not of length 2.")
                 result += "\n"
                 mark_length = self.error_col[1] - self.error_col[0] + 1
-                result += (" " * (self.error_col[0]+len(line_text_prefix))) + ("^"*mark_length)
+                result += (" " * (self.error_col[0]+len(line_text_prefix)))
+                if mark_length > 2:
+                    result += "^" + ("~"*(mark_length-2)) + "^"
+                else:
+                    result += "^" * mark_length
 
         else:
             # No location information available:
@@ -78,4 +82,4 @@ class ParsingException(LocatedException):
 
 class EvalException(LocatedException):
     def __init__(self, text, file_id=None, line_id=None, source_files=None, error_col=None):
-        super().__init__(text, "Evaluation  Error", file_id, line_id, source_files, error_col)
+        super().__init__(text, "Evaluation Error", file_id, line_id, source_files, error_col)
