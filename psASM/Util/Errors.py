@@ -18,11 +18,17 @@ class LocatedException(psASMException):
     # Note: Decorations do not override, as information is usually more precise, the deeper it was
     # decorated. Overrides can still be forced
 
-    def decorate_location(self, file_id, line_id, replace=False):
+    def decorate_file_id(self, file_id, replace=False):
         if self.file_id is None or replace:
             self.file_id = file_id
+
+    def decorate_line_id(self, line_id, replace=False):
         if self.line_id is None or replace:
             self.line_id = line_id
+
+    def decorate_location(self, file_id, line_id, replace=False):
+        self.decorate_file_id(file_id, replace)
+        self.decorate_line_id(line_id, replace)
 
     def decorate_source_files(self, source_files, replace=False):
         if self.source_files is None or replace:
@@ -33,7 +39,7 @@ class LocatedException(psASMException):
             self.error_col = error_col
 
     def _location_defined(self):
-        have_location = self.file_id is not None and self.line_id is not None
+        have_location = self.file_id is not None or self.line_id is not None
         have_source_files = self.source_files is not None
         return have_source_files and have_location
 

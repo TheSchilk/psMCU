@@ -1,0 +1,119 @@
+from collections import deque
+from Util.Errors import ParsingException
+
+from Parsing.ParsedLine import ParsedLine
+from Parsing.ParsedLine import IfDirective, ElIfDirective, ElseDirective, EndIfDirective
+from Parsing.ParsedLine import MacroDirective, EndMacroDirective
+
+
+def associate_lines(lines: [ParsedLine]):
+    result = []
+    in_queue = deque(lines)
+
+    # While there are lines in the in_queue, consume block_components
+    while in_queue:
+        result.extend(_consume_block_component(in_queue))
+
+    return result
+
+
+def _peek_is_directive(in_queue, kind):
+    if not in_queue:
+        return False
+    else:
+        return isinstance(in_queue[0], kind)
+
+
+def _consume_directive(in_queue, kind):
+    if not in_queue:
+        raise ParsingException("Unexpected EOF, exptected %s" % kind.type_name)
+
+    consumed = in_queue.popleft()
+
+    if isinstance(consumed, kind):
+        return consumed
+    else:
+        raise ParsingException("Unexpected %s, exptected %s" % (consumed.type_name, kind.type_name))
+
+
+def _consume_block(in_queue):
+    result = []
+
+    while _can_consume_block_component(in_queue):
+        result.extend(_consume_block_component(in_queue))
+
+    return result
+
+
+def _can_consume_block_component(in_queue):
+    if not in_queue:
+        return False
+
+    if isinstance(in_queue[0], IfDirective):
+        return True
+    elif isinstance(in_queue[0], MacroDirective):
+        return True
+    elif not in_queue[0].is_block_delimiter():
+        return True
+    else:
+        return False
+
+
+def _consume_block_component(in_queue):
+    if not in_queue:
+        raise ParsingException("Unexpected EOF.")
+
+    if isinstance(in_queue[0], IfDirective):
+        # IF bloc return _consume_if(in_queue)
+        return _consume_if(in_queue)
+    elif isinstance(in_queue[0], MacroDirective):
+        # MACRO block
+        return _consume_macro(in_queue)
+    elif not in_queue[0].is_block_delimiter():
+        # block of non-delimiter lines
+        result = []
+        while in_queue and not in_queue[0].is_block_delimiter():
+            result.append(in_queue.popleft())
+        return result
+
+    else:
+        # Error.
+        line_id = in_queue[0].line_id
+        raise ParsingException("Unexpected %s" % in_queue[0].type_name, line_id=line_id)
+
+
+def _consume_if(in_queue):
+    # Consume and validate beginning of if block
+    if_directive = _consume_directive(in_queue, IfDirective)
+
+    # Consume true block:
+    if_directive.true_block = _consume_block(in_queue)
+
+    # Consume optional elif blocks:
+    while _peek_is_directive(in_queue, ElIfDirective):
+        elif_directive = _consume_directive(in_queue, ElIfDirective)
+        elif_directive.block = _consume_block(in_queue)
+        if_directive.elif_instructions.append(elif_directive)
+
+    # Consume optional else block:
+    if _peek_is_directive(in_queue, ElseDirective):
+        _consume_directive(in_queue, ElseDirective)
+        if_directive.else_block = _consume_block(in_queue)
+
+    # Consume endif
+    _consume_directive(in_queue, EndIfDirective)
+
+    return [if_directive]
+
+
+def _consume_macro(in_queue):
+    # Consume macro directive
+    macro_directive = _consume_directive(in_queue, MacroDirective)
+
+    # Consume block body
+    macro_directive.block = _consume_block(in_queue)
+
+    # Consume endmacro directive:
+    _consume_directive(in_queue, EndMacroDirective)
+
+    return [macro_directive]

@@ -5,6 +5,7 @@ class ParsedFile():
     def __init__(self, file_id, content):
         self.file_id = file_id
         self.content = content
+        self.blocks = []
 
     def __len__(self):
         return len(self.content)

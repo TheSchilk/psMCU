@@ -153,11 +153,14 @@ class SourceFiles:
                 return file.path
         raise KeyError('File ID not found.')
 
-    def location_str(self, file_id, line_id, col=None):
-        """Generate typical location string (ie: file.psASM:43:10)"""
+    def location_str(self, file_id, line_id=None, col=None):
+        """Generate typical location string (ie: file.psASM:43:10)
+        Requires at least a file_id.
+        """
         file_path = self.get_file_path(file_id)
-        result = ("%s:%i" % (file_path, line_id + 1))
-        if col is not None:
-            result += (":%i" % (col + 1))
-
+        result = file_path + ":"
+        if line_id is not None:
+            result += str(line_id+1) + ":"
+            if col is not None:
+                result += str(col+1) + ":"
         return result

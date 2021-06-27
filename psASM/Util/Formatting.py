@@ -1,3 +1,6 @@
+import re
+
+
 def comma_seperated_list(text_list: []):
     result = ""
 
@@ -7,6 +10,26 @@ def comma_seperated_list(text_list: []):
         result += str(text)
 
     return result
+
+
+def prefix_every_line(txt: str, prefix: str):
+    if txt.endswith('\n'):
+        txt = re.sub(r'\n$', "", txt)
+        suffix = '\n'
+    else:
+        suffix = ''
+
+    # Split into lines:
+    lines = txt.split('\n')
+
+    # Indent and re-assemble:
+    result = ""
+    for index, line in enumerate(lines):
+        if index != 0:
+            result += '\n'
+        result += prefix + line
+
+    return result + suffix
 
 
 def table_string(headers, cols):
