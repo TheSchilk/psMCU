@@ -56,19 +56,19 @@ def parse_args(args):
     # Validate and reformat defines:
     defines = []
     for define in parsed_args['define']:
-        if not re.match(r"^[a-zA-Z][a-zA-Z0-9_\-]*(=((0b[01]+)|(0x[0-9a-fA-F]+)|([0-9]+)|('[ -~]')))?$", define):
+        if not re.match(r"^[a-zA-Z][a-zA-Z0-9_\-]*(=((0b[01]+)|(0x[0-9a-fA-F]+)|([0-9]+)))?$", define):
             print("Error: Malformed definition %s passed via -D flag.")
             sys.exit()
 
         if '=' in define:
             define = define.split('=')
             name = define[0]
-            value = define[1]
+            value = int(define[1], 0)
         else:
             name = define
             value = None
 
-        defines.append([name, value])
+        defines.append((name, value))
 
     # Replace defines with formatted name/value lists
     parsed_args['define'] = defines

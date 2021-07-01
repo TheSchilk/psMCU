@@ -12,13 +12,13 @@ def parse_source_files(source_files: SourceFiles):
 
     # Parse every file:
     for file in source_files:
-        parsed_file = _parse_source_file(file)
+        parsed_file = parse_source_file(file)
         parsed_files.add_parsed_file(parsed_file)
 
     return parsed_files
 
 
-def _parse_source_file(source_file: SourceFile):
+def parse_source_file(source_file: SourceFile):
     parsed_lines = []
     try:
 
@@ -32,10 +32,6 @@ def _parse_source_file(source_file: SourceFile):
                 raise e
         # Now, associate related lines:
         parsed_lines = Blocks.associate_lines(parsed_lines)
-
-        # DEBUG
-        for line in parsed_lines:
-            print(line.instruction_tree())
 
     except LocatedException as e:
         e.decorate_file_id(source_file.file_id)

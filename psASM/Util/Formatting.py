@@ -1,7 +1,7 @@
 import re
 
 
-def comma_seperated_list(text_list: []):
+def comma_seperated_list(text_list: list):
     result = ""
 
     for i, text in enumerate(text_list):

@@ -1,6 +1,11 @@
+"""Representation of an expression tree."""
+# TODO: Can-eval system: Remove and replace with a eval-then-check-if-result-expected system?
+
+import re
+from typing import List
+
 from Util.Errors import EvalException
 import Util.Formatting as Formatting
-import re
 
 
 def _get_ctx_start(token):
@@ -17,23 +22,75 @@ def _get_ctx_stop(token):
     return result
 
 
+def assert_int(var, arg_description, error_col, error_col_alt=None):
+    """Assert that the variable is an integer, otherwise raise an excpetion.
+    error_col_alt will act as a fall-back error column if error_col is None.
+    """
+    if not isinstance(var, int):
+        _type_error(arg_description + " must be an int.", error_col, error_col_alt)
+
+
+def assert_str(var, arg_description, error_col, error_col_alt=None):
+    """Assert that the variable is a string, otherwise raise an excpetion.
+    error_col_alt will act as a fall-back error column if error_col is None.
+    """
+    if not isinstance(var, str):
+        _type_error(arg_description + " must be a string.", error_col, error_col_alt)
+
+
+def _type_error(msg, error_col, error_col_alt=None):
+    """Raise a EvalException with given message and error_col, falling back on
+    error_col_alt if error_col is None"""
+    exc = EvalException(msg)
+    exc.decorate_error_col(error_col)
+    exc.decorate_error_col(error_col_alt)
+    raise exc
+
+
+def _type_combination_str(args: []):
+    result = ""
+    for index, arg in enumerate(args):
+        if index != 0:
+            result += ', '
+        if isinstance(arg, int):
+            result += 'int'
+        elif isinstance(arg, str):
+            result += 'str'
+        else:
+            raise Exception()
+    return result
+
+
 class Expression:
-    def __init__(self, name, parse_ctx=None, error_col=None, children=[]):
-        self.children = children
+    """Base-class for an expression-tree component that can be evaluated as string or int."""
+
+    def __init__(self, name, parse_ctx=None, error_col=None, children=None):
+        if children is None:
+            self.children = []
+        else:
+            self.children = children
         self.name = name
-        self.parse_ctx = parse_ctx
         self.error_col = error_col
 
         if parse_ctx is not None and error_col is None:
             self.error_col = (_get_ctx_start(parse_ctx), _get_ctx_stop(parse_ctx))
 
-    def eval_int(self, context) -> int:
-        raise EvalException("%s cannot be evaluated as an integer." % self.name, error_col=self.error_col)
+    def remove_error_col_info(self):
+        """Recursively remove error_col information from this and children.
+        Used when error_col information is no longer valid due t macro_arg_replacement
+        """
 
-    def eval_str(self, context) -> str:
-        raise EvalException("%s cannot be evaluated as a string." % self.name, error_col=self.error_col)
+        self.error_col = None
+        for child in self.children:
+            child.remove_error_col_info()
+
+    def eval(self, context):
+        """Evaluate this expression."""
+        _ = self, context
+        raise Exception('Base expression instantiated or eval function not overwritten')
 
     def macro_arg_replacement(self, find: str, replace):
+        """Replace macro arguments within this and all children."""
         for child in self.children:
             child.macro_arg_replacement(find, replace)
 
@@ -41,46 +98,51 @@ class Expression:
 # ########## Atomic Expression: ##########
 
 class NumLiteralExpression(Expression):
+    """A single numerical literals."""
+
     def __init__(self, parse_ctx, text: str):
         super().__init__('Numerical Literal', parse_ctx=parse_ctx)
         self.text = text
 
-    def eval_int(self, context) -> int:
+    def eval(self, context):
+        _ = context
         try:
             return int(self.text, 0)
-        except ValueError:
-            raise EvalException("Malformed integer: %s." % self.text)
+        except ValueError as exp:
+            # If this fires the language grammar should probably be adjusted.
+            raise EvalException("Malformed integer: %s." % self.text) from exp
 
     def __str__(self):
         return self.text
 
 
 class CharLiteralExpression(Expression):
+    """A single-character numerical literal."""
+
     def __init__(self, parse_ctx, char: str):
-        super().__init__('Char Literal')
+        super().__init__('Char Literal', parse_ctx=parse_ctx)
         self.char = char
 
-    def eval_int(self, context) -> int:
-        char = self.char[1]
-        return ord(char)
+    def eval(self, context):
+        _ = context
+        # TODO escaping
+        if len(self.char) != 1:
+            raise Exception("Character escape not yet implemented")
+        return ord(self.char)
 
     def __str__(self):
         return self.char
 
 
 class IdentifierExpression(Expression):
-    def __init__(self, parse_ctx, text: str):
-        super().__init__('Identifier')
+    """An Identifier (Defined value, label, etc)"""
 
+    def __init__(self, parse_ctx, text: str):
+        super().__init__('Identifier', parse_ctx=parse_ctx)
         self.text = text
 
-    def eval_int(self, context) -> int:
-        # TODO
-        raise Exception()
-
-    def eval_str(self, context) -> str:
-        # TODO
-        raise Exception()
+    def eval(self, context):
+        return context[self.text]
 
     def __str__(self):
         return self.text
@@ -98,18 +160,25 @@ class IdentifierExpression(Expression):
             for attr in replace.__dict__:
                 self.__setattr__(attr, getattr(replace,  attr))
 
+            # It now no longer makes sense to talk about error_cols for this expression:
+            self.error_col = None
+
             # Note: Alternatively, macro_arg_replacement could check if each child is an
             # IdentifierExpression with matching text and replace it.
             # But that is boring :)
 
 
 class StringLiteralExpression(Expression):
-    def __init__(self, parse_ctx, text: str):
-        super().__init__('String Literal')
+    """A String literal."""
 
+    def __init__(self, parse_ctx, text: str):
+        super().__init__('String Literal', parse_ctx=parse_ctx)
         self.text = text
 
-    def eval_str(self, context) -> str:
+    def eval(self, context):
+        # TODO: Escaping
+        # TODO: Zero-termination
+        _ = context
         return self.text
 
     def __str__(self):
@@ -117,69 +186,60 @@ class StringLiteralExpression(Expression):
 
 
 class isDefinedExpression(Expression):
-    def __init__(self, parse_ctx, text: str):
-        super().__init__("defined Operator")
+    """defined(identifer) operator."""
 
+    def __init__(self, parse_ctx, text: str):
+        super().__init__("defined Operator", parse_ctx=parse_ctx)
         self.text = text
 
-    def eval_int(self, context) -> int:
-        # TODO:
-        raise Exception()
+    def eval(self, context):
+        return self.text in context
 
     def __str__(self):
         return "defined(" + self.text + ")"
 
 
 class SprintfExpression(Expression):
-    def __init__(self, parse_ctx, text: Expression, args: [Expression]):
-        super().__init__('sprintf Operator')
-        self.parse_ctx = parse_ctx
-        self.error_col = (_get_ctx_start(parse_ctx), _get_ctx_stop(parse_ctx))
+    """sprintf("string %i", val) operator."""
 
+    def __init__(self, parse_ctx, text: Expression, args: List[Expression]):
+        super().__init__('sprintf Operator', parse_ctx=parse_ctx)
         self.text = text
         self.args = args
 
-    def eval_str(self, context) -> str:
-        original_text = self.text.eval_str(context)
+        if len(text.error_col) > 1:
+            self.string_start_col = text.error_col[0]
+        else:
+            self.string_start_col = None
+
+    def eval(self, context):
+
+        # Get format string and assert it is a string:
+        original_text = self.text.eval(context)
+        assert_str(original_text, "First argument of sprintf operator", self.text.error_col, self.error_col)
         text = original_text
 
         arg_index = 0
-        while "%i" in text or "%s" in text:
+
+        while "%v" in text:
             # Ensure there is an argument left
             if arg_index >= len(self.args):
                 # No more arguments left.
 
-                if isinstance(self.text, StringLiteralExpression):
+                if isinstance(self.text, StringLiteralExpression) and self.string_start_col is not None:
                     # If the string is provided directly, we can determine the error_col:
-                    string_start_col = self.text.parse_ctx.start.start + 1
-
-                    specifiers = list(re.finditer(r'%[is]', original_text))
+                    specifiers = list(re.finditer(r'%v', original_text))
                     specifier_index = specifiers[arg_index].start()
-                    error_col = string_start_col + specifier_index
+                    error_col = self.string_start_col + specifier_index + 1
                     error_col = (error_col, error_col+1)  # Specifier is two chars long
 
                 else:
                     error_col = None
 
-                raise EvalException("Format string contains format specifier but there are no more arguments!", error_col=error_col)
+                raise EvalException("Format string contains format specifier but there are no more arguments!",  error_col=error_col)
 
             # Insert argument:
-
-            # See what kind of specifiers are left:
-            have_i = '%i' in text
-            have_s = '%s' in text
-
-            if have_i and not have_s:
-                text = text.replace('%i', str(self.args[arg_index].eval_int(context)), 1)
-            elif have_s and not have_i:
-                text = text.replace('%s', self.args[arg_index].eval_str(context), 1)
-            else:
-                # See what the next specifier is:
-                if text.find('%s') < text.find('%i'):
-                    text = text.replace('%s', self.args[arg_index].eval_str(context), 1)
-                else:
-                    text = text.replace('%i', str(self.args[arg_index].eval_int(context)), 1)
-
+            text = text.replace('%v', str(self.args[arg_index].eval(context)), 1)
             arg_index += 1
 
         return text
@@ -192,6 +252,12 @@ class SprintfExpression(Expression):
         result += ")"
         return result
 
+    def remove_error_col_info(self):
+        self.text.remove_error_col_info()
+        self.string_start_col = None
+        for arg in self.args:
+            arg.remove_error_col_info()
+
     def macro_arg_replacement(self, find: str, replace: Expression):
         self.text.macro_arg_replacement(find, replace)
         for arg in self.args:
@@ -199,12 +265,15 @@ class SprintfExpression(Expression):
 
 
 class StrlenExpression(Expression):
+    """strlen() operator."""
+
     def __init__(self, parse_ctx, arg: Expression):
         super().__init__('strlen Operator', parse_ctx=parse_ctx, children=[arg])
-        self.parse_ctx = parse_ctx
 
-    def eval_int(self, context) -> int:
-        return len(self.children[0].eval_str())
+    def eval(self, context):
+        child = self.children[0].eval(context)
+        assert_str(child, "Argument of strlen operator", self.children[0].error_col, self.error_col)
+        return len(child)
 
     def __str__(self):
         return "strlen("+str(self.children[0])+")"
@@ -214,316 +283,440 @@ class StrlenExpression(Expression):
 
 
 class PosExpression(Expression):
+    """Unary-plus operator."""
+
     def __init__(self, parse_ctx, child1: Expression):
         super().__init__('Unary-Plus Operator', parse_ctx=parse_ctx, children=[child1])
 
-    def eval_int(self, context) -> int:
-        return self.children[0].eval_int(context)
+    def eval(self, context):
+        child = self.children[0].eval(context)
+        assert_int(child, "Operand of unary-plus operator", self.children[0].error_col, self.error_col)
+        return child
 
     def __str__(self):
-        return ("(+%s)" % (str(self.children[0])))
+        return "(+%s)" % (str(self.children[0]))
 
 
 class NegExpression(Expression):
+    """Unary-minus operator."""
+
     def __init__(self, parse_ctx, child1: Expression):
         super().__init__('Unary-Minus Operator', parse_ctx=parse_ctx, children=[child1])
 
-    def eval_int(self, context) -> int:
-        return self.children[0].eval_int(context) * -1
+    def eval(self, context) -> int:
+        child = self.children[0].eval(context)
+        assert_int(child, "Operand of unary-minus operator", self.children[0].error_col, self.error_col)
+        return child * -1
 
     def __str__(self):
-        return ("(-%s)" % (str(self.children[0])))
+        return "(-%s)" % (str(self.children[0]))
 
 
 class NotExpression(Expression):
+    """Unary-not operator."""
+
     def __init__(self, parse_ctx, child1: Expression):
         super().__init__('Not Operator', parse_ctx=parse_ctx, children=[child1])
 
-    def eval_int(self, context) -> int:
-        child1_eval = self.children[0].eval_int(context)
-        if child1_eval == 0:
-            return 1
+    def eval(self, context) -> int:
+        child = self.children[0].eval(context)
+        assert_int(child, "Operand of not operator", self.children[0].error_col, self.error_col)
+        if child == 0:
+            result = 1
         else:
-            return 0
+            result = 0
+        return result
 
     def __str__(self):
-        return ("(!%s)" % (str(self.children[0])))
+        return "(!%s)" % (str(self.children[0]))
 
 
 class BitNotExpression(Expression):
+    """Unary-bitwise-not operator."""
+
     def __init__(self, parse_ctx, child1: Expression):
         super().__init__('Bitwise-Not Operator', parse_ctx=parse_ctx, children=[child1])
 
-    def eval_int(self, context) -> int:
-        return ~self.children[0].eval_int(context)
+    def eval(self, context):
+        child = self.children[0].eval(context)
+        assert_int(child, "Operand of bitwise-not operator", self.children[0].error_col, self.error_col)
+        return ~child
 
     def __str__(self):
-        return ("(~%s)" % (str(self.children[0])))
+        return "(~%s)" % (str(self.children[0]))
 
 # ########## Binary Expression: ##########
 
 
 class DivExpression(Expression):
+    """Division operator."""
+
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
         super().__init__('Division Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
-    def eval_int(self, context) -> int:
-        return self.children[0].eval_int(context) // self.children[1].eval_int(context)
+    def eval(self, context):
+        child0 = self.children[0].eval(context)
+        assert_int(child0, "Left operand of division operator", self.children[0].error_col, self.error_col)
+        child1 = self.children[1].eval(context)
+        assert_int(child1, "Right operand of division operator", self.children[1].error_col, self.error_col)
+        return child0 // child1
 
     def __str__(self):
-        return ("(%s / %s)" % (str(self.children[0]), str(self.children[1])))
+        return "(%s / %s)" % (str(self.children[0]), str(self.children[1]))
 
 
 class MulExpression(Expression):
+    """Multiplication operator."""
+
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
         super().__init__('Multiplication Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
-    def eval_int(self, context) -> int:
-        return self.children[0].eval_int(context) * self.children[1].eval_int(context)
+    def eval(self, context):
+        child0 = self.children[0].eval(context)
+        assert_int(child0, "Left operand of multiplication operator", self.children[0].error_col, self.error_col)
+        child1 = self.children[1].eval(context)
+        assert_int(child1, "Right operand of multiplication operator", self.children[1].error_col, self.error_col)
+        return child0 * child1
 
     def __str__(self):
-        return ("(%s * %s)" % (str(self.children[0]), str(self.children[1])))
+        return "(%s * %s)" % (str(self.children[0]), str(self.children[1]))
 
 
 class ModExpression(Expression):
+    """Modulo operator."""
+
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
         super().__init__('Modulo Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
-    def eval_int(self, context) -> int:
-        return self.children[0].eval_int(context) % self.children[1].eval_int(context)
+    def eval(self, context):
+        child0 = self.children[0].eval(context)
+        assert_int(child0, "Left operand of modulo operator", self.children[0].error_col, self.error_col)
+        child1 = self.children[1].eval(context)
+        assert_int(child1, "Right operand of modulo operator", self.children[1].error_col, self.error_col)
+        return child0 % child1
 
     def __str__(self):
-        return ("(%s %% %s)" % (str(self.children[0]), str(self.children[1])))
+        return "(%s %% %s)" % (str(self.children[0]), str(self.children[1]))
 
 
 class AddExpression(Expression):
+    """Plus operator."""
+
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
         super().__init__('Addition Operator', parse_ctx=parse_ctx, children=[child1, child2])
-        self.parse_ctx = parse_ctx
-        self.error_col = (_get_ctx_start(parse_ctx), _get_ctx_stop(parse_ctx))
 
-    def eval_int(self, context) -> int:
-        return self.children[0].eval_int(context) + self.children[1].eval_int(context)
+    def eval(self, context):
+        child0 = self.children[0].eval(context)
+        child1 = self.children[1].eval(context)
+        if isinstance(child0, int) and isinstance(child1, int):
+            result = child0 + child1
+        elif isinstance(child0, str) and isinstance(child1, str):
+            result = child0 + child1
+        else:
+            msg = "Addition is not defined for types: "+_type_combination_str([child0, child1])
+            raise EvalException(msg, error_col=self.error_col)
+        return result
 
     def __str__(self):
-        return ("(%s + %s)" % (str(self.children[0]), str(self.children[1])))
+        return "(%s + %s)" % (str(self.children[0]), str(self.children[1]))
 
 
 class SubExpression(Expression):
+    """Minus operator."""
+
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
         super().__init__('Subtraction Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
-    def eval_int(self, context) -> int:
-        return self.children[0].eval_int(context) - self.children[1].eval_int(context)
+    def eval(self, context):
+        child0 = self.children[0].eval(context)
+        assert_int(child0, "Left operand of subtraction operator", self.children[0].error_col, self.error_col)
+        child1 = self.children[1].eval(context)
+        assert_int(child1, "Right operand of subtraction operator", self.children[1].error_col, self.error_col)
+        return child0 - child1
 
     def __str__(self):
-        return ("(%s - %s)" % (str(self.children[0]), str(self.children[1])))
+        return "(%s - %s)" % (str(self.children[0]), str(self.children[1]))
 
 
 class LShiftExpression(Expression):
+    """Left-shift operator."""
+
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
         super().__init__('Left-Shift Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
-    def eval_int(self, context) -> int:
-        return self.children[0].eval_int(context) << self.children[1].eval_int(context)
+    def eval(self, context):
+        child0 = self.children[0].eval(context)
+        assert_int(child0, "Left operand of left-shift operator", self.children[0].error_col, self.error_col)
+        child1 = self.children[1].eval(context)
+        assert_int(child1, "Right operand of left-shift operator", self.children[1].error_col, self.error_col)
+        return child0 << child1
 
     def __str__(self):
-        return ("(%s << %s)" % (str(self.children[0]), str(self.children[1])))
+        return "(%s << %s)" % (str(self.children[0]), str(self.children[1]))
 
 
 class RShiftExpression(Expression):
+    """Right-shift operator."""
+
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
         super().__init__('Right-Shift Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
-    def eval_int(self, context) -> int:
-        return self.children[0].eval_int(context) >> self.children[1].eval_int(context)
+    def eval(self, context):
+        child0 = self.children[0].eval(context)
+        assert_int(child0, "Left operand of right-shift operator", self.children[0].error_col, self.error_col)
+        child1 = self.children[1].eval(context)
+        assert_int(child1, "Right operand of right-shift operator", self.children[1].error_col, self.error_col)
+        return child0 >> child1
 
     def __str__(self):
-        return ("(%s >> %s)" % (str(self.children[0]), str(self.children[1])))
+        return "(%s >> %s)" % (str(self.children[0]), str(self.children[1]))
 
 
 class LessExpression(Expression):
+    """Less-than comparison operator."""
+
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
         super().__init__('Less Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
-    def eval_int(self, context) -> int:
-        child1_eval = self.children[0].eval_int(context)
-        child2_eval = self.children[1].eval_int(context)
-        if child1_eval < child2_eval:
-            return 1
+    def eval(self, context):
+        child0 = self.children[0].eval(context)
+        assert_int(child0, "Left operand of comparison operator", self.children[0].error_col, self.error_col)
+        child1 = self.children[1].eval(context)
+        assert_int(child1, "Right operand of comparison operator", self.children[1].error_col, self.error_col)
+        if child0 < child1:
+            result = 1
         else:
-            return 0
+            result = 0
+        return result
 
     def __str__(self):
-        return ("(%s < %s)" % (str(self.children[0]), str(self.children[1])))
+        return "(%s < %s)" % (str(self.children[0]), str(self.children[1]))
 
 
 class LessEqExpression(Expression):
+    """Less-than-or-equals comparison operator."""
+
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
         super().__init__('Less-Or-Equals Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
-    def eval_int(self, context) -> int:
-        child1_eval = self.children[0].eval_int(context)
-        child2_eval = self.children[1].eval_int(context)
-        if child1_eval <= child2_eval:
-            return 1
+    def eval(self, context):
+        child0 = self.children[0].eval(context)
+        assert_int(child0, "Left operand of comparison operator", self.children[0].error_col, self.error_col)
+        child1 = self.children[1].eval(context)
+        assert_int(child1, "Right operand of comparison operator", self.children[1].error_col, self.error_col)
+        if child0 <= child1:
+            result = 1
         else:
-            return 0
+            result = 0
+        return result
 
     def __str__(self):
-        return ("(%s <= %s)" % (str(self.children[0]), str(self.children[1])))
+        return "(%s <= %s)" % (str(self.children[0]), str(self.children[1]))
 
 
 class GreaterExpression(Expression):
+    """Greater-than comparison operator"""
+
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
         super().__init__('Greater Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
-    def eval_int(self, context) -> int:
-        child1_eval = self.children[0].eval_int(context)
-        child2_eval = self.children[1].eval_int(context)
-        if child1_eval > child2_eval:
-            return 1
+    def eval(self, context):
+        child0 = self.children[0].eval(context)
+        assert_int(child0, "Left operand of comparison operator", self.children[0].error_col, self.error_col)
+        child1 = self.children[1].eval(context)
+        assert_int(child1, "Right operand of comparison operator", self.children[1].error_col, self.error_col)
+        if child0 > child1:
+            result = 1
         else:
-            return 0
+            result = 0
+        return result
 
     def __str__(self):
-        return ("(%s > %s)" % (str(self.children[0]), str(self.children[1])))
+        return "(%s > %s)" % (str(self.children[0]), str(self.children[1]))
 
 
 class GreaterEqExpression(Expression):
+    """Greater-than-or-equals comparison operator."""
+
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
         super().__init__('Greater-Or-Equals Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
-    def eval_int(self, context) -> int:
-        child1_eval = self.children[0].eval_int(context)
-        child2_eval = self.children[1].eval_int(context)
-        if child1_eval >= child2_eval:
-            return 1
+    def eval(self, context):
+        child0 = self.children[0].eval(context)
+        assert_int(child0, "Left operand of comparison operator", self.children[0].error_col, self.error_col)
+        child1 = self.children[1].eval(context)
+        assert_int(child1, "Right operand of comparison operator", self.children[1].error_col, self.error_col)
+        if child0 >= child1:
+            result = 1
         else:
-            return 0
+            result = 0
+        return result
 
     def __str__(self):
-        return ("(%s >= %s)" % (str(self.children[0]), str(self.children[1])))
+        return "(%s >= %s)" % (str(self.children[0]), str(self.children[1]))
 
 
 class EqExpression(Expression):
+    """Equals comparison operator."""
+
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
         super().__init__('Equals Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
-    def eval_int(self, context) -> int:
-        child1_eval = self.children[0].eval_int(context)
-        child2_eval = self.children[1].eval_int(context)
-        if child1_eval == child2_eval:
-            return 1
+    def eval(self, context):
+        child0 = self.children[0].eval(context)
+        assert_int(child0, "Left operand of comparison operator", self.children[0].error_col, self.error_col)
+        child1 = self.children[1].eval(context)
+        assert_int(child1, "Right operand of comparison operator", self.children[1].error_col, self.error_col)
+        if child0 == child1:
+            result = 1
         else:
-            return 0
+            result = 0
+        return result
 
     def __str__(self):
-        return ("(%s == %s)" % (str(self.children[0]), str(self.children[1])))
+        return "(%s == %s)" % (str(self.children[0]), str(self.children[1]))
 
 
 class NEqExpression(Expression):
+    """Not-equals comparison operator."""
+
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
         super().__init__('Not-Equals Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
-    def eval_int(self, context) -> int:
-        child1_eval = self.children[0].eval_int(context)
-        child2_eval = self.children[1].eval_int(context)
-        if child1_eval != child2_eval:
-            return 1
+    def eval(self, context):
+        child0 = self.children[0].eval(context)
+        assert_int(child0, "Left operand of comparison operator", self.children[0].error_col, self.error_col)
+        child1 = self.children[1].eval(context)
+        assert_int(child1, "Right operand of comparison operator", self.children[1].error_col, self.error_col)
+        if child0 != child1:
+            result = 1
         else:
-            return 0
+            result = 0
+        return result
 
     def __str__(self):
-        return ("(%s != %s)" % (str(self.children[0]), str(self.children[1])))
+        return "(%s != %s)" % (str(self.children[0]), str(self.children[1]))
 
 
 class BitAndExpression(Expression):
+    """Bitwise-and operator."""
+
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
         super().__init__('Bitwise-And Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
-    def eval_int(self, context) -> int:
-        return self.children[0].eval_int(context) & self.children[1].eval_int(context)
+    def eval(self, context):
+        child0 = self.children[0].eval(context)
+        assert_int(child0, "Left operand of bitwise-and operator", self.children[0].error_col, self.error_col)
+        child1 = self.children[1].eval(context)
+        assert_int(child1, "Right operand of bitwise-and operator", self.children[1].error_col, self.error_col)
+        return child0 & child1
 
     def __str__(self):
-        return ("(%s & %s)" % (str(self.children[0]), str(self.children[1])))
+        return "(%s & %s)" % (str(self.children[0]), str(self.children[1]))
 
 
 class BitOrExpression(Expression):
+    """Bitwise-or operator."""
+
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
         super().__init__('Bitwise-Or Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
-    def eval_int(self, context) -> int:
-        return self.children[0].eval_int(context) | self.children[1].eval_int(context)
+    def eval(self, context):
+        child0 = self.children[0].eval(context)
+        assert_int(child0, "Left operand of bitwise-or operator", self.children[0].error_col, self.error_col)
+        child1 = self.children[1].eval(context)
+        assert_int(child1, "Right operand of bitwise-or operator", self.children[1].error_col, self.error_col)
+        return child0 | child1
 
     def __str__(self):
-        return ("(%s | %s)" % (str(self.children[0]), str(self.children[1])))
+        return "(%s | %s)" % (str(self.children[0]), str(self.children[1]))
 
 
 class BitXORExpression(Expression):
+    """Bitwise-exclusive-or operator."""
+
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
         super().__init__('Bitwise-Xor Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
-    def eval_int(self, context) -> int:
-        return self.children[0].eval_int(context) ^ self.children[1].eval_int(context)
+    def eval(self, context):
+        child0 = self.children[0].eval(context)
+        assert_int(child0, "Left operand of bitwise-xor operator", self.children[0].error_col, self.error_col)
+        child1 = self.children[1].eval(context)
+        assert_int(child1, "Right operand of bitwise-xor operator", self.children[1].error_col, self.error_col)
+        return child0 ^ child1
 
     def __str__(self):
-        return ("(%s ^ %s)" % (str(self.children[0]), str(self.children[1])))
+        return "(%s ^ %s)" % (str(self.children[0]), str(self.children[1]))
 
 
 class AndExpression(Expression):
+    """Bitwise-and operator."""
+
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
         super().__init__('And Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
-    def eval_int(self, context) -> int:
+    def eval(self, context):
         # Short-circuit eval:
-        child1_eval = self.children[0].eval_int(context)
-        if child1_eval == 0:
-            return 0
+        child0 = self.children[0].eval(context)
+        assert_int(child0, "Left operand of and operator", self.children[0].error_col, self.error_col)
+
+        if child0 == 0:
+            result = 0
         else:
-            if self.children[1].eval_int(context) == 0:
-                return 0
+            child1 = self.children[1].eval(context)
+            assert_int(child1, "Right operand of and operator", self.children[1].error_col, self.error_col)
+            if child1 == 0:
+                result = 0
             else:
-                return 1
+                result = 1
+        return result
 
     def __str__(self):
-        return ("(%s && %s)" % (str(self.children[0]), str(self.children[1])))
+        return "(%s && %s)" % (str(self.children[0]), str(self.children[1]))
 
 
 class OrExpression(Expression):
+    """Bitwise-or operator."""
+
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
         super().__init__('Or Operator', parse_ctx=parse_ctx, children=[child1, child2])
 
-    def eval_int(self, context) -> int:
+    def eval(self, context):
         # Short-circuit eval:
-        child1_eval = self.children[0].eval_int(context)
-        if child1_eval != 0:
-            return 1
+        child0 = self.children[0].eval(context)
+        assert_int(child0, "Left operand of or operator", self.children[0].error_col, self.error_col)
+
+        if child0 == 1:
+            result = 1
         else:
-            if self.children[1].eval_int(context) == 0:
-                return 0
+            child1 = self.children[1].eval(context)
+            assert_int(child1, "Right operand of or operator", self.children[1].error_col, self.error_col)
+            if child1 == 0:
+                result = 0
             else:
-                return 1
+                result = 1
+        return result
 
     def __str__(self):
-        return ("(%s || %s)" % (str(self.children[0]), str(self.children[1])))
+        return "(%s || %s)" % (str(self.children[0]), str(self.children[1]))
 
 
 # ########## Ternary Expression: ##########
 
 class ConditionalExpression(Expression):
+    """Conditional operator."""
+
     def __init__(self, parse_ctx, child1: Expression, child2: Expression, child3: Expression):
         super().__init__('Multiplication Operator', parse_ctx=parse_ctx, children=[child1, child2, child3])
 
-    def eval_int(self, context) -> int:
-        if self.children[0].eval_int(context) == 0:
-            return self.children[2].eval_int(context)
+    def eval(self, context):
+        child0 = self.children[0].eval(context)
+        assert_int(child0, "Conidition of conditional operator", self.children[0].error_col, self.error_col)
+        if child0 == 0:
+            result = self.children[2].eval(context)
         else:
-            return self.children[1].eval_int(context)
-
-    def eval_str(self, context) -> str:
-        # TODO
-        pass
+            result = self.children[1].eval(context)
+        return result
 
     def __str__(self):
-        return ("(%s ? %s : %s)" % (str(self.children[0]), str(self.children[1]), str(self.children[2])))
+        return "(%s ? %s : %s)" % (str(self.children[0]), str(self.children[1]), str(self.children[2]))

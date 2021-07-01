@@ -1,4 +1,6 @@
 from collections import deque
+from typing import List
+
 from Util.Errors import ParsingException
 
 from Parsing.ParsedLine import ParsedLine
@@ -6,7 +8,7 @@ from Parsing.ParsedLine import IfDirective, ElIfDirective, ElseDirective, EndIfD
 from Parsing.ParsedLine import MacroDirective, EndMacroDirective
 
 
-def associate_lines(lines: [ParsedLine]):
+def associate_lines(lines: List[ParsedLine]):
     result = []
     in_queue = deque(lines)
 
@@ -26,14 +28,14 @@ def _peek_is_directive(in_queue, kind):
 
 def _consume_directive(in_queue, kind):
     if not in_queue:
-        raise ParsingException("Unexpected EOF, exptected %s" % kind.type_name)
+        raise ParsingException("Unexpected EOF, expected %s" % kind.type_name)
 
     consumed = in_queue.popleft()
 
     if isinstance(consumed, kind):
         return consumed
     else:
-        raise ParsingException("Unexpected %s, exptected %s" % (consumed.type_name, kind.type_name))
+        raise ParsingException("Unexpected %s, expected %s" % (consumed.type_name, kind.type_name))
 
 
 def _consume_block(in_queue):

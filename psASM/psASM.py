@@ -7,18 +7,19 @@ from Input.SourceFile import SourceFiles
 
 import Parsing.Parser as Parser
 
-import PreProc.PreProc as PreProc
+from PreProc.PreProc import PreProc
 
 from Output import OutputGenerator
+from Output.psOBJ import psOBJ
 
 
 def main(args):
     """Run the psASM Assembler."""
     # Get settings from cmdline arguments
     settings = parse_args(args)
-
     try:
         if settings['input_type'] == 'psASM':
+            source_files = None
             try:
                 # If the input is a source file, parse, process, and assemble a psOBJ:
 
@@ -30,21 +31,24 @@ def main(args):
                 parsed_files = Parser.parse_source_files(source_files)
 
                 # Run Pre-Processor:
-                asm_listing = PreProc.process(parsed_files)
+                preproc = PreProc(source_files, parsed_files, settings)
+                instruction_listing = preproc.process()
 
-                obj = None
-            except LocatedException as e:
-                e.decorate_source_files(source_files)
-                raise e
+                # Package into a psOBJ
+                obj = psOBJ(source_files, instruction_listing)
+
+            except LocatedException as exc:
+                exc.decorate_source_files(source_files)
+                raise exc
         else:
             # If the input is already a psOBJ, import it:
             obj = None
 
-    except FileNotFoundError as e:
-        print("Error: File %s not found!" % e.filename)
+    except FileNotFoundError as exc:
+        print("Error: File %s not found!" % exc.filename)
         sys.exit(-1)
-    except psASMException as e:
-        print(e)
+    except psASMException as exc:
+        print(exc)
         sys.exit(-1)
 
     # Now, using this psOBJ, generate the requested output

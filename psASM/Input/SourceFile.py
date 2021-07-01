@@ -35,26 +35,30 @@ def _extract_include(text) -> str:
     return file_name
 
 
+# TODO: Should refactor so that 'file_id' is not required: Annoying in PseudoFileGenerator
 class SourceFile:
     """A .psASM file."""
 
-    def __init__(self, file_id, path, content=[], stdlib_file=False):
+    def __init__(self, file_id, path, content=None, stdlib_file=False):
         self.file_id = file_id
         self.path = path
-        self.content = content
+        if content is None:
+            self.content = []
+        else:
+            self.content = content
         self.stdlib_file = stdlib_file
 
     @classmethod
     def from_file(cls, file_id, file_path):
         """Generate a SourceFile from a given path."""
         if Input.StdLib.is_stdlib_file(file_path):
-            return cls.from_stdlib_file(file_id, file_path)
+            result = cls.from_stdlib_file(file_id, file_path)
         else:
-            asm_file = cls(file_id, file_path)
+            result = cls(file_id, file_path)
             with open(file_path, 'r') as file:
                 for line_text in file:
-                    asm_file.content.append(line_text)
-            return asm_file
+                    result.content.append(line_text)
+        return result
 
     @classmethod
     def from_stdlib_file(cls, file_id, stdlib_file):
@@ -66,21 +70,21 @@ class SourceFile:
     def __len__(self):
         return len(self.content)
 
-    def __getitem__(self, position):
-        return self.content[position]
+    def __getitem__(self, index):
+        return self.content[index]
 
     def get_included_paths(self):
         """Return list of paths of files directly included in this file."""
         included_paths = []
 
-        for line_id, line in enumerate(self):
+        for line_id, line in enumerate(self.content):
             try:
                 if _is_include(line):
                     included_paths.append(_extract_include(line))
 
-            except LocatedException as e:
-                e.decorate_location(self.file_id, line_id)
-                raise e
+            except LocatedException as exc:
+                exc.decorate_location(self.file_id, line_id)
+                raise exc
 
         return included_paths
 
@@ -92,8 +96,11 @@ class SourceFile:
 class SourceFiles:
     """The collection of all .psASM files that make up a program."""
 
-    def __init__(self, files=[]):
-        self.files = files
+    def __init__(self, files=None):
+        if files is None:
+            self.files = []
+        else:
+            self.files = files
 
     def add_from_root_file(self, root_file_path, settings):
         """Add a root file and all included files."""
@@ -101,9 +108,9 @@ class SourceFiles:
 
         # Unless no startup/footer is selected, ensure that the files are included:
         if not settings['no_startup']:
-            paths_to_add.append(Input.StdLib.stdlib_startup_name)
+            paths_to_add.append(Input.StdLib.STDLIB_STARTUP_NAME)
         if not settings['no_footer']:
-            paths_to_add.append(Input.StdLib.stdlib_footer_name)
+            paths_to_add.append(Input.StdLib.STDLIB_FOOTER_NAME)
 
         for path in paths_to_add:
             # Open this file and add it to the filespace:
@@ -152,6 +159,12 @@ class SourceFiles:
             if file.file_id == file_id:
                 return file.path
         raise KeyError('File ID not found.')
+
+    def get_file_id(self, path):
+        for file in self.files:
+            if file.path == path:
+                return file.file_id
+        raise ValueError("Unknown file path")
 
     def location_str(self, file_id, line_id=None, col=None):
         """Generate typical location string (ie: file.psASM:43:10)
