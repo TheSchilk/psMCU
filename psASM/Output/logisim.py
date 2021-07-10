@@ -1,11 +1,11 @@
 
-def generate(listing, out_name):
-    with open(out_name + "LOGISIM", 'w') as outfile:
+def generate(psOBJ, settings):
+    with open(settings['output_name'] + "LOGISIM", 'w') as outfile:
         outfile.write("v2.0 raw\n")
         count = 0
-        for line in listing.Lines:
+        for inst in psOBJ.instruction_listing:
             count += 1
-            outfile.write(line.instruction.binary.hex())
+            outfile.write(inst.binary.hex())
             if count != 8:
                 outfile.write(" ")
             else:

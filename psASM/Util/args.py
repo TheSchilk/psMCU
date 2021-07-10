@@ -1,6 +1,7 @@
 import argparse
 import sys
 import re
+import os
 
 
 def parse_args(args):
@@ -73,6 +74,10 @@ def parse_args(args):
     # Replace defines with formatted name/value lists
     parsed_args['define'] = defines
 
+    # If no output name was given, use same as input:
+    if parsed_args['output_name'] is None:
+        parsed_args['output_name'] = os.path.splitext(parsed_args['input_file'])[0]
+
     # If no output file is selected, select binary output.
     default_output = 'gen_bin'
     # First, find all 'generate_output' flags:
@@ -80,7 +85,7 @@ def parse_args(args):
     # See if any are set:
     output_selected = False
     for f in output_flags:
-        output_flags = output_flags or f
+        output_selected = output_selected or parsed_args[f]
     # Otherwise, select default output:
     if not output_selected:
         parsed_args[default_output] = True
