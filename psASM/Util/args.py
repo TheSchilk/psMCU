@@ -21,6 +21,7 @@ def parse_args(args):
     output_format.add_argument('-S', '--gen_split', required=False, action="store_true", help='Generate split binary files.')
     output_format.add_argument('-M', '--gen_map', required=False, action="store_true", help='Generate map file.')
     output_format.add_argument('-U', '--gen_usage', required=False, action="store_true", help='Report memory usage.')
+    output_format.add_argument('-A', '--gen_annotated', required=False, action="store_true", help='Generate an annotated assembly program.')
     # parser.add_argument('-?', '--gen_defs', required=False, action="store_true", help='Generate definitions file.')
 
     parser.add_argument('-D', '--define', required=False, action="append", type=str,

@@ -3,6 +3,7 @@ import Output.split_bin
 import Output.logisim
 import Output.map
 import Output.usage
+import Output.annotated
 
 
 def generate(settings, psOBJ):
@@ -16,3 +17,5 @@ def generate(settings, psOBJ):
         Output.map.generate(psOBJ, settings)
     if settings['gen_usage']:
         Output.usage.generate(psOBJ, settings)
+    if settings['gen_annotated']:
+        Output.annotated.generate(psOBJ, settings)

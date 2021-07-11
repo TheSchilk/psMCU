@@ -49,6 +49,10 @@ class PreProc:
         for line in intermediate:
             result.append(Instruction.from_preproc_line(line))
 
+        # Check that program will fit
+        if len(result) > 2**14:
+            print("Warning: Programm size exceeds memory size.")
+
         return result
 
     def _back_populate_source_file(self, source_file: SourceFile):

@@ -5,7 +5,7 @@ import Input.StdLib
 
 def _is_include(text) -> bool:
     """Check if this file is a preprocessor include statement."""
-    return bool(re.match(r'^\s*@include', text))
+    return bool(re.match(r'^\s*@include\s', text))
 
 
 def _extract_include(text) -> str:
@@ -72,6 +72,9 @@ class SourceFile:
 
     def __getitem__(self, index):
         return self.content[index]
+
+    def __setitem__(self, key, value):
+        self.content[key] = value
 
     def get_included_paths(self):
         """Return list of paths of files directly included in this file."""
