@@ -90,7 +90,7 @@ def parse_args(args):
     # If no output name was given, use same as input:
     if parsed_args['out'] is None:
         parsed_args['out'] = os.path.splitext(parsed_args['input_file'])[0]
-        log(1, "Args: No output name specfied, using input name '%s'" % parsed_args['out'])
+        log(1, "Args: No output name specified, using input name '%s'" % parsed_args['out'])
 
     # If no output file is selected, select binary output.
     default_output = 'gen_bin'
