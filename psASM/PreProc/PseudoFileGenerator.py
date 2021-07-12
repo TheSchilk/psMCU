@@ -1,3 +1,5 @@
+from Util.Log import log
+
 from Input.SourceFile import SourceFile
 from Input.StdLib import STDLIB_FOOTER_NAME, STDLIB_STARTUP_NAME
 
@@ -17,6 +19,7 @@ class HeaderFooterFile(SourceFile):
         content.append("# Handles branch to entry point and interrupt."+"\n")
         startup_line = '@include "%s"' % STDLIB_STARTUP_NAME
         if settings['no_startup']:
+            log(1, "PreProc: Disabled startup file")
             startup_line = '# ' + startup_line + " # Disabled by '-s' flag."
         content.append(startup_line + "\n")
         content.append("\n")
@@ -32,6 +35,7 @@ class HeaderFooterFile(SourceFile):
         content.append("# Adds infinite loop to end of program to prevent overrun."+"\n")
         footer_line = '@include "%s"' % STDLIB_FOOTER_NAME
         if settings['no_footer']:
+            log(1, "PreProc: Disabled footer file")
             footer_line = '# ' + footer_line + " # Disabled by '-f' flag."
         content.append(footer_line + "\n")
         content.append("\n")
