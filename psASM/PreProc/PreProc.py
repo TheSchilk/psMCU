@@ -1,6 +1,8 @@
 from typing import List
 
 from Util.Errors import ErrorDirectiveException, LocatedException, EvalException
+from Util.Log import log
+
 from Input.SourceFile import SourceFiles, SourceFile
 
 import Parsing.Parser as Parser
@@ -50,13 +52,17 @@ class PreProc:
             result.append(Instruction.from_preproc_line(line))
 
         # Check that program will fit
-        if len(result) > 2**14:
+        prog_length = len(result)
+        prog_usage = prog_length*100/(2**14)
+        log(1, "PreProc: Finished. Final program is %i instructions (%.2f%% of ROM)" % (prog_length, prog_usage))
+        if prog_length > 2**14:
             print("Warning: Programm size exceeds memory size.")
 
         return result
 
     def _back_populate_source_file(self, source_file: SourceFile):
         # try:
+        log(1, "PreProc: Back-populating %s" % source_file.path)
         file_id = self.source_files.next_id()
 
         # Set file-id and add to source files:
@@ -80,8 +86,12 @@ class PreProc:
 
         # only include file if it should be
         # (I.e. not marked 'include_once' and not already included)
+        path = self.source_files.get_file_path(file_id)
         if not parsed_file.should_include():
+            log(1, "PreProc: Did not process/inline %s again because of @include_once directive." % path)
             return result
+        else:
+            log(1, "PreProc: Processing & inlining %s" % path)
 
         # Note that this file has been included at least once
         parsed_file.mark_inclusion()

@@ -1,5 +1,6 @@
 import re
 from Util.Errors import ParsingException, LocatedException
+from Util.Log import log
 import Input.StdLib
 
 
@@ -127,6 +128,8 @@ class SourceFiles:
             for included_path in include_paths:
                 if not self.contains_path(included_path):
                     paths_to_add.append(included_path)
+                else:
+                    log(1, "Input: Did not include %s, already included." % path)
 
     def __len__(self):
         return len(self.files)
@@ -149,6 +152,7 @@ class SourceFiles:
 
     def add_file(self, file):
         """Add a new file."""
+        log(1, "Input: Added %s" % file.path)
         self.files.append(file)
 
     def get_line_text(self, file_id, line_id):

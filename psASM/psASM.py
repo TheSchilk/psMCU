@@ -17,6 +17,7 @@ def main(args):
     """Run the psASM Assembler."""
     # Get settings from cmdline arguments
     settings = parse_args(args)
+
     try:
         if settings['input_type'] == 'psASM':
             source_files = None

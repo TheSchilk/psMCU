@@ -21,7 +21,7 @@ def generate(psOBJ, settings):
 
         source_files[file_id][line_id] = original_text + comment + '\n'
 
-    with open(settings['output_name'] + "_annotated.psASM", 'w') as outfile:
+    with open(settings['out'] + "_annotated.psASM", 'w') as outfile:
         for file in source_files:
             # Print file header
             outfile.write("\n")

@@ -39,5 +39,5 @@ def generate(psOBJ, settings):
 
         map_file_table_cols[cols["line"]].append(line_text)
 
-    with open(settings['output_name'] + ".map", 'w') as outfile:
+    with open(settings['out'] + ".map", 'w') as outfile:
         outfile.write(table_string(map_file_table_headers, map_file_table_cols))

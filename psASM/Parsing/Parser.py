@@ -1,3 +1,5 @@
+from Util.Log import log
+
 from Input.SourceFile import SourceFile, SourceFiles
 
 from Parsing.ParsedFile import ParsedFile, ParsedFiles
@@ -20,8 +22,8 @@ def parse_source_files(source_files: SourceFiles):
 
 def parse_source_file(source_file: SourceFile):
     parsed_lines = []
+    log(1, "Parsing: Parsing %s" % source_file.path)
     try:
-
         # First, parse every line:
         for line_id, source_line in enumerate(source_file):
             try:
