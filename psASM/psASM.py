@@ -5,7 +5,7 @@ from Util.Errors import psASMException, LocatedException
 
 from Input.SourceFile import SourceFiles
 
-import Parsing.Parser as Parser
+from Parsing import Parser
 
 from PreProc.PreProc import PreProc
 
@@ -43,18 +43,20 @@ def main(args):
                 raise exc
         else:
             # If the input is already a psOBJ, import it:
-            obj = None
+            obj = psOBJ.from_file(settings['input_file'])
+    
+        # Now, using this psOBJ, generate the requested output
+        OutputGenerator.generate(settings, obj)
 
     except FileNotFoundError as exc:
         print("Error: File %s not found!" % exc.filename)
-        sys.exit(-1)
+        return -1
     except psASMException as exc:
         print(exc)
-        sys.exit(-1)
-
-    # Now, using this psOBJ, generate the requested output
-    OutputGenerator.generate(settings, obj)
-
-
+        return -1
+    
+    return 0
 if __name__ == '__main__':
-    main(sys.argv)
+    args = sys.argv.copy()
+    args.pop(0)  # Get rid of path
+    main(args)

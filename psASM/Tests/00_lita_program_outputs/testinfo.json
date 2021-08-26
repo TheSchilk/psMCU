@@ -1,0 +1,24 @@
+{
+  "test_name" : "LITA to Program Outputs",
+  
+  "runs" : [
+    "input.psASM -s -f -o output -B -L -S"
+  ],
+  
+  "text_diffs" : [
+    ["outputLOGISIM", "golden_outputLOGISIM"]
+  ],
+  
+  "bin_diffs" : [
+    ["output.bin", "golden_output.bin"],
+    ["output_L.bin", "golden_output_L.bin"],
+    ["output_H.bin", "golden_output_H.bin"]
+  ],
+
+  "cleanup" : [
+    "output.bin",
+    "outputLOGISIM",
+    "output_L.bin",
+    "output_H.bin"
+  ]
+}

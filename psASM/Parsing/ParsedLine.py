@@ -419,16 +419,16 @@ class MacroDirective(PreProcDirective):
             if arg == find:
                 # Found an arg that should be replaced
                 # Ensure that replacement is an IdentifierExpression
-                if not isinstance(replace, IdentifierExpression):
-                    raise EvalException('Can only replace macro definition argument identifier with another identifer.')
-                else:
+                if isinstance(replace, IdentifierExpression):
                     self.args[index] = replace.text
+                else:
+                    raise EvalException('Can only replace macro definition argument identifier with another identifer.')
 
     def expand(self, expansion_args):
         want_args = len(self.args)
         have_args = len(expansion_args)
         if want_args != have_args:
-            msg = "Expansion of macro %s expected %i arguments, got %i." % (self.macro_name, want_args, have_args)
+            msg = "Expansion of macro %s expected %i arguments, got %i." % (self.name, want_args, have_args)
             raise EvalException(msg, file_id=self.file_id, line_id=self.line_id)
 
         # Generate block
@@ -474,10 +474,10 @@ class MacroExpansionDirective(PreProcDirective):
             if label == find:
                 # Found a label that should be replaced
                 # Ensure that replacement is an IdentifierExpression
-                if not isinstance(replace, IdentifierExpression):
-                    raise EvalException('Can only replace label during macro expansion if the replacement is an identifier.')
-                else:
+                if isinstance(replace, IdentifierExpression):
                     self.labels[index] = replace.text
+                else:
+                    raise EvalException('Can only replace label during macro expansion if the replacement is an identifier.')
 
         # Replace in arguments:
         for arg in self.args:

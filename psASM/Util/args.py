@@ -7,8 +7,6 @@ from Util.Log import log
 
 
 def parse_args(args):
-    args = args.copy()
-    args.pop(0)  # Get rid of path
 
     parser = argparse.ArgumentParser(prog="psASM.py", description="psASM Assembler for psMCU.")
 

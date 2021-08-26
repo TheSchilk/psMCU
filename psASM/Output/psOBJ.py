@@ -5,4 +5,8 @@ class psOBJ:
 
     @classmethod
     def from_file(cls, file):
+        # TODO
+        return cls(None, None) 
+
+    def write_to_file(self, settings):
         pass
