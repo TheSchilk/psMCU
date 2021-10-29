@@ -38,6 +38,7 @@ GAME:
         JMP MAIN_LOOP
 
 GAME_OVER: 
+    CALL UGS_RESET_INPUT_TRACKING
     CALL RENDER_GAME_OVER
     IFSM 0x105, 3 # If Enter is pressed
         JMP GAME
@@ -46,26 +47,55 @@ GAME_OVER:
 
 # #############
 
+@define DD_DELAY 200
+@define DD_DELAY_SYS2_TRHS 0x80
+@define DD_DELAY_TRACK_INPUT 75
 DELAY_DELAY:
+    PUSHA
     PUSHB
     
-    LITB 200
-   
-   delay_delay_loop:
-        ADDLB -1
+    # Decide delay loop count:
+    # If SYS2 is less than a set threshold (meaning clock is relatively
+    # slow) we only check the inputs once and return. Otherwise we do
+    # the full delay loop.
+    LDA SYS2 
+    LITB DD_DELAY_SYS2_TRHS
+
+    IFRM SYS3, S3_AlessB # If clock is fast enough
+        JMP delay_delay_loop
+    
+    # Clock is slow, don't delay:
+    CALL UGS_TRACK_INPUTS
+    JMP delay_delay_done
+
+    delay_delay_loop:
+        # Keep track of any inputs pressed while waiting, but only after
+        # A certain amount of delay has passed
+        PUSHB
+        LITB DD_DELAY_TRACK_INPUT
+        IFSM SYS3,S3_AlessB
+            CALL UGS_TRACK_INPUTS
+        POPB 
+
+        # Call short delay func
         CALL DELAY
-        IFSM SYS3,S3_B0
+        
+        # Keep track of loop count
+        ADDLA -1
+        IFSM SYS3,S3_A0
             JMP delay_delay_done
         JMP delay_delay_loop
     
     delay_delay_done:
 
-    POPB
+    POPA
+    POPA
     RTRN
 
+@define D_DELAY 255
 DELAY:
     PUSHA
-    LITA 255
+    LITA D_DELAY
     delay_loop: 
         SUBL 1
         IFSM SYS3,S3_A0

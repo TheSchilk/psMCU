@@ -12,6 +12,7 @@
 
 @define GS_headpos_x  0x50
 @define GS_headpos_y  0x51
+@define GS_inputs_acc 0x52
 
 @define INPUT        0x104
 @define INP_L        4
@@ -27,7 +28,7 @@ UPDATE_GAMESTATE:
 
     # ==== Update direction based on input: =====
     # Check if left is pressed: 
-    IFRM INPUT,INP_L
+    IFRM GS_inputs_acc,INP_L
         JMP UGS_LEFT_DONE 
     
     # Left pressed.
@@ -40,7 +41,7 @@ UPDATE_GAMESTATE:
 
 
     # Check if right is pressed:
-    IFRM INPUT,INP_R
+    IFRM GS_inputs_acc,INP_R
         JMP UGS_RIGHT_DONE
 
     # Right pressed.
@@ -125,6 +126,9 @@ UPDATE_GAMESTATE:
 
     UGS_DIR_DONE:
     
+    # Reset Input tracking
+    CALL UGS_RESET_INPUT_TRACKING
+
     # Calculte GS_headpos based on x and y:
     # GS_headpos = (GS_headpos_y * 8) + GS_headpos_x
     LDA GS_headpos_y
@@ -211,3 +215,30 @@ UPDATE_GAMESTATE:
     #### Done. Return Success. ####
     LITA 0
     RTRN # Return with A = 0
+
+
+# Called repeatedly while delaying for next update
+# Accumulates all inputs pressed during delay
+UGS_TRACK_INPUTS:
+    PUSHA
+    PUSHB
+    
+    LDA GS_inputs_acc
+    LDB INPUT
+    
+    OR
+
+    SVA GS_inputs_acc
+
+    POPB
+    POPA
+    RTRN
+
+# Reset Input accumulation
+UGS_RESET_INPUT_TRACKING:
+    PUSHA
+    LITA 0x00
+    SVA GS_inputs_acc
+    POPA
+    RTRN
+
