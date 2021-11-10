@@ -31,9 +31,11 @@ class PreProc:
             self.g_context[name] = value
 
     def process(self):
+        Output.internal_state.generate_preproc0(self.source_files, self.settings)
+        
         # Generate and back-populate header-footer file
         header_footer_id = self._back_populate_source_file(HeaderFooterFile(self.settings))
-        
+
         # Pass 1:
         # Include Files, Build Contexts, Run
         intermediate = self._pre_proc_file(header_footer_id)
