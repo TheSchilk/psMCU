@@ -23,7 +23,8 @@ def parse_args(args):
     output_format.add_argument('-U', '--gen_usage', required=False, action="store_true", help='report memory usage')
     output_format.add_argument('-A', '--gen_annotated', required=False, action="store_true", help='generate an annotated assembly program')
     # parser.add_argument('-?', '--gen_defs', required=False, action="store_true", help='generate definitions file.')
-
+    
+    parser.add_argument('-X', '--log_internal_state', required=False, action="append", help='output various intermediate representations')
     parser.add_argument('-D', '--define', required=False, action="append", type=str, metavar='DEF',
                         help='add a global definition, can be either just a name (-D one) or name and value (-D one=1)')
 
@@ -62,6 +63,11 @@ def parse_args(args):
     if not parsed_args['define']:
         log(1, "Args: No argument defines given")
         parsed_args['define'] = []
+    
+    # Ensure 'log_internal_state' is an empty list if no defines were passed.
+    if not parsed_args['log_internal_state']:
+        log(1, "Args: No argument log_internal_state given")
+        parsed_args['log_internal_state'] = []
 
     # Validate and reformat defines:
     defines = []
@@ -102,5 +108,5 @@ def parse_args(args):
     if not output_selected:
         log(1, "Args: No output format selecting, defaulting to binary (-B)")
         parsed_args[default_output] = True
-
+    
     return parsed_args

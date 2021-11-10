@@ -13,6 +13,7 @@ from PreProc.Context import Context, FileContextManager
 from PreProc.PseudoFileGenerator import HeaderFooterFile, AsciiStackFile, AsciiHeapFile
 
 from Output.Instruction import Instruction
+import Output.internal_state
 
 from collections import deque
 from copy import copy
@@ -32,10 +33,11 @@ class PreProc:
     def process(self):
         # Generate and back-populate header-footer file
         header_footer_id = self._back_populate_source_file(HeaderFooterFile(self.settings))
-
+        
         # Pass 1:
         # Include Files, Build Contexts, Run
         intermediate = self._pre_proc_file(header_footer_id)
+        Output.internal_state.generate_preproc1(intermediate, self.settings)
 
         # Pass 2: Associate labels
         intermediate = self._associate_labels(intermediate)

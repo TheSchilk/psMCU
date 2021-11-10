@@ -1,6 +1,4 @@
 {
-  "test_name" : "LITA to Program Outputs",
-  
   "runs" : [
     "input.psASM -s -f -o output -B -L -S"
   ],

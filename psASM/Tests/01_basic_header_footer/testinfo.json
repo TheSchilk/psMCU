@@ -1,6 +1,4 @@
 {
-  "test_name" : "LITA - basic header/footer",
-  
   "runs" : [
     "input.psASM -o output -L"
   ],

@@ -13,14 +13,14 @@ class Color:
 class TetstFailedException(Exception):
     pass
 
-def test_passed(test_info, test_folder):
+def test_passed(test_folder):
     print(Color.OK, end='')
-    print("Test '%s' in '%s' passed." % (test_info['test_name'], test_folder))
+    print("Test '%s' passed." % test_folder)
     print(Color.END, end='')
 
-def test_failed(test_info, test_folder):
+def test_failed(test_folder):
     print(Color.ERR, end='')
-    print("Test '%s' in '%s' failed!" % (test_info['test_name'], test_folder))
+    print("Test '%s' failed!" % test_folder)
     print(Color.END, end='')
 
 def main():
@@ -32,6 +32,10 @@ def main():
     original_cwd = os.getcwd()
 
     for test_folder in test_folders:
+        
+        if "ignore" in test_folder:
+            continue
+
         # Open testinfo.json:
         try:
             test_info = json.load(open(os.path.join(test_folder, "testinfo.json")))
@@ -84,12 +88,12 @@ def main():
                 raise TetstFailedException()
 
             
-            test_passed(test_info, test_folder)
+            test_passed(test_folder)
         except TetstFailedException:
-            test_failed(test_info, test_folder)
+            test_failed(test_folder)
         except FileNotFoundError as ex:
             print(ex)
-            test_failed(test_info, test_folder)
+            test_failed(test_folder)
         finally:
             # Perfom cleanup:
             try:
