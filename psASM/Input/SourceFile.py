@@ -117,6 +117,12 @@ class SourceFiles:
             paths_to_add.append(Input.StdLib.STDLIB_FOOTER_NAME)
 
         for path in paths_to_add:
+
+            # Do not re-add a path multiple times
+            if self.contains_path(path):
+                log(1, "Input: Did not include %s, already included." % path)
+                continue
+
             # Open this file and add it to the filespace:
             file = SourceFile.from_file(self.next_id(), path)
             self.add_file(file)
@@ -126,10 +132,7 @@ class SourceFiles:
             include_paths = file.get_included_paths()
 
             for included_path in include_paths:
-                if not self.contains_path(included_path):
-                    paths_to_add.append(included_path)
-                else:
-                    log(1, "Input: Did not include %s, already included." % path)
+                paths_to_add.append(included_path)
 
     def __len__(self):
         return len(self.files)

@@ -36,17 +36,18 @@ class Instruction:
         # Convert this into the correct sub-class:
         if not Instruction.instruction_set:
             Instruction.instruction_set = find_instructions()
-        try:
+
             inst_name = line.instruction
             args = line.evaluated_args
             file_id = line.file_id
             line_id = line.line_id
+        try:
             inst = Instruction.instruction_set[inst_name](args, file_id, line_id)
         except KeyError as exc:
             # Should never happen - the parser now tokenizes instructions. But let's at least
             # fail nicely..
             raise ParsingException("Unrecognised instruction '%s' - how did you get this get past my parser?"
-                                   % inst, file_id=file_id, line_id=line_id) from exc
+                                   % inst_name, file_id=file_id, line_id=line_id) from exc
         return inst
 
     def __str__(self):
