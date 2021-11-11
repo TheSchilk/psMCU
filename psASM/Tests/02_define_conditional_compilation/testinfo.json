@@ -1,21 +1,25 @@
 {
   "runs" : [
-    "input.psASM -o outputA -s -f -X preproc1",
-    "input.psASM -o outputB -s -f -X preproc1 -D TEST"
+    "input.psASM -o output0 -s -f -X preproc1",
+    "input.psASM -o output1 -s -f -X preproc1 -D TEST=1",
+    "input.psASM -o output2 -s -f -X preproc1 -D TEST=2"
   ],
   
   "text_diffs" : [
-    ["outputA_preproc1.log", "golden_outputA_preproc1.log"],
-    ["outputB_preproc1.log", "golden_outputB_preproc1.log"]
+    ["output0_preproc1.log", "golden_output0_preproc1.log"],
+    ["output1_preproc1.log", "golden_output1_preproc1.log"],
+    ["output2_preproc1.log", "golden_output2_preproc1.log"]
   ],
   
   "bin_diffs" : [
   ],
 
   "cleanup" : [
-    "outputA.bin",
-    "outputB.bin",
-    "outputA_preproc1.log",
-    "outputB_preproc1.log"
+    "output0.bin",
+    "output1.bin",
+    "output2.bin",
+    "output0_preproc1.log",
+    "output1_preproc1.log",
+    "output2_preproc1.log"
   ]
 }

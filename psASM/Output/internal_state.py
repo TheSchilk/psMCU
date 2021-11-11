@@ -11,4 +11,4 @@ def generate_preproc1(intermediate, settings):
     if 'preproc1' in settings['log_internal_state']:
         with open(settings['out'] + "_preproc1.log", 'w') as outfile:
             for element in intermediate:
-                outfile.write(str(element))
+                outfile.write(str(element)+"\n")
