@@ -28,7 +28,6 @@ IFDEF: '@ifdef' ;
 IFNDEF: '@ifndef' ;
 ELIF: '@elif' ;
 ELSE: '@else' ;
-ENDIF: '@endif' ;
 
 PRINT: '@print';
 ERROR: '@error' ;
@@ -38,7 +37,7 @@ ASCII_STACK: '@ascii_stack' ;
 
 MACRO: '@macro' ;
 
-ENDMACRO: '@endmacro' ;
+END: '@end' ;
 
 // ======= Expressions =======
 

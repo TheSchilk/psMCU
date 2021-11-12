@@ -139,10 +139,10 @@ class psASMOutputVisitor(psASMParserVisitor):
         # 'ELSE'
         return ParsedLine.ElseDirective()
 
-    # Visit a parse tree produced by psASMParser#preproc_endif.
-    def visitPreproc_endif(self, ctx: psASMParser.Preproc_endifContext) -> ParsedLine.EndIfDirective:
-        # 'ENDIF'
-        return ParsedLine.EndIfDirective()
+    # Visit a parse tree produced by psASMParser#preproc_end.
+    def visitPreproc_end(self, ctx: psASMParser.Preproc_endContext) -> ParsedLine.EndDirective:
+        # 'END'
+        return ParsedLine.EndDirective()
 
     # Visit a parse tree produced by psASMParser#preproc_print.
     def visitPreproc_print(self, ctx: psASMParser.Preproc_printContext) -> ParsedLine.PrintDirective:
@@ -181,11 +181,6 @@ class psASMOutputVisitor(psASMParserVisitor):
         name = ctx.macro_name.text
         args = [arg.text for arg in ctx.args]
         return ParsedLine.MacroDirective(name, args)
-
-    # Visit a parse tree produced by psASMParser#preproc_endmacro.
-    def visitPreproc_endmacro(self, ctx: psASMParser.Preproc_endmacroContext) -> ParsedLine.EndMacroDirective:
-        # 'ENDMACRO'
-        return ParsedLine.EndMacroDirective()
 
     # Visit a parse tree produced by psASMParser#preproc_macro_expansion.
     def visitPreproc_macro_expansion(self, ctx: psASMParser.Preproc_macro_expansionContext) \

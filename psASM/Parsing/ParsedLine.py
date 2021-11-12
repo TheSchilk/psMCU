@@ -267,7 +267,7 @@ class IfDirective(PreProcDirective):
             result += '\n' + '@else'
             for line in self.else_block:
                 result += '\n' + prefix_every_line(line.instruction_tree(include_empty), '  ')
-        result += '\n' + '@endif'
+        result += '\n' + '@end'
         return result
 
     def set_context(self, context):
@@ -329,17 +329,6 @@ class ElseDirective(PreProcDirective):
         return True
 
 
-class EndIfDirective(PreProcDirective):
-    type_name = "@endif"
-
-    def __init__(self):
-        super().__init__()
-
-    def __str__(self):
-        return '@endif'
-
-    def is_block_delimiter(self):
-        return True
 
 
 class PrintDirective(PreProcDirective):
@@ -473,7 +462,7 @@ class MacroDirective(PreProcDirective):
         result = str(self)
         for line in self.block:
             result += '\n' + prefix_every_line(line.instruction_tree(include_empty), '  ')
-        result += '\n' + '@endmacro'
+        result += '\n' + '@end'
         return result
 
     def is_block_delimiter(self):
@@ -514,15 +503,14 @@ class MacroExpansionDirective(PreProcDirective):
         for arg in self.args:
             arg.macro_arg_replacement(find, replace)
 
-
-class EndMacroDirective(PreProcDirective):
-    type_name = "@endmacro"
+class EndDirective(PreProcDirective):
+    type_name = "@end"
 
     def __init__(self):
         super().__init__()
 
     def __str__(self):
-        return '@endmacro'
+        return '@end'
 
     def is_block_delimiter(self):
         return True

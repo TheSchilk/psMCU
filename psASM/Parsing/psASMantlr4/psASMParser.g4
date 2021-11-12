@@ -36,14 +36,13 @@ preproc_directive
    | preproc_ifndef 
    | preproc_elif 
    | preproc_else 
-   | preproc_endif 
+   | preproc_end
    | preproc_print 
    | preproc_error 
    | preproc_ascii_heap 
    | preproc_ascii_stack 
    | preproc_macro 
    | preproc_macro_expansion 
-   | preproc_endmacro 
    ;
    
 preproc_define
@@ -78,8 +77,8 @@ preproc_else
    : ELSE
    ;
 
-preproc_endif
-   : ENDIF
+preproc_end
+   : END
    ;
 
 preproc_print
@@ -100,10 +99,6 @@ preproc_ascii_stack
 
 preproc_macro
    : MACRO macro_name=IDENTIFIER (args+=IDENTIFIER (COMMA args+=IDENTIFIER)*)?
-   ;
-
-preproc_endmacro
-   : ENDMACRO 
    ;
 
 preproc_macro_expansion

@@ -4,8 +4,9 @@ from typing import List
 from Util.Errors import ParsingException
 
 from Parsing.ParsedLine import ParsedLine
-from Parsing.ParsedLine import IfDirective, ElIfDirective, ElseDirective, EndIfDirective
-from Parsing.ParsedLine import MacroDirective, EndMacroDirective
+from Parsing.ParsedLine import IfDirective, ElIfDirective, ElseDirective
+from Parsing.ParsedLine import MacroDirective
+from Parsing.ParsedLine import EndDirective
 
 
 def associate_lines(lines: List[ParsedLine]):
@@ -102,8 +103,8 @@ def _consume_if(in_queue):
         _consume_directive(in_queue, ElseDirective)
         if_directive.else_block = _consume_block(in_queue)
 
-    # Consume endif
-    _consume_directive(in_queue, EndIfDirective)
+    # Consume end
+    _consume_directive(in_queue, EndDirective)
 
     return [if_directive]
 
@@ -115,7 +116,7 @@ def _consume_macro(in_queue):
     # Consume block body
     macro_directive.block = _consume_block(in_queue)
 
-    # Consume endmacro directive:
-    _consume_directive(in_queue, EndMacroDirective)
+    # Consume end directive:
+    _consume_directive(in_queue, EndDirective)
 
     return [macro_directive]

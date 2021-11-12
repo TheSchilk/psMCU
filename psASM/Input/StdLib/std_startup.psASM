@@ -31,5 +31,5 @@
     @print "Remove all manual includes of this file or set the -s flag."
     @error "Aborting."
 
-@endif
+@end
 
