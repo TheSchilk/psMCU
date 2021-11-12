@@ -20,8 +20,10 @@ def generate_parsedfiles(source_files, parsed_files, settings):
                     outfile.write(text)
 
 
-def generate_preproc1(intermediate, settings):
-    if 'preproc1' in settings['log_internal_state']:
-        with open(settings['out'] + "_preproc1.log", 'w') as outfile:
+def generate_preproc(intermediate, settings, stage):
+    if stage in settings['log_internal_state']:
+        with open(settings['out'] + "_"+stage+".log", 'w') as outfile:
             for element in intermediate:
                 outfile.write(str(element)+"\n")
+
+

@@ -25,9 +25,12 @@ class ParsedLine:
         self.context = context
 
     def macro_arg_replacement(self, find, replace):
+        _ = find;
+        _ = replace;
         pass
 
     def instruction_tree(self, include_empty=False):
+        _ = include_empty;
         return str(self)
 
 
@@ -90,6 +93,7 @@ class InstructionLine(ParsedLine):
         self.instruction = instruction
         self.args = args
         self.evaluated_args = []
+        self.have_evaluated_args = False
 
         self.labels_lines = []
         if labels_lines is not None:
@@ -105,12 +109,25 @@ class InstructionLine(ParsedLine):
             label_line.register_labels(adr)
 
     def __str__(self):
+        # Gather all labels to print from all labels and label_lines:
+        labels_to_print = []
+        for l in self.labels:
+            labels_to_print.append(l)
+        for ll in self.labels_lines:
+            for l in ll.labels:
+                labels_to_print.append(l)
+
         result = ""
-        if self.labels:
-            result += comma_seperated_list(self.labels) + ': '
+        if len(labels_to_print) != 0:
+            result += comma_seperated_list(labels_to_print) + ': '
         result += self.instruction
+
         if self.args:
-            result += ' ' + comma_seperated_list(self.args)
+            if self.have_evaluated_args:
+                evaluate_args_str = [str(f) for f in self.evaluated_args]
+                result += ' ' + comma_seperated_list(evaluate_args_str)
+            else:
+                result += ' ' + comma_seperated_list(self.args)
         return result
 
     def macro_arg_replacement(self, find, replace):
@@ -136,7 +153,7 @@ class InstructionLine(ParsedLine):
             value = arg.eval(self.context)
             assert_int(value, "Argument of Instruction", arg.error_col)
             self.evaluated_args.append(value)
-
+        self.have_evaluated_args = True
 
 class PreProcDirective(ParsedLine):
     def __init__(self):

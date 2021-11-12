@@ -36,7 +36,7 @@ def _define_labels(in_list: List[ParsedLine.InstructionLine]):
         except LocatedException as exc:
             exc.decorate_line_id(line.line_id)
             exc.decorate_file_id(line.file_id)
-            raise exc
+            raise ex+stage+c
 
 
 def _associate_labels(in_list):
@@ -83,19 +83,19 @@ class PreProc:
         header_footer_id = self._back_populate_source_file(PreProcRootFile(self.settings))
         Output.internal_state.generate_parsedfiles(self.source_files, self.parsed_files, self.settings)
 
-        # Pass 1:
         # Include Files, Build Contexts, Run
         intermediate = self._pre_proc_file(header_footer_id)
-        Output.internal_state.generate_preproc1(intermediate, self.settings)
+        Output.internal_state.generate_preproc(intermediate, self.settings, 'preproc1')
 
-        # Pass 2: Associate labels
+        # Associate labels
         intermediate = _associate_labels(intermediate)
+        Output.internal_state.generate_preproc(intermediate, self.settings, 'preproc2')
 
-        # Pass 3: Define label addr
+        # Define label addr
         _define_labels(intermediate)
-
-        # Pass 4: Evaluate instruction expressions
+        # Evaluate instruction expressions
         _evaluate_args(intermediate)
+        Output.internal_state.generate_preproc(intermediate, self.settings, 'preproc3')
 
         # Now, convert each instruction line into an actual Instruction:
         result = []
