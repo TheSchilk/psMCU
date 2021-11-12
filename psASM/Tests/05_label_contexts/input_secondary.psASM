@@ -1,0 +1,4 @@
+_FILE_LABEL1: JMP _FILE_LABEL1
+    .block_label: JMP .block_label
+_FILE_LABEL2: JMP _FILE_LABEL2
+    .block_label: JMP .block_label

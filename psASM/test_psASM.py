@@ -76,7 +76,12 @@ def main():
                                                          tofile=file_b_name, lineterm=''):
                             if len(line) != 0:
                                 diffs_ok = False
+                            if line.startswith('+'):
+                                print(Color.OK, end='')
+                            elif line.startswith('-'):
+                                print(Color.ERR, end='')
                             print(line)
+                            print(Color.END, end='')
 
             for file_a_name, file_b_name in test_info['bin_diffs']:
                 with open(file_a_name, 'rb') as file_a:

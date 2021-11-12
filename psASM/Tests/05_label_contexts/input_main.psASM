@@ -1,0 +1,10 @@
+GLOBAL_LABEL_0: LITA 0
+    JMP GLOBAL_LABEL_0
+    .block_label_1: JMP .block_label_1
+
+GLOBAL_LABEL_1: LITA 1
+    JMP GLOBAL_LABEL_1
+    .block_label_1: JMP .block_label_1
+
+@include "input_secondary.psASM"
+@include "input_secondary.psASM"

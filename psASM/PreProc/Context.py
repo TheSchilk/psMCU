@@ -108,7 +108,7 @@ class FileContextManager(ContextView):
     def handle_new_block(self, labels):
         """Check a list of labels for global labels and start a new block if one is found"""
         for label in labels:
-            if not (label.startswith('.') or label.startswith('_')):
+            if not label.startswith('.'): # TODO should file-label start new block?
                 self.new_block()
                 break
 
