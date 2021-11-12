@@ -25,9 +25,10 @@ def prefix_every_line(txt: str, prefix: str):
     # Indent and re-assemble:
     result = ""
     for index, line in enumerate(lines):
-        if index != 0:
-            result += '\n'
-        result += prefix + line
+        if not len(line) == 0:
+            if index != 0:
+                result += '\n'
+            result += prefix + line
 
     return result + suffix
 

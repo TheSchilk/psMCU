@@ -81,7 +81,6 @@ class PreProc:
     def process(self):
         # Generate and back-populate preproc root file
         header_footer_id = self._back_populate_source_file(PreProcRootFile(self.settings))
-
         Output.internal_state.generate_parsedfiles(self.source_files, self.parsed_files, self.settings)
 
         # Pass 1:
@@ -92,7 +91,7 @@ class PreProc:
         # Pass 2: Associate labels
         intermediate = _associate_labels(intermediate)
 
-        # Pass 3: Define label addreses
+        # Pass 3: Define label addr
         _define_labels(intermediate)
 
         # Pass 4: Evaluate instruction expressions
