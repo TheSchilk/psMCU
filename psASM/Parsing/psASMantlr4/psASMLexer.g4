@@ -29,6 +29,8 @@ IFNDEF: '@ifndef' ;
 ELIF: '@elif' ;
 ELSE: '@else' ;
 
+FOR: '@for' ;
+
 PRINT: '@print';
 ERROR: '@error' ;
 

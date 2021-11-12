@@ -89,6 +89,11 @@ class psASMParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by psASMParser#preproc_for.
+    def visitPreproc_for(self, ctx:psASMParser.Preproc_forContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by psASMParser#preproc_end.
     def visitPreproc_end(self, ctx:psASMParser.Preproc_endContext):
         return self.visitChildren(ctx)

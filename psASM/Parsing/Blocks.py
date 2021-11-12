@@ -6,6 +6,7 @@ from Util.Errors import ParsingException
 from Parsing.ParsedLine import ParsedLine
 from Parsing.ParsedLine import IfDirective, ElIfDirective, ElseDirective
 from Parsing.ParsedLine import MacroDirective
+from Parsing.ParsedLine import ForLoopDirective
 from Parsing.ParsedLine import EndDirective
 
 
@@ -56,6 +57,8 @@ def _can_consume_block_component(in_queue):
         return True
     elif isinstance(in_queue[0], MacroDirective):
         return True
+    elif isinstance(in_queue[0], ForLoopDirective):
+        return True
     elif not in_queue[0].is_block_delimiter():
         return True
     else:
@@ -67,18 +70,20 @@ def _consume_block_component(in_queue):
         raise ParsingException("Unexpected EOF.")
 
     if isinstance(in_queue[0], IfDirective):
-        # IF bloc return _consume_if(in_queue)
+        # IF block return _consume_if(in_queue)
         return _consume_if(in_queue)
     elif isinstance(in_queue[0], MacroDirective):
         # MACRO block
         return _consume_macro(in_queue)
+    elif isinstance(in_queue[0], ForLoopDirective):
+        # For Loop block
+        return _consume_forloop(in_queue)
     elif not in_queue[0].is_block_delimiter():
         # block of non-delimiter lines
         result = []
         while in_queue and not in_queue[0].is_block_delimiter():
             result.append(in_queue.popleft())
         return result
-
     else:
         # Error.
         line_id = in_queue[0].line_id
@@ -120,3 +125,16 @@ def _consume_macro(in_queue):
     _consume_directive(in_queue, EndDirective)
 
     return [macro_directive]
+
+
+def _consume_forloop(in_queue):
+    # Consume macro directive
+    block_directive = _consume_directive(in_queue, ForLoopDirective)
+
+    # Consume block body
+    block_directive.block = _consume_block(in_queue)
+
+    # Consume end directive:
+    _consume_directive(in_queue, EndDirective)
+
+    return [block_directive]

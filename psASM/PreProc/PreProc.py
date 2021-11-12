@@ -273,6 +273,14 @@ class PreProc:
                         block = macro_directive.expand(expansion_directive.args)
                         in_queue = deque(block) + in_queue
                     continue
+                
+                # If this a for loop, unroll and inline it 
+                if isinstance(peek, ParsedLine.ForLoopDirective):
+                    loop_directive = in_queue.popleft()
+                    # Generate block and add to queue
+                    block = loop_directive.expand()
+                    in_queue = deque(block) + in_queue
+                    continue
 
                 # If this is an instruction or labels line, give it the current context_view, note labels in context,
                 # and add it to the output

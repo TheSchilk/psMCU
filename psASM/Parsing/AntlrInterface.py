@@ -138,6 +138,19 @@ class psASMOutputVisitor(psASMParserVisitor):
     def visitPreproc_else(self, ctx: psASMParser.Preproc_elseContext) -> ParsedLine.ElseDirective:
         # 'ELSE'
         return ParsedLine.ElseDirective()
+    
+    # Visit a parse tree produced by psASMParser#preproc_for.
+    def visitPreproc_for(self, ctx:psASMParser.Preproc_forContext):
+        # 'FOR index_name=IDENTIFIER COMMA start_val=expr COMMA condition=expr COMMA update=expr'
+        
+        index_name = ctx.index_name.text
+        start_val = self.visit(ctx.start_val)
+        condition = self.visit(ctx.condition)
+        update = self.visit(ctx.update)
+        
+        return ParsedLine.ForLoopDirective(index_name, start_val, condition, update)
+
+
 
     # Visit a parse tree produced by psASMParser#preproc_end.
     def visitPreproc_end(self, ctx: psASMParser.Preproc_endContext) -> ParsedLine.EndDirective:

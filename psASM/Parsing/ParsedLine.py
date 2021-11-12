@@ -1,6 +1,7 @@
 from typing import List
 import copy
 from PreProc.ExpressionTree import Expression, isDefinedExpression, NotExpression, IdentifierExpression
+from PreProc.ExpressionTree import NumLiteralExpression 
 from PreProc.ExpressionTree import assert_int, assert_str
 from Util.Formatting import comma_seperated_list, prefix_every_line
 from Util.Errors import ParsingException, EvalException, LocatedException
@@ -474,7 +475,6 @@ class MacroDirective(PreProcDirective):
     def is_block_delimiter(self):
         return True
 
-
 class MacroExpansionDirective(PreProcDirective):
     type_name = "Macro expansion"
 
@@ -508,6 +508,70 @@ class MacroExpansionDirective(PreProcDirective):
         # Replace in arguments:
         for arg in self.args:
             arg.macro_arg_replacement(find, replace)
+    
+class ForLoopDirective(PreProcDirective):
+    type_name = "@for"
+
+    def __init__(self, index_name: str, start_val: Expression, condition: Expression, update: Expression):
+        super().__init__()
+        self.index_name = index_name
+        self.start_val = start_val
+        self.condition = condition
+        self.update = update
+        self.block = []
+
+    def __str__(self):
+        result = "@macro %s, %s, %s, %s " % (self.index_name, str(self.start_val), str(self.condition), str(self.update))
+        return result
+    
+    def macro_arg_replacement(self, find, replace):
+        self.start_val.macro_arg_replacement(find, replace)
+        self.condition.macro_arg_replacement(find, replace)
+        self.update.macro_arg_replacement(find, replace)
+        for line in self.block:
+            line.macro_arg_replacement(find, replace)
+
+    def expand(self):
+        result = []
+        
+        current_index = self.start_val.eval(self.context)
+        
+        max_iteration_count = 2**14+1
+        iteration_count = 0
+        while True:
+            # Prevent runaway loops
+            iteration_count += 1
+            if iteration_count > max_iteration_count:
+                raise EvalException("Runaway for loop!", line_id=self.line_id, file_id=self.file_id)
+            
+            # Generate a numerical literal from current index
+            current_index_literal = NumLiteralExpression(None, str(current_index))
+
+            # Check that condition still holds:
+            condition_copy = copy.deepcopy(self.condition)
+            condition_copy.macro_arg_replacement(self.index_name, current_index_literal)
+            if not condition_copy.eval(self.context):
+                break
+
+            # Create block with current index
+            block_copy = copy.deepcopy(self.block)
+            for line in block_copy:
+                line.macro_arg_replacement(self.index_name, current_index_literal)
+                result.append(line)
+
+            # Update index
+            update_copy = copy.deepcopy(self.update)
+            update_copy.macro_arg_replacement(self.index_name, current_index_literal)
+            current_index = update_copy.eval(self.context)
+
+        return result
+    
+    def instruction_tree(self, include_empty=False):
+        result = str(self)
+        for line in self.block:
+            result += '\n' + prefix_every_line(line.instruction_tree(include_empty), '  ')
+        result += '\n' + '@end'
+        return result
 
 class EndDirective(PreProcDirective):
     type_name = "@end"

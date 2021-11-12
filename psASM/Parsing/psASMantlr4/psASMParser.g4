@@ -36,6 +36,7 @@ preproc_directive
    | preproc_ifndef 
    | preproc_elif 
    | preproc_else 
+   | preproc_for
    | preproc_end
    | preproc_print 
    | preproc_error 
@@ -75,6 +76,10 @@ preproc_elif
 
 preproc_else
    : ELSE
+   ;
+
+preproc_for
+   : FOR index_name=IDENTIFIER COMMA start_val=expr COMMA condition=expr COMMA update=expr
    ;
 
 preproc_end
