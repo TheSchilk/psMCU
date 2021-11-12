@@ -251,6 +251,12 @@ class IfDirective(PreProcDirective):
 
     def macro_arg_replacement(self, find, replace):
         self.condition.macro_arg_replacement(find, replace)
+        for line in self.true_block:
+            line.macro_arg_replacement(find, replace)
+        for line in self.elif_instructions:
+            line.macro_arg_replacement(find, replace)
+        for line in self.else_block:
+            line.macro_arg_replacement(find, replace)
 
     def is_block_delimiter(self):
         return True
@@ -311,6 +317,8 @@ class ElIfDirective(PreProcDirective):
 
     def macro_arg_replacement(self, find, replace):
         self.condition.macro_arg_replacement(find, replace)
+        for line in self.block:
+            line.macro_arg_replacement(find, replace)
 
     def is_block_delimiter(self):
         return True
@@ -327,8 +335,6 @@ class ElseDirective(PreProcDirective):
 
     def is_block_delimiter(self):
         return True
-
-
 
 
 class PrintDirective(PreProcDirective):
@@ -484,7 +490,7 @@ class MacroExpansionDirective(PreProcDirective):
             result += comma_seperated_list(self.labels) + ': '
         result += self.macro_name
         if self.args:
-            result += comma_seperated_list(self.args) + ': '
+            result += ' ' + comma_seperated_list(self.args)
         return result
 
     def macro_arg_replacement(self, find, replace):
