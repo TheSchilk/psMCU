@@ -1,0 +1,363 @@
+============ file: input.psASM ============
+@include "std_sys.psASM"
+MAIN: 
+CALL GAME_OVER
+JMP GAME
+GAME: 
+CALL SETUP
+JMP MAIN_LOOP
+MAIN_LOOP: 
+CALL UPDATE_GAMESTATE
+IFRM SYS3, S3_A0
+JMP GAME_OVER
+CALL UPDATE_BOARD
+CALL RENDER
+CALL DELAY_DELAY
+JMP MAIN_LOOP
+GAME_OVER: 
+CALL UGS_RESET_INPUT_TRACKING
+CALL RENDER_GAME_OVER
+IFSM 0x105, 3
+JMP GAME
+JMP GAME_OVER
+@define DD_DELAY 200
+@define DD_DELAY_SYS2_TRHS 0x80
+@define DD_DELAY_TRACK_INPUT 75
+DELAY_DELAY: 
+PUSHA
+PUSHB
+LDA SYS2
+LITB DD_DELAY_SYS2_TRHS
+IFRM SYS3, S3_AlessB
+JMP delay_delay_loop
+CALL UGS_TRACK_INPUTS
+JMP delay_delay_done
+delay_delay_loop: 
+PUSHB
+LITB DD_DELAY_TRACK_INPUT
+IFSM SYS3, S3_AlessB
+CALL UGS_TRACK_INPUTS
+POPB
+CALL DELAY
+ADDLA (-1)
+IFSM SYS3, S3_A0
+JMP delay_delay_done
+JMP delay_delay_loop
+delay_delay_done: 
+POPA
+POPA
+RTRN
+@define D_DELAY 255
+DELAY: 
+PUSHA
+LITA D_DELAY
+delay_loop: 
+SUBL 1
+IFSM SYS3, S3_A0
+JMP delay_done
+JMP delay_loop
+delay_done: 
+POPA
+RTRN
+@define RNDR_ptr 0x45
+@define RNDR_bit 0x46
+@define RNDR_val 0x47
+RENDER: 
+LITA 0x01
+SVA RNDR_bit
+LITB BOARD_STARTD
+SVB RNDR_ptr
+LITA 0x0
+SVA RNDR_val
+RENDER_LOOP: 
+LDDR
+SVB RNDR_ptr
+LDB RNDR_bit
+IFSM SYS3, S3_A0
+JMP RENDER_ADVANCE_BIT
+LDA RNDR_val
+OR
+SVA RNDR_val
+RENDER_ADVANCE_BIT: 
+SWP
+SHFTLL 1
+SVA RNDR_bit
+IFRM SYS3, S3_A0
+JMP RENDER_ADVANCE_PTR
+LDA RNDR_val
+PUSHA
+LITA 0
+SVA RNDR_val
+LITA 1
+SVA RNDR_bit
+RENDER_ADVANCE_PTR: 
+LDB RNDR_ptr
+ADDLB 1
+LITA BOARD_END
+IFSM SYS3, S3_AB
+JMP RENDER_LOOP_DONE
+JMP RENDER_LOOP
+RENDER_LOOP_DONE: 
+POPM 0x10f
+POPM 0x10e
+POPM 0x10d
+POPM 0x10c
+POPM 0x10b
+POPM 0x10a
+POPM 0x109
+POPM 0x108
+RTRN
+RENDER_GAME_OVER: 
+LITA 0x55
+SVA 0x108
+LITA 0xAA
+SVA 0x109
+LITA 0x55
+SVA 0x10a
+LITA 0xAA
+SVA 0x10b
+LITA 0x55
+SVA 0x10c
+LITA 0xAA
+SVA 0x10d
+LITA 0x55
+SVA 0x10e
+LITA 0xAA
+SVA 0x10f
+RTRN
+@define GS_length 0x40
+@define GS_headpos 0x41
+@define GS_applepos 0x42
+@define GS_dir 0x43
+@define GS_board_dec 0x44
+@define GS_headpos_x 0x50
+@define GS_headpos_y 0x51
+@define GS_inputs_acc 0x52
+@define INPUT 0x104
+@define INP_L 4
+@define INP_R 6
+@define GS_apple_pos_increase 35
+UPDATE_GAMESTATE: 
+IFRM GS_inputs_acc, INP_L
+JMP UGS_LEFT_DONE
+LDA GS_dir
+SUBL 1
+ANDL 0b11
+SVA GS_dir
+UGS_LEFT_DONE: 
+IFRM GS_inputs_acc, INP_R
+JMP UGS_RIGHT_DONE
+LDA GS_dir
+ADDLA 1
+ANDL 0b11
+SVA GS_dir
+UGS_RIGHT_DONE: 
+LDA GS_dir
+LITB 0
+IFSM SYS3, S3_AB
+JMP UGS_DIR_UP
+LITB 1
+IFSM SYS3, S3_AB
+JMP UGS_DIR_RIGHT
+LITB 2
+IFSM SYS3, S3_AB
+JMP UGS_DIR_DOWN
+JMP UGS_DIR_LEFT
+UGS_DIR_UP: 
+LDA GS_headpos_y
+SUBL 1
+SVA GS_headpos_y
+IFRA 7
+JMP UGS_DIR_DONE
+LITA 1
+RTRN
+UGS_DIR_RIGHT: 
+LDA GS_headpos_x
+SUBL 1
+SVA GS_headpos_x
+IFRA 7
+JMP UGS_DIR_DONE
+LITA 1
+RTRN
+UGS_DIR_DOWN: 
+LDA GS_headpos_y
+ADDLA 1
+SVA GS_headpos_y
+LITB 8
+IFSM SYS3, S3_AlessB
+JMP UGS_DIR_DONE
+LITA 1
+RTRN
+UGS_DIR_LEFT: 
+LDA GS_headpos_x
+ADDLA 1
+SVA GS_headpos_x
+LITB 8
+IFSM SYS3, S3_AlessB
+JMP UGS_DIR_DONE
+LITA 1
+RTRN
+UGS_DIR_DONE: 
+CALL UGS_RESET_INPUT_TRACKING
+LDA GS_headpos_y
+SHFTLL 3
+LDB GS_headpos_x
+ADD
+SVA GS_headpos
+LDB GS_headpos
+LDDR
+IFSM SYS3, S3_A0
+JMP UGS_NO_BODY_COLLISION
+LDA GS_applepos
+IFSM SYS3, S3_AB
+JMP UGS_NO_BODY_COLLISION
+LITA 1
+RTRN
+UGS_NO_BODY_COLLISION: 
+LDA GS_applepos
+LDB GS_headpos
+IFRM SYS3, S3_AB
+JMP UGS_APPLE_DONE
+LITA 0
+SVA GS_board_dec
+LDA GS_length
+ADDLA 1
+SVA GS_length
+LITB 62
+IFRM SYS3, S3_AB
+JMP UGS_NOT_TOO_LONG
+LITA 1
+RTRN
+UGS_NOT_TOO_LONG: 
+LDA GS_applepos
+ADDLA GS_apple_pos_increase
+ANDL 0x3F
+SWP
+UGS_APPLE_POSITION_FOUND: 
+SVB GS_applepos
+UGS_APPLE_DONE: 
+LITA 0
+RTRN
+UGS_TRACK_INPUTS: 
+PUSHA
+PUSHB
+LDA GS_inputs_acc
+LDB INPUT
+OR
+SVA GS_inputs_acc
+POPB
+POPA
+RTRN
+UGS_RESET_INPUT_TRACKING: 
+PUSHA
+LITA 0x00
+SVA GS_inputs_acc
+POPA
+RTRN
+@define BOARD_STARTD 0x0
+@define BOARD_START 0x0
+@define BOARD_ENDD 0x40
+@define BOARD_END 0x40
+@define UB_PTR 0x48
+UPDATE_BOARD: 
+LITB BOARD_STARTD
+UB_LOOP: 
+LDDR
+SVB UB_PTR
+LDB GS_board_dec
+IFRM SYS3, S3_A0
+SUB
+LDB UB_PTR
+SVDR
+ADDLB 1
+LITA BOARD_ENDD
+IFSM SYS3, S3_AB
+JMP UB_LOOP_DONE
+JMP UB_LOOP
+UB_LOOP_DONE: 
+LITA 1
+SVA GS_board_dec
+LITA 1
+LDB GS_applepos
+SVDR
+LDA GS_length
+LDB GS_headpos
+SVDR
+RTRN
+SETUP: 
+SETUP1: 
+LITA 0x00
+LITB BOARD_STARTD
+SETUP_CLR_LOOP: 
+SVDR
+ADDLB 1
+LITA BOARD_ENDD
+IFSM SYS3, S3_AB
+JMP SETUP2
+LITA 0
+JMP SETUP_CLR_LOOP
+SETUP2: 
+LITA 0
+SVA 0x108
+SVA 0x109
+SVA 0x10a
+SVA 0x10b
+SVA 0x10c
+SVA 0x10d
+SVA 0x10e
+SVA 0x10f
+SETUP3: 
+LITA 28
+SVA GS_headpos
+LITA 4
+SVA GS_headpos_x
+LITA 3
+SVA GS_headpos_y
+LITA 1
+SVA GS_dir
+LITA 1
+SVA GS_length
+LITA 25
+SVA GS_applepos
+LITA 1
+SVA GS_board_dec
+RTRN
+============ file: std_sys.psASM ============
+@include_once
+@define SYS1 0x100
+@define S1_SHFT_IN 0
+@define S1_C 1
+@define S1_HC 2
+@define S1_OVF 3
+@define S1_COMP_C 4
+@define S1_SHFT_IN_S 0
+@define S1_SHFT_IN_M 0x1
+@define S1_C_S 1
+@define S1_C_M 0x2
+@define S1_HC_S 2
+@define S1_HC_M 0x4
+@define S1_OVF_S 3
+@define S1_OVF_M 0x8
+@define S1_COMP_C_S 4
+@define S1_COMP_C_M 0x10
+@define SYS2 0x101
+@define S2_PAGE_S 0
+@define S2_PAGE_M 0x1f
+@define S2_FREQ_S 5
+@define S2_FREQ_M 0xe0
+@define SYS3 0x102
+@define S3_INT_EN 0
+@define S3_INT_BTN_F 1
+@define S3_A0 2
+@define S3_B0 3
+@define S3_AB 4
+@define S3_AgreaterB 5
+@define S3_BlessA 5
+@define S3_BgreaterA 6
+@define S3_AlessB 6
+@define S3_INT_EN_S 0
+@define S3_INT_EN_M 1
+@define S3_INT_BTN_F_S 1
+@define S3_INT_BTN_F_M 0x2
+============ file: _preproc_root_autogen.psASM ============
+@include "input.psASM"

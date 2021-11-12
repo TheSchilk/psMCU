@@ -1,0 +1,596 @@
+#
+# Snake.psASM
+#
+# A simple snake game for an 8x8 LED Matrix
+#
+
+@include "std_sys.psASM"
+
+# Entry point
+MAIN:
+    CALL GAME_OVER
+    JMP GAME
+
+
+# Game Start:
+GAME:
+    CALL SETUP
+    JMP MAIN_LOOP
+
+    # Game Loop:
+    MAIN_LOOP: 
+        CALL UPDATE_GAMESTATE
+        
+        # Check game over
+        IFRM SYS3,S3_A0
+            JMP GAME_OVER
+       
+        CALL UPDATE_BOARD
+        CALL RENDER
+        
+        # DELAY
+        CALL DELAY_DELAY
+
+        JMP MAIN_LOOP
+
+GAME_OVER: 
+    CALL UGS_RESET_INPUT_TRACKING
+    CALL RENDER_GAME_OVER
+    IFSM 0x105, 3 # If Enter is pressed
+        JMP GAME
+    JMP GAME_OVER
+
+
+# #############
+
+@define DD_DELAY 200
+@define DD_DELAY_SYS2_TRHS 0x80
+@define DD_DELAY_TRACK_INPUT 75
+DELAY_DELAY:
+    PUSHA
+    PUSHB
+    
+    # Decide delay loop count:
+    # If SYS2 is less than a set threshold (meaning clock is relatively
+    # slow) we only check the inputs once and return. Otherwise we do
+    # the full delay loop.
+    LDA SYS2 
+    LITB DD_DELAY_SYS2_TRHS
+
+    IFRM SYS3, S3_AlessB # If clock is fast enough
+        JMP delay_delay_loop
+    
+    # Clock is slow, don't delay:
+    CALL UGS_TRACK_INPUTS
+    JMP delay_delay_done
+
+    delay_delay_loop:
+        # Keep track of any inputs pressed while waiting, but only after
+        # A certain amount of delay has passed
+        PUSHB
+        LITB DD_DELAY_TRACK_INPUT
+        IFSM SYS3,S3_AlessB
+            CALL UGS_TRACK_INPUTS
+        POPB 
+
+        # Call short delay func
+        CALL DELAY
+        
+        # Keep track of loop count
+        ADDLA -1
+        IFSM SYS3,S3_A0
+            JMP delay_delay_done
+        JMP delay_delay_loop
+    
+    delay_delay_done:
+
+    POPA
+    POPA
+    RTRN
+
+@define D_DELAY 255
+DELAY:
+    PUSHA
+    LITA D_DELAY
+    delay_loop: 
+        SUBL 1
+        IFSM SYS3,S3_A0
+            JMP delay_done
+        JMP delay_loop
+    delay_done:
+    POPA
+    RTRN
+
+
+
+#
+# Render.psASM
+# 
+# Takes the current board state from RAM and
+# renders it to the display
+#
+
+@define RNDR_ptr 0x45
+@define RNDR_bit 0x46
+@define RNDR_val 0x47
+
+RENDER: 
+    # ##### STEP 1: Render #####
+    
+    # Start with the LSB
+    LITA 0x01 
+    SVA RNDR_bit
+
+    # Start at the beginning of the board
+    LITB BOARD_STARTD
+    SVB RNDR_ptr
+
+    # Empty first value
+    LITA 0x0
+    SVA RNDR_val
+
+    # State: A = 0, B = ptr
+    
+    # Render Loop: 
+    RENDER_LOOP: 
+        LDDR # Load board into A (A = Board, B = Ptr)
+        
+        # Save the current Pointer
+        SVB RNDR_ptr
+        
+        # Load the current bit (A= Board, B = Bit)
+        LDB RNDR_bit
+
+        # If A is 0, skip ahead 
+        IFSM SYS3, S3_A0
+            JMP RENDER_ADVANCE_BIT
+
+        # Otherwise, OR the current Bit into the current val:
+        LDA RNDR_val
+        OR
+        SVA RNDR_val
+
+        # Advance the current Bit
+        RENDER_ADVANCE_BIT: # A = ? B = Bit
+        SWP
+        SHFTLL 1
+        SVA RNDR_bit
+
+        # If we did not shift out we can go on to the next pointer
+        IFRM SYS3, S3_A0
+            JMP RENDER_ADVANCE_PTR
+
+        # Otherwise we need to push the current value to the stack
+        # and setup for the next 8 bits:
+        LDA RNDR_val
+        PUSHA
+        LITA 0
+        SVA RNDR_val
+        LITA 1
+        SVA RNDR_bit
+
+        # Advance pointer and check against end condition:
+        RENDER_ADVANCE_PTR:
+        LDB RNDR_ptr
+        ADDLB 1
+        LITA BOARD_END
+
+        IFSM SYS3, S3_AB
+            JMP RENDER_LOOP_DONE
+
+        JMP RENDER_LOOP
+
+    
+    # ##### STEP 2: Display #####
+    # An unrolled loop is shorter and faster at this size
+   
+    RENDER_LOOP_DONE: 
+    POPM 0x10f
+    POPM 0x10e
+    POPM 0x10d
+    POPM 0x10c
+    POPM 0x10b
+    POPM 0x10a
+    POPM 0x109
+    POPM 0x108
+
+    RTRN
+
+
+RENDER_GAME_OVER:
+    LITA 0x55
+    SVA  0x108
+    LITA 0xAA
+    SVA  0x109
+    LITA 0x55
+    SVA  0x10a
+    LITA 0xAA
+    SVA  0x10b
+    LITA 0x55
+    SVA  0x10c
+    LITA 0xAA
+    SVA  0x10d
+    LITA 0x55
+    SVA  0x10e
+    LITA 0xAA
+    SVA  0x10f
+    RTRN
+
+
+
+#
+# UpdateGamestate.psASM
+#
+# Update the current game state
+#
+
+@define GS_length     0x40
+@define GS_headpos    0x41 
+@define GS_applepos   0x42
+@define GS_dir        0x43
+@define GS_board_dec  0x44 
+
+@define GS_headpos_x  0x50
+@define GS_headpos_y  0x51
+@define GS_inputs_acc 0x52
+
+@define INPUT        0x104
+@define INP_L        4
+@define INP_R        6
+
+@define GS_apple_pos_increase 35
+
+UPDATE_GAMESTATE:
+    # 
+    # Update the current gamestate.
+    # Returns with A=1 if the game is over, A=0 else
+    #
+
+    # ==== Update direction based on input: =====
+    # Check if left is pressed: 
+    IFRM GS_inputs_acc,INP_L
+        JMP UGS_LEFT_DONE 
+    
+    # Left pressed.
+    LDA GS_dir
+    SUBL 1
+    ANDL 0b11
+    SVA GS_dir
+
+    UGS_LEFT_DONE:
+
+
+    # Check if right is pressed:
+    IFRM GS_inputs_acc,INP_R
+        JMP UGS_RIGHT_DONE
+
+    # Right pressed.
+    LDA GS_dir
+    ADDLA 1
+    ANDL 0b11
+    SVA GS_dir
+
+    UGS_RIGHT_DONE:
+
+    # === Update headpos based on direction: ====
+    # switch(GS_pos) (0 = UP, 1 = RIGHT, 2 = DOWN, 3 = LEFT)
+    LDA GS_dir
+    LITB 0
+    IFSM SYS3, S3_AB
+        JMP UGS_DIR_UP
+    LITB 1
+    IFSM SYS3, S3_AB
+        JMP UGS_DIR_RIGHT
+    LITB 2
+    IFSM SYS3, S3_AB
+        JMP UGS_DIR_DOWN
+    JMP UGS_DIR_LEFT
+
+    UGS_DIR_UP:
+        # Next head position
+        LDA GS_headpos_y
+        SUBL 1
+        SVA GS_headpos_y
+
+        # If we did not underflow, we are good to continue: 
+        IFRA 7 
+            JMP UGS_DIR_DONE
+        
+        # If we did underflow, we collided against a wall. The game is over
+        LITA 1
+        RTRN # Return with A = 1
+
+    UGS_DIR_RIGHT:
+        # Check if this would cause a wall collision
+        LDA GS_headpos_x
+        SUBL 1
+        SVA GS_headpos_x
+        
+        # If we did not underflow, we are good to continue: 
+        IFRA 7 
+            JMP UGS_DIR_DONE
+        
+        # If we did underflow, we collided against a wall. The game is over
+        LITA 1
+        RTRN # Return with A = 1
+
+    UGS_DIR_DOWN:
+        # Next head position
+        LDA GS_headpos_y
+        ADDLA 1
+        SVA GS_headpos_y
+
+        # Check that we did collide:
+        LITB 8
+        IFSM SYS3,S3_AlessB
+            JMP UGS_DIR_DONE
+
+        # We collided:
+        LITA 1
+        RTRN # Return with A = 1
+
+    UGS_DIR_LEFT:
+        # Next head position
+        LDA GS_headpos_x
+        ADDLA 1
+        SVA GS_headpos_x
+
+        # Check that we did collide:
+        LITB 8
+        IFSM SYS3,S3_AlessB
+            JMP UGS_DIR_DONE
+
+        # We collided:
+        LITA 1
+        RTRN # Return with A = 1
+
+    UGS_DIR_DONE:
+    
+    # Reset Input tracking
+    CALL UGS_RESET_INPUT_TRACKING
+
+    # Calculte GS_headpos based on x and y:
+    # GS_headpos = (GS_headpos_y * 8) + GS_headpos_x
+    LDA GS_headpos_y
+    SHFTLL 3 # times 8
+    LDB GS_headpos_x
+    ADD
+    SVA GS_headpos
+
+    #### Make sure we did not collide with snake body: ####
+    
+    # Load board mem at location GS_headpos into A:
+    LDB GS_headpos
+    LDDR
+
+    # If the board is 0 there, we definetly did not collide:
+    IFSM SYS3, S3_A0
+        JMP UGS_NO_BODY_COLLISION
+
+    # If this is the apple position, we also did not collide:
+    LDA GS_applepos
+    IFSM SYS3, S3_AB
+       JMP UGS_NO_BODY_COLLISION
+    
+    # Because the board is not 0, and this is not the the apple position,
+    # We collided with ourselfs.
+    LITA 1 
+    RTRN # Return with A = 1
+
+    UGS_NO_BODY_COLLISION:
+    
+    #### Check if we found an apple: ####
+    LDA GS_applepos
+    LDB GS_headpos
+
+    IFRM SYS3,S3_AB
+        JMP UGS_APPLE_DONE
+    
+    #### Apple found: ####
+
+    # Don't decrease board mem on this iteration:
+    LITA 0
+    SVA GS_board_dec
+
+    # Increase Length
+    LDA GS_length
+    ADDLA 1 
+    SVA GS_length
+    
+    # End condition 
+    LITB 62
+    IFRM SYS3,S3_AB
+        JMP UGS_NOT_TOO_LONG
+    LITA 1
+    RTRN # Return with A = 1 
+    UGS_NOT_TOO_LONG:
+    
+    # Determine next apple position.
+    # First, try GS_apple_pos+GS_apple_pos_increase
+    LDA GS_applepos
+    ADDLA GS_apple_pos_increase 
+    ANDL 0x3F
+    SWP
+
+    
+    # # Check if this spot is already taken. 
+    # # If it is already take, increase by 1 and try again
+    # GS_APPLE_KEEP_STEPPING:
+    #     LDDR # Load board mem at apple position to A
+    #     IFSM SYS3, S3_A0
+    #         JMP UGS_APPLE_POSITION_FOUND # Position OK
+
+    #     # Position not OK. keep iterating.
+    #     SWP 
+    #     ADDLA 1
+    #     ANDL 0x3F
+    #     SWP
+    #     JMP GS_APPLE_KEEP_STEPPING
+    
+    UGS_APPLE_POSITION_FOUND:
+    SVB GS_applepos
+
+    UGS_APPLE_DONE:
+
+    #### Done. Return Success. ####
+    LITA 0
+    RTRN # Return with A = 0
+
+
+# Called repeatedly while delaying for next update
+# Accumulates all inputs pressed during delay
+UGS_TRACK_INPUTS:
+    PUSHA
+    PUSHB
+    
+    LDA GS_inputs_acc
+    LDB INPUT
+    
+    OR
+
+    SVA GS_inputs_acc
+
+    POPB
+    POPA
+    RTRN
+
+# Reset Input accumulation
+UGS_RESET_INPUT_TRACKING:
+    PUSHA
+    LITA 0x00
+    SVA GS_inputs_acc
+    POPA
+    RTRN
+
+# 
+# UpdateBoard.psASM
+#
+# Update the Board depending on the current
+# Game state.
+#
+
+@define BOARD_STARTD 0x0
+@define BOARD_START  0x0
+@define BOARD_ENDD   0x40
+@define BOARD_END    0x40
+
+@define UB_PTR       0x48
+
+UPDATE_BOARD:
+    #Iterate over board, decreasing all values by GS_board_dec
+    LITB BOARD_STARTD
+    UB_LOOP:
+        # Grab current board value into A
+        LDDR
+
+        # Store current pointer
+        SVB UB_PTR
+        
+        # If the current value is not 0, decrease it
+        LDB GS_board_dec
+        IFRM SYS3,S3_A0
+            SUB
+
+        # Grab the current pointer
+        LDB UB_PTR
+
+        # Put back the updated value
+        SVDR
+
+        # Increase the current pointer
+        ADDLB 1
+
+        # Check if the end condition is met
+        LITA BOARD_ENDD
+        IFSM SYS3,S3_AB
+            JMP UB_LOOP_DONE
+        JMP UB_LOOP
+
+    UB_LOOP_DONE:
+    
+    # Decrease board next time by default:
+    LITA 1
+    SVA GS_board_dec
+
+    # Indicate apple position
+    LITA 1
+    LDB GS_applepos
+    SVDR
+
+    # Place new head position
+    LDA GS_length
+    LDB GS_headpos
+    SVDR
+
+    RTRN
+
+
+#
+# Setup.psASM
+#
+#
+# Setup routine for Snake
+#
+
+SETUP:
+    SETUP1:
+    # Step 1:
+    # Empty Board Memory
+    
+    LITA 0x00 # zeroes
+    LITB BOARD_STARTD # initial pointer
+
+    SETUP_CLR_LOOP: 
+        SVDR # Write 0
+        ADDLB 1 # Increase Pointer 
+    
+        # Check if we are done
+        LITA BOARD_ENDD
+        IFSM SYS3, S3_AB
+            JMP SETUP2
+        LITA 0
+
+        JMP SETUP_CLR_LOOP
+
+    SETUP2:
+    # Step 2:
+    # Clear Display 
+    LITA 0
+    SVA 0x108
+    SVA 0x109
+    SVA 0x10a
+    SVA 0x10b
+    SVA 0x10c
+    SVA 0x10d
+    SVA 0x10e
+    SVA 0x10f
+
+    SETUP3:
+    # Step 3:
+    # Setup Gamestate
+
+    # Initial head position is 28 = 8*3 + 4 = (4,3)
+    LITA 28
+    SVA GS_headpos
+    LITA 4
+    SVA GS_headpos_x
+    LITA 3
+    SVA GS_headpos_y
+
+    # Initial Direction is 1
+    LITA 1
+    SVA GS_dir
+
+    # Initial Length is 1
+    LITA 1
+    SVA GS_length
+
+    # Initial apple position is 25
+    LITA 25
+    SVA GS_applepos
+    
+    # Decrease board by default
+    LITA 1
+    SVA GS_board_dec
+
+    RTRN
