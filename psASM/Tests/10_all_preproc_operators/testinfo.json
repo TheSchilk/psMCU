@@ -1,0 +1,15 @@
+{
+  "runs" : [
+    "input.psASM -o output -s -f -X parsedfiles -X preproc3"
+  ],
+  
+  "text_diffs" : [
+  ],
+  
+  "bin_diffs" : [
+  ],
+  
+  "cleanup" : [
+      "output.bin"
+  ]
+}
