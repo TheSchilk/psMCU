@@ -1,0 +1,13 @@
+@for $a, 0, $a<10, $a+1
+    LITA $a
+    NOP
+    NOP
+    NOP
+
+    @if $i % 2
+        @for $b, 0, $b<10, $b+1
+            LITB $b 
+        @end
+    @end
+
+@end
