@@ -3,12 +3,12 @@
 T1_L1:
 @if 1==1
     T1_L2: LITA 1
-@endif
+@end
 
 T2_L1:
 @if 1==1
     T2_L2: 
-@endif
+@end
 LITA 2
 
 # Should be T2_L1, T2_L2: LITA 1
@@ -17,7 +17,7 @@ T3_L1:
     T3_L3: # should not be included
 @else
     T3_L2: LITA 3
-@endif
+@end
 
 # Make sure that labels propagate through files: 
 @include "input_label.psASM"

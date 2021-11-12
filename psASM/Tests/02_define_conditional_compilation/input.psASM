@@ -3,14 +3,14 @@
     LITA 12
 @else
     LITA 0
-@endif
+@end
 
 # Check that ifndef works
 @ifndef TEST
     LITA 0
 @else
     LITA 12
-@endif
+@end
 
 # Check that if/elif work
 @ifdef TEST
@@ -18,5 +18,5 @@
         LITB 1
     @elif TEST == 2
         LITB 2
-    @endif
-@endif
+    @end
+@end
