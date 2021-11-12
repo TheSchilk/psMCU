@@ -521,7 +521,7 @@ class ForLoopDirective(PreProcDirective):
         self.block = []
 
     def __str__(self):
-        result = "@macro %s, %s, %s, %s " % (self.index_name, str(self.start_val), str(self.condition), str(self.update))
+        result = "@for %s, %s, %s, %s " % (self.index_name, str(self.start_val), str(self.condition), str(self.update))
         return result
     
     def macro_arg_replacement(self, find, replace):
@@ -572,6 +572,9 @@ class ForLoopDirective(PreProcDirective):
             result += '\n' + prefix_every_line(line.instruction_tree(include_empty), '  ')
         result += '\n' + '@end'
         return result
+    
+    def is_block_delimiter(self):
+        return True
 
 class EndDirective(PreProcDirective):
     type_name = "@end"

@@ -1,13 +1,24 @@
-@for $a, 0, $a<10, $a+1
+@for $a, 0, $a<5, $a+1
     LITA $a
     NOP
     NOP
     NOP
 
-    @if $i % 2
+    @if $a % 2
         @for $b, 0, $b<10, $b+1
             LITB $b 
         @end
     @end
+@end
 
+@macro load_a_multiple_times $value, $times
+    @for $i, 0, $i < $times, $i+1
+        LITA $value
+    @end
+@end
+
+load_a_multiple_times 20, 20
+
+@for $z, 1, $z <= 5, $z+1
+    load_a_multiple_times $z, $z
 @end
