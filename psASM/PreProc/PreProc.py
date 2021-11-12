@@ -16,7 +16,7 @@ from Output.Instruction import Instruction
 import Output.internal_state
 
 from collections import deque
-from copy import copy
+from copy import copy, deepcopy
 
 
 def _evaluate_args(in_list: List[ParsedLine.InstructionLine]):
@@ -36,7 +36,7 @@ def _define_labels(in_list: List[ParsedLine.InstructionLine]):
         except LocatedException as exc:
             exc.decorate_line_id(line.line_id)
             exc.decorate_file_id(line.file_id)
-            raise ex+stage+c
+            raise exc
 
 
 def _associate_labels(in_list):
@@ -148,7 +148,7 @@ class PreProc:
         parsed_file.mark_inclusion()
 
         # Input queue
-        in_queue = deque(copy(parsed_file.content))
+        in_queue = deque(deepcopy(parsed_file.content))
 
         file_context_handler = FileContextManager(self.g_context)
 

@@ -1,4 +1,5 @@
 *.log
+!Tests/**/*.log
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
@@ -77,9 +78,13 @@ dmypy.json
 
 # psASM output:
 *LOGISIM
+!Tests/**/*LOGISIM
 *.bin
+!Tests/**/*.bin
 *.map
+!Tests/**/*.map
 *.defs
+!Tests/**/*.defs
 
 # Test psASM files:
 test*.psASM

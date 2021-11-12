@@ -99,11 +99,14 @@ def main():
             test_failed(test_folder)
         finally:
             # Perform cleanup:
-            try:
-                for f in test_info['cleanup']:
+            for f in test_info['cleanup']:
+                try:
                     os.remove(f)
-            except FileNotFoundError:
-                pass
+                except FileNotFoundError:
+                    print(Color.WARN, end='')
+                    print("Could not cleanup '%s', file not found." % f)
+                    print(Color.END, end='')
+                    pass
 
         # Return to actual working directory:
         os.chdir(original_cwd)

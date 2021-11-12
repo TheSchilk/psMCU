@@ -149,6 +149,8 @@ class InstructionLine(ParsedLine):
             arg.macro_arg_replacement(find, replace)
 
     def evaluate_args(self):
+        if self.have_evaluated_args:
+            raise Exception("Re-evaluating args that already have been evaluated!!!")
         for arg in self.args:
             value = arg.eval(self.context)
             assert_int(value, "Argument of Instruction", arg.error_col)
