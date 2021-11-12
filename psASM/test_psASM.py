@@ -2,6 +2,7 @@ import os
 import json
 import psASM
 import difflib
+import sys
 
 
 class Color:
@@ -28,17 +29,28 @@ def test_failed(test_folder):
     print(Color.END, end='')
 
 
-def main():
+def main(args):
     # Discover All test directories
     test_folders = [f.path for f in os.scandir("Tests") if f.is_dir()]
-
-    # Process each test directory:
+    
+    # Keep track of current cwd
     original_cwd = os.getcwd()
 
+    # Check if we should only run one test:
+    run_all_tests = True
+    tests_to_run = []
+    if len(args) != 0:
+        run_all_tests = False
+        tests_to_run = args;
+    
+    # Process each test directory:
     for test_folder in test_folders:
-
         if "ignore" in test_folder:
             continue
+        
+        if not run_all_tests:
+            if test_folder not in tests_to_run:
+                continue
 
         # Open testinfo.json:
         try:
@@ -118,4 +130,6 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    console_args = sys.argv.copy()
+    console_args.pop(0)  # Get rid of path
+    main(console_args)
