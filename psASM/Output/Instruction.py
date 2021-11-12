@@ -37,10 +37,10 @@ class Instruction:
         if not Instruction.instruction_set:
             Instruction.instruction_set = find_instructions()
 
-            inst_name = line.instruction
-            args = line.evaluated_args
-            file_id = line.file_id
-            line_id = line.line_id
+        inst_name = line.instruction
+        args = line.evaluated_args
+        file_id = line.file_id
+        line_id = line.line_id
         try:
             inst = Instruction.instruction_set[inst_name](args, file_id, line_id)
         except KeyError as exc:
@@ -63,10 +63,7 @@ class Instruction:
     def check_arg_value(self):
         """Ensure the arguments fit into the defined range. """
         for index, arg in enumerate(self.args):
-            try:
-                arg_setup = self.arg_setups[index]
-            except IndexError as e:
-                sys.exit(-1)
+            arg_setup = self.arg_setups[index]
 
             # Make sure that the number is in the correct range:
             if arg > arg_setup['max'] or arg < arg_setup['min']:

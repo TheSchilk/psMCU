@@ -10,13 +10,61 @@ from Parsing.ParsedFile import ParsedFiles
 import Parsing.ParsedLine as ParsedLine
 
 from PreProc.Context import Context, FileContextManager
-from PreProc.PseudoFileGenerator import HeaderFooterFile, AsciiStackFile, AsciiHeapFile
+from PreProc.PseudoFileGenerator import PreProcRootFile, AsciiStackFile, AsciiHeapFile
 
 from Output.Instruction import Instruction
 import Output.internal_state
 
 from collections import deque
 from copy import copy
+
+
+def _evaluate_args(in_list: List[ParsedLine.InstructionLine]):
+    for line in in_list:
+        try:
+            line.evaluate_args()
+        except LocatedException as exc:
+            exc.decorate_line_id(line.line_id)
+            exc.decorate_file_id(line.file_id)
+            raise exc
+
+
+def _define_labels(in_list: List[ParsedLine.InstructionLine]):
+    for adr, line in enumerate(in_list):
+        try:
+            line.register_labels(adr)
+        except LocatedException as exc:
+            exc.decorate_line_id(line.line_id)
+            exc.decorate_file_id(line.file_id)
+            raise exc
+
+
+def _associate_labels(in_list):
+    result = []
+
+    in_queue = deque(in_list)
+
+    while in_queue:
+        next_line = in_queue.popleft()
+        try:
+            if isinstance(next_line, ParsedLine.LabelsLine):
+                did_associate = False
+                for look_ahead in in_queue:
+                    if isinstance(look_ahead, ParsedLine.InstructionLine):
+                        look_ahead.add_labels_line(next_line)
+                        did_associate = True
+                        break
+                if not did_associate:
+                    raise EvalException("Trailing labels line.")
+
+            if isinstance(next_line, ParsedLine.InstructionLine):
+                result.append(next_line)
+        except LocatedException as exc:
+            exc.decorate_line_id(next_line.line_id)
+            exc.decorate_file_id(next_line.file_id)
+            raise exc
+
+    return result
 
 
 class PreProc:
@@ -31,10 +79,10 @@ class PreProc:
             self.g_context[name] = value
 
     def process(self):
-        Output.internal_state.generate_preproc0(self.source_files, self.settings)
-        
-        # Generate and back-populate header-footer file
-        header_footer_id = self._back_populate_source_file(HeaderFooterFile(self.settings))
+        # Generate and back-populate preproc root file
+        header_footer_id = self._back_populate_source_file(PreProcRootFile(self.settings))
+
+        Output.internal_state.generate_parsedfiles(self.source_files, self.parsed_files, self.settings)
 
         # Pass 1:
         # Include Files, Build Contexts, Run
@@ -42,13 +90,13 @@ class PreProc:
         Output.internal_state.generate_preproc1(intermediate, self.settings)
 
         # Pass 2: Associate labels
-        intermediate = self._associate_labels(intermediate)
+        intermediate = _associate_labels(intermediate)
 
         # Pass 3: Define label addreses
-        self._define_labels(intermediate)
+        _define_labels(intermediate)
 
         # Pass 4: Evaluate instruction expressions
-        self._evaluate_args(intermediate)
+        _evaluate_args(intermediate)
 
         # Now, convert each instruction line into an actual Instruction:
         result = []
@@ -60,7 +108,7 @@ class PreProc:
         prog_usage = prog_length*100/(2**14)
         log(1, "PreProc: Finished. Final program is %i instructions (%.2f%% of ROM)" % (prog_length, prog_usage))
         if prog_length > 2**14:
-            print("Warning: Programm size exceeds memory size.")
+            print("Warning: Program size exceeds memory size.")
 
         return result
 
@@ -148,7 +196,9 @@ class PreProc:
                     # Get text
                     error_directive.set_context(file_context_handler.get_fixed_context_view())
                     text = error_directive.text()
-                    raise ErrorDirectiveException(text, line_id=error_directive.line_id, file_id=error_directive.file_id)
+                    raise ErrorDirectiveException(text,
+                                                  line_id=error_directive.line_id,
+                                                  file_id=error_directive.file_id)
 
                 # If this is a conditional directive, evaluate and add correct block to front-of-queue
                 if isinstance(peek, ParsedLine.IfDirective):
@@ -243,48 +293,3 @@ class PreProc:
                 raise exc
 
         return result
-
-    def _associate_labels(self, in_list):
-        result = []
-
-        in_queue = deque(in_list)
-
-        while in_queue:
-            next_line = in_queue.popleft()
-            try:
-                if isinstance(next_line, ParsedLine.LabelsLine):
-                    did_associate = False
-                    for look_ahead in in_queue:
-                        if isinstance(look_ahead, ParsedLine.InstructionLine):
-                            look_ahead.add_labels_line(next_line)
-                            did_associate = True
-                            break
-                    if not did_associate:
-                        raise EvalException("Trailing labels line.")
-
-                if isinstance(next_line, ParsedLine.InstructionLine):
-                    result.append(next_line)
-            except LocatedException as exc:
-                exc.decorate_line_id(next_line.line_id)
-                exc.decorate_file_id(next_line.file_id)
-                raise exc
-
-        return result
-
-    def _define_labels(self, in_list: List[ParsedLine.InstructionLine]):
-        for adr, line in enumerate(in_list):
-            try:
-                line.register_labels(adr)
-            except LocatedException as exc:
-                exc.decorate_line_id(line.line_id)
-                exc.decorate_file_id(line.file_id)
-                raise exc
-
-    def _evaluate_args(self, in_list: List[ParsedLine.InstructionLine]):
-        for line in in_list:
-            try:
-                line.evaluate_args()
-            except LocatedException as exc:
-                exc.decorate_line_id(line.line_id)
-                exc.decorate_file_id(line.file_id)
-                raise exc

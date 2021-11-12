@@ -13,6 +13,7 @@ import PreProc.ExpressionTree as ExpressionTree
 
 from Util.Errors import ParsingException
 
+import sys
 
 def parse_line(text: str, file_id, line_id) -> ParsedLine.ParsedLine:
     """Takes a single line from a .psASM file and parses it using an antlr4 parser."""
@@ -45,6 +46,7 @@ class ParsingErrorListener(ErrorListener):
         raise ParsingException(msg, error_col=column)
 
 
+# noinspection PyPep8Naming
 class psASMOutputVisitor(psASMParserVisitor):
     """Antlr4 visitor to turn parse-tree into a ParsedLines and Expressions"""
     # Override default handler:
@@ -104,7 +106,8 @@ class psASMOutputVisitor(psASMParserVisitor):
         return ParsedLine.IncludeDirective(file)
 
     # Visit a parse tree produced by psASMParser#preproc_include_once.
-    def visitPreproc_include_once(self, ctx: psASMParser.Preproc_include_onceContext) -> ParsedLine.IncludeOnceDirective:
+    def visitPreproc_include_once(self, ctx: psASMParser.Preproc_include_onceContext) \
+            -> ParsedLine.IncludeOnceDirective:
         return ParsedLine.IncludeOnceDirective()
 
     # Visit a parse tree produced by psASMParser#preproc_if.
@@ -185,7 +188,8 @@ class psASMOutputVisitor(psASMParserVisitor):
         return ParsedLine.EndMacroDirective()
 
     # Visit a parse tree produced by psASMParser#preproc_macro_expansion.
-    def visitPreproc_macro_expansion(self, ctx: psASMParser.Preproc_macro_expansionContext) -> ParsedLine.MacroExpansionDirective:
+    def visitPreproc_macro_expansion(self, ctx: psASMParser.Preproc_macro_expansionContext) \
+            -> ParsedLine.MacroExpansionDirective:
         # '(lbls=labels)? macro_name=IDENTIFIER (args+=expr (COMMA args+=expr)*)?'
         if ctx.lbls is None:
             lbls = []
@@ -210,7 +214,7 @@ class psASMOutputVisitor(psASMParserVisitor):
         elif ctx.op.type == psASMParser.GREATER_EQ:
             result = ExpressionTree.GreaterEqExpression(ctx, child1, child2)
         else:
-            raise Exception("Unhandeled Operator.")
+            raise Exception("Unhandled Operator.")
 
         return result
 
@@ -327,6 +331,8 @@ class psASMOutputVisitor(psASMParserVisitor):
             result = ExpressionTree.EqExpression(ctx, child1, child2)
         elif ctx.op.type == psASMParser.NEQ:
             result = ExpressionTree.NEqExpression(ctx, child1, child2)
+        else:
+            raise Exception("Unhandled Operator.")
 
         return result
 

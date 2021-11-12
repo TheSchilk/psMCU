@@ -4,7 +4,7 @@ from Util.Errors import ContextException
 from Parsing.ParsedLine import MacroDirective
 
 
-class Context():
+class Context:
     def __init__(self):
         self.context_dict = {}
 
@@ -65,7 +65,7 @@ class Context():
         pass
 
 
-class ContextView():
+class ContextView:
     def __init__(self, g_context, f_context, b_context):
         self.g_context = g_context
         self.f_context = f_context

@@ -4,9 +4,11 @@ from Input.SourceFile import SourceFile
 from Input.StdLib import STDLIB_FOOTER_NAME, STDLIB_STARTUP_NAME
 
 
-class HeaderFooterFile(SourceFile):
+class PreProcRootFile(SourceFile):
     def __init__(self, settings):
+        # noinspection PyListCreation
         content = []
+
         content.append("#"+"\n")
         content.append("# Root Header/Footer file"+"\n")
         content.append("# (Automatically generated)"+"\n")
@@ -39,13 +41,14 @@ class HeaderFooterFile(SourceFile):
             footer_line = '# ' + footer_line + " # Disabled by '-f' flag."
         content.append(footer_line + "\n")
         content.append("\n")
-        super().__init__(None, "_header_footer_autogen.psASM", content, True)
+        super().__init__(None, "_preproc_root_autogen.psASM", content, True)
 
 
 class AsciiStackFile(SourceFile):
     count = 0
 
     def __init__(self, string):
+        # noinspection PyListCreation
         content = []
         content.append("#"+"\n")
         title = "# Push \"%s\" onto stack." % string
@@ -69,6 +72,7 @@ class AsciiHeapFile(SourceFile):
     count = 0
 
     def __init__(self, string, adr):
+        # noinspection PyListCreation
         content = []
         content.append("#"+"\n")
         title = "# Save \"%s\" to RAM starting at %i." % (string, adr)

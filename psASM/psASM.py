@@ -56,7 +56,9 @@ def main(args):
         return -1
     
     return 0
+
+
 if __name__ == '__main__':
-    args = sys.argv.copy()
-    args.pop(0)  # Get rid of path
-    main(args)
+    console_args = sys.argv.copy()
+    console_args.pop(0)  # Get rid of path
+    main(console_args)

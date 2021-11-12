@@ -2,6 +2,7 @@ import re
 from Util.Errors import ParsingException, LocatedException
 from Util.Log import log
 import Input.StdLib
+import Output.internal_state
 
 
 def _is_include(text) -> bool:
@@ -28,7 +29,7 @@ def _extract_include(text) -> str:
     file_string = parts[1]
 
     # Validate file_string
-    if not re.match(r'^\"[\w\/\\]+\.psASM\"$', file_string):
+    if not re.match(r'^\"[\w/\\]+\.psASM\"$', file_string):
         raise ParsingException("Malformed @include file name.")
 
     file_name = file_string.replace('"', '')
@@ -133,6 +134,8 @@ class SourceFiles:
 
             for included_path in include_paths:
                 paths_to_add.append(included_path)
+
+        Output.internal_state.generate_sourcefiles(self, settings)
 
     def __len__(self):
         return len(self.files)

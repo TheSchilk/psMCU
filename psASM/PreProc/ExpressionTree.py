@@ -185,6 +185,7 @@ class StringLiteralExpression(Expression):
         return '"' + self.text + '"'
 
 
+# noinspection PyPep8Naming
 class isDefinedExpression(Expression):
     """defined(identifer) operator."""
 
@@ -236,7 +237,8 @@ class SprintfExpression(Expression):
                 else:
                     error_col = None
 
-                raise EvalException("Format string contains format specifier but there are no more arguments!",  error_col=error_col)
+                raise EvalException("Format string contains format specifier but there are no more arguments!",
+                                    error_col=error_col)
 
             # Insert argument:
             text = text.replace('%v', str(self.args[arg_index].eval(context)), 1)

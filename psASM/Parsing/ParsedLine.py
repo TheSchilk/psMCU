@@ -27,7 +27,7 @@ class ParsedLine:
     def macro_arg_replacement(self, find, replace):
         pass
 
-    def instruction_tree(self):
+    def instruction_tree(self, include_empty=False):
         return str(self)
 
 
@@ -40,6 +40,12 @@ class EmptyLine(ParsedLine):
 
     def __str__(self):
         return "#empty"
+
+    def instruction_tree(self, include_empty=False):
+        if include_empty:
+            return str(self)
+        else:
+            return ''
 
 
 class LabelsLine(ParsedLine):
@@ -68,7 +74,8 @@ class LabelsLine(ParsedLine):
                 # Found a label that should be replaced
                 # Ensure that replacement is an IdentifierExpression
                 if not isinstance(replace, IdentifierExpression):
-                    raise EvalException('Can only replace label during macro expansion if the replacement is an identifier.')
+                    raise EvalException('Can only replace label during macro expansion if the replacement is an '
+                                        'identifier.')
 
                 # Replace label:
                 self.labels[index] = replace.text
@@ -77,15 +84,15 @@ class LabelsLine(ParsedLine):
 class InstructionLine(ParsedLine):
     type_name = "Instruction"
 
-    def __init__(self, labels: List[str], instruction: str, args: List[Expression], labels_lines: LabelsLine = None):
+    def __init__(self, labels: List[str], instruction: str, args: List[Expression], labels_lines: list = None):
         super().__init__()
         self.labels = labels
         self.instruction = instruction
         self.args = args
         self.evaluated_args = []
-        if labels_lines is None:
-            self.labels_lines = []
-        else:
+
+        self.labels_lines = []
+        if labels_lines is not None:
             self.labels_lines = labels_lines
 
     def add_labels_line(self, labels_line):
@@ -114,7 +121,8 @@ class InstructionLine(ParsedLine):
                 # Found a label that should be replaced
                 # Ensure that replacement is an IdentifierExpression
                 if not isinstance(replace, IdentifierExpression):
-                    raise EvalException('Can only replace label during macro expansion if the replacement is an identifier.')
+                    raise EvalException('Can only replace label during macro expansion if the replacement is an '
+                                        'identifier.')
 
                 # Replace label:
                 self.labels[index] = replace.text
@@ -158,7 +166,8 @@ class DefineDirective(PreProcDirective):
         if self.name == find:
             # Ensure that replacement is an IdentifierExpression
             if not isinstance(replace, IdentifierExpression):
-                raise EvalException('Can only replace definition name during macro expansion if the replacement is an identifier.')
+                raise EvalException('Can only replace definition name during macro expansion if the replacement is '
+                                    'an identifier.')
 
             # Replace name
             self.name = replace.text
@@ -180,7 +189,7 @@ class IncludeDirective(PreProcDirective):
         return file_name
 
     def __str__(self):
-        return ('@include %s' % (self.file_name))
+        return '@include %s' % self.file_name
 
 
 class IncludeOnceDirective(PreProcDirective):
@@ -190,7 +199,7 @@ class IncludeOnceDirective(PreProcDirective):
         super().__init__()
 
     def __str__(self):
-        return ('@include_once')
+        return '@include_once'
 
 
 class IfDirective(PreProcDirective):
@@ -219,7 +228,7 @@ class IfDirective(PreProcDirective):
         return condition != 0
 
     def __str__(self):
-        return ('@if %s' % (self.condition))
+        return '@if %s' % self.condition
 
     def macro_arg_replacement(self, find, replace):
         self.condition.macro_arg_replacement(find, replace)
@@ -227,18 +236,19 @@ class IfDirective(PreProcDirective):
     def is_block_delimiter(self):
         return True
 
-    def instruction_tree(self):
+    def instruction_tree(self, include_empty=False):
         result = str(self)
         for line in self.true_block:
-            result += '\n' + prefix_every_line(line.instruction_tree(), '  ')
+            result += '\n' + prefix_every_line(line.instruction_tree(include_empty), '  ')
         for elif_inst in self.elif_instructions:
             result += '\n' + str(elif_inst)
             for line in elif_inst.block:
-                result += '\n' + prefix_every_line(line.instruction_tree(), '  ')
+                result += '\n' + prefix_every_line(line.instruction_tree(include_empty), '  ')
         if self.else_block:
             result += '\n' + '@else'
             for line in self.else_block:
-                result += '\n' + prefix_every_line(line.instruction_tree(), '  ')
+                result += '\n' + prefix_every_line(line.instruction_tree(include_empty), '  ')
+        result += '\n' + '@endif'
         return result
 
     def set_context(self, context):
@@ -440,10 +450,11 @@ class MacroDirective(PreProcDirective):
 
         return block
 
-    def instruction_tree(self):
+    def instruction_tree(self, include_empty=False):
         result = str(self)
         for line in self.block:
-            result += '\n' + prefix_every_line(line.finstruction_tree(), '  ')
+            result += '\n' + prefix_every_line(line.instruction_tree(include_empty), '  ')
+        result += '\n' + '@endmacro'
         return result
 
     def is_block_delimiter(self):
@@ -477,7 +488,8 @@ class MacroExpansionDirective(PreProcDirective):
                 if isinstance(replace, IdentifierExpression):
                     self.labels[index] = replace.text
                 else:
-                    raise EvalException('Can only replace label during macro expansion if the replacement is an identifier.')
+                    raise EvalException('Can only replace label during macro expansion if the replacement is an '
+                                        'identifier.')
 
         # Replace in arguments:
         for arg in self.args:

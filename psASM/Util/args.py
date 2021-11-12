@@ -10,31 +10,46 @@ def parse_args(args):
 
     parser = argparse.ArgumentParser(prog="psASM.py", description="psASM Assembler for psMCU.")
 
-    parser.add_argument('input_file', help='input psASM/psOBJ file')
-    parser.add_argument('-o', '--out', required=False, metavar='NAME', help='output name')
+    parser.add_argument('input_file',
+                        help='input psASM/psOBJ file')
+    parser.add_argument('-o', '--out', required=False, metavar='NAME',
+                        help='output name')
 
     output_format = parser.add_argument_group("output format selection")
 
-    output_format.add_argument('-B', '--gen_bin', required=False, action="store_true", help='generate binary file (Default if no other output is enabled)')
-    output_format.add_argument('-O', '--gen_psOBJ', required=False, action="store_true", help='generate psOBJ file')
-    output_format.add_argument('-L', '--gen_logisim', required=False, action="store_true", help='generate logisim file')
-    output_format.add_argument('-S', '--gen_split', required=False, action="store_true", help='generate split binary files')
-    output_format.add_argument('-M', '--gen_map', required=False, action="store_true", help='generate map file')
-    output_format.add_argument('-U', '--gen_usage', required=False, action="store_true", help='report memory usage')
-    output_format.add_argument('-A', '--gen_annotated', required=False, action="store_true", help='generate an annotated assembly program')
+    output_format.add_argument('-B', '--gen_bin', required=False, action="store_true",
+                               help='generate binary file (Default if no other output is enabled)')
+    output_format.add_argument('-O', '--gen_psOBJ', required=False, action="store_true",
+                               help='generate psOBJ file')
+    output_format.add_argument('-L', '--gen_logisim', required=False, action="store_true",
+                               help='generate logisim file')
+    output_format.add_argument('-S', '--gen_split', required=False, action="store_true",
+                               help='generate split binary files')
+    output_format.add_argument('-M', '--gen_map', required=False, action="store_true",
+                               help='generate map file')
+    output_format.add_argument('-U', '--gen_usage', required=False, action="store_true",
+                               help='report memory usage')
+    output_format.add_argument('-A', '--gen_annotated', required=False, action="store_true",
+                               help='generate an annotated assembly program')
     # parser.add_argument('-?', '--gen_defs', required=False, action="store_true", help='generate definitions file.')
     
-    parser.add_argument('-X', '--log_internal_state', required=False, action="append", help='output various intermediate representations')
+    parser.add_argument('-X', '--log_internal_state', required=False, action="append",
+                        help='output various intermediate representations')
     parser.add_argument('-D', '--define', required=False, action="append", type=str, metavar='DEF',
                         help='add a global definition, can be either just a name (-D one) or name and value (-D one=1)')
 
-    parser.add_argument('-v', '--verbose', action='count', default=0, help='increase logging verbosity level')
+    parser.add_argument('-v', '--verbose', action='count', default=0,
+                        help='increase logging verbosity level')
 
-    parser.add_argument('-w', '--no_ws', required=False, action="store_true", help='strip line whitespace/indents in information files')
-    parser.add_argument('-c', '--no_comments', required=False, action="store_true", help='strip line comments in information files')
+    parser.add_argument('-w', '--no_ws', required=False, action="store_true",
+                        help='strip line whitespace/indents in information files')
+    parser.add_argument('-c', '--no_comments', required=False, action="store_true",
+                        help='strip line comments in information files')
 
-    parser.add_argument('-s', '--no_startup', required=False, action="store_true", help="do not add program startup section")
-    parser.add_argument('-f', '--no_footer', required=False, action="store_true", help="do not add program footer")
+    parser.add_argument('-s', '--no_startup', required=False, action="store_true",
+                        help="do not add program startup section")
+    parser.add_argument('-f', '--no_footer', required=False, action="store_true",
+                        help="do not add program footer")
 
     parsed_args = vars(parser.parse_args(args))
 
