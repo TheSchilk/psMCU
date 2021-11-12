@@ -1,0 +1,14 @@
+@macro TEST_MACRO_1 $a, $b
+    LITA $a
+    LITA $b
+@endmacro
+
+@macro TEST_MACRO_2 $a, $b
+    $a: LITA ((1+2+10+$b) * 300) || 20
+@endmacro
+
+TEST_MACRO_1 1, 2
+TEST_MACRO_1 2, 3
+
+TEST_MACRO_2 l1, 20
+TEST_MACRO_2 l2, 40
