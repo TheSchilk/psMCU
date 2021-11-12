@@ -1,0 +1,16 @@
+============ file: input.psASM ============
+@macro test $a, $b, $c
+  @if $a
+    @if $b
+      @if $c
+        LITA (($a + $b) + $c)
+      @end
+    @end
+  @elif $b
+    LITB (($a + $b) + $c)
+  @end
+@end
+test 1, 1, 1
+test 0, 1, 1
+============ file: _preproc_root_autogen.psASM ============
+@include "input.psASM"
