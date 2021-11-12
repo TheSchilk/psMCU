@@ -1,0 +1,17 @@
+{
+  "runs" : [
+    "input.psASM -o output -s -f -X preproc1"
+  ],
+  
+  "text_diffs" : [
+      ["output_preproc1.log","golden_output_preproc1.log"]
+  ],
+  
+  "bin_diffs" : [
+  ],
+  
+  "cleanup" : [
+      "output_preproc1.log",
+      "output.bin"
+  ]
+}

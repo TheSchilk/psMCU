@@ -58,8 +58,8 @@ class AsciiStackFile(SourceFile):
         content.append("\n")
         content.append("\n")
 
-        for char in string:
-            lit = "LITA %i" % ord(char)
+        for c in string:
+            lit = "LITA '%s'" % c
             content.append(lit+"\n")
             content.append("PUSHA"+"\n")
 
@@ -85,8 +85,8 @@ class AsciiHeapFile(SourceFile):
         content.append("PUSHA"+"\n")
         content.append("\n")
 
-        for index, char in enumerate(string):
-            lit = "LITA %i" % ord(char)
+        for index, c in enumerate(string):
+            lit = "LITA '%s'" % c
             content.append(lit+"\n")
             sva = "SVA %i" % (adr+index)
             content.append(sva+"\n")
