@@ -35,12 +35,12 @@ def prefix_every_line(txt: str, prefix: str):
 
 def table_string(headers, cols):
     # TODO this seems very messy
-    if len(headers) != len(cols):
+    if len(headers) != len(cols): # pragma: no cover 
         raise Exception("headers/columns don't match")
 
     col_height = len(cols[0])
     for col in cols:
-        if len(col) != col_height:
+        if len(col) != col_height: # pragma: no cover 
             raise Exception("cols don't have the same length")
 
     # Find the width of each column

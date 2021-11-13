@@ -547,7 +547,7 @@ def find_instructions():
     instruction_set = {}
     for instruction_class in Instruction.__subclasses__():
         # Sanity check that there are no duplicate op-codes:
-        if instruction_class.op_code in instruction_set.keys():
+        if instruction_class.op_code in instruction_set.keys(): # pragma: no cover 
             print("Duplicate op-code @ " + str(instruction_class.op_code) + "!")
             sys.exit(1)
 

@@ -126,11 +126,6 @@ class PreProc:
 
         return file_id
 
-        # except psASMException as exc:
-        #     # Parsing should never fail on auto-generated files. If it does, that is a bug.
-        #     # Do not generate a standard parsing error, but crash with an exception:
-        #     raise Exception("Parsing of generated file failed during back-population.") from exc
-
     def _pre_proc_file(self, file_id):
         parsed_file = self.parsed_files[file_id]
         result = []
@@ -293,7 +288,7 @@ class PreProc:
                     result.append(line)
                     continue
 
-                raise Exception('Unhandeled line type in PreProc.')
+                raise Exception('Unhandeled line type in PreProc.') # pragma: no cover 
             except LocatedException as exc:
                 exc.decorate_line_id(peek.line_id)
                 exc.decorate_file_id(peek.file_id)

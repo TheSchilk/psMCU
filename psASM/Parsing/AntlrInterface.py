@@ -221,7 +221,7 @@ class psASMOutputVisitor(psASMParserVisitor):
             result = ExpressionTree.GreaterExpression(ctx, child1, child2)
         elif ctx.op.type == psASMParser.GREATER_EQ:
             result = ExpressionTree.GreaterEqExpression(ctx, child1, child2)
-        else:
+        else: # pragma: no cover 
             raise Exception("Unhandled Operator.")
 
         return result
@@ -235,9 +235,8 @@ class psASMOutputVisitor(psASMParserVisitor):
             result = ExpressionTree.AddExpression(ctx, child1, child2)
         elif ctx.op.type == psASMParser.MINUS:
             result = ExpressionTree.SubExpression(ctx, child1, child2)
-        else:
+        else: # pragma: no cover 
             raise Exception("Unhandeled Operator.")
-
         return result
 
     # Visit a parse tree produced by psASMParser#bitxor_expr.
@@ -256,7 +255,7 @@ class psASMOutputVisitor(psASMParserVisitor):
             result = ExpressionTree.LShiftExpression(ctx, child1, child2)
         elif ctx.op.type == psASMParser.RSHIFT:
             result = ExpressionTree.RShiftExpression(ctx, child1, child2)
-        else:
+        else: # pragma: no cover 
             raise Exception("Unhandeled Operator.")
 
         return result
@@ -272,7 +271,7 @@ class psASMOutputVisitor(psASMParserVisitor):
             result = ExpressionTree.DivExpression(ctx, child1, child2)
         elif ctx.op.type == psASMParser.MOD:
             result = ExpressionTree.ModExpression(ctx, child1, child2)
-        else:
+        else: # pragma: no cover 
             raise Exception("Unhandeled Operator.")
 
         return result
@@ -289,8 +288,8 @@ class psASMOutputVisitor(psASMParserVisitor):
             result = ExpressionTree.NotExpression(ctx, child1)
         elif ctx.op.type == psASMParser.BIT_NOT:
             result = ExpressionTree.BitNotExpression(ctx, child1)
-        else:
-            raise Exception("Unhandeled Operator.")
+        else: # pragma: no cover 
+            raise Exception("Unhandeled Operator.") 
 
         return result
 
@@ -339,7 +338,7 @@ class psASMOutputVisitor(psASMParserVisitor):
             result = ExpressionTree.EqExpression(ctx, child1, child2)
         elif ctx.op.type == psASMParser.NEQ:
             result = ExpressionTree.NEqExpression(ctx, child1, child2)
-        else:
+        else: # pragma: no cover 
             raise Exception("Unhandled Operator.")
 
         return result

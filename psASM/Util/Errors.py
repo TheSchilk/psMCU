@@ -67,7 +67,7 @@ class LocatedException(psASMException):
                 result += "\n"
                 result += (" " * (self.error_col + prefix_len)) + "^" + "\n"
             elif isinstance(self.error_col, tuple):
-                if len(self.error_col) != 2:
+                if len(self.error_col) != 2: # pragma: no cover 
                     raise Exception("Error-col tuple is not of length 2.")
                 result += "\n"
                 mark_length = self.error_col[1] - self.error_col[0] + 1

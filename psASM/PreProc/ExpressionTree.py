@@ -56,7 +56,7 @@ def _type_combination_str(args: []):
             result += 'int'
         elif isinstance(arg, str):
             result += 'str'
-        else:
+        else: # pragma: no cover 
             raise Exception()
     return result
 
@@ -86,8 +86,8 @@ class Expression:
 
     def eval(self, context):
         """Evaluate this expression."""
-        _ = self, context
-        raise Exception('Base expression instantiated or eval function not overwritten')
+        _ = self, context # pragma: no cover
+        raise Exception('Base expression instantiated or eval function not overwritten') # pragma: no cover
 
     def macro_arg_replacement(self, find: str, replace):
         """Replace macro arguments within this and all children."""

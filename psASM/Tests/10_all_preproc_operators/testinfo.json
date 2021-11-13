@@ -10,8 +10,6 @@
   ],
   
   "cleanup" : [
-      "output.bin",
-      "output_parsedfiles.log",
-      "output_preproc3.log"
+      "output.bin"
   ]
 }
