@@ -390,7 +390,7 @@ class BitNotExpression(Expression):
     def eval(self, context):
         child = self.children[0].eval(context)
         assert_int(child, "Operand of bitwise-not operator", self.children[0].error_col, self.error_col)
-        return ~child
+        return (~child) & 0xff
 
     def __str__(self):
         return "(~%s)" % (str(self.children[0]))
