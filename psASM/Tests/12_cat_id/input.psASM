@@ -2,16 +2,40 @@
 
 cat_id(label, _1): JMP label_1
 
+@ifndef label_1
+    @error "OI!"
+@end
+
+@if !defined(label_1)
+    @error "OI!"
+@end
+
+
+
+
 @macro if_a_eq_b $id
 IFRM SYS3, S3_AB 
     JMP defined(cat_id($id, _ELSE)) ? cat_id($id, _ELSE) : cat_id($id, _END)
-@endmacro
+@end
 
 @macro else $id
 JMP cat_id($id, _END)
 cat_id($id,_ELSE):
-@endmacro
+@end
 
 @macro end $id
 cat_id($id,_END):
-@endmacro
+@end
+
+
+if_a_eq_b                                                                          if_statement_1
+    LITA 1
+else                                                                               if_statement_1
+    LITA 2
+end                                                                                if_statement_1
+LITA 3
+
+if_a_eq_b                                                                          if_statement_2
+    LITA 10
+end                                                                                if_statement_2
+LITA 30

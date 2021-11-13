@@ -19,11 +19,14 @@ class Context:
 
         return self.context_dict[key]
 
-    def __setitem__(self, key, value):
+    def __setitem__(self, key: str, value: Expression):
         # A value can only be registered if the key is not yet know, or known but
         # the value is undefined.
         if key in self and self.is_value_known(key):
             raise ContextException("Identifier '%s' is already defined and cannot be re-defined." % key)
+
+        if key.startswith('$'):
+            raise ContextException("Cannot define key starting with $, those are intended for macro replacement!")
 
         self.context_dict[key] = value
 

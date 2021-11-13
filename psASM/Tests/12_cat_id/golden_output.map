@@ -1,0 +1,13 @@
+Adr    | Raw Inst.       | Bin  | Source         | Line                                                                    
+---------------------------------------------------------------------------------------------------------------------------
+0x0000 | JMP 0x0         | c000 | input.psASM:3  | cat_id(label, _1): JMP label_1                                          
+0x0001 | IFRM 0x102, 0x4 | 7902 | input.psASM:17 | IFRM SYS3, S3_AB                                                        
+0x0002 | JMP 0x5         | c005 | input.psASM:18 | JMP defined(cat_id($id, _ELSE)) ? cat_id($id, _ELSE) : cat_id($id, _END)
+0x0003 | LITA 0x1        | 0401 | input.psASM:32 | LITA 1                                                                  
+0x0004 | JMP 0x6         | c006 | input.psASM:22 | JMP cat_id($id, _END)                                                   
+0x0005 | LITA 0x2        | 0402 | input.psASM:34 | LITA 2                                                                  
+0x0006 | LITA 0x3        | 0403 | input.psASM:36 | LITA 3                                                                  
+0x0007 | IFRM 0x102, 0x4 | 7902 | input.psASM:17 | IFRM SYS3, S3_AB                                                        
+0x0008 | JMP 0xa         | c00a | input.psASM:18 | JMP defined(cat_id($id, _ELSE)) ? cat_id($id, _ELSE) : cat_id($id, _END)
+0x0009 | LITA 0xa        | 040a | input.psASM:39 | LITA 10                                                                 
+0x000a | LITA 0x1e       | 041e | input.psASM:41 | LITA 30                                                                 

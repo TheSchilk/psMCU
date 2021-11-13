@@ -89,10 +89,10 @@ class Expression:
         _ = self, context  # pragma: no cover
         raise Exception('Base expression instantiated or eval function not overwritten')  # pragma: no cover
 
-    def macro_arg_replacement(self, find: str, replace, must_be_type=None):
+    def macro_arg_replacement(self, find: str, replace):
         """Replace macro arguments within this and all children."""
         for child in self.children:
-            child.macro_arg_replacement(find, replace, must_be_type)
+            child.macro_arg_replacement(find, replace)
 
 
 # ########## Atomic Expression: ##########
@@ -146,6 +146,13 @@ class IdentifierExpression(Expression):
     def eval_identifier(self) -> str:  # pragma: no cover
         _ = self
         raise Exception('Base expression instantiated or eval function not overwritten')
+    
+    def macro_arg_replacement(self, find: str, replace: Expression, must_be_identifier=False):
+        _ = self
+        _ = find
+        _ = replace
+        _ = must_be_identifier
+        raise Exception('Base expression instantiated or eval function not overwritten')
 
 
 class IdentifierLiteral(IdentifierExpression):
@@ -159,14 +166,14 @@ class IdentifierLiteral(IdentifierExpression):
     def eval_identifier(self):
         return self.identifier_name
 
-    def macro_arg_replacement(self, find: str, replace: Expression, must_be_type=None):
+    def macro_arg_replacement(self, find: str, replace: Expression, must_be_identifier=False):
         if self.eval_identifier() == find:
             # This IdentifierExpression must be replaced with the replace Expression
 
             # Check if there is a type requirement:
-            if must_be_type:
-                if not replace is must_be_type:
-                    raise EvalException('Can only replace with a %s, but got a %s' % (must_be_type.name, replace.name))
+            if must_be_identifier:
+                if not issubclass(replace.__class__, IdentifierExpression):
+                    raise EvalException('Can only replace with an identifer, but got a %s' % replace.name)
 
             # In-place mutate this object into the replacement:
 
@@ -201,7 +208,11 @@ class CatIdentifierOperator(IdentifierExpression):
         for arg in self.args:
             result = result + arg.eval_identifier()
         return result
-
+    
+    def macro_arg_replacement(self, find: str, replace: Expression, must_be_identifier=False):
+        for arg in self.args: 
+            arg.macro_arg_replacement(find, replace, must_be_identifier)
+    
 
 class StringLiteralExpression(Expression):
     """A String literal."""
@@ -224,16 +235,18 @@ class StringLiteralExpression(Expression):
 class isDefinedExpression(Expression):
     """defined(identifer) operator."""
 
-    def __init__(self, parse_ctx, text: IdentifierExpression):
+    def __init__(self, parse_ctx, identifier: IdentifierExpression):
         super().__init__("defined Operator", parse_ctx=parse_ctx)
-        self.text = text
+        self.identifier = identifier
 
     def eval(self, context):
-        return self.text.eval_identifier() in context
+        return self.identifier.eval_identifier() in context
 
     def __str__(self):
-        return "defined(" + str(self.text) + ")"
+        return "defined(" + str(self.identifier) + ")"
 
+    def macro_arg_replacement(self, find: str, replace: Expression):
+        self.identifier.macro_arg_replacement(find, replace, must_be_identifier=True)
 
 class SprintfExpression(Expression):
     """sprintf("string %i", val) operator."""
@@ -295,10 +308,10 @@ class SprintfExpression(Expression):
         for arg in self.args:
             arg.remove_error_col_info()
 
-    def macro_arg_replacement(self, find: str, replace: Expression, must_be_type=None):
-        self.text.macro_arg_replacement(find, replace, must_be_type)
+    def macro_arg_replacement(self, find: str, replace: Expression):
+        self.text.macro_arg_replacement(find, replace)
         for arg in self.args:
-            arg.macro_arg_replacement(find, replace, must_be_type)
+            arg.macro_arg_replacement(find, replace)
 
 
 class StrlenExpression(Expression):

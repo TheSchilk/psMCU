@@ -25,10 +25,9 @@ class ParsedLine:
     def set_context(self, context):
         self.context = context
 
-    def macro_arg_replacement(self, find, replace, must_be_type=None):
+    def macro_arg_replacement(self, find, replace):
         _ = find;
         _ = replace;
-        _ = must_be_type
 
     def instruction_tree(self, include_empty=False):
         _ = include_empty;
@@ -73,11 +72,10 @@ class LabelsLine(ParsedLine):
             exc.decorate_file_id(self.file_id)
             raise exc
 
-    def macro_arg_replacement(self, find, replace, must_be_type=None):
-        _ = must_be_type
+    def macro_arg_replacement(self, find, replace):
         # Replace in labels:
         for label in self.labels:
-            label.macro_arg_replacement(find, replace, must_be_type=IdentifierExpression)
+            label.macro_arg_replacement(find, replace, must_be_identifier=True)
 
 
 class InstructionLine(ParsedLine):
@@ -129,14 +127,18 @@ class InstructionLine(ParsedLine):
                 result += ' ' + comma_seperated_list(self.args)
         return result
 
-    def macro_arg_replacement(self, find, replace, must_be_type=None):
+    def macro_arg_replacement(self, find, replace):
         # Replace in labels:
         for label in self.labels:
-            label.macro_arg_replacement(find, replace, must_be_type=IdentifierExpression)
+            label.macro_arg_replacement(find, replace, must_be_identifier=True)
+        
+        # Replace in label_lines:
+        for line in self.labels_lines:
+            line.macro_arg_replacement(find, replace)
 
         # Replace in arguments:
         for arg in self.args:
-            arg.macro_arg_replacement(find, replace, must_be_type)
+            arg.macro_arg_replacement(find, replace)
 
     def evaluate_args(self):
         if self.have_evaluated_args:  # pragma: no cover
@@ -172,12 +174,12 @@ class DefineDirective(PreProcDirective):
 
         return result
 
-    def macro_arg_replacement(self, find, replace, must_be_type=None):
+    def macro_arg_replacement(self, find, replace):
         # Replace in name:
-        self.name.macro_arg_replacement(find, replace, IdentifierExpression)
+        self.name.macro_arg_replacement(find, replace, must_be_identifier=True)
 
         # Replace in value:
-        self.value.macro_arg_replacement(find, replace, must_be_type)
+        self.value.macro_arg_replacement(find, replace)
 
 
 class IncludeDirective(PreProcDirective):
@@ -234,14 +236,14 @@ class IfDirective(PreProcDirective):
     def __str__(self):
         return '@if %s' % self.condition
 
-    def macro_arg_replacement(self, find, replace, must_be_type=None):
-        self.condition.macro_arg_replacement(find, replace, must_be_type)
+    def macro_arg_replacement(self, find, replace):
+        self.condition.macro_arg_replacement(find, replace)
         for line in self.true_block:
-            line.macro_arg_replacement(find, replace, must_be_type)
+            line.macro_arg_replacement(find, replace)
         for line in self.elif_instructions:
-            line.macro_arg_replacement(find, replace, must_be_type)
+            line.macro_arg_replacement(find, replace)
         for line in self.else_block:
-            line.macro_arg_replacement(find, replace, must_be_type)
+            line.macro_arg_replacement(find, replace)
 
     def is_block_delimiter(self):
         return True
@@ -300,10 +302,10 @@ class ElIfDirective(PreProcDirective):
     def __str__(self):
         return '@elif %s' % self.condition
 
-    def macro_arg_replacement(self, find, replace, must_be_type):
-        self.condition.macro_arg_replacement(find, replace, must_be_type)
+    def macro_arg_replacement(self, find, replace):
+        self.condition.macro_arg_replacement(find, replace)
         for line in self.block:
-            line.macro_arg_replacement(find, replace, must_be_type)
+            line.macro_arg_replacement(find, replace)
 
     def is_block_delimiter(self):
         return True
@@ -332,8 +334,8 @@ class PrintDirective(PreProcDirective):
     def __str__(self):
         return '@print %s' % str(self.msg)
 
-    def macro_arg_replacement(self, find, replace, must_be_type=None):
-        self.msg.macro_arg_replacement(find, replace, must_be_type)
+    def macro_arg_replacement(self, find, replace):
+        self.msg.macro_arg_replacement(find, replace)
 
     def text(self):
         msg = self.msg.eval(self.context)
@@ -351,8 +353,8 @@ class ErrorDirective(PreProcDirective):
     def __str__(self):
         return '@error %s' % str(self.msg)
 
-    def macro_arg_replacement(self, find, replace, must_be_type=None):
-        self.msg.macro_arg_replacement(find, replace, must_be_type)
+    def macro_arg_replacement(self, find, replace):
+        self.msg.macro_arg_replacement(find, replace)
 
     def text(self):
         msg = self.msg.eval(self.context)
@@ -381,9 +383,9 @@ class AsciiHeapDirective(PreProcDirective):
         assert_int(adr, "Address of @ascii_heap directive", self.adr.error_col)
         return adr
 
-    def macro_arg_replacement(self, find, replace, must_be_type):
+    def macro_arg_replacement(self, find, replace):
         # Replace in adr:
-        self.adr.macro_arg_replacement(find, replace, must_be_type)
+        self.adr.macro_arg_replacement(find, replace)
 
 
 class AsciiStackDirective(PreProcDirective):
@@ -418,14 +420,13 @@ class MacroDirective(PreProcDirective):
 
         return result
 
-    def macro_arg_replacement(self, find, replace, must_be_type=None):
-        _ = must_be_type
+    def macro_arg_replacement(self, find, replace):
         # Replace in name:
-        self.name.macro_arg_replacement(find, replace, IdentifierExpression)
+        self.name.macro_arg_replacement(find, replace, must_be_identifier=True)
 
         # Replace in arguments:
         for arg in self.args:
-            arg.macro_arg_replacement(find, replace, IdentifierExpression)
+            arg.macro_arg_replacement(find, replace, must_be_identifier=True)
 
     def expand(self, expansion_args):
 
@@ -442,9 +443,9 @@ class MacroDirective(PreProcDirective):
         # Generate block
         block = copy.deepcopy(self.block)
 
-        for arg_name, arg_value in zip(self.args, expansion_args):
+        for arg_identifier, arg_value in zip(self.args, expansion_args):
             for line in block:
-                line.macro_arg_replacement(arg_name, arg_value)
+                line.macro_arg_replacement(arg_identifier.eval_identifier(), arg_value)
 
         return block
 
@@ -477,14 +478,14 @@ class MacroExpansionDirective(PreProcDirective):
             result += ' ' + comma_seperated_list(self.args)
         return result
 
-    def macro_arg_replacement(self, find, replace, must_be_type=None):
+    def macro_arg_replacement(self, find, replace):
         # Replace in labels:
         for label in self.labels:
-            label.macro_arg_replacement(find, replace, IdentifierExpression)
+            label.macro_arg_replacement(find, replace, must_be_identifier=True)
 
         # Replace in arguments:
         for arg in self.args:
-            arg.macro_arg_replacement(find, replace, must_be_type)
+            arg.macro_arg_replacement(find, replace)
 
 
 class ForLoopDirective(PreProcDirective):
@@ -504,13 +505,13 @@ class ForLoopDirective(PreProcDirective):
         str(self.index_name), str(self.start_val), str(self.condition), str(self.update))
         return result
 
-    def macro_arg_replacement(self, find, replace, must_be_type=None):
-        self.index_name.macro_arg_replacement(find, replace, must_be_type)
-        self.start_val.macro_arg_replacement(find, replace, must_be_type)
-        self.condition.macro_arg_replacement(find, replace, must_be_type)
-        self.update.macro_arg_replacement(find, replace, must_be_type)
+    def macro_arg_replacement(self, find, replace):
+        self.index_name.macro_arg_replacement(find, replace, must_be_identifier=True)
+        self.start_val.macro_arg_replacement(find, replace)
+        self.condition.macro_arg_replacement(find, replace)
+        self.update.macro_arg_replacement(find, replace)
         for line in self.block:
-            line.macro_arg_replacement(find, replace, must_be_type)
+            line.macro_arg_replacement(find, replace)
 
     def expand(self):
         result = []
