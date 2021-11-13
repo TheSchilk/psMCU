@@ -218,7 +218,7 @@ class PreProc:
                         value = None
 
                     # Define
-                    file_context_handler[name] = value
+                    file_context_handler[name.eval_identifier()] = value
                     continue
 
                 # if this an ascii_heap directive, create and include the pseudo file.
@@ -249,7 +249,7 @@ class PreProc:
                 # if this a macro directive, add it to the current context
                 if isinstance(peek, ParsedLine.MacroDirective):
                     macro_directive = in_queue.popleft()
-                    file_context_handler[macro_directive.name] = macro_directive
+                    file_context_handler[macro_directive.name.eval_identifier()] = macro_directive
                     continue
 
                 # If this a macro expansion, inline it with the correct arguments.
@@ -263,7 +263,8 @@ class PreProc:
                         expansion_directive = in_queue.popleft()
                         file_context_handler.handle_new_block(expansion_directive.labels)
                         # Retrieve macro:
-                        macro_directive = file_context_handler.get_fixed_context_view()[expansion_directive.macro_name]
+                        macro_directive = file_context_handler.get_fixed_context_view()[
+                            expansion_directive.macro_name.eval_identifier()]
                         # Generate block and add to queue
                         block = macro_directive.expand(expansion_directive.args)
                         in_queue = deque(block) + in_queue
@@ -284,7 +285,7 @@ class PreProc:
                     file_context_handler.handle_new_block(line.labels)
                     line.set_context(file_context_handler.get_fixed_context_view())
                     for label in line.labels:
-                        file_context_handler[label] = None
+                        file_context_handler[label.eval_identifier()] = None
                     result.append(line)
                     continue
 

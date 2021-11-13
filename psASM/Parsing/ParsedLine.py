@@ -1,7 +1,7 @@
 from typing import List
 import copy
 from PreProc.ExpressionTree import Expression, isDefinedExpression, NotExpression, IdentifierExpression
-from PreProc.ExpressionTree import NumLiteralExpression 
+from PreProc.ExpressionTree import NumLiteralExpression
 from PreProc.ExpressionTree import assert_int, assert_str
 from Util.Formatting import comma_seperated_list, prefix_every_line
 from Util.Errors import ParsingException, EvalException, LocatedException
@@ -25,10 +25,10 @@ class ParsedLine:
     def set_context(self, context):
         self.context = context
 
-    def macro_arg_replacement(self, find, replace):
+    def macro_arg_replacement(self, find, replace, must_be_type=None):
         _ = find;
         _ = replace;
-        pass
+        _ = must_be_type
 
     def instruction_tree(self, include_empty=False):
         _ = include_empty;
@@ -55,7 +55,7 @@ class EmptyLine(ParsedLine):
 class LabelsLine(ParsedLine):
     type_name = "Labels"
 
-    def __init__(self, labels: List[str]):
+    def __init__(self, labels: List[IdentifierExpression]):
         super().__init__()
         self.labels = labels
 
@@ -65,30 +65,26 @@ class LabelsLine(ParsedLine):
     def register_labels(self, adr):
         try:
             for label in self.labels:
-                self.context[label] = adr
+                if not self.context:
+                    raise Exception("Don't have a context yet!")
+                self.context[label.eval_identifier()] = adr
         except LocatedException as exc:
             exc.decorate_line_id(self.line_id)
             exc.decorate_file_id(self.file_id)
             raise exc
 
-    def macro_arg_replacement(self, find, replace):
+    def macro_arg_replacement(self, find, replace, must_be_type=None):
+        _ = must_be_type
         # Replace in labels:
-        for index, label in enumerate(self.labels):
-            if label == find:
-                # Found a label that should be replaced
-                # Ensure that replacement is an IdentifierExpression
-                if not isinstance(replace, IdentifierExpression):
-                    raise EvalException('Can only replace label during macro expansion if the replacement is an '
-                                        'identifier.')
-
-                # Replace label:
-                self.labels[index] = replace.text
+        for label in self.labels:
+            label.macro_arg_replacement(find, replace, must_be_type=IdentifierExpression)
 
 
 class InstructionLine(ParsedLine):
     type_name = "Instruction"
 
-    def __init__(self, labels: List[str], instruction: str, args: List[Expression], labels_lines: list = None):
+    def __init__(self, labels: List[IdentifierExpression], instruction: str, args: List[Expression],
+                 labels_lines: list = None):
         super().__init__()
         self.labels = labels
         self.instruction = instruction
@@ -105,7 +101,9 @@ class InstructionLine(ParsedLine):
 
     def register_labels(self, adr):
         for label in self.labels:
-            self.context[label] = adr
+            if not self.context:
+                raise Exception("Don't have a context yet!")
+            self.context[label.eval_identifier()] = adr
         for label_line in self.labels_lines:
             label_line.register_labels(adr)
 
@@ -113,10 +111,10 @@ class InstructionLine(ParsedLine):
         # Gather all labels to print from all labels and label_lines:
         labels_to_print = []
         for l in self.labels:
-            labels_to_print.append(l)
+            labels_to_print.append(str(l))
         for ll in self.labels_lines:
             for l in ll.labels:
-                labels_to_print.append(l)
+                labels_to_print.append(str(l))
 
         result = ""
         if len(labels_to_print) != 0:
@@ -131,32 +129,24 @@ class InstructionLine(ParsedLine):
                 result += ' ' + comma_seperated_list(self.args)
         return result
 
-    def macro_arg_replacement(self, find, replace):
-
+    def macro_arg_replacement(self, find, replace, must_be_type=None):
         # Replace in labels:
-        for index, label in enumerate(self.labels):
-            if label == find:
-                # Found a label that should be replaced
-                # Ensure that replacement is an IdentifierExpression
-                if not isinstance(replace, IdentifierExpression):
-                    raise EvalException('Can only replace label during macro expansion if the replacement is an '
-                                        'identifier.')
-
-                # Replace label:
-                self.labels[index] = replace.text
+        for label in self.labels:
+            label.macro_arg_replacement(find, replace, must_be_type=IdentifierExpression)
 
         # Replace in arguments:
         for arg in self.args:
-            arg.macro_arg_replacement(find, replace)
+            arg.macro_arg_replacement(find, replace, must_be_type)
 
     def evaluate_args(self):
-        if self.have_evaluated_args: # pragma: no cover 
+        if self.have_evaluated_args:  # pragma: no cover
             raise Exception("Re-evaluating args that already have been evaluated!!!")
         for arg in self.args:
             value = arg.eval(self.context)
             assert_int(value, "Argument of Instruction", arg.error_col)
             self.evaluated_args.append(value)
         self.have_evaluated_args = True
+
 
 class PreProcDirective(ParsedLine):
     def __init__(self):
@@ -166,7 +156,7 @@ class PreProcDirective(ParsedLine):
 class DefineDirective(PreProcDirective):
     type_name = "@define"
 
-    def __init__(self, name: str, value: Expression):
+    def __init__(self, name: IdentifierExpression, value: Expression):
         super().__init__()
         self.name = name
         self.value = value
@@ -176,24 +166,18 @@ class DefineDirective(PreProcDirective):
 
     def __str__(self):
         if self.value is not None:
-            result = ('@define %s %s' % (self.name, str(self.value)))
+            result = ('@define %s %s' % (str(self.name), str(self.value)))
         else:
-            result = ('@define %s' % self.name)
+            result = ('@define %s' % str(self.name))
 
         return result
 
-    def macro_arg_replacement(self, find, replace):
-        if self.name == find:
-            # Ensure that replacement is an IdentifierExpression
-            if not isinstance(replace, IdentifierExpression):
-                raise EvalException('Can only replace definition name during macro expansion if the replacement is '
-                                    'an identifier.')
-
-            # Replace name
-            self.name = replace.text
+    def macro_arg_replacement(self, find, replace, must_be_type=None):
+        # Replace in name:
+        self.name.macro_arg_replacement(find, replace, IdentifierExpression)
 
         # Replace in value:
-        self.value.macro_arg_replacement(find, replace)
+        self.value.macro_arg_replacement(find, replace, must_be_type)
 
 
 class IncludeDirective(PreProcDirective):
@@ -250,14 +234,14 @@ class IfDirective(PreProcDirective):
     def __str__(self):
         return '@if %s' % self.condition
 
-    def macro_arg_replacement(self, find, replace):
-        self.condition.macro_arg_replacement(find, replace)
+    def macro_arg_replacement(self, find, replace, must_be_type=None):
+        self.condition.macro_arg_replacement(find, replace, must_be_type)
         for line in self.true_block:
-            line.macro_arg_replacement(find, replace)
+            line.macro_arg_replacement(find, replace, must_be_type)
         for line in self.elif_instructions:
-            line.macro_arg_replacement(find, replace)
+            line.macro_arg_replacement(find, replace, must_be_type)
         for line in self.else_block:
-            line.macro_arg_replacement(find, replace)
+            line.macro_arg_replacement(find, replace, must_be_type)
 
     def is_block_delimiter(self):
         return True
@@ -286,7 +270,7 @@ class IfDirective(PreProcDirective):
 class IfDefDirective(IfDirective):
     type_name = "@ifdef"
 
-    def __init__(self, identifier: str):
+    def __init__(self, identifier: IdentifierExpression):
         is_defined = isDefinedExpression(None, identifier)
         super().__init__(is_defined)
 
@@ -294,7 +278,7 @@ class IfDefDirective(IfDirective):
 class IfnDefDirective(IfDirective):
     type_name = "@ifndef"
 
-    def __init__(self, identifier: str):
+    def __init__(self, identifier: IdentifierExpression):
         is_defined = isDefinedExpression(None, identifier)
         is_not_defined = NotExpression(None, is_defined)
         super().__init__(is_not_defined)
@@ -316,10 +300,10 @@ class ElIfDirective(PreProcDirective):
     def __str__(self):
         return '@elif %s' % self.condition
 
-    def macro_arg_replacement(self, find, replace):
-        self.condition.macro_arg_replacement(find, replace)
+    def macro_arg_replacement(self, find, replace, must_be_type):
+        self.condition.macro_arg_replacement(find, replace, must_be_type)
         for line in self.block:
-            line.macro_arg_replacement(find, replace)
+            line.macro_arg_replacement(find, replace, must_be_type)
 
     def is_block_delimiter(self):
         return True
@@ -348,8 +332,8 @@ class PrintDirective(PreProcDirective):
     def __str__(self):
         return '@print %s' % str(self.msg)
 
-    def macro_arg_replacement(self, find, replace):
-        self.msg.macro_arg_replacement(find, replace)
+    def macro_arg_replacement(self, find, replace, must_be_type=None):
+        self.msg.macro_arg_replacement(find, replace, must_be_type)
 
     def text(self):
         msg = self.msg.eval(self.context)
@@ -367,8 +351,8 @@ class ErrorDirective(PreProcDirective):
     def __str__(self):
         return '@error %s' % str(self.msg)
 
-    def macro_arg_replacement(self, find, replace):
-        self.msg.macro_arg_replacement(find, replace)
+    def macro_arg_replacement(self, find, replace, must_be_type=None):
+        self.msg.macro_arg_replacement(find, replace, must_be_type)
 
     def text(self):
         msg = self.msg.eval(self.context)
@@ -397,9 +381,9 @@ class AsciiHeapDirective(PreProcDirective):
         assert_int(adr, "Address of @ascii_heap directive", self.adr.error_col)
         return adr
 
-    def macro_arg_replacement(self, find, replace):
+    def macro_arg_replacement(self, find, replace, must_be_type):
         # Replace in adr:
-        self.adr.macro_arg_replacement(find, replace)
+        self.adr.macro_arg_replacement(find, replace, must_be_type)
 
 
 class AsciiStackDirective(PreProcDirective):
@@ -421,35 +405,34 @@ class AsciiStackDirective(PreProcDirective):
 class MacroDirective(PreProcDirective):
     type_name = "@macro"
 
-    def __init__(self, name: str, args: List[str]):
+    def __init__(self, name: IdentifierExpression, args: List[IdentifierExpression]):
         super().__init__()
         self.name = name
         self.args = args
         self.block = []
 
-        for arg in self.args:
-            if not arg.startswith('$'):
-                raise ParsingException("Macro expansion argument identifiers must start with '$'")
-
     def __str__(self):
-        result = "@macro " + self.name
+        result = "@macro " + str(self.name)
         if self.args:
             result += ' ' + comma_seperated_list(self.args)
 
         return result
 
-    def macro_arg_replacement(self, find, replace):
+    def macro_arg_replacement(self, find, replace, must_be_type=None):
+        _ = must_be_type
+        # Replace in name:
+        self.name.macro_arg_replacement(find, replace, IdentifierExpression)
+
         # Replace in arguments:
-        for index, arg in enumerate(self.args):
-            if arg == find:
-                # Found an arg that should be replaced
-                # Ensure that replacement is an IdentifierExpression
-                if isinstance(replace, IdentifierExpression):
-                    self.args[index] = replace.text
-                else:
-                    raise EvalException('Can only replace macro definition argument identifier with another identifer.')
+        for arg in self.args:
+            arg.macro_arg_replacement(find, replace, IdentifierExpression)
 
     def expand(self, expansion_args):
+
+        for arg in self.args:
+            if not arg.eval_identifier().startswith('$'):
+                raise ParsingException("Macro expansion argument identifiers must start with '$'")
+
         want_args = len(self.args)
         have_args = len(expansion_args)
         if want_args != have_args:
@@ -475,10 +458,11 @@ class MacroDirective(PreProcDirective):
     def is_block_delimiter(self):
         return True
 
+
 class MacroExpansionDirective(PreProcDirective):
     type_name = "Macro expansion"
 
-    def __init__(self, labels: List[str], macro_name: str, args: List[Expression]):
+    def __init__(self, labels: List[IdentifierExpression], macro_name: IdentifierExpression, args: List[Expression]):
         super().__init__()
         self.labels = labels
         self.macro_name = macro_name
@@ -488,31 +472,26 @@ class MacroExpansionDirective(PreProcDirective):
         result = ""
         if self.labels:
             result += comma_seperated_list(self.labels) + ': '
-        result += self.macro_name
+        result += str(self.macro_name)
         if self.args:
             result += ' ' + comma_seperated_list(self.args)
         return result
 
-    def macro_arg_replacement(self, find, replace):
+    def macro_arg_replacement(self, find, replace, must_be_type=None):
         # Replace in labels:
-        for index, label in enumerate(self.labels):
-            if label == find:
-                # Found a label that should be replaced
-                # Ensure that replacement is an IdentifierExpression
-                if isinstance(replace, IdentifierExpression):
-                    self.labels[index] = replace.text
-                else:
-                    raise EvalException('Can only replace label during macro expansion if the replacement is an '
-                                        'identifier.')
+        for label in self.labels:
+            label.macro_arg_replacement(find, replace, IdentifierExpression)
 
         # Replace in arguments:
         for arg in self.args:
-            arg.macro_arg_replacement(find, replace)
-    
+            arg.macro_arg_replacement(find, replace, must_be_type)
+
+
 class ForLoopDirective(PreProcDirective):
     type_name = "@for"
 
-    def __init__(self, index_name: str, start_val: Expression, condition: Expression, update: Expression):
+    def __init__(self, index_name: IdentifierExpression, start_val: Expression, condition: Expression,
+                 update: Expression):
         super().__init__()
         self.index_name = index_name
         self.start_val = start_val
@@ -521,60 +500,63 @@ class ForLoopDirective(PreProcDirective):
         self.block = []
 
     def __str__(self):
-        result = "@for %s, %s, %s, %s " % (self.index_name, str(self.start_val), str(self.condition), str(self.update))
+        result = "@for %s, %s, %s, %s " % (
+        str(self.index_name), str(self.start_val), str(self.condition), str(self.update))
         return result
-    
-    def macro_arg_replacement(self, find, replace):
-        self.start_val.macro_arg_replacement(find, replace)
-        self.condition.macro_arg_replacement(find, replace)
-        self.update.macro_arg_replacement(find, replace)
+
+    def macro_arg_replacement(self, find, replace, must_be_type=None):
+        self.index_name.macro_arg_replacement(find, replace, must_be_type)
+        self.start_val.macro_arg_replacement(find, replace, must_be_type)
+        self.condition.macro_arg_replacement(find, replace, must_be_type)
+        self.update.macro_arg_replacement(find, replace, must_be_type)
         for line in self.block:
-            line.macro_arg_replacement(find, replace)
+            line.macro_arg_replacement(find, replace, must_be_type)
 
     def expand(self):
         result = []
-        
+
         current_index = self.start_val.eval(self.context)
-        
-        max_iteration_count = 2**14+1
+
+        max_iteration_count = 2 ** 14 + 1
         iteration_count = 0
         while True:
             # Prevent runaway loops
             iteration_count += 1
             if iteration_count > max_iteration_count:
                 raise EvalException("Runaway for loop!", line_id=self.line_id, file_id=self.file_id)
-            
+
             # Generate a numerical literal from current index
             current_index_literal = NumLiteralExpression(None, str(current_index))
 
             # Check that condition still holds:
             condition_copy = copy.deepcopy(self.condition)
-            condition_copy.macro_arg_replacement(self.index_name, current_index_literal)
+            condition_copy.macro_arg_replacement(self.index_name.eval_identifier(), current_index_literal)
             if not condition_copy.eval(self.context):
                 break
 
             # Create block with current index
             block_copy = copy.deepcopy(self.block)
             for line in block_copy:
-                line.macro_arg_replacement(self.index_name, current_index_literal)
+                line.macro_arg_replacement(self.index_name.eval_identifier(), current_index_literal)
                 result.append(line)
 
             # Update index
             update_copy = copy.deepcopy(self.update)
-            update_copy.macro_arg_replacement(self.index_name, current_index_literal)
+            update_copy.macro_arg_replacement(self.index_name.eval_identifier(), current_index_literal)
             current_index = update_copy.eval(self.context)
 
         return result
-    
+
     def instruction_tree(self, include_empty=False):
         result = str(self)
         for line in self.block:
             result += '\n' + prefix_every_line(line.instruction_tree(include_empty), '  ')
         result += '\n' + '@end'
         return result
-    
+
     def is_block_delimiter(self):
         return True
+
 
 class EndDirective(PreProcDirective):
     type_name = "@end"

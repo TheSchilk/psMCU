@@ -49,6 +49,16 @@ class psASMParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by psASMParser#literal_identifier.
+    def visitLiteral_identifier(self, ctx:psASMParser.Literal_identifierContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by psASMParser#catid_identifier.
+    def visitCatid_identifier(self, ctx:psASMParser.Catid_identifierContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by psASMParser#preproc_define.
     def visitPreproc_define(self, ctx:psASMParser.Preproc_defineContext):
         return self.visitChildren(ctx)

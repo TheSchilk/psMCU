@@ -47,7 +47,7 @@ def _type_error(msg, error_col, error_col_alt=None):
     raise exc
 
 
-def _type_combination_str(args: []):
+def _type_combination_str(args: List):
     result = ""
     for index, arg in enumerate(args):
         if index != 0:
@@ -56,7 +56,7 @@ def _type_combination_str(args: []):
             result += 'int'
         elif isinstance(arg, str):
             result += 'str'
-        else: # pragma: no cover 
+        else:  # pragma: no cover
             raise Exception()
     return result
 
@@ -86,13 +86,13 @@ class Expression:
 
     def eval(self, context):
         """Evaluate this expression."""
-        _ = self, context # pragma: no cover
-        raise Exception('Base expression instantiated or eval function not overwritten') # pragma: no cover
+        _ = self, context  # pragma: no cover
+        raise Exception('Base expression instantiated or eval function not overwritten')  # pragma: no cover
 
-    def macro_arg_replacement(self, find: str, replace):
+    def macro_arg_replacement(self, find: str, replace, must_be_type=None):
         """Replace macro arguments within this and all children."""
         for child in self.children:
-            child.macro_arg_replacement(find, replace)
+            child.macro_arg_replacement(find, replace, must_be_type)
 
 
 # ########## Atomic Expression: ##########
@@ -135,21 +135,38 @@ class CharLiteralExpression(Expression):
 
 
 class IdentifierExpression(Expression):
-    """An Identifier (Defined value, label, etc)"""
+    """An Identifier (Defined value, label, etc)."""
 
-    def __init__(self, parse_ctx, text: str):
-        super().__init__('Identifier', parse_ctx=parse_ctx)
-        self.text = text
+    def __init__(self, name: str, parse_ctx, children: List):
+        super().__init__(name, parse_ctx=parse_ctx, children=children)
 
     def eval(self, context):
-        return context[self.text]
+        return context[self.eval_identifier()]
+
+    def eval_identifier(self) -> str:  # pragma: no cover
+        _ = self
+        raise Exception('Base expression instantiated or eval function not overwritten')
+
+
+class IdentifierLiteral(IdentifierExpression):
+    def __init__(self, parse_ctx, identifier_name: str):
+        super().__init__('Identifier Literal', parse_ctx=parse_ctx, children=[])
+        self.identifier_name = identifier_name
 
     def __str__(self):
-        return self.text
+        return self.identifier_name
 
-    def macro_arg_replacement(self, find: str, replace: Expression):
-        if self.text == find:
+    def eval_identifier(self):
+        return self.identifier_name
+
+    def macro_arg_replacement(self, find: str, replace: Expression, must_be_type=None):
+        if self.eval_identifier() == find:
             # This IdentifierExpression must be replaced with the replace Expression
+
+            # Check if there is a type requirement:
+            if must_be_type:
+                if not replace is must_be_type:
+                    raise EvalException('Can only replace with a %s, but got a %s' % (must_be_type.name, replace.name))
 
             # In-place mutate this object into the replacement:
 
@@ -158,7 +175,7 @@ class IdentifierExpression(Expression):
 
             # Give it all the right properties:
             for attr in replace.__dict__:
-                self.__setattr__(attr, getattr(replace,  attr))
+                self.__setattr__(attr, getattr(replace, attr))
 
             # It now no longer makes sense to talk about error_cols for this expression:
             self.error_col = None
@@ -166,6 +183,24 @@ class IdentifierExpression(Expression):
             # Note: Alternatively, macro_arg_replacement could check if each child is an
             # IdentifierExpression with matching text and replace it.
             # But that is boring :)
+
+
+class CatIdentifierOperator(IdentifierExpression):
+    def __init__(self, parse_ctx, args: List[IdentifierExpression]):
+        super().__init__('cat_id() operator.', parse_ctx=parse_ctx, children=args)
+        self.args = args
+
+    def __str__(self):
+        result = "cat_id("
+        result += Formatting.comma_seperated_list(self.args)
+        result += ")"
+        return result
+
+    def eval_identifier(self):
+        result = ""
+        for arg in self.args:
+            result = result + arg.eval_identifier()
+        return result
 
 
 class StringLiteralExpression(Expression):
@@ -189,15 +224,15 @@ class StringLiteralExpression(Expression):
 class isDefinedExpression(Expression):
     """defined(identifer) operator."""
 
-    def __init__(self, parse_ctx, text: str):
+    def __init__(self, parse_ctx, text: IdentifierExpression):
         super().__init__("defined Operator", parse_ctx=parse_ctx)
         self.text = text
 
     def eval(self, context):
-        return self.text in context
+        return self.text.eval_identifier() in context
 
     def __str__(self):
-        return "defined(" + self.text + ")"
+        return "defined(" + str(self.text) + ")"
 
 
 class SprintfExpression(Expression):
@@ -232,7 +267,7 @@ class SprintfExpression(Expression):
                     specifiers = list(re.finditer(r'%v', original_text))
                     specifier_index = specifiers[arg_index].start()
                     error_col = self.string_start_col + specifier_index + 1
-                    error_col = (error_col, error_col+1)  # Specifier is two chars long
+                    error_col = (error_col, error_col + 1)  # Specifier is two chars long
 
                 else:
                     error_col = None
@@ -260,10 +295,10 @@ class SprintfExpression(Expression):
         for arg in self.args:
             arg.remove_error_col_info()
 
-    def macro_arg_replacement(self, find: str, replace: Expression):
-        self.text.macro_arg_replacement(find, replace)
+    def macro_arg_replacement(self, find: str, replace: Expression, must_be_type=None):
+        self.text.macro_arg_replacement(find, replace, must_be_type)
         for arg in self.args:
-            arg.macro_arg_replacement(find, replace)
+            arg.macro_arg_replacement(find, replace, must_be_type)
 
 
 class StrlenExpression(Expression):
@@ -278,7 +313,7 @@ class StrlenExpression(Expression):
         return len(child)
 
     def __str__(self):
-        return "strlen("+str(self.children[0])+")"
+        return "strlen(" + str(self.children[0]) + ")"
 
 
 # ########## Unary Expression: ##########
@@ -346,6 +381,7 @@ class BitNotExpression(Expression):
 
     def __str__(self):
         return "(~%s)" % (str(self.children[0]))
+
 
 # ########## Binary Expression: ##########
 
@@ -415,7 +451,7 @@ class AddExpression(Expression):
         elif isinstance(child0, str) and isinstance(child1, str):
             result = child0 + child1
         else:
-            msg = "Addition is not defined for types: "+_type_combination_str([child0, child1])
+            msg = "Addition is not defined for types: " + _type_combination_str([child0, child1])
             raise EvalException(msg, error_col=self.error_col)
         return result
 

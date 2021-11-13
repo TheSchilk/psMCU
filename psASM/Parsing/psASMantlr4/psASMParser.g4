@@ -22,7 +22,7 @@ instruction
    ;
 
 labels
-   : lbls+=IDENTIFIER (COMMA lbls+=IDENTIFIER)* COLON
+   : lbls+=preproc_identifier (COMMA lbls+=preproc_identifier)* COLON
    ;
 
 // ======= PreProc =======
@@ -45,9 +45,14 @@ preproc_directive
    | preproc_macro 
    | preproc_macro_expansion 
    ;
-   
+
+preproc_identifier
+   : identifier=IDENTIFIER_LITERAL #literal_identifier
+   | CATID LPAREN args+=preproc_identifier (COMMA args+=preproc_identifier)+ RPAREN #catid_identifier
+   ;
+
 preproc_define
-   : DEFINE name=IDENTIFIER (value=expr)? 
+   : DEFINE name=preproc_identifier (value=expr)? 
    ;
 
 preproc_include
@@ -63,11 +68,11 @@ preproc_if
    ;
 
 preproc_ifdef
-   : IFDEF arg=IDENTIFIER
+   : IFDEF arg=preproc_identifier
    ;
 
 preproc_ifndef
-   : IFNDEF arg=IDENTIFIER
+   : IFNDEF arg=preproc_identifier
    ;
 
 preproc_elif
@@ -79,7 +84,7 @@ preproc_else
    ;
 
 preproc_for
-   : FOR index_name=IDENTIFIER COMMA start_val=expr COMMA condition=expr COMMA update=expr
+   : FOR index_name=preproc_identifier COMMA start_val=expr COMMA condition=expr COMMA update=expr
    ;
 
 preproc_end
@@ -103,11 +108,11 @@ preproc_ascii_stack
    ;
 
 preproc_macro
-   : MACRO macro_name=IDENTIFIER (args+=IDENTIFIER (COMMA args+=IDENTIFIER)*)?
+   : MACRO macro_name=preproc_identifier (args+=preproc_identifier (COMMA args+=preproc_identifier)*)?
    ;
 
 preproc_macro_expansion
-   : (lbls=labels)? macro_name=IDENTIFIER (args+=expr (COMMA args+=expr)*)?
+   : (lbls=labels)? macro_name=preproc_identifier (args+=expr (COMMA args+=expr)*)?
    ; 
 
 // ======= Expressions =======
@@ -131,10 +136,10 @@ atom
    : LPAREN child1=expr RPAREN #expr_atom
    | numerical_literal #numerical_atom
    | string_literal #string_atom
-   | DEFINED LPAREN arg=IDENTIFIER RPAREN #defined_atom
+   | DEFINED LPAREN arg=preproc_identifier RPAREN #defined_atom
    | SPRINTF LPAREN txt=expr (COMMA args+= expr)* RPAREN #sprintf_atom
    | STRLEN LPAREN txt=expr RPAREN #strlen_atom
-   | arg=IDENTIFIER #identifier_atom
+   | arg=preproc_identifier #identifier_atom
    ;
 
 // ======= Literals =======

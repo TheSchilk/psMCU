@@ -85,13 +85,25 @@ class psASMOutputVisitor(psASMParserVisitor):
 
     # Visit a parse tree produced by psASMParser#labels.
     def visitLabels(self, ctx: psASMParser.LabelsContext) -> [str]:
-        # 'lbls+=IDENTIFIER (COMMA lbls+=IDENTIFIER)* COLON'
-        return [lbl.text for lbl in ctx.lbls]
+        # 'lbls+=preproc_identifier (COMMA lbls+=preproc_identifier)* COLON'
+        labels = [self.visit(label) for label in ctx.lbls]
+        return labels
+
+    # Visit a parse tree produced by psASMParser#literal_identifier.
+    def visitLiteral_identifier(self, ctx:psASMParser.Literal_identifierContext):
+        # 'identifier=IDENTIFIER_LITERAL'
+        return ExpressionTree.IdentifierLiteral(ctx, ctx.identifier.text)
+
+    # Visit a parse tree produced by psASMParser#catid_identifier.
+    def visitCatid_identifier(self, ctx:psASMParser.Catid_identifierContext):
+        # 'CATID LPAREN args+=preproc_identifier (COMMA args+=preproc_identifier)+ RPAREN'
+        args = [self.visit(arg) for arg in ctx.args]
+        return ExpressionTree.CatIdentifierOperator(ctx, args)
 
     # Visit a parse tree produced by psASMParser#preproc_define.
     def visitPreproc_define(self, ctx: psASMParser.Preproc_defineContext) -> ParsedLine.DefineDirective:
-        # 'DEFINE name=IDENTIFIER (value=expr)?'
-        name = ctx.name.text
+        # 'DEFINE name=preproc_identifier (value=expr)?'
+        name = self.visit(ctx.name)
         if ctx.value is not None:
             value = self.visit(ctx.value)
         else:
@@ -108,6 +120,7 @@ class psASMOutputVisitor(psASMParserVisitor):
     # Visit a parse tree produced by psASMParser#preproc_include_once.
     def visitPreproc_include_once(self, ctx: psASMParser.Preproc_include_onceContext) \
             -> ParsedLine.IncludeOnceDirective:
+        # 'INCLUDE_ONCE'
         return ParsedLine.IncludeOnceDirective()
 
     # Visit a parse tree produced by psASMParser#preproc_if.
@@ -118,14 +131,14 @@ class psASMOutputVisitor(psASMParserVisitor):
 
     # Visit a parse tree produced by psASMParser#preproc_ifdef.
     def visitPreproc_ifdef(self, ctx: psASMParser.Preproc_ifdefContext) -> ParsedLine.IfDefDirective:
-        # 'IFDEF arg=IDENTIFIER'
-        identifier = ctx.arg.text
+        # 'IFDEF arg=preproc_identifier'
+        identifier = self.visit(ctx.arg)
         return ParsedLine.IfDefDirective(identifier)
 
     # Visit a parse tree produced by psASMParser#preproc_ifndef.
     def visitPreproc_ifndef(self, ctx: psASMParser.Preproc_ifndefContext) -> ParsedLine.IfnDefDirective:
-        # 'IFNDEF arg=IDENTIFIER'
-        identifier = ctx.arg.text
+        # 'IFNDEF arg=preproc_identifier
+        identifier = self.visit(ctx.arg)
         return ParsedLine.IfnDefDirective(identifier)
 
     # Visit a parse tree produced by psASMParser#preproc_elif.
@@ -141,16 +154,14 @@ class psASMOutputVisitor(psASMParserVisitor):
     
     # Visit a parse tree produced by psASMParser#preproc_for.
     def visitPreproc_for(self, ctx:psASMParser.Preproc_forContext):
-        # 'FOR index_name=IDENTIFIER COMMA start_val=expr COMMA condition=expr COMMA update=expr'
+        # 'FOR index_name=preproc_identifier COMMA start_val=expr COMMA condition=expr COMMA update=expr'
         
-        index_name = ctx.index_name.text
+        index_name = self.visit(ctx.index_name)
         start_val = self.visit(ctx.start_val)
         condition = self.visit(ctx.condition)
         update = self.visit(ctx.update)
         
         return ParsedLine.ForLoopDirective(index_name, start_val, condition, update)
-
-
 
     # Visit a parse tree produced by psASMParser#preproc_end.
     def visitPreproc_end(self, ctx: psASMParser.Preproc_endContext) -> ParsedLine.EndDirective:
@@ -190,20 +201,20 @@ class psASMOutputVisitor(psASMParserVisitor):
 
     # Visit a parse tree produced by psASMParser#preproc_macro.
     def visitPreproc_macro(self, ctx: psASMParser.Preproc_macroContext) -> ParsedLine.MacroDirective:
-        # 'MACRO macro_name=IDENTIFIER (args+=IDENTIFIER (COMMA args+=IDENTIFIER)*)?'
-        name = ctx.macro_name.text
-        args = [arg.text for arg in ctx.args]
+        # 'MACRO macro_name=preproc_identifier (args+=preproc_identifier (COMMA args+=preproc_identifier)*)?'
+        name = self.visit(ctx.macro_name)
+        args = [self.visit(arg) for arg in ctx.args]
         return ParsedLine.MacroDirective(name, args)
 
     # Visit a parse tree produced by psASMParser#preproc_macro_expansion.
     def visitPreproc_macro_expansion(self, ctx: psASMParser.Preproc_macro_expansionContext) \
             -> ParsedLine.MacroExpansionDirective:
-        # '(lbls=labels)? macro_name=IDENTIFIER (args+=expr (COMMA args+=expr)*)?'
+        # '(lbls=labels)? macro_name=preproc_identifier (args+=expr (COMMA args+=expr)*)?'
         if ctx.lbls is None:
             lbls = []
         else:
             lbls = self.visit(ctx.lbls)
-        name = ctx.macro_name.text
+        name = self.visit(ctx.macro_name)
         args = [self.visit(arg) for arg in ctx.args]
         return ParsedLine.MacroExpansionDirective(lbls, name, args)
 
@@ -350,8 +361,8 @@ class psASMOutputVisitor(psASMParserVisitor):
 
     # Visit a parse tree produced by psASMParser#defined_atom.
     def visitDefined_atom(self, ctx: psASMParser.Defined_atomContext):
-        # 'DEFINED LPAREN arg=IDENTIFIER RPAREN'
-        arg = ctx.arg.text
+        # 'DEFINED LPAREN arg=preproc_identifier RPAREN'
+        arg = self.visit(ctx.arg)
         return ExpressionTree.isDefinedExpression(ctx, arg)
 
     # Visit a parse tree produced by psASMParser#sprintf_atom.
@@ -369,9 +380,8 @@ class psASMOutputVisitor(psASMParserVisitor):
 
     # Visit a parse tree produced by psASMParser#identifier_atom.
     def visitIdentifier_atom(self, ctx: psASMParser.Identifier_atomContext):
-        # 'arg=IDENTIFIER'
-        arg = ctx.arg.text
-        return ExpressionTree.IdentifierExpression(ctx, arg)
+        # 'arg=preproc_identifier'
+        return self.visit(ctx.arg)
 
     # Visit a parse tree produced by psASMParser#numerical_literal.
     def visitNumerical_literal(self, ctx: psASMParser.Numerical_literalContext):

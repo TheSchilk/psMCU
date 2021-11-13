@@ -49,6 +49,8 @@ SPRINTF: 'sprintf';
 
 STRLEN: 'strlen';
 
+CATID: 'cat_id';
+
 LPAREN: '(' ;
 RPAREN: ')' ;
 
@@ -172,7 +174,7 @@ IDENTIFIER_OTHER_CHAR
    : [a-zA-Z0-9_]
    ;
 
-IDENTIFIER
+IDENTIFIER_LITERAL
    : IDENTIFIER_FIRST_CHAR (IDENTIFIER_OTHER_CHAR+)?
    ;
 

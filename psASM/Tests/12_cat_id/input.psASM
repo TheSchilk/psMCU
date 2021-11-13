@@ -4,7 +4,7 @@ cat_id(label, _1): JMP label_1
 
 @macro if_a_eq_b $id
 IFRM SYS3, S3_AB 
-    JMP definde(cat_id($id, _ELSE)) ? cat_id($id, _ELSE) : cat_id($id, _END)
+    JMP defined(cat_id($id, _ELSE)) ? cat_id($id, _ELSE) : cat_id($id, _END)
 @endmacro
 
 @macro else $id
