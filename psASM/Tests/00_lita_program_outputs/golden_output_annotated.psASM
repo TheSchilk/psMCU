@@ -1,0 +1,31 @@
+
+###################################
+# File: input.psASM 
+###################################
+
+LITA 0 # @ 0x0000: LITA 0x0
+LITA 1 # @ 0x0001: LITA 0x1
+LITA 2 # @ 0x0002: LITA 0x2
+LITA 3 # @ 0x0003: LITA 0x3
+
+###################################
+# File: _preproc_root_autogen.psASM 
+###################################
+
+#
+# Root Header/Footer file
+# (Automatically generated)
+#
+
+
+# Startup file
+# Handles branch to entry point and interrupt.
+# @include "std_startup.psASM" # Disabled by '-s' flag.
+
+# Main Program
+@include "input.psASM"
+
+# Footer file
+# Adds infinite loop to end of program to prevent overrun.
+# @include "std_footer.psASM" # Disabled by '-f' flag.
+

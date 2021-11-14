@@ -1,7 +1,7 @@
 import sys
 from Parsing.ParsedLine import InstructionLine
 
-from Util.Errors import InstructionException, ParsingException
+from Util.Errors import InstructionException
 
 
 def bit_mask(n):
@@ -43,11 +43,9 @@ class Instruction:
         line_id = line.line_id
         try:
             inst = Instruction.instruction_set[inst_name](args, file_id, line_id)
-        except KeyError as exc:
-            # Should never happen - the parser now tokenizes instructions. But let's at least
-            # fail nicely..
-            raise ParsingException("Unrecognised instruction '%s' - how did you get this get past my parser?"
-                                   % inst_name, file_id=file_id, line_id=line_id) from exc
+        except KeyError: # pragma: no cover 
+            # Should never happen - the parser now tokenizes instructions.
+            raise Exception("Unrecognized instruction - how did you get this past my parser?")
         return inst
 
     def __str__(self):

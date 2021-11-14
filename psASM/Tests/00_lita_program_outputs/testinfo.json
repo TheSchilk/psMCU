@@ -1,6 +1,6 @@
 {
   "runs" : [
-    "input.psASM -s -f -o output -B -L -S"
+    "input.psASM -s -f -o output -B -L -S -A -U"
   ],
   
   "text_diffs" : [
@@ -8,12 +8,14 @@
   ],
   
   "bin_diffs" : [
+    ["output_annotated.psASM", "golden_output_annotated.psASM"],
     ["output.bin", "golden_output.bin"],
     ["output_L.bin", "golden_output_L.bin"],
     ["output_H.bin", "golden_output_H.bin"]
   ],
 
   "cleanup" : [
+    "output_annotated.psASM",
     "output.bin",
     "outputLOGISIM",
     "output_L.bin",
