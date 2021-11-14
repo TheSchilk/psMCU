@@ -147,7 +147,7 @@ class IdentifierExpression(Expression):
         _ = self
         raise Exception('Base expression instantiated or eval function not overwritten')
     
-    def macro_arg_replacement(self, find: str, replace: Expression, must_be_identifier=False):
+    def macro_arg_replacement(self, find: str, replace: Expression, must_be_identifier=False): # pragma: no cover 
         _ = self
         _ = find
         _ = replace
@@ -186,10 +186,6 @@ class IdentifierLiteral(IdentifierExpression):
 
             # It now no longer makes sense to talk about error_cols for this expression:
             self.error_col = None
-
-            # Note: Alternatively, macro_arg_replacement could check if each child is an
-            # IdentifierExpression with matching text and replace it.
-            # But that is boring :)
 
 
 class CatIdentifierOperator(IdentifierExpression):
@@ -255,14 +251,13 @@ class SprintfExpression(Expression):
         super().__init__('sprintf Operator', parse_ctx=parse_ctx)
         self.text = text
         self.args = args
-
-        if len(text.error_col) > 1:
-            self.string_start_col = text.error_col[0]
-        else:
-            self.string_start_col = None
+        
+        self.string_start_col = None
+        if text.error_col:
+            if len(text.error_col) > 1:
+                self.string_start_col = text.error_col[0]
 
     def eval(self, context):
-
         # Get format string and assert it is a string:
         original_text = self.text.eval(context)
         assert_str(original_text, "First argument of sprintf operator", self.text.error_col, self.error_col)
