@@ -1,0 +1,83 @@
+#
+# std_conditional.psASM
+# Part of StdLib for psMCU.
+# Contains if/else-like macros.
+#
+
+@include_once
+
+# #######################################
+# ######## Universal Components #########
+# #######################################
+
+@macro else $id
+JMP cat_id($id, _END)
+cat_id($id,_ELSE):
+@end
+
+@macro end $id
+cat_id($id,_END):
+@end
+
+# #######################################
+# ######### SYS3 Conditionals ###########
+# #######################################
+
+# ########### A/B Equality ##############
+
+@macro if_a_eq_b $id
+IFRM SYS3, S3_AB 
+    JMP defined(cat_id($id, _ELSE)) ? cat_id($id, _ELSE) : cat_id($id, _END)
+@end
+
+@macro if_a_neq_b $id
+IFSM SYS3, S3_AB 
+    JMP defined(cat_id($id, _ELSE)) ? cat_id($id, _ELSE) : cat_id($id, _END)
+@end
+
+# ############# A/B zero ################
+
+@macro if_a_eq_zero $id
+IFRM SYS3, S3_A0 
+    JMP defined(cat_id($id, _ELSE)) ? cat_id($id, _ELSE) : cat_id($id, _END)
+@end
+
+@macro if_a_neq_zero $id
+IFSM SYS3, S3_A0
+    JMP defined(cat_id($id, _ELSE)) ? cat_id($id, _ELSE) : cat_id($id, _END)
+@end
+
+@macro if_b_eq_zero $id
+IFRM SYS3, S3_B0 
+    JMP defined(cat_id($id, _ELSE)) ? cat_id($id, _ELSE) : cat_id($id, _END)
+@end
+
+@macro if_b_neq_zero $id
+IFSM SYS3, S3_B0
+    JMP defined(cat_id($id, _ELSE)) ? cat_id($id, _ELSE) : cat_id($id, _END)
+@end
+
+# ######### A/B comparison #############
+
+@macro if_a_greater_b $id
+IFRM SYS3, S3_AgreaterB
+    JMP defined(cat_id($id, _ELSE)) ? cat_id($id, _ELSE) : cat_id($id, _END)
+@end
+
+@macro if_b_less_a $id
+    if_a_greater_b $id
+@end
+
+@macro if_b_greater_a $id
+IFRM SYS3, S3_b_greater_a
+    JMP defined(cat_id($id, _ELSE)) ? cat_id($id, _ELSE) : cat_id($id, _END)
+@end
+
+@macro if_a_less_b $id
+    if_b_greater_a $id
+@end
+
+# #######################################
+# ############# Bit Tests ###############
+# #######################################
+

@@ -1,5 +1,6 @@
 #
-# StdLib for psMCU.
+# std_sys.psASM
+# Part of StdLib for psMCU.
 # Contains Register addresses and bit indexes.
 #
 

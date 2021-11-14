@@ -3,15 +3,13 @@ import json
 import psASM
 import difflib
 import sys
-from enum import Enum
 
 
-class Color(Enum):
-    OK = '\033[92m'
-    WARN = '\033[93m'
-    ERR = '\033[91m'
-    INFO = '\033[96m'
-    END = '\33[0m'
+COLOR_OK = '\033[92m'
+COLOR_WARN = '\033[93m'
+COLOR_ERR = '\033[91m'
+COLOR_INFO = '\033[96m'
+COLOR_END = '\33[0m'
 
 
 class TestFailedException(Exception):
@@ -19,15 +17,15 @@ class TestFailedException(Exception):
 
 
 def test_passed(test_folder):
-    print(Color.OK, end='')
+    print(COLOR_OK, end='')
     print("Test '%s' passed." % test_folder)
-    print(Color.END, end='')
+    print(COLOR_END, end='')
 
 
 def test_failed(test_folder):
-    print(Color.ERR, end='')
+    print(COLOR_ERR, end='')
     print("Test '%s' failed!" % test_folder)
-    print(Color.END, end='')
+    print(COLOR_END, end='')
 
 
 def main(args):
@@ -90,11 +88,11 @@ def main(args):
                             if len(line) != 0:
                                 diffs_ok = False
                             if line.startswith('+'):
-                                print(Color.OK, end='')
+                                print(COLOR_OK, end='')
                             elif line.startswith('-'):
-                                print(Color.ERR, end='')
+                                print(COLOR_ERR, end='')
                             print(line)
-                            print(Color.END, end='')
+                            print(COLOR_END, end='')
 
             for file_a_name, file_b_name in test_info['bin_diffs']:
                 with open(file_a_name, 'rb') as file_a:
@@ -121,9 +119,9 @@ def main(args):
                 try:
                     os.remove(f)
                 except FileNotFoundError:
-                    print(Color.WARN, end='')
+                    print(COLOR_WARN, end='')
                     print("Could not cleanup '%s', file not found." % f)
-                    print(Color.END, end='')
+                    print(COLOR_END, end='')
                     pass
 
         # Return to actual working directory:
