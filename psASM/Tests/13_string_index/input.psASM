@@ -1,0 +1,8 @@
+@macro ascii_heap $str, $adr
+    @for $i, 0, $i<strlen($str), $i+1
+        LITA $str[$i] 
+        SVA $adr+$i
+    @end
+@end
+
+ascii_heap "Hello World!", 0x10

@@ -54,6 +54,9 @@ CATID: 'cat_id';
 LPAREN: '(' ;
 RPAREN: ')' ;
 
+LSQBRACKET: '[' ;
+RSQBRACKET: ']' ;
+
 NOT: '!' ;
 BIT_NOT: '~' ;
 

@@ -377,7 +377,14 @@ class psASMOutputVisitor(psASMParserVisitor):
         # 'STRLEN LPAREN txt=expr RPAREN'
         txt = self.visit(ctx.txt)
         return ExpressionTree.StrlenExpression(ctx, txt)
-
+    
+    # Visit a parse tree produced by psASMParser#string_index_expr.
+    def visitString_index_expr(self, ctx:psASMParser.String_index_exprContext):
+        # 'child1=expr LSQBRACKET child2=expr RSQBRACKET'
+        child1 = self.visit(ctx.child1)
+        child2 = self.visit(ctx.child2)
+        return ExpressionTree.StringIndexExpression(ctx, child1, child2)
+                
     # Visit a parse tree produced by psASMParser#identifier_atom.
     def visitIdentifier_atom(self, ctx: psASMParser.Identifier_atomContext):
         # 'arg=preproc_identifier'

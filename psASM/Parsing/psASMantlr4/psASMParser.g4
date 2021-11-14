@@ -84,7 +84,7 @@ preproc_else
    ;
 
 preproc_for
-   : FOR index_name=preproc_identifier COMMA start_val=expr COMMA condition=expr COMMA update=expr
+   : OR index_name=preproc_identifier COMMA start_val=expr COMMA condition=expr COMMA update=expr
    ;
 
 preproc_end
@@ -117,7 +117,8 @@ preproc_macro_expansion
 
 // ======= Expressions =======
 expr
-   : op=(PLUS | MINUS | NOT | BIT_NOT)child1=expr #unary_expr
+   : child1=expr LSQBRACKET child2=expr RSQBRACKET #string_index_expr
+   | op=(PLUS | MINUS | NOT | BIT_NOT) child1=expr #unary_expr
    | child1=expr op=(DIV | MUL | MOD) child2=expr #mult_expr
    | child1=expr op=(PLUS | MINUS) child2=expr #add_expr
    | child1=expr op=(LSHFIT | RSHIFT) child2=expr #shift_expr

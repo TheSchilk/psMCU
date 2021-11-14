@@ -324,6 +324,23 @@ class StrlenExpression(Expression):
         return "strlen(" + str(self.children[0]) + ")"
 
 
+class StringIndexExpression(Expression):
+    """String Index Operator"""
+    
+    def __init__(self, parse_ctx, child1: Expression, child2: Expression):
+        super().__init__('Modulo Operator', parse_ctx=parse_ctx, children=[child1, child2])
+    
+    def eval(self, context):
+        child0 = self.children[0].eval(context)
+        assert_str(child0, "Left operand of string index operator", self.children[0].error_col, self.error_col)
+        child1 = self.children[1].eval(context)
+        assert_int(child1, "Index of string index operator", self.children[1].error_col, self.error_col)
+        return ord(child0[child1])
+
+    def __str__(self):
+        return "(%s[%s])" % (str(self.children[0]), str(self.children[1]))
+
+
 # ########## Unary Expression: ##########
 
 

@@ -154,6 +154,11 @@ class psASMParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by psASMParser#string_index_expr.
+    def visitString_index_expr(self, ctx:psASMParser.String_index_exprContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by psASMParser#shift_expr.
     def visitShift_expr(self, ctx:psASMParser.Shift_exprContext):
         return self.visitChildren(ctx)
