@@ -3,9 +3,10 @@ import json
 import psASM
 import difflib
 import sys
+from enum import Enum
 
 
-class Color:
+class Color(Enum):
     OK = '\033[92m'
     WARN = '\033[93m'
     ERR = '\033[91m'
@@ -13,7 +14,7 @@ class Color:
     END = '\33[0m'
 
 
-class TetstFailedException(Exception):
+class TestFailedException(Exception):
     pass
 
 
@@ -32,7 +33,7 @@ def test_failed(test_folder):
 def main(args):
     # Discover All test directories
     test_folders = [f.path for f in os.scandir("Tests") if f.is_dir()]
-    
+
     # Keep track of current cwd
     original_cwd = os.getcwd()
 
@@ -41,13 +42,13 @@ def main(args):
     tests_to_run = []
     if len(args) != 0:
         run_all_tests = False
-        tests_to_run = args;
-    
+        tests_to_run = args
+
     # Process each test directory:
     for test_folder in test_folders:
         if "ignore" in test_folder:
             continue
-        
+
         if not run_all_tests:
             if test_folder not in tests_to_run:
                 continue
@@ -74,7 +75,7 @@ def main(args):
                 args = run.split(' ')
                 if psASM.main(args) != 0:
                     print("psASM run ('%s') failed!" % run)
-                    raise TetstFailedException()
+                    raise TestFailedException()
 
             # Perform all diffs:
             diffs_ok = True
@@ -106,10 +107,10 @@ def main(args):
                             diffs_ok = False
 
             if not diffs_ok:
-                raise TetstFailedException()
+                raise TestFailedException()
 
             test_passed(test_folder)
-        except TetstFailedException:
+        except TestFailedException:
             test_failed(test_folder)
         except FileNotFoundError as ex:
             print(ex)
