@@ -40,8 +40,6 @@ preproc_directive
    | preproc_end
    | preproc_print 
    | preproc_error 
-   | preproc_ascii_heap 
-   | preproc_ascii_stack 
    | preproc_macro 
    | preproc_macro_expansion 
    ;
@@ -84,7 +82,7 @@ preproc_else
    ;
 
 preproc_for
-   : OR index_name=preproc_identifier COMMA start_val=expr COMMA condition=expr COMMA update=expr
+   : FOR index_name=preproc_identifier COMMA start_val=expr COMMA condition=expr COMMA update=expr
    ;
 
 preproc_end
@@ -97,14 +95,6 @@ preproc_print
 
 preproc_error
    : ERROR (txt=expr)?
-   ;
-
-preproc_ascii_heap
-   : ASCII_HEAP txt=expr COMMA adr=expr
-   ;
-
-preproc_ascii_stack
-   : ASCII_STACK txt=expr
    ;
 
 preproc_macro

@@ -362,48 +362,6 @@ class ErrorDirective(PreProcDirective):
         return msg
 
 
-class AsciiHeapDirective(PreProcDirective):
-    type_name = "@ascii_heap"
-
-    def __init__(self, string: Expression, adr: Expression):
-        super().__init__()
-        self.string = string
-        self.adr = adr
-
-    def __str__(self):
-        return '@ascii_heap %s, %s' % (str(self.string), str(self.adr))
-
-    def get_string(self):
-        string = self.string.eval(self.context)
-        assert_str(string, "First argument of @ascii_heap directive", self.string.error_col)
-        return string
-
-    def get_adr(self):
-        adr = self.adr.eval(self.context)
-        assert_int(adr, "Address of @ascii_heap directive", self.adr.error_col)
-        return adr
-
-    def macro_arg_replacement(self, find, replace):
-        # Replace in adr:
-        self.adr.macro_arg_replacement(find, replace)
-
-
-class AsciiStackDirective(PreProcDirective):
-    type_name = "@ascii_stack"
-
-    def __init__(self, string: Expression):
-        super().__init__()
-        self.string = string
-
-    def get_string(self):
-        string = self.string.eval(self.context)
-        assert_str(string, "First argument of @ascii_heap directive", self.string.error_col)
-        return string
-
-    def __str__(self):
-        return '@ascii_stack %s' % str(self.string)
-
-
 class MacroDirective(PreProcDirective):
     type_name = "@macro"
 

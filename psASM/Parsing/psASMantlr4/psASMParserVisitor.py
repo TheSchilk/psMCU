@@ -119,16 +119,6 @@ class psASMParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by psASMParser#preproc_ascii_heap.
-    def visitPreproc_ascii_heap(self, ctx:psASMParser.Preproc_ascii_heapContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by psASMParser#preproc_ascii_stack.
-    def visitPreproc_ascii_stack(self, ctx:psASMParser.Preproc_ascii_stackContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by psASMParser#preproc_macro.
     def visitPreproc_macro(self, ctx:psASMParser.Preproc_macroContext):
         return self.visitChildren(ctx)

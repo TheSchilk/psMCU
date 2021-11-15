@@ -34,9 +34,6 @@ FOR: '@for' ;
 PRINT: '@print';
 ERROR: '@error' ;
 
-ASCII_HEAP: '@ascii_heap' ;
-ASCII_STACK: '@ascii_stack' ;
-
 MACRO: '@macro' ;
 
 END: '@end' ;

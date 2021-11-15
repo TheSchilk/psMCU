@@ -186,19 +186,6 @@ class psASMOutputVisitor(psASMParserVisitor):
             txt = ExpressionTree.StringLiteralExpression(None, "")
         return ParsedLine.ErrorDirective(txt)
 
-    # Visit a parse tree produced by psASMParser#preproc_ascii_heap.
-    def visitPreproc_ascii_heap(self, ctx: psASMParser.Preproc_ascii_heapContext) -> ParsedLine.AsciiHeapDirective:
-        # 'ASCII_HEAP txt=expr COMMA adr=expr'
-        txt = self.visit(ctx.txt)
-        adr = self.visit(ctx.adr)
-        return ParsedLine.AsciiHeapDirective(txt, adr)
-
-    # Visit a parse tree produced by psASMParser#preproc_ascii_stack.
-    def visitPreproc_ascii_stack(self, ctx: psASMParser.Preproc_ascii_stackContext) -> ParsedLine.AsciiStackDirective:
-        # 'ASCII_STACK txt=expr'
-        txt = self.visit(ctx.txt)
-        return ParsedLine.AsciiStackDirective(txt)
-
     # Visit a parse tree produced by psASMParser#preproc_macro.
     def visitPreproc_macro(self, ctx: psASMParser.Preproc_macroContext) -> ParsedLine.MacroDirective:
         # 'MACRO macro_name=preproc_identifier (args+=preproc_identifier (COMMA args+=preproc_identifier)*)?'

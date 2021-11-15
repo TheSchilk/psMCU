@@ -10,7 +10,7 @@ from Parsing.ParsedFile import ParsedFiles
 import Parsing.ParsedLine as ParsedLine
 
 from PreProc.Context import Context, FileContextManager
-from PreProc.PseudoFileGenerator import PreProcRootFile, AsciiStackFile, AsciiHeapFile
+from PreProc.PseudoFileGenerator import PreProcRootFile
 
 from Output.Instruction import Instruction
 import Output.internal_state
@@ -219,31 +219,6 @@ class PreProc:
 
                     # Define
                     file_context_handler[name.eval_identifier()] = value
-                    continue
-
-                # if this an ascii_heap directive, create and include the pseudo file.
-                if isinstance(peek, ParsedLine.AsciiHeapDirective):
-                    heap_directive = in_queue.popleft()
-                    # get string and address:
-                    heap_directive.set_context(file_context_handler.get_fixed_context_view())
-                    string = heap_directive.get_string()
-                    adr = heap_directive.get_adr()
-                    # Generate and include file:
-                    ascii_heap_file_id = self._back_populate_source_file(AsciiHeapFile(string, adr))
-                    block = self._pre_proc_file(ascii_heap_file_id)
-                    in_queue = deque(block) + in_queue
-                    continue
-
-                # if this an ascii_stack directive, create and include the pseudo file.
-                if isinstance(peek, ParsedLine.AsciiStackDirective):
-                    stack_directive = in_queue.popleft()
-                    # get string:
-                    stack_directive.set_context(file_context_handler.get_fixed_context_view())
-                    string = stack_directive.get_string()
-                    # Generate and include file:
-                    ascii_stack_file_id = self._back_populate_source_file(AsciiStackFile(string))
-                    block = self._pre_proc_file(ascii_stack_file_id)
-                    in_queue = deque(block) + in_queue
                     continue
 
                 # if this a macro directive, add it to the current context
