@@ -1,10 +1,13 @@
+@include "std_string.psASM"
+
 NOP
 NOP
 NOP
 NOP
-@ascii_heap "Hello World!", 0x10
+ascii_heap "Hello World!", 0x10
+
 NOP
 NOP
 NOP
 NOP
-@ascii_stack "Hello Stack!"
+ascii_stack "Hello Stack!"

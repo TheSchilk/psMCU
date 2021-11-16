@@ -131,7 +131,7 @@ class CharLiteralExpression(Expression):
         return ord(self.char)
 
     def __str__(self):
-        return self.char
+        return "'" + self.char + "'" 
 
 
 class IdentifierExpression(Expression):
