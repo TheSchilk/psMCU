@@ -14,8 +14,26 @@
 @end
 
 @macro ascii_stack $str
+    # NOT DONE!
+    @error "Not Done :("
+
+    # ensure string is not too long:
+    @if 1
+        @print "Error in ascii_stack macro:"
+        @error "String is too long to be added to stack in one go!"
+    @end
+
+    # Grow stack by needed size + 1
+    GROW 10
+
+    # Save A register
+    STSA
+
     @for $i, 0, $i<strlen($str), $i+1
         LITA $str[$i] 
-        PUSHA
+        STSA 
     @end
+    
+    # Restore A register, shrink stack by one:
+    POPA 
 @end
