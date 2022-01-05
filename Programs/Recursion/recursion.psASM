@@ -9,7 +9,7 @@
 
 # #########################################################
 
-@include StdLib.psASM
+@include "std_sys.psASM"
 
 # MAIN: Calculate sum(10) (=55=0x37) and halt.
 MAIN:

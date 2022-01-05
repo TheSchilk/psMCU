@@ -4,11 +4,12 @@
 # A simple snake game for an 8x8 LED Matrix
 #
 
-@include Setup.psASM
-@include StdLib.psASM
-@include Render.psASM
-@include UpdateBoard.psASM
-@include UpdateGamestate.psASM
+@include "std_sys.psASM"
+
+@include "Setup.psASM"
+@include "Render.psASM"
+@include "UpdateBoard.psASM"
+@include "UpdateGamestate.psASM"
 
 # Entry point
 MAIN:

@@ -1,5 +1,5 @@
  # Calculates all Fibonacci numbers that fit into 8 bits and stores them in RAM
-@include StdLib.psASM
+@include "std_sys.psASM"
 
 ###### Definitions ##########
 # Position were we will store the pointer to the latest number
