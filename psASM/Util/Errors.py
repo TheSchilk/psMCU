@@ -127,3 +127,7 @@ class ErrorDirectiveException(LocatedException):
             result = self.exception_name + ": " + self.text
 
         return result
+
+class psOBJException(psASMException):
+    def __str__(self):
+        return "psOBJ import error: " + self.text

@@ -1,7 +1,8 @@
 import sys
 from Parsing.ParsedLine import InstructionLine
+from Util.Errors import InstructionException, psASMException, psOBJException
+from collections import deque
 
-from Util.Errors import InstructionException
 
 
 def bit_mask(n):
@@ -47,6 +48,46 @@ class Instruction:
             # Should never happen - the parser now tokenizes instructions.
             raise Exception("Unrecognized instruction - how did you get this past my parser?")
         return inst
+    
+    @classmethod
+    def from_psOBJ_data(cls, data: str):
+        
+        # file_id line_id binary op_code arg1, arg2..
+        
+        # Decode:
+        components = deque(data.split(' '))
+        if len(components) < 4:
+            raise psOBJException("Malformed psOBJ")
+        
+        try:
+            file_id = int(components.popleft(), base=10)
+            line_id = int(components.popleft(), base=10)
+            binary_int = int(components.popleft(), base=16) 
+            binary = binary_int.to_bytes(2, byteorder='big')
+
+            op_code = components.popleft()
+            
+            args = []
+            for arg in components:
+                args.append(int(arg, base=16))
+        
+            if not Instruction.instruction_set:
+                Instruction.instruction_set = find_instructions()
+            return Instruction.instruction_set[op_code](args, file_id, line_id, binary=binary)
+
+        except ValueError:
+            raise psOBJException("Malformed value in instruction.")
+        except KeyError: # pragma: no cover 
+            raise psOBJException("Unknown Instruction op-code in psOBJ")
+   
+
+    def to_psOBJ_data(self):
+        # file_id line_id binary op_code arg1 arg2..
+        binary_int = int.from_bytes(self.binary, byteorder='big')
+        data = "%i %i 0x%04x %s" % (self.file_id, self.line_id, binary_int, self.op_code)
+        for arg in self.args:
+            data += (" 0x%02x" % arg)
+        return data
 
     def __str__(self):
         return "(Inst: " + str(self.op_code) + " " + str(self.args) + " = " + str(self.binary) + ")"

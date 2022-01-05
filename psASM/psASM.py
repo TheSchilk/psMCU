@@ -43,7 +43,7 @@ def main(args):
                 raise exc
         else:
             # If the input is already a psOBJ, import it:
-            obj = psOBJ.from_file(settings['input_file'])
+            obj = psOBJ.from_file(settings)
     
         # Now, using this psOBJ, generate the requested output
         OutputGenerator.generate(settings, obj)

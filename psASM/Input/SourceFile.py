@@ -1,5 +1,5 @@
 import re
-from Util.Errors import ParsingException, LocatedException
+from Util.Errors import ParsingException, LocatedException, psOBJException
 from Util.Log import log
 import Input.StdLib
 import Output.internal_state
@@ -68,6 +68,39 @@ class SourceFile:
         content = Input.StdLib.get_stdlib_file(stdlib_file)
         asm_file = cls(file_id, stdlib_file, stdlib_file=True, content=content)
         return asm_file
+    
+    @classmethod
+    def from_psOBJ_data(cls, data):
+        if not type(data) is dict:
+            raise psOBJException("Malformed source file in psOBJ file.")
+        try:
+            file_id = data['file_id']
+            path = data['path']
+            stdlib_file = data['is_stdlib_file']
+            content = []
+        
+            if not type(data['content']) is list:
+                raise psOBJException("Malformed source file content in psOBJ file.")
+
+            for line in content:
+                if not type(line) is str:
+                    raise psOBJException("Malformed source file content in psOBJ file.")
+                content.append(line)
+            
+            return cls(file_id, path, content, stdlib_file)
+
+        except KeyError: # pragma: no cover 
+            raise psOBJException("Malformed Instruction in psOBJ")
+        except ValueError: # pragma: no cover 
+            raise psOBJException("Malformed Instruction in psOBJ")
+
+    def to_psOBJ_data(self):
+        data = {}
+        data['file_id'] = self.file_id
+        data['path'] = self.path
+        data['is_stdlib_file'] = self.stdlib_file
+        data['content'] = self.content
+        return data
 
     def __len__(self):
         return len(self.content)
@@ -190,3 +223,21 @@ class SourceFiles:
             if col is not None:
                 result += str(col+1) + ":"
         return result
+    
+    @classmethod
+    def from_psOBJ_data(cls, data):
+        if not type(data) is list:
+            raise psOBJException("Malformed psOBJ file.")
+        
+        files = []
+        for file_data in data:
+            files.append(SourceFile.from_psOBJ_data(file_data))
+
+        return cls(files=files)
+
+
+    def to_psOBJ_data(self):
+        data = []
+        for file in self.files:
+            data.append(file.to_psOBJ_data())
+        return data
