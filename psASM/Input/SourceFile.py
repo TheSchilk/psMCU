@@ -82,7 +82,7 @@ class SourceFile:
             if not type(data['content']) is list:
                 raise psOBJException("Malformed source file content in psOBJ file.")
 
-            for line in content:
+            for line in data['content']:
                 if not type(line) is str:
                     raise psOBJException("Malformed source file content in psOBJ file.")
                 content.append(line)

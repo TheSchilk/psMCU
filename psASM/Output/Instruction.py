@@ -4,7 +4,6 @@ from Util.Errors import InstructionException, psASMException, psOBJException
 from collections import deque
 
 
-
 def bit_mask(n):
     """Create a n bit wide bit mask."""
     return (1 << n) - 1
@@ -44,48 +43,49 @@ class Instruction:
         line_id = line.line_id
         try:
             inst = Instruction.instruction_set[inst_name](args, file_id, line_id)
-        except KeyError: # pragma: no cover 
+        except KeyError:  # pragma: no cover
             # Should never happen - the parser now tokenizes instructions.
             raise Exception("Unrecognized instruction - how did you get this past my parser?")
         return inst
-    
+
     @classmethod
     def from_psOBJ_data(cls, data: str):
-        
+
         # file_id line_id binary op_code arg1, arg2..
-        
+
         # Decode:
         components = deque(data.split(' '))
         if len(components) < 4:
             raise psOBJException("Malformed psOBJ")
-        
+
         try:
             file_id = int(components.popleft(), base=10)
             line_id = int(components.popleft(), base=10)
-            binary_int = int(components.popleft(), base=16) 
+            binary_int = int(components.popleft(), base=16)
             binary = binary_int.to_bytes(2, byteorder='big')
 
             op_code = components.popleft()
-            
+
             args = []
             for arg in components:
                 args.append(int(arg, base=16))
-        
+
             if not Instruction.instruction_set:
                 Instruction.instruction_set = find_instructions()
             return Instruction.instruction_set[op_code](args, file_id, line_id, binary=binary)
 
         except ValueError:
-            raise psOBJException("Malformed value in instruction.")
-        except KeyError: # pragma: no cover 
+            raise psOBJException("Malformed value in instruction ('%s')." % data)
+        except KeyError:  # pragma: no cover
             raise psOBJException("Unknown Instruction op-code in psOBJ")
-   
 
     def to_psOBJ_data(self):
         # file_id line_id binary op_code arg1 arg2..
         binary_int = int.from_bytes(self.binary, byteorder='big')
         data = "%i %i 0x%04x %s" % (self.file_id, self.line_id, binary_int, self.op_code)
-        for arg in self.args:
+        for index, arg in enumerate(self.args):
+            # First, mask arg (Needed for negative args)
+            arg = self.mask_argument(arg, index)
             data += (" 0x%02x" % arg)
         return data
 
@@ -117,10 +117,13 @@ class Instruction:
         out = self.binary_literal
         for index, arg in enumerate(self.args):
             # First, mask arg (Needed for negative args)
-            arg = arg & bit_mask(self.arg_setups[index]['bit width'])
+            arg = self.mask_argument(arg, index)
             # Then insert it into the instruction
             out = out | (arg << self.arg_setups[index]['bit shift'])
         return out.to_bytes(2, byteorder='big')
+
+    def mask_argument(self, arg, index):
+        return arg & bit_mask(self.arg_setups[index]['bit width'])
 
 
 MIN_14BIT_UNSIGNED = 0
@@ -586,7 +589,7 @@ def find_instructions():
     instruction_set = {}
     for instruction_class in Instruction.__subclasses__():
         # Sanity check that there are no duplicate op-codes:
-        if instruction_class.op_code in instruction_set.keys(): # pragma: no cover 
+        if instruction_class.op_code in instruction_set.keys():  # pragma: no cover
             print("Duplicate op-code @ " + str(instruction_class.op_code) + "!")
             sys.exit(1)
 

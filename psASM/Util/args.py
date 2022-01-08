@@ -119,9 +119,11 @@ def parse_args(args):
     output_selected = False
     for f in output_flags:
         output_selected = output_selected or parsed_args[f]
-    # Otherwise, select default output:
     if not output_selected:
-        log(1, "Args: No output format selecting, defaulting to binary (-B)")
-        parsed_args[default_output] = True
+        # Check if we are at least generating debug output:
+        if not parsed_args['log_internal_state']:
+            # Nothing is being generated, select default output:
+            log(1, "Args: No output format selecting, defaulting to binary (-B)")
+            parsed_args[default_output] = True
     
     return parsed_args
