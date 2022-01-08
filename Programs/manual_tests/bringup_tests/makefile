@@ -5,8 +5,7 @@
 #                                      #
 ########################################
 
-# TODO: set main source name
-MAIN_SOURCE_NAME = recursion.psASM
+MAIN_SOURCE_NAME = bringup_tests.psASM
 
 # Build Directory:
 BUILD_DIR = build

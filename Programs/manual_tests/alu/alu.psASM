@@ -1,4 +1,4 @@
-@include StdLib.psASM
+@include "std_sys.psASM"
 
 # Test 1: 16 bit addition with cross-byte carry
 # Calculate 4863+1200=6063
