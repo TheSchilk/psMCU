@@ -6,20 +6,21 @@
   ],
   
   "text_diffs" : [
-    ["outputLOGISIM", "golden_outputLOGISIM"]
+    ["outputLOGISIM", "golden_outputLOGISIM"],
+    ["output_objLOGISIM", "golden_outputLOGISIM"],
+    ["output_annotated.psASM", "golden_output_annotated.psASM"],
+    ["output_obj_annotated.psASM", "golden_output_annotated.psASM"],
+    ["output.map", "golden_output.map"],
+    ["output_obj.map", "golden_output.map"]
   ],
   
   "bin_diffs" : [
-    ["output_annotated.psASM", "golden_output_annotated.psASM"],
     ["output.bin", "golden_output.bin"],
     ["output_L.bin", "golden_output_L.bin"],
     ["output_H.bin", "golden_output_H.bin"],
-    ["output.map", "golden_output.map"],
-    ["output_obj_annotated.psASM", "golden_output_annotated.psASM"],
     ["output_obj.bin", "golden_output.bin"],
     ["output_obj_L.bin", "golden_output_L.bin"],
-    ["output_obj_H.bin", "golden_output_H.bin"],
-    ["output_obj.map", "golden_output.map"]
+    ["output_obj_H.bin", "golden_output_H.bin"]
   ],
 
   "cleanup" : [
