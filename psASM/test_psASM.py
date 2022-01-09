@@ -42,6 +42,10 @@ def main(args):
         run_all_tests = False
         tests_to_run = args
 
+    test_count = 0
+    test_passed_count = 0
+    test_failed_count = 0
+
     # Process each test directory:
     for test_folder in test_folders:
         if "ignore" in test_folder:
@@ -50,18 +54,23 @@ def main(args):
         if not run_all_tests:
             if test_folder not in tests_to_run:
                 continue
+        
+        test_count += 1
 
         # Open testinfo.json:
         try:
             test_info = json.load(open(os.path.join(test_folder, "testinfo.json")))
         except FileNotFoundError:
-            print("Did not find testinfo.json in %s" % test_folder)
-            print("Aborting...")
+            print(COLOR_ERR, end='')
+            print("Did not find testinfo.json in %s, Aborting.." % test_folder)
+            print(COLOR_END, end='')
             return -1
         except json.decoder.JSONDecodeError as ex:
+            print(COLOR_ERR, end='')
             print("Failed to decode testinfo.json in %s:" % test_folder)
             print(ex)
             print("Aborting...")
+            print(COLOR_END, end='')
             return -1
 
         try:
@@ -106,12 +115,15 @@ def main(args):
 
             if not diffs_ok:
                 raise TestFailedException()
-
+            
+            test_passed_count += 1
             test_passed(test_folder)
         except TestFailedException:
             test_failed(test_folder)
+            test_failed_count += 1
         except FileNotFoundError as ex:
             print(ex)
+            test_failed_count += 1
             test_failed(test_folder)
         finally:
             # Perform cleanup:
@@ -126,6 +138,16 @@ def main(args):
 
         # Return to actual working directory:
         os.chdir(original_cwd)
+    
+    # Print summary:
+    [print() for _ in range(3)]
+    print("Total number of tests: %i" % test_count)
+    print(COLOR_OK, end='')
+    print("Tests passed: %i" % test_passed_count)
+    print(COLOR_END, end='')
+    print(COLOR_ERR, end='')
+    print("Tests failed: %i" % test_failed_count)
+    print(COLOR_END, end='')
 
 
 if __name__ == '__main__':

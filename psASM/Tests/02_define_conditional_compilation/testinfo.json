@@ -15,9 +15,6 @@
   ],
 
   "cleanup" : [
-    "output0.bin",
-    "output1.bin",
-    "output2.bin",
     "output0_preproc1.log",
     "output1_preproc1.log",
     "output2_preproc1.log"
