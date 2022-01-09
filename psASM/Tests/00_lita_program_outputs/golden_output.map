@@ -1,0 +1,6 @@
+Adr    | Raw Inst. | Bin  | Source        | Line  
+--------------------------------------------------
+0x0000 | LITA 0x0  | 0400 | input.psASM:1 | LITA 0
+0x0001 | LITA 0x1  | 0401 | input.psASM:2 | LITA 1
+0x0002 | LITA 0x2  | 0402 | input.psASM:3 | LITA 2
+0x0003 | LITA 0x3  | 0403 | input.psASM:4 | LITA 3
