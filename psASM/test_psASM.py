@@ -3,44 +3,45 @@ import json
 import psASM
 import difflib
 import sys
-
-
-COLOR_OK = '\033[92m'
-COLOR_WARN = '\033[93m'
-COLOR_ERR = '\033[91m'
-COLOR_INFO = '\033[96m'
-COLOR_END = '\33[0m'
+import argparse
 
 
 class TestFailedException(Exception):
     pass
 
 
-def test_passed(test_folder):
-    print(COLOR_OK, end='')
-    print("Test '%s' passed." % test_folder)
-    print(COLOR_END, end='')
+def start_color(color, do_color):
+    colors = {'ok': '\033[92m', 'warn': '\033[93m', 'err': '\033[91m'}
+    if do_color:
+        print(colors[color], end='')
 
-
-def test_failed(test_folder):
-    print(COLOR_ERR, end='')
-    print("Test '%s' failed!" % test_folder)
-    print(COLOR_END, end='')
+def end_color(do_color):
+    if do_color:
+        print('\33[0m', end='')
 
 
 def main(args):
+    parser = argparse.ArgumentParser(prog="test_psASM.py", description="Test psASM.")
+    parser.add_argument('-c', '--no-color', required=False, action="store_true")
+    parser.add_argument('-t', required=False, action="append",
+                        help='Only run specific test (may be used multiple times)')
+
+    parsed_args = vars(parser.parse_args(args))
+
+    # Check if we should only run one test:
+    run_all_tests = True
+    tests_to_run = []
+    if parsed_args['t'] is not None:
+        run_all_tests = False
+        tests_to_run = parsed_args['t']
+    
+    do_color = not parsed_args['no_color']
+
     # Discover All test directories
     test_folders = [f.path for f in os.scandir("Tests") if f.is_dir()]
 
     # Keep track of current cwd
     original_cwd = os.getcwd()
-
-    # Check if we should only run one test:
-    run_all_tests = True
-    tests_to_run = []
-    if len(args) != 0:
-        run_all_tests = False
-        tests_to_run = args
 
     test_count = 0
     test_passed_count = 0
@@ -54,23 +55,23 @@ def main(args):
         if not run_all_tests:
             if test_folder not in tests_to_run:
                 continue
-        
+
         test_count += 1
 
         # Open testinfo.json:
         try:
             test_info = json.load(open(os.path.join(test_folder, "testinfo.json")))
         except FileNotFoundError:
-            print(COLOR_ERR, end='')
+            start_color('err', do_color)
             print("Did not find testinfo.json in %s, Aborting.." % test_folder)
-            print(COLOR_END, end='')
+            end_color(do_color);
             return -1
         except json.decoder.JSONDecodeError as ex:
-            print(COLOR_ERR, end='')
+            start_color('err', do_color)
             print("Failed to decode testinfo.json in %s:" % test_folder)
             print(ex)
             print("Aborting...")
-            print(COLOR_END, end='')
+            end_color(do_color);
             return -1
 
         try:
@@ -97,11 +98,11 @@ def main(args):
                             if len(line) != 0:
                                 diffs_ok = False
                             if line.startswith('+'):
-                                print(COLOR_OK, end='')
+                                start_color('ok', do_color)
                             elif line.startswith('-'):
-                                print(COLOR_ERR, end='')
+                                start_color('err', do_color)
                             print(line)
-                            print(COLOR_END, end='')
+                            end_color(do_color)
 
             for file_a_name, file_b_name in test_info['bin_diffs']:
                 with open(file_a_name, 'rb') as file_a:
@@ -110,44 +111,51 @@ def main(args):
                         file_b_content = file_b.read()
 
                         if not file_a_content == file_b_content:
+                            start_color('err', do_color)
                             print("Binary diff fail between '%s' and '%s'" % (file_a_name, file_b_name))
+                            end_color(do_color)
                             diffs_ok = False
 
             if not diffs_ok:
                 raise TestFailedException()
-            
+
             test_passed_count += 1
-            test_passed(test_folder)
+            start_color('ok', do_color)
+            print("Test '%s' passed." % (test_folder))
+            end_color(do_color)
         except TestFailedException:
-            test_failed(test_folder)
+            start_color('err', do_color)
+            print("Test '%s' failed." % (test_folder))
+            end_color(do_color)
             test_failed_count += 1
         except FileNotFoundError as ex:
             print(ex)
+            start_color('err', do_color)
+            print("Test '%s' failed." % (test_folder))
+            end_color(do_color)
             test_failed_count += 1
-            test_failed(test_folder)
         finally:
             # Perform cleanup:
             for f in test_info['cleanup']:
                 try:
                     os.remove(f)
                 except FileNotFoundError:
-                    print(COLOR_WARN, end='')
+                    start_color('warn', do_color)
                     print("Could not cleanup '%s', file not found." % f)
-                    print(COLOR_END, end='')
-                    pass
+                    end_color(do_color)
 
         # Return to actual working directory:
         os.chdir(original_cwd)
-    
+
     # Print summary:
     [print() for _ in range(3)]
     print("Total number of tests: %i" % test_count)
-    print(COLOR_OK, end='')
+    start_color('ok', do_color)
     print("Tests passed: %i" % test_passed_count)
-    print(COLOR_END, end='')
-    print(COLOR_ERR, end='')
+    end_color(do_color)
+    start_color('err', do_color)
     print("Tests failed: %i" % test_failed_count)
-    print(COLOR_END, end='')
+    end_color(do_color)
 
 
 if __name__ == '__main__':
