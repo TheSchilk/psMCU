@@ -1,12 +1,22 @@
 {
   "configurations": {
-    "All Tests": {
+    "Tests: All": {
       "adapter": "debugpy",
       "filetypes": [ "python" ],
       "configuration": {
         "request": "launch",
         "program": "test_psASM.py",
         "args": [ "--no-color" ],
+        "stopOnEntry": true
+      }
+    },
+    "Test: 06_strings": {
+      "adapter": "debugpy",
+      "filetypes": [ "python" ],
+      "configuration": {
+        "request": "launch",
+        "program": "test_psASM.py",
+        "args": [ "--no-color", "-tTests/06_strings" ],
         "stopOnEntry": true
       }
     }

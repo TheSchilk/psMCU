@@ -14,26 +14,25 @@
 @end
 
 @macro ascii_stack $str
-    # NOT DONE!
-    @error "Not Done :("
+    @print "ASCII_STACK MACRO IS NOT YET TESTED!"
+    @print "TODO: ADD REVERSE"
 
     # ensure string is not too long:
-    @if 1
-        @print "Error in ascii_stack macro:"
-        @error "String is too long to be added to stack in one go!"
+    @if strlen($str) > 256 # TODO: what value?
+        @error "ascii_stack: String is too long to be added to stack in one go!"
     @end
 
-    # Grow stack by needed size + 1
-    GROW 10
+    # Grow stack by needed size + 1 for A register
+    GROW strlen($str) + 1
 
     # Save A register
-    STSA
+    STSA -1 # TODO or should this be 0?
 
     @for $i, 0, $i<strlen($str), $i+1
         LITA $str[$i] 
-        STSA 
+        STSA -1 - strlen($str) + $i
     @end
-    
+
     # Restore A register, shrink stack by one:
     POPA 
 @end

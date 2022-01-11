@@ -1,0 +1,63 @@
+Adr    | Raw Inst. | Bin  | Source              | Line                                   
+-----------------------------------------------------------------------------------------
+0x0000 | NOP       | 0000 | input.psASM:3       | NOP                                    
+0x0001 | NOP       | 0000 | input.psASM:4       | NOP                                    
+0x0002 | NOP       | 0000 | input.psASM:5       | NOP                                    
+0x0003 | NOP       | 0000 | input.psASM:6       | NOP                                    
+0x0004 | PUSHA     | 3800 | std_string.psASM:8  |     PUSHA                              
+0x0005 | LITA 0x48 | 0448 | std_string.psASM:10 |         LITA $str[$i]                  
+0x0006 | SVA 0x10  | 1010 | std_string.psASM:11 |         SVA $adr+$i                    
+0x0007 | LITA 0x65 | 0465 | std_string.psASM:10 |         LITA $str[$i]                  
+0x0008 | SVA 0x11  | 1011 | std_string.psASM:11 |         SVA $adr+$i                    
+0x0009 | LITA 0x6c | 046c | std_string.psASM:10 |         LITA $str[$i]                  
+0x000a | SVA 0x12  | 1012 | std_string.psASM:11 |         SVA $adr+$i                    
+0x000b | LITA 0x6c | 046c | std_string.psASM:10 |         LITA $str[$i]                  
+0x000c | SVA 0x13  | 1013 | std_string.psASM:11 |         SVA $adr+$i                    
+0x000d | LITA 0x6f | 046f | std_string.psASM:10 |         LITA $str[$i]                  
+0x000e | SVA 0x14  | 1014 | std_string.psASM:11 |         SVA $adr+$i                    
+0x000f | LITA 0x20 | 0420 | std_string.psASM:10 |         LITA $str[$i]                  
+0x0010 | SVA 0x15  | 1015 | std_string.psASM:11 |         SVA $adr+$i                    
+0x0011 | LITA 0x57 | 0457 | std_string.psASM:10 |         LITA $str[$i]                  
+0x0012 | SVA 0x16  | 1016 | std_string.psASM:11 |         SVA $adr+$i                    
+0x0013 | LITA 0x6f | 046f | std_string.psASM:10 |         LITA $str[$i]                  
+0x0014 | SVA 0x17  | 1017 | std_string.psASM:11 |         SVA $adr+$i                    
+0x0015 | LITA 0x72 | 0472 | std_string.psASM:10 |         LITA $str[$i]                  
+0x0016 | SVA 0x18  | 1018 | std_string.psASM:11 |         SVA $adr+$i                    
+0x0017 | LITA 0x6c | 046c | std_string.psASM:10 |         LITA $str[$i]                  
+0x0018 | SVA 0x19  | 1019 | std_string.psASM:11 |         SVA $adr+$i                    
+0x0019 | LITA 0x64 | 0464 | std_string.psASM:10 |         LITA $str[$i]                  
+0x001a | SVA 0x1a  | 101a | std_string.psASM:11 |         SVA $adr+$i                    
+0x001b | LITA 0x21 | 0421 | std_string.psASM:10 |         LITA $str[$i]                  
+0x001c | SVA 0x1b  | 101b | std_string.psASM:11 |         SVA $adr+$i                    
+0x001d | POPA      | 3900 | std_string.psASM:13 |     POPA                               
+0x001e | NOP       | 0000 | input.psASM:9       | NOP                                    
+0x001f | NOP       | 0000 | input.psASM:10      | NOP                                    
+0x0020 | NOP       | 0000 | input.psASM:11      | NOP                                    
+0x0021 | NOP       | 0000 | input.psASM:12      | NOP                                    
+0x0022 | GROW 0xd  | 350d | std_string.psASM:26 |     GROW strlen($str) + 1              
+0x0023 | STSA -0x1 | 30ff | std_string.psASM:29 |     STSA -1 # TODO or should this be 0?
+0x0024 | LITA 0x48 | 0448 | std_string.psASM:32 |         LITA $str[$i]                  
+0x0025 | STSA -0xd | 30f3 | std_string.psASM:33 |         STSA -1 - strlen($str) + $i    
+0x0026 | LITA 0x65 | 0465 | std_string.psASM:32 |         LITA $str[$i]                  
+0x0027 | STSA -0xc | 30f4 | std_string.psASM:33 |         STSA -1 - strlen($str) + $i    
+0x0028 | LITA 0x6c | 046c | std_string.psASM:32 |         LITA $str[$i]                  
+0x0029 | STSA -0xb | 30f5 | std_string.psASM:33 |         STSA -1 - strlen($str) + $i    
+0x002a | LITA 0x6c | 046c | std_string.psASM:32 |         LITA $str[$i]                  
+0x002b | STSA -0xa | 30f6 | std_string.psASM:33 |         STSA -1 - strlen($str) + $i    
+0x002c | LITA 0x6f | 046f | std_string.psASM:32 |         LITA $str[$i]                  
+0x002d | STSA -0x9 | 30f7 | std_string.psASM:33 |         STSA -1 - strlen($str) + $i    
+0x002e | LITA 0x20 | 0420 | std_string.psASM:32 |         LITA $str[$i]                  
+0x002f | STSA -0x8 | 30f8 | std_string.psASM:33 |         STSA -1 - strlen($str) + $i    
+0x0030 | LITA 0x53 | 0453 | std_string.psASM:32 |         LITA $str[$i]                  
+0x0031 | STSA -0x7 | 30f9 | std_string.psASM:33 |         STSA -1 - strlen($str) + $i    
+0x0032 | LITA 0x74 | 0474 | std_string.psASM:32 |         LITA $str[$i]                  
+0x0033 | STSA -0x6 | 30fa | std_string.psASM:33 |         STSA -1 - strlen($str) + $i    
+0x0034 | LITA 0x61 | 0461 | std_string.psASM:32 |         LITA $str[$i]                  
+0x0035 | STSA -0x5 | 30fb | std_string.psASM:33 |         STSA -1 - strlen($str) + $i    
+0x0036 | LITA 0x63 | 0463 | std_string.psASM:32 |         LITA $str[$i]                  
+0x0037 | STSA -0x4 | 30fc | std_string.psASM:33 |         STSA -1 - strlen($str) + $i    
+0x0038 | LITA 0x6b | 046b | std_string.psASM:32 |         LITA $str[$i]                  
+0x0039 | STSA -0x3 | 30fd | std_string.psASM:33 |         STSA -1 - strlen($str) + $i    
+0x003a | LITA 0x21 | 0421 | std_string.psASM:32 |         LITA $str[$i]                  
+0x003b | STSA -0x2 | 30fe | std_string.psASM:33 |         STSA -1 - strlen($str) + $i    
+0x003c | POPA      | 3900 | std_string.psASM:37 |     POPA                               

@@ -1,10 +1,12 @@
 {
   "runs" : [
+    "input.psASM -o output -s -f -M",
     "input.psASM -o output -s -f -X preproc3"
   ],
   
   "text_diffs" : [
-      ["output_preproc3.log","golden_output_preproc3.log"]
+      ["output_preproc3.log","golden_output_preproc3.log"],
+      ["output.map","golden_output.map"]
   ],
   
   "bin_diffs" : [
@@ -12,6 +14,6 @@
   
   "cleanup" : [
       "output_preproc3.log",
-      "output.bin"
+      "output.map"
   ]
 }
