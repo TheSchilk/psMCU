@@ -49,22 +49,21 @@ class Instruction:
         return inst
 
     @classmethod
-    def from_psOBJ_data(cls, data: str):
+    def from_psOBJ_data(cls, data: list):
 
-        # file_id line_id binary op_code arg1, arg2..
+        # file_id line_id binary op_code arg1 arg2..
 
         # Decode:
-        components = deque(data.split(' '))
-        if len(components) < 4:
-            raise psOBJException("Malformed psOBJ")
-
+        if len(data) < 4:
+            raise psOBJException("Malformed value in instruction ('%s')." % data)
         try:
+            components = deque(data)
             file_id = int(components.popleft(), base=10)
             line_id = int(components.popleft(), base=10)
             binary_int = int(components.popleft(), base=16)
             binary = binary_int.to_bytes(2, byteorder='big')
 
-            op_code = components.popleft()
+            op_code = str(components.popleft())
 
             args = []
             for arg in components:
@@ -77,16 +76,19 @@ class Instruction:
         except ValueError:
             raise psOBJException("Malformed value in instruction ('%s')." % data)
         except KeyError:  # pragma: no cover
-            raise psOBJException("Unknown Instruction op-code in psOBJ")
+            raise psOBJException("Unknown Instruction in psOBJ ('%s').")
 
     def to_psOBJ_data(self):
         # file_id line_id binary op_code arg1 arg2..
         binary_int = int.from_bytes(self.binary, byteorder='big')
-        data = "%i %i 0x%04x %s" % (self.file_id, self.line_id, binary_int, self.op_code)
+        binary_str = "0x%04x" % binary_int
+        
+        data = [str(self.file_id), str(self.line_id), binary_str, self.op_code]
+
         for index, arg in enumerate(self.args):
             # First, mask arg (Needed for negative args)
             arg = self.mask_argument(arg, index)
-            data += (" 0x%02x" % arg)
+            data.append("0x%02x" % arg)
         return data
 
     def __str__(self):
