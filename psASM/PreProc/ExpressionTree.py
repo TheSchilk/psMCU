@@ -254,7 +254,7 @@ class SprintfExpression(Expression):
         super().__init__('sprintf Operator', parse_ctx=parse_ctx)
         self.text = text
         self.args = args
-        
+
         self.string_start_col = None
         if text.error_col:
             if len(text.error_col) > 1:
@@ -293,7 +293,7 @@ class SprintfExpression(Expression):
         return text
 
     def __str__(self):
-        result = "sprtinf(" + str(self.text)
+        result = "sprintf(" + str(self.text)
         if self.args:
             result += ", "
             result += Formatting.comma_seperated_list(self.args)
