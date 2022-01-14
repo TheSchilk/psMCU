@@ -1,17 +1,22 @@
 {
   "runs" : [
     "input.psASM -s -f -o output -B -L -S -A -U -M",
-    "input.psASM -s -f -o output -O",
+    "input.psASM -s -f -o output -O -X all",
     "output.psOBJ -s -f -o output_obj -B -L -S -A -U -M"
   ],
-  
+
   "text_diffs" : [
     ["outputLOGISIM", "golden_outputLOGISIM"],
     ["output_objLOGISIM", "golden_outputLOGISIM"],
     ["output_annotated.psASM", "golden_output_annotated.psASM"],
     ["output_obj_annotated.psASM", "golden_output_annotated.psASM"],
     ["output.map", "golden_output.map"],
-    ["output_obj.map", "golden_output.map"]
+    ["output_obj.map", "golden_output.map"],
+    ["output_sourcefiles.psASM", "golden_output_sourcefiles.psASM"],
+    ["output_parsedfiles.psASM", "golden_output_parsedfiles.psASM"],
+    ["output_preproc1.psASM", "golden_output_preproc1.psASM"],
+    ["output_preproc2.psASM", "golden_output_preproc2.psASM"],
+    ["output_preproc3.psASM", "golden_output_preproc3.psASM"]
   ],
   
   "bin_diffs" : [
@@ -22,7 +27,7 @@
     ["output_obj_L.bin", "golden_output_L.bin"],
     ["output_obj_H.bin", "golden_output_H.bin"]
   ],
-
+  
   "cleanup" : [
     "output_annotated.psASM",
     "output.psOBJ",
@@ -36,6 +41,11 @@
     "output_objLOGISIM",
     "output_obj_L.bin",
     "output_obj_H.bin",
-    "output_obj.map"
+    "output_obj.map",
+    "output_sourcefiles.psASM",
+    "output_parsedfiles.psASM",
+    "output_preproc1.psASM",
+    "output_preproc2.psASM",
+    "output_preproc3.psASM"
   ]
 }
