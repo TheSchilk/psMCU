@@ -67,7 +67,7 @@ class LocatedException(psASMException):
                 result += "\n"
                 result += (" " * (self.error_col + prefix_len)) + "^" + "\n"
             elif isinstance(self.error_col, tuple):
-                if len(self.error_col) != 2: # pragma: no cover 
+                if len(self.error_col) != 2:  # pragma: no cover
                     raise Exception("Error-col tuple is not of length 2.")
                 result += "\n"
                 mark_length = self.error_col[1] - self.error_col[0] + 1
@@ -117,17 +117,24 @@ class ErrorDirectiveException(LocatedException):
             # Generate error message with location information:
 
             location = self.source_files.location_str(self.file_id, self.line_id).rstrip()
-            result = location + " "+self.exception_name + ": " + self.text
+            result = location + " " + self.exception_name
+            if self.text is not None and self.text != "":
+                result += ": " + self.text
 
         elif self._file_defined():
             file_name = self.source_files.get_file_path(self.file_id)
-            result = file_name + ": "+self.exception_name + ": " + self.text
+            result = file_name + ": " + self.exception_name
+            if self.text is not None and self.text != "":
+                result += ": " + self.text
         else:
             # No location information available:
-            result = self.exception_name + ": " + self.text
+            result = "Encountered " + self.exception_name
+            if self.text is not None and self.text != "":
+                result += ": " + self.text
 
         return result
 
+
 class psOBJException(psASMException):
     def __str__(self):
-        return "psOBJ import error: " + self.text
+        return "psOBJ import Error: " + self.text
