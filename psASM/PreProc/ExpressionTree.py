@@ -630,14 +630,19 @@ class EqExpression(Expression):
 
     def eval(self, context):
         child0 = self.children[0].eval(context)
-        assert_int(child0, "Left operand of comparison operator", self.children[0].error_col, self.error_col)
         child1 = self.children[1].eval(context)
-        assert_int(child1, "Right operand of comparison operator", self.children[1].error_col, self.error_col)
-        if child0 == child1:
-            result = 1
+        if isinstance(child0, int) and isinstance(child1, int):
+            result = bool(child0 == child1)
+        elif isinstance(child0, str) and isinstance(child1, str):
+            result = bool(child0 == child1)
         else:
-            result = 0
-        return result
+            msg = "Equality is not defined for types: " + _type_combination_str([child0, child1])
+            raise EvalException(msg, error_col=self.error_col)
+
+        if result:
+            return 1
+        else:
+            return 0
 
     def __str__(self):
         return "(%s == %s)" % (str(self.children[0]), str(self.children[1]))
@@ -651,14 +656,19 @@ class NEqExpression(Expression):
 
     def eval(self, context):
         child0 = self.children[0].eval(context)
-        assert_int(child0, "Left operand of comparison operator", self.children[0].error_col, self.error_col)
         child1 = self.children[1].eval(context)
-        assert_int(child1, "Right operand of comparison operator", self.children[1].error_col, self.error_col)
-        if child0 != child1:
-            result = 1
+        if isinstance(child0, int) and isinstance(child1, int):
+            result = bool(child0 != child1)
+        elif isinstance(child0, str) and isinstance(child1, str):
+            result = bool(child0 != child1)
         else:
-            result = 0
-        return result
+            msg = "Equality is not defined for types: " + _type_combination_str([child0, child1])
+            raise EvalException(msg, error_col=self.error_col)
+
+        if result:
+            return 1
+        else:
+            return 0
 
     def __str__(self):
         return "(%s != %s)" % (str(self.children[0]), str(self.children[1]))
