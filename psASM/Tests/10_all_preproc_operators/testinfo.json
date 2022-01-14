@@ -2,14 +2,17 @@
   "runs" : [
     "input.psASM -o output -s -f -X preproc3"
   ],
-  
+
+  "runs_error" : [
+  ],
+
   "text_diffs" : [
       ["output_preproc3.psASM", "golden_output_preproc3.psASM"]
   ],
-  
+
   "bin_diffs" : [
   ],
-  
+
   "cleanup" : [
       "output_preproc3.psASM"
   ]

@@ -1,0 +1,59 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/testinfo",
+    "definitions": {
+        "testinfo": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "runs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "runs_error": {
+                    "type": "array",
+                    "items": {},
+		        	"maxItems": 0
+                },
+                "text_diffs": {
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+					    "minItems": 2,
+					    "maxItems": 2
+                    }
+                },
+                "bin_diffs": {
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+					    "minItems": 2,
+					    "maxItems": 2
+                    }
+                },
+                "cleanup": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "bin_diffs",
+                "cleanup",
+                "runs",
+                "runs_error",
+                "text_diffs"
+            ],
+            "title": "testinfo"
+        }
+    }
+}

@@ -2,6 +2,9 @@
   "runs" : [
     "input.psASM -o output -O -s -f"
   ],
+  
+  "runs_error" : [
+  ],
 
   "text_diffs" : [
   ],

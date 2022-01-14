@@ -4,13 +4,16 @@
     "input.psASM -o output1 -s -f -X preproc1 -D TEST=1",
     "input.psASM -o output2 -s -f -X preproc1 -D TEST=2"
   ],
-  
+
+  "runs_error" : [
+  ],
+
   "text_diffs" : [
     ["output0_preproc1.psASM", "golden_output0_preproc1.psASM"],
     ["output1_preproc1.psASM", "golden_output1_preproc1.psASM"],
     ["output2_preproc1.psASM", "golden_output2_preproc1.psASM"]
   ],
-  
+
   "bin_diffs" : [
   ],
 

@@ -5,6 +5,9 @@
     "output.psOBJ -s -f -o output_obj -B -L -S -A -U -M"
   ],
 
+  "runs_error" : [
+  ],
+
   "text_diffs" : [
     ["outputLOGISIM", "golden_outputLOGISIM"],
     ["output_objLOGISIM", "golden_outputLOGISIM"],

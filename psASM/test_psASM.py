@@ -5,9 +5,14 @@ import psASM
 import difflib
 import sys
 import argparse
+import jsonschema
 
 
 class TestFailedException(Exception):
+    pass
+
+
+class TestinfoImportException(Exception):
     pass
 
 
@@ -15,6 +20,7 @@ def start_color(color, do_color):
     colors = {'ok': '\033[92m', 'warn': '\033[93m', 'err': '\033[91m'}
     if do_color:
         print(colors[color], end='')
+
 
 def end_color(do_color):
     if do_color:
@@ -35,14 +41,26 @@ def main(args):
     if parsed_args['t'] is not None:
         run_all_tests = False
         tests_to_run = parsed_args['t']
-    
+
     do_color = not parsed_args['no_color']
 
     # Discover All test directories
-    test_folders = [f.path for f in os.scandir("Tests") if f.is_dir()]
+    test_folder = "Tests"
+    test_folders = [f.path for f in os.scandir(test_folder) if f.is_dir()]
 
     # Keep track of current cwd
     original_cwd = os.getcwd()
+
+    # Load testinfo.json schema
+    schema_file = os.path.join(test_folder, "testinfo.schema")
+
+    try:
+        test_info_schema = json.load(open(schema_file))
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        start_color('err', do_color)
+        print("Failed to open '%s', aborting." % schema_file)
+        end_color(do_color)
+        return -1
 
     test_count = 0
     test_passed_count = 0
@@ -57,25 +75,31 @@ def main(args):
             if test_folder not in tests_to_run:
                 continue
 
+        test_info = {}
         test_count += 1
 
-        # Open testinfo.json:
         try:
-            test_info = json.load(open(os.path.join(test_folder, "testinfo.json")))
-        except FileNotFoundError:
-            start_color('err', do_color)
-            print("Did not find testinfo.json in %s, Aborting.." % test_folder)
-            end_color(do_color);
-            return -1
-        except json.decoder.JSONDecodeError as ex:
-            start_color('err', do_color)
-            print("Failed to decode testinfo.json in %s:" % test_folder)
-            print(ex)
-            print("Aborting...")
-            end_color(do_color);
-            return -1
+            # Open testinfo.json:
+            try:
+                test_info = json.load(open(os.path.join(test_folder, "testinfo.json")))
+                jsonschema.validate(test_info, test_info_schema)
+            except FileNotFoundError:
+                start_color('err', do_color)
+                print("Did not find testinfo.json in '%s'" % test_folder)
+                end_color(do_color)
+                raise TestFailedException()
+            except json.decoder.JSONDecodeError as ex:
+                start_color('err', do_color)
+                print("Failed to decode testinfo.json in '%s':" % test_folder)
+                print(ex)
+                end_color(do_color)
+                raise TestFailedException()
+            except jsonschema.ValidationError:
+                start_color('err', do_color)
+                print("testinfo.json in '%s' does not conform to %s" % (test_folder, schema_file))
+                end_color(do_color)
+                raise TestFailedException()
 
-        try:
             # Move into test folder:
             os.chdir(test_folder)
 
@@ -137,13 +161,18 @@ def main(args):
             test_failed_count += 1
         finally:
             # Perform cleanup:
-            for f in test_info['cleanup']:
-                try:
-                    os.remove(f)
-                except FileNotFoundError:
-                    start_color('warn', do_color)
-                    print("Could not cleanup '%s', file not found." % f)
-                    end_color(do_color)
+            try:
+                for f in test_info['cleanup']:
+                    try:
+                        os.remove(f)
+                    except FileNotFoundError:
+                        start_color('warn', do_color)
+                        print("Could not cleanup '%s', file not found." % f)
+                        end_color(do_color)
+            except KeyError:
+                start_color('warn', do_color)
+                print("No cleanup performed due to testinfo.json import failure!")
+                end_color(do_color)
 
         # Return to actual working directory:
         os.chdir(original_cwd)

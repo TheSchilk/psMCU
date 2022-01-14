@@ -3,6 +3,9 @@
     "input_main.psASM -o output -s -f -X preproc2"
   ],
   
+  "runs_error" : [
+  ],
+  
   "text_diffs" : [
       ["output_preproc2.psASM","golden_output_preproc2.psASM"]
   ],

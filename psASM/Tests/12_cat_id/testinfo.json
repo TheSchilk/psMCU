@@ -3,6 +3,9 @@
     "input.psASM -o output -s -f -M -w -c"
   ],
   
+  "runs_error" : [
+  ],
+  
   "text_diffs" : [
       ["output.map", "golden_output.map"]
   ],
