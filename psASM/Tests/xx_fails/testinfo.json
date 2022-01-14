@@ -1,0 +1,17 @@
+{
+  "runs" : [
+  ],
+  
+  "runs_error" : [
+    "input.psASM"
+  ],
+  
+  "text_diffs" : [
+  ],
+  
+  "bin_diffs" : [
+  ],
+  
+  "cleanup" : [
+  ]
+}

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import os
 import json
+from Util.Errors import psASMException
 import psASM
 import difflib
 import sys
@@ -143,6 +144,20 @@ def main(args):
 
             if not diffs_ok:
                 raise TestFailedException()
+
+            # Perform all error runs:
+            for run in test_info['runs_error']:
+                args = run.split(' ')
+                try:
+                    psASM.main(args, no_catch=True)
+                    start_color('err', do_color)
+                    print("Run with arguments '%s' was excepted to fail but passed!" % run)
+                    end_color(do_color)
+                    raise TestFailedException
+                except psASMException as exc:
+                    # OK 
+                    # TODO
+                    _ = exc
 
             test_passed_count += 1
             start_color('ok', do_color)

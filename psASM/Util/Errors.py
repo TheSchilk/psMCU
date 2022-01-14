@@ -5,6 +5,8 @@ class psASMException(Exception):
     def __str__(self):
         return "Error: " + self.text
 
+class psASMFileException(psASMException):
+    pass
 
 class LocatedException(psASMException):
     def __init__(self, text, exception_name, file_id=None, line_id=None, source_files=None, error_col=None):

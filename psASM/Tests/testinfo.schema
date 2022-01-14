@@ -14,8 +14,9 @@
                 },
                 "runs_error": {
                     "type": "array",
-                    "items": {},
-		        	"maxItems": 0
+                    "items": {
+                        "type": "string"
+                    }
                 },
                 "text_diffs": {
                     "type": "array",
