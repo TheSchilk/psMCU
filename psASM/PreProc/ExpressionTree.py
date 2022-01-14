@@ -6,6 +6,7 @@ from typing import List
 
 from Util.Errors import EvalException
 import Util.Formatting as Formatting
+from abc import ABCMeta, abstractmethod
 
 
 def _get_ctx_start(token):
@@ -60,8 +61,7 @@ def _type_combination_str(args: List):
             raise Exception()
     return result
 
-
-class Expression:
+class Expression(metaclass=ABCMeta):
     """Base-class for an expression-tree component that can be evaluated as string or int."""
 
     def __init__(self, name, parse_ctx=None, error_col=None, children=None):
@@ -84,6 +84,7 @@ class Expression:
         for child in self.children:
             child.remove_error_col_info()
 
+    @abstractmethod
     def eval(self, context):
         """Evaluate this expression."""
         _ = self, context  # pragma: no cover
@@ -134,7 +135,7 @@ class CharLiteralExpression(Expression):
         return "'" + self.char + "'" 
 
 
-class IdentifierExpression(Expression):
+class IdentifierExpression(Expression, metaclass=ABCMeta):
     """An Identifier (Defined value, label, etc)."""
 
     def __init__(self, name: str, parse_ctx, children: List):
@@ -143,10 +144,12 @@ class IdentifierExpression(Expression):
     def eval(self, context):
         return context[self.eval_identifier()]
 
+    @abstractmethod
     def eval_identifier(self) -> str:  # pragma: no cover
         _ = self
         raise Exception('Base expression instantiated or eval function not overwritten')
     
+    @abstractmethod
     def macro_arg_replacement(self, find: str, replace: Expression, must_be_identifier=False): # pragma: no cover 
         _ = self
         _ = find
