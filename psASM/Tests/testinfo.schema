@@ -9,13 +9,58 @@
                 "runs": {
                     "type": "array",
                     "items": {
-                        "type": "string"
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "cmd": {
+                                "type": "string"
+                            },
+                            "generates_log": {
+                                "type": "boolean"
+                            },
+                            "log_contains": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "required": [
+                            "cmd"
+                        ]
                     }
                 },
                 "runs_error": {
                     "type": "array",
                     "items": {
-                        "type": "string"
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "cmd": {
+                                "type": "string"
+                            },
+                            "generates_log": {
+                                "type": "boolean"
+                            },
+                            "log_contains": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "exception_type": {
+                                "type": "string"
+                            },
+                            "exception_location": {
+                                "type": "string"
+                            },
+                            "exception_error_col": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "cmd"
+                        ]
                     }
                 },
                 "text_diffs": {
@@ -25,8 +70,8 @@
                         "items": {
                             "type": "string"
                         },
-					    "minItems": 2,
-					    "maxItems": 2
+                        "minItems": 2,
+                        "maxItems": 2
                     }
                 },
                 "bin_diffs": {
@@ -36,8 +81,8 @@
                         "items": {
                             "type": "string"
                         },
-					    "minItems": 2,
-					    "maxItems": 2
+                        "minItems": 2,
+                        "maxItems": 2
                     }
                 },
                 "cleanup": {

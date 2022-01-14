@@ -1,0 +1,62 @@
+{
+    "runs": [],
+    "runs_error": [
+        {
+            "cmd": "inp1.psASM",
+            "generates_log": true,
+            "log_contains": [
+                "already defined and cannot be re-defined"
+            ],
+            "exception_type": "ContextException",
+            "exception_location": "inp1.psASM:3:"
+        },
+        {
+            "cmd": "inp2.psASM",
+            "generates_log": true,
+            "log_contains": [
+                "keys starting with '$' are only permitted as macro arguments"
+            ],
+            "exception_type": "ContextException",
+            "exception_location": "inp2.psASM:1:"
+        },
+        {
+            "cmd": "inp3.psASM",
+            "generates_log": true,
+            "log_contains": [
+                "Identifier 'myvar' is unknown"
+            ],
+            "exception_type": "ContextException",
+            "exception_location": "inp3.psASM:1:6-10:"
+        },
+        {
+            "cmd": "inp4.psASM",
+            "generates_log": true,
+            "log_contains": [
+                "Identifier 'myvar' is recognized but it's value is unknown at this time"
+            ],
+            "exception_type": "ContextException",
+            "exception_location": "inp4.psASM:2:6-10:"
+        },
+        {
+            "cmd": "inp5.psASM",
+            "generates_log": true,
+            "log_contains": [
+                "'my_macro' is not an expression, but a macro"
+            ],
+            "exception_type": "ContextException",
+            "exception_location": "inp5.psASM:3:6-13:"
+        },
+        {
+            "cmd": "inp6.psASM",
+            "generates_log": true,
+            "log_contains": [
+                "'my_var' is not a macro"
+            ],
+            "exception_type": "ContextException",
+            "exception_location": "inp6.psASM:2:1-6:"
+        }
+    ],
+    "text_diffs": [],
+    "bin_diffs": [],
+    "cleanup": []
+}

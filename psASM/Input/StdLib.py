@@ -2,7 +2,6 @@
 
 from os.path import dirname, join
 from os import listdir
-from Util.Errors import psASMException
 
 STDLIB_STARTUP_NAME = 'std_startup.psASM'
 STDLIB_FOOTER_NAME = 'std_footer.psASM'
@@ -15,19 +14,19 @@ def discover_stdlib_files():
     """Discover all stdlib assembly files included in the psASM source code. """
     stdlib_dir = join(dirname(__file__), 'StdLib')
 
-    # Only use .psASM files, warn about stray files.
+    # Only use .psASM files, fail if there are any others
     for file_name in listdir(stdlib_dir):
         if file_name.endswith('.psASM'):
             with open(join(stdlib_dir, file_name), 'r') as file:
                 file_lines = file.readlines()
                 stdlib_files[file_name] = file_lines
-        else:
-            print('Warning: Discovered non-psASM file in stdlib directory (%s)!' % file_name)
+        else:  # pragma: no cover
+            raise Exception('Discovered non-psASM file in stdlib directory (%s)!' % file_name)
 
     # Make sure all required files are here.
-    for required_file in required_files:
+    for required_file in required_files:  # pragma: no cover
         if required_file not in stdlib_files:
-            raise psASMException('Did not discover required StdLib file %s.' % required_file)
+            raise Exception('Did not discover required StdLib file %s.' % required_file)
 
 
 def get_stdlib_file(path):

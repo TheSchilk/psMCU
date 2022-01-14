@@ -1,0 +1,18 @@
+{
+    "runs": [
+        {
+            "cmd": "input.psASM -o output -L"
+        }
+    ],
+    "runs_error": [],
+    "text_diffs": [
+        [
+            "outputLOGISIM",
+            "golden_outputLOGISIM"
+        ]
+    ],
+    "bin_diffs": [],
+    "cleanup": [
+        "outputLOGISIM"
+    ]
+}

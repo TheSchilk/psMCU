@@ -1,0 +1,26 @@
+{
+    "runs": [],
+    "runs_error": [
+        {
+            "cmd": "argcount.psASM",
+            "generates_log": true,
+            "log_contains": [
+                "LITA expected 1 argument(s), but got 2"
+            ],
+            "exception_type": "InstructionException",
+            "exception_location": "argcount.psASM:1:"
+        },
+        {
+            "cmd": "argval.psASM",
+            "generates_log": true,
+            "log_contains": [
+                "argument 1 should be in the range"
+            ],
+            "exception_type": "InstructionException",
+            "exception_location": "argval.psASM:1:6-21:"
+        }
+    ],
+    "text_diffs": [],
+    "bin_diffs": [],
+    "cleanup": []
+}

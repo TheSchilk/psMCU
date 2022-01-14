@@ -1,0 +1,48 @@
+{
+    "runs": [],
+    "runs_error": [
+        {
+            "cmd": "does_not_exist.psOBJ",
+            "generates_log": true,
+            "log_contains": [
+                "Failed to open file"
+            ],
+            "exception_type": "psASMFileException"
+        },
+        {
+            "cmd": "invalid_json.psOBJ",
+            "generates_log": true,
+            "log_contains": [
+                "Invalid JSON!"
+            ],
+            "exception_type": "psOBJException"
+        },
+        {
+            "cmd": "invalid_psobj.psOBJ",
+            "generates_log": true,
+            "log_contains": [
+                "Malformed psOBJ"
+            ],
+            "exception_type": "psOBJException"
+        },
+        {
+            "cmd": "unknown_inst.psOBJ",
+            "generates_log": true,
+            "log_contains": [
+                "Unknown Instruction"
+            ],
+            "exception_type": "psOBJException"
+        },
+        {
+            "cmd": "invalid_val.psOBJ",
+            "generates_log": true,
+            "log_contains": [
+                "Malformed value"
+            ],
+            "exception_type": "psOBJException"
+        }
+    ],
+    "text_diffs": [],
+    "bin_diffs": [],
+    "cleanup": []
+}

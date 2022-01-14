@@ -1,0 +1,7 @@
+
+@define str "A defined string"
+
+@print "Hello World!"
+@print sprintf("V1: %v, V2: %v", 1, "a" + " " + "string")
+@print str
+@print 

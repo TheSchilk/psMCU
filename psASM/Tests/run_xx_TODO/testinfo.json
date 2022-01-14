@@ -1,0 +1,26 @@
+{
+    "runs": [
+        {
+            "cmd": "input.psASM -s -f -o output_direct -B"
+        },
+        {
+            "cmd": "input.psASM -s -f -o output -O"
+        },
+        {
+            "cmd": "output.psOBJ -s -f -o output_via_obj -B"
+        }
+    ],
+    "runs_error": [],
+    "text_diffs": [],
+    "bin_diffs": [
+        [
+            "output_direct.bin",
+            "output_via_obj.bin"
+        ]
+    ],
+    "cleanup": [
+        "output_direct.bin",
+        "output.psOBJ",
+        "output_via_obj.bin"
+    ]
+}

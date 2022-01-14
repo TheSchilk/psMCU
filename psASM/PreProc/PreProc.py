@@ -19,54 +19,6 @@ from collections import deque
 from copy import deepcopy
 
 
-def _evaluate_args(in_list: List[ParsedLine.InstructionLine]):
-    for line in in_list:
-        try:
-            line.evaluate_args()
-        except LocatedException as exc:
-            exc.decorate_line_id(line.line_id)
-            exc.decorate_file_id(line.file_id)
-            raise exc
-
-
-def _define_labels(in_list: List[ParsedLine.InstructionLine]):
-    for adr, line in enumerate(in_list):
-        try:
-            line.register_labels(adr)
-        except LocatedException as exc:
-            exc.decorate_line_id(line.line_id)
-            exc.decorate_file_id(line.file_id)
-            raise exc
-
-
-def _associate_labels(in_list):
-    result = []
-
-    in_queue = deque(in_list)
-
-    while in_queue:
-        next_line = in_queue.popleft()
-        try:
-            if isinstance(next_line, ParsedLine.LabelsLine):
-                did_associate = False
-                for look_ahead in in_queue:
-                    if isinstance(look_ahead, ParsedLine.InstructionLine):
-                        look_ahead.add_labels_line(next_line)
-                        did_associate = True
-                        break
-                if not did_associate:
-                    raise EvalException("Trailing labels line.")
-
-            if isinstance(next_line, ParsedLine.InstructionLine):
-                result.append(next_line)
-        except LocatedException as exc:
-            exc.decorate_line_id(next_line.line_id)
-            exc.decorate_file_id(next_line.file_id)
-            raise exc
-
-    return result
-
-
 class PreProc:
     def __init__(self,  source_files: SourceFiles, parsed_files: ParsedFiles, settings):
         self.source_files = source_files
@@ -84,7 +36,7 @@ class PreProc:
         Output.internal_state.generate_parsedfiles(self.source_files, self.parsed_files, self.settings)
 
         # Include Files, Build Contexts, Run
-        intermediate = self._pre_proc_file(header_footer_id)
+        intermediate = self._process_file(header_footer_id)
         Output.internal_state.generate_preproc(intermediate, self.settings, 'preproc1')
 
         # Associate labels
@@ -107,7 +59,7 @@ class PreProc:
         prog_usage = prog_length*100/(2**14)
         log(1, "PreProc: Finished. Final program is %i instructions (%.2f%% of ROM)" % (prog_length, prog_usage))
         if prog_length > 2**14:
-            print("Warning: Program size exceeds memory size.")
+            log(0, "Warning: Program size exceeds memory size.")
 
         return result
 
@@ -126,7 +78,7 @@ class PreProc:
 
         return file_id
 
-    def _pre_proc_file(self, file_id):
+    def _process_file(self, file_id):
         parsed_file = self.parsed_files[file_id]
         result = []
 
@@ -162,9 +114,8 @@ class PreProc:
                     include_directive.set_context(file_context_handler.get_fixed_context_view())
                     # Retrieve file id
                     included_file_id = self.source_files.get_file_id(include_directive.get_file_name())
-
                     # Process file
-                    content = self._pre_proc_file(included_file_id)
+                    content = self._process_file(included_file_id)
                     result.extend(content)
                     continue
 
@@ -181,7 +132,7 @@ class PreProc:
                     print_directive.set_context(file_context_handler.get_fixed_context_view())
                     text = print_directive.text()
                     # Print
-                    print(text)
+                    log(0, text)
                     continue
 
                 # If this is an error directive, raise error:
@@ -189,10 +140,12 @@ class PreProc:
                     error_directive = in_queue.popleft()
                     # Get text
                     error_directive.set_context(file_context_handler.get_fixed_context_view())
-                    text = error_directive.text()
+                    text, error_col = error_directive.error_information()
+                    # Raise error
                     raise ErrorDirectiveException(text,
                                                   line_id=error_directive.line_id,
-                                                  file_id=error_directive.file_id)
+                                                  file_id=error_directive.file_id,
+                                                  error_col=error_col)
 
                 # If this is a conditional directive, evaluate and add correct block to front-of-queue
                 if isinstance(peek, ParsedLine.IfDirective):
@@ -208,17 +161,13 @@ class PreProc:
                 # TODO this should be the 'eval directive'
                 if isinstance(peek, ParsedLine.DefineDirective):
                     define_directive = in_queue.popleft()
-
                     # Get name and value:
                     context = file_context_handler.get_fixed_context_view()
-                    name = define_directive.name
-                    if define_directive.value is not None:
-                        value = define_directive.value.eval(context)
-                    else:
-                        value = None
-
+                    define_directive.set_context(context)
+                    value = define_directive.eval_value()
+                    name = define_directive.name.eval_identifier()
                     # Define
-                    file_context_handler[name.eval_identifier()] = value
+                    file_context_handler[name] = value
                     continue
 
                 # if this a macro directive, add it to the current context
@@ -241,7 +190,7 @@ class PreProc:
                         context_view = file_context_handler.get_fixed_context_view()
                         macro_directive = expansion_directive.retrieve_macro(context_view)
                         # Generate block and add to queue
-                        block = macro_directive.expand(expansion_directive.args)
+                        block = macro_directive.expand(expansion_directive)
                         in_queue = deque(block) + in_queue
                     continue
 
@@ -266,8 +215,52 @@ class PreProc:
 
                 raise Exception('Unhandeled line type in PreProc.')  # pragma: no cover
             except LocatedException as exc:
-                exc.decorate_line_id(peek.line_id)
-                exc.decorate_file_id(peek.file_id)
+                exc.decorate_location(peek.file_id, peek.line_id)
                 raise exc
 
         return result
+
+
+def _evaluate_args(in_list: List[ParsedLine.InstructionLine]):
+    for line in in_list:
+        try:
+            line.evaluate_args()
+        except LocatedException as exc:
+            exc.decorate_location(line.file_id, line.line_id)
+            raise exc
+
+
+def _define_labels(in_list: List[ParsedLine.InstructionLine]):
+    for adr, line in enumerate(in_list):
+        try:
+            line.register_labels(adr)
+        except LocatedException as exc:
+            exc.decorate_location(line.file_id, line.line_id)
+            raise exc
+
+
+def _associate_labels(in_list):
+    result = []
+
+    in_queue = deque(in_list)
+
+    while in_queue:
+        next_line = in_queue.popleft()
+        try:
+            if isinstance(next_line, ParsedLine.LabelsLine):
+                did_associate = False
+                for look_ahead in in_queue:
+                    if isinstance(look_ahead, ParsedLine.InstructionLine):
+                        look_ahead.add_labels_line(next_line)
+                        did_associate = True
+                        break
+                if not did_associate:
+                    raise EvalException("Trailing labels line.")
+
+            if isinstance(next_line, ParsedLine.InstructionLine):
+                result.append(next_line)
+        except LocatedException as exc:
+            exc.decorate_location(next_line.file_id, next_line.line_id)
+            raise exc
+
+    return result

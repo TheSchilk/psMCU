@@ -1,0 +1,28 @@
+{
+    "runs": [
+        {
+            "cmd": "input.psASM -o output -s -f -X parsedfiles -X preproc1 -X preproc3"
+        }
+    ],
+    "runs_error": [],
+    "text_diffs": [
+        [
+            "output_parsedfiles.psASM",
+            "golden_output_parsedfiles.psASM"
+        ],
+        [
+            "output_preproc1.psASM",
+            "golden_output_preproc1.psASM"
+        ],
+        [
+            "output_preproc3.psASM",
+            "golden_output_preproc3.psASM"
+        ]
+    ],
+    "bin_diffs": [],
+    "cleanup": [
+        "output_parsedfiles.psASM",
+        "output_preproc1.psASM",
+        "output_preproc3.psASM"
+    ]
+}

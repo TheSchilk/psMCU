@@ -1,0 +1,18 @@
+{
+    "runs": [],
+    "runs_error": [
+        {
+            "cmd": "input.psASM",
+            "generates_log": true,
+            "log_contains": [
+                "Error Directive: my_error_string"
+            ],
+            "exception_type": "ErrorDirectiveException",
+            "exception_location": "input.psASM:1:8-24:",
+            "exception_error_col": "(8, 24)"
+        }
+    ],
+    "text_diffs": [],
+    "bin_diffs": [],
+    "cleanup": []
+}

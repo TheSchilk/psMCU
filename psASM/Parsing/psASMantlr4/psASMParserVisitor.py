@@ -7,247 +7,200 @@ else:
 
 # This class defines a complete generic visitor for a parse tree produced by psASMParser.
 
+
 class psASMParserVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by psASMParser#line.
-    def visitLine(self, ctx:psASMParser.LineContext):
+    def visitLine(self, ctx: psASMParser.LineContext):
         return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by psASMParser#preproc_line.
-    def visitPreproc_line(self, ctx:psASMParser.Preproc_lineContext):
-        return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#instruction_line.
-    def visitInstruction_line(self, ctx:psASMParser.Instruction_lineContext):
+    def visitInstruction_line(self, ctx: psASMParser.Instruction_lineContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#labels_line.
-    def visitLabels_line(self, ctx:psASMParser.Labels_lineContext):
+    def visitLabels_line(self, ctx: psASMParser.Labels_lineContext):
         return self.visitChildren(ctx)
 
+    # Visit a parse tree produced by psASMParser#preproc_line.
+    def visitPreproc_line(self, ctx: psASMParser.Preproc_lineContext):
+        return self.visitChildren(ctx)
 
     # Visit a parse tree produced by psASMParser#empty_line.
-    def visitEmpty_line(self, ctx:psASMParser.Empty_lineContext):
+    def visitEmpty_line(self, ctx: psASMParser.Empty_lineContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#instruction.
-    def visitInstruction(self, ctx:psASMParser.InstructionContext):
+    def visitInstruction(self, ctx: psASMParser.InstructionContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#labels.
-    def visitLabels(self, ctx:psASMParser.LabelsContext):
+    def visitLabels(self, ctx: psASMParser.LabelsContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#preproc_directive.
-    def visitPreproc_directive(self, ctx:psASMParser.Preproc_directiveContext):
+    def visitPreproc_directive(self, ctx: psASMParser.Preproc_directiveContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#literal_identifier.
-    def visitLiteral_identifier(self, ctx:psASMParser.Literal_identifierContext):
+    def visitLiteral_identifier(self, ctx: psASMParser.Literal_identifierContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#catid_identifier.
-    def visitCatid_identifier(self, ctx:psASMParser.Catid_identifierContext):
+    def visitCatid_identifier(self, ctx: psASMParser.Catid_identifierContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#preproc_define.
-    def visitPreproc_define(self, ctx:psASMParser.Preproc_defineContext):
+    def visitPreproc_define(self, ctx: psASMParser.Preproc_defineContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#preproc_include.
-    def visitPreproc_include(self, ctx:psASMParser.Preproc_includeContext):
+    def visitPreproc_include(self, ctx: psASMParser.Preproc_includeContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#preproc_include_once.
-    def visitPreproc_include_once(self, ctx:psASMParser.Preproc_include_onceContext):
+    def visitPreproc_include_once(self, ctx: psASMParser.Preproc_include_onceContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#preproc_if.
-    def visitPreproc_if(self, ctx:psASMParser.Preproc_ifContext):
+    def visitPreproc_if(self, ctx: psASMParser.Preproc_ifContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#preproc_ifdef.
-    def visitPreproc_ifdef(self, ctx:psASMParser.Preproc_ifdefContext):
+    def visitPreproc_ifdef(self, ctx: psASMParser.Preproc_ifdefContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#preproc_ifndef.
-    def visitPreproc_ifndef(self, ctx:psASMParser.Preproc_ifndefContext):
+    def visitPreproc_ifndef(self, ctx: psASMParser.Preproc_ifndefContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#preproc_elif.
-    def visitPreproc_elif(self, ctx:psASMParser.Preproc_elifContext):
+    def visitPreproc_elif(self, ctx: psASMParser.Preproc_elifContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#preproc_else.
-    def visitPreproc_else(self, ctx:psASMParser.Preproc_elseContext):
+    def visitPreproc_else(self, ctx: psASMParser.Preproc_elseContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#preproc_for.
-    def visitPreproc_for(self, ctx:psASMParser.Preproc_forContext):
+    def visitPreproc_for(self, ctx: psASMParser.Preproc_forContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#preproc_end.
-    def visitPreproc_end(self, ctx:psASMParser.Preproc_endContext):
+    def visitPreproc_end(self, ctx: psASMParser.Preproc_endContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#preproc_print.
-    def visitPreproc_print(self, ctx:psASMParser.Preproc_printContext):
+    def visitPreproc_print(self, ctx: psASMParser.Preproc_printContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#preproc_error.
-    def visitPreproc_error(self, ctx:psASMParser.Preproc_errorContext):
+    def visitPreproc_error(self, ctx: psASMParser.Preproc_errorContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#preproc_macro.
-    def visitPreproc_macro(self, ctx:psASMParser.Preproc_macroContext):
+    def visitPreproc_macro(self, ctx: psASMParser.Preproc_macroContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#preproc_macro_expansion.
-    def visitPreproc_macro_expansion(self, ctx:psASMParser.Preproc_macro_expansionContext):
+    def visitPreproc_macro_expansion(self, ctx: psASMParser.Preproc_macro_expansionContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#compare_expr.
-    def visitCompare_expr(self, ctx:psASMParser.Compare_exprContext):
+    def visitCompare_expr(self, ctx: psASMParser.Compare_exprContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#add_expr.
-    def visitAdd_expr(self, ctx:psASMParser.Add_exprContext):
+    def visitAdd_expr(self, ctx: psASMParser.Add_exprContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#bitxor_expr.
-    def visitBitxor_expr(self, ctx:psASMParser.Bitxor_exprContext):
+    def visitBitxor_expr(self, ctx: psASMParser.Bitxor_exprContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#string_index_expr.
-    def visitString_index_expr(self, ctx:psASMParser.String_index_exprContext):
+    def visitString_index_expr(self, ctx: psASMParser.String_index_exprContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#shift_expr.
-    def visitShift_expr(self, ctx:psASMParser.Shift_exprContext):
+    def visitShift_expr(self, ctx: psASMParser.Shift_exprContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#mult_expr.
-    def visitMult_expr(self, ctx:psASMParser.Mult_exprContext):
+    def visitMult_expr(self, ctx: psASMParser.Mult_exprContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#unary_expr.
-    def visitUnary_expr(self, ctx:psASMParser.Unary_exprContext):
+    def visitUnary_expr(self, ctx: psASMParser.Unary_exprContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#and_expr.
-    def visitAnd_expr(self, ctx:psASMParser.And_exprContext):
+    def visitAnd_expr(self, ctx: psASMParser.And_exprContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#bitand_expr.
-    def visitBitand_expr(self, ctx:psASMParser.Bitand_exprContext):
+    def visitBitand_expr(self, ctx: psASMParser.Bitand_exprContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#condit_expr.
-    def visitCondit_expr(self, ctx:psASMParser.Condit_exprContext):
+    def visitCondit_expr(self, ctx: psASMParser.Condit_exprContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#atom_expr.
-    def visitAtom_expr(self, ctx:psASMParser.Atom_exprContext):
+    def visitAtom_expr(self, ctx: psASMParser.Atom_exprContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#or_expr.
-    def visitOr_expr(self, ctx:psASMParser.Or_exprContext):
+    def visitOr_expr(self, ctx: psASMParser.Or_exprContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#bitor_expr.
-    def visitBitor_expr(self, ctx:psASMParser.Bitor_exprContext):
+    def visitBitor_expr(self, ctx: psASMParser.Bitor_exprContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#equate_expr.
-    def visitEquate_expr(self, ctx:psASMParser.Equate_exprContext):
+    def visitEquate_expr(self, ctx: psASMParser.Equate_exprContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#expr_atom.
-    def visitExpr_atom(self, ctx:psASMParser.Expr_atomContext):
+    def visitExpr_atom(self, ctx: psASMParser.Expr_atomContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#numerical_atom.
-    def visitNumerical_atom(self, ctx:psASMParser.Numerical_atomContext):
+    def visitNumerical_atom(self, ctx: psASMParser.Numerical_atomContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#string_atom.
-    def visitString_atom(self, ctx:psASMParser.String_atomContext):
+    def visitString_atom(self, ctx: psASMParser.String_atomContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#defined_atom.
-    def visitDefined_atom(self, ctx:psASMParser.Defined_atomContext):
+    def visitDefined_atom(self, ctx: psASMParser.Defined_atomContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#sprintf_atom.
-    def visitSprintf_atom(self, ctx:psASMParser.Sprintf_atomContext):
+    def visitSprintf_atom(self, ctx: psASMParser.Sprintf_atomContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#strlen_atom.
-    def visitStrlen_atom(self, ctx:psASMParser.Strlen_atomContext):
+    def visitStrlen_atom(self, ctx: psASMParser.Strlen_atomContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#identifier_atom.
-    def visitIdentifier_atom(self, ctx:psASMParser.Identifier_atomContext):
+    def visitIdentifier_atom(self, ctx: psASMParser.Identifier_atomContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#numerical_literal.
-    def visitNumerical_literal(self, ctx:psASMParser.Numerical_literalContext):
+    def visitNumerical_literal(self, ctx: psASMParser.Numerical_literalContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#string_literal.
-    def visitString_literal(self, ctx:psASMParser.String_literalContext):
+    def visitString_literal(self, ctx: psASMParser.String_literalContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by psASMParser#char_literal.
-    def visitChar_literal(self, ctx:psASMParser.Char_literalContext):
+    def visitChar_literal(self, ctx: psASMParser.Char_literalContext):
         return self.visitChildren(ctx)
-
 
 
 del psASMParser

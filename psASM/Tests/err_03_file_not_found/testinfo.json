@@ -1,0 +1,17 @@
+{
+    "runs": [],
+    "runs_error": [
+        {
+            "cmd": "input.psASM",
+            "generates_log": true,
+            "log_contains": [
+                "Failed to open file"
+            ],
+            "exception_type": "psASMFileException",
+            "exception_location": "input.psASM:1:"
+        }
+    ],
+    "text_diffs": [],
+    "bin_diffs": [],
+    "cleanup": []
+}

@@ -184,7 +184,8 @@ COMMENT
    : '#' ~[\r\n]* -> skip
    ;
 
-WS: [ \t]+ -> skip ;
+WS: [ ]+ -> skip ;
+TAB: '\t' ;
 EOL: [\r\n]+ ;
 
 ERROR_CHAR: . ;

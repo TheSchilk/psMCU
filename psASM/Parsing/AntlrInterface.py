@@ -45,9 +45,14 @@ class ParsingErrorListener(ErrorListener):
     def syntaxError(self, recognizer, offendingSymbol, line, column, msg, e):
         """Handle syntax error"""
         _ = recognizer
-        _ = offendingSymbol
         _ = line
         _ = e
+
+        # Custom error message for tabs:
+        if offendingSymbol.text == '\t':
+            raise ParsingException("Tabs are not accepted. Please indent using spaces.", error_col=column)
+
+        # Otherwise use default antlr4 error:
         raise ParsingException(msg, error_col=column)
 
 

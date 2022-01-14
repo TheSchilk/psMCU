@@ -1,0 +1,55 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/psOBJ",
+    "definitions": {
+        "psOBJ": {
+            "type": "object",
+            "properties": {
+                "source_files": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "file_id": {
+                                "type": "number"
+                            },
+                            "path": {
+                                "type": "string"
+                            },
+                            "is_stdlib_file": {
+                                "type": "boolean"
+                            },
+                            "content": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "required": [
+                            "file_id",
+                            "path",
+                            "is_stdlib_file",
+                            "content"
+                        ]
+                    }
+                },
+                "instruction_listing": {
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "minItems": 4
+                    }
+                }
+            },
+            "required": [
+                "source_files",
+                "instruction_listing"
+            ]
+        }
+    }
+}

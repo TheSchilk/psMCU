@@ -16,6 +16,7 @@
 @macro ascii_stack $str
     @print "ASCII_STACK MACRO IS NOT YET TESTED!"
     @print "TODO: ADD REVERSE"
+    @error "Please fix:("
 
     # ensure string is not too long:
     @if strlen($str) > 256 # TODO: what value?

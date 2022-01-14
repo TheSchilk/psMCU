@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import os
 import json
-from Util.Errors import psASMException
+from Util.Errors import LocatedException, psASMException
 import psASM
 import difflib
 import sys
@@ -26,6 +26,119 @@ def start_color(color, do_color):
 def end_color(do_color):
     if do_color:
         print('\33[0m', end='')
+
+
+def check_log_output(run, log, do_color):
+    # If there is no test settting regarding log output,
+    # But the test produced log, print a warning:
+
+    if not 'generates_log' in run:
+        if not 'log_contains' in run or len(run['log_contains']) == 0:
+            if len(log) != 0:
+                start_color('warn', do_color)
+                print("psASM run '%s' produced log but test does not have a log policy!" % run['cmd'])
+                end_color(do_color)
+                print("Log output:")
+                for log_line in log:
+                    print(log_line)
+
+    if 'generates_log' in run:
+        if run['generates_log'] and len(log) == 0:
+            start_color('err', do_color)
+            print("psASM run '%s' did not produced log but test expected log ouput!" % run['cmd'])
+            end_color(do_color)
+            raise TestFailedException()
+        if not run['generates_log'] and len(log) != 0:
+            start_color('err', do_color)
+            print("psASM run '%s' produced log but test did not expect any!" % run['cmd'])
+            end_color(do_color)
+            print("Log output:")
+            for log_line in log:
+                print(log_line)
+            raise TestFailedException()
+
+    if 'log_contains' in run:
+        for test_string in run['log_contains']:
+            found = False
+            for log_line in log:
+                if test_string in log_line:
+                    found = True
+                    break
+            if not found:
+                start_color('err', do_color)
+                print("psASM run '%s' expected '%s' in log output!" % (run['cmd'], test_string))
+                end_color(do_color)
+                print("Log output:")
+                for log_line in log:
+                    print(log_line)
+                raise TestFailedException()
+
+
+def check_exception(run, exc, log, do_color):
+    if 'exception_type' in run:
+        type_is = type(exc).__name__
+        type_want = run['exception_type']
+        if type_is != type_want:
+            start_color('err', do_color)
+            print("psASM run '%s' expected exception type '%s' but got %s!" % (run['cmd'], type_want, type_is))
+            end_color(do_color)
+            print("Log output:")
+            for log_line in log:
+                print(log_line)
+            raise TestFailedException()
+
+    tests_that_need_location = ["exception_location",  "exception_error_col"]
+
+    for test in tests_that_need_location:
+        if test in run:
+            if not isinstance(exc, LocatedException) or not exc.has_location_information():
+                start_color('err', do_color)
+                print("psASM run '%s' expected exception with location, but '%s' does not contain location information!"
+                      % (run['cmd'], type(exc).__name__))
+                end_color(do_color)
+                print("Log output:")
+                for log_line in log:
+                    print(log_line)
+                raise TestFailedException()
+
+    if 'exception_location' in run:
+        location_is = exc.location_str()
+        location_want = run['exception_location']
+        if location_is != location_want:
+            start_color('err', do_color)
+            print("psASM run '%s' expected exception at '%s' but it was from '%s'!" %
+                  (run['cmd'], location_want, location_is))
+            end_color(do_color)
+            print("Log output:")
+            for log_line in log:
+                print(log_line)
+            raise TestFailedException()
+
+    if 'exception_error_col' in run:
+        error_col_want = run['exception_error_col']
+
+        if exc.error_col is None:
+            start_color('err', do_color)
+            print("psASM run '%s' expected exception in collum(s) '%s' but exception had no collum information!" % (run['cmd'], error_col_want))
+            end_color(do_color)
+            print("Log output:")
+            for log_line in log:
+                print(log_line)
+            raise TestFailedException()
+        if type(exc.error_col) == tuple:
+            error_col_is = str((exc.error_col[0]+1, exc.error_col[1]+1))
+        else:
+            error_col_is = str(exc.error_col+1)
+
+        if error_col_is != error_col_want:
+            start_color('err', do_color)
+            print("psASM run '%s' expected exception in collum(s) '%s' but it was '%s'!" %
+                  (run['cmd'], error_col_want, error_col_is))
+            end_color(do_color)
+            print("Log output:")
+            for log_line in log:
+                print(log_line)
+            raise TestFailedException()
 
 
 def main(args):
@@ -106,10 +219,18 @@ def main(args):
 
             # Perform all psASM runs:
             for run in test_info['runs']:
-                args = run.split(' ')
-                if psASM.main(args) != 0:
-                    print("psASM run ('%s') failed!" % run)
+                args = run['cmd'].split(' ')
+                log = []
+                if psASM.main(args, no_catch=False, reroute_log_to=log) != 0:
+                    start_color('err', do_color)
+                    print("psASM returned an error during run! ('%s')!" % run['cmd'])
+                    end_color(do_color)
+                    print("Log output:")
+                    for log_line in log:
+                        print(log_line)
                     raise TestFailedException()
+                else:
+                    check_log_output(run, log, do_color)
 
             # Perform all diffs:
             diffs_ok = True
@@ -147,17 +268,17 @@ def main(args):
 
             # Perform all error runs:
             for run in test_info['runs_error']:
-                args = run.split(' ')
+                args = run['cmd'].split(' ')
+                log = []
                 try:
-                    psASM.main(args, no_catch=True)
+                    psASM.main(args, no_catch=True, reroute_log_to=log)
                     start_color('err', do_color)
-                    print("Run with arguments '%s' was excepted to fail but passed!" % run)
+                    print("Run with arguments '%s' was excepted to fail but passed!" % run['cmd'])
                     end_color(do_color)
                     raise TestFailedException
                 except psASMException as exc:
-                    # OK 
-                    # TODO
-                    _ = exc
+                    check_exception(run, exc, log, do_color)
+                    check_log_output(run, log, do_color)
 
             test_passed_count += 1
             start_color('ok', do_color)

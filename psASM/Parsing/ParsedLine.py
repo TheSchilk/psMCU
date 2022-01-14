@@ -7,6 +7,7 @@ from Util.Formatting import comma_seperated_list, prefix_every_line
 from Util.Errors import ParsingException, EvalException, LocatedException
 from abc import ABCMeta
 
+
 class ParsedLine(metaclass=ABCMeta):
     type_name = "undefined"
 
@@ -31,7 +32,7 @@ class ParsedLine(metaclass=ABCMeta):
         return False
 
     def instruction_tree(self, include_empty=False):
-        _ = include_empty;
+        _ = include_empty
         return str(self)
 
 
@@ -65,12 +66,11 @@ class LabelsLine(ParsedLine):
     def register_labels(self, adr):
         try:
             for label in self.labels:
-                if not self.context: # pragma: no cover
+                if not self.context:  # pragma: no cover
                     raise Exception("Don't have a context yet!")
                 self.context[label.eval_identifier()] = adr
         except LocatedException as exc:
-            exc.decorate_line_id(self.line_id)
-            exc.decorate_file_id(self.file_id)
+            exc.decorate_location(self.file_id, self.line_id)
             raise exc
 
     def macro_arg_replacement(self, find, replace):
@@ -100,7 +100,7 @@ class InstructionLine(ParsedLine):
 
     def register_labels(self, adr):
         for label in self.labels:
-            if not self.context: # pragma: no cover
+            if not self.context:  # pragma: no cover
                 raise Exception("Don't have a context yet!")
             self.context[label.eval_identifier()] = adr
         for label_line in self.labels_lines:
@@ -165,7 +165,10 @@ class DefineDirective(PreProcDirective):
         self.value = value
 
     def eval_value(self):
-        return self.value.eval(self.context)
+        if self.value is not None:
+            return self.value.eval(self.context)
+        else:
+            return None
 
     def __str__(self):
         if self.value is not None:
@@ -357,10 +360,13 @@ class ErrorDirective(PreProcDirective):
     def macro_arg_replacement(self, find, replace):
         self.msg.macro_arg_replacement(find, replace)
 
-    def text(self):
+    def error_information(self):
+        error_col = None
         msg = self.msg.eval(self.context)
         assert_str(msg, "Error directive message", self.msg.error_col)
-        return msg
+        if len(msg) != 0:
+            error_col = self.msg.error_col
+        return (msg, error_col)
 
 
 class MacroDirective(PreProcDirective):
@@ -387,22 +393,25 @@ class MacroDirective(PreProcDirective):
         for arg in self.args:
             arg.macro_arg_replacement(find, replace, must_be_identifier=True)
 
-    def expand(self, expansion_args):
+    def expand(self, expansion_directive):
 
         for arg in self.args:
             if not arg.eval_identifier().startswith('$'):
-                raise ParsingException("Macro expansion argument identifiers must start with '$'")
+                raise ParsingException("Macro expansion argument identifiers must start with '$'",
+                                       file_id=self.file_id,
+                                       line_id=self.line_id,
+                                       error_col=arg.error_col)
 
         want_args = len(self.args)
-        have_args = len(expansion_args)
+        have_args = len(expansion_directive.args)
         if want_args != have_args:
             msg = "Expansion of macro %s expected %i arguments, got %i." % (self.name, want_args, have_args)
-            raise EvalException(msg, file_id=self.file_id, line_id=self.line_id)
+            raise EvalException(msg, file_id=expansion_directive.file_id, line_id=expansion_directive.line_id)
 
         # Generate block
         block = copy.deepcopy(self.block)
 
-        for arg_identifier, arg_value in zip(self.args, expansion_args):
+        for arg_identifier, arg_value in zip(self.args, expansion_directive.args):
             for line in block:
                 line.macro_arg_replacement(arg_identifier.eval_identifier(), arg_value)
 
@@ -453,6 +462,7 @@ class MacroExpansionDirective(PreProcDirective):
             exc.decorate_error_col(self.macro_name.error_col)
             raise exc
 
+
 class ForLoopDirective(PreProcDirective):
     type_name = "@for"
 
@@ -467,7 +477,7 @@ class ForLoopDirective(PreProcDirective):
 
     def __str__(self):
         result = "@for %s, %s, %s, %s " % (
-        str(self.index_name), str(self.start_val), str(self.condition), str(self.update))
+            str(self.index_name), str(self.start_val), str(self.condition), str(self.update))
         return result
 
     def macro_arg_replacement(self, find, replace):

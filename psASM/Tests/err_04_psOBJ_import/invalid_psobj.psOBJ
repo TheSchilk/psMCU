@@ -1,0 +1,30 @@
+{
+    "source_files": [
+        {
+            "file_id": 0,
+            "path": "input.psASM",
+            "content": [
+                "LITA 0\n",
+                "LITA 1\n",
+                "LITA 2\n",
+                "LITA 3\n",
+                "LITA 4\n",
+                "LITA 5\n",
+                "LITA 6\n",
+                "LITA 7\n",
+                "IFSM 1, 1\n",
+                "\n",
+                "\n"
+            ]
+        }
+    ],
+    "instruction_listing": [
+        [
+            "0",
+            "0",
+            "0x0400",
+            "LITA",
+			"1"
+        ]
+    ]
+}

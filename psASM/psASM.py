@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 import sys
+from Util.Log import log
 from Util.args import parse_args
-from Util.Errors import psASMException, LocatedException, psASMFileException
+from Util.Errors import psASMException, LocatedException
 
 from Input.SourceFile import SourceFiles
 
@@ -13,50 +14,52 @@ from Output import OutputGenerator
 from Output.psOBJ import psOBJ
 
 
-def main(args, no_catch=False):
+def main(args, no_catch=False, reroute_log_to=None):
     """Run the psASM Assembler."""
-    # Get settings from cmdline arguments
-    settings = parse_args(args)
-
     try:
-        try:
-            if settings['input_type'] == 'psASM':
-                source_files = None
-                try:
-                    # If the input is a source file, parse, process, and assemble a psOBJ:
+        # Get settings from cmd line arguments
+        settings = parse_args(args, reroute_log_to)
 
-                    # Discover all needed source files:
-                    source_files = SourceFiles()
-                    source_files.add_from_root_file(settings['input_file'], settings)
+        if settings['input_type'] == 'psASM':
+            source_files = None
+            try:
+                # If the input is a source file, parse, process, and assemble a psOBJ:
 
-                    # Parse all source files:
-                    parsed_files = Parser.parse_source_files(source_files)
+                # Discover all needed source files:
+                source_files = SourceFiles()
+                source_files.add_from_root_file(settings['input_file'], settings)
 
-                    # Run Pre-Processor:
-                    preproc = PreProc(source_files, parsed_files, settings)
-                    instruction_listing = preproc.process()
+                # Parse all source files:
+                parsed_files = Parser.parse_source_files(source_files)
 
-                    # Package into a psOBJ
-                    obj = psOBJ(source_files, instruction_listing)
+                # Run Pre-Processor:
+                preproc = PreProc(source_files, parsed_files, settings)
+                instruction_listing = preproc.process()
 
-                except LocatedException as exc:
-                    exc.decorate_source_files(source_files)
-                    raise exc
-            else:
-                # If the input is already a psOBJ, import it:
-                obj = psOBJ.from_file(settings)
+                # Package into a psOBJ
+                obj = psOBJ(source_files, instruction_listing)
 
-            # Now, using this psOBJ, generate the requested output
-            OutputGenerator.generate(settings, obj)
-        except FileNotFoundError as exc:  # TODO -> Should this really be here?
-            raise psASMFileException("Error: File %s not found!" % exc.filename)
+            except LocatedException as exc:
+                exc.decorate_source_files(source_files)
+                raise exc
+        else:
+            # If the input is already a psOBJ, import it:
+            obj = psOBJ.from_file(settings)
+
+        # Now, using this psOBJ, generate the requested output
+        OutputGenerator.generate(settings, obj)
 
     except psASMException as exc:
+        log(0, str(exc))
         if no_catch:
+            # no_catch is set during certain tests to allow exceptions to propagate
+            # up to the test script.
+            # Propagate:
             raise exc
-        else:
-            print(exc)
+        else:  # pragma: no cover
+            # Exception occured, stop:
             return -1
+
     return 0
 
 

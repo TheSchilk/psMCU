@@ -1,0 +1,22 @@
+# Check that ifdef / else work
+@ifdef TEST
+    LITA 12
+@else
+    LITA 0
+@end
+
+# Check that ifndef works
+@ifndef TEST
+    LITA 0
+@else
+    LITA 12
+@end
+
+# Check that if/elif work
+@ifdef TEST
+    @if TEST_VAL == 1
+        LITB 1
+    @elif TEST_VAL == 2
+        LITB 2
+    @end
+@end

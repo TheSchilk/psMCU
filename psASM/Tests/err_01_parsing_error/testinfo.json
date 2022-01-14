@@ -1,0 +1,48 @@
+{
+    "runs": [],
+    "runs_error": [
+        {
+            "cmd": "macro_arg_prefix.psASM",
+            "generates_log": true,
+            "log_contains": [
+                "argument identifiers must start with '$'"
+            ],
+            "exception_type": "ParsingException",
+            "exception_location": "macro_arg_prefix.psASM:1:17-19:",
+            "exception_error_col": "(17, 19)"
+        },
+        {
+            "cmd": "block1.psASM",
+            "generates_log": true,
+            "exception_type": "ParsingException",
+            "exception_location": "block1.psASM:2:"
+        },
+        {
+            "cmd": "block2.psASM",
+            "generates_log": true,
+            "exception_type": "ParsingException",
+            "exception_location": "block2.psASM:"
+        },
+        {
+            "cmd": "random.psASM",
+            "generates_log": true,
+            "exception_type": "ParsingException",
+            "exception_location": "random.psASM:1:15:"
+        },
+        {
+            "cmd": "include1.psASM",
+            "generates_log": true,
+            "exception_type": "ParsingException",
+            "exception_location": "include1.psASM:1:"
+        },
+        {
+            "cmd": "include2.psASM",
+            "generates_log": true,
+            "exception_type": "ParsingException",
+            "exception_location": "include2.psASM:1:"
+        }
+    ],
+    "text_diffs": [],
+    "bin_diffs": [],
+    "cleanup": []
+}

@@ -1,7 +1,10 @@
 from Input.SourceFile import SourceFiles
-from Util.Errors import psOBJException
+from Util.Errors import psASMFileException, psOBJException
 from Output.Instruction import Instruction
 import json
+from os.path import dirname, join
+import jsonschema
+
 
 class psOBJ:
     def __init__(self, source_files, instruction_listing):
@@ -10,30 +13,42 @@ class psOBJ:
 
     @classmethod
     def from_file(cls, settings):
-        # Read file:
-        with open(settings['input_file'], "r") as read_file:
-            data = json.load(read_file)
-        
-        if not type(data) is dict:
-            raise psOBJException("Malformed psOBJ file.")
+        # Read json schema file:
+
+        schema_file = join(dirname(__file__), "psOBJ.schema")
         try:
-            # Deserialize source files:
-            source_files_data = data['source_files']
-            instruction_listing_data = data['instruction_listing']
-            
-            source_files = SourceFiles.from_psOBJ_data(source_files_data)
+            with open(schema_file, "r") as read_file:
+                schema = json.load(read_file)
+        except (FileNotFoundError, json.decoder.JSONDecodeError) as exc:  # pragma: no cover
+            print(exc)
+            raise Exception("Failed to open psOBJ schema file!")
 
-            # Deserialize instruction listing:
-            if not type(instruction_listing_data) is list:
-                raise psOBJException("Malformed psOBJ file.")
-            instruction_listing = []
-            for instr_data in instruction_listing_data:
-                instruction_listing.append(Instruction.from_psOBJ_data(instr_data))
+        try:
+            # Read file:
+            with open(settings['input_file'], "r") as read_file:
+                psOBJ_data = json.load(read_file)
 
-        except KeyError:
-            raise psOBJException("Malformed psOBJ file.")
+            # Validate psOBJ:
+            jsonschema.validate(psOBJ_data, schema)
+        except FileNotFoundError:
+            raise psASMFileException("Failed to open file %s!" % settings['input_file'])
+        except json.decoder.JSONDecodeError as exc:
+            raise psOBJException("Failed to parse %s! Invalid JSON!\n%s" % (settings['input_file'], exc))
+        except jsonschema.ValidationError:
+            raise psOBJException("Malformed psOBJ file!")
 
-        return cls(source_files, instruction_listing) 
+        source_files_data = psOBJ_data['source_files']
+        instruction_listing_data = psOBJ_data['instruction_listing']
+
+        # Deserialize source files:
+        source_files = SourceFiles.from_psOBJ_data(source_files_data)
+
+        # Deserialize instruction listing:
+        instruction_listing = []
+        for instr_data in instruction_listing_data:
+            instruction_listing.append(Instruction.from_psOBJ_data(instr_data))
+
+        return cls(source_files, instruction_listing)
 
     def write_to_file(self, settings):
         # Generate serialized information:
@@ -48,21 +63,7 @@ class psOBJ:
         with open(settings['out']+".psOBJ", "w") as write_file:
             json.dump(data, write_file)
 
-# Content:
-#
-#   Source Files:
-#       Source File
-#           file_id 
-#           line_id
-#           is_stdlib_file
-#           content
-#               line
-#
-#   Instruction Listing:
-#       Instruction:
-#           op_code - string
-#           args    - list of hex values 
-#           binary  - hex value
-#           file_id - string
-#           line_id - string
 
+# Wrapper function to have same interface as all other output generators:
+def generate(ps_obj: psOBJ, settings):
+    ps_obj.write_to_file(settings)

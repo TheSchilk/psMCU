@@ -2,11 +2,12 @@ import argparse
 import sys
 import re
 import os
+from Util.Errors import ArgException
 import Util.Log
 from Util.Log import log
 
 
-def parse_args(args):
+def parse_args(args, reroute_log_to):
 
     parser = argparse.ArgumentParser(prog="psASM.py", description="psASM Assembler for psMCU.")
 
@@ -32,7 +33,7 @@ def parse_args(args):
     output_format.add_argument('-A', '--gen_annotated', required=False, action="store_true",
                                help='generate an annotated assembly program')
     # parser.add_argument('-?', '--gen_defs', required=False, action="store_true", help='generate definitions file.')
-    
+
     parser.add_argument('-X', '--log_internal_state', required=False, action="append",
                         help='output various intermediate representations')
     parser.add_argument('-D', '--define', required=False, action="append", type=str, metavar='DEF',
@@ -54,7 +55,7 @@ def parse_args(args):
     parsed_args = vars(parser.parse_args(args))
 
     # Setup logger
-    Util.Log.setup(parsed_args)
+    Util.Log.setup(parsed_args, reroute_log_to)
 
     # Check what kind of input file was given:
     if parsed_args['input_file'].endswith('.psOBJ'):
@@ -64,21 +65,19 @@ def parse_args(args):
         log(1, "Args: Got a .psASM file")
         parsed_args['input_type'] = 'psASM'
     else:
-        print('Error: Input file is neither .psASM nor .psOBJ file!')
-        sys.exit(-1)
+        raise ArgException('Input file is neither .psASM nor .psOBJ file!')
 
     # Sanity check input file extension
     if parsed_args['input_type'] == 'psOBJ':
         # If this is already a .psOBJ file, it makes no sense to generate another .psOBJ file:
         if parsed_args['gen_psOBJ']:
-            print('Error: Cannot generate a .psOBJ file from a .psOBJ file!')
-            sys.exit(-1)
+            raise ArgException('Cannot generate a .psOBJ file from a .psOBJ file!')
 
     # Ensure 'define' is an empty list if no defines were passed.
     if not parsed_args['define']:
         log(1, "Args: No argument defines given")
         parsed_args['define'] = []
-    
+
     # Ensure 'log_internal_state' is an empty list if no defines were passed.
     if not parsed_args['log_internal_state']:
         log(1, "Args: No argument log_internal_state given")
@@ -88,8 +87,7 @@ def parse_args(args):
     defines = []
     for define in parsed_args['define']:
         if not re.match(r"^[a-zA-Z][a-zA-Z0-9_\-]*(=((0b[01]+)|(0x[0-9a-fA-F]+)|([0-9]+)))?$", define):
-            print("Error: Malformed definition %s passed via -D flag.")
-            sys.exit()
+            raise ArgException("Malformed definition %s passed via -D flag.")
 
         if '=' in define:
             define = define.split('=')
@@ -113,17 +111,11 @@ def parse_args(args):
 
     # If no output file is selected, select binary output.
     default_output = 'gen_bin'
-    # First, find all 'generate_output' flags:
-    output_flags = [k for k in list(parsed_args.keys()) if k.startswith('gen_')]
-    # See if any are set:
-    output_selected = False
-    for f in output_flags:
-        output_selected = output_selected or parsed_args[f]
-    if not output_selected:
-        # Check if we are at least generating debug output:
-        if not parsed_args['log_internal_state']:
-            # Nothing is being generated, select default output:
-            log(1, "Args: No output format selecting, defaulting to binary (-B)")
-            parsed_args[default_output] = True
-    
+    # First, find all 'generate_output' flags that are set:
+    output_flags_set = [k for k in list(parsed_args.keys()) if k.startswith('gen_') and parsed_args[k]]
+    # If non are set, and we are also not generating debug output, set the default output option:
+    if len(output_flags_set) == 0 and not parsed_args['log_internal_state']:
+        log(1, "Args: No output format selecting, defaulting to binary (-B)")
+        parsed_args[default_output] = True
+
     return parsed_args

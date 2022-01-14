@@ -26,7 +26,8 @@ class Context:
             raise ContextException("Identifier '%s' is already defined and cannot be re-defined." % key)
 
         if key.startswith('$'):
-            raise ContextException("Cannot define key starting with $, those are intended for macro replacement!")
+            raise ContextException(
+                "Cannot define key '%s': keys starting with '$' are only permitted as macro arguments." % key)
 
         self.context_dict[key] = value
 
@@ -34,9 +35,6 @@ class Context:
         return key in self.context_dict
 
     def is_value_known(self, key):
-        if key not in self:
-            return False
-
         return self.context_dict[key] is not None
 
 
@@ -54,18 +52,11 @@ class ContextView:
         else:
             return self.g_context
 
-    def __getitem__(self, key):
-        raise Exception()
-        return self._select_context(key)[key]
-
     def __setitem__(self, key, value):
         self._select_context(key)[key] = value
 
     def __contains__(self, key):
         return key in self._select_context(key)
-
-    def is_value_known(self, key):
-        return self._select_context(key).is_value_known(key)
 
     def get_macro(self, key):
         val = self._select_context(key)[key]

@@ -42,4 +42,3 @@ class PreProcRootFile(SourceFile):
         content.append(footer_line + "\n")
         content.append("\n")
         super().__init__(None, "_preproc_root_autogen.psASM", content, True)
-

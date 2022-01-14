@@ -1,0 +1,39 @@
+# Make sure that labels propagate through conditionals correctly:
+
+T1_L1:
+@if 1==1
+    T1_L2: LITA 1
+@end
+
+T2_L1:
+@if 1==1
+    T2_L2: 
+@end
+LITA 2
+
+# Should be T2_L1, T2_L2: LITA 1
+T3_L1:
+@if 1!=1
+    T3_L3: # should not be included
+@else
+    T3_L2: LITA 3
+@end
+
+# Make sure that labels propagate through files: 
+@include "input_label.psASM"
+LITA 4
+
+# Make sure that labels attach through maccro expansions:
+# M1, M2, M3, M4 should all be on the same LITB 2
+# m1 should be on LITB 1
+
+
+m1:
+@macro test_macro
+M1:
+M2: LITB 2
+@end
+LITB 1
+
+M3:
+M4: test_macro

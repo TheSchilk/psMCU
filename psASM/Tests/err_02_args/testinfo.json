@@ -1,0 +1,32 @@
+{
+    "runs": [],
+    "runs_error": [
+        {
+            "cmd": "not_a_filelaksdjflasdkfj_",
+            "exception_type": "ArgException",
+            "log_contains": [
+                ".psASM nor .psOBJ file!"
+            ],
+            "generates_log": true
+        },
+        {
+            "cmd": "input.psOBJ -O",
+            "exception_type": "ArgException",
+            "log_contains": [
+                ".psOBJ file from a .psOBJ"
+            ],
+            "generates_log": true
+        },
+        {
+            "cmd": "input.psOBJ -DaI?zzz",
+            "exception_type": "ArgException",
+            "log_contains": [
+                "Malformed definition"
+            ],
+            "generates_log": true
+        }
+    ],
+    "text_diffs": [],
+    "bin_diffs": [],
+    "cleanup": []
+}

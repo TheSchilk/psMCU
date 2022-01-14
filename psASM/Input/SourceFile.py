@@ -1,5 +1,5 @@
 import re
-from Util.Errors import ParsingException, LocatedException, psOBJException
+from Util.Errors import ParsingException, LocatedException, psOBJException, psASMFileException
 from Util.Log import log
 import Input.StdLib
 import Output.internal_state
@@ -37,7 +37,6 @@ def _extract_include(text) -> str:
     return file_name
 
 
-# TODO: Should refactor so that 'file_id' is not required: Annoying in PseudoFileGenerator
 class SourceFile:
     """A .psASM file."""
 
@@ -62,37 +61,24 @@ class SourceFile:
                     result.content.append(line_text)
         return result
 
-    @classmethod
+    @ classmethod
     def from_stdlib_file(cls, file_id, stdlib_file):
         """Generate a SourceFile from an included stdlib file."""
         content = Input.StdLib.get_stdlib_file(stdlib_file)
         asm_file = cls(file_id, stdlib_file, stdlib_file=True, content=content)
         return asm_file
-    
-    @classmethod
+
+    @ classmethod
     def from_psOBJ_data(cls, data):
-        if not type(data) is dict:
-            raise psOBJException("Malformed source file in psOBJ file.")
-        try:
-            file_id = data['file_id']
-            path = data['path']
-            stdlib_file = data['is_stdlib_file']
-            content = []
-        
-            if not type(data['content']) is list:
-                raise psOBJException("Malformed source file content in psOBJ file.")
+        file_id = data['file_id']
+        path = data['path']
+        stdlib_file = data['is_stdlib_file']
+        content = []
 
-            for line in data['content']:
-                if not type(line) is str:
-                    raise psOBJException("Malformed source file content in psOBJ file.")
-                content.append(line)
-            
-            return cls(file_id, path, content, stdlib_file)
+        for line in data['content']:
+            content.append(line)
 
-        except KeyError: # pragma: no cover 
-            raise psOBJException("Malformed Instruction in psOBJ")
-        except ValueError: # pragma: no cover 
-            raise psOBJException("Malformed Instruction in psOBJ")
+        return cls(file_id, path, content, stdlib_file)
 
     def to_psOBJ_data(self):
         data = {}
@@ -101,9 +87,6 @@ class SourceFile:
         data['is_stdlib_file'] = self.stdlib_file
         data['content'] = self.content
         return data
-
-    def __len__(self):
-        return len(self.content)
 
     def __getitem__(self, index):
         return self.content[index]
@@ -118,17 +101,14 @@ class SourceFile:
         for line_id, line in enumerate(self.content):
             try:
                 if _is_include(line):
-                    included_paths.append(_extract_include(line))
+                    result = (_extract_include(line), self.file_id, line_id)
+                    included_paths.append(result)
 
             except LocatedException as exc:
                 exc.decorate_location(self.file_id, line_id)
                 raise exc
 
         return included_paths
-
-    def append(self, text):
-        """Add a line."""
-        self.content.append(text)
 
 
 class SourceFiles:
@@ -142,15 +122,15 @@ class SourceFiles:
 
     def add_from_root_file(self, root_file_path, settings):
         """Add a root file and all included files."""
-        paths_to_add = [root_file_path]
+        paths_to_add = [(root_file_path, None, None)]
 
         # Unless no startup/footer is selected, ensure that the files are included:
         if not settings['no_startup']:
-            paths_to_add.append(Input.StdLib.STDLIB_STARTUP_NAME)
+            paths_to_add.append((Input.StdLib.STDLIB_STARTUP_NAME, None, None))
         if not settings['no_footer']:
-            paths_to_add.append(Input.StdLib.STDLIB_FOOTER_NAME)
+            paths_to_add.append((Input.StdLib.STDLIB_FOOTER_NAME, None, None))
 
-        for path in paths_to_add:
+        for path, from_file_id, from_line_id in paths_to_add:
 
             # Do not re-add a path multiple times
             if self.contains_path(path):
@@ -158,7 +138,13 @@ class SourceFiles:
                 continue
 
             # Open this file and add it to the filespace:
-            file = SourceFile.from_file(self.next_id(), path)
+            try:
+                file = SourceFile.from_file(self.next_id(), path)
+            except FileNotFoundError:
+                exc = psASMFileException("Failed to open file '%s'!" % path)
+                exc.decorate_location(from_file_id, from_line_id)
+                raise exc
+
             self.add_file(file)
 
             # Look for any includes in this new file and include any
@@ -169,9 +155,6 @@ class SourceFiles:
                 paths_to_add.append(included_path)
 
         Output.internal_state.generate_sourcefiles(self, settings)
-
-    def __len__(self):
-        return len(self.files)
 
     def __getitem__(self, position):
         return self.files[position]
@@ -204,13 +187,13 @@ class SourceFiles:
         for file in self.files:
             if file.file_id == file_id:
                 return file.path
-        raise KeyError('File ID not found.')
+        raise Exception('File ID not found.')  # pragma: no cover
 
     def get_file_id(self, path):
         for file in self.files:
             if file.path == path:
                 return file.file_id
-        raise ValueError("Unknown file path")
+        raise Exception("Unknown file path")  # pragma: no cover
 
     def location_str(self, file_id, line_id=None, col=None):
         """Generate typical location string (ie: file.psASM:43:10)
@@ -221,20 +204,19 @@ class SourceFiles:
         if line_id is not None:
             result += str(line_id+1) + ":"
             if col is not None:
-                result += str(col+1) + ":"
+                if type(col) == tuple:
+                    result += str(col[0]+1) + "-" + str(col[1]+1) + ":"
+                else:
+                    result += str(col+1) + ":"
         return result
-    
-    @classmethod
+
+    @ classmethod
     def from_psOBJ_data(cls, data):
-        if not type(data) is list:
-            raise psOBJException("Malformed psOBJ file.")
-        
         files = []
         for file_data in data:
             files.append(SourceFile.from_psOBJ_data(file_data))
 
         return cls(files=files)
-
 
     def to_psOBJ_data(self):
         data = []

@@ -1,24 +1,48 @@
 {
-  "configurations": {
-    "Tests: All": {
-      "adapter": "debugpy",
-      "filetypes": [ "python" ],
-      "configuration": {
-        "request": "launch",
-        "program": "test_psASM.py",
-        "args": [ "--no-color" ],
-        "stopOnEntry": true
-      }
-    },
-    "test.psASM": {
-      "adapter": "debugpy",
-      "filetypes": [ "python" ],
-      "configuration": {
-        "request": "launch",
-        "program": "psASM.py",
-        "args": [ "test.psASM" ],
-        "stopOnEntry": true
-      }
+    "configurations": {
+        "Tests: All": {
+            "adapter": "debugpy",
+            "filetypes": [
+                "python"
+            ],
+            "configuration": {
+                "request": "launch",
+                "program": "test_psASM.py",
+                "args": [
+                    "--no-color"
+                ],
+                "stopOnEntry": true
+            }
+        },
+        "Tests: Single": {
+            "adapter": "debugpy",
+            "filetypes": [
+                "python"
+            ],
+            "configuration": {
+                "request": "launch",
+                "program": "test_psASM.py",
+                "args": [
+                    "--no-color",
+                    "-t",
+                    "Tests/err_04_psOBJ_import"
+                ],
+                "stopOnEntry": true
+            }
+        },
+        "test.psASM": {
+            "adapter": "debugpy",
+            "filetypes": [
+                "python"
+            ],
+            "configuration": {
+                "request": "launch",
+                "program": "psASM.py",
+                "args": [
+                    "test.psASM"
+                ],
+                "stopOnEntry": true
+            }
+        }
     }
-  }
-}	
+}

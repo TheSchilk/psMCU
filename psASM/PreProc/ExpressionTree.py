@@ -61,6 +61,7 @@ def _type_combination_str(args: List):
             raise Exception()
     return result
 
+
 class Expression(metaclass=ABCMeta):
     """Base-class for an expression-tree component that can be evaluated as string or int."""
 
@@ -74,15 +75,6 @@ class Expression(metaclass=ABCMeta):
 
         if parse_ctx is not None and error_col is None:
             self.error_col = (_get_ctx_start(parse_ctx), _get_ctx_stop(parse_ctx))
-
-    def remove_error_col_info(self):
-        """Recursively remove error_col information from this and children.
-        Used when error_col information is no longer valid due t macro_arg_replacement
-        """
-
-        self.error_col = None
-        for child in self.children:
-            child.remove_error_col_info()
 
     @abstractmethod
     def eval(self, context):
@@ -109,9 +101,9 @@ class NumLiteralExpression(Expression):
         _ = context
         try:
             return int(self.text, 0)
-        except ValueError as exp:
+        except ValueError as exp:  # pragma: no cover
             # If this fires the language grammar should probably be adjusted.
-            raise EvalException("Malformed integer: %s." % self.text) from exp
+            raise Exception("Malformed integer: %s." % self.text) from exp
 
     def __str__(self):
         return self.text
@@ -132,7 +124,7 @@ class CharLiteralExpression(Expression):
         return ord(self.char)
 
     def __str__(self):
-        return "'" + self.char + "'" 
+        return "'" + self.char + "'"
 
 
 class IdentifierExpression(Expression, metaclass=ABCMeta):
@@ -154,7 +146,7 @@ class IdentifierExpression(Expression, metaclass=ABCMeta):
         raise Exception('Base expression instantiated or eval function not overwritten')
 
     @abstractmethod
-    def macro_arg_replacement(self, find: str, replace: Expression, must_be_identifier=False): # pragma: no cover 
+    def macro_arg_replacement(self, find: str, replace: Expression, must_be_identifier=False):  # pragma: no cover
         _ = self
         _ = find
         _ = replace
@@ -187,12 +179,11 @@ class IdentifierLiteral(IdentifierExpression):
             # Make it the correct class:
             self.__class__ = replace.__class__
 
-            # Give it all the right properties:
+            # Give it all the right properties, but hang on to error col:
             for attr in replace.__dict__:
+                if attr == 'error_col':
+                    continue
                 self.__setattr__(attr, getattr(replace, attr))
-
-            # It now no longer makes sense to talk about error_cols for this expression:
-            self.error_col = None
 
 
 class CatIdentifierOperator(IdentifierExpression):
@@ -211,11 +202,11 @@ class CatIdentifierOperator(IdentifierExpression):
         for arg in self.args:
             result = result + arg.eval_identifier()
         return result
-    
+
     def macro_arg_replacement(self, find: str, replace: Expression, must_be_identifier=False):
-        for arg in self.args: 
+        for arg in self.args:
             arg.macro_arg_replacement(find, replace, must_be_identifier)
-    
+
 
 class StringLiteralExpression(Expression):
     """A String literal."""
@@ -226,7 +217,7 @@ class StringLiteralExpression(Expression):
 
     def eval(self, context):
         # TODO: Escaping
-        # TODO: Zero-termination
+        # TODO: Zero-termination?
         _ = context
         return self.text
 
@@ -250,6 +241,7 @@ class isDefinedExpression(Expression):
 
     def macro_arg_replacement(self, find: str, replace: Expression):
         self.identifier.macro_arg_replacement(find, replace, must_be_identifier=True)
+
 
 class SprintfExpression(Expression):
     """sprintf("string %i", val) operator."""
@@ -304,12 +296,6 @@ class SprintfExpression(Expression):
         result += ")"
         return result
 
-    def remove_error_col_info(self):
-        self.text.remove_error_col_info()
-        self.string_start_col = None
-        for arg in self.args:
-            arg.remove_error_col_info()
-
     def macro_arg_replacement(self, find: str, replace: Expression):
         self.text.macro_arg_replacement(find, replace)
         for arg in self.args:
@@ -333,10 +319,10 @@ class StrlenExpression(Expression):
 
 class StringIndexExpression(Expression):
     """String Index Operator"""
-    
+
     def __init__(self, parse_ctx, child1: Expression, child2: Expression):
         super().__init__('Modulo Operator', parse_ctx=parse_ctx, children=[child1, child2])
-    
+
     def eval(self, context):
         child0 = self.children[0].eval(context)
         assert_str(child0, "Left operand of string index operator", self.children[0].error_col, self.error_col)

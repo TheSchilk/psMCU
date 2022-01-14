@@ -1,0 +1,19 @@
+{
+    "runs": [
+        {
+            "cmd": "input.psASM -o output -O -s -f",
+            "generates_log": true,
+            "log_contains": [
+                "Hello World!",
+                "V1: 1, V2: a string",
+                "A defined string"
+            ]
+        }
+    ],
+    "runs_error": [],
+    "text_diffs": [],
+    "bin_diffs": [],
+    "cleanup": [
+        "output.psOBJ"
+    ]
+}

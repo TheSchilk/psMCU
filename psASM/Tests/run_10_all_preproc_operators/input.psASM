@@ -1,0 +1,47 @@
+#Unary
+LITA 10
+LITA +10
+LITA -10
+LITA !1
+LITA ~0xf5
+
+#Mult
+LITA 100/10
+LITA 10*10
+LITA 11%10
+
+#Add
+LITA 1+10
+LITA 10-1
+
+#Shift
+LITA 0x1 << 1
+LITA 0x2 >> 1
+
+#Compare
+LITA 1 < 2
+LITA 1 <= 1
+LITA 2 > 1
+LITA 'i' >= 'I'
+
+#Equate
+LITA 1==1
+LITA 1!=2
+
+#Bit AND
+LITA 0x3 & 0xF2
+
+#Bit XOR
+LITA 0xff ^ 0x55
+
+#Bit OR
+LITA 0xf0 | 0x0f
+
+#And
+LITA 1 && 2
+
+#Or
+LITA 1 || 2
+
+#Conditional
+LITA (10 == 50) ? 100 : 200

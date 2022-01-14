@@ -16,10 +16,11 @@ class Instruction:
     binary_literal = 0x0  # Overwritten by all sub-classes
     arg_setups = []
 
-    def __init__(self, args, file_id, line_id, binary=None):
+    def __init__(self, args, file_id, line_id, binary=None, args_cols=None):
         self.args = args
         self.file_id = file_id
         self.line_id = line_id
+        self.args_cols = args_cols
 
         # Make sure the correct number of arguments was supplied
         self.check_arg_count()
@@ -34,15 +35,20 @@ class Instruction:
     @classmethod
     def from_preproc_line(cls, line: InstructionLine):
         # Convert this into the correct sub-class:
-        if not Instruction.instruction_set: # pragma: no cover
+        if not Instruction.instruction_set:  # pragma: no cover
             Instruction.instruction_set = find_instructions()
 
         inst_name = line.instruction
         args = line.evaluated_args
         file_id = line.file_id
         line_id = line.line_id
+
+        args_cols = []
+        for arg in line.args:
+            args_cols.append(arg.error_col)
+
         try:
-            inst = Instruction.instruction_set[inst_name](args, file_id, line_id)
+            inst = Instruction.instruction_set[inst_name](args, file_id, line_id, args_cols=args_cols)
         except KeyError:  # pragma: no cover
             # Should never happen - the parser now tokenizes instructions.
             raise Exception("Unrecognized instruction - how did you get this past my parser?")
@@ -51,11 +57,7 @@ class Instruction:
     @classmethod
     def from_psOBJ_data(cls, data: list):
 
-        # file_id line_id binary op_code arg1 arg2..
-
         # Decode:
-        if len(data) < 4:
-            raise psOBJException("Malformed value in instruction ('%s')." % data)
         try:
             components = deque(data)
             file_id = int(components.popleft(), base=10)
@@ -69,20 +71,21 @@ class Instruction:
             for arg in components:
                 args.append(int(arg, base=16))
 
-            if not Instruction.instruction_set: # pragma: no cover
+            if not Instruction.instruction_set:  # pragma: no cover
                 Instruction.instruction_set = find_instructions()
+
             return Instruction.instruction_set[op_code](args, file_id, line_id, binary=binary)
 
         except ValueError:
             raise psOBJException("Malformed value in instruction ('%s')." % data)
-        except KeyError:  # pragma: no cover
-            raise psOBJException("Unknown Instruction in psOBJ ('%s').")
+        except KeyError:
+            raise psOBJException("Unknown Instruction in psOBJ ('%s')." % data[3])
 
     def to_psOBJ_data(self):
         # file_id line_id binary op_code arg1 arg2..
         binary_int = int.from_bytes(self.binary, byteorder='big')
         binary_str = "0x%04x" % binary_int
-        
+
         data = [str(self.file_id), str(self.line_id), binary_str, self.op_code]
 
         for index, arg in enumerate(self.args):
@@ -91,14 +94,11 @@ class Instruction:
             data.append("0x%02x" % arg)
         return data
 
-    def __str__(self):
-        return "(Inst: " + str(self.op_code) + " " + str(self.args) + " = " + str(self.binary) + ")"
-
     def check_arg_count(self):
         """Ensure the correct number of arguments was given. """
         arg_count = len(self.arg_setups)
         if not len(self.args) == arg_count:
-            error = "Instruction %s expected %i arguments, but got %i." % (self.op_code, arg_count, len(self.args))
+            error = "Instruction %s expected %i argument(s), but got %i." % (self.op_code, arg_count, len(self.args))
             raise InstructionException(error, file_id=self.file_id, line_id=self.line_id)
 
     def check_arg_value(self):
@@ -108,10 +108,11 @@ class Instruction:
 
             # Make sure that the number is in the correct range:
             if arg > arg_setup['max'] or arg < arg_setup['min']:
-                error = "Instruction %s's argument %i " % (self.op_code, index)
+                error = "Instruction %s's argument %i " % (self.op_code, index+1)
                 error += "should be in the range [%i,%i] " % (arg_setup['min'], arg_setup['max'])
                 error += "but is %i." % arg
-                raise InstructionException(error, file_id=self.file_id, line_id=self.line_id)
+                raise InstructionException(error, file_id=self.file_id, line_id=self.line_id,
+                                           error_col=self.get_arg_error_col(index))
 
     def generate_binary(self):
         """Generate binary encoding of instruction """
@@ -126,6 +127,12 @@ class Instruction:
 
     def mask_argument(self, arg, index):
         return arg & bit_mask(self.arg_setups[index]['bit width'])
+
+    def get_arg_error_col(self, index):
+        if self.args_cols is None:
+            return None
+        else:
+            return self.args_cols[index]
 
 
 MIN_14BIT_UNSIGNED = 0

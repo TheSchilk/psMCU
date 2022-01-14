@@ -1,0 +1,3 @@
+@macro my_macro arg
+@end
+my_macro arg

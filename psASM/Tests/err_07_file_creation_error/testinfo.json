@@ -1,0 +1,40 @@
+{
+    "runs": [],
+    "runs_error": [
+        {
+            "cmd": "input.psASM -o not_a_folder/output",
+            "generates_log": true,
+            "log_contains": [
+                "Failed to create file"
+            ],
+            "exception_type": "psASMFileException"
+        },
+        {
+            "cmd": "input.psASM -o not_a_folder/output -X sourcefiles",
+            "generates_log": true,
+            "log_contains": [
+                "Failed to create file"
+            ],
+            "exception_type": "psASMFileException"
+        },
+        {
+            "cmd": "input.psASM -o not_a_folder/output -X parsedfiles",
+            "generates_log": true,
+            "log_contains": [
+                "Failed to create file"
+            ],
+            "exception_type": "psASMFileException"
+        },
+        {
+            "cmd": "input.psASM -o not_a_folder/output -X preproc1",
+            "generates_log": true,
+            "log_contains": [
+                "Failed to create file"
+            ],
+            "exception_type": "psASMFileException"
+        }
+    ],
+    "text_diffs": [],
+    "bin_diffs": [],
+    "cleanup": []
+}

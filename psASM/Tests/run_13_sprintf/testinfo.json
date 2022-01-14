@@ -1,0 +1,13 @@
+{
+    "runs": [
+        {
+            "cmd": "input.psASM -o output -O -s -f"
+        }
+    ],
+    "runs_error": [],
+    "text_diffs": [],
+    "bin_diffs": [],
+    "cleanup": [
+        "output.psOBJ"
+    ]
+}

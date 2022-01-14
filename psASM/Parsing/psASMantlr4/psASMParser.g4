@@ -9,9 +9,10 @@ line
    : line_content EOL
    ;
 
-line_content: preproc_directive #preproc_line
-   | instruction #instruction_line
+line_content
+   : instruction #instruction_line
    | labels #labels_line
+   | preproc_directive #preproc_line
    | #empty_line
    ;
 

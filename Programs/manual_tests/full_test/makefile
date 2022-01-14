@@ -6,7 +6,7 @@
 ########################################
 
 # TODO: set main source name
-MAIN_SOURCE_NAME = Snake.psASM
+MAIN_SOURCE_NAME = full_test.psASM
 
 # Build Directory:
 BUILD_DIR = build

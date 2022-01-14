@@ -1,0 +1,56 @@
+{
+    "runs": [],
+    "runs_error": [
+        {
+            "cmd": "operator_types1.psASM",
+            "generates_log": true,
+            "log_contains": [
+                "Addition is not defined",
+                "str, int"
+            ],
+            "exception_type": "EvalException",
+            "exception_location": "operator_types1.psASM:1:6-19:"
+        },
+        {
+            "cmd": "operator_types2.psASM",
+            "generates_log": true,
+            "log_contains": [
+                "Equality is not defined",
+                "str, int"
+            ],
+            "exception_type": "EvalException",
+            "exception_location": "operator_types2.psASM:1:6-20:"
+        },
+        {
+            "cmd": "operator_types3.psASM",
+            "generates_log": true,
+            "log_contains": [
+                "Equality is not defined",
+                "str, int"
+            ],
+            "exception_type": "EvalException",
+            "exception_location": "operator_types3.psASM:1:6-20:"
+        },
+        {
+            "cmd": "operator_types4.psASM",
+            "generates_log": true,
+            "log_contains": [
+                "string index operator must be an int"
+            ],
+            "exception_type": "EvalException",
+            "exception_location": "operator_types4.psASM:1:17-26:"
+        },
+        {
+            "cmd": "operator_types5.psASM",
+            "generates_log": true,
+            "log_contains": [
+                "Left operand of string index operator must be a string"
+            ],
+            "exception_type": "EvalException",
+            "exception_location": "operator_types5.psASM:1:6-8:"
+        }
+    ],
+    "text_diffs": [],
+    "bin_diffs": [],
+    "cleanup": []
+}
