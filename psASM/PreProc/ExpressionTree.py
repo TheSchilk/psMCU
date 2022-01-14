@@ -4,7 +4,7 @@
 import re
 from typing import List
 
-from Util.Errors import EvalException
+from Util.Errors import EvalException, LocatedException
 import Util.Formatting as Formatting
 from abc import ABCMeta, abstractmethod
 
@@ -142,13 +142,17 @@ class IdentifierExpression(Expression, metaclass=ABCMeta):
         super().__init__(name, parse_ctx=parse_ctx, children=children)
 
     def eval(self, context):
-        return context[self.eval_identifier()]
+        try:
+            return context.get_expr(self.eval_identifier())
+        except LocatedException as exc:
+            exc.decorate_error_col(self.error_col)
+            raise exc
 
     @abstractmethod
     def eval_identifier(self) -> str:  # pragma: no cover
         _ = self
         raise Exception('Base expression instantiated or eval function not overwritten')
-    
+
     @abstractmethod
     def macro_arg_replacement(self, find: str, replace: Expression, must_be_identifier=False): # pragma: no cover 
         _ = self

@@ -5,9 +5,9 @@ from PreProc.ExpressionTree import NumLiteralExpression
 from PreProc.ExpressionTree import assert_int, assert_str
 from Util.Formatting import comma_seperated_list, prefix_every_line
 from Util.Errors import ParsingException, EvalException, LocatedException
+from abc import ABCMeta
 
-
-class ParsedLine:
+class ParsedLine(metaclass=ABCMeta):
     type_name = "undefined"
 
     def __init__(self):
@@ -26,8 +26,9 @@ class ParsedLine:
         self.context = context
 
     def macro_arg_replacement(self, find, replace):
-        _ = find;
-        _ = replace;
+        _ = find
+        _ = replace
+        return False
 
     def instruction_tree(self, include_empty=False):
         _ = include_empty;
@@ -64,7 +65,7 @@ class LabelsLine(ParsedLine):
     def register_labels(self, adr):
         try:
             for label in self.labels:
-                if not self.context:
+                if not self.context: # pragma: no cover
                     raise Exception("Don't have a context yet!")
                 self.context[label.eval_identifier()] = adr
         except LocatedException as exc:
@@ -99,7 +100,7 @@ class InstructionLine(ParsedLine):
 
     def register_labels(self, adr):
         for label in self.labels:
-            if not self.context:
+            if not self.context: # pragma: no cover
                 raise Exception("Don't have a context yet!")
             self.context[label.eval_identifier()] = adr
         for label_line in self.labels_lines:
@@ -131,7 +132,7 @@ class InstructionLine(ParsedLine):
         # Replace in labels:
         for label in self.labels:
             label.macro_arg_replacement(find, replace, must_be_identifier=True)
-        
+
         # Replace in label_lines:
         for line in self.labels_lines:
             line.macro_arg_replacement(find, replace)
@@ -445,6 +446,12 @@ class MacroExpansionDirective(PreProcDirective):
         for arg in self.args:
             arg.macro_arg_replacement(find, replace)
 
+    def retrieve_macro(self, context):
+        try:
+            return context.get_macro(self.macro_name.eval_identifier())
+        except LocatedException as exc:
+            exc.decorate_error_col(self.macro_name.error_col)
+            raise exc
 
 class ForLoopDirective(PreProcDirective):
     type_name = "@for"

@@ -39,34 +39,6 @@ class Context:
 
         return self.context_dict[key] is not None
 
-    def get_macro(self, key):
-        val = self[key]
-
-        if not isinstance(val, MacroDirective):
-            raise ContextException("Identifier '%s' is not a macro." % key)
-
-        return val
-
-    def get_str(self, key):
-        val = self[key]
-
-        if isinstance(val, Expression):
-            pass
-
-        if isinstance(val, int):
-            pass
-
-        if not isinstance(val, Expression):
-            if isinstance(val, MacroDirective):
-                raise ContextException("Identifier '%s' is not an expression, but a macro." % key)
-            else:
-                raise ContextException("Identifier '%s' is not an expression." % key)
-
-        return val
-
-    def get_int(self, key):
-        pass
-
 
 class ContextView:
     def __init__(self, g_context, f_context, b_context):
@@ -83,6 +55,7 @@ class ContextView:
             return self.g_context
 
     def __getitem__(self, key):
+        raise Exception()
         return self._select_context(key)[key]
 
     def __setitem__(self, key, value):
@@ -93,6 +66,22 @@ class ContextView:
 
     def is_value_known(self, key):
         return self._select_context(key).is_value_known(key)
+
+    def get_macro(self, key):
+        val = self._select_context(key)[key]
+
+        if not isinstance(val, MacroDirective):
+            raise ContextException("Identifier '%s' is not a macro." % key)
+
+        return val
+
+    def get_expr(self, key):
+        val = self._select_context(key)[key]
+
+        if isinstance(val, MacroDirective):
+            raise ContextException("Identifier '%s' is not an expression, but a macro." % key)
+
+        return val
 
 
 class FileContextManager(ContextView):
@@ -111,10 +100,9 @@ class FileContextManager(ContextView):
     def handle_new_block(self, labels):
         """Check a list of labels for global labels and start a new block if one is found"""
         for label in labels:
-            if not label.eval_identifier().startswith('.'): # TODO should file-label start new block?
+            if not label.eval_identifier().startswith('.'):  # TODO should file-label start new block?
                 self.new_block()
                 break
 
     def get_fixed_context_view(self):
         return ContextView(self.g_context, self.f_context, self.b_context)
-

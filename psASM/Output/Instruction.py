@@ -34,7 +34,7 @@ class Instruction:
     @classmethod
     def from_preproc_line(cls, line: InstructionLine):
         # Convert this into the correct sub-class:
-        if not Instruction.instruction_set:
+        if not Instruction.instruction_set: # pragma: no cover
             Instruction.instruction_set = find_instructions()
 
         inst_name = line.instruction
@@ -69,7 +69,7 @@ class Instruction:
             for arg in components:
                 args.append(int(arg, base=16))
 
-            if not Instruction.instruction_set:
+            if not Instruction.instruction_set: # pragma: no cover
                 Instruction.instruction_set = find_instructions()
             return Instruction.instruction_set[op_code](args, file_id, line_id, binary=binary)
 

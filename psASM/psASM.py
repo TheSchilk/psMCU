@@ -44,7 +44,7 @@ def main(args):
         else:
             # If the input is already a psOBJ, import it:
             obj = psOBJ.from_file(settings)
-    
+
         # Now, using this psOBJ, generate the requested output
         OutputGenerator.generate(settings, obj)
 
@@ -54,11 +54,11 @@ def main(args):
     except psASMException as exc:
         print(exc)
         return -1
-    
+
     return 0
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # pragma: no cover
     console_args = sys.argv.copy()
     console_args.pop(0)  # Get rid of path
     sys.exit(main(console_args))

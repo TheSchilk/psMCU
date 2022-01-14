@@ -15,6 +15,7 @@ from Util.Errors import ParsingException
 
 import sys
 
+
 def parse_line(text: str, file_id, line_id) -> ParsedLine.ParsedLine:
     """Takes a single line from a .psASM file and parses it using an antlr4 parser."""
     error_listener = ParsingErrorListener()
@@ -43,6 +44,10 @@ class ParsingErrorListener(ErrorListener):
 
     def syntaxError(self, recognizer, offendingSymbol, line, column, msg, e):
         """Handle syntax error"""
+        _ = recognizer
+        _ = offendingSymbol
+        _ = line
+        _ = e
         raise ParsingException(msg, error_col=column)
 
 
@@ -54,10 +59,9 @@ class psASMOutputVisitor(psASMParserVisitor):
 
     def visitChildren(self, node):
         if node.getChildCount() > 0:
-            result = self.visit(node.getChild(0))
-        else:
-            result = None
-        return result
+            return self.visit(node.getChild(0))
+        else:  # pragma: no cover
+            raise Exception('Tried to visit children of antlr tree component without children..?')
 
     # Visit a parse tree produced by psASMParser#labels_line.
     def visitLabels_line(self, ctx: psASMParser.Labels_lineContext) -> ParsedLine.LabelsLine:
@@ -90,12 +94,12 @@ class psASMOutputVisitor(psASMParserVisitor):
         return labels
 
     # Visit a parse tree produced by psASMParser#literal_identifier.
-    def visitLiteral_identifier(self, ctx:psASMParser.Literal_identifierContext):
+    def visitLiteral_identifier(self, ctx: psASMParser.Literal_identifierContext):
         # 'identifier=IDENTIFIER_LITERAL'
         return ExpressionTree.IdentifierLiteral(ctx, ctx.identifier.text)
 
     # Visit a parse tree produced by psASMParser#catid_identifier.
-    def visitCatid_identifier(self, ctx:psASMParser.Catid_identifierContext):
+    def visitCatid_identifier(self, ctx: psASMParser.Catid_identifierContext):
         # 'CATID LPAREN args+=preproc_identifier (COMMA args+=preproc_identifier)+ RPAREN'
         args = [self.visit(arg) for arg in ctx.args]
         return ExpressionTree.CatIdentifierOperator(ctx, args)
@@ -151,16 +155,16 @@ class psASMOutputVisitor(psASMParserVisitor):
     def visitPreproc_else(self, ctx: psASMParser.Preproc_elseContext) -> ParsedLine.ElseDirective:
         # 'ELSE'
         return ParsedLine.ElseDirective()
-    
+
     # Visit a parse tree produced by psASMParser#preproc_for.
-    def visitPreproc_for(self, ctx:psASMParser.Preproc_forContext):
+    def visitPreproc_for(self, ctx: psASMParser.Preproc_forContext):
         # 'FOR index_name=preproc_identifier COMMA start_val=expr COMMA condition=expr COMMA update=expr'
-        
+
         index_name = self.visit(ctx.index_name)
         start_val = self.visit(ctx.start_val)
         condition = self.visit(ctx.condition)
         update = self.visit(ctx.update)
-        
+
         return ParsedLine.ForLoopDirective(index_name, start_val, condition, update)
 
     # Visit a parse tree produced by psASMParser#preproc_end.
@@ -219,7 +223,7 @@ class psASMOutputVisitor(psASMParserVisitor):
             result = ExpressionTree.GreaterExpression(ctx, child1, child2)
         elif ctx.op.type == psASMParser.GREATER_EQ:
             result = ExpressionTree.GreaterEqExpression(ctx, child1, child2)
-        else: # pragma: no cover 
+        else:  # pragma: no cover
             raise Exception("Unhandled Operator.")
 
         return result
@@ -233,7 +237,7 @@ class psASMOutputVisitor(psASMParserVisitor):
             result = ExpressionTree.AddExpression(ctx, child1, child2)
         elif ctx.op.type == psASMParser.MINUS:
             result = ExpressionTree.SubExpression(ctx, child1, child2)
-        else: # pragma: no cover 
+        else:  # pragma: no cover
             raise Exception("Unhandeled Operator.")
         return result
 
@@ -253,7 +257,7 @@ class psASMOutputVisitor(psASMParserVisitor):
             result = ExpressionTree.LShiftExpression(ctx, child1, child2)
         elif ctx.op.type == psASMParser.RSHIFT:
             result = ExpressionTree.RShiftExpression(ctx, child1, child2)
-        else: # pragma: no cover 
+        else:  # pragma: no cover
             raise Exception("Unhandeled Operator.")
 
         return result
@@ -269,7 +273,7 @@ class psASMOutputVisitor(psASMParserVisitor):
             result = ExpressionTree.DivExpression(ctx, child1, child2)
         elif ctx.op.type == psASMParser.MOD:
             result = ExpressionTree.ModExpression(ctx, child1, child2)
-        else: # pragma: no cover 
+        else:  # pragma: no cover
             raise Exception("Unhandeled Operator.")
 
         return result
@@ -286,8 +290,8 @@ class psASMOutputVisitor(psASMParserVisitor):
             result = ExpressionTree.NotExpression(ctx, child1)
         elif ctx.op.type == psASMParser.BIT_NOT:
             result = ExpressionTree.BitNotExpression(ctx, child1)
-        else: # pragma: no cover 
-            raise Exception("Unhandeled Operator.") 
+        else:  # pragma: no cover
+            raise Exception("Unhandeled Operator.")
 
         return result
 
@@ -336,7 +340,7 @@ class psASMOutputVisitor(psASMParserVisitor):
             result = ExpressionTree.EqExpression(ctx, child1, child2)
         elif ctx.op.type == psASMParser.NEQ:
             result = ExpressionTree.NEqExpression(ctx, child1, child2)
-        else: # pragma: no cover 
+        else:  # pragma: no cover
             raise Exception("Unhandled Operator.")
 
         return result
@@ -364,14 +368,14 @@ class psASMOutputVisitor(psASMParserVisitor):
         # 'STRLEN LPAREN txt=expr RPAREN'
         txt = self.visit(ctx.txt)
         return ExpressionTree.StrlenExpression(ctx, txt)
-    
+
     # Visit a parse tree produced by psASMParser#string_index_expr.
-    def visitString_index_expr(self, ctx:psASMParser.String_index_exprContext):
+    def visitString_index_expr(self, ctx: psASMParser.String_index_exprContext):
         # 'child1=expr LSQBRACKET child2=expr RSQBRACKET'
         child1 = self.visit(ctx.child1)
         child2 = self.visit(ctx.child2)
         return ExpressionTree.StringIndexExpression(ctx, child1, child2)
-                
+
     # Visit a parse tree produced by psASMParser#identifier_atom.
     def visitIdentifier_atom(self, ctx: psASMParser.Identifier_atomContext):
         # 'arg=preproc_identifier'

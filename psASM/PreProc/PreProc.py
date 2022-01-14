@@ -16,7 +16,7 @@ from Output.Instruction import Instruction
 import Output.internal_state
 
 from collections import deque
-from copy import copy, deepcopy
+from copy import deepcopy
 
 
 def _evaluate_args(in_list: List[ParsedLine.InstructionLine]):
@@ -238,14 +238,14 @@ class PreProc:
                         expansion_directive = in_queue.popleft()
                         file_context_handler.handle_new_block(expansion_directive.labels)
                         # Retrieve macro:
-                        macro_directive = file_context_handler.get_fixed_context_view()[
-                            expansion_directive.macro_name.eval_identifier()]
+                        context_view = file_context_handler.get_fixed_context_view()
+                        macro_directive = expansion_directive.retrieve_macro(context_view)
                         # Generate block and add to queue
                         block = macro_directive.expand(expansion_directive.args)
                         in_queue = deque(block) + in_queue
                     continue
-                
-                # If this a for loop, unroll and inline it 
+
+                # If this a for loop, unroll and inline it
                 if isinstance(peek, ParsedLine.ForLoopDirective):
                     loop_directive = in_queue.popleft()
                     # Generate block and add to queue
@@ -264,7 +264,7 @@ class PreProc:
                     result.append(line)
                     continue
 
-                raise Exception('Unhandeled line type in PreProc.') # pragma: no cover 
+                raise Exception('Unhandeled line type in PreProc.')  # pragma: no cover
             except LocatedException as exc:
                 exc.decorate_line_id(peek.line_id)
                 exc.decorate_file_id(peek.file_id)

@@ -10,13 +10,13 @@
         "stopOnEntry": true
       }
     },
-    "Test: 06_strings": {
+    "test.psASM": {
       "adapter": "debugpy",
       "filetypes": [ "python" ],
       "configuration": {
         "request": "launch",
-        "program": "test_psASM.py",
-        "args": [ "--no-color", "-tTests/06_strings" ],
+        "program": "psASM.py",
+        "args": [ "test.psASM" ],
         "stopOnEntry": true
       }
     }
