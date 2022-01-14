@@ -1,4 +1,4 @@
-============ file: input.psASM ============
+# ============ file: input.psASM ============
 @include "std_sys.psASM"
 MAIN: 
 CALL GAME_OVER
@@ -322,7 +322,7 @@ SVA GS_applepos
 LITA 1
 SVA GS_board_dec
 RTRN
-============ file: std_sys.psASM ============
+# ============ file: std_sys.psASM ============
 @include_once
 @define SYS1 0x100
 @define S1_SHFT_IN 0
@@ -359,5 +359,5 @@ RTRN
 @define S3_INT_EN_M 1
 @define S3_INT_BTN_F_S 1
 @define S3_INT_BTN_F_M 0x2
-============ file: _preproc_root_autogen.psASM ============
+# ============ file: _preproc_root_autogen.psASM ============
 @include "input.psASM"

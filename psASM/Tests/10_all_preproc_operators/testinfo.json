@@ -4,13 +4,13 @@
   ],
   
   "text_diffs" : [
-      ["output_preproc3.log", "golden_output_preproc3.log"]
+      ["output_preproc3.psASM", "golden_output_preproc3.psASM"]
   ],
   
   "bin_diffs" : [
   ],
   
   "cleanup" : [
-      "output_preproc3.log"
+      "output_preproc3.psASM"
   ]
 }

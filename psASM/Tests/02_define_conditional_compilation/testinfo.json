@@ -6,17 +6,17 @@
   ],
   
   "text_diffs" : [
-    ["output0_preproc1.log", "golden_output0_preproc1.log"],
-    ["output1_preproc1.log", "golden_output1_preproc1.log"],
-    ["output2_preproc1.log", "golden_output2_preproc1.log"]
+    ["output0_preproc1.psASM", "golden_output0_preproc1.psASM"],
+    ["output1_preproc1.psASM", "golden_output1_preproc1.psASM"],
+    ["output2_preproc1.psASM", "golden_output2_preproc1.psASM"]
   ],
   
   "bin_diffs" : [
   ],
 
   "cleanup" : [
-    "output0_preproc1.log",
-    "output1_preproc1.log",
-    "output2_preproc1.log"
+    "output0_preproc1.psASM",
+    "output1_preproc1.psASM",
+    "output2_preproc1.psASM"
   ]
 }

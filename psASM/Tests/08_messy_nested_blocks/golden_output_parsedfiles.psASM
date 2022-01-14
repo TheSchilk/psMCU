@@ -1,4 +1,4 @@
-============ file: input.psASM ============
+# ============ file: input.psASM ============
 @macro test $a, $b, $c
   @if $a
     @if $b
@@ -12,5 +12,5 @@
 @end
 test 1, 1, 1
 test 0, 1, 1
-============ file: _preproc_root_autogen.psASM ============
+# ============ file: _preproc_root_autogen.psASM ============
 @include "input.psASM"

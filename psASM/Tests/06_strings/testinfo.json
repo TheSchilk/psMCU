@@ -5,7 +5,7 @@
   ],
   
   "text_diffs" : [
-      ["output_preproc3.log","golden_output_preproc3.log"],
+      ["output_preproc3.psASM","golden_output_preproc3.psASM"],
       ["output.map","golden_output.map"]
   ],
   
@@ -13,7 +13,7 @@
   ],
   
   "cleanup" : [
-      "output_preproc3.log",
+      "output_preproc3.psASM",
       "output.map"
   ]
 }
