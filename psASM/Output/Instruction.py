@@ -1,7 +1,8 @@
 import sys
+from collections import deque
+
 from Parsing.ParsedLine import InstructionLine
 from Util.Errors import InstructionException, psOBJException
-from collections import deque
 
 
 def bit_mask(n):
@@ -16,7 +17,7 @@ class Instruction:
     binary_literal = 0x0  # Overwritten by all sub-classes
     arg_setups = []
 
-    def __init__(self, args, file_id, line_id, binary=None, args_cols=None):
+    def __init__(self, args, file_id, line_id, binary=None, args_cols=None, are_binary_args=False):
         self.args = args
         self.file_id = file_id
         self.line_id = line_id
@@ -25,7 +26,7 @@ class Instruction:
         # Make sure the correct number of arguments was supplied
         self.check_arg_count()
         # Make sure all args will fit.
-        self.check_arg_value()
+        self.check_arg_value(are_binary_args)
         # Generate binary instruction unless provided
         if binary is None:
             self.binary = self.generate_binary()
@@ -74,7 +75,7 @@ class Instruction:
             if not Instruction.instruction_set:  # pragma: no cover
                 Instruction.instruction_set = find_instructions()
 
-            return Instruction.instruction_set[op_code](args, file_id, line_id, binary=binary)
+            return Instruction.instruction_set[op_code](args, file_id, line_id, binary=binary, are_binary_args=True)
 
         except ValueError:
             raise psOBJException("Malformed value in instruction ('%s')." % data)
@@ -101,15 +102,25 @@ class Instruction:
             error = "Instruction %s expected %i argument(s), but got %i." % (self.op_code, arg_count, len(self.args))
             raise InstructionException(error, file_id=self.file_id, line_id=self.line_id)
 
-    def check_arg_value(self):
+    def check_arg_value(self, are_binary_args: bool):
         """Ensure the arguments fit into the defined range. """
         for index, arg in enumerate(self.args):
             arg_setup = self.arg_setups[index]
 
+            if are_binary_args and 'max_binary' in arg_setup:
+                arg_max = arg_setup['max_binary']
+            else:
+                arg_max = arg_setup['max_usr']
+
+            if are_binary_args and 'min_binary' in arg_setup:
+                arg_min = arg_setup['min_binary']
+            else:
+                arg_min = arg_setup['min_usr']
+
             # Make sure that the number is in the correct range:
-            if arg > arg_setup['max'] or arg < arg_setup['min']:
+            if arg > arg_max or arg < arg_min:
                 error = "Instruction %s's argument %i " % (self.op_code, index+1)
-                error += "should be in the range [%i,%i] " % (arg_setup['min'], arg_setup['max'])
+                error += "should be in the range [%i,%i] " % (arg_min, arg_max)
                 error += "but is %i." % arg
                 raise InstructionException(error, file_id=self.file_id, line_id=self.line_id,
                                            error_col=self.get_arg_error_col(index))
@@ -161,7 +172,7 @@ class JMPInstruction(Instruction):
     op_code = "JMP"
     binary_literal = 0xc000
     arg_setups = [
-        {'name': 'adr', 'bit width': 14, 'bit shift': 0, 'min': MIN_14BIT_UNSIGNED, 'max': MAX_14BIT_UNSIGNED},
+        {'name': 'adr', 'bit width': 14, 'bit shift': 0, 'min_usr': MIN_14BIT_UNSIGNED, 'max_usr': MAX_14BIT_UNSIGNED},
     ]
 
 
@@ -170,7 +181,7 @@ class CALLInstruction(Instruction):
     op_code = "CALL"
     binary_literal = 0x8000
     arg_setups = [
-        {'name': 'adr', 'bit width': 14, 'bit shift': 0, 'min': MIN_14BIT_UNSIGNED, 'max': MAX_14BIT_UNSIGNED},
+        {'name': 'adr', 'bit width': 14, 'bit shift': 0, 'min_usr': MIN_14BIT_UNSIGNED, 'max_usr': MAX_14BIT_UNSIGNED},
     ]
 
 
@@ -179,8 +190,8 @@ class IFRMInstruction(Instruction):
     op_code = "IFRM"
     binary_literal = 0x7000
     arg_setups = [
-        {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min': MIN_9BIT_UNSIGNED, 'max': MAX_9BIT_UNSIGNED},
-        {'name': 'bit', 'bit width': 3, 'bit shift': 9, 'min': MIN_3BIT_UNSIGNED, 'max': MAX_3BIT_UNSIGNED},
+        {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min_usr': MIN_9BIT_UNSIGNED, 'max_usr': MAX_9BIT_UNSIGNED},
+        {'name': 'bit', 'bit width': 3, 'bit shift': 9, 'min_usr': MIN_3BIT_UNSIGNED, 'max_usr': MAX_3BIT_UNSIGNED},
     ]
 
 
@@ -189,8 +200,8 @@ class IFSMInstruction(Instruction):
     op_code = "IFSM"
     binary_literal = 0x6000
     arg_setups = [
-        {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min': MIN_9BIT_UNSIGNED, 'max': MAX_9BIT_UNSIGNED},
-        {'name': 'bit', 'bit width': 3, 'bit shift': 9, 'min': MIN_3BIT_UNSIGNED, 'max': MAX_3BIT_UNSIGNED},
+        {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min_usr': MIN_9BIT_UNSIGNED, 'max_usr': MAX_9BIT_UNSIGNED},
+        {'name': 'bit', 'bit width': 3, 'bit shift': 9, 'min_usr': MIN_3BIT_UNSIGNED, 'max_usr': MAX_3BIT_UNSIGNED},
     ]
 
 
@@ -199,7 +210,7 @@ class IFRAInstruction(Instruction):
     op_code = "IFRA"
     binary_literal = 0x5100
     arg_setups = [
-        {'name': 'bit', 'bit width': 3, 'bit shift': 9, 'min': MIN_3BIT_UNSIGNED, 'max': MAX_3BIT_UNSIGNED},
+        {'name': 'bit', 'bit width': 3, 'bit shift': 9, 'min_usr': MIN_3BIT_UNSIGNED, 'max_usr': MAX_3BIT_UNSIGNED},
     ]
 
 
@@ -208,7 +219,7 @@ class IFSAInstruction(Instruction):
     op_code = "IFSA"
     binary_literal = 0x4100
     arg_setups = [
-        {'name': 'bit', 'bit width': 3, 'bit shift': 9, 'min': MIN_3BIT_UNSIGNED, 'max': MAX_3BIT_UNSIGNED},
+        {'name': 'bit', 'bit width': 3, 'bit shift': 9, 'min_usr': MIN_3BIT_UNSIGNED, 'max_usr': MAX_3BIT_UNSIGNED},
     ]
 
 
@@ -253,7 +264,7 @@ class GROWInstruction(Instruction):
     op_code = "GROW"
     binary_literal = 0x3500
     arg_setups = [
-        {'name': 'offset', 'bit width': 8, 'bit shift': 0, 'min': 0, 'max': MAX_8BIT_SIGNED},
+        {'name': 'offset', 'bit width': 8, 'bit shift': 0, 'min_usr': 0, 'max_usr': MAX_8BIT_SIGNED},
     ]
 
 
@@ -262,7 +273,8 @@ class SHRINKInstruction(Instruction):
     op_code = "SHRINK"
     binary_literal = 0x3400
     arg_setups = [
-        {'name': 'offset', 'bit width': 8, 'bit shift': 0, 'min': MIN_9BIT_SIGNED, 'max': -1},
+        {'name': 'offset', 'bit width': 8, 'bit shift': 0, 'min_usr': MIN_9BIT_SIGNED, 'max_usr': -1,
+            'min_binary': 0, 'max_binary': MAX_8BIT_UNSIGNED},
     ]
 
 
@@ -271,7 +283,8 @@ class STLAInstruction(Instruction):
     op_code = "STLA"
     binary_literal = 0x3100
     arg_setups = [
-        {'name': 'offset', 'bit width': 8, 'bit shift': 0, 'min': MIN_9BIT_SIGNED, 'max': -1},
+        {'name': 'offset', 'bit width': 8, 'bit shift': 0, 'min_usr': MIN_9BIT_SIGNED,
+            'max_usr': -1, 'min_binary': 0, 'max_binary': MAX_8BIT_UNSIGNED},
     ]
 
 
@@ -280,7 +293,8 @@ class STLBInstruction(Instruction):
     op_code = "STLB"
     binary_literal = 0x3300
     arg_setups = [
-        {'name': 'offset', 'bit width': 8, 'bit shift': 0, 'min': MIN_9BIT_SIGNED, 'max': -1},
+        {'name': 'offset', 'bit width': 8, 'bit shift': 0, 'min_usr': MIN_9BIT_SIGNED,
+            'max_usr': -1, 'min_binary': 0, 'max_binary': MAX_8BIT_UNSIGNED},
     ]
 
 
@@ -289,7 +303,8 @@ class STSAInstruction(Instruction):
     op_code = "STSA"
     binary_literal = 0x3000
     arg_setups = [
-        {'name': 'size', 'bit width': 8, 'bit shift': 0, 'min': MIN_9BIT_SIGNED, 'max': -1},
+        {'name': 'size', 'bit width': 8, 'bit shift': 0, 'min_usr': MIN_9BIT_SIGNED,
+            'max_usr': -1, 'min_binary': 0, 'max_binary': MAX_8BIT_UNSIGNED},
     ]
 
 
@@ -298,7 +313,8 @@ class STSBInstruction(Instruction):
     op_code = "STSB"
     binary_literal = 0x3200
     arg_setups = [
-        {'name': 'size', 'bit width': 8, 'bit shift': 0, 'min': MIN_9BIT_SIGNED, 'max': -1},
+        {'name': 'size', 'bit width': 8, 'bit shift': 0, 'min_usr': MIN_9BIT_SIGNED,
+            'max_usr': -1, 'min_binary': 0, 'max_binary': MAX_8BIT_UNSIGNED},
     ]
 
 
@@ -307,7 +323,7 @@ class POPMInstruction(Instruction):
     op_code = "POPM"
     binary_literal = 0x2E00
     arg_setups = [
-        {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min': MIN_9BIT_UNSIGNED, 'max': MAX_9BIT_UNSIGNED},
+        {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min_usr': MIN_9BIT_UNSIGNED, 'max_usr': MAX_9BIT_UNSIGNED},
     ]
 
 
@@ -316,7 +332,7 @@ class PUSHMInstruction(Instruction):
     op_code = "PUSHM"
     binary_literal = 0x2600
     arg_setups = [
-        {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min': MIN_9BIT_UNSIGNED, 'max': MAX_9BIT_UNSIGNED},
+        {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min_usr': MIN_9BIT_UNSIGNED, 'max_usr': MAX_9BIT_UNSIGNED},
     ]
 
 
@@ -337,7 +353,7 @@ class ADDLBInstruction(Instruction):
     op_code = "ADDLB"
     binary_literal = 0x2500
     arg_setups = [
-        {'name': 'literal', 'bit width': 8, 'bit shift': 0, 'min': MIN_8BIT_SIGNED, 'max': MAX_8BIT_UNSIGNED},
+        {'name': 'literal', 'bit width': 8, 'bit shift': 0, 'min_usr': MIN_8BIT_SIGNED, 'max_usr': MAX_8BIT_UNSIGNED},
     ]
 
 
@@ -346,7 +362,7 @@ class ADDLBCInstruction(Instruction):
     op_code = "ADDLBC"
     binary_literal = 0x2D00
     arg_setups = [
-        {'name': 'literal', 'bit width': 8, 'bit shift': 0, 'min': MIN_8BIT_SIGNED, 'max': MAX_8BIT_UNSIGNED},
+        {'name': 'literal', 'bit width': 8, 'bit shift': 0, 'min_usr': MIN_8BIT_SIGNED, 'max_usr': MAX_8BIT_UNSIGNED},
     ]
 
 
@@ -367,7 +383,7 @@ class ADDLAInstruction(Instruction):
     op_code = "ADDLA"
     binary_literal = 0x2300
     arg_setups = [
-        {'name': 'literal', 'bit width': 8, 'bit shift': 0, 'min': MIN_8BIT_SIGNED, 'max': MAX_8BIT_UNSIGNED},
+        {'name': 'literal', 'bit width': 8, 'bit shift': 0, 'min_usr': MIN_8BIT_SIGNED, 'max_usr': MAX_8BIT_UNSIGNED},
     ]
 
 
@@ -376,7 +392,7 @@ class ADDLACInstruction(Instruction):
     op_code = "ADDLAC"
     binary_literal = 0x2B00
     arg_setups = [
-        {'name': 'literal', 'bit width': 8, 'bit shift': 0, 'min': MIN_8BIT_SIGNED, 'max': MAX_8BIT_UNSIGNED},
+        {'name': 'literal', 'bit width': 8, 'bit shift': 0, 'min_usr': MIN_8BIT_SIGNED, 'max_usr': MAX_8BIT_UNSIGNED},
     ]
 
 
@@ -397,7 +413,7 @@ class SUBLInstruction(Instruction):
     op_code = "SUBL"
     binary_literal = 0x2100
     arg_setups = [
-        {'name': 'literal', 'bit width': 8, 'bit shift': 0, 'min': MIN_8BIT_SIGNED, 'max': MAX_8BIT_UNSIGNED},
+        {'name': 'literal', 'bit width': 8, 'bit shift': 0, 'min_usr': MIN_8BIT_SIGNED, 'max_usr': MAX_8BIT_UNSIGNED},
     ]
 
 
@@ -406,7 +422,7 @@ class SUBLCInstruction(Instruction):
     op_code = "SUBLC"
     binary_literal = 0x2900
     arg_setups = [
-        {'name': 'literal', 'bit width': 8, 'bit shift': 0, 'min': MIN_8BIT_SIGNED, 'max': MAX_8BIT_UNSIGNED},
+        {'name': 'literal', 'bit width': 8, 'bit shift': 0, 'min_usr': MIN_8BIT_SIGNED, 'max_usr': MAX_8BIT_UNSIGNED},
     ]
 
 
@@ -421,7 +437,7 @@ class ANDLInstruction(Instruction):
     op_code = "ANDL"
     binary_literal = 0x1900
     arg_setups = [
-        {'name': 'literal', 'bit width': 8, 'bit shift': 0, 'min': MIN_8BIT_SIGNED, 'max': MAX_8BIT_UNSIGNED},
+        {'name': 'literal', 'bit width': 8, 'bit shift': 0, 'min_usr': MIN_8BIT_SIGNED, 'max_usr': MAX_8BIT_UNSIGNED},
     ]
 
 
@@ -436,7 +452,7 @@ class ORLInstruction(Instruction):
     op_code = "ORL"
     binary_literal = 0x1B00
     arg_setups = [
-        {'name': 'literal', 'bit width': 8, 'bit shift': 0, 'min': MIN_8BIT_SIGNED, 'max': MAX_8BIT_UNSIGNED},
+        {'name': 'literal', 'bit width': 8, 'bit shift': 0, 'min_usr': MIN_8BIT_SIGNED, 'max_usr': MAX_8BIT_UNSIGNED},
     ]
 
 
@@ -451,7 +467,7 @@ class XORLInstruction(Instruction):
     op_code = "XORL"
     binary_literal = 0x1d00
     arg_setups = [
-        {'name': 'literal', 'bit width': 8, 'bit shift': 0, 'min': MIN_8BIT_SIGNED, 'max': MAX_8BIT_UNSIGNED},
+        {'name': 'literal', 'bit width': 8, 'bit shift': 0, 'min_usr': MIN_8BIT_SIGNED, 'max_usr': MAX_8BIT_UNSIGNED},
     ]
 
 
@@ -466,7 +482,7 @@ class SHFTRLInstruction(Instruction):
     op_code = "SHFTRL"
     binary_literal = 0x1780
     arg_setups = [
-        {'name': 'shift', 'bit width': 3, 'bit shift': 0, 'min': MIN_3BIT_UNSIGNED, 'max': MAX_3BIT_UNSIGNED},
+        {'name': 'shift', 'bit width': 3, 'bit shift': 0, 'min_usr': MIN_3BIT_UNSIGNED, 'max_usr': MAX_3BIT_UNSIGNED},
     ]
 
 
@@ -481,7 +497,7 @@ class SHFTLLInstruction(Instruction):
     op_code = "SHFTLL"
     binary_literal = 0x1700
     arg_setups = [
-        {'name': 'shift', 'bit width': 3, 'bit shift': 0, 'min': MIN_3BIT_UNSIGNED, 'max': MAX_3BIT_UNSIGNED},
+        {'name': 'shift', 'bit width': 3, 'bit shift': 0, 'min_usr': MIN_3BIT_UNSIGNED, 'max_usr': MAX_3BIT_UNSIGNED},
     ]
 
 
@@ -496,7 +512,7 @@ class SVAInstruction(Instruction):
     op_code = "SVA"
     binary_literal = 0x1000
     arg_setups = [
-        {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min': MIN_9BIT_UNSIGNED, 'max': MAX_9BIT_UNSIGNED},
+        {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min_usr': MIN_9BIT_UNSIGNED, 'max_usr': MAX_9BIT_UNSIGNED},
     ]
 
 
@@ -505,7 +521,7 @@ class SVBInstruction(Instruction):
     op_code = "SVB"
     binary_literal = 0x1200
     arg_setups = [
-        {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min': MIN_9BIT_UNSIGNED, 'max': MAX_9BIT_UNSIGNED},
+        {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min_usr': MIN_9BIT_UNSIGNED, 'max_usr': MAX_9BIT_UNSIGNED},
     ]
 
 
@@ -514,7 +530,7 @@ class LDAInstruction(Instruction):
     op_code = "LDA"
     binary_literal = 0x0C00
     arg_setups = [
-        {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min': MIN_9BIT_UNSIGNED, 'max': MAX_9BIT_UNSIGNED},
+        {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min_usr': MIN_9BIT_UNSIGNED, 'max_usr': MAX_9BIT_UNSIGNED},
     ]
 
 
@@ -523,7 +539,7 @@ class LDBInstruction(Instruction):
     op_code = "LDB"
     binary_literal = 0x0E00
     arg_setups = [
-        {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min': MIN_9BIT_UNSIGNED, 'max': MAX_9BIT_UNSIGNED},
+        {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min_usr': MIN_9BIT_UNSIGNED, 'max_usr': MAX_9BIT_UNSIGNED},
     ]
 
 
@@ -556,7 +572,7 @@ class LITAInstruction(Instruction):
     op_code = "LITA"
     binary_literal = 0x0400
     arg_setups = [
-        {'name': 'literal', 'bit width': 8, 'bit shift': 0, 'min': MIN_8BIT_SIGNED, 'max': MAX_8BIT_UNSIGNED},
+        {'name': 'literal', 'bit width': 8, 'bit shift': 0, 'min_usr': MIN_8BIT_SIGNED, 'max_usr': MAX_8BIT_UNSIGNED},
     ]
 
 
@@ -565,7 +581,7 @@ class LITBInstruction(Instruction):
     op_code = "LITB"
     binary_literal = 0x0600
     arg_setups = [
-        {'name': 'literal', 'bit width': 8, 'bit shift': 0, 'min': MIN_8BIT_SIGNED, 'max': MAX_8BIT_UNSIGNED},
+        {'name': 'literal', 'bit width': 8, 'bit shift': 0, 'min_usr': MIN_8BIT_SIGNED, 'max_usr': MAX_8BIT_UNSIGNED},
     ]
 
 
@@ -601,6 +617,13 @@ def find_instructions():
         if instruction_class.op_code in instruction_set.keys():  # pragma: no cover
             print("Duplicate op-code @ " + str(instruction_class.op_code) + "!")
             sys.exit(1)
+
+        # Sanity check arg_setups:
+        for setup in instruction_class.arg_setups: # pragma: no cover
+            for key in ['name', 'bit width', 'bit shift', 'min_usr', 'max_usr']:
+                if key not in setup:
+                    print("Arg setup missing key %s!" % key)
+                    sys.exit(1)
 
         instruction_set[instruction_class.op_code] = instruction_class
     return instruction_set
