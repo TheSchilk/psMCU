@@ -1,0 +1,6 @@
+{
+    "ignore": [
+        "Parsing/psASMantlr4/*",
+        "Parsing/AntlrInterface.py" 
+    ]
+}

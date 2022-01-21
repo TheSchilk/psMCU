@@ -77,7 +77,7 @@ def table_string(headers, cols):
         sep_length += width
     sep_length += (len(cols) - 1) * 3
     sep = ""
-    for i in range(sep_length):
+    for _ in range(sep_length):
         sep += "-"
     output += sep + '\n'
 

@@ -1,8 +1,9 @@
 import re
-from Util.Errors import ParsingException, LocatedException, psASMFileException
-from Util.Log import log
+
 import Input.StdLib
 import Output.internal_state
+from Util.Errors import LocatedException, ParsingException, psASMFileException
+from Util.Log import log
 
 
 def _is_include(text) -> bool:
@@ -94,6 +95,9 @@ class SourceFile:
     def __setitem__(self, key, value):
         self.content[key] = value
 
+    def __iter__(self):
+        return iter(self.content)
+
     def get_included_paths(self):
         """Return list of paths of files directly included in this file."""
         included_paths = []
@@ -158,6 +162,9 @@ class SourceFiles:
 
     def __getitem__(self, position):
         return self.files[position]
+
+    def __iter__(self):
+        return iter(self.files)
 
     def contains_path(self, path):
         """Check if a given path is already present."""

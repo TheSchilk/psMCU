@@ -1,6 +1,6 @@
 import sys
 from Parsing.ParsedLine import InstructionLine
-from Util.Errors import InstructionException, psASMException, psOBJException
+from Util.Errors import InstructionException, psOBJException
 from collections import deque
 
 
