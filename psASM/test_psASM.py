@@ -119,7 +119,8 @@ def check_exception(run, exc, log, do_color):
 
         if exc.error_col is None:
             start_color('err', do_color)
-            print("psASM run '%s' expected exception in collum(s) '%s' but exception had no collum information!" % (run['cmd'], error_col_want))
+            print("psASM run '%s' expected exception in collum(s) '%s' but exception had no collum information!" %
+                  (run['cmd'], error_col_want))
             end_color(do_color)
             print("Log output:")
             for log_line in log:

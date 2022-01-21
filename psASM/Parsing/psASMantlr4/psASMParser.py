@@ -1934,7 +1934,8 @@ class psASMParser (Parser):
                     self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input, 17, self._ctx)
                     if la_ == 1:
-                        localctx = psASMParser.Mult_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = psASMParser.Mult_exprContext(
+                            self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 188
@@ -1954,7 +1955,8 @@ class psASMParser (Parser):
                         pass
 
                     elif la_ == 2:
-                        localctx = psASMParser.Add_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = psASMParser.Add_exprContext(
+                            self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 191
@@ -1974,7 +1976,8 @@ class psASMParser (Parser):
                         pass
 
                     elif la_ == 3:
-                        localctx = psASMParser.Shift_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = psASMParser.Shift_exprContext(
+                            self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 194
@@ -1994,7 +1997,8 @@ class psASMParser (Parser):
                         pass
 
                     elif la_ == 4:
-                        localctx = psASMParser.Compare_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = psASMParser.Compare_exprContext(
+                            self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 197
@@ -2014,7 +2018,8 @@ class psASMParser (Parser):
                         pass
 
                     elif la_ == 5:
-                        localctx = psASMParser.Equate_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = psASMParser.Equate_exprContext(
+                            self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 200
@@ -2034,7 +2039,8 @@ class psASMParser (Parser):
                         pass
 
                     elif la_ == 6:
-                        localctx = psASMParser.Bitand_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = psASMParser.Bitand_exprContext(
+                            self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 203
@@ -2048,7 +2054,8 @@ class psASMParser (Parser):
                         pass
 
                     elif la_ == 7:
-                        localctx = psASMParser.Bitxor_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = psASMParser.Bitxor_exprContext(
+                            self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 206
@@ -2062,7 +2069,8 @@ class psASMParser (Parser):
                         pass
 
                     elif la_ == 8:
-                        localctx = psASMParser.Bitor_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = psASMParser.Bitor_exprContext(
+                            self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 209
@@ -2076,7 +2084,8 @@ class psASMParser (Parser):
                         pass
 
                     elif la_ == 9:
-                        localctx = psASMParser.And_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = psASMParser.And_exprContext(
+                            self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 212
@@ -2090,7 +2099,8 @@ class psASMParser (Parser):
                         pass
 
                     elif la_ == 10:
-                        localctx = psASMParser.Or_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = psASMParser.Or_exprContext(
+                            self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 215
@@ -2104,7 +2114,8 @@ class psASMParser (Parser):
                         pass
 
                     elif la_ == 11:
-                        localctx = psASMParser.Condit_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = psASMParser.Condit_exprContext(
+                            self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 218
@@ -2122,7 +2133,8 @@ class psASMParser (Parser):
                         pass
 
                     elif la_ == 12:
-                        localctx = psASMParser.String_index_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = psASMParser.String_index_exprContext(
+                            self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 224

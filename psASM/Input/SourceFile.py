@@ -1,5 +1,5 @@
 import re
-from Util.Errors import ParsingException, LocatedException, psOBJException, psASMFileException
+from Util.Errors import ParsingException, LocatedException, psASMFileException
 from Util.Log import log
 import Input.StdLib
 import Output.internal_state
