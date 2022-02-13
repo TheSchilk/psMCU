@@ -1778,6 +1778,51 @@ Wire Wire Line
 	2900 1850 3450 1850
 Text HLabel 7450 10500 2    50   Output ~ 0
 CompC
+$Comp
+L Device:CP_Small C?
+U 1 1 624B2D94
+P 11250 1000
+AR Path="/62043340/624B2D94" Ref="C?"  Part="1" 
+AR Path="/5FD6B215/624B2D94" Ref="C?"  Part="1" 
+F 0 "C?" H 11338 1046 50  0000 L CNN
+F 1 "10u" H 11338 955 50  0000 L CNN
+F 2 "" H 11250 1000 50  0001 C CNN
+F 3 "~" H 11250 1000 50  0001 C CNN
+	1    11250 1000
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 624B2D9A
+P 11250 1150
+AR Path="/624B2D9A" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/624B2D9A" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/624B2D9A" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 11250 900 50  0001 C CNN
+F 1 "GND" H 11255 977 50  0000 C CNN
+F 2 "" H 11250 1150 50  0001 C CNN
+F 3 "" H 11250 1150 50  0001 C CNN
+	1    11250 1150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	11250 1150 11250 1100
+Wire Wire Line
+	11250 850  11250 900 
+$Comp
+L power:+5V #PWR?
+U 1 1 624B2DA2
+P 11250 850
+AR Path="/624B2DA2" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/624B2DA2" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/624B2DA2" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 11250 700 50  0001 C CNN
+F 1 "+5V" H 11265 1023 50  0000 C CNN
+F 2 "" H 11250 850 50  0001 C CNN
+F 3 "" H 11250 850 50  0001 C CNN
+	1    11250 850 
+	1    0    0    -1  
+$EndComp
 Wire Bus Line
 	11250 1500 11250 2200
 Wire Bus Line

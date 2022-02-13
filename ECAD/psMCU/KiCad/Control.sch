@@ -1997,6 +1997,51 @@ F4 "1" O R 11000 7950 50
 F5 "2" O R 11000 8050 50 
 F6 "3" O R 11000 8150 50 
 $EndSheet
+$Comp
+L Device:CP_Small C?
+U 1 1 626F701B
+P 8600 5900
+AR Path="/62043340/626F701B" Ref="C?"  Part="1" 
+AR Path="/5FD6B215/626F701B" Ref="C?"  Part="1" 
+F 0 "C?" H 8688 5946 50  0000 L CNN
+F 1 "10u" H 8688 5855 50  0000 L CNN
+F 2 "" H 8600 5900 50  0001 C CNN
+F 3 "~" H 8600 5900 50  0001 C CNN
+	1    8600 5900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 626F7021
+P 8600 6050
+AR Path="/626F7021" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/626F7021" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/626F7021" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 8600 5800 50  0001 C CNN
+F 1 "GND" H 8605 5877 50  0000 C CNN
+F 2 "" H 8600 6050 50  0001 C CNN
+F 3 "" H 8600 6050 50  0001 C CNN
+	1    8600 6050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8600 6050 8600 6000
+Wire Wire Line
+	8600 5750 8600 5800
+$Comp
+L power:+5V #PWR?
+U 1 1 626F7029
+P 8600 5750
+AR Path="/626F7029" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/626F7029" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/626F7029" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 8600 5600 50  0001 C CNN
+F 1 "+5V" H 8615 5923 50  0000 C CNN
+F 2 "" H 8600 5750 50  0001 C CNN
+F 3 "" H 8600 5750 50  0001 C CNN
+	1    8600 5750
+	1    0    0    -1  
+$EndComp
 Wire Bus Line
 	9750 3850 9750 4100
 Wire Bus Line

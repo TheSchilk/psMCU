@@ -2883,6 +2883,51 @@ Wire Wire Line
 Connection ~ 1200 6650
 Wire Wire Line
 	1200 6650 1200 6750
+$Comp
+L Device:CP_Small C?
+U 1 1 6252AC26
+P 8350 1700
+AR Path="/62043340/6252AC26" Ref="C?"  Part="1" 
+AR Path="/5FD6B215/6252AC26" Ref="C?"  Part="1" 
+F 0 "C?" H 8438 1746 50  0000 L CNN
+F 1 "10u" H 8438 1655 50  0000 L CNN
+F 2 "" H 8350 1700 50  0001 C CNN
+F 3 "~" H 8350 1700 50  0001 C CNN
+	1    8350 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 6252AC2C
+P 8350 1850
+AR Path="/6252AC2C" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/6252AC2C" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/6252AC2C" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 8350 1600 50  0001 C CNN
+F 1 "GND" H 8355 1677 50  0000 C CNN
+F 2 "" H 8350 1850 50  0001 C CNN
+F 3 "" H 8350 1850 50  0001 C CNN
+	1    8350 1850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8350 1850 8350 1800
+Wire Wire Line
+	8350 1550 8350 1600
+$Comp
+L power:+5V #PWR?
+U 1 1 6252AC34
+P 8350 1550
+AR Path="/6252AC34" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/6252AC34" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/6252AC34" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 8350 1400 50  0001 C CNN
+F 1 "+5V" H 8365 1723 50  0000 C CNN
+F 2 "" H 8350 1550 50  0001 C CNN
+F 3 "" H 8350 1550 50  0001 C CNN
+	1    8350 1550
+	1    0    0    -1  
+$EndComp
 Wire Bus Line
 	2000 950  2000 3350
 Wire Bus Line

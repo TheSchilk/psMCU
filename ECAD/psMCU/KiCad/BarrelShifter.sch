@@ -3492,6 +3492,51 @@ Text Notes 8900 1750 0    50   ~ 0
 OE
 Text Notes 9050 2700 0    50   ~ 0
 Shift Amount
+$Comp
+L Device:CP_Small C?
+U 1 1 62466A49
+P 9750 6000
+AR Path="/62043340/62466A49" Ref="C?"  Part="1" 
+AR Path="/5FD6B215/62466A49" Ref="C?"  Part="1" 
+F 0 "C?" H 9838 6046 50  0000 L CNN
+F 1 "10u" H 9838 5955 50  0000 L CNN
+F 2 "" H 9750 6000 50  0001 C CNN
+F 3 "~" H 9750 6000 50  0001 C CNN
+	1    9750 6000
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 62466A4F
+P 9750 6150
+AR Path="/62466A4F" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/62466A4F" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/62466A4F" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 9750 5900 50  0001 C CNN
+F 1 "GND" H 9755 5977 50  0000 C CNN
+F 2 "" H 9750 6150 50  0001 C CNN
+F 3 "" H 9750 6150 50  0001 C CNN
+	1    9750 6150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9750 6150 9750 6100
+Wire Wire Line
+	9750 5850 9750 5900
+$Comp
+L power:+5V #PWR?
+U 1 1 62466A57
+P 9750 5850
+AR Path="/62466A57" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/62466A57" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/62466A57" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 9750 5700 50  0001 C CNN
+F 1 "+5V" H 9765 6023 50  0000 C CNN
+F 2 "" H 9750 5850 50  0001 C CNN
+F 3 "" H 9750 5850 50  0001 C CNN
+	1    9750 5850
+	1    0    0    -1  
+$EndComp
 Wire Bus Line
 	6600 2250 6600 2450
 Wire Bus Line

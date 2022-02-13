@@ -4518,6 +4518,51 @@ Text Label 5750 6850 0    50   ~ 0
 HC
 Text Label 5050 4500 0    50   ~ 0
 HC
+$Comp
+L Device:CP_Small C?
+U 1 1 624F36B8
+P 6900 4750
+AR Path="/62043340/624F36B8" Ref="C?"  Part="1" 
+AR Path="/5FD6B215/624F36B8" Ref="C?"  Part="1" 
+F 0 "C?" H 6988 4796 50  0000 L CNN
+F 1 "10u" H 6988 4705 50  0000 L CNN
+F 2 "" H 6900 4750 50  0001 C CNN
+F 3 "~" H 6900 4750 50  0001 C CNN
+	1    6900 4750
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 624F36BE
+P 6900 4900
+AR Path="/624F36BE" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/624F36BE" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/624F36BE" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 6900 4650 50  0001 C CNN
+F 1 "GND" H 6905 4727 50  0000 C CNN
+F 2 "" H 6900 4900 50  0001 C CNN
+F 3 "" H 6900 4900 50  0001 C CNN
+	1    6900 4900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6900 4900 6900 4850
+Wire Wire Line
+	6900 4600 6900 4650
+$Comp
+L power:+5V #PWR?
+U 1 1 624F36C6
+P 6900 4600
+AR Path="/624F36C6" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/624F36C6" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/624F36C6" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 6900 4450 50  0001 C CNN
+F 1 "+5V" H 6915 4773 50  0000 C CNN
+F 2 "" H 6900 4600 50  0001 C CNN
+F 3 "" H 6900 4600 50  0001 C CNN
+	1    6900 4600
+	1    0    0    -1  
+$EndComp
 Wire Bus Line
 	7750 2900 7750 3600
 Wire Bus Line

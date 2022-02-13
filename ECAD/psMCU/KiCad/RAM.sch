@@ -3177,6 +3177,51 @@ F7 "RESET" I L 3800 1800 50
 F8 "Latch_D" I L 3800 1500 50 
 F9 "Latch_A" I L 3800 1600 50 
 $EndSheet
+$Comp
+L Device:CP_Small C?
+U 1 1 625715F0
+P 9950 2000
+AR Path="/62043340/625715F0" Ref="C?"  Part="1" 
+AR Path="/5FD6B215/625715F0" Ref="C?"  Part="1" 
+F 0 "C?" H 10038 2046 50  0000 L CNN
+F 1 "10u" H 10038 1955 50  0000 L CNN
+F 2 "" H 9950 2000 50  0001 C CNN
+F 3 "~" H 9950 2000 50  0001 C CNN
+	1    9950 2000
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 625715F6
+P 9950 2150
+AR Path="/625715F6" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/625715F6" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/625715F6" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 9950 1900 50  0001 C CNN
+F 1 "GND" H 9955 1977 50  0000 C CNN
+F 2 "" H 9950 2150 50  0001 C CNN
+F 3 "" H 9950 2150 50  0001 C CNN
+	1    9950 2150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9950 2150 9950 2100
+Wire Wire Line
+	9950 1850 9950 1900
+$Comp
+L power:+5V #PWR?
+U 1 1 625715FE
+P 9950 1850
+AR Path="/625715FE" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/625715FE" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/625715FE" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 9950 1700 50  0001 C CNN
+F 1 "+5V" H 9965 2023 50  0000 C CNN
+F 2 "" H 9950 1850 50  0001 C CNN
+F 3 "" H 9950 1850 50  0001 C CNN
+	1    9950 1850
+	1    0    0    -1  
+$EndComp
 Wire Bus Line
 	5850 3350 5850 4000
 Wire Bus Line

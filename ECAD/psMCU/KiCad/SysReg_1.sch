@@ -5726,6 +5726,51 @@ Wire Wire Line
 	6450 2000 6450 1950
 Text Label 11700 5350 2    50   ~ 0
 ~Latch_Alu_Flags
+$Comp
+L Device:CP_Small C?
+U 1 1 6250D0D7
+P 14100 2450
+AR Path="/62043340/6250D0D7" Ref="C?"  Part="1" 
+AR Path="/5FD6B215/6250D0D7" Ref="C?"  Part="1" 
+F 0 "C?" H 14188 2496 50  0000 L CNN
+F 1 "10u" H 14188 2405 50  0000 L CNN
+F 2 "" H 14100 2450 50  0001 C CNN
+F 3 "~" H 14100 2450 50  0001 C CNN
+	1    14100 2450
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 6250D0DD
+P 14100 2600
+AR Path="/6250D0DD" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/6250D0DD" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/6250D0DD" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 14100 2350 50  0001 C CNN
+F 1 "GND" H 14105 2427 50  0000 C CNN
+F 2 "" H 14100 2600 50  0001 C CNN
+F 3 "" H 14100 2600 50  0001 C CNN
+	1    14100 2600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	14100 2600 14100 2550
+Wire Wire Line
+	14100 2300 14100 2350
+$Comp
+L power:+5V #PWR?
+U 1 1 6250D0E5
+P 14100 2300
+AR Path="/6250D0E5" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/6250D0E5" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/6250D0E5" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 14100 2150 50  0001 C CNN
+F 1 "+5V" H 14115 2473 50  0000 C CNN
+F 2 "" H 14100 2300 50  0001 C CNN
+F 3 "" H 14100 2300 50  0001 C CNN
+	1    14100 2300
+	1    0    0    -1  
+$EndComp
 Wire Bus Line
 	9500 1050 9500 7750
 Wire Bus Line

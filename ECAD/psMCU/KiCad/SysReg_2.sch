@@ -2819,6 +2819,51 @@ Wire Wire Line
 Connection ~ 6500 9400
 Wire Wire Line
 	6500 9400 6500 9500
+$Comp
+L Device:CP_Small C?
+U 1 1 6252174A
+P 5550 2250
+AR Path="/62043340/6252174A" Ref="C?"  Part="1" 
+AR Path="/5FD6B215/6252174A" Ref="C?"  Part="1" 
+F 0 "C?" H 5638 2296 50  0000 L CNN
+F 1 "10u" H 5638 2205 50  0000 L CNN
+F 2 "" H 5550 2250 50  0001 C CNN
+F 3 "~" H 5550 2250 50  0001 C CNN
+	1    5550 2250
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 62521750
+P 5550 2400
+AR Path="/62521750" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/62521750" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/62521750" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 5550 2150 50  0001 C CNN
+F 1 "GND" H 5555 2227 50  0000 C CNN
+F 2 "" H 5550 2400 50  0001 C CNN
+F 3 "" H 5550 2400 50  0001 C CNN
+	1    5550 2400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5550 2400 5550 2350
+Wire Wire Line
+	5550 2100 5550 2150
+$Comp
+L power:+5V #PWR?
+U 1 1 62521758
+P 5550 2100
+AR Path="/62521758" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/62521758" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/62521758" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 5550 1950 50  0001 C CNN
+F 1 "+5V" H 5565 2273 50  0000 C CNN
+F 2 "" H 5550 2100 50  0001 C CNN
+F 3 "" H 5550 2100 50  0001 C CNN
+	1    5550 2100
+	1    0    0    -1  
+$EndComp
 Wire Bus Line
 	3700 6850 3700 7150
 Wire Bus Line

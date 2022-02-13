@@ -1905,6 +1905,51 @@ Text Label 4750 7050 2    50   ~ 0
 ROMA_OUT
 Wire Wire Line
 	4300 7050 4750 7050
+$Comp
+L Device:CP_Small C?
+U 1 1 625FB562
+P 5300 2850
+AR Path="/62043340/625FB562" Ref="C?"  Part="1" 
+AR Path="/5FD6B215/625FB562" Ref="C?"  Part="1" 
+F 0 "C?" H 5388 2896 50  0000 L CNN
+F 1 "10u" H 5388 2805 50  0000 L CNN
+F 2 "" H 5300 2850 50  0001 C CNN
+F 3 "~" H 5300 2850 50  0001 C CNN
+	1    5300 2850
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 625FB568
+P 5300 3000
+AR Path="/625FB568" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/625FB568" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/625FB568" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 5300 2750 50  0001 C CNN
+F 1 "GND" H 5305 2827 50  0000 C CNN
+F 2 "" H 5300 3000 50  0001 C CNN
+F 3 "" H 5300 3000 50  0001 C CNN
+	1    5300 3000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5300 3000 5300 2950
+Wire Wire Line
+	5300 2700 5300 2750
+$Comp
+L power:+5V #PWR?
+U 1 1 625FB570
+P 5300 2700
+AR Path="/625FB570" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/625FB570" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/625FB570" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 5300 2550 50  0001 C CNN
+F 1 "+5V" H 5315 2873 50  0000 C CNN
+F 2 "" H 5300 2700 50  0001 C CNN
+F 3 "" H 5300 2700 50  0001 C CNN
+	1    5300 2700
+	1    0    0    -1  
+$EndComp
 Wire Bus Line
 	6700 1150 6700 7150
 Wire Bus Line

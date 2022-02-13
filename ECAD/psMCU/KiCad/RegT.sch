@@ -4030,6 +4030,102 @@ Text Notes 2450 7300 0    50   ~ 0
 LatchL
 Text Notes 2500 8850 0    50   ~ 0
 LatchH
+$Comp
+L Device:CP_Small C?
+U 1 1 62596672
+P 6300 9350
+AR Path="/62043340/62596672" Ref="C?"  Part="1" 
+AR Path="/5FD6B215/62596672" Ref="C?"  Part="1" 
+AR Path="/612C5E2A/62596672" Ref="C?"  Part="1" 
+F 0 "C?" H 6388 9396 50  0000 L CNN
+F 1 "10u" H 6388 9305 50  0000 L CNN
+F 2 "" H 6300 9350 50  0001 C CNN
+F 3 "~" H 6300 9350 50  0001 C CNN
+	1    6300 9350
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 62596678
+P 6300 9500
+AR Path="/62596678" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/62596678" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/62596678" Ref="#PWR?"  Part="1" 
+AR Path="/612C5E2A/62596678" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 6300 9250 50  0001 C CNN
+F 1 "GND" H 6305 9327 50  0000 C CNN
+F 2 "" H 6300 9500 50  0001 C CNN
+F 3 "" H 6300 9500 50  0001 C CNN
+	1    6300 9500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6300 9500 6300 9450
+Wire Wire Line
+	6300 9200 6300 9250
+$Comp
+L power:+5V #PWR?
+U 1 1 62596680
+P 6300 9200
+AR Path="/62596680" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/62596680" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/62596680" Ref="#PWR?"  Part="1" 
+AR Path="/612C5E2A/62596680" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 6300 9050 50  0001 C CNN
+F 1 "+5V" H 6315 9373 50  0000 C CNN
+F 2 "" H 6300 9200 50  0001 C CNN
+F 3 "" H 6300 9200 50  0001 C CNN
+	1    6300 9200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP_Small C?
+U 1 1 625ADED8
+P 5950 9350
+AR Path="/62043340/625ADED8" Ref="C?"  Part="1" 
+AR Path="/5FD6B215/625ADED8" Ref="C?"  Part="1" 
+AR Path="/612C5E2A/625ADED8" Ref="C?"  Part="1" 
+F 0 "C?" H 6038 9396 50  0000 L CNN
+F 1 "10u" H 6038 9305 50  0000 L CNN
+F 2 "" H 5950 9350 50  0001 C CNN
+F 3 "~" H 5950 9350 50  0001 C CNN
+	1    5950 9350
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 625ADEDE
+P 5950 9500
+AR Path="/625ADEDE" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/625ADEDE" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/625ADEDE" Ref="#PWR?"  Part="1" 
+AR Path="/612C5E2A/625ADEDE" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 5950 9250 50  0001 C CNN
+F 1 "GND" H 5955 9327 50  0000 C CNN
+F 2 "" H 5950 9500 50  0001 C CNN
+F 3 "" H 5950 9500 50  0001 C CNN
+	1    5950 9500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5950 9500 5950 9450
+Wire Wire Line
+	5950 9200 5950 9250
+$Comp
+L power:+5V #PWR?
+U 1 1 625ADEE6
+P 5950 9200
+AR Path="/625ADEE6" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/625ADEE6" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/625ADEE6" Ref="#PWR?"  Part="1" 
+AR Path="/612C5E2A/625ADEE6" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 5950 9050 50  0001 C CNN
+F 1 "+5V" H 5965 9373 50  0000 C CNN
+F 2 "" H 5950 9200 50  0001 C CNN
+F 3 "" H 5950 9200 50  0001 C CNN
+	1    5950 9200
+	1    0    0    -1  
+$EndComp
 Wire Bus Line
 	6950 750  6950 3050
 Wire Bus Line

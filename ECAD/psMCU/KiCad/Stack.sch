@@ -7236,6 +7236,55 @@ Wire Wire Line
 	4650 6100 4650 7800
 Wire Wire Line
 	3150 5750 1750 5750
+Connection ~ 1750 5750
+$Comp
+L Device:CP_Small C?
+U 1 1 6253752D
+P 14650 3250
+AR Path="/62043340/6253752D" Ref="C?"  Part="1" 
+AR Path="/5FD6B215/6253752D" Ref="C?"  Part="1" 
+AR Path="/5FD6EE9C/6253752D" Ref="C?"  Part="1" 
+F 0 "C?" H 14738 3296 50  0000 L CNN
+F 1 "10u" H 14738 3205 50  0000 L CNN
+F 2 "" H 14650 3250 50  0001 C CNN
+F 3 "~" H 14650 3250 50  0001 C CNN
+	1    14650 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 62537533
+P 14650 3400
+AR Path="/62537533" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/62537533" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/62537533" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6EE9C/62537533" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 14650 3150 50  0001 C CNN
+F 1 "GND" H 14655 3227 50  0000 C CNN
+F 2 "" H 14650 3400 50  0001 C CNN
+F 3 "" H 14650 3400 50  0001 C CNN
+	1    14650 3400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	14650 3400 14650 3350
+Wire Wire Line
+	14650 3100 14650 3150
+$Comp
+L power:+5V #PWR?
+U 1 1 6253753B
+P 14650 3100
+AR Path="/6253753B" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/6253753B" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/6253753B" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6EE9C/6253753B" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 14650 2950 50  0001 C CNN
+F 1 "+5V" H 14665 3273 50  0000 C CNN
+F 2 "" H 14650 3100 50  0001 C CNN
+F 3 "" H 14650 3100 50  0001 C CNN
+	1    14650 3100
+	1    0    0    -1  
+$EndComp
 Wire Bus Line
 	2950 9150 2950 9850
 Wire Bus Line
@@ -7246,5 +7295,4 @@ Wire Bus Line
 	10550 3700 10550 5700
 Wire Bus Line
 	7500 5150 7500 10050
-Connection ~ 1750 5750
 $EndSCHEMATC

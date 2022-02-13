@@ -2832,6 +2832,51 @@ F 3 "~" V 3650 4150 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 Connection ~ 3050 4150
+$Comp
+L Device:CP_Small C?
+U 1 1 6260BDC2
+P 7050 1500
+AR Path="/62043340/6260BDC2" Ref="C?"  Part="1" 
+AR Path="/5FD6B215/6260BDC2" Ref="C?"  Part="1" 
+F 0 "C?" H 7138 1546 50  0000 L CNN
+F 1 "10u" H 7138 1455 50  0000 L CNN
+F 2 "" H 7050 1500 50  0001 C CNN
+F 3 "~" H 7050 1500 50  0001 C CNN
+	1    7050 1500
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 6260BDC8
+P 7050 1650
+AR Path="/6260BDC8" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/6260BDC8" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/6260BDC8" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7050 1400 50  0001 C CNN
+F 1 "GND" H 7055 1477 50  0000 C CNN
+F 2 "" H 7050 1650 50  0001 C CNN
+F 3 "" H 7050 1650 50  0001 C CNN
+	1    7050 1650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7050 1650 7050 1600
+Wire Wire Line
+	7050 1350 7050 1400
+$Comp
+L power:+5V #PWR?
+U 1 1 6260BDD0
+P 7050 1350
+AR Path="/6260BDD0" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/6260BDD0" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/6260BDD0" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 7050 1200 50  0001 C CNN
+F 1 "+5V" H 7065 1523 50  0000 C CNN
+F 2 "" H 7050 1350 50  0001 C CNN
+F 3 "" H 7050 1350 50  0001 C CNN
+	1    7050 1350
+	1    0    0    -1  
+$EndComp
 Wire Bus Line
 	4600 1550 4600 9150
 Wire Bus Line

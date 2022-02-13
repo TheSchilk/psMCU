@@ -1308,6 +1308,51 @@ Wire Wire Line
 	1900 8700 1850 8700
 Text Notes 2250 8750 0    50   ~ 0
 Latch
+$Comp
+L Device:CP_Small C?
+U 1 1 626CD625
+P 1950 7050
+AR Path="/62043340/626CD625" Ref="C?"  Part="1" 
+AR Path="/5FD6B215/626CD625" Ref="C?"  Part="1" 
+F 0 "C?" H 2038 7096 50  0000 L CNN
+F 1 "10u" H 2038 7005 50  0000 L CNN
+F 2 "" H 1950 7050 50  0001 C CNN
+F 3 "~" H 1950 7050 50  0001 C CNN
+	1    1950 7050
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 626CD62B
+P 1950 7200
+AR Path="/626CD62B" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/626CD62B" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/626CD62B" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 1950 6950 50  0001 C CNN
+F 1 "GND" H 1955 7027 50  0000 C CNN
+F 2 "" H 1950 7200 50  0001 C CNN
+F 3 "" H 1950 7200 50  0001 C CNN
+	1    1950 7200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1950 7200 1950 7150
+Wire Wire Line
+	1950 6900 1950 6950
+$Comp
+L power:+5V #PWR?
+U 1 1 626CD633
+P 1950 6900
+AR Path="/626CD633" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/626CD633" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/626CD633" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 1950 6750 50  0001 C CNN
+F 1 "+5V" H 1965 7073 50  0000 C CNN
+F 2 "" H 1950 6900 50  0001 C CNN
+F 3 "" H 1950 6900 50  0001 C CNN
+	1    1950 6900
+	1    0    0    -1  
+$EndComp
 Wire Bus Line
 	5400 600  5400 3100
 Wire Bus Line

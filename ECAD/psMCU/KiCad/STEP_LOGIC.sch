@@ -5059,4 +5059,49 @@ Wire Wire Line
 	4850 6300 4850 6250
 Wire Wire Line
 	5100 6150 6300 6150
+$Comp
+L Device:CP_Small C?
+U 1 1 626E61DA
+P 6250 6900
+AR Path="/62043340/626E61DA" Ref="C?"  Part="1" 
+AR Path="/5FD6B215/626E61DA" Ref="C?"  Part="1" 
+F 0 "C?" H 6338 6946 50  0000 L CNN
+F 1 "10u" H 6338 6855 50  0000 L CNN
+F 2 "" H 6250 6900 50  0001 C CNN
+F 3 "~" H 6250 6900 50  0001 C CNN
+	1    6250 6900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 626E61E0
+P 6250 7050
+AR Path="/626E61E0" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/626E61E0" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/626E61E0" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 6250 6800 50  0001 C CNN
+F 1 "GND" H 6255 6877 50  0000 C CNN
+F 2 "" H 6250 7050 50  0001 C CNN
+F 3 "" H 6250 7050 50  0001 C CNN
+	1    6250 7050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6250 7050 6250 7000
+Wire Wire Line
+	6250 6750 6250 6800
+$Comp
+L power:+5V #PWR?
+U 1 1 626E61E8
+P 6250 6750
+AR Path="/626E61E8" Ref="#PWR?"  Part="1" 
+AR Path="/62043340/626E61E8" Ref="#PWR?"  Part="1" 
+AR Path="/5FD6B215/626E61E8" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 6250 6600 50  0001 C CNN
+F 1 "+5V" H 6265 6923 50  0000 C CNN
+F 2 "" H 6250 6750 50  0001 C CNN
+F 3 "" H 6250 6750 50  0001 C CNN
+	1    6250 6750
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
