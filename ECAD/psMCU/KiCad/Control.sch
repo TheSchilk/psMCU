@@ -554,9 +554,7 @@ PC[0..7]->DBus
 Text HLabel 11650 5850 2    50   Output ~ 0
 PC[8..13]->DBus
 Text HLabel 11650 5950 2    50   Output ~ 0
-In[0..7]->RAMA
-Text HLabel 11650 6050 2    50   Output ~ 0
-RegB->RAMA
+In[0..8]->RAMA
 Text HLabel 11650 6250 2    50   Output ~ 0
 IntAdr->ROMA
 Text Label 11700 2650 2    50   ~ 0
@@ -2003,6 +2001,7 @@ U 1 1 626F701B
 P 8600 5900
 AR Path="/62043340/626F701B" Ref="C?"  Part="1" 
 AR Path="/5FD6B215/626F701B" Ref="C?"  Part="1" 
+AR Path="/60E33DBC/626F701B" Ref="C?"  Part="1" 
 F 0 "C?" H 8688 5946 50  0000 L CNN
 F 1 "10u" H 8688 5855 50  0000 L CNN
 F 2 "" H 8600 5900 50  0001 C CNN
@@ -2017,6 +2016,7 @@ P 8600 6050
 AR Path="/626F7021" Ref="#PWR?"  Part="1" 
 AR Path="/62043340/626F7021" Ref="#PWR?"  Part="1" 
 AR Path="/5FD6B215/626F7021" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/626F7021" Ref="#PWR?"  Part="1" 
 F 0 "#PWR?" H 8600 5800 50  0001 C CNN
 F 1 "GND" H 8605 5877 50  0000 C CNN
 F 2 "" H 8600 6050 50  0001 C CNN
@@ -2035,6 +2035,7 @@ P 8600 5750
 AR Path="/626F7029" Ref="#PWR?"  Part="1" 
 AR Path="/62043340/626F7029" Ref="#PWR?"  Part="1" 
 AR Path="/5FD6B215/626F7029" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/626F7029" Ref="#PWR?"  Part="1" 
 F 0 "#PWR?" H 8600 5600 50  0001 C CNN
 F 1 "+5V" H 8615 5923 50  0000 C CNN
 F 2 "" H 8600 5750 50  0001 C CNN
@@ -2050,4 +2051,6 @@ Wire Bus Line
 	7250 2350 7250 3450
 Wire Bus Line
 	8450 8000 8450 8800
+Text HLabel 11650 6050 2    50   Output ~ 0
+In[0..8]+B->RAMA
 $EndSCHEMATC
