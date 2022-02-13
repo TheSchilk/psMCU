@@ -5,8 +5,8 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 54 97
 Title "psMCU"
-Date "2021-05-31"
-Rev "v1.0"
+Date "2022-02-13"
+Rev "v1.1"
 Comp "Philipp Schilk"
 Comment1 "by current instruciton."
 Comment2 "module. Provides Carry, Half-Carry, and Overflow flag. Can carry-in if enabled"

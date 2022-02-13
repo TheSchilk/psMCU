@@ -5,8 +5,8 @@ $Descr A3 16535 11693
 encoding utf-8
 Sheet 66 97
 Title "psMCU"
-Date "2021-05-31"
-Rev "v1.0"
+Date "2022-02-13"
+Rev "v1.1"
 Comp "Philipp Schilk"
 Comment1 "1-of-8/one-hot signal. "
 Comment2 "setting during power-on is configurable with jumpers. Output encoded as "

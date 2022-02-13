@@ -5,8 +5,8 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 44 97
 Title "psMCU"
-Date "2021-05-31"
-Rev "v1.0"
+Date "2022-02-13"
+Rev "v1.1"
 Comp "Philipp Schilk"
 Comment1 "shifted in. Direction is controlled by the current instruction."
 Comment2 "is achieved by swapping the bit order before and after shifting. A 1 or 0 can be "

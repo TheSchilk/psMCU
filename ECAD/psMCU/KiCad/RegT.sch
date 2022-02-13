@@ -5,8 +5,8 @@ $Descr A4 8268 11693 portrait
 encoding utf-8
 Sheet 2 97
 Title "psMCU"
-Date "2021-05-31"
-Rev "v1.0"
+Date "2022-02-13"
+Rev "v1.1"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 "current content can be read to the ROMA bus, or the lower 8 bits can be read to the DBus. "
