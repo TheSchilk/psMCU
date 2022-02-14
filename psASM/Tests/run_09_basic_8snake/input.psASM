@@ -133,7 +133,7 @@ RENDER:
     
     # Render Loop: 
     RENDER_LOOP: 
-        LDDR # Load board into A (A = Board, B = Ptr)
+        LDO 0 # Load board into A (A = Board, B = Ptr)
         
         # Save the current Pointer
         SVB RNDR_ptr
@@ -361,7 +361,7 @@ UPDATE_GAMESTATE:
     
     # Load board mem at location GS_headpos into A:
     LDB GS_headpos
-    LDDR
+    LDO 0 
 
     # If the board is 0 there, we definetly did not collide:
     IFSM SYS3, S3_A0
@@ -416,7 +416,7 @@ UPDATE_GAMESTATE:
     # # Check if this spot is already taken. 
     # # If it is already take, increase by 1 and try again
     # GS_APPLE_KEEP_STEPPING:
-    #     LDDR # Load board mem at apple position to A
+    #     LDO 0 # Load board mem at apple position to A
     #     IFSM SYS3, S3_A0
     #         JMP UGS_APPLE_POSITION_FOUND # Position OK
 
@@ -481,7 +481,7 @@ UPDATE_BOARD:
     LITB BOARD_STARTD
     UB_LOOP:
         # Grab current board value into A
-        LDDR
+        LDO 0
 
         # Store current pointer
         SVB UB_PTR
@@ -495,7 +495,7 @@ UPDATE_BOARD:
         LDB UB_PTR
 
         # Put back the updated value
-        SVDR
+        SVO 0
 
         # Increase the current pointer
         ADDLB 1
@@ -515,12 +515,12 @@ UPDATE_BOARD:
     # Indicate apple position
     LITA 1
     LDB GS_applepos
-    SVDR
+    SVO 0
 
     # Place new head position
     LDA GS_length
     LDB GS_headpos
-    SVDR
+    SVO 0
 
     RTRN
 
@@ -541,7 +541,7 @@ SETUP:
     LITB BOARD_STARTD # initial pointer
 
     SETUP_CLR_LOOP: 
-        SVDR # Write 0
+        SVO 0 # Write 0
         ADDLB 1 # Increase Pointer 
     
         # Check if we are done

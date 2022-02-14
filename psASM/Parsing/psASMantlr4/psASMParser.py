@@ -5,7 +5,6 @@ from io import StringIO
 from typing.io import TextIO
 import sys
 
-
 def serializedATN():
     with StringIO() as buf:
         buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3D")
@@ -141,44 +140,44 @@ def serializedATN():
         return buf.getvalue()
 
 
-class psASMParser (Parser):
+class psASMParser ( Parser ):
 
     grammarFileName = "psASMParser.g4"
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
-    decisionsToDFA = [DFA(ds, i) for i, ds in enumerate(atn.decisionToState)]
+    decisionsToDFA = [ DFA(ds, i) for i, ds in enumerate(atn.decisionToState) ]
 
     sharedContextCache = PredictionContextCache()
 
-    literalNames = ["<INVALID>", "<INVALID>", "','", "'@define'", "'@include'",
-                    "'@include_once'", "'@if'", "'@ifdef'", "'@ifndef'",
-                    "'@elif'", "'@else'", "'@for'", "'@print'", "'@error'",
-                    "'@macro'", "'@end'", "'defined'", "'sprintf'", "'strlen'",
-                    "'cat_id'", "'('", "')'", "'['", "']'", "'!'", "'~'",
-                    "'/'", "'*'", "'%'", "'+'", "'-'", "'<<'", "'>>'",
-                    "'<'", "'<='", "'>'", "'>='", "'=='", "'!='", "'&'",
-                    "'^'", "'|'", "'&&'", "'||'", "'?'", "':'", "<INVALID>",
-                    "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
-                    "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
-                    "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
-                    "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>",
-                    "<INVALID>", "'\t'"]
+    literalNames = [ "<INVALID>", "<INVALID>", "','", "'@define'", "'@include'", 
+                     "'@include_once'", "'@if'", "'@ifdef'", "'@ifndef'", 
+                     "'@elif'", "'@else'", "'@for'", "'@print'", "'@error'", 
+                     "'@macro'", "'@end'", "'defined'", "'sprintf'", "'strlen'", 
+                     "'cat_id'", "'('", "')'", "'['", "']'", "'!'", "'~'", 
+                     "'/'", "'*'", "'%'", "'+'", "'-'", "'<<'", "'>>'", 
+                     "'<'", "'<='", "'>'", "'>='", "'=='", "'!='", "'&'", 
+                     "'^'", "'|'", "'&&'", "'||'", "'?'", "':'", "<INVALID>", 
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                     "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                     "<INVALID>", "'\t'" ]
 
-    symbolicNames = ["<INVALID>", "INST", "COMMA", "DEFINE", "INCLUDE",
-                     "INCLUDE_ONCE", "IF", "IFDEF", "IFNDEF", "ELIF", "ELSE",
-                     "FOR", "PRINT", "ERROR", "MACRO", "END", "DEFINED",
-                     "SPRINTF", "STRLEN", "CATID", "LPAREN", "RPAREN",
-                     "LSQBRACKET", "RSQBRACKET", "NOT", "BIT_NOT", "DIV",
-                     "MUL", "MOD", "PLUS", "MINUS", "LSHFIT", "RSHIFT",
-                     "LESS", "LESS_EQ", "GREATER", "GREATER_EQ", "EQ",
-                     "NEQ", "BIT_AND", "BIT_XOR", "BIT_OR", "AND", "OR",
-                     "QUEST", "COLON", "BINARY_LITERAL", "HEX_LITERAL",
-                     "DEC_LITERAL", "CHAR_START", "CHAR_ESCAPE", "CHAR",
-                     "CHAR_END", "CHAR_EOL", "CHAR_ERROR_CHAR", "STRING_START",
-                     "STRING_CHAR_ESCAPE", "STRING_CHAR", "STRING_END",
-                     "STRING_EOL", "STRING_ERROR_CHAR", "IDENTIFIER_LITERAL",
-                     "COMMENT", "WS", "TAB", "EOL", "ERROR_CHAR"]
+    symbolicNames = [ "<INVALID>", "INST", "COMMA", "DEFINE", "INCLUDE", 
+                      "INCLUDE_ONCE", "IF", "IFDEF", "IFNDEF", "ELIF", "ELSE", 
+                      "FOR", "PRINT", "ERROR", "MACRO", "END", "DEFINED", 
+                      "SPRINTF", "STRLEN", "CATID", "LPAREN", "RPAREN", 
+                      "LSQBRACKET", "RSQBRACKET", "NOT", "BIT_NOT", "DIV", 
+                      "MUL", "MOD", "PLUS", "MINUS", "LSHFIT", "RSHIFT", 
+                      "LESS", "LESS_EQ", "GREATER", "GREATER_EQ", "EQ", 
+                      "NEQ", "BIT_AND", "BIT_XOR", "BIT_OR", "AND", "OR", 
+                      "QUEST", "COLON", "BINARY_LITERAL", "HEX_LITERAL", 
+                      "DEC_LITERAL", "CHAR_START", "CHAR_ESCAPE", "CHAR", 
+                      "CHAR_END", "CHAR_EOL", "CHAR_ERROR_CHAR", "STRING_START", 
+                      "STRING_CHAR_ESCAPE", "STRING_CHAR", "STRING_END", 
+                      "STRING_EOL", "STRING_ERROR_CHAR", "IDENTIFIER_LITERAL", 
+                      "COMMENT", "WS", "TAB", "EOL", "ERROR_CHAR" ]
 
     RULE_line = 0
     RULE_line_content = 1
@@ -206,96 +205,99 @@ class psASMParser (Parser):
     RULE_string_literal = 23
     RULE_char_literal = 24
 
-    ruleNames = ["line", "line_content", "instruction", "labels", "preproc_directive",
-                 "preproc_identifier", "preproc_define", "preproc_include",
-                 "preproc_include_once", "preproc_if", "preproc_ifdef",
-                 "preproc_ifndef", "preproc_elif", "preproc_else", "preproc_for",
-                 "preproc_end", "preproc_print", "preproc_error", "preproc_macro",
-                 "preproc_macro_expansion", "expr", "atom", "numerical_literal",
-                 "string_literal", "char_literal"]
+    ruleNames =  [ "line", "line_content", "instruction", "labels", "preproc_directive", 
+                   "preproc_identifier", "preproc_define", "preproc_include", 
+                   "preproc_include_once", "preproc_if", "preproc_ifdef", 
+                   "preproc_ifndef", "preproc_elif", "preproc_else", "preproc_for", 
+                   "preproc_end", "preproc_print", "preproc_error", "preproc_macro", 
+                   "preproc_macro_expansion", "expr", "atom", "numerical_literal", 
+                   "string_literal", "char_literal" ]
 
     EOF = Token.EOF
-    INST = 1
-    COMMA = 2
-    DEFINE = 3
-    INCLUDE = 4
-    INCLUDE_ONCE = 5
-    IF = 6
-    IFDEF = 7
-    IFNDEF = 8
-    ELIF = 9
-    ELSE = 10
-    FOR = 11
-    PRINT = 12
-    ERROR = 13
-    MACRO = 14
-    END = 15
-    DEFINED = 16
-    SPRINTF = 17
-    STRLEN = 18
-    CATID = 19
-    LPAREN = 20
-    RPAREN = 21
-    LSQBRACKET = 22
-    RSQBRACKET = 23
-    NOT = 24
-    BIT_NOT = 25
-    DIV = 26
-    MUL = 27
-    MOD = 28
-    PLUS = 29
-    MINUS = 30
-    LSHFIT = 31
-    RSHIFT = 32
-    LESS = 33
-    LESS_EQ = 34
-    GREATER = 35
-    GREATER_EQ = 36
-    EQ = 37
-    NEQ = 38
-    BIT_AND = 39
-    BIT_XOR = 40
-    BIT_OR = 41
-    AND = 42
-    OR = 43
-    QUEST = 44
-    COLON = 45
-    BINARY_LITERAL = 46
-    HEX_LITERAL = 47
-    DEC_LITERAL = 48
-    CHAR_START = 49
-    CHAR_ESCAPE = 50
-    CHAR = 51
-    CHAR_END = 52
-    CHAR_EOL = 53
-    CHAR_ERROR_CHAR = 54
-    STRING_START = 55
-    STRING_CHAR_ESCAPE = 56
-    STRING_CHAR = 57
-    STRING_END = 58
-    STRING_EOL = 59
-    STRING_ERROR_CHAR = 60
-    IDENTIFIER_LITERAL = 61
-    COMMENT = 62
-    WS = 63
-    TAB = 64
-    EOL = 65
-    ERROR_CHAR = 66
+    INST=1
+    COMMA=2
+    DEFINE=3
+    INCLUDE=4
+    INCLUDE_ONCE=5
+    IF=6
+    IFDEF=7
+    IFNDEF=8
+    ELIF=9
+    ELSE=10
+    FOR=11
+    PRINT=12
+    ERROR=13
+    MACRO=14
+    END=15
+    DEFINED=16
+    SPRINTF=17
+    STRLEN=18
+    CATID=19
+    LPAREN=20
+    RPAREN=21
+    LSQBRACKET=22
+    RSQBRACKET=23
+    NOT=24
+    BIT_NOT=25
+    DIV=26
+    MUL=27
+    MOD=28
+    PLUS=29
+    MINUS=30
+    LSHFIT=31
+    RSHIFT=32
+    LESS=33
+    LESS_EQ=34
+    GREATER=35
+    GREATER_EQ=36
+    EQ=37
+    NEQ=38
+    BIT_AND=39
+    BIT_XOR=40
+    BIT_OR=41
+    AND=42
+    OR=43
+    QUEST=44
+    COLON=45
+    BINARY_LITERAL=46
+    HEX_LITERAL=47
+    DEC_LITERAL=48
+    CHAR_START=49
+    CHAR_ESCAPE=50
+    CHAR=51
+    CHAR_END=52
+    CHAR_EOL=53
+    CHAR_ERROR_CHAR=54
+    STRING_START=55
+    STRING_CHAR_ESCAPE=56
+    STRING_CHAR=57
+    STRING_END=58
+    STRING_EOL=59
+    STRING_ERROR_CHAR=60
+    IDENTIFIER_LITERAL=61
+    COMMENT=62
+    WS=63
+    TAB=64
+    EOL=65
+    ERROR_CHAR=66
 
-    def __init__(self, input: TokenStream, output: TextIO = sys.stdout):
+    def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
         self.checkVersion("4.7.2")
         self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
         self._predicates = None
 
+
+
     class LineContext(ParserRuleContext):
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def line_content(self):
-            return self.getTypedRuleContext(psASMParser.Line_contentContext, 0)
+            return self.getTypedRuleContext(psASMParser.Line_contentContext,0)
+
 
         def EOL(self):
             return self.getToken(psASMParser.EOL, 0)
@@ -303,11 +305,14 @@ class psASMParser (Parser):
         def getRuleIndex(self):
             return psASMParser.RULE_line
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitLine"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLine" ):
                 return visitor.visitLine(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def line(self):
 
@@ -329,72 +334,85 @@ class psASMParser (Parser):
 
     class Line_contentContext(ParserRuleContext):
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+
 
         def getRuleIndex(self):
             return psASMParser.RULE_line_content
 
-        def copyFrom(self, ctx: ParserRuleContext):
+     
+        def copyFrom(self, ctx:ParserRuleContext):
             super().copyFrom(ctx)
+
+
 
     class Labels_lineContext(Line_contentContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.Line_contentContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a psASMParser.Line_contentContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def labels(self):
-            return self.getTypedRuleContext(psASMParser.LabelsContext, 0)
+            return self.getTypedRuleContext(psASMParser.LabelsContext,0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitLabels_line"):
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLabels_line" ):
                 return visitor.visitLabels_line(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class Preproc_lineContext(Line_contentContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.Line_contentContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a psASMParser.Line_contentContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def preproc_directive(self):
-            return self.getTypedRuleContext(psASMParser.Preproc_directiveContext, 0)
+            return self.getTypedRuleContext(psASMParser.Preproc_directiveContext,0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitPreproc_line"):
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPreproc_line" ):
                 return visitor.visitPreproc_line(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class Instruction_lineContext(Line_contentContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.Line_contentContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a psASMParser.Line_contentContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def instruction(self):
-            return self.getTypedRuleContext(psASMParser.InstructionContext, 0)
+            return self.getTypedRuleContext(psASMParser.InstructionContext,0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitInstruction_line"):
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitInstruction_line" ):
                 return visitor.visitInstruction_line(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class Empty_lineContext(Line_contentContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.Line_contentContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a psASMParser.Line_contentContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitEmpty_line"):
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitEmpty_line" ):
                 return visitor.visitEmpty_line(self)
             else:
                 return visitor.visitChildren(self)
+
+
 
     def line_content(self):
 
@@ -403,7 +421,7 @@ class psASMParser (Parser):
         try:
             self.state = 57
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input, 0, self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,0,self._ctx)
             if la_ == 1:
                 localctx = psASMParser.Instruction_lineContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
@@ -431,6 +449,7 @@ class psASMParser (Parser):
 
                 pass
 
+
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -441,27 +460,29 @@ class psASMParser (Parser):
 
     class InstructionContext(ParserRuleContext):
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.lbls = None  # LabelsContext
-            self.inst = None  # Token
-            self._expr = None  # ExprContext
-            self.args = list()  # of ExprContexts
+            self.lbls = None # LabelsContext
+            self.inst = None # Token
+            self._expr = None # ExprContext
+            self.args = list() # of ExprContexts
 
         def INST(self):
             return self.getToken(psASMParser.INST, 0)
 
         def labels(self):
-            return self.getTypedRuleContext(psASMParser.LabelsContext, 0)
+            return self.getTypedRuleContext(psASMParser.LabelsContext,0)
 
-        def expr(self, i: int = None):
+
+        def expr(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(psASMParser.ExprContext)
             else:
-                return self.getTypedRuleContext(psASMParser.ExprContext, i)
+                return self.getTypedRuleContext(psASMParser.ExprContext,i)
 
-        def COMMA(self, i: int = None):
+
+        def COMMA(self, i:int=None):
             if i is None:
                 return self.getTokens(psASMParser.COMMA)
             else:
@@ -470,25 +491,29 @@ class psASMParser (Parser):
         def getRuleIndex(self):
             return psASMParser.RULE_instruction
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitInstruction"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitInstruction" ):
                 return visitor.visitInstruction(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def instruction(self):
 
         localctx = psASMParser.InstructionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 4, self.RULE_instruction)
-        self._la = 0  # Token type
+        self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 60
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la == psASMParser.CATID or _la == psASMParser.IDENTIFIER_LITERAL:
+            if _la==psASMParser.CATID or _la==psASMParser.IDENTIFIER_LITERAL:
                 self.state = 59
                 localctx.lbls = self.labels()
+
 
             self.state = 62
             localctx.inst = self.match(psASMParser.INST)
@@ -502,7 +527,7 @@ class psASMParser (Parser):
                 self.state = 68
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while _la == psASMParser.COMMA:
+                while _la==psASMParser.COMMA:
                     self.state = 64
                     self.match(psASMParser.COMMA)
                     self.state = 65
@@ -511,6 +536,8 @@ class psASMParser (Parser):
                     self.state = 70
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
+
+
 
         except RecognitionException as re:
             localctx.exception = re
@@ -522,22 +549,23 @@ class psASMParser (Parser):
 
     class LabelsContext(ParserRuleContext):
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self._preproc_identifier = None  # Preproc_identifierContext
-            self.lbls = list()  # of Preproc_identifierContexts
+            self._preproc_identifier = None # Preproc_identifierContext
+            self.lbls = list() # of Preproc_identifierContexts
 
         def COLON(self):
             return self.getToken(psASMParser.COLON, 0)
 
-        def preproc_identifier(self, i: int = None):
+        def preproc_identifier(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(psASMParser.Preproc_identifierContext)
             else:
-                return self.getTypedRuleContext(psASMParser.Preproc_identifierContext, i)
+                return self.getTypedRuleContext(psASMParser.Preproc_identifierContext,i)
 
-        def COMMA(self, i: int = None):
+
+        def COMMA(self, i:int=None):
             if i is None:
                 return self.getTokens(psASMParser.COMMA)
             else:
@@ -546,17 +574,20 @@ class psASMParser (Parser):
         def getRuleIndex(self):
             return psASMParser.RULE_labels
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitLabels"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLabels" ):
                 return visitor.visitLabels(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def labels(self):
 
         localctx = psASMParser.LabelsContext(self, self._ctx, self.state)
         self.enterRule(localctx, 6, self.RULE_labels)
-        self._la = 0  # Token type
+        self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 73
@@ -565,7 +596,7 @@ class psASMParser (Parser):
             self.state = 78
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la == psASMParser.COMMA:
+            while _la==psASMParser.COMMA:
                 self.state = 74
                 self.match(psASMParser.COMMA)
                 self.state = 75
@@ -587,60 +618,77 @@ class psASMParser (Parser):
 
     class Preproc_directiveContext(ParserRuleContext):
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
         def preproc_define(self):
-            return self.getTypedRuleContext(psASMParser.Preproc_defineContext, 0)
+            return self.getTypedRuleContext(psASMParser.Preproc_defineContext,0)
+
 
         def preproc_include(self):
-            return self.getTypedRuleContext(psASMParser.Preproc_includeContext, 0)
+            return self.getTypedRuleContext(psASMParser.Preproc_includeContext,0)
+
 
         def preproc_include_once(self):
-            return self.getTypedRuleContext(psASMParser.Preproc_include_onceContext, 0)
+            return self.getTypedRuleContext(psASMParser.Preproc_include_onceContext,0)
+
 
         def preproc_if(self):
-            return self.getTypedRuleContext(psASMParser.Preproc_ifContext, 0)
+            return self.getTypedRuleContext(psASMParser.Preproc_ifContext,0)
+
 
         def preproc_ifdef(self):
-            return self.getTypedRuleContext(psASMParser.Preproc_ifdefContext, 0)
+            return self.getTypedRuleContext(psASMParser.Preproc_ifdefContext,0)
+
 
         def preproc_ifndef(self):
-            return self.getTypedRuleContext(psASMParser.Preproc_ifndefContext, 0)
+            return self.getTypedRuleContext(psASMParser.Preproc_ifndefContext,0)
+
 
         def preproc_elif(self):
-            return self.getTypedRuleContext(psASMParser.Preproc_elifContext, 0)
+            return self.getTypedRuleContext(psASMParser.Preproc_elifContext,0)
+
 
         def preproc_else(self):
-            return self.getTypedRuleContext(psASMParser.Preproc_elseContext, 0)
+            return self.getTypedRuleContext(psASMParser.Preproc_elseContext,0)
+
 
         def preproc_for(self):
-            return self.getTypedRuleContext(psASMParser.Preproc_forContext, 0)
+            return self.getTypedRuleContext(psASMParser.Preproc_forContext,0)
+
 
         def preproc_end(self):
-            return self.getTypedRuleContext(psASMParser.Preproc_endContext, 0)
+            return self.getTypedRuleContext(psASMParser.Preproc_endContext,0)
+
 
         def preproc_print(self):
-            return self.getTypedRuleContext(psASMParser.Preproc_printContext, 0)
+            return self.getTypedRuleContext(psASMParser.Preproc_printContext,0)
+
 
         def preproc_error(self):
-            return self.getTypedRuleContext(psASMParser.Preproc_errorContext, 0)
+            return self.getTypedRuleContext(psASMParser.Preproc_errorContext,0)
+
 
         def preproc_macro(self):
-            return self.getTypedRuleContext(psASMParser.Preproc_macroContext, 0)
+            return self.getTypedRuleContext(psASMParser.Preproc_macroContext,0)
+
 
         def preproc_macro_expansion(self):
-            return self.getTypedRuleContext(psASMParser.Preproc_macro_expansionContext, 0)
+            return self.getTypedRuleContext(psASMParser.Preproc_macro_expansionContext,0)
+
 
         def getRuleIndex(self):
             return psASMParser.RULE_preproc_directive
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitPreproc_directive"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPreproc_directive" ):
                 return visitor.visitPreproc_directive(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def preproc_directive(self):
 
@@ -733,72 +781,76 @@ class psASMParser (Parser):
 
     class Preproc_identifierContext(ParserRuleContext):
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+
 
         def getRuleIndex(self):
             return psASMParser.RULE_preproc_identifier
 
-        def copyFrom(self, ctx: ParserRuleContext):
+     
+        def copyFrom(self, ctx:ParserRuleContext):
             super().copyFrom(ctx)
+
+
 
     class Catid_identifierContext(Preproc_identifierContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.Preproc_identifierContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a psASMParser.Preproc_identifierContext
             super().__init__(parser)
-            self._preproc_identifier = None  # Preproc_identifierContext
-            self.args = list()  # of Preproc_identifierContexts
+            self._preproc_identifier = None # Preproc_identifierContext
+            self.args = list() # of Preproc_identifierContexts
             self.copyFrom(ctx)
 
         def CATID(self):
             return self.getToken(psASMParser.CATID, 0)
-
         def LPAREN(self):
             return self.getToken(psASMParser.LPAREN, 0)
-
         def RPAREN(self):
             return self.getToken(psASMParser.RPAREN, 0)
-
-        def preproc_identifier(self, i: int = None):
+        def preproc_identifier(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(psASMParser.Preproc_identifierContext)
             else:
-                return self.getTypedRuleContext(psASMParser.Preproc_identifierContext, i)
+                return self.getTypedRuleContext(psASMParser.Preproc_identifierContext,i)
 
-        def COMMA(self, i: int = None):
+        def COMMA(self, i:int=None):
             if i is None:
                 return self.getTokens(psASMParser.COMMA)
             else:
                 return self.getToken(psASMParser.COMMA, i)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitCatid_identifier"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitCatid_identifier" ):
                 return visitor.visitCatid_identifier(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class Literal_identifierContext(Preproc_identifierContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.Preproc_identifierContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a psASMParser.Preproc_identifierContext
             super().__init__(parser)
-            self.identifier = None  # Token
+            self.identifier = None # Token
             self.copyFrom(ctx)
 
         def IDENTIFIER_LITERAL(self):
             return self.getToken(psASMParser.IDENTIFIER_LITERAL, 0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitLiteral_identifier"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLiteral_identifier" ):
                 return visitor.visitLiteral_identifier(self)
             else:
                 return visitor.visitChildren(self)
+
+
 
     def preproc_identifier(self):
 
         localctx = psASMParser.Preproc_identifierContext(self, self._ctx, self.state)
         self.enterRule(localctx, 10, self.RULE_preproc_identifier)
-        self._la = 0  # Token type
+        self._la = 0 # Token type
         try:
             self.state = 111
             self._errHandler.sync(self)
@@ -819,7 +871,7 @@ class psASMParser (Parser):
                 self.state = 102
                 localctx._preproc_identifier = self.preproc_identifier()
                 localctx.args.append(localctx._preproc_identifier)
-                self.state = 105
+                self.state = 105 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while True:
@@ -828,10 +880,10 @@ class psASMParser (Parser):
                     self.state = 104
                     localctx._preproc_identifier = self.preproc_identifier()
                     localctx.args.append(localctx._preproc_identifier)
-                    self.state = 107
+                    self.state = 107 
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
-                    if not (_la == psASMParser.COMMA):
+                    if not (_la==psASMParser.COMMA):
                         break
 
                 self.state = 109
@@ -850,35 +902,40 @@ class psASMParser (Parser):
 
     class Preproc_defineContext(ParserRuleContext):
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.name = None  # Preproc_identifierContext
-            self.value = None  # ExprContext
+            self.name = None # Preproc_identifierContext
+            self.value = None # ExprContext
 
         def DEFINE(self):
             return self.getToken(psASMParser.DEFINE, 0)
 
         def preproc_identifier(self):
-            return self.getTypedRuleContext(psASMParser.Preproc_identifierContext, 0)
+            return self.getTypedRuleContext(psASMParser.Preproc_identifierContext,0)
+
 
         def expr(self):
-            return self.getTypedRuleContext(psASMParser.ExprContext, 0)
+            return self.getTypedRuleContext(psASMParser.ExprContext,0)
+
 
         def getRuleIndex(self):
             return psASMParser.RULE_preproc_define
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitPreproc_define"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPreproc_define" ):
                 return visitor.visitPreproc_define(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def preproc_define(self):
 
         localctx = psASMParser.Preproc_defineContext(self, self._ctx, self.state)
         self.enterRule(localctx, 12, self.RULE_preproc_define)
-        self._la = 0  # Token type
+        self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 113
@@ -892,6 +949,7 @@ class psASMParser (Parser):
                 self.state = 115
                 localctx.value = self.expr(0)
 
+
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -902,25 +960,29 @@ class psASMParser (Parser):
 
     class Preproc_includeContext(ParserRuleContext):
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.file_str = None  # String_literalContext
+            self.file_str = None # String_literalContext
 
         def INCLUDE(self):
             return self.getToken(psASMParser.INCLUDE, 0)
 
         def string_literal(self):
-            return self.getTypedRuleContext(psASMParser.String_literalContext, 0)
+            return self.getTypedRuleContext(psASMParser.String_literalContext,0)
+
 
         def getRuleIndex(self):
             return psASMParser.RULE_preproc_include
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitPreproc_include"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPreproc_include" ):
                 return visitor.visitPreproc_include(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def preproc_include(self):
 
@@ -942,7 +1004,7 @@ class psASMParser (Parser):
 
     class Preproc_include_onceContext(ParserRuleContext):
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -952,11 +1014,14 @@ class psASMParser (Parser):
         def getRuleIndex(self):
             return psASMParser.RULE_preproc_include_once
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitPreproc_include_once"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPreproc_include_once" ):
                 return visitor.visitPreproc_include_once(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def preproc_include_once(self):
 
@@ -976,25 +1041,29 @@ class psASMParser (Parser):
 
     class Preproc_ifContext(ParserRuleContext):
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.cond = None  # ExprContext
+            self.cond = None # ExprContext
 
         def IF(self):
             return self.getToken(psASMParser.IF, 0)
 
         def expr(self):
-            return self.getTypedRuleContext(psASMParser.ExprContext, 0)
+            return self.getTypedRuleContext(psASMParser.ExprContext,0)
+
 
         def getRuleIndex(self):
             return psASMParser.RULE_preproc_if
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitPreproc_if"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPreproc_if" ):
                 return visitor.visitPreproc_if(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def preproc_if(self):
 
@@ -1016,25 +1085,29 @@ class psASMParser (Parser):
 
     class Preproc_ifdefContext(ParserRuleContext):
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.arg = None  # Preproc_identifierContext
+            self.arg = None # Preproc_identifierContext
 
         def IFDEF(self):
             return self.getToken(psASMParser.IFDEF, 0)
 
         def preproc_identifier(self):
-            return self.getTypedRuleContext(psASMParser.Preproc_identifierContext, 0)
+            return self.getTypedRuleContext(psASMParser.Preproc_identifierContext,0)
+
 
         def getRuleIndex(self):
             return psASMParser.RULE_preproc_ifdef
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitPreproc_ifdef"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPreproc_ifdef" ):
                 return visitor.visitPreproc_ifdef(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def preproc_ifdef(self):
 
@@ -1056,25 +1129,29 @@ class psASMParser (Parser):
 
     class Preproc_ifndefContext(ParserRuleContext):
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.arg = None  # Preproc_identifierContext
+            self.arg = None # Preproc_identifierContext
 
         def IFNDEF(self):
             return self.getToken(psASMParser.IFNDEF, 0)
 
         def preproc_identifier(self):
-            return self.getTypedRuleContext(psASMParser.Preproc_identifierContext, 0)
+            return self.getTypedRuleContext(psASMParser.Preproc_identifierContext,0)
+
 
         def getRuleIndex(self):
             return psASMParser.RULE_preproc_ifndef
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitPreproc_ifndef"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPreproc_ifndef" ):
                 return visitor.visitPreproc_ifndef(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def preproc_ifndef(self):
 
@@ -1096,25 +1173,29 @@ class psASMParser (Parser):
 
     class Preproc_elifContext(ParserRuleContext):
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.cond = None  # ExprContext
+            self.cond = None # ExprContext
 
         def ELIF(self):
             return self.getToken(psASMParser.ELIF, 0)
 
         def expr(self):
-            return self.getTypedRuleContext(psASMParser.ExprContext, 0)
+            return self.getTypedRuleContext(psASMParser.ExprContext,0)
+
 
         def getRuleIndex(self):
             return psASMParser.RULE_preproc_elif
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitPreproc_elif"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPreproc_elif" ):
                 return visitor.visitPreproc_elif(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def preproc_elif(self):
 
@@ -1136,7 +1217,7 @@ class psASMParser (Parser):
 
     class Preproc_elseContext(ParserRuleContext):
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -1146,11 +1227,14 @@ class psASMParser (Parser):
         def getRuleIndex(self):
             return psASMParser.RULE_preproc_else
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitPreproc_else"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPreproc_else" ):
                 return visitor.visitPreproc_else(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def preproc_else(self):
 
@@ -1170,40 +1254,45 @@ class psASMParser (Parser):
 
     class Preproc_forContext(ParserRuleContext):
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.index_name = None  # Preproc_identifierContext
-            self.start_val = None  # ExprContext
-            self.condition = None  # ExprContext
-            self.update = None  # ExprContext
+            self.index_name = None # Preproc_identifierContext
+            self.start_val = None # ExprContext
+            self.condition = None # ExprContext
+            self.update = None # ExprContext
 
         def FOR(self):
             return self.getToken(psASMParser.FOR, 0)
 
-        def COMMA(self, i: int = None):
+        def COMMA(self, i:int=None):
             if i is None:
                 return self.getTokens(psASMParser.COMMA)
             else:
                 return self.getToken(psASMParser.COMMA, i)
 
         def preproc_identifier(self):
-            return self.getTypedRuleContext(psASMParser.Preproc_identifierContext, 0)
+            return self.getTypedRuleContext(psASMParser.Preproc_identifierContext,0)
 
-        def expr(self, i: int = None):
+
+        def expr(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(psASMParser.ExprContext)
             else:
-                return self.getTypedRuleContext(psASMParser.ExprContext, i)
+                return self.getTypedRuleContext(psASMParser.ExprContext,i)
+
 
         def getRuleIndex(self):
             return psASMParser.RULE_preproc_for
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitPreproc_for"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPreproc_for" ):
                 return visitor.visitPreproc_for(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def preproc_for(self):
 
@@ -1237,7 +1326,7 @@ class psASMParser (Parser):
 
     class Preproc_endContext(ParserRuleContext):
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -1247,11 +1336,14 @@ class psASMParser (Parser):
         def getRuleIndex(self):
             return psASMParser.RULE_preproc_end
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitPreproc_end"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPreproc_end" ):
                 return visitor.visitPreproc_end(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def preproc_end(self):
 
@@ -1271,31 +1363,35 @@ class psASMParser (Parser):
 
     class Preproc_printContext(ParserRuleContext):
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.txt = None  # ExprContext
+            self.txt = None # ExprContext
 
         def PRINT(self):
             return self.getToken(psASMParser.PRINT, 0)
 
         def expr(self):
-            return self.getTypedRuleContext(psASMParser.ExprContext, 0)
+            return self.getTypedRuleContext(psASMParser.ExprContext,0)
+
 
         def getRuleIndex(self):
             return psASMParser.RULE_preproc_print
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitPreproc_print"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPreproc_print" ):
                 return visitor.visitPreproc_print(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def preproc_print(self):
 
         localctx = psASMParser.Preproc_printContext(self, self._ctx, self.state)
         self.enterRule(localctx, 32, self.RULE_preproc_print)
-        self._la = 0  # Token type
+        self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 148
@@ -1307,6 +1403,7 @@ class psASMParser (Parser):
                 self.state = 149
                 localctx.txt = self.expr(0)
 
+
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1317,31 +1414,35 @@ class psASMParser (Parser):
 
     class Preproc_errorContext(ParserRuleContext):
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.txt = None  # ExprContext
+            self.txt = None # ExprContext
 
         def ERROR(self):
             return self.getToken(psASMParser.ERROR, 0)
 
         def expr(self):
-            return self.getTypedRuleContext(psASMParser.ExprContext, 0)
+            return self.getTypedRuleContext(psASMParser.ExprContext,0)
+
 
         def getRuleIndex(self):
             return psASMParser.RULE_preproc_error
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitPreproc_error"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPreproc_error" ):
                 return visitor.visitPreproc_error(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def preproc_error(self):
 
         localctx = psASMParser.Preproc_errorContext(self, self._ctx, self.state)
         self.enterRule(localctx, 34, self.RULE_preproc_error)
-        self._la = 0  # Token type
+        self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 152
@@ -1353,6 +1454,7 @@ class psASMParser (Parser):
                 self.state = 153
                 localctx.txt = self.expr(0)
 
+
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1363,23 +1465,24 @@ class psASMParser (Parser):
 
     class Preproc_macroContext(ParserRuleContext):
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.macro_name = None  # Preproc_identifierContext
-            self._preproc_identifier = None  # Preproc_identifierContext
-            self.args = list()  # of Preproc_identifierContexts
+            self.macro_name = None # Preproc_identifierContext
+            self._preproc_identifier = None # Preproc_identifierContext
+            self.args = list() # of Preproc_identifierContexts
 
         def MACRO(self):
             return self.getToken(psASMParser.MACRO, 0)
 
-        def preproc_identifier(self, i: int = None):
+        def preproc_identifier(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(psASMParser.Preproc_identifierContext)
             else:
-                return self.getTypedRuleContext(psASMParser.Preproc_identifierContext, i)
+                return self.getTypedRuleContext(psASMParser.Preproc_identifierContext,i)
 
-        def COMMA(self, i: int = None):
+
+        def COMMA(self, i:int=None):
             if i is None:
                 return self.getTokens(psASMParser.COMMA)
             else:
@@ -1388,17 +1491,20 @@ class psASMParser (Parser):
         def getRuleIndex(self):
             return psASMParser.RULE_preproc_macro
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitPreproc_macro"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPreproc_macro" ):
                 return visitor.visitPreproc_macro(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def preproc_macro(self):
 
         localctx = psASMParser.Preproc_macroContext(self, self._ctx, self.state)
         self.enterRule(localctx, 36, self.RULE_preproc_macro)
-        self._la = 0  # Token type
+        self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 156
@@ -1408,14 +1514,14 @@ class psASMParser (Parser):
             self.state = 166
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la == psASMParser.CATID or _la == psASMParser.IDENTIFIER_LITERAL:
+            if _la==psASMParser.CATID or _la==psASMParser.IDENTIFIER_LITERAL:
                 self.state = 158
                 localctx._preproc_identifier = self.preproc_identifier()
                 localctx.args.append(localctx._preproc_identifier)
                 self.state = 163
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while _la == psASMParser.COMMA:
+                while _la==psASMParser.COMMA:
                     self.state = 159
                     self.match(psASMParser.COMMA)
                     self.state = 160
@@ -1424,6 +1530,8 @@ class psASMParser (Parser):
                     self.state = 165
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
+
+
 
         except RecognitionException as re:
             localctx.exception = re
@@ -1435,27 +1543,30 @@ class psASMParser (Parser):
 
     class Preproc_macro_expansionContext(ParserRuleContext):
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.lbls = None  # LabelsContext
-            self.macro_name = None  # Preproc_identifierContext
-            self._expr = None  # ExprContext
-            self.args = list()  # of ExprContexts
+            self.lbls = None # LabelsContext
+            self.macro_name = None # Preproc_identifierContext
+            self._expr = None # ExprContext
+            self.args = list() # of ExprContexts
 
         def preproc_identifier(self):
-            return self.getTypedRuleContext(psASMParser.Preproc_identifierContext, 0)
+            return self.getTypedRuleContext(psASMParser.Preproc_identifierContext,0)
+
 
         def labels(self):
-            return self.getTypedRuleContext(psASMParser.LabelsContext, 0)
+            return self.getTypedRuleContext(psASMParser.LabelsContext,0)
 
-        def expr(self, i: int = None):
+
+        def expr(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(psASMParser.ExprContext)
             else:
-                return self.getTypedRuleContext(psASMParser.ExprContext, i)
+                return self.getTypedRuleContext(psASMParser.ExprContext,i)
 
-        def COMMA(self, i: int = None):
+
+        def COMMA(self, i:int=None):
             if i is None:
                 return self.getTokens(psASMParser.COMMA)
             else:
@@ -1464,25 +1575,29 @@ class psASMParser (Parser):
         def getRuleIndex(self):
             return psASMParser.RULE_preproc_macro_expansion
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitPreproc_macro_expansion"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPreproc_macro_expansion" ):
                 return visitor.visitPreproc_macro_expansion(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def preproc_macro_expansion(self):
 
         localctx = psASMParser.Preproc_macro_expansionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 38, self.RULE_preproc_macro_expansion)
-        self._la = 0  # Token type
+        self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 169
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input, 13, self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,13,self._ctx)
             if la_ == 1:
                 self.state = 168
                 localctx.lbls = self.labels()
+
 
             self.state = 171
             localctx.macro_name = self.preproc_identifier()
@@ -1496,7 +1611,7 @@ class psASMParser (Parser):
                 self.state = 177
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while _la == psASMParser.COMMA:
+                while _la==psASMParser.COMMA:
                     self.state = 173
                     self.match(psASMParser.COMMA)
                     self.state = 174
@@ -1505,6 +1620,8 @@ class psASMParser (Parser):
                     self.state = 179
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
+
+
 
         except RecognitionException as re:
             localctx.exception = re
@@ -1516,380 +1633,386 @@ class psASMParser (Parser):
 
     class ExprContext(ParserRuleContext):
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+
 
         def getRuleIndex(self):
             return psASMParser.RULE_expr
 
-        def copyFrom(self, ctx: ParserRuleContext):
+     
+        def copyFrom(self, ctx:ParserRuleContext):
             super().copyFrom(ctx)
+
 
     class Compare_exprContext(ExprContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a psASMParser.ExprContext
             super().__init__(parser)
-            self.child1 = None  # ExprContext
-            self.op = None  # Token
-            self.child2 = None  # ExprContext
+            self.child1 = None # ExprContext
+            self.op = None # Token
+            self.child2 = None # ExprContext
             self.copyFrom(ctx)
 
-        def expr(self, i: int = None):
+        def expr(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(psASMParser.ExprContext)
             else:
-                return self.getTypedRuleContext(psASMParser.ExprContext, i)
+                return self.getTypedRuleContext(psASMParser.ExprContext,i)
 
         def LESS(self):
             return self.getToken(psASMParser.LESS, 0)
-
         def LESS_EQ(self):
             return self.getToken(psASMParser.LESS_EQ, 0)
-
         def GREATER(self):
             return self.getToken(psASMParser.GREATER, 0)
-
         def GREATER_EQ(self):
             return self.getToken(psASMParser.GREATER_EQ, 0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitCompare_expr"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitCompare_expr" ):
                 return visitor.visitCompare_expr(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class Add_exprContext(ExprContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a psASMParser.ExprContext
             super().__init__(parser)
-            self.child1 = None  # ExprContext
-            self.op = None  # Token
-            self.child2 = None  # ExprContext
+            self.child1 = None # ExprContext
+            self.op = None # Token
+            self.child2 = None # ExprContext
             self.copyFrom(ctx)
 
-        def expr(self, i: int = None):
+        def expr(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(psASMParser.ExprContext)
             else:
-                return self.getTypedRuleContext(psASMParser.ExprContext, i)
+                return self.getTypedRuleContext(psASMParser.ExprContext,i)
 
         def PLUS(self):
             return self.getToken(psASMParser.PLUS, 0)
-
         def MINUS(self):
             return self.getToken(psASMParser.MINUS, 0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitAdd_expr"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAdd_expr" ):
                 return visitor.visitAdd_expr(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class Bitxor_exprContext(ExprContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a psASMParser.ExprContext
             super().__init__(parser)
-            self.child1 = None  # ExprContext
-            self.child2 = None  # ExprContext
+            self.child1 = None # ExprContext
+            self.child2 = None # ExprContext
             self.copyFrom(ctx)
 
         def BIT_XOR(self):
             return self.getToken(psASMParser.BIT_XOR, 0)
-
-        def expr(self, i: int = None):
+        def expr(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(psASMParser.ExprContext)
             else:
-                return self.getTypedRuleContext(psASMParser.ExprContext, i)
+                return self.getTypedRuleContext(psASMParser.ExprContext,i)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitBitxor_expr"):
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitBitxor_expr" ):
                 return visitor.visitBitxor_expr(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class String_index_exprContext(ExprContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a psASMParser.ExprContext
             super().__init__(parser)
-            self.child1 = None  # ExprContext
-            self.child2 = None  # ExprContext
+            self.child1 = None # ExprContext
+            self.child2 = None # ExprContext
             self.copyFrom(ctx)
 
         def LSQBRACKET(self):
             return self.getToken(psASMParser.LSQBRACKET, 0)
-
         def RSQBRACKET(self):
             return self.getToken(psASMParser.RSQBRACKET, 0)
-
-        def expr(self, i: int = None):
+        def expr(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(psASMParser.ExprContext)
             else:
-                return self.getTypedRuleContext(psASMParser.ExprContext, i)
+                return self.getTypedRuleContext(psASMParser.ExprContext,i)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitString_index_expr"):
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitString_index_expr" ):
                 return visitor.visitString_index_expr(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class Shift_exprContext(ExprContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a psASMParser.ExprContext
             super().__init__(parser)
-            self.child1 = None  # ExprContext
-            self.op = None  # Token
-            self.child2 = None  # ExprContext
+            self.child1 = None # ExprContext
+            self.op = None # Token
+            self.child2 = None # ExprContext
             self.copyFrom(ctx)
 
-        def expr(self, i: int = None):
+        def expr(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(psASMParser.ExprContext)
             else:
-                return self.getTypedRuleContext(psASMParser.ExprContext, i)
+                return self.getTypedRuleContext(psASMParser.ExprContext,i)
 
         def LSHFIT(self):
             return self.getToken(psASMParser.LSHFIT, 0)
-
         def RSHIFT(self):
             return self.getToken(psASMParser.RSHIFT, 0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitShift_expr"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitShift_expr" ):
                 return visitor.visitShift_expr(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class Mult_exprContext(ExprContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a psASMParser.ExprContext
             super().__init__(parser)
-            self.child1 = None  # ExprContext
-            self.op = None  # Token
-            self.child2 = None  # ExprContext
+            self.child1 = None # ExprContext
+            self.op = None # Token
+            self.child2 = None # ExprContext
             self.copyFrom(ctx)
 
-        def expr(self, i: int = None):
+        def expr(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(psASMParser.ExprContext)
             else:
-                return self.getTypedRuleContext(psASMParser.ExprContext, i)
+                return self.getTypedRuleContext(psASMParser.ExprContext,i)
 
         def DIV(self):
             return self.getToken(psASMParser.DIV, 0)
-
         def MUL(self):
             return self.getToken(psASMParser.MUL, 0)
-
         def MOD(self):
             return self.getToken(psASMParser.MOD, 0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitMult_expr"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitMult_expr" ):
                 return visitor.visitMult_expr(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class Unary_exprContext(ExprContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a psASMParser.ExprContext
             super().__init__(parser)
-            self.op = None  # Token
-            self.child1 = None  # ExprContext
+            self.op = None # Token
+            self.child1 = None # ExprContext
             self.copyFrom(ctx)
 
         def expr(self):
-            return self.getTypedRuleContext(psASMParser.ExprContext, 0)
+            return self.getTypedRuleContext(psASMParser.ExprContext,0)
 
         def PLUS(self):
             return self.getToken(psASMParser.PLUS, 0)
-
         def MINUS(self):
             return self.getToken(psASMParser.MINUS, 0)
-
         def NOT(self):
             return self.getToken(psASMParser.NOT, 0)
-
         def BIT_NOT(self):
             return self.getToken(psASMParser.BIT_NOT, 0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitUnary_expr"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitUnary_expr" ):
                 return visitor.visitUnary_expr(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class And_exprContext(ExprContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a psASMParser.ExprContext
             super().__init__(parser)
-            self.child1 = None  # ExprContext
-            self.child2 = None  # ExprContext
+            self.child1 = None # ExprContext
+            self.child2 = None # ExprContext
             self.copyFrom(ctx)
 
         def AND(self):
             return self.getToken(psASMParser.AND, 0)
-
-        def expr(self, i: int = None):
+        def expr(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(psASMParser.ExprContext)
             else:
-                return self.getTypedRuleContext(psASMParser.ExprContext, i)
+                return self.getTypedRuleContext(psASMParser.ExprContext,i)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitAnd_expr"):
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAnd_expr" ):
                 return visitor.visitAnd_expr(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class Bitand_exprContext(ExprContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a psASMParser.ExprContext
             super().__init__(parser)
-            self.child1 = None  # ExprContext
-            self.child2 = None  # ExprContext
+            self.child1 = None # ExprContext
+            self.child2 = None # ExprContext
             self.copyFrom(ctx)
 
         def BIT_AND(self):
             return self.getToken(psASMParser.BIT_AND, 0)
-
-        def expr(self, i: int = None):
+        def expr(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(psASMParser.ExprContext)
             else:
-                return self.getTypedRuleContext(psASMParser.ExprContext, i)
+                return self.getTypedRuleContext(psASMParser.ExprContext,i)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitBitand_expr"):
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitBitand_expr" ):
                 return visitor.visitBitand_expr(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class Condit_exprContext(ExprContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a psASMParser.ExprContext
             super().__init__(parser)
-            self.child1 = None  # ExprContext
-            self.child2 = None  # ExprContext
-            self.child3 = None  # ExprContext
+            self.child1 = None # ExprContext
+            self.child2 = None # ExprContext
+            self.child3 = None # ExprContext
             self.copyFrom(ctx)
 
         def QUEST(self):
             return self.getToken(psASMParser.QUEST, 0)
-
         def COLON(self):
             return self.getToken(psASMParser.COLON, 0)
-
-        def expr(self, i: int = None):
+        def expr(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(psASMParser.ExprContext)
             else:
-                return self.getTypedRuleContext(psASMParser.ExprContext, i)
+                return self.getTypedRuleContext(psASMParser.ExprContext,i)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitCondit_expr"):
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitCondit_expr" ):
                 return visitor.visitCondit_expr(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class Atom_exprContext(ExprContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a psASMParser.ExprContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def atom(self):
-            return self.getTypedRuleContext(psASMParser.AtomContext, 0)
+            return self.getTypedRuleContext(psASMParser.AtomContext,0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitAtom_expr"):
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAtom_expr" ):
                 return visitor.visitAtom_expr(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class Or_exprContext(ExprContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a psASMParser.ExprContext
             super().__init__(parser)
-            self.child1 = None  # ExprContext
-            self.child2 = None  # ExprContext
+            self.child1 = None # ExprContext
+            self.child2 = None # ExprContext
             self.copyFrom(ctx)
 
         def OR(self):
             return self.getToken(psASMParser.OR, 0)
-
-        def expr(self, i: int = None):
+        def expr(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(psASMParser.ExprContext)
             else:
-                return self.getTypedRuleContext(psASMParser.ExprContext, i)
+                return self.getTypedRuleContext(psASMParser.ExprContext,i)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitOr_expr"):
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitOr_expr" ):
                 return visitor.visitOr_expr(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class Bitor_exprContext(ExprContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a psASMParser.ExprContext
             super().__init__(parser)
-            self.child1 = None  # ExprContext
-            self.child2 = None  # ExprContext
+            self.child1 = None # ExprContext
+            self.child2 = None # ExprContext
             self.copyFrom(ctx)
 
         def BIT_OR(self):
             return self.getToken(psASMParser.BIT_OR, 0)
-
-        def expr(self, i: int = None):
+        def expr(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(psASMParser.ExprContext)
             else:
-                return self.getTypedRuleContext(psASMParser.ExprContext, i)
+                return self.getTypedRuleContext(psASMParser.ExprContext,i)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitBitor_expr"):
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitBitor_expr" ):
                 return visitor.visitBitor_expr(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class Equate_exprContext(ExprContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a psASMParser.ExprContext
             super().__init__(parser)
-            self.child1 = None  # ExprContext
-            self.op = None  # Token
-            self.child2 = None  # ExprContext
+            self.child1 = None # ExprContext
+            self.op = None # Token
+            self.child2 = None # ExprContext
             self.copyFrom(ctx)
 
-        def expr(self, i: int = None):
+        def expr(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(psASMParser.ExprContext)
             else:
-                return self.getTypedRuleContext(psASMParser.ExprContext, i)
+                return self.getTypedRuleContext(psASMParser.ExprContext,i)
 
         def EQ(self):
             return self.getToken(psASMParser.EQ, 0)
-
         def NEQ(self):
             return self.getToken(psASMParser.NEQ, 0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitEquate_expr"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitEquate_expr" ):
                 return visitor.visitEquate_expr(self)
             else:
                 return visitor.visitChildren(self)
 
-    def expr(self, _p: int = 0):
+
+
+    def expr(self, _p:int=0):
         _parentctx = self._ctx
         _parentState = self.state
         localctx = psASMParser.ExprContext(self, self._ctx, _parentState)
         _prevctx = localctx
         _startState = 40
         self.enterRecursionRule(localctx, 40, self.RULE_expr, _p)
-        self._la = 0  # Token type
+        self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 186
@@ -1924,18 +2047,17 @@ class psASMParser (Parser):
             self._ctx.stop = self._input.LT(-1)
             self.state = 231
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input, 18, self._ctx)
-            while _alt != 2 and _alt != ATN.INVALID_ALT_NUMBER:
-                if _alt == 1:
+            _alt = self._interp.adaptivePredict(self._input,18,self._ctx)
+            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
+                if _alt==1:
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
                     self.state = 229
                     self._errHandler.sync(self)
-                    la_ = self._interp.adaptivePredict(self._input, 17, self._ctx)
+                    la_ = self._interp.adaptivePredict(self._input,17,self._ctx)
                     if la_ == 1:
-                        localctx = psASMParser.Mult_exprContext(
-                            self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = psASMParser.Mult_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 188
@@ -1955,8 +2077,7 @@ class psASMParser (Parser):
                         pass
 
                     elif la_ == 2:
-                        localctx = psASMParser.Add_exprContext(
-                            self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = psASMParser.Add_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 191
@@ -1966,7 +2087,7 @@ class psASMParser (Parser):
                         self.state = 192
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
-                        if not(_la == psASMParser.PLUS or _la == psASMParser.MINUS):
+                        if not(_la==psASMParser.PLUS or _la==psASMParser.MINUS):
                             localctx.op = self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
@@ -1976,8 +2097,7 @@ class psASMParser (Parser):
                         pass
 
                     elif la_ == 3:
-                        localctx = psASMParser.Shift_exprContext(
-                            self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = psASMParser.Shift_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 194
@@ -1987,7 +2107,7 @@ class psASMParser (Parser):
                         self.state = 195
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
-                        if not(_la == psASMParser.LSHFIT or _la == psASMParser.RSHIFT):
+                        if not(_la==psASMParser.LSHFIT or _la==psASMParser.RSHIFT):
                             localctx.op = self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
@@ -1997,8 +2117,7 @@ class psASMParser (Parser):
                         pass
 
                     elif la_ == 4:
-                        localctx = psASMParser.Compare_exprContext(
-                            self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = psASMParser.Compare_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 197
@@ -2018,8 +2137,7 @@ class psASMParser (Parser):
                         pass
 
                     elif la_ == 5:
-                        localctx = psASMParser.Equate_exprContext(
-                            self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = psASMParser.Equate_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 200
@@ -2029,7 +2147,7 @@ class psASMParser (Parser):
                         self.state = 201
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
-                        if not(_la == psASMParser.EQ or _la == psASMParser.NEQ):
+                        if not(_la==psASMParser.EQ or _la==psASMParser.NEQ):
                             localctx.op = self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
@@ -2039,8 +2157,7 @@ class psASMParser (Parser):
                         pass
 
                     elif la_ == 6:
-                        localctx = psASMParser.Bitand_exprContext(
-                            self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = psASMParser.Bitand_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 203
@@ -2054,8 +2171,7 @@ class psASMParser (Parser):
                         pass
 
                     elif la_ == 7:
-                        localctx = psASMParser.Bitxor_exprContext(
-                            self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = psASMParser.Bitxor_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 206
@@ -2069,8 +2185,7 @@ class psASMParser (Parser):
                         pass
 
                     elif la_ == 8:
-                        localctx = psASMParser.Bitor_exprContext(
-                            self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = psASMParser.Bitor_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 209
@@ -2084,8 +2199,7 @@ class psASMParser (Parser):
                         pass
 
                     elif la_ == 9:
-                        localctx = psASMParser.And_exprContext(
-                            self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = psASMParser.And_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 212
@@ -2099,8 +2213,7 @@ class psASMParser (Parser):
                         pass
 
                     elif la_ == 10:
-                        localctx = psASMParser.Or_exprContext(
-                            self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = psASMParser.Or_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 215
@@ -2114,8 +2227,7 @@ class psASMParser (Parser):
                         pass
 
                     elif la_ == 11:
-                        localctx = psASMParser.Condit_exprContext(
-                            self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = psASMParser.Condit_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 218
@@ -2133,8 +2245,7 @@ class psASMParser (Parser):
                         pass
 
                     elif la_ == 12:
-                        localctx = psASMParser.String_index_exprContext(
-                            self, psASMParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = psASMParser.String_index_exprContext(self, psASMParser.ExprContext(self, _parentctx, _parentState))
                         localctx.child1 = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 224
@@ -2149,9 +2260,10 @@ class psASMParser (Parser):
                         self.match(psASMParser.RSQBRACKET)
                         pass
 
+             
                 self.state = 233
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input, 18, self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,18,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -2163,175 +2275,182 @@ class psASMParser (Parser):
 
     class AtomContext(ParserRuleContext):
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+
 
         def getRuleIndex(self):
             return psASMParser.RULE_atom
 
-        def copyFrom(self, ctx: ParserRuleContext):
+     
+        def copyFrom(self, ctx:ParserRuleContext):
             super().copyFrom(ctx)
+
+
 
     class Defined_atomContext(AtomContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.AtomContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a psASMParser.AtomContext
             super().__init__(parser)
-            self.arg = None  # Preproc_identifierContext
+            self.arg = None # Preproc_identifierContext
             self.copyFrom(ctx)
 
         def DEFINED(self):
             return self.getToken(psASMParser.DEFINED, 0)
-
         def LPAREN(self):
             return self.getToken(psASMParser.LPAREN, 0)
-
         def RPAREN(self):
             return self.getToken(psASMParser.RPAREN, 0)
-
         def preproc_identifier(self):
-            return self.getTypedRuleContext(psASMParser.Preproc_identifierContext, 0)
+            return self.getTypedRuleContext(psASMParser.Preproc_identifierContext,0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitDefined_atom"):
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitDefined_atom" ):
                 return visitor.visitDefined_atom(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class Strlen_atomContext(AtomContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.AtomContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a psASMParser.AtomContext
             super().__init__(parser)
-            self.txt = None  # ExprContext
+            self.txt = None # ExprContext
             self.copyFrom(ctx)
 
         def STRLEN(self):
             return self.getToken(psASMParser.STRLEN, 0)
-
         def LPAREN(self):
             return self.getToken(psASMParser.LPAREN, 0)
-
         def RPAREN(self):
             return self.getToken(psASMParser.RPAREN, 0)
-
         def expr(self):
-            return self.getTypedRuleContext(psASMParser.ExprContext, 0)
+            return self.getTypedRuleContext(psASMParser.ExprContext,0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitStrlen_atom"):
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitStrlen_atom" ):
                 return visitor.visitStrlen_atom(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class Sprintf_atomContext(AtomContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.AtomContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a psASMParser.AtomContext
             super().__init__(parser)
-            self.txt = None  # ExprContext
-            self._expr = None  # ExprContext
-            self.args = list()  # of ExprContexts
+            self.txt = None # ExprContext
+            self._expr = None # ExprContext
+            self.args = list() # of ExprContexts
             self.copyFrom(ctx)
 
         def SPRINTF(self):
             return self.getToken(psASMParser.SPRINTF, 0)
-
         def LPAREN(self):
             return self.getToken(psASMParser.LPAREN, 0)
-
         def RPAREN(self):
             return self.getToken(psASMParser.RPAREN, 0)
-
-        def expr(self, i: int = None):
+        def expr(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(psASMParser.ExprContext)
             else:
-                return self.getTypedRuleContext(psASMParser.ExprContext, i)
+                return self.getTypedRuleContext(psASMParser.ExprContext,i)
 
-        def COMMA(self, i: int = None):
+        def COMMA(self, i:int=None):
             if i is None:
                 return self.getTokens(psASMParser.COMMA)
             else:
                 return self.getToken(psASMParser.COMMA, i)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitSprintf_atom"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitSprintf_atom" ):
                 return visitor.visitSprintf_atom(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class Identifier_atomContext(AtomContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.AtomContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a psASMParser.AtomContext
             super().__init__(parser)
-            self.arg = None  # Preproc_identifierContext
+            self.arg = None # Preproc_identifierContext
             self.copyFrom(ctx)
 
         def preproc_identifier(self):
-            return self.getTypedRuleContext(psASMParser.Preproc_identifierContext, 0)
+            return self.getTypedRuleContext(psASMParser.Preproc_identifierContext,0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitIdentifier_atom"):
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitIdentifier_atom" ):
                 return visitor.visitIdentifier_atom(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class Expr_atomContext(AtomContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.AtomContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a psASMParser.AtomContext
             super().__init__(parser)
-            self.child1 = None  # ExprContext
+            self.child1 = None # ExprContext
             self.copyFrom(ctx)
 
         def LPAREN(self):
             return self.getToken(psASMParser.LPAREN, 0)
-
         def RPAREN(self):
             return self.getToken(psASMParser.RPAREN, 0)
-
         def expr(self):
-            return self.getTypedRuleContext(psASMParser.ExprContext, 0)
+            return self.getTypedRuleContext(psASMParser.ExprContext,0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitExpr_atom"):
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitExpr_atom" ):
                 return visitor.visitExpr_atom(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class String_atomContext(AtomContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.AtomContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a psASMParser.AtomContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def string_literal(self):
-            return self.getTypedRuleContext(psASMParser.String_literalContext, 0)
+            return self.getTypedRuleContext(psASMParser.String_literalContext,0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitString_atom"):
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitString_atom" ):
                 return visitor.visitString_atom(self)
             else:
                 return visitor.visitChildren(self)
 
+
     class Numerical_atomContext(AtomContext):
 
-        def __init__(self, parser, ctx: ParserRuleContext):  # actually a psASMParser.AtomContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a psASMParser.AtomContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def numerical_literal(self):
-            return self.getTypedRuleContext(psASMParser.Numerical_literalContext, 0)
+            return self.getTypedRuleContext(psASMParser.Numerical_literalContext,0)
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitNumerical_atom"):
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitNumerical_atom" ):
                 return visitor.visitNumerical_atom(self)
             else:
                 return visitor.visitChildren(self)
+
+
 
     def atom(self):
 
         localctx = psASMParser.AtomContext(self, self._ctx, self.state)
         self.enterRule(localctx, 42, self.RULE_atom)
-        self._la = 0  # Token type
+        self._la = 0 # Token type
         try:
             self.state = 263
             self._errHandler.sync(self)
@@ -2382,7 +2501,7 @@ class psASMParser (Parser):
                 self.state = 252
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while _la == psASMParser.COMMA:
+                while _la==psASMParser.COMMA:
                     self.state = 248
                     self.match(psASMParser.COMMA)
                     self.state = 249
@@ -2426,7 +2545,7 @@ class psASMParser (Parser):
 
     class Numerical_literalContext(ParserRuleContext):
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
@@ -2440,16 +2559,20 @@ class psASMParser (Parser):
             return self.getToken(psASMParser.DEC_LITERAL, 0)
 
         def char_literal(self):
-            return self.getTypedRuleContext(psASMParser.Char_literalContext, 0)
+            return self.getTypedRuleContext(psASMParser.Char_literalContext,0)
+
 
         def getRuleIndex(self):
             return psASMParser.RULE_numerical_literal
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitNumerical_literal"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitNumerical_literal" ):
                 return visitor.visitNumerical_literal(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def numerical_literal(self):
 
@@ -2492,12 +2615,12 @@ class psASMParser (Parser):
 
     class String_literalContext(ParserRuleContext):
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self._STRING_CHAR_ESCAPE = None  # Token
-            self.txt = list()  # of Tokens
-            self._STRING_CHAR = None  # Token
+            self._STRING_CHAR_ESCAPE = None # Token
+            self.txt = list() # of Tokens
+            self._STRING_CHAR = None # Token
 
         def STRING_START(self):
             return self.getToken(psASMParser.STRING_START, 0)
@@ -2505,13 +2628,13 @@ class psASMParser (Parser):
         def STRING_END(self):
             return self.getToken(psASMParser.STRING_END, 0)
 
-        def STRING_CHAR_ESCAPE(self, i: int = None):
+        def STRING_CHAR_ESCAPE(self, i:int=None):
             if i is None:
                 return self.getTokens(psASMParser.STRING_CHAR_ESCAPE)
             else:
                 return self.getToken(psASMParser.STRING_CHAR_ESCAPE, i)
 
-        def STRING_CHAR(self, i: int = None):
+        def STRING_CHAR(self, i:int=None):
             if i is None:
                 return self.getTokens(psASMParser.STRING_CHAR)
             else:
@@ -2520,17 +2643,20 @@ class psASMParser (Parser):
         def getRuleIndex(self):
             return psASMParser.RULE_string_literal
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitString_literal"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitString_literal" ):
                 return visitor.visitString_literal(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def string_literal(self):
 
         localctx = psASMParser.String_literalContext(self, self._ctx, self.state)
         self.enterRule(localctx, 46, self.RULE_string_literal)
-        self._la = 0  # Token type
+        self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 271
@@ -2538,7 +2664,7 @@ class psASMParser (Parser):
             self.state = 276
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la == psASMParser.STRING_CHAR_ESCAPE or _la == psASMParser.STRING_CHAR:
+            while _la==psASMParser.STRING_CHAR_ESCAPE or _la==psASMParser.STRING_CHAR:
                 self.state = 274
                 self._errHandler.sync(self)
                 token = self._input.LA(1)
@@ -2571,10 +2697,10 @@ class psASMParser (Parser):
 
     class Char_literalContext(ParserRuleContext):
 
-        def __init__(self, parser, parent: ParserRuleContext = None, invokingState: int = -1):
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.txt = None  # Token
+            self.txt = None # Token
 
         def CHAR_START(self):
             return self.getToken(psASMParser.CHAR_START, 0)
@@ -2591,11 +2717,14 @@ class psASMParser (Parser):
         def getRuleIndex(self):
             return psASMParser.RULE_char_literal
 
-        def accept(self, visitor: ParseTreeVisitor):
-            if hasattr(visitor, "visitChar_literal"):
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitChar_literal" ):
                 return visitor.visitChar_literal(self)
             else:
                 return visitor.visitChildren(self)
+
+
+
 
     def char_literal(self):
 
@@ -2629,7 +2758,9 @@ class psASMParser (Parser):
             self.exitRule()
         return localctx
 
-    def sempred(self, localctx: RuleContext, ruleIndex: int, predIndex: int):
+
+
+    def sempred(self, localctx:RuleContext, ruleIndex:int, predIndex:int):
         if self._predicates == None:
             self._predicates = dict()
         self._predicates[20] = self.expr_sempred
@@ -2639,39 +2770,55 @@ class psASMParser (Parser):
         else:
             return pred(localctx, predIndex)
 
-    def expr_sempred(self, localctx: ExprContext, predIndex: int):
-        if predIndex == 0:
-            return self.precpred(self._ctx, 12)
+    def expr_sempred(self, localctx:ExprContext, predIndex:int):
+            if predIndex == 0:
+                return self.precpred(self._ctx, 12)
+         
 
-        if predIndex == 1:
-            return self.precpred(self._ctx, 11)
+            if predIndex == 1:
+                return self.precpred(self._ctx, 11)
+         
 
-        if predIndex == 2:
-            return self.precpred(self._ctx, 10)
+            if predIndex == 2:
+                return self.precpred(self._ctx, 10)
+         
 
-        if predIndex == 3:
-            return self.precpred(self._ctx, 9)
+            if predIndex == 3:
+                return self.precpred(self._ctx, 9)
+         
 
-        if predIndex == 4:
-            return self.precpred(self._ctx, 8)
+            if predIndex == 4:
+                return self.precpred(self._ctx, 8)
+         
 
-        if predIndex == 5:
-            return self.precpred(self._ctx, 7)
+            if predIndex == 5:
+                return self.precpred(self._ctx, 7)
+         
 
-        if predIndex == 6:
-            return self.precpred(self._ctx, 6)
+            if predIndex == 6:
+                return self.precpred(self._ctx, 6)
+         
 
-        if predIndex == 7:
-            return self.precpred(self._ctx, 5)
+            if predIndex == 7:
+                return self.precpred(self._ctx, 5)
+         
 
-        if predIndex == 8:
-            return self.precpred(self._ctx, 4)
+            if predIndex == 8:
+                return self.precpred(self._ctx, 4)
+         
 
-        if predIndex == 9:
-            return self.precpred(self._ctx, 3)
+            if predIndex == 9:
+                return self.precpred(self._ctx, 3)
+         
 
-        if predIndex == 10:
-            return self.precpred(self._ctx, 2)
+            if predIndex == 10:
+                return self.precpred(self._ctx, 2)
+         
 
-        if predIndex == 11:
-            return self.precpred(self._ctx, 14)
+            if predIndex == 11:
+                return self.precpred(self._ctx, 14)
+         
+
+
+
+

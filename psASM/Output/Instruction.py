@@ -543,28 +543,22 @@ class LDBInstruction(Instruction):
     ]
 
 
-class SVDRInstruction(Instruction):
-    """SVDR Instruction."""
-    op_code = "SVDR"
+class SVOInstruction(Instruction):
+    """SVO Instruction."""
+    op_code = "SVO"
     binary_literal = 0x0A00
+    arg_setups = [
+        {'name': 'offset', 'bit width': 9, 'bit shift': 0, 'min_usr': MIN_9BIT_UNSIGNED, 'max_usr': MAX_9BIT_UNSIGNED},
+    ]
 
 
-class SVDPInstruction(Instruction):
-    """SVDP Instruction."""
-    op_code = "SVDP"
-    binary_literal = 0x0B00
-
-
-class LDDRInstruction(Instruction):
-    """LDDR Instruction."""
-    op_code = "LDDR"
+class LDOInstruction(Instruction):
+    """LDO Instruction."""
+    op_code = "LDO"
     binary_literal = 0x0800
-
-
-class LDDPInstruction(Instruction):
-    """LDDP Instruction."""
-    op_code = "LDDP"
-    binary_literal = 0x0900
+    arg_setups = [
+        {'name': 'offset', 'bit width': 9, 'bit shift': 0, 'min_usr': MIN_9BIT_UNSIGNED, 'max_usr': MAX_9BIT_UNSIGNED},
+    ]
 
 
 class LITAInstruction(Instruction):
