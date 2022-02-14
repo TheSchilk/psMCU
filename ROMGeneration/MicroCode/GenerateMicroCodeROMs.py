@@ -29,16 +29,20 @@ def main():
               str(row_start) + ", column " + str(col_start))
 
         # Consume the empty rows we don't care about
-        for i in range(1, row_start):
+        for _ in range(1, row_start):
             next(CSVFile)
 
         # Setup ROMs
         ROMs = []
-        for i in range(0, rom_count):
+        for _ in range(0, rom_count):
             ROMs.append(list())
 
         # Iterate over line and add value to ROMs
-        for line in CSVFile:
+        for line_num, line in enumerate(CSVFile):
+            # Skip lines at end once all ROM lines have been parsed:
+            if line_num >= length:
+                break
+
             for rom_index in range(0, rom_count):
                 # Extract entries
                 entries = line[(col_start + 8 * rom_index):(col_start + 8 * rom_index + 8)]
@@ -46,10 +50,11 @@ def main():
                 # Make sure all entries are either 1 or 0:
                 for val in entries:
                     if val != '0' and val != '1':
+                        print("Error in line %i:" % (line_num +1))
                         print("Expected a 1 or 0 but got a '" + val + "'")
                         print("In the following line: ")
                         print(line)
-                        print("In the following range of entries: ")
+                        print("Line text:")
                         print(range(col_start + 8 * rom_index,
                                     col_start + 8 * rom_index + 8))
                         sys.exit()
