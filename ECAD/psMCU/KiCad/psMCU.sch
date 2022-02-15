@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
-Sheet 1 97
+Sheet 1 96
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -535,14 +535,14 @@ Text Label 1000 7300 0    50   ~ 0
 RAMA_OUT
 Wire Wire Line
 	1000 7300 1400 7300
-Text Label 3250 9200 2    50   ~ 0
+Text Label 3400 9200 2    50   ~ 0
 DB[0..7]
 Wire Bus Line
-	2900 9200 3250 9200
-Text Label 3250 9300 2    50   ~ 0
+	2900 9200 3400 9200
+Text Label 3400 9300 2    50   ~ 0
 DB_OUT
 Wire Wire Line
-	2900 9300 3250 9300
+	2900 9300 3400 9300
 Wire Wire Line
 	1400 9700 950  9700
 Text Label 1150 10000 0    50   ~ 0
@@ -632,12 +632,13 @@ F6 "~RESET" I L 1400 10100 50
 F7 "RAM_Sync_D_A" I L 1400 9400 50 
 F8 "RAM_W" I L 1400 9200 50 
 F9 "RAM_R_Sync_A" I L 1400 9300 50 
-F10 "Periph_W" O R 2900 9500 50 
+F10 "Periph_W" O R 2900 9600 50 
 F11 "PeriphA[0..7]" O R 2900 9000 50 
 F12 "Int_Active" I L 1400 9800 50 
 F13 "Int_Assert" B L 1400 9700 50 
 F14 "Int_EN" I L 1400 9600 50 
-F15 "Periph_R_Sync_A" O R 2900 9600 50 
+F15 "Periph_R_Sync_A" O R 2900 9700 50 
+F16 "DB_OUT_EXT" T R 2900 9400 50 
 $EndSheet
 Wire Wire Line
 	1400 9800 950  9800
@@ -647,14 +648,14 @@ Text Label 950  9600 0    50   ~ 0
 Int_EN
 Wire Wire Line
 	950  9600 1400 9600
-Text Label 3400 9500 2    50   ~ 0
-Periph_W
 Text Label 3400 9600 2    50   ~ 0
+Periph_W
+Text Label 3400 9700 2    50   ~ 0
 Periph_R
 Wire Wire Line
-	3400 9500 2900 9500
+	3400 9600 2900 9600
 Wire Wire Line
-	2900 9600 3400 9600
+	2900 9700 3400 9700
 Text Label 3650 5500 0    50   ~ 0
 Periph_W
 Text Label 3650 5600 0    50   ~ 0
@@ -834,12 +835,13 @@ F7 "OpB[0..7]" I L 11250 5400 50
 F8 "Inst[0..15]" I L 11250 5600 50 
 $EndSheet
 $Sheet
-S 9100 7550 1000 300 
+S 9100 7550 1000 400 
 U 5F394B96
 F0 "Data Bus Display" 50
 F1 "DBUS_DISPLAY.sch" 50
 F2 "DB_OUT" T L 9100 7750 50 
 F3 "DB[0..7]" T L 9100 7650 50 
+F4 "DB_OUT_EXT" T L 9100 7850 50 
 $EndSheet
 $Sheet
 S 9100 7050 1000 300 
@@ -978,14 +980,14 @@ Wire Bus Line
 Wire Bus Line
 	12750 6700 12850 6700
 Wire Wire Line
-	9100 7750 8750 7750
-Text Label 8750 7750 0    50   ~ 0
+	9100 7750 8600 7750
+Text Label 8600 7750 0    50   ~ 0
 DB_OUT
 Text Label 9050 5600 2    50   ~ 0
 RegA[0..7]
 Wire Bus Line
-	9100 7650 8750 7650
-Text Label 8750 7650 0    50   ~ 0
+	9100 7650 8600 7650
+Text Label 8600 7650 0    50   ~ 0
 DB[0..7]
 Wire Bus Line
 	8050 5500 8400 5500
@@ -1644,4 +1646,12 @@ Wire Wire Line
 	15000 3800 15850 3800
 Wire Wire Line
 	15000 3900 15850 3900
+Wire Wire Line
+	3400 9400 2900 9400
+Text Label 3400 9400 2    50   ~ 0
+DB_OUT_EXT
+Text Label 8600 7850 0    50   ~ 0
+DB_OUT_EXT
+Wire Wire Line
+	8600 7850 9100 7850
 $EndSCHEMATC

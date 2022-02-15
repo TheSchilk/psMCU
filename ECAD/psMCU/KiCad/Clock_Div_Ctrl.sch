@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
-Sheet 66 97
+Sheet 66 96
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -15,14 +15,10 @@ Comment4 "Frequency selection logic/state machine. Allows selection between 8 fr
 $EndDescr
 Text Notes 11900 2350 0    100  ~ 0
 Binary to one-hot converter
-Text Notes 8550 2400 0    100  ~ 0
+Text Notes 8550 1450 0    100  ~ 0
 Up/Down Counter
 Wire Wire Line
 	7350 5350 7350 6150
-Text Label 9650 3150 0    50   ~ 0
-Preset[0..7]
-Wire Bus Line
-	9600 3150 10150 3150
 Wire Bus Line
 	13450 8400 14150 8400
 Text Label 14050 8400 2    50   ~ 0
@@ -457,13 +453,6 @@ F 3 "" H 10550 4800 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	10550 4800 10600 4800
-$Sheet
-S 8750 2950 850  400 
-U 601BABC1
-F0 "ClkPreset" 50
-F1 "ClkPreset.sch" 50
-F2 "Preset[0..2]" O R 9600 3150 50 
-$EndSheet
 $Comp
 L 74xx:74LS191 U?
 U 1 1 6008004C
@@ -1849,12 +1838,139 @@ Text Label 10250 7400 2    50   ~ 0
 CLK_F1
 Text Label 10250 7300 2    50   ~ 0
 CLK_F2
+Wire Wire Line
+	8400 2700 8300 2700
+Wire Wire Line
+	8300 2900 8400 2900
+Wire Wire Line
+	8300 2700 8300 2800
+Wire Wire Line
+	8400 2800 8300 2800
+Connection ~ 8300 2800
+Wire Wire Line
+	8300 2800 8300 2900
+Wire Wire Line
+	9000 2700 9050 2700
+Wire Wire Line
+	9000 2800 9150 2800
+Wire Wire Line
+	9000 2900 9250 2900
+Connection ~ 8300 2700
+$Comp
+L power:+5V #PWR?
+U 1 1 6216C951
+P 8300 2650
+AR Path="/5ED2705B/6216C951" Ref="#PWR?"  Part="1" 
+AR Path="/5ED2705B/5F30EEBC/6216C951" Ref="#PWR?"  Part="1" 
+AR Path="/5F1CE57C/5F4E66A6/6216C951" Ref="#PWR?"  Part="1" 
+AR Path="/5F607AA2/5F61E0F6/6216C951" Ref="#PWR?"  Part="1" 
+AR Path="/5F607AA2/5F61E658/6216C951" Ref="#PWR?"  Part="1" 
+AR Path="/5F18F3CA/5F225B33/6216C951" Ref="#PWR?"  Part="1" 
+AR Path="/5F18F3CA/5F225B36/6216C951" Ref="#PWR?"  Part="1" 
+AR Path="/5F28170E/6216C951" Ref="#PWR?"  Part="1" 
+AR Path="/608BF85D/60010AFF/6216C951" Ref="#PWR01683"  Part="1" 
+F 0 "#PWR01683" H 8300 2500 50  0001 C CNN
+F 1 "+5V" H 8150 2700 50  0000 C CNN
+F 2 "" H 8300 2650 50  0001 C CNN
+F 3 "" H 8300 2650 50  0001 C CNN
+	1    8300 2650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8300 2650 8300 2700
+$Comp
+L power:GND #PWR?
+U 1 1 6216C958
+P 9050 2050
+AR Path="/5F28170E/6216C958" Ref="#PWR?"  Part="1" 
+AR Path="/608BF85D/60010AFF/6216C958" Ref="#PWR01684"  Part="1" 
+F 0 "#PWR01684" H 9050 1800 50  0001 C CNN
+F 1 "GND" H 9055 1877 50  0000 C CNN
+F 2 "" H 9050 2050 50  0001 C CNN
+F 3 "" H 9050 2050 50  0001 C CNN
+	1    9050 2050
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R_Pack04 RN?
+U 1 1 6216C95E
+P 9250 2350
+AR Path="/6041A022/6216C95E" Ref="RN?"  Part="1" 
+AR Path="/5F28170E/6216C95E" Ref="RN?"  Part="1" 
+AR Path="/608BF85D/60010AFF/6216C95E" Ref="RN16"  Part="1" 
+F 0 "RN16" V 9450 2350 50  0000 L CNN
+F 1 "10K" V 9450 2100 50  0000 L CNN
+F 2 "NoRef_Footprints:R_Array_Convex_4x0603_NoRef" V 9525 2350 50  0001 C CNN
+F 3 "~" H 9250 2350 50  0001 C CNN
+	1    9250 2350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9050 2050 9050 2100
+Wire Wire Line
+	9050 2100 9150 2100
+Wire Wire Line
+	9150 2100 9150 2150
+Connection ~ 9050 2100
+Wire Wire Line
+	9050 2100 9050 2150
+Wire Wire Line
+	9250 2150 9250 2100
+Wire Wire Line
+	9250 2100 9150 2100
+Connection ~ 9150 2100
+Wire Wire Line
+	9350 2150 9350 2100
+Wire Wire Line
+	9350 2550 9350 2600
+NoConn ~ 9350 2600
+NoConn ~ 9350 2100
+Wire Wire Line
+	9050 2550 9050 2700
+Connection ~ 9050 2700
+Wire Wire Line
+	9150 2550 9150 2800
+Connection ~ 9150 2800
+Wire Wire Line
+	9250 2550 9250 2900
+Connection ~ 9250 2900
+$Comp
+L Switch:SW_DIP_x03 SW?
+U 1 1 6216C979
+P 8700 2900
+AR Path="/5F28170E/6216C979" Ref="SW?"  Part="1" 
+AR Path="/608BF85D/60010AFF/6216C979" Ref="SW2"  Part="1" 
+F 0 "SW2" H 8700 3367 50  0000 C CNN
+F 1 "SW_DIP_x03" H 8700 3276 50  0000 C CNN
+F 2 "" H 8700 2900 50  0001 C CNN
+F 3 "~" H 8700 2900 50  0001 C CNN
+	1    8700 2900
+	1    0    0    -1  
+$EndComp
+Text Label 10050 2900 2    50   ~ 0
+Preset2
+Text Label 10050 2800 2    50   ~ 0
+Preset1
+Text Label 10050 2700 2    50   ~ 0
+Preset0
+Entry Wire Line
+	10150 2800 10050 2700
+Entry Wire Line
+	10150 2900 10050 2800
+Entry Wire Line
+	10150 3000 10050 2900
+Wire Wire Line
+	9050 2700 10050 2700
+Wire Wire Line
+	9150 2800 10050 2800
+Wire Wire Line
+	9250 2900 10050 2900
 Wire Bus Line
 	14150 4950 14150 8400
 Wire Bus Line
-	10150 3150 10150 4600
-Wire Bus Line
 	10350 7400 10350 7750
+Wire Bus Line
+	10150 2800 10150 4600
 Wire Bus Line
 	14150 4050 14150 4950
 $EndSCHEMATC
