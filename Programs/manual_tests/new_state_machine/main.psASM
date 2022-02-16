@@ -1,0 +1,29 @@
+@include "std_sys.psASM"
+
+INTERRUPT:
+    ADDLB 1
+    RTRNI
+
+MAIN:
+    LITB 0
+    LITA 0b00000001
+    SVA SYS3
+
+l1:
+    LITA 0x00
+    LITA 0x01
+    LITA 0x02
+    LITA 0x03
+    LITA 0x04
+    LITA 0x05
+    LITA 0x06
+    LITA 0x07
+    LITA 0x08
+    LITA 0x09
+    LITA 0x0A
+    LITA 0x0B
+    LITA 0x0C
+    LITA 0x0D
+    LITA 0x0E
+    LITA 0x0F
+    JMP l1

@@ -5,8 +5,7 @@
 #                                      #
 ########################################
 
-# TODO: set main source name
-MAIN_SOURCE_NAME = recursion.psASM
+MAIN_SOURCE_NAME = main.psASM
 
 # Build Directory:
 BUILD_DIR = build
@@ -33,7 +32,7 @@ ASM_SOURCES = $(wildcard *.psASM)
 
 ###########  Utility Targets  ###########
 .PHONY: std 
-std: bin info logisim
+std: bin logisim info
 
 .PHONY: all 
 all: bin logisim split_bin debug_info info
