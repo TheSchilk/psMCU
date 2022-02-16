@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-import sys
 import csv
 import os
+import sys
 
 
 def insert_value(input_entries, value_to_insert):
@@ -91,13 +91,12 @@ def main():
                 if ROM[input_val] is None:
                     ROM[input_val] = output_value.to_bytes(1, byteorder='big')
                 else:
-                    print("Redefined same input " + bin(i) + "!")
+                    print("Redefined same input " + bin(input_val) + "!")
                     print("In the following line: ")
                     print(line)
                     sys.exit(1)
 
         # Make sure all inputs are defined:
-        not_full = False
         undef_count = 0
         for i, value in enumerate(ROM):
             if value is None:
