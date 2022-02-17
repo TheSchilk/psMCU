@@ -19,7 +19,7 @@
 @define S1_HC          2        # [2]    (R/W) ALU Half-carry out bit.
 @define S1_OVF         3        # [3]    (R/W) ALU Overflow flag.
 @define S1_COMP_C      4        # [4]    (R/W) Complement carry in/out flag. 
-                                # [5..7] (R) Reserved. Always Reads 0.
+                                # [5..7] (R)   Clock Frequency.
 
 # Shifts and Masks:
 @define S1_SHFT_IN_S   0        # SHFT_IN field shift.
@@ -37,19 +37,19 @@
 @define S1_COMP_C_S    4        # COMP_C field shift.
 @define S1_COMP_C_M    0x10     # COMP_C field mask.
 
+@define S1_FREQ_S      5        # FREQ field shift.
+@define S1_FREQ_M      0xe0     # FREQ field shift.
+
 # ############### SYS2 ##################
 @define SYS2           0x101    # (R/W) System Register 2.
 
 # Bits:
-                                # [0..4] (R/W) RAM Page.
-                                # [5..7] (R) Clock Frequency.
+                                # [0..6] (R/W) RAM Page.
+                                # [7]    (R) Reserved. Always Reads 0.
 
 # Shifts and Masks:
 @define S2_PAGE_S      0        # PAGE field shift.
-@define S2_PAGE_M      0x1f     # PAGE field mask.
-
-@define S2_FREQ_S      5        # FREQ field shift.
-@define S2_FREQ_M      0xe0     # FREQ field shift.
+@define S2_PAGE_M      0x7f     # PAGE field mask.
 
 # ############### SYS3 ##################
 @define SYS3           0x102    # (R/W) System Register 3
@@ -61,10 +61,10 @@
 @define S3_B0          3        # [3]    (R) Reads 1 if B==0. 0 Otherwise.
 @define S3_AB          4        # [4]    (R) Reads 1 if A==B. 0 Otherwise.
 @define S3_AgreaterB   5        # [5]    (R) Reads 1 if A>B. 0 Otherwise.
-@define S3_BlessA      5        # (Alias)
+@define S3_BlessA      5        #            (Alias)
 @define S3_BgreaterA   6        # [6]    (R) Reads 1 if A<B. 0 Otherwise.
-@define S3_AlessB      6        # (Alias)
-                                # [6..7] (R) Reserved. Always Reads 0.	
+@define S3_AlessB      6        #            (Alias)
+                                # [6..7] (R) Reserved. Always Reads 0.
 
 # Shifts and Masks:
 @define S3_INT_EN_S    0        # INT_EN field shift.
