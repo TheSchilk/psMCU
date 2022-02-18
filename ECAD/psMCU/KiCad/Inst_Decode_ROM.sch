@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 5 97
+Sheet 27 102
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -15,15 +15,15 @@ Comment4 "Decodes the MSBs of an instruction into the actual instruction code fo
 $EndDescr
 Text HLabel 3800 2050 0    50   Input ~ 0
 Inst[0..15]
-Text HLabel 5900 2150 2    50   Output ~ 0
+Text HLabel 6750 2950 2    50   Output ~ 0
 InstCode3
-Text HLabel 5900 2250 2    50   Output ~ 0
+Text HLabel 6750 3050 2    50   Output ~ 0
 InstCode4
-Text HLabel 5900 2350 2    50   Output ~ 0
+Text HLabel 6750 3150 2    50   Output ~ 0
 InstCode5
-Text HLabel 5900 2450 2    50   Output ~ 0
+Text HLabel 6750 3250 2    50   Output ~ 0
 InstCode6
-Text HLabel 5900 2550 2    50   Output ~ 0
+Text HLabel 6750 3350 2    50   Output ~ 0
 InstCode7
 Wire Wire Line
 	4250 3750 4350 3750
@@ -105,16 +105,6 @@ Wire Wire Line
 NoConn ~ 5550 2650
 NoConn ~ 5550 2750
 NoConn ~ 5550 2850
-Wire Wire Line
-	5900 2150 5550 2150
-Wire Wire Line
-	5900 2250 5550 2250
-Wire Wire Line
-	5900 2350 5550 2350
-Wire Wire Line
-	5900 2450 5550 2450
-Wire Wire Line
-	5900 2550 5550 2550
 Wire Wire Line
 	4350 4450 4250 4450
 Wire Wire Line
@@ -255,16 +245,89 @@ F 3 "" H 5050 4800 50  0001 C CNN
 	1    4950 3350
 	1    0    0    -1  
 $EndComp
-Text HLabel 4200 2950 0    50   Input ~ 0
+Text HLabel 3850 2950 0    50   Input ~ 0
 Interrupt
 Wire Wire Line
-	4200 2950 4350 2950
+	3850 2950 4350 2950
 Text Label 4050 2150 0    50   ~ 0
 Inst8
 Entry Wire Line
 	3950 2050 4050 2150
 Wire Wire Line
 	4050 2150 4350 2150
+$Sheet
+S 6850 3550 900  200 
+U 62588193
+F0 "sheet6258818F" 50
+F1 "InstDisplay.sch" 50
+F2 "InstCode[3..7]" I L 6850 3650 50 
+$EndSheet
+Text Label 6050 2150 2    50   ~ 0
+InstCode3
+Text Label 6050 2250 2    50   ~ 0
+InstCode4
+Text Label 6050 2350 2    50   ~ 0
+InstCode5
+Text Label 6050 2450 2    50   ~ 0
+InstCode6
+Text Label 6050 2550 2    50   ~ 0
+InstCode7
+Wire Wire Line
+	5550 2150 6050 2150
+Wire Wire Line
+	5550 2250 6050 2250
+Wire Wire Line
+	5550 2350 6050 2350
+Wire Wire Line
+	5550 2450 6050 2450
+Wire Wire Line
+	5550 2550 6050 2550
+Entry Wire Line
+	6050 2150 6150 2250
+Entry Wire Line
+	6050 2250 6150 2350
+Entry Wire Line
+	6050 2350 6150 2450
+Entry Wire Line
+	6050 2450 6150 2550
+Entry Wire Line
+	6050 2550 6150 2650
+Text Label 6250 2950 0    50   ~ 0
+InstCode3
+Text Label 6250 3050 0    50   ~ 0
+InstCode4
+Text Label 6250 3150 0    50   ~ 0
+InstCode5
+Text Label 6250 3250 0    50   ~ 0
+InstCode6
+Text Label 6250 3350 0    50   ~ 0
+InstCode7
+Wire Wire Line
+	6750 2950 6250 2950
+Wire Wire Line
+	6750 3050 6250 3050
+Wire Wire Line
+	6750 3150 6250 3150
+Wire Wire Line
+	6750 3250 6250 3250
+Wire Wire Line
+	6750 3350 6250 3350
+Entry Wire Line
+	6150 2850 6250 2950
+Entry Wire Line
+	6150 2950 6250 3050
+Entry Wire Line
+	6150 3050 6250 3150
+Entry Wire Line
+	6150 3150 6250 3250
+Entry Wire Line
+	6150 3250 6250 3350
+Text Label 6250 3650 0    50   ~ 0
+InstCode[3..7]
+Wire Bus Line
+	6150 3650 6850 3650
 Wire Bus Line
 	3950 2050 3950 2750
+Wire Bus Line
+	6150 2250 6150 3650
 $EndSCHEMATC

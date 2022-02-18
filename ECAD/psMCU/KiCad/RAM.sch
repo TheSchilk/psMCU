@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 32 97
+Sheet 32 102
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -3116,10 +3116,10 @@ F0 "SyncRegisters" 50
 F1 "SyncRegisters.sch" 50
 F2 "DB[0..7]" I L 3800 1300 50 
 F3 "DB_SYNC[0..7]" O R 5050 1300 50 
-F5 "RAMA[0..7]" I L 3800 1400 50 
-F6 "RAMA_SYNC[0..7]" O R 5050 1400 50 
-F8 "Latch_D" I L 3800 1500 50 
-F9 "Latch_A" I L 3800 1600 50 
+F4 "RAMA[0..7]" I L 3800 1400 50 
+F5 "RAMA_SYNC[0..7]" O R 5050 1400 50 
+F6 "Latch_D" I L 3800 1500 50 
+F7 "Latch_A" I L 3800 1600 50 
 $EndSheet
 $Comp
 L Device:CP_Small C?

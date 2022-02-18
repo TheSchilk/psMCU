@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 94 97
+Sheet 102 102
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -91,7 +91,7 @@ Entry Wire Line
 Entry Wire Line
 	4850 2450 4950 2550
 Wire Bus Line
-	4850 1700 4400 1700
+	4850 1700 4750 1700
 Wire Wire Line
 	2550 3750 2550 3700
 Wire Wire Line
@@ -122,9 +122,9 @@ Entry Wire Line
 Entry Wire Line
 	4850 3900 4950 4000
 Text HLabel 2400 2850 0    50   Input ~ 0
-PC[0..7]->DBus
-Text HLabel 4400 1700 0    50   Input ~ 0
-PC[0..13]
+IAdr[0..7]->DBus
+Text HLabel 4750 1700 0    50   Input ~ 0
+IAdr[0..13]
 $Comp
 L power:GND #PWR?
 U 1 1 5F3AC20F
@@ -660,7 +660,7 @@ Wire Wire Line
 Wire Wire Line
 	2500 5150 2500 4550
 Text HLabel 2400 5150 0    50   Input ~ 0
-PC[8..13]->DBus
+IAdr[8..13]->DBus
 $Comp
 L power:+5V #PWR?
 U 1 1 5F445140
@@ -835,62 +835,6 @@ Wire Wire Line
 Connection ~ 3450 3650
 Wire Wire Line
 	3450 3650 3750 3650
-Wire Wire Line
-	4950 1850 6250 1850
-Wire Wire Line
-	4950 1950 6250 1950
-Wire Wire Line
-	4950 2050 6250 2050
-Wire Wire Line
-	4950 2150 6250 2150
-Wire Wire Line
-	4950 2250 6250 2250
-Wire Wire Line
-	4950 2350 6250 2350
-Wire Wire Line
-	4950 2450 6250 2450
-Wire Wire Line
-	4950 2550 6250 2550
-Wire Wire Line
-	4950 4000 6250 4000
-Wire Wire Line
-	4950 4100 6250 4100
-Wire Wire Line
-	4950 4200 6250 4200
-Wire Wire Line
-	4950 4300 6250 4300
-Wire Wire Line
-	4950 4400 6250 4400
-Wire Wire Line
-	4950 4500 6250 4500
-Text Label 4950 1850 0    50   ~ 0
-PC0
-Text Label 4950 1950 0    50   ~ 0
-PC1
-Text Label 4950 2050 0    50   ~ 0
-PC2
-Text Label 4950 2150 0    50   ~ 0
-PC3
-Text Label 4950 2250 0    50   ~ 0
-PC4
-Text Label 4950 2350 0    50   ~ 0
-PC5
-Text Label 4950 2450 0    50   ~ 0
-PC6
-Text Label 4950 2550 0    50   ~ 0
-PC7
-Text Label 4950 4000 0    50   ~ 0
-PC8
-Text Label 4950 4100 0    50   ~ 0
-PC9
-Text Label 4950 4200 0    50   ~ 0
-PC10
-Text Label 4950 4300 0    50   ~ 0
-PC11
-Text Label 4950 4400 0    50   ~ 0
-PC12
-Text Label 4950 4500 0    50   ~ 0
-PC13
 Wire Wire Line
 	3800 2850 6250 2850
 Wire Wire Line
@@ -1858,9 +1802,65 @@ Wire Wire Line
 Wire Wire Line
 	2500 5850 2600 5850
 Text Notes 3700 1850 0    50   ~ 0
-PC0..7->DB
+L
 Text Notes 3700 5850 0    50   ~ 0
-PC8..13->DB
+H
+Text Label 4950 1850 0    50   ~ 0
+IAdr0
+Text Label 4950 1950 0    50   ~ 0
+IAdr1
+Text Label 4950 2050 0    50   ~ 0
+IAdr2
+Text Label 4950 2150 0    50   ~ 0
+IAdr3
+Text Label 4950 2250 0    50   ~ 0
+IAdr4
+Text Label 4950 2350 0    50   ~ 0
+IAdr5
+Text Label 4950 2450 0    50   ~ 0
+IAdr6
+Text Label 4950 2550 0    50   ~ 0
+IAdr7
+Text Label 4950 4000 0    50   ~ 0
+IAdr8
+Text Label 4950 4100 0    50   ~ 0
+IAdr9
+Text Label 4950 4200 0    50   ~ 0
+IAdr10
+Text Label 4950 4300 0    50   ~ 0
+IAdr11
+Text Label 4950 4400 0    50   ~ 0
+IAdr12
+Text Label 4950 4500 0    50   ~ 0
+IAdr13
+Wire Wire Line
+	4950 4000 6250 4000
+Wire Wire Line
+	4950 4100 6250 4100
+Wire Wire Line
+	4950 4200 6250 4200
+Wire Wire Line
+	4950 4300 6250 4300
+Wire Wire Line
+	4950 4400 6250 4400
+Wire Wire Line
+	4950 4500 6250 4500
+Wire Wire Line
+	4950 1850 6250 1850
+Wire Wire Line
+	4950 1950 6250 1950
+Wire Wire Line
+	4950 2050 6250 2050
+Wire Wire Line
+	4950 2150 6250 2150
+Wire Wire Line
+	4950 2250 6250 2250
+Wire Wire Line
+	4950 2350 6250 2350
+Wire Wire Line
+	4950 2450 6250 2450
+Wire Wire Line
+	4950 2550 6250 2550
 Wire Bus Line
 	4850 1700 4850 4400
 Wire Bus Line

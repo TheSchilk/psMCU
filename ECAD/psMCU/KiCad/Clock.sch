@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 61 97
+Sheet 64 102
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -55,8 +55,8 @@ F1 "Clock_Div_Ctrl.sch" 50
 F2 "INC_CLK_F" I L 4050 2900 50 
 F3 "DEC_CLK_F" I L 4050 2800 50 
 F4 "OSC_IN" I L 4050 2700 50 
-F6 "F_SET[0..7]" O R 5400 2700 50 
-F7 "CLK_F[0..2]" O R 5400 2800 50 
+F5 "F_SET[0..7]" O R 5400 2700 50 
+F6 "CLK_F[0..2]" O R 5400 2800 50 
 $EndSheet
 Wire Wire Line
 	4050 2900 3950 2900
@@ -82,8 +82,8 @@ F0 "Clock_Step" 50
 F1 "Clock_Step.sch" 50
 F2 "CLK" O R 9500 2150 50 
 F3 "CONT_CLK" I L 8550 2150 50 
-F5 "Clk_Step_EN" I L 8550 2250 50 
-F6 "Clk_Step" I L 8550 2350 50 
+F4 "Clk_Step_EN" I L 8550 2250 50 
+F5 "Clk_Step" I L 8550 2350 50 
 $EndSheet
 Text HLabel 3950 2800 0    50   Input ~ 0
 Dec_Clk_F

@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 90 97
+Sheet 100 102
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -614,37 +614,9 @@ Entry Wire Line
 Entry Wire Line
 	4500 7200 4600 7300
 Text HLabel 4400 700  0    50   Input ~ 0
-PC[0..13]
+IAdr[0..13]
 Wire Bus Line
 	4400 700  4500 700 
-Text Label 4600 1650 0    50   ~ 0
-PC0
-Text Label 4600 1750 0    50   ~ 0
-PC1
-Text Label 4600 1850 0    50   ~ 0
-PC2
-Text Label 4600 1950 0    50   ~ 0
-PC3
-Text Label 4600 3500 0    50   ~ 0
-PC4
-Text Label 4600 3600 0    50   ~ 0
-PC5
-Text Label 4600 3700 0    50   ~ 0
-PC6
-Text Label 4600 3800 0    50   ~ 0
-PC7
-Text Label 4600 5350 0    50   ~ 0
-PC8
-Text Label 4600 5450 0    50   ~ 0
-PC9
-Text Label 4600 5550 0    50   ~ 0
-PC10
-Text Label 4600 5650 0    50   ~ 0
-PC11
-Text Label 4600 7200 0    50   ~ 0
-PC12
-Text Label 4600 7300 0    50   ~ 0
-PC13
 Entry Wire Line
 	4050 5250 4150 5350
 Entry Wire Line
@@ -2235,34 +2207,6 @@ BK11
 Text Label 4250 5050 0    50   ~ 0
 BK10
 Wire Wire Line
-	4600 7200 4850 7200
-Wire Wire Line
-	4600 7300 4850 7300
-Wire Wire Line
-	4600 5350 4850 5350
-Wire Wire Line
-	4850 5450 4600 5450
-Wire Wire Line
-	4850 5550 4600 5550
-Wire Wire Line
-	4850 5650 4600 5650
-Wire Wire Line
-	4600 3500 4850 3500
-Wire Wire Line
-	4600 3600 4850 3600
-Wire Wire Line
-	4600 3700 4850 3700
-Wire Wire Line
-	4600 3800 4850 3800
-Wire Wire Line
-	4600 1650 4850 1650
-Wire Wire Line
-	4600 1750 4850 1750
-Wire Wire Line
-	4600 1850 4850 1850
-Wire Wire Line
-	4600 1950 4850 1950
-Wire Wire Line
 	4250 1150 4850 1150
 Wire Wire Line
 	4250 1250 4850 1250
@@ -2668,6 +2612,62 @@ Text GLabel 1150 6250 0    31   Input ~ 0
 PWR_RESET
 Wire Wire Line
 	1200 6250 1150 6250
+Wire Wire Line
+	4600 1650 4850 1650
+Wire Wire Line
+	4600 1750 4850 1750
+Wire Wire Line
+	4600 1850 4850 1850
+Wire Wire Line
+	4600 1950 4850 1950
+Wire Wire Line
+	4600 3500 4850 3500
+Wire Wire Line
+	4600 3600 4850 3600
+Wire Wire Line
+	4600 3700 4850 3700
+Wire Wire Line
+	4600 3800 4850 3800
+Wire Wire Line
+	4600 5350 4850 5350
+Wire Wire Line
+	4600 5450 4850 5450
+Wire Wire Line
+	4600 5550 4850 5550
+Wire Wire Line
+	4600 5650 4850 5650
+Wire Wire Line
+	4600 7200 4850 7200
+Wire Wire Line
+	4600 7300 4850 7300
+Text Label 4600 1650 0    50   ~ 0
+IAdr0
+Text Label 4600 1750 0    50   ~ 0
+IAdr1
+Text Label 4600 1850 0    50   ~ 0
+IAdr2
+Text Label 4600 1950 0    50   ~ 0
+IAdr3
+Text Label 4600 3500 0    50   ~ 0
+IAdr4
+Text Label 4600 3600 0    50   ~ 0
+IAdr5
+Text Label 4600 3700 0    50   ~ 0
+IAdr6
+Text Label 4600 3800 0    50   ~ 0
+IAdr7
+Text Label 4600 5350 0    50   ~ 0
+IAdr8
+Text Label 4600 5450 0    50   ~ 0
+IAdr9
+Text Label 4600 5550 0    50   ~ 0
+IAdr10
+Text Label 4600 5650 0    50   ~ 0
+IAdr11
+Text Label 4600 7200 0    50   ~ 0
+IAdr12
+Text Label 4600 7300 0    50   ~ 0
+IAdr13
 Wire Bus Line
 	4500 700  4500 7200
 Wire Bus Line

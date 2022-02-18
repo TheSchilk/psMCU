@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
-Sheet 83 97
+Sheet 83 102
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -3110,7 +3110,7 @@ F0 "Data Sync Register" 50
 F1 "8Bit_Reg.sch" 50
 F2 "DB[0..7]" I L 9300 1050 50 
 F3 "DB_SYNC[0..7]" O R 10400 1050 50 
-F6 "Latch" I L 9300 1150 50 
+F4 "Latch" I L 9300 1150 50 
 $EndSheet
 $Sheet
 S 4200 3500 800  400 
@@ -7002,8 +7002,8 @@ U 62D35337
 F0 "Adr Sync Reg" 50
 F1 "15Bit_Reg.sch" 50
 F2 "Latch" I L 6850 3800 50 
-F5 "Out[14..0]" O R 7850 3700 50 
-F6 "In[14..0]" I L 6850 3700 50 
+F3 "Out[14..0]" O R 7850 3700 50 
+F4 "In[14..0]" I L 6850 3700 50 
 $EndSheet
 $Sheet
 S 1750 3500 1000 300 
@@ -7011,8 +7011,8 @@ U 6136D858
 F0 "Pointer Register" 50
 F1 "15Bit_Reg.sch" 50
 F2 "Latch" I L 1750 3700 50 
-F5 "Out[14..0]" O R 2750 3600 50 
-F6 "In[14..0]" I L 1750 3600 50 
+F3 "Out[14..0]" O R 2750 3600 50 
+F4 "In[14..0]" I L 1750 3600 50 
 $EndSheet
 Connection ~ 5300 3700
 Wire Bus Line
