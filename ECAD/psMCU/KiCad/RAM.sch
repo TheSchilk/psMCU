@@ -661,26 +661,6 @@ Entry Wire Line
 	5850 2950 5950 3050
 Entry Wire Line
 	5850 3050 5950 3150
-Wire Wire Line
-	6500 3850 6600 3850
-Wire Wire Line
-	6600 3750 6500 3750
-Wire Wire Line
-	6500 3750 6500 3850
-Wire Wire Line
-	6500 3850 6500 3950
-Connection ~ 6500 3850
-$Comp
-L power:GND #PWR0240
-U 1 1 5EF9BF8C
-P 6500 3950
-F 0 "#PWR0240" H 6500 3700 50  0001 C CNN
-F 1 "GND" H 6505 3777 50  0000 C CNN
-F 2 "" H 6500 3950 50  0001 C CNN
-F 3 "" H 6500 3950 50  0001 C CNN
-	1    6500 3950
-	1    0    0    -1  
-$EndComp
 Wire Bus Line
 	5850 1400 5050 1400
 $Comp
@@ -1508,10 +1488,10 @@ Entry Wire Line
 	5950 3450 5850 3550
 Entry Wire Line
 	5950 3550 5850 3650
-Text HLabel 5900 4000 2    50   Input ~ 0
-PAGE[0..4]
+Text HLabel 5900 4050 2    50   Input ~ 0
+PAGE[0..6]
 Wire Bus Line
-	5850 4000 5900 4000
+	5850 4050 5900 4050
 Text HLabel 6150 6500 2    50   3State ~ 0
 DB_OUT
 Wire Wire Line
@@ -3225,8 +3205,20 @@ F 3 "" H 9950 1850 50  0001 C CNN
 	1    9950 1850
 	1    0    0    -1  
 $EndComp
+Text Label 5950 3750 0    50   ~ 0
+PAGE5
+Wire Wire Line
+	5950 3750 6600 3750
+Text Label 5950 3850 0    50   ~ 0
+PAGE6
+Wire Wire Line
+	5950 3850 6600 3850
+Entry Wire Line
+	5950 3750 5850 3850
+Entry Wire Line
+	5950 3850 5850 3950
 Wire Bus Line
-	5850 3350 5850 4000
+	5850 3350 5850 4050
 Wire Bus Line
 	6050 800  9050 800 
 Wire Bus Line

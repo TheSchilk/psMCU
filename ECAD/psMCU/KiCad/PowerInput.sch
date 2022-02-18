@@ -150,8 +150,6 @@ Wire Wire Line
 Wire Wire Line
 	3400 3100 3400 3450
 Wire Wire Line
-	3400 3450 4500 3450
-Wire Wire Line
 	4500 3450 4500 3150
 Wire Wire Line
 	4500 3150 4350 3150
@@ -189,8 +187,6 @@ F 3 "~" H 5200 2900 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	5200 2900 5200 2950
-Wire Wire Line
-	5200 2950 4950 2950
 $Comp
 L Device:CP_Small C215
 U 1 1 62429F7D
@@ -221,9 +217,6 @@ Wire Wire Line
 Wire Wire Line
 	5800 3150 5800 2950
 Connection ~ 5800 2950
-Wire Wire Line
-	5200 2950 5450 2950
-Connection ~ 5200 2950
 Wire Wire Line
 	5800 3650 5800 3350
 $Comp
@@ -405,4 +398,29 @@ Wire Wire Line
 	9900 4750 9900 4700
 Wire Wire Line
 	9900 4450 9900 4500
+$Comp
+L power:PWR_FLAG #FLG?
+U 1 1 6286EAAC
+P 4100 3650
+AR Path="/6286EAAC" Ref="#FLG?"  Part="1" 
+AR Path="/62043340/6286EAAC" Ref="#FLG0102"  Part="1" 
+F 0 "#FLG0102" H 4100 3725 50  0001 C CNN
+F 1 "PWR_FLAG" H 4100 3823 50  0000 C CNN
+F 2 "" H 4100 3650 50  0001 C CNN
+F 3 "~" H 4100 3650 50  0001 C CNN
+	1    4100 3650
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	4100 3650 4100 3450
+Wire Wire Line
+	3400 3450 4100 3450
+Wire Wire Line
+	4950 2950 5200 2950
+Connection ~ 4100 3450
+Wire Wire Line
+	4100 3450 4500 3450
+Connection ~ 5200 2950
+Wire Wire Line
+	5200 2950 5450 2950
 $EndSCHEMATC
