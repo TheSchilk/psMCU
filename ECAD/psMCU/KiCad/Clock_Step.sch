@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 76 96
+Sheet 66 97
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -418,14 +418,6 @@ Wire Wire Line
 	5500 1500 5500 2350
 Wire Wire Line
 	5500 2350 5100 2350
-Text Label 4850 2750 1    50   ~ 0
-~R
-Wire Wire Line
-	4850 2750 4850 2700
-Text Label 4700 4750 1    50   ~ 0
-~R
-Wire Wire Line
-	4700 4750 4700 4700
 Text Notes 4250 900  0    50   ~ 0
 T-FF with enable. \nDivides the contious clock by 2 to generate  the\nsystem clock, if enabled by the clock-step-control\nlogic below. 
 $Comp
@@ -933,12 +925,6 @@ Text HLabel 2150 5550 0    50   Input ~ 0
 Clk_Step
 Text HLabel 1850 2450 0    50   Input ~ 0
 CONT_CLK
-Text Label 2250 5750 2    50   ~ 0
-~R
-Text HLabel 2150 5750 0    50   Input ~ 0
-~RESET
-Wire Wire Line
-	2150 5750 2250 5750
 Wire Wire Line
 	8450 4150 8450 4200
 $Comp
@@ -1477,4 +1463,16 @@ Wire Wire Line
 	8200 4150 8050 4150
 Text Notes 8550 4150 0    50   ~ 0
 CLK
+Text GLabel 4950 2850 2    31   Input ~ 0
+~RESET_A
+Wire Wire Line
+	4950 2850 4850 2850
+Wire Wire Line
+	4850 2850 4850 2700
+Text GLabel 4800 4850 2    31   Input ~ 0
+~RESET_A
+Wire Wire Line
+	4800 4850 4700 4850
+Wire Wire Line
+	4700 4850 4700 4700
 $EndSCHEMATC

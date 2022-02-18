@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 95 96
+Sheet 90 97
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -2318,8 +2318,6 @@ Text HLabel 2050 2750 0    50   Input ~ 0
 BKPT_SER
 Text HLabel 2050 2850 0    50   Input ~ 0
 BKPT_SCLK
-Text HLabel 1150 6250 0    50   Input ~ 0
-PWR_RESET
 Wire Wire Line
 	3150 9300 3850 9300
 Connection ~ 3850 9300
@@ -2665,9 +2663,11 @@ $EndComp
 Wire Wire Line
 	1500 6450 1500 6350
 Wire Wire Line
-	1150 6250 1200 6250
-Wire Wire Line
 	1750 6250 2450 6250
+Text GLabel 1150 6250 0    31   Input ~ 0
+PWR_RESET
+Wire Wire Line
+	1200 6250 1150 6250
 Wire Bus Line
 	4500 700  4500 7200
 Wire Bus Line

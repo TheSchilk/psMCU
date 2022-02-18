@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 71 96
+Sheet 68 97
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -224,8 +224,6 @@ Wire Wire Line
 Connection ~ 2400 2650
 Text HLabel 8950 3700 0    50   Input ~ 0
 Int_Active
-Text HLabel 8950 3800 0    50   Input ~ 0
-RESET
 Text HLabel 8950 3900 0    50   Input ~ 0
 UI_Halted
 Text HLabel 8950 4000 0    50   Input ~ 0
@@ -4671,14 +4669,6 @@ Wire Wire Line
 	6800 5850 6900 5850
 Wire Wire Line
 	4900 5750 6900 5750
-Text Label 3350 6400 0    50   ~ 0
-CLK
-Wire Wire Line
-	3350 6400 3550 6400
-Text Label 4750 6400 0    50   ~ 0
-CLK
-Wire Wire Line
-	4750 6400 4950 6400
 Text Notes 4450 5650 0    50   ~ 0
 Rising Edge Detection
 Wire Wire Line
@@ -4686,12 +4676,6 @@ Wire Wire Line
 Wire Wire Line
 	2400 6300 3550 6300
 Connection ~ 2400 5900
-Text Label 1100 6650 2    50   ~ 0
-CLK
-Wire Wire Line
-	1100 6650 900  6650
-Text HLabel 900  6650 0    50   Input ~ 0
-CLK
 $Comp
 L 74xGxx:74LVC1G08 U?
 U 1 1 631723F3
@@ -4828,4 +4812,14 @@ Wire Wire Line
 	9750 4100 10500 4100
 Wire Wire Line
 	9750 4200 10500 4200
+Text GLabel 3500 6400 0    31   Input ~ 0
+CLK_A
+Text GLabel 8950 3800 0    31   Input ~ 0
+RESET_A
+Text GLabel 4900 6400 0    31   Input ~ 0
+CLK_A
+Wire Wire Line
+	4900 6400 4950 6400
+Wire Wire Line
+	3500 6400 3550 6400
 $EndSCHEMATC

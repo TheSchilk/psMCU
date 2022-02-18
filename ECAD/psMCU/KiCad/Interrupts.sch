@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 19 96
+Sheet 19 97
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -15,20 +15,8 @@ Comment4 "Interrupt logic. Keeps track if an interrupt is currently being served
 $EndDescr
 Text HLabel 8900 1650 2    50   Output ~ 0
 Interrupt_Override
-Text HLabel 1150 7400 0    50   Input ~ 0
-CLK
 Text HLabel 3350 1700 0    50   Input ~ 0
 IReg_Latch
-Text HLabel 1150 7300 0    50   Input ~ 0
-~RESET
-Wire Wire Line
-	1150 7300 1400 7300
-Wire Wire Line
-	1150 7400 1400 7400
-Text Label 1400 7300 2    50   ~ 0
-~R
-Text Label 1400 7400 2    50   ~ 0
-CLK
 Wire Wire Line
 	3950 800  3750 800 
 $Comp
@@ -2007,30 +1995,6 @@ Wire Wire Line
 	9200 3350 9100 3350
 Text Notes 9550 3400 0    50   ~ 0
 Int. Active
-Wire Wire Line
-	7600 3300 7350 3300
-Wire Wire Line
-	7600 3200 7350 3200
-Text Label 7350 3300 0    50   ~ 0
-~R
-Text Label 7350 3200 0    50   ~ 0
-CLK
-Wire Wire Line
-	7600 1950 7400 1950
-Wire Wire Line
-	7600 1850 7400 1850
-Text Label 7400 1950 0    50   ~ 0
-~R
-Text Label 7400 1850 0    50   ~ 0
-CLK
-Wire Wire Line
-	1950 1800 1700 1800
-Wire Wire Line
-	1950 1700 1700 1700
-Text Label 1700 1800 0    50   ~ 0
-~R
-Text Label 1700 1700 0    50   ~ 0
-CLK
 Text HLabel 950  1500 0    50   Input ~ 0
 Int_Assert
 Text HLabel 7350 3100 0    50   Input ~ 0
@@ -3624,4 +3588,28 @@ F 3 "" H 5600 2300 50  0001 C CNN
 	1    5600 2300
 	1    0    0    -1  
 $EndComp
+Text GLabel 1850 1700 0    31   Input ~ 0
+CLK_A
+Wire Wire Line
+	1850 1700 1950 1700
+Text GLabel 1850 1800 0    31   Input ~ 0
+~RESET_A
+Wire Wire Line
+	1850 1800 1950 1800
+Text GLabel 7500 1850 0    31   Input ~ 0
+CLK_A
+Wire Wire Line
+	7500 1850 7600 1850
+Text GLabel 7500 1950 0    31   Input ~ 0
+~RESET_A
+Wire Wire Line
+	7500 1950 7600 1950
+Text GLabel 7500 3200 0    31   Input ~ 0
+CLK_A
+Wire Wire Line
+	7500 3200 7600 3200
+Text GLabel 7500 3300 0    31   Input ~ 0
+~RESET_A
+Wire Wire Line
+	7500 3300 7600 3300
 $EndSCHEMATC

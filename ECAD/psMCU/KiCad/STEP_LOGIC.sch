@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 24 96
+Sheet 24 97
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -23,10 +23,6 @@ Text HLabel 4900 1400 2    50   Output ~ 0
 DO_INC
 Text HLabel 4900 2300 2    50   Output ~ 0
 DO_CLR
-Text HLabel 900  750  0    50   Input ~ 0
-CLK
-Text HLabel 950  850  0    50   Input ~ 0
-~RESET
 $Comp
 L 74xGxx:74LVC1G175 U?
 U 1 1 5F3E8070
@@ -111,22 +107,6 @@ Wire Wire Line
 Connection ~ 2100 4350
 Wire Wire Line
 	2400 4350 2350 4350
-Text Label 2100 4900 1    50   ~ 0
-~R
-Wire Wire Line
-	2100 4900 2100 4850
-Wire Wire Line
-	950  850  1050 850 
-Text Label 1050 850  2    50   ~ 0
-~R
-Wire Wire Line
-	900  750  1100 750 
-Text Label 1100 750  2    50   ~ 0
-CLK
-Text Label 1650 4600 0    50   ~ 0
-CLK
-Wire Wire Line
-	1650 4600 1850 4600
 $Comp
 L 74xGxx:74LVC1G32 U?
 U 1 1 5F4D8636
@@ -4628,24 +4608,6 @@ Wire Wire Line
 Wire Wire Line
 	2600 6650 2550 6650
 Wire Wire Line
-	2850 7050 2850 7000
-$Comp
-L power:+5V #PWR?
-U 1 1 611775E5
-P 2850 7050
-AR Path="/5ED2705B/611775E5" Ref="#PWR?"  Part="1" 
-AR Path="/5F1CE57C/611775E5" Ref="#PWR?"  Part="1" 
-AR Path="/5F396002/611775E5" Ref="#PWR?"  Part="1" 
-AR Path="/608BF85D/60010AFF/611775E5" Ref="#PWR?"  Part="1" 
-AR Path="/60E33DBC/5F3D6AF9/611775E5" Ref="#PWR0517"  Part="1" 
-F 0 "#PWR0517" H 2850 6900 50  0001 C CNN
-F 1 "+5V" H 2865 7223 50  0000 C CNN
-F 2 "" H 2850 7050 50  0001 C CNN
-F 3 "" H 2850 7050 50  0001 C CNN
-	1    2850 7050
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
 	1450 7050 1450 7000
 $Comp
 L power:+5V #PWR?
@@ -4846,14 +4808,6 @@ Wire Wire Line
 	4450 6200 4550 6200
 Wire Wire Line
 	2550 6100 4550 6100
-Text Label 1000 6750 0    50   ~ 0
-CLK
-Wire Wire Line
-	1000 6750 1200 6750
-Text Label 2400 6750 0    50   ~ 0
-CLK
-Wire Wire Line
-	2400 6750 2600 6750
 Text Notes 2100 6000 0    50   ~ 0
 Rising Edge Detection
 $Comp
@@ -5107,4 +5061,40 @@ F 3 "" H 6250 6750 50  0001 C CNN
 	1    6250 6750
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	2850 7050 2850 7000
+Text GLabel 1800 4600 0    31   Input ~ 0
+CLK_A
+Wire Wire Line
+	1800 4600 1850 4600
+Text GLabel 2200 5000 2    31   Input ~ 0
+~RESET_A
+Wire Wire Line
+	2200 5000 2100 5000
+Wire Wire Line
+	2100 5000 2100 4850
+Text GLabel 2500 6750 0    31   Input ~ 0
+CLK_A
+$Comp
+L power:+5V #PWR?
+U 1 1 611775E5
+P 2850 7050
+AR Path="/5ED2705B/611775E5" Ref="#PWR?"  Part="1" 
+AR Path="/5F1CE57C/611775E5" Ref="#PWR?"  Part="1" 
+AR Path="/5F396002/611775E5" Ref="#PWR?"  Part="1" 
+AR Path="/608BF85D/60010AFF/611775E5" Ref="#PWR?"  Part="1" 
+AR Path="/60E33DBC/5F3D6AF9/611775E5" Ref="#PWR0517"  Part="1" 
+F 0 "#PWR0517" H 2850 6900 50  0001 C CNN
+F 1 "+5V" H 2865 7223 50  0000 C CNN
+F 2 "" H 2850 7050 50  0001 C CNN
+F 3 "" H 2850 7050 50  0001 C CNN
+	1    2850 7050
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	2500 6750 2600 6750
+Text GLabel 1050 6750 0    31   Input ~ 0
+CLK_A
+Wire Wire Line
+	1050 6750 1200 6750
 $EndSCHEMATC

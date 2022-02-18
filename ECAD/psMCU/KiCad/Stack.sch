@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
-Sheet 85 96
+Sheet 83 97
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -15,12 +15,6 @@ Comment4 "32kB of stack RAM. Because the RAM IC only has an asynchronous interfa
 $EndDescr
 Text HLabel 8950 750  0    50   3State ~ 0
 DB[0..7]
-Text HLabel 15500 9600 0    50   Input ~ 0
-CLK
-Wire Wire Line
-	15500 9600 15650 9600
-Text Label 15650 9600 2    50   ~ 0
-CLK
 Entry Wire Line
 	10550 4300 10650 4400
 Entry Wire Line
@@ -420,10 +414,6 @@ Wire Wire Line
 	12150 4800 12800 4800
 Wire Wire Line
 	12150 4700 12900 4700
-Text HLabel 15500 9500 0    50   Input ~ 0
-RESET
-Text HLabel 15500 9400 0    50   Input ~ 0
-~RESET
 Text HLabel 9600 6800 0    50   Input ~ 0
 W
 Text HLabel 10750 8250 0    50   Input ~ 0
@@ -443,20 +433,6 @@ Wire Bus Line
 Wire Bus Line
 	9050 1050 9050 750 
 Connection ~ 9050 750 
-Wire Wire Line
-	15500 9500 15650 9500
-Wire Wire Line
-	15500 9400 15650 9400
-Text Label 15650 9500 2    50   ~ 0
-Rst
-Text Label 15650 9400 2    50   ~ 0
-~R
-Wire Wire Line
-	9300 1250 9150 1250
-Text Label 9150 1250 0    50   ~ 0
-CLK
-Wire Wire Line
-	9300 1350 9150 1350
 $Comp
 L 74xx:74HC245 U?
 U 1 1 60588C60
@@ -728,9 +704,7 @@ Connection ~ 10250 6650
 Wire Wire Line
 	10550 6650 10500 6650
 Wire Wire Line
-	10000 6900 9850 6900
-Text Label 9850 6900 0    50   ~ 0
-CLK
+	10000 6900 9950 6900
 Text HLabel 12100 8800 2    50   3State ~ 0
 DB_OUT
 Wire Wire Line
@@ -963,10 +937,6 @@ Wire Wire Line
 Connection ~ 9550 2400
 Wire Wire Line
 	9850 2400 9800 2400
-Wire Wire Line
-	9300 2650 9150 2650
-Text Label 9150 2650 0    50   ~ 0
-CLK
 $Comp
 L 74xGxx:74LVC1G04 U?
 U 1 1 600D53F7
@@ -1053,10 +1023,6 @@ F 3 "" H 11050 2350 50  0001 C CNN
 	1    11050 2350
 	0    -1   -1   0   
 $EndComp
-Text Label 9550 3000 1    50   ~ 0
-~R
-Wire Wire Line
-	9550 2900 9550 3000
 Wire Wire Line
 	9000 2550 9050 2550
 Wire Wire Line
@@ -2583,24 +2549,20 @@ Wire Wire Line
 Wire Wire Line
 	10850 7700 11150 7700
 Wire Wire Line
-	9600 6800 9750 6800
+	9600 6800 9650 6800
 Wire Wire Line
-	9750 7700 9750 6800
-Connection ~ 9750 6800
+	9650 7700 9650 6800
+Connection ~ 9650 6800
 Wire Wire Line
-	9750 6800 10000 6800
+	9650 6800 10000 6800
 Wire Wire Line
 	10500 6800 11150 6800
 Wire Wire Line
-	9750 7700 10050 7700
+	9650 7700 10050 7700
 Text Notes 10600 7700 0    50   ~ 0
 W
 Text Notes 12000 9450 0    50   ~ 0
 R
-Text Label 10250 7250 1    50   ~ 0
-~R
-Wire Wire Line
-	10250 7150 10250 7250
 Wire Wire Line
 	9800 2550 10450 2550
 Wire Wire Line
@@ -3142,14 +3104,12 @@ Entry Wire Line
 Entry Wire Line
 	10550 5700 10650 5800
 $Sheet
-S 9300 950  1100 500 
+S 9300 950  1100 300 
 U 60720D05
 F0 "Data Sync Register" 50
 F1 "8Bit_Reg.sch" 50
 F2 "DB[0..7]" I L 9300 1050 50 
 F3 "DB_SYNC[0..7]" O R 10400 1050 50 
-F4 "CLK" I L 9300 1250 50 
-F5 "RESET" I L 9300 1350 50 
 F6 "Latch" I L 9300 1150 50 
 $EndSheet
 $Sheet
@@ -3173,12 +3133,6 @@ Wire Bus Line
 	1300 3600 1750 3600
 Wire Bus Line
 	5300 3700 5000 3700
-Wire Wire Line
-	1750 3800 1600 3800
-Text Label 1600 3800 0    50   ~ 0
-CLK
-Wire Wire Line
-	1750 3900 1600 3900
 Wire Wire Line
 	1750 3700 1500 3700
 Wire Wire Line
@@ -6539,12 +6493,6 @@ Ofs -1
 Text Notes 1000 10600 0    50   ~ 0
 Ofs 0
 Wire Wire Line
-	6850 3900 6700 3900
-Text Label 6700 3900 0    50   ~ 0
-CLK
-Wire Wire Line
-	6850 4000 6700 4000
-Wire Wire Line
 	6850 3800 6600 3800
 Wire Wire Line
 	7300 4500 7350 4500
@@ -7049,24 +6997,20 @@ Wire Wire Line
 Text HLabel 6500 3800 0    50   Input ~ 0
 Sync_Adr
 $Sheet
-S 6850 3600 1000 500 
+S 6850 3600 1000 300 
 U 62D35337
 F0 "Adr Sync Reg" 50
 F1 "15Bit_Reg.sch" 50
 F2 "Latch" I L 6850 3800 50 
-F3 "CLK" I L 6850 3900 50 
-F4 "RESET" I L 6850 4000 50 
 F5 "Out[14..0]" O R 7850 3700 50 
 F6 "In[14..0]" I L 6850 3700 50 
 $EndSheet
 $Sheet
-S 1750 3500 1000 500 
+S 1750 3500 1000 300 
 U 6136D858
 F0 "Pointer Register" 50
 F1 "15Bit_Reg.sch" 50
 F2 "Latch" I L 1750 3700 50 
-F3 "CLK" I L 1750 3800 50 
-F4 "RESET" I L 1750 3900 50 
 F5 "Out[14..0]" O R 2750 3600 50 
 F6 "In[14..0]" I L 1750 3600 50 
 $EndSheet
@@ -7223,12 +7167,6 @@ Wire Bus Line
 Connection ~ 3900 3600
 Wire Bus Line
 	3900 3600 4200 3600
-Text Label 9150 1350 0    50   ~ 0
-Rst
-Text Label 6700 4000 0    50   ~ 0
-Rst
-Text Label 1600 3900 0    50   ~ 0
-Rst
 Connection ~ 4650 7800
 Wire Wire Line
 	3400 6100 4650 6100
@@ -7285,8 +7223,24 @@ F 3 "" H 14650 3100 50  0001 C CNN
 	1    14650 3100
 	1    0    0    -1  
 $EndComp
-Wire Bus Line
-	7500 5150 7500 10050
+Text GLabel 10300 7300 2    31   Input ~ 0
+~RESET_A
+Wire Wire Line
+	10300 7300 10250 7300
+Wire Wire Line
+	10250 7300 10250 7150
+Text GLabel 9950 6900 0    31   Input ~ 0
+CLK_A
+Text GLabel 9250 2650 0    31   Input ~ 0
+CLK_A
+Text GLabel 9650 3100 2    31   Input ~ 0
+~RESET_A
+Wire Wire Line
+	9650 3100 9550 3100
+Wire Wire Line
+	9550 3100 9550 2900
+Wire Wire Line
+	9250 2650 9300 2650
 Wire Bus Line
 	2950 9150 2950 9850
 Wire Bus Line
@@ -7295,4 +7249,6 @@ Wire Bus Line
 	15450 750  15450 5900
 Wire Bus Line
 	10550 3700 10550 5700
+Wire Bus Line
+	7500 5150 7500 10050
 $EndSCHEMATC

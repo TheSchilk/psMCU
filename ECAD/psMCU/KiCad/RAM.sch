@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 34 96
+Sheet 32 97
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -109,16 +109,6 @@ Entry Wire Line
 	1200 2450 1300 2550
 Text Label 1300 2550 0    50   ~ 0
 RAMA8
-Text HLabel 1050 1050 0    50   Input ~ 0
-CLK
-Wire Wire Line
-	1050 1050 1350 1050
-Text Label 1350 1050 2    50   ~ 0
-CLK
-Wire Wire Line
-	3800 1700 3650 1700
-Text Label 3650 1700 0    50   ~ 0
-CLK
 Wire Wire Line
 	1300 2550 1700 2550
 $Comp
@@ -641,10 +631,6 @@ Wire Wire Line
 Connection ~ 3950 3000
 Wire Wire Line
 	4250 3000 4200 3000
-Wire Wire Line
-	3700 3250 3550 3250
-Text Label 3550 3250 0    50   ~ 0
-CLK
 Entry Wire Line
 	5850 2350 5950 2450
 Entry Wire Line
@@ -1372,10 +1358,6 @@ Text Label 2500 1400 0    50   ~ 0
 RAMA[0..7]
 Text Label 5800 1300 2    50   ~ 0
 DB_SYNC[0..7]
-Text HLabel 3750 1800 0    50   Input ~ 0
-RESET
-Wire Wire Line
-	3750 1800 3800 1800
 $Comp
 L 74xGxx:74LVC1G175 U61
 U 1 1 5EE6AC91
@@ -1453,15 +1435,11 @@ Wire Wire Line
 	5750 4900 5700 4900
 Wire Wire Line
 	5200 5150 5050 5150
-Text Label 5050 5150 0    50   ~ 0
-CLK
 Wire Wire Line
 	5700 5050 7150 5050
 Wire Wire Line
 	3000 5050 5200 5050
 Connection ~ 3000 5050
-Text HLabel 1050 950  0    50   Input ~ 0
-~RESET
 Wire Wire Line
 	5450 5400 5450 5600
 Text Label 5950 3250 0    50   ~ 0
@@ -1622,18 +1600,6 @@ Wire Wire Line
 Connection ~ 5500 5950
 Wire Wire Line
 	5500 5950 7150 5950
-Wire Wire Line
-	1050 950  1350 950 
-Text Label 1350 950  2    50   ~ 0
-~RESET
-Text Label 4200 3700 2    50   ~ 0
-~RESET
-Text Label 5700 5600 2    50   ~ 0
-~RESET
-Wire Wire Line
-	5700 5600 5450 5600
-Wire Wire Line
-	4200 3700 3950 3700
 Wire Wire Line
 	3950 3500 3950 3700
 Connection ~ 2750 2400
@@ -3144,16 +3110,14 @@ W
 Text Notes 3950 5650 0    50   ~ 0
 R Sync A
 $Sheet
-S 3800 1200 1250 650 
+S 3800 1200 1250 500 
 U 5ED3C508
 F0 "SyncRegisters" 50
 F1 "SyncRegisters.sch" 50
 F2 "DB[0..7]" I L 3800 1300 50 
 F3 "DB_SYNC[0..7]" O R 5050 1300 50 
-F4 "CLK" I L 3800 1700 50 
 F5 "RAMA[0..7]" I L 3800 1400 50 
 F6 "RAMA_SYNC[0..7]" O R 5050 1400 50 
-F7 "RESET" I L 3800 1800 50 
 F8 "Latch_D" I L 3800 1500 50 
 F9 "Latch_A" I L 3800 1600 50 
 $EndSheet
@@ -3217,6 +3181,20 @@ Entry Wire Line
 	5950 3750 5850 3850
 Entry Wire Line
 	5950 3850 5850 3950
+Text GLabel 4000 3700 2    31   Input ~ 0
+~RESET_A
+Text GLabel 3650 3250 0    31   Input ~ 0
+CLK_A
+Wire Wire Line
+	3650 3250 3700 3250
+Wire Wire Line
+	4000 3700 3950 3700
+Text GLabel 5500 5600 2    31   Input ~ 0
+~RESET_A
+Text GLabel 5050 5150 0    31   Input ~ 0
+CLK_A
+Wire Wire Line
+	5500 5600 5450 5600
 Wire Bus Line
 	5850 3350 5850 4050
 Wire Bus Line

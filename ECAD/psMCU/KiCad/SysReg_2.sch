@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 39 96
+Sheet 37 97
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -453,10 +453,6 @@ F 3 "http://www.ti.com/lit/gpn/sn74LS173" H 3650 2800 50  0001 C CNN
 	1    3650 2800
 	1    0    0    -1  
 $EndComp
-Text HLabel 2700 3400 0    50   Input ~ 0
-RESET
-Text HLabel 2700 3200 0    50   Input ~ 0
-CLK
 Wire Bus Line
 	6400 1450 1950 1450
 Entry Wire Line
@@ -707,10 +703,6 @@ Wire Wire Line
 	6600 7600 5850 7600
 Wire Wire Line
 	3100 2800 3100 3450
-Wire Wire Line
-	2700 3200 3150 3200
-Wire Wire Line
-	2700 3400 3150 3400
 Text Label 4600 4750 2    50   ~ 0
 VAL4
 Wire Bus Line
@@ -2399,8 +2391,6 @@ Wire Wire Line
 	4150 2400 4600 2400
 Wire Wire Line
 	4150 2500 4600 2500
-Text Label 2750 3200 0    50   ~ 0
-CLK
 Wire Wire Line
 	2050 2200 3150 2200
 Wire Wire Line
@@ -2622,17 +2612,11 @@ Text Notes 3700 5700 1    50   ~ 0
 Wire Wire Line
 	3100 5350 3100 6000
 Wire Wire Line
-	2700 5750 3150 5750
-Wire Wire Line
-	2700 5950 3150 5950
-Wire Wire Line
 	4150 4750 4600 4750
 Wire Wire Line
 	4150 4850 4600 4850
 Wire Wire Line
 	4150 4950 4600 4950
-Text Label 2700 5750 0    50   ~ 0
-CLK
 Wire Wire Line
 	2050 4750 3150 4750
 Wire Wire Line
@@ -2644,10 +2628,6 @@ Text Label 2700 5650 0    50   ~ 0
 Wire Wire Line
 	3000 5650 2700 5650
 Connection ~ 3000 5650
-Text Label 2750 3400 0    50   ~ 0
-R
-Text Label 2700 5950 0    50   ~ 0
-R
 Entry Wire Line
 	1950 4750 2050 4850
 Entry Wire Line
@@ -2687,12 +2667,6 @@ Entry Wire Line
 	4600 6750 4700 6850
 Text Label 4600 6750 2    50   ~ 0
 VAL7
-Wire Bus Line
-	1950 1450 1950 4850
-Wire Bus Line
-	6400 1450 6400 4100
-Wire Bus Line
-	4700 1800 4700 9200
 $Comp
 L power:GND #PWR0827
 U 1 1 6287DF77
@@ -2704,4 +2678,26 @@ F 3 "" H 4150 6750 50  0001 C CNN
 	1    4150 6750
 	0    1    1    0   
 $EndComp
+Text GLabel 2950 3200 0    31   Input ~ 0
+CLK_B
+Text GLabel 2950 3400 0    31   Input ~ 0
+RESET_B
+Wire Wire Line
+	2950 3200 3150 3200
+Wire Wire Line
+	3150 3400 2950 3400
+Text GLabel 2950 5750 0    31   Input ~ 0
+CLK_B
+Text GLabel 2950 5950 0    31   Input ~ 0
+RESET_B
+Wire Wire Line
+	2950 5750 3150 5750
+Wire Wire Line
+	3150 5950 2950 5950
+Wire Bus Line
+	1950 1450 1950 4850
+Wire Bus Line
+	6400 1450 6400 4100
+Wire Bus Line
+	4700 1800 4700 9200
 $EndSCHEMATC

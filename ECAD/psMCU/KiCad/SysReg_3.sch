@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 42 96
+Sheet 40 97
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -80,21 +80,6 @@ Text HLabel 6850 4300 0    50   Input ~ 0
 A=0
 Text HLabel 6850 4400 0    50   Input ~ 0
 B=0
-$Comp
-L 74xGxx:74LVC1G175 U?
-U 1 1 602FFC9A
-P 5100 2300
-AR Path="/5F1CE57C/602FFC9A" Ref="U?"  Part="1" 
-AR Path="/608BF85D/602FFC9A" Ref="U?"  Part="1" 
-AR Path="/608BF85D/5FFAAF6D/602FFC9A" Ref="U?"  Part="1" 
-AR Path="/5FD65308/602FFC9A" Ref="U353"  Part="1" 
-F 0 "U353" H 5250 2000 50  0000 C CNN
-F 1 "SN74LVC1G175DCK" H 5500 2100 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 5100 2300 50  0001 C CNN
-F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 5100 2300 50  0001 C CNN
-	1    5100 2300
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	4950 2450 4950 2500
 $Comp
@@ -271,10 +256,6 @@ Wire Wire Line
 	5900 1550 5900 2200
 Wire Wire Line
 	5900 2200 5350 2200
-Wire Wire Line
-	5100 2600 5100 2550
-Wire Wire Line
-	4700 2300 4850 2300
 Wire Wire Line
 	8350 4150 8350 4100
 $Comp
@@ -2417,18 +2398,6 @@ Entry Wire Line
 Text Label 7300 4700 2    50   ~ 0
 VAL6
 Wire Wire Line
-	1100 5500 1350 5500
-Wire Wire Line
-	1100 5600 1350 5600
-Text Label 1350 5500 2    50   ~ 0
-CLK
-Text Label 1350 5600 2    50   ~ 0
-~R
-Text Label 4700 2300 0    50   ~ 0
-CLK
-Text Label 5100 2600 1    50   ~ 0
-~R
-Wire Wire Line
 	7300 4300 6850 4300
 Wire Wire Line
 	7300 4400 6850 4400
@@ -2455,38 +2424,6 @@ Entry Wire Line
 	7300 3900 7400 4000
 Wire Wire Line
 	2100 2250 3850 2250
-$Comp
-L 74xGxx:74LVC1G175 U?
-U 1 1 64DB002B
-P 5100 4000
-AR Path="/5F1CE57C/64DB002B" Ref="U?"  Part="1" 
-AR Path="/608BF85D/64DB002B" Ref="U?"  Part="1" 
-AR Path="/608BF85D/5FFAAF6D/64DB002B" Ref="U?"  Part="1" 
-AR Path="/5FD65308/64DB002B" Ref="U254"  Part="1" 
-F 0 "U254" H 5250 3700 50  0000 C CNN
-F 1 "SN74LVC1G175DCK" H 5500 3800 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 5100 4000 50  0001 C CNN
-F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 5100 4000 50  0001 C CNN
-	1    5100 4000
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	4950 4150 4950 4200
-$Comp
-L power:GND #PWR?
-U 1 1 64DB0032
-P 4950 4200
-AR Path="/5F1CE57C/64DB0032" Ref="#PWR?"  Part="1" 
-AR Path="/608BF85D/64DB0032" Ref="#PWR?"  Part="1" 
-AR Path="/608BF85D/5FFAAF6D/64DB0032" Ref="#PWR?"  Part="1" 
-AR Path="/5FD65308/64DB0032" Ref="#PWR0838"  Part="1" 
-F 0 "#PWR0838" H 4950 3950 50  0001 C CNN
-F 1 "GND" H 4955 4027 50  0000 C CNN
-F 2 "" H 4950 4200 50  0001 C CNN
-F 3 "" H 4950 4200 50  0001 C CNN
-	1    4950 4200
-	1    0    0    -1  
-$EndComp
 $Comp
 L power:GND #PWR?
 U 1 1 64DB0038
@@ -2646,16 +2583,8 @@ Wire Wire Line
 	5900 3250 5900 3900
 Wire Wire Line
 	5900 3900 5350 3900
-Wire Wire Line
-	5100 4300 5100 4250
-Wire Wire Line
-	4700 4000 4850 4000
 Text Notes 4250 3150 0    100  ~ 0
 Btn Interrupt Flag
-Text Label 4700 4000 0    50   ~ 0
-CLK
-Text Label 5100 4300 1    50   ~ 0
-~R
 Text Label 2100 4450 0    50   ~ 0
 Latch
 Wire Wire Line
@@ -2671,10 +2600,6 @@ Entry Wire Line
 	2000 3350 2100 3450
 Text Label 2100 3450 0    50   ~ 0
 DB1
-Text HLabel 1100 5500 0    50   Input ~ 0
-CLK
-Text HLabel 1100 5600 0    50   Input ~ 0
-~RESET
 $Comp
 L 74xGxx:74LVC1G32 U?
 U 1 1 64E2F540
@@ -2931,6 +2856,73 @@ F 3 "" H 8350 1550 50  0001 C CNN
 	1    8350 1550
 	1    0    0    -1  
 $EndComp
+Text GLabel 5200 4450 2    31   Input ~ 0
+~RESET_A
+Text GLabel 4750 4000 0    31   Input ~ 0
+CLK_A
+$Comp
+L power:GND #PWR?
+U 1 1 64DB0032
+P 4950 4200
+AR Path="/5F1CE57C/64DB0032" Ref="#PWR?"  Part="1" 
+AR Path="/608BF85D/64DB0032" Ref="#PWR?"  Part="1" 
+AR Path="/608BF85D/5FFAAF6D/64DB0032" Ref="#PWR?"  Part="1" 
+AR Path="/5FD65308/64DB0032" Ref="#PWR0838"  Part="1" 
+F 0 "#PWR0838" H 4950 3950 50  0001 C CNN
+F 1 "GND" H 4955 4027 50  0000 C CNN
+F 2 "" H 4950 4200 50  0001 C CNN
+F 3 "" H 4950 4200 50  0001 C CNN
+	1    4950 4200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4950 4150 4950 4200
+$Comp
+L 74xGxx:74LVC1G175 U?
+U 1 1 64DB002B
+P 5100 4000
+AR Path="/5F1CE57C/64DB002B" Ref="U?"  Part="1" 
+AR Path="/608BF85D/64DB002B" Ref="U?"  Part="1" 
+AR Path="/608BF85D/5FFAAF6D/64DB002B" Ref="U?"  Part="1" 
+AR Path="/5FD65308/64DB002B" Ref="U254"  Part="1" 
+F 0 "U254" H 5250 3700 50  0000 C CNN
+F 1 "SN74LVC1G175DCK" H 5500 3800 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 5100 4000 50  0001 C CNN
+F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 5100 4000 50  0001 C CNN
+	1    5100 4000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4750 4000 4850 4000
+Wire Wire Line
+	5100 4250 5100 4450
+Wire Wire Line
+	5100 4450 5200 4450
+Text GLabel 4800 2300 0    31   Input ~ 0
+CLK_A
+Wire Wire Line
+	4800 2300 4850 2300
+Text GLabel 5150 2700 2    31   Input ~ 0
+~RESET_A
+$Comp
+L 74xGxx:74LVC1G175 U?
+U 1 1 602FFC9A
+P 5100 2300
+AR Path="/5F1CE57C/602FFC9A" Ref="U?"  Part="1" 
+AR Path="/608BF85D/602FFC9A" Ref="U?"  Part="1" 
+AR Path="/608BF85D/5FFAAF6D/602FFC9A" Ref="U?"  Part="1" 
+AR Path="/5FD65308/602FFC9A" Ref="U353"  Part="1" 
+F 0 "U353" H 5250 2000 50  0000 C CNN
+F 1 "SN74LVC1G175DCK" H 5500 2100 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 5100 2300 50  0001 C CNN
+F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 5100 2300 50  0001 C CNN
+	1    5100 2300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5150 2700 5100 2700
+Wire Wire Line
+	5100 2700 5100 2550
 Wire Bus Line
 	2000 950  2000 3350
 Wire Bus Line

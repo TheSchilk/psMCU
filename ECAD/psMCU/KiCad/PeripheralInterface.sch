@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 41 96
+Sheet 39 97
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -15,8 +15,6 @@ Comment4 "Peripheral Connector. Also pre-filters RAMA addresses for peripherals.
 $EndDescr
 Text HLabel 10800 2900 2    50   3State ~ 0
 DB[0..7]
-Text HLabel 4100 4350 0    50   Input ~ 0
-CLK
 Text HLabel 1550 2800 0    50   Input ~ 0
 RAM_Sync_D_A
 Text HLabel 1550 3700 0    50   Input ~ 0
@@ -706,8 +704,6 @@ F 3 "" H 5250 5700 50  0001 C CNN
 	1    5250 5700
 	1    0    0    -1  
 $EndComp
-Text HLabel 4100 3950 0    50   Input ~ 0
-~RESET
 Wire Wire Line
 	4100 3950 4750 3950
 Text Label 4100 4450 0    50   ~ 0
@@ -1502,6 +1498,10 @@ Wire Wire Line
 	9850 3900 9850 2850
 Wire Wire Line
 	10050 4450 10050 2950
+Text GLabel 4100 4350 0    31   Input ~ 0
+CLK
+Text GLabel 4100 3950 0    31   Input ~ 0
+~RESET
 Wire Bus Line
 	4150 1200 4150 2050
 Wire Bus Line

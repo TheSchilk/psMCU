@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
-Sheet 66 96
+Sheet 63 97
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -781,10 +781,6 @@ F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 4350 6600 50  0001 C CNN
 	1    4350 6600
 	1    0    0    -1  
 $EndComp
-Text HLabel 8450 4100 0    50   Input ~ 0
-POWER_ON_RESET
-Wire Wire Line
-	8600 4100 8450 4100
 Wire Wire Line
 	9600 4100 9600 5000
 NoConn ~ 11650 5000
@@ -1965,6 +1961,10 @@ Wire Wire Line
 	9150 2800 10050 2800
 Wire Wire Line
 	9250 2900 10050 2900
+Text GLabel 8550 4100 0    31   Input ~ 0
+PWR_RESET
+Wire Wire Line
+	8600 4100 8550 4100
 Wire Bus Line
 	14150 4950 14150 8400
 Wire Bus Line

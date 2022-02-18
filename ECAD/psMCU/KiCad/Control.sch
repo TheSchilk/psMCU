@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
-Sheet 4 96
+Sheet 4 97
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -13,14 +13,14 @@ Comment2 "interrupts and instruction stepping logic."
 Comment3 "individual sub-instruction steps are read from the Microcode ROMs. Also handles "
 Comment4 "The central state-machine that handles execution. Instructions are decoded, and the "
 $EndDescr
-Text HLabel 4350 4750 0    50   Input ~ 0
+Text HLabel 3750 4750 0    50   Input ~ 0
 Bkpt_Trig
 Wire Wire Line
 	4400 4550 3750 4550
 Wire Wire Line
 	3750 4450 4400 4450
 Wire Wire Line
-	4350 4750 4400 4750
+	3750 4750 4400 4750
 $Comp
 L power:+5V #PWR?
 U 1 1 5F6323D3
@@ -122,28 +122,6 @@ Wire Wire Line
 	8050 4350 8050 4450
 Wire Wire Line
 	8050 4450 8100 4450
-Text HLabel 4050 8300 0    50   Input ~ 0
-CLK
-Text HLabel 4050 8400 0    50   Input ~ 0
-~RESET
-Wire Wire Line
-	4050 8300 4300 8300
-Wire Wire Line
-	4050 8400 4300 8400
-Text Label 4300 8300 2    50   ~ 0
-CLK
-Text Label 4300 8400 2    50   ~ 0
-~R
-Wire Wire Line
-	4400 5050 4150 5050
-Wire Wire Line
-	4400 4950 4150 4950
-Text Label 4150 5050 0    50   ~ 0
-CLK
-Text Label 4150 4950 0    50   ~ 0
-~R
-Wire Wire Line
-	7900 4550 8100 4550
 $Comp
 L 74HC161:74HC161 U?
 U 1 1 5F6323CD
@@ -256,12 +234,6 @@ Wire Wire Line
 Wire Wire Line
 	7600 4450 7600 4700
 Connection ~ 8050 4450
-Text Label 7900 4550 0    50   ~ 0
-CLK
-Text Label 7900 4750 0    50   ~ 0
-~R
-Wire Wire Line
-	7900 4750 8100 4750
 Text Notes 8050 2950 0    100  ~ 0
 Sub-Instruction \nStep Counter
 Text HLabel 4750 2400 0    50   Input ~ 0
@@ -781,18 +753,16 @@ Wire Bus Line
 Wire Bus Line
 	6550 3450 7250 3450
 $Sheet
-S 2300 2350 1500 1050
+S 2300 2400 1500 700 
 U 5FD12DEC
 F0 "Interrupts" 50
 F1 "Interrupts.sch" 50
 F2 "Interrupt_Override" O R 3800 2500 50 
-F3 "CLK" I L 2300 2500 50 
-F4 "~RESET" I L 2300 2400 50 
-F5 "IReg_Latch" I L 2300 3300 50 
-F6 "Int_Clr" I L 2300 3100 50 
-F7 "Int_Override_Clr" I L 2300 3000 50 
-F8 "Int_Assert" I L 2300 2700 50 
-F9 "Int_EN" I L 2300 2800 50 
+F5 "IReg_Latch" I L 2300 3000 50 
+F6 "Int_Clr" I L 2300 2900 50 
+F7 "Int_Override_Clr" I L 2300 2800 50 
+F8 "Int_Assert" I L 2300 2500 50 
+F9 "Int_EN" I L 2300 2700 50 
 F10 "Interrupt_Active" O R 3800 2700 50 
 $EndSheet
 Text HLabel 3750 4450 0    50   Input ~ 0
@@ -802,21 +772,11 @@ Inst_Step_EN
 Wire Bus Line
 	5700 7050 10000 7050
 Wire Wire Line
-	2300 2500 2050 2500
+	2300 2500 1600 2500
 Wire Wire Line
-	2300 2400 2050 2400
-Text Label 2050 2500 0    50   ~ 0
-CLK
-Text Label 2050 2400 0    50   ~ 0
-~R
-Wire Wire Line
-	2300 2700 1850 2700
-Wire Wire Line
-	2300 2800 1850 2800
-Text HLabel 1850 2700 0    50   Input ~ 0
+	2300 2700 1600 2700
+Text HLabel 1600 2500 0    50   Input ~ 0
 Int_Assert
-Text HLabel 1850 2800 0    50   Input ~ 0
-Int_EN
 Text HLabel 5800 4550 2    50   Output ~ 0
 UI_Halted
 Text HLabel 5800 4650 2    50   Output ~ 0
@@ -1915,7 +1875,7 @@ F11 "RegB_OE" O R 12700 3650 50
 F12 "Inst[0..15]" I L 11500 3350 50 
 $EndSheet
 $Sheet
-S 4400 4150 1200 1100
+S 4400 4150 1200 800 
 U 5F3D6AF9
 F0 "STEP_LOGIC" 50
 F1 "STEP_LOGIC.sch" 50
@@ -1924,8 +1884,6 @@ F3 "Halt" I L 4400 4650 50
 F4 "Bkpt_Trig" I L 4400 4750 50 
 F5 "DO_INC" O R 5600 4350 50 
 F6 "DO_CLR" O R 5600 4250 50 
-F7 "CLK" I L 4400 5050 50 
-F8 "~RESET" I L 4400 4950 50 
 F9 "Inst_Step" I L 4400 4450 50 
 F10 "UI_Halted" O R 5600 4550 50 
 F11 "UI_Halt_Inst" O R 5600 4650 50 
@@ -1967,17 +1925,17 @@ Wire Wire Line
 Wire Wire Line
 	3800 2500 5400 2500
 Wire Wire Line
-	2300 3100 1600 3100
-Text Label 1600 3100 0    50   ~ 0
+	2300 2900 1600 2900
+Text Label 1600 2900 0    50   ~ 0
 Int_Clr
-Text Label 1600 3000 0    50   ~ 0
+Text Label 1600 2800 0    50   ~ 0
 Int_Override_Clr
 Wire Wire Line
-	2300 3000 1600 3000
-Text Label 1600 3300 0    50   ~ 0
+	2300 2800 1600 2800
+Text Label 1600 3000 0    50   ~ 0
 RegI_Latch
 Wire Wire Line
-	2300 3300 1600 3300
+	2300 3000 1600 3000
 Wire Wire Line
 	3850 4350 4400 4350
 Wire Wire Line
@@ -2045,6 +2003,16 @@ F 3 "" H 8600 5750 50  0001 C CNN
 $EndComp
 Text HLabel 11650 6050 2    50   Output ~ 0
 In[0..8]+B->RAMA
+Text GLabel 8050 4550 0    31   Input ~ 0
+CLK_A
+Text GLabel 8050 4750 0    31   Input ~ 0
+~RESET_A
+Wire Wire Line
+	8050 4750 8100 4750
+Wire Wire Line
+	8050 4550 8100 4550
+Text HLabel 1600 2700 0    50   Input ~ 0
+Int_EN
 Wire Bus Line
 	9750 3850 9750 4100
 Wire Bus Line

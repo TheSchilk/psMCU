@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
-Sheet 1 96
+Sheet 1 97
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -19,26 +19,22 @@ Wire Wire Line
 	10500 1500 9900 1500
 Text Label 10500 1500 2    50   ~ 0
 Prog_Do_Reset
-Text Notes 4150 1000 0    315  Italic 0
+Text Notes 4050 1100 0    315  Italic 0
 Control:
 Connection ~ 12800 1400
-Connection ~ 12800 2550
 Wire Bus Line
 	12050 1400 12800 1400
 Text Label 12600 1400 2    50   ~ 0
 Inst[0..15]
 Wire Bus Line
-	12050 2550 12800 2550
-Connection ~ 6600 2700
+	12050 2000 12800 2000
 Wire Bus Line
-	6600 2700 7250 2700
+	6600 2400 7250 2400
 Connection ~ 6600 1400
 Wire Bus Line
 	7250 1400 6600 1400
 Wire Bus Line
 	6050 1400 6600 1400
-Wire Wire Line
-	4550 2000 4800 2000
 Text Label 15850 3300 2    50   ~ 0
 BarrelS_OE
 Wire Wire Line
@@ -120,12 +116,10 @@ RegT_LatchH
 Text Label 15850 2300 2    50   ~ 0
 RegT_LatchL
 $Sheet
-S 4800 1300 1250 800 
+S 4800 1300 1250 600 
 U 612C5E2A
 F0 "RegT" 50
 F1 "RegT.sch" 50
-F2 "CLK" I L 4800 1900 50 
-F3 "RESET" I L 4800 2000 50 
 F4 "DB_OUT" T R 6050 1800 50 
 F5 "DB[0..7]" T R 6050 1700 50 
 F6 "ROMA[0..13]" B R 6050 1400 50 
@@ -160,11 +154,11 @@ In[0..13]->ROMA
 Wire Wire Line
 	15000 3500 15850 3500
 Wire Bus Line
-	12800 1400 12800 2550
-Text Label 12700 2750 2    50   ~ 0
+	12800 1400 12800 2000
+Text Label 12700 2200 2    50   ~ 0
 In[0..7]->DBus
 Wire Wire Line
-	12050 2750 12700 2750
+	12050 2200 12700 2200
 Text Label 15850 4000 2    50   ~ 0
 In[0..7]->DBus
 Wire Wire Line
@@ -209,8 +203,6 @@ Wire Wire Line
 	13400 1500 12900 1500
 Text Label 12900 1500 0    50   ~ 0
 Bkpt_Trig
-Text Label 12900 2300 0    50   ~ 0
-CLK
 Text Notes 14000 5350 0    59   ~ 12
 5
 Text Notes 14000 4450 0    59   ~ 12
@@ -264,8 +256,6 @@ F0 "Control" 50
 F1 "Control.sch" 50
 F2 "Inst[0..15]" I L 13400 1400 50 
 F3 "Bkpt_Trig" I L 13400 1500 50 
-F4 "CLK" I L 13400 2300 50 
-F5 "~RESET" I L 13400 2400 50 
 F6 "PC_Inc" O R 15000 1500 50 
 F7 "PC_Cond_Inc" O R 15000 1600 50 
 F8 "PC_Latch" O R 15000 1700 50 
@@ -337,18 +327,14 @@ Wire Bus Line
 	8450 1400 8450 2300
 Wire Bus Line
 	8300 1400 8450 1400
-Wire Wire Line
-	7000 2300 7250 2300
-Wire Wire Line
-	7000 2200 7250 2200
 Text Label 6500 1500 2    50   ~ 0
 ROMA_OUT
 Wire Wire Line
 	6050 1500 6500 1500
-Text Label 10500 2550 0    50   ~ 0
+Text Label 10500 2000 0    50   ~ 0
 DB[0..7]
 Wire Bus Line
-	10850 2550 10500 2550
+	10850 2000 10500 2000
 Text Label 6500 1700 2    50   ~ 0
 DB[0..7]
 Wire Bus Line
@@ -357,42 +343,22 @@ Text Label 6500 1800 2    50   ~ 0
 DB_OUT
 Wire Wire Line
 	6050 1800 6500 1800
-Text Label 6800 2800 0    50   ~ 0
+Text Label 6800 2500 0    50   ~ 0
 ROMA_OUT
 Wire Wire Line
-	7250 2800 6800 2800
-Text Label 10500 2650 0    50   ~ 0
+	7250 2500 6800 2500
+Text Label 10500 2100 0    50   ~ 0
 DB_OUT
 Wire Wire Line
-	10850 2650 10500 2650
+	10850 2100 10500 2100
 Text Label 10250 2800 2    50   ~ 0
 Bkpt_Trig
-Text Label 10600 1800 0    50   ~ 0
-CLK
-Wire Wire Line
-	10850 1800 10600 1800
-Text Label 7000 2300 0    50   ~ 0
-~RESET
-Text Label 10600 1900 0    50   ~ 0
-RESET
-Wire Wire Line
-	10850 1900 10600 1900
-Text Label 7000 2200 0    50   ~ 0
-CLK
-Text Label 4550 2000 0    50   ~ 0
-RESET
-Text Label 4550 1900 0    50   ~ 0
-CLK
-Wire Wire Line
-	4800 1900 4550 1900
 $Sheet
-S 7250 1300 1050 1100
+S 7250 1300 1050 800 
 U 5F607AA2
 F0 "PC" 50
 F1 "PC.sch" 50
 F2 "PC[0..13]" O R 8300 1400 50 
-F3 "CLK" I L 7250 2200 50 
-F4 "~RESET" I L 7250 2300 50 
 F5 "ROMA[0..13]" B L 7250 1400 50 
 F6 "Inc" I L 7250 1600 50 
 F7 "Latch" I L 7250 1800 50 
@@ -412,97 +378,59 @@ F6 "BKPT_SCLK" O R 9900 1900 50
 F7 "Prog_Do_Reset" O R 9900 1500 50 
 $EndSheet
 $Sheet
-S 10850 1300 1200 700 
-U 5F18F3CA
-F0 "RegI" 50
-F1 "RegI.sch" 50
-F2 "CLK" I L 10850 1800 50 
-F3 "NextInst[0..15]" I L 10850 1400 50 
-F4 "Inst[0..15]" O R 12050 1400 50 
-F5 "RESET" I L 10850 1900 50 
-F6 "Latch" I L 10850 1600 50 
-$EndSheet
-$Sheet
-S 7250 2600 1050 300 
+S 7250 2300 1050 300 
 U 6041A022
 F0 "ROMA Bus Display" 50
 F1 "ROMA_DISPLAY.sch" 50
-F2 "ROMA_OUT" T L 7250 2800 50 
-F3 "ROMA[0..13]" B L 7250 2700 50 
+F2 "ROMA_OUT" T L 7250 2500 50 
+F3 "ROMA[0..13]" B L 7250 2400 50 
 $EndSheet
 $Sheet
-S 10850 2450 1200 400 
+S 10850 1900 1200 400 
 U 609EB802
 F0 "Inst[0..7]->DBus" 50
 F1 "Inst0..7_to_DBus.sch" 50
-F2 "Inst[0..15]" I R 12050 2550 50 
-F3 "DB[0..7]" T L 10850 2550 50 
-F4 "DB_OUT" T L 10850 2650 50 
-F5 "In[0..7]->DBus" I R 12050 2750 50 
+F2 "Inst[0..15]" I R 12050 2000 50 
+F3 "DB[0..7]" T L 10850 2000 50 
+F4 "DB_OUT" T L 10850 2100 50 
+F5 "In[0..7]->DBus" I R 12050 2200 50 
 $EndSheet
 Wire Bus Line
-	6050 10300 5500 10300
-Text Label 6050 10300 2    50   ~ 0
+	3450 9550 2900 9550
+Text Label 3450 9550 2    50   ~ 0
 RegB[0..7]
-Text Notes 650  4800 0    315  Italic 0
+Text Notes 600  5000 0    315  Italic 0
 Memory & Peripherals:
 Text Notes 2900 6350 0    50   ~ 0
 \n
 $Sheet
-S 1400 7600 1500 1100
+S 1400 7200 1500 700 
 U 5ED3C49A
 F0 "RAM" 50
 F1 "RAM.sch" 50
-F2 "DB[0..7]" T R 2900 7700 50 
-F3 "CLK" I L 1400 8400 50 
-F4 "RESET" I L 1400 8500 50 
-F5 "~RESET" I L 1400 8600 50 
-F6 "RAMA[0..8]" B L 1400 7700 50 
-F7 "DB_OUT" T R 2900 7800 50 
-F8 "PAGE[0..6]" I L 1400 7800 50 
-F9 "Sync_D_A" I L 1400 8000 50 
-F10 "W" I L 1400 8100 50 
-F11 "R_Sync_A" I L 1400 8200 50 
+F2 "DB[0..7]" T R 2900 7300 50 
+F6 "RAMA[0..8]" B L 1400 7300 50 
+F7 "DB_OUT" T R 2900 7400 50 
+F8 "PAGE[0..6]" I L 1400 7400 50 
+F9 "Sync_D_A" I L 1400 7600 50 
+F10 "W" I L 1400 7700 50 
+F11 "R_Sync_A" I L 1400 7800 50 
 $EndSheet
 $Sheet
-S 4150 10100 1350 600 
+S 1400 9350 1500 600 
 U 5F6FD493
 F0 "In[0..7]/RegB->RAMA[0..7]" 50
 F1 "In0..7_RegB_to_RAMA.sch" 50
-F2 "Inst[0..15]" I R 5500 10200 50 
-F3 "RegB[0..7]" I R 5500 10300 50 
-F4 "RAMA[0..8]" B L 4150 10500 50 
-F5 "RAMA_OUT" T L 4150 10600 50 
-F6 "In[0..8]+B->RAMA" I R 5500 10500 50 
-F7 "In[0..8]->RAMA" I R 5500 10600 50 
+F2 "Inst[0..15]" I R 2900 9450 50 
+F3 "RegB[0..7]" I R 2900 9550 50 
+F4 "RAMA[0..8]" B L 1400 9750 50 
+F5 "RAMA_OUT" T L 1400 9850 50 
+F6 "In[0..8]+B->RAMA" I R 2900 9750 50 
+F7 "In[0..8]->RAMA" I R 2900 9850 50 
 $EndSheet
-Wire Wire Line
-	1400 8400 1150 8400
-Text Label 1150 8400 0    50   ~ 0
-CLK
-Wire Wire Line
-	1400 8500 1150 8500
-Text Label 1150 8500 0    50   ~ 0
-RESET
-Wire Wire Line
-	1400 8600 1150 8600
-Text Label 1150 8600 0    50   ~ 0
-~RESET
-Wire Wire Line
-	1400 6600 1150 6600
-Text Label 1150 6600 0    50   ~ 0
-CLK
-Wire Wire Line
-	1400 6700 1150 6700
-Text Label 1150 6700 0    50   ~ 0
-RESET
-Wire Wire Line
-	1400 6800 1150 6800
-Text Label 1150 6800 0    50   ~ 0
-~RESET
 Wire Bus Line
-	1400 7800 950  7800
-Text Label 950  7800 0    50   ~ 0
+	1400 7400 950  7400
+Text Label 950  7400 0    50   ~ 0
 PAGE[0..6]
 Wire Wire Line
 	2900 5400 3250 5400
@@ -513,144 +441,118 @@ Wire Bus Line
 Text Label 3250 5300 2    50   ~ 0
 DB[0..7]
 Wire Wire Line
-	2900 7800 3250 7800
-Text Label 3250 7800 2    50   ~ 0
+	2900 7400 3250 7400
+Text Label 3250 7400 2    50   ~ 0
 DB_OUT
 Wire Bus Line
-	2900 7700 3250 7700
-Text Label 3250 7700 2    50   ~ 0
+	2900 7300 3250 7300
+Text Label 3250 7300 2    50   ~ 0
 DB[0..7]
 $Sheet
-S 1400 7100 1500 300 
+S 1400 6700 1500 300 
 U 604F08FB
 F0 "RAMA Bus Display" 50
 F1 "RAMA_DISPLAY.sch" 50
-F2 "RAMA[0..8]" T L 1400 7200 50 
-F3 "RAMA_OUT" T L 1400 7300 50 
+F2 "RAMA[0..8]" T L 1400 6800 50 
+F3 "RAMA_OUT" T L 1400 6900 50 
 $EndSheet
-Text Label 1000 7300 0    50   ~ 0
+Text Label 1000 6900 0    50   ~ 0
 RAMA_OUT
 Wire Wire Line
-	1000 7300 1400 7300
-Text Label 3400 9200 2    50   ~ 0
+	1000 6900 1400 6900
+Text Label 3400 8400 2    50   ~ 0
 DB[0..7]
 Wire Bus Line
-	2900 9200 3400 9200
-Text Label 3400 9300 2    50   ~ 0
+	2900 8400 3400 8400
+Text Label 3400 8500 2    50   ~ 0
 DB_OUT
 Wire Wire Line
-	2900 9300 3400 9300
+	2900 8500 3400 8500
 Wire Wire Line
-	1400 9700 950  9700
-Text Label 1150 10000 0    50   ~ 0
-CLK
-Wire Wire Line
-	1400 10000 1150 10000
-Text Label 1150 10100 0    50   ~ 0
-~RESET
-Wire Wire Line
-	1400 10100 1150 10100
-Text Label 5950 7400 2    50   ~ 0
+	1400 8900 950  8900
+Text Label 5900 7000 2    50   ~ 0
 DB[0..7]
 Wire Bus Line
-	5500 7400 5950 7400
+	5450 7000 5900 7000
 Text Label 5850 5300 2    50   ~ 0
 DB[0..7]
 Wire Bus Line
 	5500 5300 5850 5300
 Wire Bus Line
-	4150 7400 3450 7400
+	4150 7000 3450 7000
 Wire Bus Line
 	4150 5300 3450 5300
-Text Label 5950 7600 2    50   ~ 0
+Text Label 5900 7200 2    50   ~ 0
 PAGE[0..6]
 Wire Bus Line
-	5500 7600 5950 7600
-Text Label 5950 7500 2    50   ~ 0
+	5450 7200 5900 7200
+Text Label 5900 7100 2    50   ~ 0
 DB_OUT
 Wire Wire Line
-	5500 7500 5950 7500
+	5450 7100 5900 7100
 Text Label 5850 5400 2    50   ~ 0
 DB_OUT
 Wire Wire Line
 	5500 5400 5850 5400
-Text Label 3900 8000 0    50   ~ 0
-RESET
-Wire Wire Line
-	4150 8000 3900 8000
-Text Label 3900 7900 0    50   ~ 0
-CLK
-Wire Wire Line
-	4150 7900 3900 7900
-Text Label 3850 6800 0    50   ~ 0
-CLK
-Text Label 3850 7000 0    50   ~ 0
-~RESET
 $Sheet
-S 4150 7300 1350 800 
+S 4150 6900 1300 500 
 U 5FD65291
 F0 "SysReg_2" 50
 F1 "SysReg_2.sch" 50
-F2 "DB_OUT" T R 5500 7500 50 
-F3 "DB[0..7]" T R 5500 7400 50 
-F4 "RESET" I L 4150 8000 50 
-F5 "CLK" I L 4150 7900 50 
-F6 "Periph_W" I L 4150 7600 50 
-F7 "Periph_R" I L 4150 7700 50 
-F8 "PeriphA[0..7]" I L 4150 7400 50 
-F9 "PAGE[0..6]" O R 5500 7600 50 
+F2 "DB_OUT" T R 5450 7100 50 
+F3 "DB[0..7]" T R 5450 7000 50 
+F6 "Periph_W" I L 4150 7200 50 
+F7 "Periph_R" I L 4150 7300 50 
+F8 "PeriphA[0..7]" I L 4150 7000 50 
+F9 "PAGE[0..6]" O R 5450 7200 50 
 $EndSheet
 Text Notes 3300 5200 0    50   ~ 0
 \n\n
-Text Label 3750 10600 0    50   ~ 0
+Text Label 1000 9850 0    50   ~ 0
 RAMA_OUT
 Wire Wire Line
-	3750 10600 4150 10600
+	1000 9850 1400 9850
 Wire Wire Line
 	5500 5600 6000 5600
 Text Label 6000 5600 2    50   ~ 0
 ShiftIn
-Text Label 950  9700 0    50   ~ 0
+Text Label 950  8900 0    50   ~ 0
 Int_Assert
-Text Label 3850 6900 0    50   ~ 0
-RESET
 $Sheet
-S 1400 8900 1500 1600
+S 1400 8100 1500 1000
 U 5FD1E173
 F0 "PeriphealInterface" 50
 F1 "PeripheralInterface.sch" 50
-F2 "DB[0..7]" T R 2900 9200 50 
-F3 "CLK" I L 1400 10000 50 
-F4 "DB_OUT" T R 2900 9300 50 
-F5 "RAMA[0..8]" B L 1400 9000 50 
-F6 "~RESET" I L 1400 10100 50 
-F7 "RAM_Sync_D_A" I L 1400 9400 50 
-F8 "RAM_W" I L 1400 9200 50 
-F9 "RAM_R_Sync_A" I L 1400 9300 50 
-F10 "Periph_W" O R 2900 9600 50 
-F11 "PeriphA[0..7]" O R 2900 9000 50 
-F12 "Int_Active" I L 1400 9800 50 
-F13 "Int_Assert" B L 1400 9700 50 
-F14 "Int_EN" I L 1400 9600 50 
-F15 "Periph_R_Sync_A" O R 2900 9700 50 
-F16 "DB_OUT_EXT" T R 2900 9400 50 
+F2 "DB[0..7]" T R 2900 8400 50 
+F4 "DB_OUT" T R 2900 8500 50 
+F5 "RAMA[0..8]" B L 1400 8200 50 
+F7 "RAM_Sync_D_A" I L 1400 8600 50 
+F8 "RAM_W" I L 1400 8400 50 
+F9 "RAM_R_Sync_A" I L 1400 8500 50 
+F10 "Periph_W" O R 2900 8800 50 
+F11 "PeriphA[0..7]" O R 2900 8200 50 
+F12 "Int_Active" I L 1400 9000 50 
+F13 "Int_Assert" B L 1400 8900 50 
+F14 "Int_EN" I L 1400 8800 50 
+F15 "Periph_R_Sync_A" O R 2900 8900 50 
+F16 "DB_OUT_EXT" T R 2900 8600 50 
 $EndSheet
 Wire Wire Line
-	1400 9800 950  9800
-Text Label 950  9800 0    50   ~ 0
+	1400 9000 950  9000
+Text Label 950  9000 0    50   ~ 0
 Int_Active
-Text Label 950  9600 0    50   ~ 0
+Text Label 950  8800 0    50   ~ 0
 Int_EN
 Wire Wire Line
-	950  9600 1400 9600
-Text Label 3400 9600 2    50   ~ 0
+	950  8800 1400 8800
+Text Label 3400 8800 2    50   ~ 0
 Periph_W
-Text Label 3400 9700 2    50   ~ 0
+Text Label 3400 8900 2    50   ~ 0
 Periph_R
 Wire Wire Line
-	3400 9600 2900 9600
+	3400 8800 2900 8800
 Wire Wire Line
-	2900 9700 3400 9700
+	2900 8900 3400 8900
 Text Label 3650 5500 0    50   ~ 0
 Periph_W
 Text Label 3650 5600 0    50   ~ 0
@@ -690,109 +592,99 @@ OVF
 Text Label 3850 6200 0    50   ~ 0
 C
 Wire Wire Line
-	1400 9200 800  9200
-Text Label 800  9200 0    50   ~ 0
+	1400 8400 800  8400
+Text Label 800  8400 0    50   ~ 0
 RAM_W
-Text Label 800  9300 0    50   ~ 0
+Text Label 800  8500 0    50   ~ 0
 RAM_R_Sync_A
-Text Label 800  9400 0    50   ~ 0
+Text Label 800  8600 0    50   ~ 0
 RAM_Sync_D_A
 Wire Wire Line
-	800  9300 1400 9300
+	800  8500 1400 8500
 Wire Wire Line
-	800  9400 1400 9400
+	800  8600 1400 8600
 Text Label 3650 6600 0    50   ~ 0
 CLK_F[0..2]
 Wire Bus Line
 	3650 6600 4150 6600
-Text Label 3650 7600 0    50   ~ 0
+Text Label 3650 7200 0    50   ~ 0
 Periph_W
-Text Label 3650 7700 0    50   ~ 0
+Text Label 3650 7300 0    50   ~ 0
 Periph_R
 Wire Wire Line
-	3650 7600 4150 7600
+	3650 7200 4150 7200
 Wire Wire Line
-	4150 7700 3650 7700
+	4150 7300 3650 7300
 Wire Wire Line
-	4150 8700 3650 8700
+	4150 8000 3650 8000
 Wire Wire Line
-	3650 8600 4150 8600
-Text Label 3650 8700 0    50   ~ 0
+	3650 7900 4150 7900
+Text Label 3650 8000 0    50   ~ 0
 Periph_R
-Text Label 3650 8600 0    50   ~ 0
+Text Label 3650 7900 0    50   ~ 0
 Periph_W
 Wire Wire Line
-	4150 9300 3900 9300
+	4150 8600 3900 8600
 Wire Wire Line
-	4150 9200 3900 9200
+	4150 8500 3900 8500
 Wire Wire Line
-	4150 9100 3900 9100
+	4150 8400 3900 8400
 Wire Wire Line
-	4150 9000 3900 9000
-Text Label 3900 9300 0    50   ~ 0
+	4150 8300 3900 8300
+Text Label 3900 8600 0    50   ~ 0
 B=0
-Text Label 3900 9200 0    50   ~ 0
+Text Label 3900 8500 0    50   ~ 0
 A=0
-Text Label 3900 9100 0    50   ~ 0
+Text Label 3900 8400 0    50   ~ 0
 A=B
-Text Label 3900 9000 0    50   ~ 0
+Text Label 3900 8300 0    50   ~ 0
 A<B
-Text Label 3900 8900 0    50   ~ 0
+Text Label 3900 8200 0    50   ~ 0
 A>B
 Wire Wire Line
-	4150 8900 3900 8900
+	4150 8200 3900 8200
 $Sheet
-S 4150 8300 1350 1600
+S 4150 7600 1350 1300
 U 5FD65308
 F0 "SysReg_3" 50
 F1 "SysReg_3.sch" 50
-F2 "A>B" I L 4150 8900 50 
-F3 "A<B" I L 4150 9000 50 
-F4 "A=B" I L 4150 9100 50 
-F5 "A=0" I L 4150 9200 50 
-F6 "B=0" I L 4150 9300 50 
-F7 "~RESET" I L 4150 9800 50 
-F8 "CLK" I L 4150 9700 50 
-F9 "DB[0..7]" T R 5500 8400 50 
-F10 "DB_OUT" T R 5500 8500 50 
-F11 "PeriphA[0..7]" I L 4150 8400 50 
-F12 "Periph_W" I L 4150 8600 50 
-F13 "Periph_R" I L 4150 8700 50 
-F14 "Int_EN" O R 5500 8600 50 
-F15 "Set_Btn_Int_Flag" I L 4150 9500 50 
+F2 "A>B" I L 4150 8200 50 
+F3 "A<B" I L 4150 8300 50 
+F4 "A=B" I L 4150 8400 50 
+F5 "A=0" I L 4150 8500 50 
+F6 "B=0" I L 4150 8600 50 
+F9 "DB[0..7]" T R 5500 7700 50 
+F10 "DB_OUT" T R 5500 7800 50 
+F11 "PeriphA[0..7]" I L 4150 7700 50 
+F12 "Periph_W" I L 4150 7900 50 
+F13 "Periph_R" I L 4150 8000 50 
+F14 "Int_EN" O R 5500 7900 50 
+F15 "Set_Btn_Int_Flag" I L 4150 8800 50 
 $EndSheet
 Wire Wire Line
-	4150 9800 3900 9800
-Text Label 3900 9800 0    50   ~ 0
-~RESET
-Wire Wire Line
-	4150 9700 3900 9700
-Text Label 3900 9700 0    50   ~ 0
-CLK
-Wire Wire Line
-	5500 8600 5850 8600
-Text Label 5850 8600 2    50   ~ 0
+	5500 7900 5850 7900
+Text Label 5850 7900 2    50   ~ 0
 Int_EN
 Wire Wire Line
-	5500 8500 5850 8500
-Text Label 5850 8500 2    50   ~ 0
+	5500 7800 5850 7800
+Text Label 5850 7800 2    50   ~ 0
 DB_OUT
 Wire Bus Line
-	3450 8400 4150 8400
+	3450 7700 4150 7700
 Wire Bus Line
-	5500 8400 5850 8400
-Text Label 5850 8400 2    50   ~ 0
+	5500 7700 5850 7700
+Text Label 5850 7700 2    50   ~ 0
 DB[0..7]
-Text Label 3500 9500 0    50   ~ 0
+Text Label 3500 8800 0    50   ~ 0
 Set_Btn_Int_Flag
 Wire Wire Line
-	3500 9500 4150 9500
+	3500 8800 4150 8800
 Wire Bus Line
-	5500 10200 6050 10200
-Text Label 6050 10200 2    50   ~ 0
+	2900 9450 3450 9450
+Text Label 3450 9450 2    50   ~ 0
 Inst[0..15]
 Wire Bus Line
-	700  7200 1400 7200
+	700  6800 1400 6800
 Text Notes 700  2800 0    79   ~ 0
  - 8bit Processor\n - 1MHz Clock\n - 32kB Heap RAM, \n - 32kB Stack RAM\n - 16kB Program ROM\n
 Text Notes 2200 2150 0    118  ~ 0
@@ -804,15 +696,14 @@ Specs:
 Text Notes 650  1500 0    118  Italic 0
 'Why not?'
 Text Notes 700  1900 0    118  ~ 0
-Philipp Schilk\n2020-2021
+Philipp Schilk\n2020-2022
 Text Notes 700  1100 0    315  Italic 63
 psMCU
-Connection ~ 8500 6100
 Wire Bus Line
-	8050 6100 8500 6100
+	8050 6000 8500 6000
 Wire Bus Line
 	8500 5300 8050 5300
-Text Notes 6500 4800 0    315  Italic 0
+Text Notes 6450 5000 0    315  Italic 0
 Data Manipulation:
 Wire Bus Line
 	9100 5600 8500 5600
@@ -921,47 +812,27 @@ Wire Wire Line
 Text Label 13150 6500 2    50   ~ 0
 DB_OUT
 $Sheet
-S 7000 5200 1050 600 
+S 7000 5200 1050 500 
 U 61C3CF7F
 F0 "RegA" 50
 F1 "Reg.sch" 50
 F2 "DB[0..7]" T R 8050 5500 50 
 F3 "VAL[0..7]" O R 8050 5300 50 
-F4 "RESET" I L 7000 5700 50 
-F5 "CLK" I L 7000 5600 50 
 F6 "DB_OUT" T R 8050 5600 50 
 F7 "OE" I L 7000 5300 50 
 F8 "Latch" I L 7000 5400 50 
 $EndSheet
 $Sheet
-S 7000 6000 1050 600 
+S 7000 5900 1050 500 
 U 61C3CF88
 F0 "RegB" 50
 F1 "Reg.sch" 50
-F2 "OE" I L 7000 6100 50 
-F3 "DB[0..7]" T R 8050 6300 50 
-F4 "VAL[0..7]" O R 8050 6100 50 
-F5 "RESET" I L 7000 6500 50 
-F6 "CLK" I L 7000 6400 50 
-F7 "DB_OUT" T R 8050 6400 50 
-F8 "Latch" I L 7000 6200 50 
+F2 "OE" I L 7000 6000 50 
+F3 "DB[0..7]" T R 8050 6200 50 
+F4 "VAL[0..7]" O R 8050 6000 50 
+F7 "DB_OUT" T R 8050 6300 50 
+F8 "Latch" I L 7000 6100 50 
 $EndSheet
-Wire Wire Line
-	7000 6400 6750 6400
-Text Label 6750 6400 0    50   ~ 0
-CLK
-Wire Wire Line
-	7000 6500 6750 6500
-Text Label 6750 6500 0    50   ~ 0
-RESET
-Wire Wire Line
-	7000 5600 6750 5600
-Text Label 6750 5600 0    50   ~ 0
-CLK
-Wire Wire Line
-	7000 5700 6750 5700
-Text Label 6750 5700 0    50   ~ 0
-RESET
 Wire Wire Line
 	8050 5600 8400 5600
 Text Label 8400 5600 2    50   ~ 0
@@ -1020,18 +891,18 @@ Text Label 6550 5400 0    50   ~ 0
 RegA_Latch
 Text Label 6550 5300 0    50   ~ 0
 RegA_OE
-Text Label 6550 6200 0    50   ~ 0
-RegB_Latch
 Text Label 6550 6100 0    50   ~ 0
+RegB_Latch
+Text Label 6550 6000 0    50   ~ 0
 RegB_OE
 Wire Wire Line
 	7000 5300 6550 5300
 Wire Wire Line
 	7000 5400 6550 5400
 Wire Wire Line
-	7000 6100 6550 6100
+	7000 6000 6550 6000
 Wire Wire Line
-	7000 6200 6550 6200
+	7000 6100 6550 6100
 Wire Wire Line
 	11250 6000 10650 6000
 Text Label 10650 6000 0    50   ~ 0
@@ -1051,12 +922,12 @@ Wire Bus Line
 Text Label 8600 7250 0    50   ~ 0
 Inst[0..15]
 Wire Wire Line
-	8050 6400 8400 6400
-Text Label 8400 6400 2    50   ~ 0
-DB_OUT
-Wire Bus Line
 	8050 6300 8400 6300
 Text Label 8400 6300 2    50   ~ 0
+DB_OUT
+Wire Bus Line
+	8050 6200 8400 6200
+Text Label 8400 6200 2    50   ~ 0
 DB[0..7]
 Wire Bus Line
 	9100 5700 8500 5700
@@ -1068,89 +939,45 @@ U 62043340
 F0 "PowerInput" 50
 F1 "PowerInput.sch" 50
 $EndSheet
-Text Label 6750 10200 0    50   ~ 0
-RESET
-Wire Wire Line
-	7000 10200 6750 10200
-Text Label 10750 10000 2    50   ~ 0
-CLK
-Wire Wire Line
-	10550 10000 10750 10000
-Text Label 11000 9500 2    50   ~ 0
-PWR_RESET
-Text Label 11000 9400 2    50   ~ 0
-~RESET
-Text Label 11000 9300 2    50   ~ 0
-RESET
-Wire Wire Line
-	10550 9500 11000 9500
-Wire Wire Line
-	10550 9400 11000 9400
-Wire Wire Line
-	10550 9300 11000 9300
 Text Label 6500 9400 0    50   ~ 0
 Int_Assert
-Text Label 11050 10200 2    50   ~ 0
+Text Label 10500 10200 2    50   ~ 0
 CLK_F[0..2]
-Text Label 6750 10100 0    50   ~ 0
-CLK
-Wire Wire Line
-	6750 10100 7000 10100
-Text Label 8950 9500 2    50   ~ 0
+Text Label 8900 9500 2    50   ~ 0
 Set_Btn_Int_Flag
 Wire Wire Line
-	8950 9500 8250 9500
+	8900 9500 8250 9500
 Wire Wire Line
 	7000 9400 6500 9400
-Wire Wire Line
-	9050 10700 8600 10700
-Text Label 8600 10700 0    50   ~ 0
-~RESET
 $Sheet
-S 9050 9900 1500 900 
+S 8950 9900 1050 600 
 U 608BF85D
 F0 "Clock" 50
 F1 "Clock.sch" 50
-F2 "CLK" O R 10550 10000 50 
-F3 "~RESET" I L 9050 10700 50 
-F4 "CLK_F[0..2]" O R 10550 10200 50 
-F5 "Inc_Clk_F" I L 9050 10400 50 
-F6 "Dec_Clk_F" I L 9050 10300 50 
-F7 "PWR_Reset" I L 9050 10600 50 
-F8 "Clk_Step_EN" I L 9050 10100 50 
-F9 "Clk_Step" I L 9050 10000 50 
+F2 "CLK" O R 10000 10000 50 
+F4 "CLK_F[0..2]" O R 10000 10200 50 
+F5 "Inc_Clk_F" I L 8950 10400 50 
+F6 "Dec_Clk_F" I L 8950 10300 50 
+F8 "Clk_Step_EN" I L 8950 10100 50 
+F9 "Clk_Step" I L 8950 10000 50 
 $EndSheet
 $Sheet
-S 9050 9200 1500 400 
+S 8950 9200 1100 400 
 U 5FD3CD07
 F0 "ResetCtrl" 50
 F1 "ResetCtrl.sch" 50
-F2 "~RESET" O R 10550 9400 50 
-F3 "RESET" O R 10550 9300 50 
-F4 "UI_Do_Reset" I L 9050 9300 50 
-F5 "Prog_Do_Reset" I L 9050 9400 50 
-F6 "PWR_RESET" O R 10550 9500 50 
+F2 "~RESET" O R 10050 9400 50 
+F3 "RESET" O R 10050 9300 50 
+F4 "UI_Do_Reset" I L 8950 9300 50 
+F5 "Prog_Do_Reset" I L 8950 9400 50 
+F6 "PWR_RESET" O R 10050 9500 50 
 $EndSheet
-Wire Wire Line
-	9050 10600 8600 10600
-Text Label 8600 10600 0    50   ~ 0
-PWR_RESET
-Wire Wire Line
-	8250 9300 9050 9300
-Wire Wire Line
-	8250 10000 9050 10000
 Wire Bus Line
-	11050 10200 10550 10200
+	10500 10200 10000 10200
 Text Label 8350 9400 0    50   ~ 0
 Prog_Do_Reset
 Wire Wire Line
-	8350 9400 9050 9400
-Wire Wire Line
-	9050 10100 8250 10100
-Wire Wire Line
-	8250 10300 9050 10300
-Wire Wire Line
-	8250 10400 9050 10400
+	8350 9400 8950 9400
 Text Notes 6500 8900 0    315  Italic 0
 System Support:
 $Sheet
@@ -1158,8 +985,6 @@ S 7000 9200 1250 1300
 U 5FD4EE20
 F0 "UI" 50
 F1 "UI.sch" 50
-F2 "RESET" I L 7000 10200 50 
-F3 "CLK" I L 7000 10100 50 
 F4 "Int_Assert" T L 7000 9400 50 
 F5 "Int_Active" I L 7000 9300 50 
 F6 "UI_Halted" I L 7000 9600 50 
@@ -1321,12 +1146,6 @@ CompC_Flag
 Wire Wire Line
 	10650 7300 11250 7300
 Wire Wire Line
-	3850 6800 4150 6800
-Wire Wire Line
-	3850 6900 4150 6900
-Wire Wire Line
-	3850 7000 4150 7000
-Wire Wire Line
 	8250 9800 8800 9800
 Text Label 8800 9800 2    50   ~ 0
 Inst_Step
@@ -1342,30 +1161,24 @@ Text Label 12900 1800 0    50   ~ 0
 Inst_Step_EN
 Wire Wire Line
 	13400 1800 12900 1800
-Text Label 12900 2400 0    50   ~ 0
-~RESET
-Wire Wire Line
-	12900 2300 13400 2300
-Wire Wire Line
-	12900 2400 13400 2400
 Text Label 10300 6400 2    50   ~ 0
 Cond
 Wire Wire Line
-	800  8000 1400 8000
+	800  7600 1400 7600
 Wire Wire Line
-	800  8200 1400 8200
-Text Label 800  8000 0    50   ~ 0
+	800  7800 1400 7800
+Text Label 800  7600 0    50   ~ 0
 RAM_Sync_D_A
-Text Label 800  8200 0    50   ~ 0
+Text Label 800  7800 0    50   ~ 0
 RAM_R_Sync_A
-Text Label 800  8100 0    50   ~ 0
+Text Label 800  7700 0    50   ~ 0
 RAM_W
 Wire Wire Line
-	1400 8100 800  8100
+	1400 7700 800  7700
 Wire Bus Line
-	1400 9000 700  9000
+	1400 8200 700  8200
 Wire Bus Line
-	1400 7700 700  7700
+	1400 7300 700  7300
 Text Label 950  5300 0    50   ~ 0
 Inst[0..15]
 Wire Bus Line
@@ -1450,20 +1263,16 @@ Text Label 650  6300 0    50   ~ 0
 Stack_Ofs_0
 Text Label 650  6400 0    50   ~ 0
 Stack_Ofs_Sgn
-Connection ~ 700  7700
-Connection ~ 700  9000
+Connection ~ 700  7300
 Wire Bus Line
-	700  7700 700  9000
+	700  7300 700  8200
 Wire Bus Line
-	700  7200 700  7700
+	700  6800 700  7300
 $Sheet
-S 1400 5200 1500 1700
+S 1400 5200 1500 1300
 U 5FD6EE9C
 F0 "Stack" 50
 F1 "Stack.sch" 50
-F2 "CLK" I L 1400 6600 50 
-F3 "RESET" I L 1400 6700 50 
-F4 "~RESET" I L 1400 6800 50 
 F5 "DB[0..7]" T R 2900 5300 50 
 F6 "W" I L 1400 5500 50 
 F7 "R" I L 1400 5600 50 
@@ -1528,12 +1337,11 @@ F3 "BKPT_RCLK" I R 9900 2500 50
 F4 "BKPT_SER" I R 9900 2400 50 
 F5 "BKPT_SCLK" I R 9900 2300 50 
 F6 "Bkpt_Trig" O R 9900 2800 50 
-F7 "PWR_RESET" I R 9900 2600 50 
 $EndSheet
 Wire Bus Line
-	2900 9000 3450 9000
+	2900 8200 3450 8200
 Wire Bus Line
-	8500 5700 8500 6100
+	8500 5700 8500 6000
 Connection ~ 10550 7150
 Wire Bus Line
 	10550 7150 10550 8000
@@ -1541,26 +1349,18 @@ Wire Bus Line
 	10550 6500 10550 7150
 Wire Bus Line
 	8500 5300 8500 5600
-Wire Bus Line
-	8500 6100 8500 7150
-Text Label 6250 10500 2    50   ~ 0
+Text Label 3650 9750 2    50   ~ 0
 In[0..8]+B->RAMA
-Text Label 6250 10600 2    50   ~ 0
+Text Label 3650 9850 2    50   ~ 0
 In[0..8]->RAMA
 Wire Wire Line
-	5500 10500 6250 10500
+	2900 9750 3650 9750
 Wire Wire Line
-	5500 10600 6250 10600
-Text Label 10350 2600 2    50   ~ 0
-PWR_RESET
-Wire Wire Line
-	9900 2600 10350 2600
+	2900 9850 3650 9850
 Wire Bus Line
-	6600 1400 6600 2700
+	6600 1400 6600 2400
 Wire Bus Line
 	9900 3200 10250 3200
-Wire Bus Line
-	12800 2550 12800 3200
 Wire Bus Line
 	12050 3200 12800 3200
 $Sheet
@@ -1591,27 +1391,22 @@ Wire Bus Line
 Wire Bus Line
 	10350 3800 6600 3800
 Wire Bus Line
-	6600 2700 6600 3800
-Wire Bus Line
 	9900 1400 10850 1400
 Wire Bus Line
 	10350 3200 10850 3200
 $Sheet
-S 4150 5200 1350 1900
+S 4150 5200 1350 1500
 U 5FD65262
 F0 "SysReg_1" 50
 F1 "SysReg_1.sch" 50
 F2 "PeriphA[0..7]" I L 4150 5300 50 
 F3 "Periph_W" I L 4150 5500 50 
 F4 "Periph_R" I L 4150 5600 50 
-F5 "~RESET" I L 4150 7000 50 
 F6 "DB_OUT" T R 5500 5400 50 
 F7 "DB[0..7]" T R 5500 5300 50 
 F8 "ShiftIn" O R 5500 5600 50 
 F9 "C_Out" O R 5500 5700 50 
 F10 "CompC_Out" O R 5500 5800 50 
-F11 "CLK" I L 4150 6800 50 
-F12 "RESET" I L 4150 6900 50 
 F13 "C" I L 4150 6200 50 
 F14 "HC" I L 4150 6300 50 
 F15 "CompC" I L 4150 6500 50 
@@ -1630,27 +1425,70 @@ Wire Wire Line
 Wire Wire Line
 	15000 3900 15850 3900
 Wire Wire Line
-	3400 9400 2900 9400
-Text Label 3400 9400 2    50   ~ 0
+	3400 8600 2900 8600
+Text Label 3400 8600 2    50   ~ 0
 DB_OUT_EXT
 Text Label 8600 7850 0    50   ~ 0
 DB_OUT_EXT
 Wire Wire Line
 	8600 7850 9100 7850
 Wire Bus Line
-	3450 5300 3450 7400
-Connection ~ 3450 7400
+	3450 5300 3450 7000
+Wire Wire Line
+	8250 9300 8950 9300
+Wire Wire Line
+	8250 10000 8950 10000
+Wire Wire Line
+	8250 10100 8950 10100
+Wire Wire Line
+	8250 10300 8950 10300
+Wire Wire Line
+	8250 10400 8950 10400
+$Sheet
+S 10600 9200 800  1300
+U 62B3D95F
+F0 "ResetClkDistr" 50
+F1 "ResetClkDistr.sch" 50
+F2 "RESET" I L 10600 9300 50 
+F3 "~RESET" I L 10600 9400 50 
+F4 "PWR_RESET" I L 10600 9500 50 
+F5 "CLK" I L 10600 10000 50 
+$EndSheet
+Wire Wire Line
+	10000 10000 10600 10000
+Wire Wire Line
+	10050 9500 10600 9500
+Wire Wire Line
+	10050 9300 10600 9300
+Wire Wire Line
+	10600 9400 10050 9400
+$Sheet
+S 10850 1300 1200 400 
+U 5F18F3CA
+F0 "RegI" 50
+F1 "RegI.sch" 50
+F3 "NextInst[0..15]" I L 10850 1400 50 
+F4 "Inst[0..15]" O R 12050 1400 50 
+F6 "Latch" I L 10850 1600 50 
+$EndSheet
+Connection ~ 700  8200
 Wire Bus Line
-	3450 7400 3450 8400
-Connection ~ 3450 8400
+	700  8200 700  9750
+Connection ~ 3450 7000
 Wire Bus Line
-	3450 8400 3450 9000
+	3450 7000 3450 7700
+Connection ~ 3450 7700
 Wire Bus Line
-	4150 10500 3250 10500
+	3450 7700 3450 8200
 Wire Bus Line
-	3250 10500 3250 10700
+	700  9750 1400 9750
+Connection ~ 6600 2400
 Wire Bus Line
-	3250 10700 700  10700
+	6600 2400 6600 3800
+Connection ~ 12800 2000
 Wire Bus Line
-	700  9000 700  10700
+	12800 2000 12800 3200
+Connection ~ 8500 6000
+Wire Bus Line
+	8500 6000 8500 7150
 $EndSCHEMATC

@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 35 96
+Sheet 33 97
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -23,8 +23,6 @@ Text HLabel 5650 5600 2    50   Output ~ 0
 RAMA_SYNC[0..7]
 Text HLabel 1450 4300 0    50   Input ~ 0
 Latch_D
-Text HLabel 2500 9100 0    50   Input ~ 0
-CLK
 Entry Wire Line
 	3050 1100 3150 1200
 Entry Wire Line
@@ -874,8 +872,6 @@ Wire Bus Line
 	3050 5600 2350 5600
 Wire Bus Line
 	5650 5600 5150 5600
-Text HLabel 2500 9300 0    50   Input ~ 0
-RESET
 Wire Wire Line
 	2500 9300 2550 9300
 Connection ~ 2550 9300
@@ -945,6 +941,10 @@ $EndComp
 Wire Wire Line
 	2050 6700 2750 6700
 Connection ~ 2750 6700
+Text GLabel 2500 9300 0    31   Input ~ 0
+RESET_A
+Text GLabel 2500 9100 0    31   Input ~ 0
+CLK_A
 Wire Bus Line
 	5150 5600 5150 8500
 Wire Bus Line

@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 11693 16535 portrait
 encoding utf-8
-Sheet 26 96
+Sheet 26 97
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -179,10 +179,6 @@ Text HLabel 8350 1550 2    50   Output ~ 0
 PC[0..13]
 Text HLabel 1250 3350 0    50   Input ~ 0
 Inc
-Text HLabel 5050 9950 0    50   Input ~ 0
-CLK
-Text HLabel 5050 10150 0    50   Input ~ 0
-~RESET
 Text HLabel 1200 5000 0    50   Input ~ 0
 Cond_Inc
 Text HLabel 1300 5400 0    50   Input ~ 0
@@ -2880,6 +2876,10 @@ F 3 "" H 7050 1350 50  0001 C CNN
 	1    7050 1350
 	1    0    0    -1  
 $EndComp
+Text GLabel 5050 9950 0    31   Input ~ 0
+CLK_B
+Text GLabel 5050 10150 0    31   Input ~ 0
+~RESET_B
 Wire Bus Line
 	4600 1550 4600 9150
 Wire Bus Line

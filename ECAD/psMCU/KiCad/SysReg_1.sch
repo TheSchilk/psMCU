@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
-Sheet 95 96
+Sheet 93 97
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -287,12 +287,6 @@ Wire Wire Line
 	9050 1700 9050 1100
 Wire Wire Line
 	12050 1100 12050 1750
-Wire Wire Line
-	11250 2150 11250 2100
-Wire Wire Line
-	10850 1850 11000 1850
-Text HLabel 4750 7150 0    50   Input ~ 0
-~RESET
 Entry Wire Line
 	8850 1700 8950 1800
 Text Label 8950 1800 0    50   ~ 0
@@ -1920,22 +1914,6 @@ Text Notes 6900 5000 0    50   ~ 0
 W
 Text Notes 6900 5500 0    50   ~ 0
 R
-$Comp
-L 74xGxx:74LVC1G175 U?
-U 1 1 637F20CA
-P 11350 7800
-AR Path="/5F1CE57C/637F20CA" Ref="U?"  Part="1" 
-AR Path="/608BF85D/637F20CA" Ref="U?"  Part="1" 
-AR Path="/608BF85D/5FFAAF6D/637F20CA" Ref="U?"  Part="1" 
-AR Path="/5FD65308/637F20CA" Ref="U?"  Part="1" 
-AR Path="/5FD65262/637F20CA" Ref="U400"  Part="1" 
-F 0 "U400" V 11650 7750 50  0000 C CNN
-F 1 "SN74LVC1G175DCK" V 11550 7500 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 11350 7800 50  0001 C CNN
-F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 11350 7800 50  0001 C CNN
-	1    11350 7800
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	11200 7950 11200 8000
 $Comp
@@ -2121,10 +2099,6 @@ Wire Wire Line
 	12150 7050 12150 7700
 Wire Wire Line
 	12150 7700 11600 7700
-Wire Wire Line
-	11350 8100 11350 8050
-Wire Wire Line
-	10950 7800 11100 7800
 Connection ~ 12150 7700
 Wire Wire Line
 	10250 8550 10250 8000
@@ -2980,38 +2954,6 @@ Wire Wire Line
 	6950 7200 7150 7200
 Text Label 13900 4500 0    50   ~ 0
 ~OE
-Text HLabel 4750 6950 0    50   Input ~ 0
-CLK
-Text HLabel 4750 7050 0    50   Input ~ 0
-RESET
-Wire Wire Line
-	4750 6950 5000 6950
-Wire Wire Line
-	4750 7050 5000 7050
-Wire Wire Line
-	4750 7150 5000 7150
-Text Label 5000 6950 2    50   ~ 0
-CLK
-Text Label 5000 7050 2    50   ~ 0
-R
-Text Label 5000 7150 2    50   ~ 0
-~R
-Text Label 10850 1850 0    50   ~ 0
-CLK
-Text Label 11250 2150 1    50   ~ 0
-~R
-Text Label 10950 7800 0    50   ~ 0
-CLK
-Text Label 11350 8100 1    50   ~ 0
-~R
-Wire Wire Line
-	10750 4600 10500 4600
-Wire Wire Line
-	10750 4800 10500 4800
-Text Label 10500 4600 0    50   ~ 0
-CLK
-Text Label 10500 4800 0    50   ~ 0
-R
 Text HLabel 8750 3650 0    50   Input ~ 0
 C
 Text HLabel 8750 4750 0    50   Input ~ 0
@@ -6042,12 +5984,6 @@ Connection ~ 15250 5350
 Wire Wire Line
 	15250 5450 15250 5550
 Connection ~ 15250 5450
-Wire Bus Line
-	8850 900  8850 7600
-Wire Bus Line
-	13250 4100 13250 5800
-Wire Bus Line
-	15400 900  15400 4300
 $Comp
 L power:GND #PWR0826
 U 1 1 625B4BC4
@@ -6059,4 +5995,54 @@ F 3 "" H 15250 5550 50  0001 C CNN
 	1    15250 5550
 	1    0    0    -1  
 $EndComp
+Text GLabel 10900 1850 0    31   Input ~ 0
+CLK_B
+Text GLabel 11200 2350 0    31   Input ~ 0
+~RESET_B
+Wire Wire Line
+	10900 1850 11000 1850
+Wire Wire Line
+	11200 2350 11250 2350
+Wire Wire Line
+	11250 2350 11250 2100
+Text GLabel 11000 7800 0    31   Input ~ 0
+CLK_B
+Text GLabel 11300 8300 0    31   Input ~ 0
+~RESET_B
+$Comp
+L 74xGxx:74LVC1G175 U?
+U 1 1 637F20CA
+P 11350 7800
+AR Path="/5F1CE57C/637F20CA" Ref="U?"  Part="1" 
+AR Path="/608BF85D/637F20CA" Ref="U?"  Part="1" 
+AR Path="/608BF85D/5FFAAF6D/637F20CA" Ref="U?"  Part="1" 
+AR Path="/5FD65308/637F20CA" Ref="U?"  Part="1" 
+AR Path="/5FD65262/637F20CA" Ref="U400"  Part="1" 
+F 0 "U400" V 11650 7750 50  0000 C CNN
+F 1 "SN74LVC1G175DCK" V 11550 7500 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6" H 11350 7800 50  0001 C CNN
+F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 11350 7800 50  0001 C CNN
+	1    11350 7800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	11000 7800 11100 7800
+Wire Wire Line
+	11300 8300 11350 8300
+Wire Wire Line
+	11350 8300 11350 8050
+Text GLabel 10700 4600 0    31   Input ~ 0
+CLK_B
+Text GLabel 10700 4800 0    31   Input ~ 0
+RESET_B
+Wire Wire Line
+	10700 4600 10750 4600
+Wire Wire Line
+	10700 4800 10750 4800
+Wire Bus Line
+	8850 900  8850 7600
+Wire Bus Line
+	13250 4100 13250 5800
+Wire Bus Line
+	15400 900  15400 4300
 $EndSCHEMATC

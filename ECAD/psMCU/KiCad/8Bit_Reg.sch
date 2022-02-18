@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 89 96
+Sheet 84 97
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -485,22 +485,22 @@ Wire Wire Line
 Connection ~ 4150 4350
 Wire Wire Line
 	4150 4350 4900 4350
-Text HLabel 3650 5200 0    50   Input ~ 0
-CLK
-Text HLabel 3650 5050 0    50   Input ~ 0
-RESET
 Wire Wire Line
 	3950 4700 4950 4700
 Wire Wire Line
 	3950 4700 3950 5050
-Wire Wire Line
-	3650 5050 3950 5050
 Connection ~ 3950 4700
 Wire Wire Line
 	4050 5200 4050 4500
-Wire Wire Line
-	3650 5200 4050 5200
 Connection ~ 4050 4500
+Text GLabel 3250 5200 0    31   Input ~ 0
+CLK_A
+Text GLabel 3250 5050 0    31   Input ~ 0
+RESET_A
+Wire Wire Line
+	3250 5200 4050 5200
+Wire Wire Line
+	3250 5050 3950 5050
 Wire Bus Line
 	6550 900  6550 3900
 Wire Bus Line

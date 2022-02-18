@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 2 96
+Sheet 2 97
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -17,8 +17,6 @@ Text HLabel 1150 7300 0    50   Input ~ 0
 LatchL
 Wire Wire Line
 	1100 8850 1250 8850
-Text HLabel 2650 7600 0    50   Input ~ 0
-CLK
 $Comp
 L 74xGxx:74LVC1G04 U?
 U 1 1 612C618D
@@ -685,8 +683,6 @@ Wire Wire Line
 Connection ~ 2900 7600
 Wire Wire Line
 	2900 7600 2900 9100
-Text HLabel 2650 9250 0    50   Input ~ 0
-RESET
 Wire Wire Line
 	2650 9250 2800 9250
 Connection ~ 2800 9250
@@ -4126,6 +4122,10 @@ F 3 "" H 5950 9200 50  0001 C CNN
 	1    5950 9200
 	1    0    0    -1  
 $EndComp
+Text GLabel 2650 7600 0    31   Input ~ 0
+CLK_B
+Text GLabel 2650 9250 0    31   Input ~ 0
+RESET_B
 Wire Bus Line
 	6950 750  6950 3050
 Wire Bus Line
