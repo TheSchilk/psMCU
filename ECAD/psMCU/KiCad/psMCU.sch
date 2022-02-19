@@ -320,41 +320,41 @@ F10 "DBGW_ROM" I L 8100 1800 50
 F11 "DBGW_ROMCT" I L 8100 1900 50 
 $EndSheet
 Wire Bus Line
-	3500 4600 2950 4600
-Text Label 3500 4600 2    50   ~ 0
+	3400 4600 2850 4600
+Text Label 3400 4600 2    50   ~ 0
 RegB[0..7]
 Text Notes 600  1000 0    315  Italic 0
 Memory & Peripherals:
 Text Notes -1350 2850 0    50   ~ 0
 \n
 $Sheet
-S 1450 3500 1500 700 
+S 1350 3500 1500 700 
 U 5ED3C49A
 F0 "RAM" 50
 F1 "RAM.sch" 50
-F2 "DB[0..7]" T R 2950 3600 50 
-F3 "RAMA[0..8]" B L 1450 3600 50 
-F4 "DB_OUT" T R 2950 3700 50 
-F5 "PAGE[0..6]" I L 1450 3700 50 
-F6 "Sync_D_A" I L 1450 3900 50 
-F7 "W" I L 1450 4000 50 
-F8 "R_Sync_A" I L 1450 4100 50 
+F2 "DB[0..7]" T R 2850 3600 50 
+F3 "RAMA[0..8]" B L 1350 3600 50 
+F4 "DB_OUT" T R 2850 3700 50 
+F5 "PAGE[0..6]" I L 1350 3700 50 
+F6 "Sync_D_A" I L 1350 3900 50 
+F7 "W" I L 1350 4000 50 
+F8 "R_Sync_A" I L 1350 4100 50 
 $EndSheet
 $Sheet
-S 1450 4400 1500 600 
+S 1350 4400 1500 600 
 U 5F6FD493
 F0 "In[0..7]/RegB->RAMA[0..7]" 50
 F1 "In0..7_RegB_to_RAMA.sch" 50
-F2 "Inst[0..15]" I R 2950 4500 50 
-F3 "RegB[0..7]" I R 2950 4600 50 
-F4 "RAMA[0..8]" B L 1450 4500 50 
-F5 "RAMA_OUT" T L 1450 4600 50 
-F6 "In[0..8]+B->RAMA" I R 2950 4800 50 
-F7 "In[0..8]->RAMA" I R 2950 4900 50 
+F2 "Inst[0..15]" I R 2850 4500 50 
+F3 "RegB[0..7]" I R 2850 4600 50 
+F4 "RAMA[0..8]" B L 1350 4500 50 
+F5 "RAMA_OUT" T L 1350 4600 50 
+F6 "In[0..8]+B->RAMA" I R 2850 4800 50 
+F7 "In[0..8]->RAMA" I R 2850 4900 50 
 $EndSheet
 Wire Bus Line
-	1450 3700 1000 3700
-Text Label 1000 3700 0    50   ~ 0
+	1350 3700 900  3700
+Text Label 900  3700 0    50   ~ 0
 PAGE[0..6]
 Wire Wire Line
 	-1350 1900 -1000 1900
@@ -365,39 +365,37 @@ Wire Bus Line
 Text Label -1000 1800 2    50   ~ 0
 DB[0..7]
 Wire Wire Line
-	2950 3700 3300 3700
-Text Label 3300 3700 2    50   ~ 0
+	2850 3700 3200 3700
+Text Label 3200 3700 2    50   ~ 0
 DB_OUT
 Wire Bus Line
-	2950 3600 3300 3600
-Text Label 3300 3600 2    50   ~ 0
+	2850 3600 3200 3600
+Text Label 3200 3600 2    50   ~ 0
 DB[0..7]
-Text Label 1050 2750 0    50   ~ 0
+Text Label 950  2750 0    50   ~ 0
 RAMA_OUT
 Wire Wire Line
-	1050 2750 1450 2750
-Text Label 3450 1650 2    50   ~ 0
+	950  2750 1350 2750
+Text Label 3350 1650 2    50   ~ 0
 DB[0..7]
 Wire Bus Line
-	2950 1650 3450 1650
-Text Label 3450 1750 2    50   ~ 0
+	2850 1650 3350 1650
+Text Label 3350 1750 2    50   ~ 0
 DB_OUT
 Wire Wire Line
-	2950 1750 3450 1750
+	2850 1750 3350 1750
 Wire Wire Line
-	1450 2150 1000 2150
+	1350 2150 900  2150
 Text Label 5950 3150 2    50   ~ 0
 DB[0..7]
 Wire Bus Line
 	5500 3150 5950 3150
-Text Label 5850 1450 2    50   ~ 0
+Text Label 6000 1450 2    50   ~ 0
 DB[0..7]
 Wire Bus Line
-	5500 1450 5850 1450
+	5500 1450 6000 1450
 Wire Bus Line
 	4150 3150 3450 3150
-Wire Bus Line
-	4150 1450 3450 1450
 Text Label 5950 3350 2    50   ~ 0
 PAGE[0..6]
 Wire Bus Line
@@ -406,10 +404,10 @@ Text Label 5950 3250 2    50   ~ 0
 DB_OUT
 Wire Wire Line
 	5500 3250 5950 3250
-Text Label 5850 1550 2    50   ~ 0
+Text Label 6000 1550 2    50   ~ 0
 DB_OUT
 Wire Wire Line
-	5500 1550 5850 1550
+	5500 1550 6000 1550
 $Sheet
 S 4150 3050 1350 1000
 U 5FD65291
@@ -427,51 +425,32 @@ F10 "DBGW_SCLK" I L 4150 3750 50
 $EndSheet
 Text Notes 3300 1350 0    50   ~ 0
 \n\n
-Text Label 1050 4600 0    50   ~ 0
+Text Label 950  4600 0    50   ~ 0
 RAMA_OUT
 Wire Wire Line
-	1050 4600 1450 4600
+	950  4600 1350 4600
 Wire Wire Line
 	5500 1750 6000 1750
 Text Label 6000 1750 2    50   ~ 0
 ShiftIn
-Text Label 1000 2150 0    50   ~ 0
+Text Label 900  2150 0    50   ~ 0
 Int_Assert
-$Sheet
-S 1450 1350 1500 1000
-U 5FD1E173
-F0 "PeriphealInterface" 50
-F1 "PeripheralInterface.sch" 50
-F2 "DB[0..7]" T R 2950 1650 50 
-F3 "DB_OUT" T R 2950 1750 50 
-F4 "RAMA[0..8]" B L 1450 1450 50 
-F5 "RAM_Sync_D_A" I L 1450 1850 50 
-F6 "RAM_W" I L 1450 1650 50 
-F7 "RAM_R_Sync_A" I L 1450 1750 50 
-F8 "Periph_W" O R 2950 2050 50 
-F9 "PeriphA[0..7]" O R 2950 1450 50 
-F10 "Int_Active" I L 1450 2250 50 
-F11 "Int_Assert" B L 1450 2150 50 
-F12 "Int_EN" I L 1450 2050 50 
-F13 "Periph_R_Sync_A" O R 2950 2150 50 
-F14 "DB_OUT_EXT" T R 2950 1850 50 
-$EndSheet
 Wire Wire Line
-	1450 2250 1000 2250
-Text Label 1000 2250 0    50   ~ 0
+	1350 2250 900  2250
+Text Label 900  2250 0    50   ~ 0
 Int_Active
-Text Label 1000 2050 0    50   ~ 0
+Text Label 900  2050 0    50   ~ 0
 Int_EN
 Wire Wire Line
-	1000 2050 1450 2050
-Text Label 3450 2050 2    50   ~ 0
+	900  2050 1350 2050
+Text Label 3350 2050 2    50   ~ 0
 Periph_W
-Text Label 3450 2150 2    50   ~ 0
+Text Label 3350 2150 2    50   ~ 0
 Periph_R
 Wire Wire Line
-	3450 2050 2950 2050
+	3350 2050 2850 2050
 Wire Wire Line
-	2950 2150 3450 2150
+	2850 2150 3350 2150
 Text Label 3650 1650 0    50   ~ 0
 Periph_W
 Text Label 3650 1750 0    50   ~ 0
@@ -511,17 +490,17 @@ OVF
 Text Label 3850 2350 0    50   ~ 0
 C
 Wire Wire Line
-	1450 1650 850  1650
-Text Label 850  1650 0    50   ~ 0
+	1350 1650 750  1650
+Text Label 750  1650 0    50   ~ 0
 RAM_W
-Text Label 850  1750 0    50   ~ 0
+Text Label 750  1750 0    50   ~ 0
 RAM_R_Sync_A
-Text Label 850  1850 0    50   ~ 0
+Text Label 750  1850 0    50   ~ 0
 RAM_Sync_D_A
 Wire Wire Line
-	850  1750 1450 1750
+	750  1750 1350 1750
 Wire Wire Line
-	850  1850 1450 1850
+	750  1850 1350 1850
 Text Label 3650 2750 0    50   ~ 0
 CLK_F[0..2]
 Wire Bus Line
@@ -581,29 +560,29 @@ F12 "Int_EN" O R 5500 4550 50
 F13 "Set_Btn_Int_Flag" I L 4150 5450 50 
 $EndSheet
 Wire Wire Line
-	5500 4550 5850 4550
-Text Label 5850 4550 2    50   ~ 0
+	5500 4550 5950 4550
+Text Label 5950 4550 2    50   ~ 0
 Int_EN
 Wire Wire Line
-	5500 4450 5850 4450
-Text Label 5850 4450 2    50   ~ 0
+	5500 4450 5950 4450
+Text Label 5950 4450 2    50   ~ 0
 DB_OUT
 Wire Bus Line
 	3450 4350 4150 4350
 Wire Bus Line
-	5500 4350 5850 4350
-Text Label 5850 4350 2    50   ~ 0
+	5500 4350 5950 4350
+Text Label 5950 4350 2    50   ~ 0
 DB[0..7]
 Text Label 3500 5450 0    50   ~ 0
 Set_Btn_Int_Flag
 Wire Wire Line
 	3500 5450 4150 5450
 Wire Bus Line
-	2950 4500 3500 4500
-Text Label 3500 4500 2    50   ~ 0
+	2850 4500 3400 4500
+Text Label 3400 4500 2    50   ~ 0
 Inst[0..15]
 Wire Bus Line
-	750  2650 1450 2650
+	650  2650 1350 2650
 Text Notes 5000 -3300 0    79   ~ 0
  - 8bit Processor\n - 1MHz Clock\n - 32kB Heap RAM, \n - 32kB Stack RAM\n - 16kB Program ROM\n
 Text Notes 6500 -3950 0    118  ~ 0
@@ -1081,21 +1060,21 @@ Wire Wire Line
 Text Label 5150 8250 2    50   ~ 0
 Cond
 Wire Wire Line
-	850  3900 1450 3900
+	750  3900 1350 3900
 Wire Wire Line
-	850  4100 1450 4100
-Text Label 850  3900 0    50   ~ 0
+	750  4100 1350 4100
+Text Label 750  3900 0    50   ~ 0
 RAM_Sync_D_A
-Text Label 850  4100 0    50   ~ 0
+Text Label 750  4100 0    50   ~ 0
 RAM_R_Sync_A
-Text Label 850  4000 0    50   ~ 0
+Text Label 750  4000 0    50   ~ 0
 RAM_W
 Wire Wire Line
-	1450 4000 850  4000
+	1350 4000 750  4000
 Wire Bus Line
-	1450 1450 750  1450
+	1350 1450 650  1450
 Wire Bus Line
-	1450 3600 750  3600
+	1350 3600 650  3600
 Text Label -3300 1800 0    50   ~ 0
 Inst[0..15]
 Wire Bus Line
@@ -1214,8 +1193,6 @@ Text Label 12200 2900 2    50   ~ 0
 DB[0..7]
 Wire Bus Line
 	9950 2900 10650 2900
-Wire Bus Line
-	2950 1450 3450 1450
 Connection ~ 5400 9000
 Wire Bus Line
 	5400 9000 5400 9850
@@ -1223,14 +1200,14 @@ Wire Bus Line
 	5400 8350 5400 9000
 Wire Bus Line
 	3200 7150 3200 7450
-Text Label 3700 4800 2    50   ~ 0
+Text Label 3600 4800 2    50   ~ 0
 In[0..8]+B->RAMA
-Text Label 3700 4900 2    50   ~ 0
+Text Label 3600 4900 2    50   ~ 0
 In[0..8]->RAMA
 Wire Wire Line
-	2950 4800 3700 4800
+	2850 4800 3600 4800
 Wire Wire Line
-	2950 4900 3700 4900
+	2850 4900 3600 4900
 Wire Bus Line
 	11850 2900 12200 2900
 Wire Bus Line
@@ -1278,8 +1255,8 @@ Wire Wire Line
 Wire Wire Line
 	14750 3900 15600 3900
 Wire Wire Line
-	3450 1850 2950 1850
-Text Label 3450 1850 2    50   ~ 0
+	3350 1850 2850 1850
+Text Label 3350 1850 2    50   ~ 0
 DB_OUT_EXT
 Text Label 3300 9700 0    50   ~ 0
 DB_OUT_EXT
@@ -1315,7 +1292,7 @@ Wire Wire Line
 	12650 7600 12100 7600
 Connection ~ 3450 3150
 Wire Bus Line
-	750  4500 1450 4500
+	650  4500 1350 4500
 Wire Bus Line
 	9950 2500 10650 2500
 Wire Wire Line
@@ -1485,15 +1462,15 @@ F2 "ROMA_OUT" T R 9300 4800 50
 F3 "ROMA[0..13]" B R 9300 4900 50 
 $EndSheet
 $Sheet
-S 1450 2550 1500 750 
+S 1350 2550 1500 750 
 U 604F08FB
 F0 "RAMA Bus" 50
 F1 "RAMA_BUS.sch" 50
-F2 "RAMA[0..8]" T L 1450 2650 50 
-F3 "RAMA_OUT" T L 1450 2750 50 
-F4 "DBGW_RAMA" I L 1450 3150 50 
-F5 "DBGW_SER" I L 1450 2950 50 
-F6 "DBGW_SCLK" I L 1450 3050 50 
+F2 "RAMA[0..8]" T L 1350 2650 50 
+F3 "RAMA_OUT" T L 1350 2750 50 
+F4 "DBGW_RAMA" I L 1350 3150 50 
+F5 "DBGW_SER" I L 1350 2950 50 
+F6 "DBGW_SCLK" I L 1350 3050 50 
 $EndSheet
 $Sheet
 S 3850 9400 1100 1200
@@ -1768,23 +1745,23 @@ Wire Wire Line
 Text Label 15250 8700 2    50   ~ 0
 DBGW_STCK
 Wire Bus Line
-	750  3600 750  2650
-Connection ~ 750  3600
+	650  3600 650  2650
+Connection ~ 650  3600
 Wire Wire Line
 	14700 8800 15250 8800
 Text Label 15250 8800 2    50   ~ 0
 DBGW_RAMA
 Wire Wire Line
-	1450 3150 900  3150
-Text Label 900  3150 0    50   ~ 0
+	1350 3150 800  3150
+Text Label 800  3150 0    50   ~ 0
 DBGW_RAMA
-Text Label 900  3050 0    50   ~ 0
+Text Label 800  3050 0    50   ~ 0
 DBGW_SCLK
 Wire Wire Line
-	900  3050 1450 3050
+	800  3050 1350 3050
 Wire Wire Line
-	1450 2950 900  2950
-Text Label 900  2950 0    50   ~ 0
+	1350 2950 800  2950
+Text Label 800  2950 0    50   ~ 0
 DBGW_SER
 Wire Wire Line
 	14700 8900 15250 8900
@@ -1803,18 +1780,10 @@ Wire Wire Line
 Text Label 12650 2300 0    50   ~ 0
 DBGW_SER
 Wire Bus Line
-	750  3600 750  4500
-Connection ~ 3450 1450
+	650  3600 650  4500
 Wire Bus Line
-	3450 1450 3450 1650
-Connection ~ 3450 1650
-Wire Bus Line
-	3450 1650 3450 3150
-Wire Bus Line
-	3450 1450 3500 1450
-Wire Bus Line
-	750  2650 750  1450
-Connection ~ 750  2650
+	650  2650 650  1450
+Connection ~ 650  2650
 Wire Wire Line
 	14700 9250 15250 9250
 Text Label 15250 9250 2    50   ~ 0
@@ -1855,4 +1824,30 @@ Text Label 8550 8900 0    50   ~ 0
 DBGW_STATE
 Wire Wire Line
 	8550 8900 9050 8900
+Wire Bus Line
+	3450 1450 3450 3150
+Wire Bus Line
+	2850 1450 3450 1450
+Connection ~ 3450 1450
+Wire Bus Line
+	3450 1450 4150 1450
+$Sheet
+S 1350 1350 1500 1000
+U 5FD1E173
+F0 "PeriphealInterface" 50
+F1 "PeripheralInterface.sch" 50
+F2 "DB[0..7]" T R 2850 1650 50 
+F3 "DB_OUT" T R 2850 1750 50 
+F4 "RAMA[0..8]" B L 1350 1450 50 
+F5 "RAM_Sync_D_A" I L 1350 1850 50 
+F6 "RAM_W" I L 1350 1650 50 
+F7 "RAM_R_Sync_A" I L 1350 1750 50 
+F8 "Periph_W" O R 2850 2050 50 
+F9 "PeriphA[0..7]" O R 2850 1450 50 
+F10 "Int_Active" I L 1350 2250 50 
+F11 "Int_Assert" B L 1350 2150 50 
+F12 "Int_EN" I L 1350 2050 50 
+F13 "Periph_R_Sync_A" O R 2850 2150 50 
+F14 "DB_OUT_EXT" T R 2850 1850 50 
+$EndSheet
 $EndSCHEMATC
