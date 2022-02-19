@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 95 102
+Sheet 80 105
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -1356,8 +1356,8 @@ Text Label 4600 4350 0    50   ~ 0
 Out14
 Wire Bus Line
 	4500 2650 4300 2650
-Wire Bus Line
-	4500 2650 4500 4250
 Text HLabel 4300 2650 0    50   Input ~ 0
 Out[14..0]
+Wire Bus Line
+	4500 2650 4500 4250
 $EndSCHEMATC

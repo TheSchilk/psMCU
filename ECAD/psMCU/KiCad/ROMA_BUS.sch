@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 32 102
+Sheet 102 105
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -124,7 +124,7 @@ F 3 "" H 2550 5750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Bus Line
-	3700 1700 3350 1700
+	3700 1400 3350 1400
 Entry Wire Line
 	3800 2500 3700 2400
 Entry Wire Line
@@ -254,7 +254,7 @@ Wire Wire Line
 Connection ~ 2100 5550
 Wire Wire Line
 	2100 5550 2250 5550
-Text HLabel 3350 1700 0    50   BiDi ~ 0
+Text HLabel 3350 1400 0    50   BiDi ~ 0
 ROMA[0..13]
 $Comp
 L 74xx:74HC245 U?
@@ -1296,7 +1296,7 @@ ROMA Active
 Wire Wire Line
 	2600 6350 2550 6350
 Wire Bus Line
-	3700 1700 3700 4350
+	3700 1400 3700 4350
 Wire Bus Line
 	7550 1900 7550 4950
 $EndSCHEMATC

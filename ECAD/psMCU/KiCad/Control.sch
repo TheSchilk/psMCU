@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
-Sheet 4 102
+Sheet 4 105
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -241,25 +241,13 @@ Wire Wire Line
 Wire Wire Line
 	10600 4450 11300 4450
 Wire Wire Line
-	10900 4200 12450 4200
-Wire Wire Line
 	10900 4050 10900 4200
 Wire Wire Line
 	10600 4050 10900 4050
 Wire Wire Line
-	11000 4100 12450 4100
-Wire Wire Line
 	11000 3950 11000 4100
 Wire Wire Line
 	10600 3950 11000 3950
-Wire Wire Line
-	12300 3550 12450 3550
-Wire Wire Line
-	12300 3450 12450 3450
-Wire Wire Line
-	12300 3350 12450 3350
-Wire Wire Line
-	12300 3250 12450 3250
 Wire Wire Line
 	10600 3850 11100 3850
 Wire Wire Line
@@ -370,13 +358,13 @@ Text HLabel 11300 4550 2    50   Output ~ 0
 RegT_OE_DataL
 Text HLabel 11300 4450 2    50   Output ~ 0
 RegT_OE_Adr
-Text HLabel 12450 4200 2    50   Output ~ 0
+Text HLabel 11300 4200 2    50   Output ~ 0
 RegT_LatchH
-Text HLabel 12450 4100 2    50   Output ~ 0
+Text HLabel 11300 4100 2    50   Output ~ 0
 RegT_LatchL
-Text HLabel 12450 3550 2    50   Output ~ 0
+Text HLabel 12400 3550 2    50   Output ~ 0
 RegB_OE
-Text HLabel 12450 3450 2    50   Output ~ 0
+Text HLabel 14500 3450 2    50   Output ~ 0
 RegB_Latch
 Text Label 11250 8150 2    50   ~ 0
 Int_Clr
@@ -421,17 +409,17 @@ F10 "InstCode[0..8]" I L 9800 4450 50
 $EndSheet
 Text HLabel 11300 2650 2    50   Output ~ 0
 RegI_Latch
-Text HLabel 11250 6750 2    50   Output ~ 0
+Text HLabel 14500 6750 2    50   Output ~ 0
 RAM_Sync_D_A
-Text HLabel 11250 6650 2    50   Output ~ 0
+Text HLabel 14500 6650 2    50   Output ~ 0
 RAM_R_Sync_A
-Text HLabel 11250 6250 2    50   Output ~ 0
+Text HLabel 14500 6250 2    50   Output ~ 0
 RAM_W
 Text HLabel 11250 6050 2    50   Output ~ 0
 In[0..7]->DBus
-Text HLabel 12450 3350 2    50   Output ~ 0
+Text HLabel 12400 3350 2    50   Output ~ 0
 RegA_OE
-Text HLabel 12450 3250 2    50   Output ~ 0
+Text HLabel 14500 3250 2    50   Output ~ 0
 RegA_Latch
 Wire Wire Line
 	10600 2750 11300 2750
@@ -453,12 +441,6 @@ Wire Wire Line
 	10600 2650 11300 2650
 Text Label 11300 2250 2    50   ~ 0
 SubInst_Inc
-Wire Wire Line
-	10600 6750 11250 6750
-Wire Wire Line
-	10600 6650 11250 6650
-Wire Wire Line
-	10600 6250 11250 6250
 Wire Wire Line
 	10600 6050 11250 6050
 $Sheet
@@ -613,6 +595,65 @@ Wire Wire Line
 	6100 2350 6950 2350
 Wire Wire Line
 	6100 2900 6100 2350
+$Sheet
+S 12900 3150 1450 4350
+U 6981B843
+F0 "DBGCtrlOverride" 50
+F1 "DBGCtrlOverride.sch" 50
+F2 "RAM_Sync_D_A_O" O R 14350 6750 50 
+F3 "RAM_R_Sync_A_O" O R 14350 6650 50 
+F4 "RAM_W_O" O R 14350 6250 50 
+F5 "RegB_Latch_O" O R 14350 3450 50 
+F6 "RegA_Latch_O" O R 14350 3250 50 
+F7 "RegA_Latch_I" I L 12900 3250 50 
+F8 "RegB_Latch_I" I L 12900 3450 50 
+F9 "RAM_R_Sync_A_I" I L 12900 6650 50 
+F10 "RAM_Sync_D_A_I" I L 12900 6750 50 
+F11 "RAM_W_I" I L 12900 6250 50 
+F12 "DBGW_SER" I L 12900 7200 50 
+F13 "DBGW_SCLK" I L 12900 7300 50 
+F14 "DBGW_CTRL" I L 12900 7400 50 
+$EndSheet
+Wire Wire Line
+	11000 4100 11300 4100
+Wire Wire Line
+	10900 4200 11300 4200
+Wire Wire Line
+	12400 3350 12300 3350
+Wire Wire Line
+	12400 3550 12300 3550
+Wire Wire Line
+	12300 3450 12900 3450
+Wire Wire Line
+	12300 3250 12900 3250
+Wire Wire Line
+	14500 3250 14350 3250
+Wire Wire Line
+	14500 3450 14350 3450
+Wire Wire Line
+	10600 6650 12900 6650
+Wire Wire Line
+	10600 6750 12900 6750
+Wire Wire Line
+	14350 6650 14500 6650
+Wire Wire Line
+	14350 6750 14500 6750
+Wire Wire Line
+	10600 6250 12900 6250
+Wire Wire Line
+	14350 6250 14500 6250
+Text HLabel 12800 7200 0    50   Input ~ 0
+DBGW_SER
+Text HLabel 12800 7300 0    50   Input ~ 0
+DBGW_SCLK
+Text HLabel 12800 7400 0    50   Input ~ 0
+DBGW_CTRL
+Wire Wire Line
+	12800 7200 12900 7200
+Wire Wire Line
+	12800 7300 12900 7300
+Wire Wire Line
+	12800 7400 12900 7400
 Wire Bus Line
 	9150 4450 9150 5550
 Wire Bus Line

@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 68 102
+Sheet 61 105
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -706,7 +706,7 @@ Wire Wire Line
 	5050 2050 5050 2950
 Wire Wire Line
 	2850 3000 2400 3000
-Text HLabel 5650 3850 0    50   Input ~ 0
+Text HLabel 4650 4400 0    50   Input ~ 0
 Clk_Step
 Wire Wire Line
 	7600 2800 7550 2800
@@ -903,4 +903,94 @@ Wire Wire Line
 Wire Wire Line
 	8400 3000 7550 3000
 Connection ~ 8400 3000
+Text HLabel 4650 4500 0    50   Input ~ 0
+DBG_CLK
+Wire Wire Line
+	5250 4250 5200 4250
+$Comp
+L power:GND #PWR?
+U 1 1 69E5ED32
+P 5250 4250
+AR Path="/5ED2705B/69E5ED32" Ref="#PWR?"  Part="1" 
+AR Path="/5F1CE57C/69E5ED32" Ref="#PWR?"  Part="1" 
+AR Path="/608BF85D/69E5ED32" Ref="#PWR?"  Part="1" 
+AR Path="/608BF85D/5FFAAF6D/69E5ED32" Ref="#PWR01790"  Part="1" 
+F 0 "#PWR01790" H 5250 4000 50  0001 C CNN
+F 1 "GND" V 5255 4122 50  0000 R CNN
+F 2 "" H 5250 4250 50  0001 C CNN
+F 3 "" H 5250 4250 50  0001 C CNN
+	1    5250 4250
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4950 4250 4950 4200
+Wire Wire Line
+	5000 4250 4950 4250
+$Comp
+L Device:C_Small C?
+U 1 1 69E5ED3A
+P 5100 4250
+AR Path="/5ED2705B/69E5ED3A" Ref="C?"  Part="1" 
+AR Path="/5F1CE57C/69E5ED3A" Ref="C?"  Part="1" 
+AR Path="/608BF85D/69E5ED3A" Ref="C?"  Part="1" 
+AR Path="/608BF85D/5FFAAF6D/69E5ED3A" Ref="C474"  Part="1" 
+F 0 "C474" V 4871 4250 50  0000 C CNN
+F 1 "0u1" V 4962 4250 50  0000 C CNN
+F 2 "NoRef_Footprints:C_0603_1608Metric_NoRef" H 5100 4250 50  0001 C CNN
+F 3 "~" H 5100 4250 50  0001 C CNN
+	1    5100 4250
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 69E5ED40
+P 4950 4200
+AR Path="/5ED2705B/69E5ED40" Ref="#PWR?"  Part="1" 
+AR Path="/5F1CE57C/69E5ED40" Ref="#PWR?"  Part="1" 
+AR Path="/608BF85D/69E5ED40" Ref="#PWR?"  Part="1" 
+AR Path="/608BF85D/5FFAAF6D/69E5ED40" Ref="#PWR01791"  Part="1" 
+F 0 "#PWR01791" H 4950 4050 50  0001 C CNN
+F 1 "+5V" H 4892 4237 50  0000 R CNN
+F 2 "" H 4950 4200 50  0001 C CNN
+F 3 "" H 4950 4200 50  0001 C CNN
+	1    4950 4200
+	1    0    0    -1  
+$EndComp
+Connection ~ 4950 4250
+Wire Wire Line
+	4950 4350 4950 4250
+Wire Wire Line
+	4950 4650 4950 4550
+$Comp
+L power:GND #PWR?
+U 1 1 69E5ED49
+P 4950 4650
+AR Path="/5ED2705B/69E5ED49" Ref="#PWR?"  Part="1" 
+AR Path="/5F1CE57C/69E5ED49" Ref="#PWR?"  Part="1" 
+AR Path="/608BF85D/69E5ED49" Ref="#PWR?"  Part="1" 
+AR Path="/608BF85D/5FFAAF6D/69E5ED49" Ref="#PWR01794"  Part="1" 
+F 0 "#PWR01794" H 4950 4400 50  0001 C CNN
+F 1 "GND" H 4955 4477 50  0000 C CNN
+F 2 "" H 4950 4650 50  0001 C CNN
+F 3 "" H 4950 4650 50  0001 C CNN
+	1    4950 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74xGxx:74LVC1G32 U?
+U 1 1 69E5ED4F
+P 4950 4450
+AR Path="/608BF85D/69E5ED4F" Ref="U?"  Part="1" 
+AR Path="/608BF85D/5FFAAF6D/69E5ED4F" Ref="U432"  Part="1" 
+F 0 "U432" H 5150 4350 50  0000 C CNN
+F 1 "SN74LVC1G32DCK" H 5350 4250 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 4950 4450 50  0001 C CNN
+F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 4950 4450 50  0001 C CNN
+	1    4950 4450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5650 3850 5650 4450
+Wire Wire Line
+	5650 4450 5200 4450
 $EndSCHEMATC

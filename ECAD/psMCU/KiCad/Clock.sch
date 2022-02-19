@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 63 102
+Sheet 56 105
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -35,7 +35,7 @@ $EndSheet
 Wire Wire Line
 	4450 2700 4700 2700
 $Sheet
-S 4700 2600 1050 400 
+S 4700 2600 1050 800 
 U 60010AFF
 F0 "Clock_Div_Ctrl.sch" 50
 F1 "Clock_Div_Ctrl.sch" 50
@@ -44,6 +44,9 @@ F3 "DEC_CLK_F" I L 4700 2800 50
 F4 "OSC_IN" I L 4700 2700 50 
 F5 "F_SET[0..7]" O R 5750 2700 50 
 F6 "CLK_F[0..2]" O R 5750 2800 50 
+F7 "DBGW_SER" I L 4700 3100 50 
+F8 "DBGW_SCLK" I L 4700 3200 50 
+F9 "DBGW_CLKF" I L 4700 3300 50 
 $EndSheet
 Wire Wire Line
 	4700 2900 4600 2900
@@ -63,7 +66,7 @@ F1 "Clock_Osc.sch" 50
 F2 "OSC_OUT" O R 4150 2150 50 
 $EndSheet
 $Sheet
-S 7850 2050 950  400 
+S 7850 2050 950  550 
 U 5FFAAF6D
 F0 "Clock_Step" 50
 F1 "Clock_Step.sch" 50
@@ -71,6 +74,7 @@ F2 "CLK" O R 8800 2150 50
 F3 "CONT_CLK" I L 7850 2150 50 
 F4 "Clk_Step_EN" I L 7850 2250 50 
 F5 "Clk_Step" I L 7850 2350 50 
+F6 "DBG_CLK" I L 7850 2450 50 
 $EndSheet
 Text HLabel 4600 2800 0    50   Input ~ 0
 Dec_Clk_F
@@ -95,4 +99,20 @@ Wire Bus Line
 Wire Wire Line
 	4150 2150 4450 2150
 Connection ~ 4450 2150
+Text HLabel 7750 2450 0    50   Input ~ 0
+DBG_CLK
+Wire Wire Line
+	7850 2450 7750 2450
+Wire Wire Line
+	4700 3100 4600 3100
+Wire Wire Line
+	4700 3200 4600 3200
+Wire Wire Line
+	4700 3300 4600 3300
+Text HLabel 4600 3100 0    50   Input ~ 0
+DBGW_SER
+Text HLabel 4600 3200 0    50   Input ~ 0
+DBGW_SCLK
+Text HLabel 4600 3300 0    50   Input ~ 0
+DBGW_CLKF
 $EndSCHEMATC

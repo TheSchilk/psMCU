@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 100 102
+Sheet 88 105
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -2257,11 +2257,7 @@ $EndSheet
 Text Label 4150 7050 3    50   ~ 0
 BK[0..13]
 Text HLabel 2050 3150 0    50   Input ~ 0
-BKPT_RCLK
-Text HLabel 2050 2750 0    50   Input ~ 0
-BKPT_SER
-Text HLabel 2050 2850 0    50   Input ~ 0
-BKPT_SCLK
+DBGW_BKPT
 Wire Wire Line
 	3150 9300 3850 9300
 Connection ~ 3850 9300
@@ -2513,105 +2509,11 @@ Wire Wire Line
 	3550 4050 3550 3500
 Wire Wire Line
 	3550 3500 3500 3500
-Wire Wire Line
-	2450 6250 2450 5300
 Connection ~ 2450 5300
 Text Notes 6200 9650 0    50   ~ 0
 Triggered
 Text Notes 2150 9300 0    50   ~ 0
 EN
-$Comp
-L 74xGxx:74LVC1G04 U?
-U 1 1 634BCFB5
-P 1500 6250
-AR Path="/5ED2705B/634BCFB5" Ref="U?"  Part="1" 
-AR Path="/5F1CE57C/634BCFB5" Ref="U?"  Part="1" 
-AR Path="/5F607AA2/634BCFB5" Ref="U?"  Part="1" 
-AR Path="/5FD6F3D6/634BCFB5" Ref="U18"  Part="1" 
-F 0 "U18" H 1700 6050 50  0000 C CNN
-F 1 "SN74LVC1G04DCK" H 1900 6150 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 1500 6250 50  0001 C CNN
-F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 1500 6250 50  0001 C CNN
-	1    1500 6250
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1500 6150 1500 6050
-$Comp
-L power:+5V #PWR?
-U 1 1 634BCFBC
-P 1500 6000
-AR Path="/5ED2705B/634BCFBC" Ref="#PWR?"  Part="1" 
-AR Path="/5F1CE57C/634BCFBC" Ref="#PWR?"  Part="1" 
-AR Path="/5F607AA2/634BCFBC" Ref="#PWR?"  Part="1" 
-AR Path="/5FD6F3D6/634BCFBC" Ref="#PWR0105"  Part="1" 
-F 0 "#PWR0105" H 1500 5850 50  0001 C CNN
-F 1 "+5V" H 1442 6037 50  0000 R CNN
-F 2 "" H 1500 6000 50  0001 C CNN
-F 3 "" H 1500 6000 50  0001 C CNN
-	1    1500 6000
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C_Small C?
-U 1 1 634BCFC2
-P 1650 6050
-AR Path="/5ED2705B/634BCFC2" Ref="C?"  Part="1" 
-AR Path="/5F1CE57C/634BCFC2" Ref="C?"  Part="1" 
-AR Path="/5F607AA2/634BCFC2" Ref="C?"  Part="1" 
-AR Path="/5FD6F3D6/634BCFC2" Ref="C14"  Part="1" 
-F 0 "C14" V 1421 6050 50  0000 C CNN
-F 1 "0u1" V 1512 6050 50  0000 C CNN
-F 2 "NoRef_Footprints:C_0603_1608Metric_NoRef" H 1650 6050 50  0001 C CNN
-F 3 "~" H 1650 6050 50  0001 C CNN
-	1    1650 6050
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	1550 6050 1500 6050
-Connection ~ 1500 6050
-Wire Wire Line
-	1500 6050 1500 6000
-$Comp
-L power:GND #PWR?
-U 1 1 634BCFCB
-P 1800 6050
-AR Path="/5ED2705B/634BCFCB" Ref="#PWR?"  Part="1" 
-AR Path="/5F1CE57C/634BCFCB" Ref="#PWR?"  Part="1" 
-AR Path="/5F607AA2/634BCFCB" Ref="#PWR?"  Part="1" 
-AR Path="/5FD6F3D6/634BCFCB" Ref="#PWR0106"  Part="1" 
-F 0 "#PWR0106" H 1800 5800 50  0001 C CNN
-F 1 "GND" V 1805 5922 50  0000 R CNN
-F 2 "" H 1800 6050 50  0001 C CNN
-F 3 "" H 1800 6050 50  0001 C CNN
-	1    1800 6050
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	1800 6050 1750 6050
-$Comp
-L power:GND #PWR?
-U 1 1 634BCFD2
-P 1500 6450
-AR Path="/5ED2705B/634BCFD2" Ref="#PWR?"  Part="1" 
-AR Path="/5F1CE57C/634BCFD2" Ref="#PWR?"  Part="1" 
-AR Path="/5F607AA2/634BCFD2" Ref="#PWR?"  Part="1" 
-AR Path="/5FD6F3D6/634BCFD2" Ref="#PWR0107"  Part="1" 
-F 0 "#PWR0107" H 1500 6200 50  0001 C CNN
-F 1 "GND" H 1505 6277 50  0000 C CNN
-F 2 "" H 1500 6450 50  0001 C CNN
-F 3 "" H 1500 6450 50  0001 C CNN
-	1    1500 6450
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1500 6450 1500 6350
-Wire Wire Line
-	1750 6250 2450 6250
-Text GLabel 1150 6250 0    31   Input ~ 0
-PWR_RESET
-Wire Wire Line
-	1200 6250 1150 6250
 Wire Wire Line
 	4600 1650 4850 1650
 Wire Wire Line
@@ -2668,6 +2570,14 @@ Text Label 4600 7200 0    50   ~ 0
 IAdr12
 Text Label 4600 7300 0    50   ~ 0
 IAdr13
+Text GLabel 2200 5300 0    31   Input ~ 0
+~PWR_RESET
+Wire Wire Line
+	2200 5300 2450 5300
+Text HLabel 2050 2750 0    50   Input ~ 0
+DBGW_SER
+Text HLabel 2050 2850 0    50   Input ~ 0
+DBGW_SCLK
 Wire Bus Line
 	4500 700  4500 7200
 Wire Bus Line
