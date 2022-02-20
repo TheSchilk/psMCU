@@ -8,10 +8,10 @@ Title "psMCU"
 Date "2022-02-20"
 Rev "v1.1"
 Comp "Philipp Schilk"
-Comment1 ""
-Comment2 "interrupts and halting/instruction stepping."
-Comment3 "individual sub-instruction steps are read from Microcode ROMs. Also handles "
-Comment4 "The central state machine that controls execution. Instructions are decoded, and the "
+Comment1 " to override some control lines."
+Comment2 " Also handles interrupts and halting/single instruction stepping. Allows the debugger"
+Comment3 "decoded, and the individual sub-instruction steps are read from Microcode ROMs."
+Comment4 "The central state machine that controls the program execution. Instructions are "
 $EndDescr
 Text HLabel 5550 5150 0    50   Input ~ 0
 Bkpt_Trig
@@ -90,7 +90,7 @@ InstCode[0..8]
 $Sheet
 S 8500 7800 800  900 
 U 6269E56B
-F0 "Control_Rom5" 50
+F0 "Control ROM 5" 50
 F1 "Control_Rom.sch" 50
 F2 "0" O R 9300 7900 50 
 F3 "1" O R 9300 8000 50 
@@ -153,7 +153,7 @@ Entry Wire Line
 $Sheet
 S 5650 3600 1200 600 
 U 624C202D
-F0 "SubInst_Step" 50
+F0 "SubInst Step" 50
 F1 "SubInst_Step.sch" 50
 F2 "SubInst_Step_Eq_0" O R 6850 4100 50 
 F3 "InstCode0" O R 6850 3700 50 
@@ -393,7 +393,7 @@ Wire Wire Line
 $Sheet
 S 8500 4500 800  900 
 U 5F47FADF
-F0 "Control_Rom2" 50
+F0 "Control ROM 2" 50
 F1 "Control_Rom.sch" 50
 F2 "0" O R 9300 4600 50 
 F3 "1" O R 9300 4700 50 
@@ -444,7 +444,7 @@ Wire Wire Line
 $Sheet
 S 8500 6700 800  900 
 U 5F768DA1
-F0 "Control_Rom4" 50
+F0 "Control ROM 4" 50
 F1 "Control_Rom.sch" 50
 F2 "0" O R 9300 6800 50 
 F3 "1" O R 9300 6900 50 
@@ -459,7 +459,7 @@ $EndSheet
 $Sheet
 S 8500 5600 800  900 
 U 5F767EF5
-F0 "Control_Rom3" 50
+F0 "Control ROM 3" 50
 F1 "Control_Rom.sch" 50
 F2 "0" O R 9300 5700 50 
 F3 "1" O R 9300 5800 50 
@@ -474,7 +474,7 @@ $EndSheet
 $Sheet
 S 8500 3400 800  900 
 U 5F765D85
-F0 "Control_Rom1" 50
+F0 "Control ROM 1" 50
 F1 "Control_Rom.sch" 50
 F2 "0" O R 9300 3500 50 
 F3 "1" O R 9300 3600 50 
@@ -489,7 +489,7 @@ $EndSheet
 $Sheet
 S 8500 2300 800  900 
 U 5F3D7BFA
-F0 "Control_Rom0" 50
+F0 "Control ROM 0" 50
 F1 "Control_Rom.sch" 50
 F2 "0" O R 9300 2400 50 
 F3 "1" O R 9300 2500 50 
@@ -533,7 +533,7 @@ Entry Wire Line
 $Sheet
 S 5650 2300 1200 750 
 U 5F3D8E0D
-F0 "Inst_Decode_ROM" 50
+F0 "Inst Decode ROM" 50
 F1 "Inst_Decode_ROM.sch" 50
 F2 "Inst[0..15]" I L 5650 2400 50 
 F3 "InstCode3" O R 6850 2400 50 
@@ -596,7 +596,7 @@ Wire Wire Line
 $Sheet
 S 11600 3300 1450 4350
 U 6981B843
-F0 "DBGCtrlOverride" 50
+F0 "DBG Ctrl Override" 50
 F1 "DBGCtrlOverride.sch" 50
 F2 "RAM_Sync_D_A_O" O R 13050 6900 50 
 F3 "RAM_R_Sync_A_O" O R 13050 6800 50 

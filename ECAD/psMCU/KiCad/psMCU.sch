@@ -181,7 +181,7 @@ Inst[0..15]
 $Sheet
 S 6250 8700 1500 1100
 U 5FF66C9F
-F0 "LogicOps.sch" 50
+F0 "Logic Ops" 50
 F1 "LogicOps.sch" 50
 F2 "DB_OUT" T R 7750 8900 50 
 F3 "DB[0..7]" T R 7750 8800 50 
@@ -386,7 +386,7 @@ $EndSheet
 $Sheet
 S 6250 7700 1500 800 
 U 5F43204F
-F0 "BarrelShifter" 50
+F0 "Barrel Shifter" 50
 F1 "BarrelShifter.sch" 50
 F2 "Shift_In" I L 6250 8300 50 
 F3 "DB[0..7]" T R 7750 7800 50 
@@ -1092,7 +1092,7 @@ Wire Bus Line
 $Sheet
 S 4450 5100 1350 500 
 U 62F490F0
-F0 "TempRegs.sch" 50
+F0 "Temp Regs" 50
 F1 "TempRegs.sch" 50
 F2 "PeriphA[0..7]" I L 4450 5200 50 
 F3 "Periph_W_Any" I L 4450 5400 50 
@@ -1145,7 +1145,7 @@ Wire Wire Line
 $Sheet
 S 1550 1200 1500 900 
 U 5FD1E173
-F0 "PeriphealInterface" 50
+F0 "Peripheal Interface" 50
 F1 "PeripheralInterface.sch" 50
 F2 "DB[0..7]" T R 3050 1500 50 
 F3 "DB_OUT" T R 3050 1600 50 
@@ -1212,7 +1212,7 @@ Wire Wire Line
 $Sheet
 S 4450 1200 1350 1500
 U 5FD65262
-F0 "SysReg_1" 50
+F0 "SysReg 1" 50
 F1 "SysReg_1.sch" 50
 F2 "PeriphA[0..7]" I L 4450 1300 50 
 F3 "DB_OUT" T R 5800 1400 50 
@@ -1288,7 +1288,7 @@ Wire Wire Line
 $Sheet
 S 4450 4100 1350 800 
 U 5FD65308
-F0 "SysReg_3" 50
+F0 "SysReg 3" 50
 F1 "SysReg_3.sch" 50
 F2 "DB[0..7]" T R 5800 4200 50 
 F3 "DB_OUT" T R 5800 4300 50 
@@ -1360,7 +1360,7 @@ Text Notes 3500 1200 0    50   ~ 0
 $Sheet
 S 4450 2900 1350 1000
 U 5FD65291
-F0 "SysReg_2" 50
+F0 "SysReg 2" 50
 F1 "SysReg_2.sch" 50
 F2 "DB_OUT" T R 5800 3100 50 
 F3 "DB[0..7]" T R 5800 3000 50 
@@ -1552,7 +1552,7 @@ DBGR_SCLK
 $Sheet
 S 14400 7700 950  1950
 U 64C5B36F
-F0 "DebuggerInterface" 50
+F0 "Debugger Interface" 50
 F1 "DebuggerInterface.sch" 50
 F2 "DBGR_RCLK" O R 15350 7800 50 
 F3 "DBGR_SCLK" O R 15350 7900 50 
@@ -1590,7 +1590,7 @@ Wire Wire Line
 $Sheet
 S 13300 7700 800  1450
 U 62B3D95F
-F0 "ResetClkDistr" 50
+F0 "Reset/Clk Distr." 50
 F1 "ResetClkDistr.sch" 50
 F2 "RESET" I L 13300 7800 50 
 F3 "~RESET" I L 13300 7900 50 
@@ -1669,7 +1669,7 @@ Wire Bus Line
 $Sheet
 S 11650 7700 1100 400 
 U 5FD3CD07
-F0 "ResetCtrl" 50
+F0 "Reset Ctrl" 50
 F1 "ResetCtrl.sch" 50
 F2 "~RESET" O R 12750 7900 50 
 F3 "RESET" O R 12750 7800 50 
@@ -1705,7 +1705,7 @@ Int_Assert
 $Sheet
 S 13300 9400 800  250 
 U 62043340
-F0 "PowerInput" 50
+F0 "Power Input" 50
 F1 "PowerInput.sch" 50
 $EndSheet
 Text Label 1000 6800 0    50   ~ 0

@@ -22,7 +22,7 @@ Wire Wire Line
 $Sheet
 S 5750 3050 1000 400 
 U 5FFB4D29
-F0 "Clock_Div" 50
+F0 "Clock Div" 50
 F1 "Clock_Div.sch" 50
 F2 "OSC_IN" I L 5750 3150 50 
 F3 "CONT_CLK" O R 6750 3150 50 
@@ -33,7 +33,7 @@ Wire Wire Line
 $Sheet
 S 4350 3600 1050 800 
 U 60010AFF
-F0 "Clock_Div_Ctrl.sch" 50
+F0 "Clock Div Ctrl" 50
 F1 "Clock_Div_Ctrl.sch" 50
 F2 "INC_CLK_F" I L 4350 3900 50 
 F3 "DEC_CLK_F" I L 4350 3800 50 
@@ -57,14 +57,14 @@ Wire Wire Line
 $Sheet
 S 2250 3050 750  200 
 U 5FFC76CA
-F0 "Clock_Osc" 50
+F0 "Clock Osc" 50
 F1 "Clock_Osc.sch" 50
 F2 "OSC_OUT" O R 3000 3150 50 
 $EndSheet
 $Sheet
 S 8200 3050 950  500 
 U 5FFAAF6D
-F0 "Clock_Step" 50
+F0 "Clock Step" 50
 F1 "Clock_Step.sch" 50
 F2 "CLK" O R 9150 3150 50 
 F3 "CONT_CLK" I L 8200 3150 50 

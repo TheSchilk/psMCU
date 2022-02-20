@@ -32,7 +32,7 @@ OP_B_Comp[0..7]
 $Sheet
 S 5150 2150 900  400 
 U 600C3422
-F0 "LogicXOR" 50
+F0 "Logic XOR" 50
 F1 "LogicXOR.sch" 50
 F2 "DB[0..7]" T R 6050 2250 50 
 F3 "OE" I L 5150 2450 50 
@@ -43,7 +43,7 @@ $EndSheet
 $Sheet
 S 5150 1550 900  400 
 U 600C00E8
-F0 "LogicOR" 50
+F0 "Logic OR" 50
 F1 "LogicOR.sch" 50
 F2 "DB[0..7]" T R 6050 1650 50 
 F3 "OE" I L 5150 1850 50 
@@ -54,7 +54,7 @@ $EndSheet
 $Sheet
 S 5150 2750 900  300 
 U 600CBE21
-F0 "LogicNOT" 50
+F0 "Logic NOT" 50
 F1 "LogicNOT.sch" 50
 F2 "DB[0..7]" T R 6050 2850 50 
 F3 "OE" I L 5150 2950 50 
@@ -64,7 +64,7 @@ $EndSheet
 $Sheet
 S 5150 950  900  400 
 U 600BE39A
-F0 "LogicAND" 50
+F0 "Logic AND" 50
 F1 "LogicAND.sch" 50
 F2 "DB[0..7]" T R 6050 1050 50 
 F3 "OE" I L 5150 1250 50 
@@ -2190,7 +2190,7 @@ Wire Bus Line
 $Sheet
 S 5150 3250 900  700 
 U 600CC0A2
-F0 "LogicCOMP" 50
+F0 "Logic COMP" 50
 F1 "LogicCOMP.sch" 50
 F2 "DB[0..7]" T R 6050 3350 50 
 F3 "OE" I L 5150 3450 50 

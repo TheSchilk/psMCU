@@ -160,7 +160,7 @@ Wire Wire Line
 $Sheet
 S 8050 4600 700  200 
 U 62504675
-F0 "sheet62504639" 50
+F0 "LEDs: Instruction Step" 50
 F1 "8BitLED.sch" 50
 F2 "VAL[0..7]" I L 8050 4700 50 
 $EndSheet

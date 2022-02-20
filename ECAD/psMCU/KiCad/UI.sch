@@ -4474,7 +4474,7 @@ Wire Wire Line
 $Sheet
 S 2450 1350 1150 5850
 U 6A91300F
-F0 "DbgStateOverride" 50
+F0 "Dbg State Override" 50
 F1 "DbgStateOverride.sch" 50
 F2 "Int_I" I L 2450 1450 50 
 F3 "I_Step_EN_I" I L 2450 2150 50 
