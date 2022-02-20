@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 11693 16535 portrait
 encoding utf-8
-Sheet 4 109
+Sheet 65 109
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -1534,18 +1534,16 @@ Text Label 2650 7400 0    50   ~ 0
 W_SER_DATA->ADR
 Wire Wire Line
 	2650 7400 3400 7400
-Text Notes 2800 1000 0    100  ~ 0
-Disconnect Program Counter\nwhile programming.
-Text Notes 6100 1000 0    100  ~ 0
+Text Notes 2800 850  0    100  ~ 0
+Program Counter Disconnect
+Text Notes 6100 850  0    100  ~ 0
 Memory
-Text Notes 2900 6850 0    100  ~ 0
-Serial Address Interface
+Text Notes 2800 6750 0    100  ~ 0
+Debugger Address Output
 Wire Wire Line
 	3250 4550 3250 4600
-Text Notes 5800 8800 0    100  ~ 0
-Serial Data\nInterface (Writing)
-Text Notes 8850 6600 0    100  ~ 0
-Serial Data\nInterface (Reading)
+Text Notes 8650 6650 0    100  ~ 0
+Debugger Data Input
 Text Label 4750 4300 2    50   ~ 0
 A14
 Text Label 4750 4400 2    50   ~ 0
@@ -2530,8 +2528,6 @@ F 3 "" H 3450 13550 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	3500 13550 3450 13550
-Text Notes 2900 13150 0    100  ~ 0
-Control Signal Interface
 Text Label 4900 13850 2    50   ~ 0
 MEM_~OE
 Text Label 4900 14050 2    50   ~ 0
@@ -2785,6 +2781,12 @@ NoConn ~ 4250 14350
 NoConn ~ 4250 14450
 NoConn ~ 4250 14550
 NoConn ~ 4250 14650
+Text Notes 3400 1000 0    50   ~ 0
+Used during programming.
+Text Notes 5500 8800 0    100  ~ 0
+Debugger Data Output
+Text Notes 2650 13150 0    100  ~ 0
+Debugger Control Signal Output
 Wire Bus Line
 	2800 4200 2800 5500
 Wire Bus Line

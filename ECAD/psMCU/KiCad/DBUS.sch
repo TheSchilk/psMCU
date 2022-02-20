@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 101 109
+Sheet 2 109
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -173,7 +173,7 @@ Entry Wire Line
 	5450 5050 5350 4950
 Entry Wire Line
 	5450 5150 5350 5050
-Text HLabel 1250 1100 0    50   3State ~ 0
+Text HLabel 1250 900  0    50   3State ~ 0
 DB[0..7]
 Text Label 5450 5150 0    50   ~ 0
 DB7
@@ -2296,20 +2296,26 @@ Connection ~ 2900 4050
 Wire Wire Line
 	2900 4050 2950 4050
 Wire Bus Line
-	3400 1100 1250 1100
+	3400 900  1250 900 
 Wire Bus Line
-	3400 1100 5350 1100
-Connection ~ 3400 1100
+	3400 900  5350 900 
+Connection ~ 3400 900 
 Text Label 5350 6100 0    50   ~ 0
 DB_OUT_EXT
 Text Label 4000 5350 2    50   ~ 0
 DB_OUT_EXT
 Wire Wire Line
 	3500 5350 4000 5350
+Text Notes 1800 1200 0    100  ~ 0
+Debugger Output
+Text Notes 6450 1100 0    100  ~ 0
+Debugger Input
+Text Notes 8000 3600 0    100  ~ 0
+Bus Display
 Wire Bus Line
-	3400 1100 3400 2650
+	3400 900  3400 2650
 Wire Bus Line
 	9350 4550 9350 5800
 Wire Bus Line
-	5350 1100 5350 5050
+	5350 900  5350 5050
 $EndSCHEMATC

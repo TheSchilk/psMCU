@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 83 109
+Sheet 108 109
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -1439,6 +1439,8 @@ F 3 "" H 6100 7350 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	6100 7350 6150 7350
+Text Notes 6050 3050 0    100  ~ 0
+Debugger Input
 Wire Bus Line
 	2750 850  2750 8000
 Wire Bus Line

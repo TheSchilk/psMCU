@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 68 109
+Sheet 56 109
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -1677,8 +1677,8 @@ Wire Wire Line
 Connection ~ 5650 5200
 Wire Wire Line
 	5650 5200 5650 5700
-Text Notes 5950 700  0    100  ~ 0
-Debugger Interface
+Text Notes 6050 700  0    100  ~ 0
+Debugger Input
 Wire Wire Line
 	5750 5600 5550 5600
 Wire Wire Line

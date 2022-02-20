@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
-Sheet 106 109
+Sheet 68 109
 Title ""
 Date ""
 Rev ""
@@ -71,7 +71,7 @@ Wire Bus Line
 $Sheet
 S 2900 9450 1250 1300
 U 62FA60E2
-F0 "sheet62FA6083" 50
+F0 "TEMPs Adr Comparator" 50
 F1 "AdrComparator.sch" 50
 F2 "SET0" I L 2900 9950 50 
 F3 "SET1" I L 2900 10050 50 
@@ -2234,7 +2234,7 @@ Wire Bus Line
 $Sheet
 S 6100 6550 700  200 
 U 630D89E6
-F0 "sheet630D89CA" 50
+F0 "LEDs: TEMP1" 50
 F1 "8BitLED.sch" 50
 F2 "VAL[0..7]" I L 6100 6650 50 
 $EndSheet
@@ -2865,7 +2865,7 @@ Wire Bus Line
 $Sheet
 S 10850 6550 700  200 
 U 632192B1
-F0 "sheet632192A5" 50
+F0 "LEDs: TEMP2" 50
 F1 "8BitLED.sch" 50
 F2 "VAL[0..7]" I L 10850 6650 50 
 $EndSheet

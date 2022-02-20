@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 33 109
+Sheet 101 109
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -732,7 +732,7 @@ Wire Wire Line
 	1600 4700 1600 4850
 Wire Wire Line
 	2300 4850 2550 4850
-Text Notes 1400 1450 0    100  ~ 0
+Text Notes 1400 1700 0    100  ~ 0
 8Mhz Oscillator
 Text Notes 9700 3950 0    50   ~ 0
 2Mhz/4Mhz/8Mhz Out
@@ -784,11 +784,11 @@ Wire Wire Line
 Connection ~ 7750 5000
 Wire Wire Line
 	9200 4100 10050 4100
-Text Notes 4150 1500 0    100  ~ 0
+Text Notes 4150 1750 0    100  ~ 0
 Dividers
-Text Notes 6600 1500 0    100  ~ 0
+Text Notes 6600 1750 0    100  ~ 0
 Clock Source Selection
-Text Notes 9150 1500 0    100  ~ 0
+Text Notes 9150 1750 0    100  ~ 0
 Output Buffer
 Text Notes 8750 4850 0    50   ~ 0
 Probably not strictly necessary, \nbut better safe than sorry. \nAlso used to clean up the \nexternal clock input.
@@ -825,7 +825,7 @@ Text Notes 7900 4000 0    50   ~ 0
 Internal
 Text Notes 7900 5100 0    50   ~ 0
 External
-Text Notes 6600 2250 0    50   ~ 0
+Text Notes 6800 2250 0    50   ~ 0
 Note: Frequency labels below\ntake into account the division-\nby-four intrinsic to the divider\nand clock control, and represent\nactual maximum clock speed.\n
 Wire Wire Line
 	8300 4100 8300 5000

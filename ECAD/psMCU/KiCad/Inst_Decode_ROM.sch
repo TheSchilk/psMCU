@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 103 109
+Sheet 49 109
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -258,7 +258,7 @@ Wire Wire Line
 $Sheet
 S 6850 3550 900  200 
 U 62588193
-F0 "sheet6258818F" 50
+F0 "InstDisplay" 50
 F1 "InstDisplay.sch" 50
 F2 "InstCode[3..7]" I L 6850 3650 50 
 $EndSheet

@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 72 109
+Sheet 4 109
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -13,9 +13,9 @@ Comment2 "provided, as it is used by the ALU for subtraction."
 Comment3 "currently in reg A and operand B. The 2's complement of operand B is always "
 Comment4 "Performs bitwise logical operations (AND, OR, XOR, NOT, 2's complement) on the value"
 $EndDescr
-Text HLabel 6700 3550 2    50   3State ~ 0
-DB_OUT
 Text HLabel 6700 3450 2    50   3State ~ 0
+DB_OUT
+Text HLabel 6700 3350 2    50   3State ~ 0
 DB[0..7]
 Text HLabel 4350 750  0    50   Input ~ 0
 RegA[0..7]
@@ -27,7 +27,7 @@ Text HLabel 3600 6200 0    50   Input ~ 0
 Not_OE
 Text HLabel 1350 4200 0    50   Input ~ 0
 Dual_OE
-Text HLabel 6700 3650 2    50   Output ~ 0
+Text HLabel 6700 3550 2    50   Output ~ 0
 OP_B_Comp[0..7]
 $Sheet
 S 5150 2150 900  400 
@@ -52,14 +52,14 @@ F5 "A[0..7]" I L 5150 1650 50
 F6 "B[0..7]" I L 5150 1750 50 
 $EndSheet
 $Sheet
-S 5150 2800 900  300 
+S 5150 2750 900  300 
 U 600CBE21
 F0 "LogicNOT" 50
 F1 "LogicNOT.sch" 50
-F2 "DB[0..7]" T R 6050 2900 50 
-F3 "OE" I L 5150 3000 50 
-F4 "DB_OUT" T R 6050 3000 50 
-F5 "A[0..7]" I L 5150 2900 50 
+F2 "DB[0..7]" T R 6050 2850 50 
+F3 "OE" I L 5150 2950 50 
+F4 "DB_OUT" T R 6050 2950 50 
+F5 "A[0..7]" I L 5150 2850 50 
 $EndSheet
 $Sheet
 S 5150 950  900  400 
@@ -73,24 +73,13 @@ F5 "A[0..7]" I L 5150 1050 50
 F6 "B[0..7]" I L 5150 1150 50 
 $EndSheet
 Wire Wire Line
-	6700 3550 6250 3550
-Wire Wire Line
 	6050 1150 6250 1150
 Wire Wire Line
 	6250 1150 6250 1750
-Connection ~ 6250 3550
 Wire Wire Line
-	6250 3550 6050 3550
-Wire Wire Line
-	6050 3000 6250 3000
-Connection ~ 6250 3000
-Wire Wire Line
-	6250 3000 6250 3550
+	6050 2950 6250 2950
 Wire Wire Line
 	6050 2350 6250 2350
-Connection ~ 6250 2350
-Wire Wire Line
-	6250 2350 6250 3000
 Wire Wire Line
 	6050 1750 6250 1750
 Connection ~ 6250 1750
@@ -99,14 +88,11 @@ Wire Wire Line
 Wire Bus Line
 	4350 750  4500 750 
 Wire Bus Line
-	4500 2900 5150 2900
+	4500 2850 5150 2850
 Wire Bus Line
 	4500 750  4500 1050
 Wire Bus Line
 	5150 2250 4500 2250
-Connection ~ 4500 2250
-Wire Bus Line
-	4500 2250 4500 2900
 Wire Bus Line
 	5150 1650 4500 1650
 Connection ~ 4500 1650
@@ -134,19 +120,16 @@ Wire Bus Line
 	4400 2350 5150 2350
 Connection ~ 4400 1750
 Wire Bus Line
-	4400 2350 4400 3450
-Wire Bus Line
-	4400 3450 5150 3450
-Connection ~ 4400 2350
+	4400 3350 5150 3350
 Text Label 4600 1050 0    50   ~ 0
 A[0..7]
 Text Label 4600 1650 0    50   ~ 0
 A[0..7]
 Text Label 4600 2250 0    50   ~ 0
 A[0..7]
-Text Label 4600 2900 0    50   ~ 0
+Text Label 4600 2850 0    50   ~ 0
 A[0..7]
-Text Label 4600 3450 0    50   ~ 0
+Text Label 4600 3350 0    50   ~ 0
 B[0..7]
 Text Label 4600 2350 0    50   ~ 0
 B[0..7]
@@ -155,7 +138,7 @@ B[0..7]
 Text Label 4600 1150 0    50   ~ 0
 B[0..7]
 Wire Wire Line
-	5150 3550 3700 3550
+	5150 3450 3700 3450
 Wire Wire Line
 	3600 6200 3800 6200
 Wire Wire Line
@@ -164,7 +147,7 @@ Connection ~ 3700 6600
 Wire Wire Line
 	3700 6600 4400 6600
 Wire Wire Line
-	3800 3000 5150 3000
+	3800 2950 5150 2950
 Connection ~ 3800 6200
 Wire Wire Line
 	3800 6200 4400 6200
@@ -181,26 +164,15 @@ Wire Wire Line
 Wire Wire Line
 	4100 1250 5150 1250
 Wire Bus Line
-	6050 3650 6700 3650
+	6050 3550 6700 3550
 Wire Bus Line
 	6050 1050 6150 1050
 Wire Bus Line
 	6150 1050 6150 1650
 Wire Bus Line
-	6150 3450 6700 3450
-Wire Bus Line
-	6050 3450 6150 3450
-Connection ~ 6150 3450
-Wire Bus Line
-	6050 2900 6150 2900
-Connection ~ 6150 2900
-Wire Bus Line
-	6150 2900 6150 3450
+	6050 2850 6150 2850
 Wire Bus Line
 	6050 2250 6150 2250
-Connection ~ 6150 2250
-Wire Bus Line
-	6150 2250 6150 2900
 Wire Bus Line
 	6050 1650 6150 1650
 Connection ~ 6150 1650
@@ -2201,10 +2173,6 @@ NOT
 Text Notes 5300 6600 0    50   ~ 0
 COMP
 Wire Wire Line
-	3800 3000 3800 6200
-Wire Wire Line
-	3700 3550 3700 6600
-Wire Wire Line
 	3900 4100 3900 5800
 Connection ~ 3900 4100
 Wire Wire Line
@@ -2215,30 +2183,62 @@ Wire Wire Line
 Connection ~ 4100 3900
 Text Label 1050 4350 0    50   ~ 0
 Inst[0..15]
-Text Label 4400 3850 0    50   ~ 0
+Text Label 4600 3750 0    50   ~ 0
 Inst[0..15]
 Wire Bus Line
-	4400 3850 5150 3850
+	4600 3750 5150 3750
 $Sheet
-S 5150 3350 900  700 
+S 5150 3250 900  700 
 U 600CC0A2
 F0 "LogicCOMP" 50
 F1 "LogicCOMP.sch" 50
-F2 "DB[0..7]" T R 6050 3450 50 
-F3 "OE" I L 5150 3550 50 
-F4 "DB_OUT" T R 6050 3550 50 
-F5 "B[0..7]" I L 5150 3450 50 
-F6 "OP_B_Comp[0..7]" O R 6050 3650 50 
-F7 "Inst[0..15]" I L 5150 3850 50 
-F8 "CompC_Flag" I L 5150 3950 50 
-F9 "CompC" O R 6050 3850 50 
+F2 "DB[0..7]" T R 6050 3350 50 
+F3 "OE" I L 5150 3450 50 
+F4 "DB_OUT" T R 6050 3450 50 
+F5 "B[0..7]" I L 5150 3350 50 
+F6 "OP_B_Comp[0..7]" O R 6050 3550 50 
+F7 "Inst[0..15]" I L 5150 3750 50 
+F8 "CompC_Flag" I L 5150 3850 50 
+F9 "CompC" O R 6050 3750 50 
 $EndSheet
-Text HLabel 6150 3850 2    50   Output ~ 0
+Text HLabel 6150 3750 2    50   Output ~ 0
 CompC
 Wire Wire Line
-	6150 3850 6050 3850
-Text HLabel 5050 3950 0    50   Input ~ 0
+	6150 3750 6050 3750
+Text HLabel 5100 3850 0    50   Input ~ 0
 CompC_Flag
 Wire Wire Line
-	5050 3950 5150 3950
+	5100 3850 5150 3850
+Wire Wire Line
+	6050 3450 6250 3450
+Wire Bus Line
+	6050 3350 6150 3350
+Wire Bus Line
+	6150 2250 6150 2850
+Connection ~ 6150 2250
+Wire Wire Line
+	6250 2350 6250 2950
+Connection ~ 6250 2350
+Wire Bus Line
+	6150 2850 6150 3350
+Connection ~ 6150 2850
+Connection ~ 6150 3350
+Wire Bus Line
+	6150 3350 6700 3350
+Wire Wire Line
+	6250 2950 6250 3450
+Connection ~ 6250 2950
+Connection ~ 6250 3450
+Wire Wire Line
+	6250 3450 6700 3450
+Wire Wire Line
+	3800 2950 3800 6200
+Wire Wire Line
+	3700 3450 3700 6600
+Wire Bus Line
+	4400 2350 4400 3350
+Connection ~ 4400 2350
+Wire Bus Line
+	4500 2850 4500 2250
+Connection ~ 4500 2250
 $EndSCHEMATC

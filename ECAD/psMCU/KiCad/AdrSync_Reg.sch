@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 84 109
+Sheet 109 109
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -1544,13 +1544,15 @@ Wire Wire Line
 	7450 7100 7450 7800
 Wire Wire Line
 	5550 5950 5000 5950
+Connection ~ 5000 5950
+Wire Wire Line
+	5000 5950 5000 3900
+Text Notes 5300 2750 0    100  ~ 0
+Debugger Output
 Wire Bus Line
 	2050 900  2050 8050
 Wire Bus Line
 	4150 800  4150 8250
 Wire Bus Line
 	6950 800  6950 6150
-Connection ~ 5000 5950
-Wire Wire Line
-	5000 5950 5000 3900
 $EndSCHEMATC

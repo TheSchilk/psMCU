@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 11693 16535 portrait
 encoding utf-8
-Sheet 57 109
+Sheet 98 109
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -2453,8 +2453,8 @@ Text Notes 3650 750  0    100  ~ 0
 Counter
 Text Notes 6000 750  0    100  ~ 0
 Comparator
-Text Notes 3050 13600 0    100  ~ 0
-Convert Frequency Setting\nto Comparator set-point
+Text Notes 3250 13600 0    100  ~ 0
+Comparator Set-Point \nSelection
 Text Notes 8850 11250 0    100  ~ 0
 Output T-FF
 Wire Bus Line

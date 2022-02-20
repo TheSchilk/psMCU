@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 8 109
+Sheet 79 109
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -1667,7 +1667,7 @@ Wire Wire Line
 	4650 8750 4600 8750
 Wire Wire Line
 	4250 8750 4400 8750
-Text Notes 3600 700  0    100  ~ 0
+Text Notes 3450 700  0    100  ~ 0
 RAM Page
 Text Notes 1400 9000 0    100  ~ 0
 Adr. Comparator
@@ -3040,6 +3040,8 @@ Wire Wire Line
 	2450 7150 2450 8000
 Wire Wire Line
 	6750 5650 6750 4250
+Text Notes 1200 5650 0    100  ~ 0
+Debugger RAM \nPage Override
 Wire Bus Line
 	2100 800  2100 4100
 Wire Bus Line
