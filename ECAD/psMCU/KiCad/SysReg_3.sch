@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 40 105
+Sheet 77 109
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -70,16 +70,6 @@ F 3 "" H 1100 6550 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	1100 6550 1300 6550
-Text HLabel 6850 4600 0    50   Input ~ 0
-A>B
-Text HLabel 6850 4700 0    50   Input ~ 0
-A<B
-Text HLabel 6850 4500 0    50   Input ~ 0
-A=B
-Text HLabel 6850 4300 0    50   Input ~ 0
-A=0
-Text HLabel 6850 4400 0    50   Input ~ 0
-B=0
 Wire Wire Line
 	4950 2450 4950 2500
 $Comp
@@ -470,15 +460,15 @@ Int_EN
 $Comp
 L power:GND #PWR?
 U 1 1 603B4D59
-P 6900 4800
+P 7100 4800
 AR Path="/5ED2705B/603B4D59" Ref="#PWR?"  Part="1" 
 AR Path="/5F3ED0F9/603B4D59" Ref="#PWR?"  Part="1" 
 AR Path="/5FD65308/603B4D59" Ref="#PWR01556"  Part="1" 
-F 0 "#PWR01556" H 6900 4550 50  0001 C CNN
-F 1 "GND" H 6900 4650 50  0000 C CNN
-F 2 "" H 6900 4800 50  0001 C CNN
-F 3 "" H 6900 4800 50  0001 C CNN
-	1    6900 4800
+F 0 "#PWR01556" H 7100 4550 50  0001 C CNN
+F 1 "GND" H 7100 4650 50  0000 C CNN
+F 2 "" H 7100 4800 50  0001 C CNN
+F 3 "" H 7100 4800 50  0001 C CNN
+	1    7100 4800
 	0    1    1    0   
 $EndComp
 Entry Wire Line
@@ -652,9 +642,9 @@ Wire Wire Line
 Text HLabel 1150 6050 0    50   Input ~ 0
 PeriphA[0..7]
 Text HLabel 1150 6150 0    50   Input ~ 0
-Periph_W
+Periph_W_Any
 Text HLabel 1150 6250 0    50   Input ~ 0
-Periph_R
+Periph_R_Any
 Wire Wire Line
 	1150 6150 1300 6150
 Wire Wire Line
@@ -2398,15 +2388,7 @@ Entry Wire Line
 Text Label 7300 4700 2    50   ~ 0
 VAL6
 Wire Wire Line
-	7300 4300 6850 4300
-Wire Wire Line
-	7300 4400 6850 4400
-Wire Wire Line
-	7300 4500 6850 4500
-Wire Wire Line
-	7300 4600 6850 4600
-Wire Wire Line
-	7300 4800 6900 4800
+	7300 4800 7100 4800
 Wire Wire Line
 	7300 2200 5900 2200
 Connection ~ 5900 2200
@@ -2416,8 +2398,6 @@ Text Label 4000 2750 1    50   ~ 0
 Latch
 Wire Wire Line
 	4000 2500 4000 2750
-Wire Wire Line
-	6850 4700 7300 4700
 Entry Wire Line
 	7300 4800 7400 4900
 Entry Wire Line
@@ -2924,7 +2904,53 @@ Wire Wire Line
 Wire Wire Line
 	5100 2700 5100 2550
 Wire Bus Line
+	6450 4150 6400 4150
+Text Label 7050 4600 2    50   ~ 0
+A>B
+Text Label 7050 4700 2    50   ~ 0
+A<B
+Text Label 7050 4500 2    50   ~ 0
+A=B
+Text Label 7050 4300 2    50   ~ 0
+A=0
+Text Label 7050 4400 2    50   ~ 0
+B=0
+Text HLabel 6400 4150 0    50   Input ~ 0
+COMP[0..4]
+Text Label 6550 4600 0    50   ~ 0
+COMP0
+Text Label 6550 4700 0    50   ~ 0
+COMP1
+Text Label 6550 4500 0    50   ~ 0
+COMP2
+Text Label 6550 4300 0    50   ~ 0
+COMP3
+Text Label 6550 4400 0    50   ~ 0
+COMP4
+Entry Wire Line
+	6450 4600 6550 4700
+Entry Wire Line
+	6450 4200 6550 4300
+Entry Wire Line
+	6450 4300 6550 4400
+Entry Wire Line
+	6450 4400 6550 4500
+Entry Wire Line
+	6450 4500 6550 4600
+Wire Wire Line
+	6550 4300 7300 4300
+Wire Wire Line
+	6550 4400 7300 4400
+Wire Wire Line
+	6550 4500 7300 4500
+Wire Wire Line
+	6550 4600 7300 4600
+Wire Wire Line
+	6550 4700 7300 4700
+Wire Bus Line
 	2000 950  2000 3350
+Wire Bus Line
+	6450 4150 6450 4600
 Wire Bus Line
 	9200 950  9200 3600
 Wire Bus Line

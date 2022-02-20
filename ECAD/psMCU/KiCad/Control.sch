@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
-Sheet 4 105
+Sheet 80 109
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -355,13 +355,13 @@ Wire Wire Line
 Wire Wire Line
 	10600 4650 11300 4650
 Text HLabel 11300 4550 2    50   Output ~ 0
-RegT_OE_DataL
+RegJ_OE_DataL
 Text HLabel 11300 4450 2    50   Output ~ 0
-RegT_OE_Adr
+RegJ_OE_Adr
 Text HLabel 11300 4200 2    50   Output ~ 0
-RegT_LatchH
+RegJ_LatchH
 Text HLabel 11300 4100 2    50   Output ~ 0
-RegT_LatchL
+RegJ_LatchL
 Text HLabel 12400 3550 2    50   Output ~ 0
 RegB_OE
 Text HLabel 14500 3450 2    50   Output ~ 0
@@ -654,10 +654,18 @@ Wire Wire Line
 	12800 7300 12900 7300
 Wire Wire Line
 	12800 7400 12900 7400
+Wire Wire Line
+	10600 8450 11250 8450
+Wire Wire Line
+	10600 8350 11250 8350
 Wire Bus Line
 	9150 4450 9150 5550
 Wire Bus Line
 	9150 3350 9150 4450
 Wire Bus Line
 	9150 2250 9150 3350
+Text HLabel 11250 8350 2    50   Output ~ 0
+RAM_W_Fast
+Text HLabel 11250 8450 2    50   Output ~ 0
+RAM_R_Fast
 $EndSCHEMATC

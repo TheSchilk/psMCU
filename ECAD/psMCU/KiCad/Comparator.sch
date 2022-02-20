@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 55 105
+Sheet 14 109
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -360,16 +360,6 @@ Text Label 4850 4650 0    50   ~ 0
 A[0..7]
 Text Label 4850 5100 0    50   ~ 0
 B[0..7]
-Text HLabel 9050 3700 2    50   Output ~ 0
-A>B
-Text HLabel 9050 3800 2    50   Output ~ 0
-A<B
-Text HLabel 9050 3900 2    50   Output ~ 0
-A=B
-Text HLabel 9050 4650 2    50   Output ~ 0
-A=0
-Text HLabel 9050 5100 2    50   Output ~ 0
-B=0
 $Comp
 L 74xx:74LS85 U?
 U 1 1 60020521
@@ -2905,6 +2895,42 @@ Text Notes 8950 2700 0    50   ~ 0
 A=0
 Text Notes 8950 3100 0    50   ~ 0
 B=0
+Entry Wire Line
+	9050 3700 9150 3800
+Entry Wire Line
+	9050 3800 9150 3900
+Entry Wire Line
+	9050 3900 9150 4000
+Entry Wire Line
+	9050 4650 9150 4750
+Entry Wire Line
+	9050 5100 9150 5200
+Wire Bus Line
+	9150 5450 9350 5450
+Text Label 8450 3700 0    50   ~ 0
+A>B
+Text Label 8450 3800 0    50   ~ 0
+A<B
+Text Label 8450 3900 0    50   ~ 0
+A=B
+Text Label 8450 4650 0    50   ~ 0
+A=0
+Text Label 8450 5100 0    50   ~ 0
+B=0
+Text HLabel 9350 5450 2    50   Output ~ 0
+COMP[0..4]
+Text Label 9050 3700 2    50   ~ 0
+COMP0
+Text Label 9050 3800 2    50   ~ 0
+COMP1
+Text Label 9050 3900 2    50   ~ 0
+COMP2
+Text Label 9050 4650 2    50   ~ 0
+COMP3
+Text Label 9050 5100 2    50   ~ 0
+COMP4
+Wire Bus Line
+	9150 3800 9150 5450
 Wire Bus Line
 	4800 750  4800 4650
 Wire Bus Line

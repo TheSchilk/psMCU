@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 8268 11693 portrait
 encoding utf-8
-Sheet 34 105
+Sheet 8 109
 Title "psMCU"
 Date "2022-02-13"
 Rev "v1.1"
@@ -680,9 +680,9 @@ VAL[0..6]
 Text HLabel 5300 1150 2    50   Output ~ 0
 PAGE[0..6]
 Text HLabel 1300 9400 0    50   Input ~ 0
-Periph_W
+Periph_W_Any
 Text HLabel 1300 9500 0    50   Input ~ 0
-Periph_R
+Periph_R_Any
 Wire Wire Line
 	1300 9400 1450 9400
 Wire Wire Line
