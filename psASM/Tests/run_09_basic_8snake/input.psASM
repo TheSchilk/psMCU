@@ -22,7 +22,7 @@ GAME:
         CALL UPDATE_GAMESTATE
         
         # Check game over
-        IFRM SYS3,S3_A0
+        IFRF SYS3,S3_A0
             JMP GAME_OVER
        
         CALL UPDATE_BOARD
@@ -36,7 +36,7 @@ GAME:
 GAME_OVER: 
     CALL UGS_RESET_INPUT_TRACKING
     CALL RENDER_GAME_OVER
-    IFSM 0x105, 3 # If Enter is pressed
+    IFSF 0x105, 3 # If Enter is pressed
         JMP GAME
     JMP GAME_OVER
 
@@ -57,7 +57,7 @@ DELAY_DELAY:
     LDA SYS2 
     LITB DD_DELAY_SYS2_TRHS
 
-    IFRM SYS3, S3_AlessB # If clock is fast enough
+    IFRF SYS3, S3_AlessB # If clock is fast enough
         JMP delay_delay_loop
     
     # Clock is slow, don't delay:
@@ -69,7 +69,7 @@ DELAY_DELAY:
         # A certain amount of delay has passed
         PUSHB
         LITB DD_DELAY_TRACK_INPUT
-        IFSM SYS3,S3_AlessB
+        IFSF SYS3,S3_AlessB
             CALL UGS_TRACK_INPUTS
         POPB 
 
@@ -78,7 +78,7 @@ DELAY_DELAY:
         
         # Keep track of loop count
         ADDLA -1
-        IFSM SYS3,S3_A0
+        IFSF SYS3,S3_A0
             JMP delay_delay_done
         JMP delay_delay_loop
     
@@ -94,7 +94,7 @@ DELAY:
     LITA D_DELAY
     delay_loop: 
         SUBL 1
-        IFSM SYS3,S3_A0
+        IFSF SYS3,S3_A0
             JMP delay_done
         JMP delay_loop
     delay_done:
@@ -142,7 +142,7 @@ RENDER:
         LDB RNDR_bit
 
         # If A is 0, skip ahead 
-        IFSM SYS3, S3_A0
+        IFSF SYS3, S3_A0
             JMP RENDER_ADVANCE_BIT
 
         # Otherwise, OR the current Bit into the current val:
@@ -152,12 +152,12 @@ RENDER:
 
         # Advance the current Bit
         RENDER_ADVANCE_BIT: # A = ? B = Bit
-        SWP
+        CPY 
         SHFTLL 1
         SVA RNDR_bit
 
         # If we did not shift out we can go on to the next pointer
-        IFRM SYS3, S3_A0
+        IFRF SYS3, S3_A0
             JMP RENDER_ADVANCE_PTR
 
         # Otherwise we need to push the current value to the stack
@@ -175,25 +175,21 @@ RENDER:
         ADDLB 1
         LITA BOARD_END
 
-        IFSM SYS3, S3_AB
+        IFSF SYS3, S3_AB
             JMP RENDER_LOOP_DONE
 
         JMP RENDER_LOOP
 
-    
+
     # ##### STEP 2: Display #####
     # An unrolled loop is shorter and faster at this size
-   
     RENDER_LOOP_DONE: 
-    POPM 0x10f
-    POPM 0x10e
-    POPM 0x10d
-    POPM 0x10c
-    POPM 0x10b
-    POPM 0x10a
-    POPM 0x109
-    POPM 0x108
 
+    @for i, 0, i<8, i + 1
+        POPA
+        SVAF 0x10f - i
+    @end
+   
     RTRN
 
 
@@ -248,7 +244,7 @@ UPDATE_GAMESTATE:
 
     # ==== Update direction based on input: =====
     # Check if left is pressed: 
-    IFRM GS_inputs_acc,INP_L
+    IFRF GS_inputs_acc,INP_L
         JMP UGS_LEFT_DONE 
     
     # Left pressed.
@@ -261,7 +257,7 @@ UPDATE_GAMESTATE:
 
 
     # Check if right is pressed:
-    IFRM GS_inputs_acc,INP_R
+    IFRF GS_inputs_acc,INP_R
         JMP UGS_RIGHT_DONE
 
     # Right pressed.
@@ -276,13 +272,13 @@ UPDATE_GAMESTATE:
     # switch(GS_pos) (0 = UP, 1 = RIGHT, 2 = DOWN, 3 = LEFT)
     LDA GS_dir
     LITB 0
-    IFSM SYS3, S3_AB
+    IFSF SYS3, S3_AB
         JMP UGS_DIR_UP
     LITB 1
-    IFSM SYS3, S3_AB
+    IFSF SYS3, S3_AB
         JMP UGS_DIR_RIGHT
     LITB 2
-    IFSM SYS3, S3_AB
+    IFSF SYS3, S3_AB
         JMP UGS_DIR_DOWN
     JMP UGS_DIR_LEFT
 
@@ -293,9 +289,10 @@ UPDATE_GAMESTATE:
         SVA GS_headpos_y
 
         # If we did not underflow, we are good to continue: 
-        IFRA 7 
+        ANDL 0x80
+        IFSF SYS3, S3_A0
             JMP UGS_DIR_DONE
-        
+
         # If we did underflow, we collided against a wall. The game is over
         LITA 1
         RTRN # Return with A = 1
@@ -307,7 +304,8 @@ UPDATE_GAMESTATE:
         SVA GS_headpos_x
         
         # If we did not underflow, we are good to continue: 
-        IFRA 7 
+        ANDL 0x80
+        IFSF SYS3, S3_A0
             JMP UGS_DIR_DONE
         
         # If we did underflow, we collided against a wall. The game is over
@@ -322,7 +320,7 @@ UPDATE_GAMESTATE:
 
         # Check that we did collide:
         LITB 8
-        IFSM SYS3,S3_AlessB
+        IFSF SYS3,S3_AlessB
             JMP UGS_DIR_DONE
 
         # We collided:
@@ -337,7 +335,7 @@ UPDATE_GAMESTATE:
 
         # Check that we did collide:
         LITB 8
-        IFSM SYS3,S3_AlessB
+        IFSF SYS3,S3_AlessB
             JMP UGS_DIR_DONE
 
         # We collided:
@@ -364,12 +362,12 @@ UPDATE_GAMESTATE:
     LDO 0 
 
     # If the board is 0 there, we definetly did not collide:
-    IFSM SYS3, S3_A0
+    IFSF SYS3, S3_A0
         JMP UGS_NO_BODY_COLLISION
 
     # If this is the apple position, we also did not collide:
     LDA GS_applepos
-    IFSM SYS3, S3_AB
+    IFSF SYS3, S3_AB
        JMP UGS_NO_BODY_COLLISION
     
     # Because the board is not 0, and this is not the the apple position,
@@ -383,7 +381,7 @@ UPDATE_GAMESTATE:
     LDA GS_applepos
     LDB GS_headpos
 
-    IFRM SYS3,S3_AB
+    IFRF SYS3,S3_AB
         JMP UGS_APPLE_DONE
     
     #### Apple found: ####
@@ -399,7 +397,7 @@ UPDATE_GAMESTATE:
     
     # End condition 
     LITB 62
-    IFRM SYS3,S3_AB
+    IFRF SYS3,S3_AB
         JMP UGS_NOT_TOO_LONG
     LITA 1
     RTRN # Return with A = 1 
@@ -410,8 +408,10 @@ UPDATE_GAMESTATE:
     LDA GS_applepos
     ADDLA GS_apple_pos_increase 
     ANDL 0x3F
-    SWP
-
+    # Swap A&B
+    SVBF TMP1
+    CPY
+    LDAF TMP1
     
     # # Check if this spot is already taken. 
     # # If it is already take, increase by 1 and try again
@@ -488,7 +488,7 @@ UPDATE_BOARD:
         
         # If the current value is not 0, decrease it
         LDB GS_board_dec
-        IFRM SYS3,S3_A0
+        IFRF SYS3,S3_A0
             SUB
 
         # Grab the current pointer
@@ -502,7 +502,7 @@ UPDATE_BOARD:
 
         # Check if the end condition is met
         LITA BOARD_ENDD
-        IFSM SYS3,S3_AB
+        IFSF SYS3,S3_AB
             JMP UB_LOOP_DONE
         JMP UB_LOOP
 
@@ -546,7 +546,7 @@ SETUP:
     
         # Check if we are done
         LITA BOARD_ENDD
-        IFSM SYS3, S3_AB
+        IFSF SYS3, S3_AB
             JMP SETUP2
         LITA 0
 

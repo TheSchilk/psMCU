@@ -7,6 +7,6 @@ LITA 4
 LITA 5
 LITA 6
 LITA 7
-IFSM 1, 1
+IFS 1, 1
 # ============ file: _preproc_root_autogen.psASM ============
 @include "input.psASM"

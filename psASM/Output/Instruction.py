@@ -185,9 +185,9 @@ class CALLInstruction(Instruction):
     ]
 
 
-class IFRMInstruction(Instruction):
-    """IFRM Instruction."""
-    op_code = "IFRM"
+class IFRInstruction(Instruction):
+    """IFR Instruction."""
+    op_code = "IFR"
     binary_literal = 0x7000
     arg_setups = [
         {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min_usr': MIN_9BIT_UNSIGNED, 'max_usr': MAX_9BIT_UNSIGNED},
@@ -195,9 +195,9 @@ class IFRMInstruction(Instruction):
     ]
 
 
-class IFSMInstruction(Instruction):
-    """IFSM Instruction."""
-    op_code = "IFSM"
+class IFSInstruction(Instruction):
+    """IFS Instruction."""
+    op_code = "IFS"
     binary_literal = 0x6000
     arg_setups = [
         {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min_usr': MIN_9BIT_UNSIGNED, 'max_usr': MAX_9BIT_UNSIGNED},
@@ -205,21 +205,41 @@ class IFSMInstruction(Instruction):
     ]
 
 
-class IFRAInstruction(Instruction):
-    """IFRA Instruction."""
-    op_code = "IFRA"
-    binary_literal = 0x5100
+class IFRFInstruction(Instruction):
+    """IFRF Instruction."""
+    op_code = "IFRF"
+    binary_literal = 0x5000
     arg_setups = [
+        {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min_usr': MIN_9BIT_UNSIGNED, 'max_usr': MAX_9BIT_UNSIGNED},
         {'name': 'bit', 'bit width': 3, 'bit shift': 9, 'min_usr': MIN_3BIT_UNSIGNED, 'max_usr': MAX_3BIT_UNSIGNED},
     ]
 
 
-class IFSAInstruction(Instruction):
-    """IFSA Instruction."""
-    op_code = "IFSA"
-    binary_literal = 0x4100
+class IFSFInstruction(Instruction):
+    """IFSF Instruction."""
+    op_code = "IFSF"
+    binary_literal = 0x4000
     arg_setups = [
+        {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min_usr': MIN_9BIT_UNSIGNED, 'max_usr': MAX_9BIT_UNSIGNED},
         {'name': 'bit', 'bit width': 3, 'bit shift': 9, 'min_usr': MIN_3BIT_UNSIGNED, 'max_usr': MAX_3BIT_UNSIGNED},
+    ]
+
+
+class SVBFInstruction(Instruction):
+    """SVBF Instruction."""
+    op_code = "SVBF"
+    binary_literal = 0x3e00
+    arg_setups = [
+        {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min_usr': MIN_9BIT_UNSIGNED, 'max_usr': MAX_9BIT_UNSIGNED},
+    ]
+
+
+class SVAFInstruction(Instruction):
+    """SVAF Instruction."""
+    op_code = "SVAF"
+    binary_literal = 0x3c00
+    arg_setups = [
+        {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min_usr': MIN_9BIT_UNSIGNED, 'max_usr': MAX_9BIT_UNSIGNED},
     ]
 
 
@@ -318,21 +338,21 @@ class STSBInstruction(Instruction):
     ]
 
 
-class POPMInstruction(Instruction):
-    """POPM Instruction."""
-    op_code = "POPM"
+class SVOFInstruction(Instruction):
+    """SVOF Instruction."""
+    op_code = "SVOF"
     binary_literal = 0x2E00
     arg_setups = [
-        {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min_usr': MIN_9BIT_UNSIGNED, 'max_usr': MAX_9BIT_UNSIGNED},
+        {'name': 'offset', 'bit width': 9, 'bit shift': 0, 'min_usr': MIN_9BIT_UNSIGNED, 'max_usr': MAX_9BIT_UNSIGNED},
     ]
 
 
-class PUSHMInstruction(Instruction):
-    """PUSHM Instruction."""
-    op_code = "PUSHM"
+class LDOFInstruction(Instruction):
+    """LDOF Instruction."""
+    op_code = "LDOF"
     binary_literal = 0x2600
     arg_setups = [
-        {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min_usr': MIN_9BIT_UNSIGNED, 'max_usr': MAX_9BIT_UNSIGNED},
+        {'name': 'offset', 'bit width': 9, 'bit shift': 0, 'min_usr': MIN_9BIT_UNSIGNED, 'max_usr': MAX_9BIT_UNSIGNED},
     ]
 
 
@@ -507,13 +527,10 @@ class NOTAInstruction(Instruction):
     binary_literal = 0x1500
 
 
-class SVAInstruction(Instruction):
-    """SVA Instruction."""
-    op_code = "SVA"
-    binary_literal = 0x1000
-    arg_setups = [
-        {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min_usr': MIN_9BIT_UNSIGNED, 'max_usr': MAX_9BIT_UNSIGNED},
-    ]
+class CPYInstruction(Instruction):
+    """CPY Instruction."""
+    op_code = "CPY"
+    binary_literal = 0x1400
 
 
 class SVBInstruction(Instruction):
@@ -525,10 +542,10 @@ class SVBInstruction(Instruction):
     ]
 
 
-class LDAInstruction(Instruction):
-    """LDA Instruction."""
-    op_code = "LDA"
-    binary_literal = 0x0C00
+class SVAInstruction(Instruction):
+    """SVA Instruction."""
+    op_code = "SVA"
+    binary_literal = 0x1000
     arg_setups = [
         {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min_usr': MIN_9BIT_UNSIGNED, 'max_usr': MAX_9BIT_UNSIGNED},
     ]
@@ -538,6 +555,15 @@ class LDBInstruction(Instruction):
     """LDB Instruction."""
     op_code = "LDB"
     binary_literal = 0x0E00
+    arg_setups = [
+        {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min_usr': MIN_9BIT_UNSIGNED, 'max_usr': MAX_9BIT_UNSIGNED},
+    ]
+
+
+class LDAInstruction(Instruction):
+    """LDA Instruction."""
+    op_code = "LDA"
+    binary_literal = 0x0C00
     arg_setups = [
         {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min_usr': MIN_9BIT_UNSIGNED, 'max_usr': MAX_9BIT_UNSIGNED},
     ]
@@ -561,40 +587,46 @@ class LDOInstruction(Instruction):
     ]
 
 
-class LITAInstruction(Instruction):
-    """LITA Instruction."""
-    op_code = "LITA"
+class LDBFInstruction(Instruction):
+    """LDBF Instruction."""
+    op_code = "LDBF"
+    binary_literal = 0x0600
+    arg_setups = [
+        {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min_usr': MIN_9BIT_UNSIGNED, 'max_usr': MAX_9BIT_UNSIGNED},
+    ]
+
+
+class LDAFInstruction(Instruction):
+    """LDAF Instruction."""
+    op_code = "LDAF"
     binary_literal = 0x0400
     arg_setups = [
-        {'name': 'literal', 'bit width': 8, 'bit shift': 0, 'min_usr': MIN_8BIT_SIGNED, 'max_usr': MAX_8BIT_UNSIGNED},
+        {'name': 'adr', 'bit width': 9, 'bit shift': 0, 'min_usr': MIN_9BIT_UNSIGNED, 'max_usr': MAX_9BIT_UNSIGNED},
     ]
 
 
 class LITBInstruction(Instruction):
     """LITB Instruction."""
     op_code = "LITB"
-    binary_literal = 0x0600
+    binary_literal = 0x0300
     arg_setups = [
         {'name': 'literal', 'bit width': 8, 'bit shift': 0, 'min_usr': MIN_8BIT_SIGNED, 'max_usr': MAX_8BIT_UNSIGNED},
     ]
 
 
-class CPYInstruction(Instruction):
-    """CPY Instruction."""
-    op_code = "CPY"
-    binary_literal = 0x0300
-
-
-class SWPInstruction(Instruction):
-    """SWP Instruction."""
-    op_code = "SWP"
-    binary_literal = 0x0200
+class LITAInstruction(Instruction):
+    """LITA Instruction."""
+    op_code = "LITA"
+    binary_literal = 0x0100
+    arg_setups = [
+        {'name': 'literal', 'bit width': 8, 'bit shift': 0, 'min_usr': MIN_8BIT_SIGNED, 'max_usr': MAX_8BIT_UNSIGNED},
+    ]
 
 
 class HALTInstruction(Instruction):
     """HALT Instruction."""
     op_code = "HALT"
-    binary_literal = 0x0100
+    binary_literal = 0x0200
 
 
 class NOPInstruction(Instruction):
@@ -613,7 +645,7 @@ def find_instructions():
             sys.exit(1)
 
         # Sanity check arg_setups:
-        for setup in instruction_class.arg_setups: # pragma: no cover
+        for setup in instruction_class.arg_setups:  # pragma: no cover
             for key in ['name', 'bit width', 'bit shift', 'min_usr', 'max_usr']:
                 if key not in setup:
                     print("Arg setup missing key %s!" % key)

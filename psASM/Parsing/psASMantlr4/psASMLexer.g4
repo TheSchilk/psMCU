@@ -3,14 +3,15 @@ lexer grammar psASMLexer;
 // ======= Instruction =======
 
 INST 
-   : 'JMP'    | 'CALL'  | 'IFRM'   | 'IFSM'  | 'IFRA'   | 'IFSA'  | 'RTRN' 
-   | 'RTRNI'  | 'POPA'  | 'POPB'   | 'PUSHA' | 'PUSHB'  | 'GROW'  | 'SHRINK' 
-   | 'STLA'   | 'STLB'  | 'STSA'   | 'STSB'  | 'POPM'   | 'PUSHM' | 'COMPB' 
-   | 'COMPBC' | 'ADDLB' | 'ADDLBC' | 'ADD'   | 'ADDC'   | 'ADDLA' | 'ADDLAC' 
-   | 'SUB'    | 'SUBC'  | 'SUBL'   | 'SUBLC' | 'AND'    | 'ANDL'  | 'OR' 
-   | 'ORL'    | 'XOR'   | 'XORL'   | 'SHFTR' | 'SHFTRL' | 'SHFTL' | 'SHFTLL' 
-   | 'NOTA'   | 'SVA'   | 'SVB'    | 'LDA'   | 'LDB'    | 'LDO'   | 'SVO' 
-   | 'LITA'   | 'LITB'  | 'CPY'    | 'SWP'   | 'HALT'   |  'NOP'  ; 
+   : 'JMP'    | 'CALL'  | 'IFR'    | 'IFS'   | 'IFRF'   | 'IFSF'  | 'RTRN'
+   | 'RTRNI'  | 'POPA'  | 'POPB'   | 'PUSHA' | 'PUSHB'  | 'GROW'  | 'SHRINK'
+   | 'STLA'   | 'STLB'  | 'STSA'   | 'STSB'  | 'SVOF'   | 'LDOF'  | 'COMPB'
+   | 'COMPBC' | 'ADDLB' | 'ADDLBC' | 'ADD'   | 'ADDC'   | 'ADDLA' | 'ADDLAC'
+   | 'SUB'    | 'SUBC'  | 'SUBL'   | 'SUBLC' | 'AND'    | 'ANDL'  | 'OR'
+   | 'ORL'    | 'XOR'   | 'XORL'   | 'SHFTR' | 'SHFTRL' | 'SHFTL' | 'SHFTLL'
+   | 'NOTA'   | 'SVA'   | 'SVB'    | 'LDA'   | 'LDB'    | 'LDO'   | 'SVO'
+   | 'LITA'   | 'LITB'  | 'CPY'    | 'LDAF'  | 'LDBF'   | 'HALT'  | 'NOP'
+   | 'SVAF'   | 'SVBF'  ;
 
 COMMA: ',' ;
 

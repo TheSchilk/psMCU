@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
-import os
-import json
-from Util.Errors import LocatedException, psASMException
-import psASM
-import difflib
-import sys
 import argparse
+import difflib
+import json
+import os
+import sys
+
 import jsonschema
+
+import psASM
+from Util.Errors import LocatedException, psASMException
 
 
 class TestFailedException(Exception):
@@ -145,7 +147,7 @@ def check_exception(run, exc, log, do_color):
 def main(args):
     parser = argparse.ArgumentParser(prog="test_psASM.py", description="Test psASM.")
     parser.add_argument('-c', '--no-color', required=False, action="store_true")
-    parser.add_argument('-t', required=False, action="append",
+    parser.add_argument('-t', required=False, action="append", type=int,
                         help='Only run specific test (may be used multiple times)')
 
     parsed_args = vars(parser.parse_args(args))
@@ -182,12 +184,12 @@ def main(args):
     test_failed_count = 0
 
     # Process each test directory:
-    for test_folder in test_folders:
+    for test_index, test_folder in enumerate(test_folders):
         if "ignore" in test_folder:
             continue
 
         if not run_all_tests:
-            if test_folder not in tests_to_run:
+            if test_index not in tests_to_run:
                 continue
 
         test_info = {}
@@ -249,7 +251,7 @@ def main(args):
                                 start_color('ok', do_color)
                             elif line.startswith('-'):
                                 start_color('err', do_color)
-                            print(line)
+                            print(line.rstrip())
                             end_color(do_color)
 
             for file_a_name, file_b_name in test_info['bin_diffs']:
@@ -283,17 +285,17 @@ def main(args):
 
             test_passed_count += 1
             start_color('ok', do_color)
-            print("Test '%s' passed." % (test_folder))
+            print("[%02i] Test '%s' passed." % (test_index, test_folder))
             end_color(do_color)
         except TestFailedException:
             start_color('err', do_color)
-            print("Test '%s' failed." % (test_folder))
+            print("[%02i] Test '%s' failed." % (test_index, test_folder))
             end_color(do_color)
             test_failed_count += 1
         except FileNotFoundError as ex:
             print(ex)
             start_color('err', do_color)
-            print("Test '%s' failed." % (test_folder))
+            print("[%02i] Test '%s' failed." % (test_index, test_folder))
             end_color(do_color)
             test_failed_count += 1
         finally:

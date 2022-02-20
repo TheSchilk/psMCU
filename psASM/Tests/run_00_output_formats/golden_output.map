@@ -1,11 +1,11 @@
-Adr    | Raw Inst.     | Bin  | Source        | Line     
----------------------------------------------------------
-0x0000 | LITA 0x0      | 0400 | input.psASM:1 | LITA 0   
-0x0001 | LITA 0x1      | 0401 | input.psASM:2 | LITA 1   
-0x0002 | LITA 0x2      | 0402 | input.psASM:3 | LITA 2   
-0x0003 | LITA 0x3      | 0403 | input.psASM:4 | LITA 3   
-0x0004 | LITA 0x4      | 0404 | input.psASM:5 | LITA 4   
-0x0005 | LITA 0x5      | 0405 | input.psASM:6 | LITA 5   
-0x0006 | LITA 0x6      | 0406 | input.psASM:7 | LITA 6   
-0x0007 | LITA 0x7      | 0407 | input.psASM:8 | LITA 7   
-0x0008 | IFSM 0x1, 0x1 | 6201 | input.psASM:9 | IFSM 1, 1
+Adr    | Raw Inst.    | Bin  | Source        | Line    
+-------------------------------------------------------
+0x0000 | LITA 0x0     | 0100 | input.psASM:1 | LITA 0  
+0x0001 | LITA 0x1     | 0101 | input.psASM:2 | LITA 1  
+0x0002 | LITA 0x2     | 0102 | input.psASM:3 | LITA 2  
+0x0003 | LITA 0x3     | 0103 | input.psASM:4 | LITA 3  
+0x0004 | LITA 0x4     | 0104 | input.psASM:5 | LITA 4  
+0x0005 | LITA 0x5     | 0105 | input.psASM:6 | LITA 5  
+0x0006 | LITA 0x6     | 0106 | input.psASM:7 | LITA 6  
+0x0007 | LITA 0x7     | 0107 | input.psASM:8 | LITA 7  
+0x0008 | IFS 0x1, 0x1 | 6201 | input.psASM:9 | IFS 1, 1

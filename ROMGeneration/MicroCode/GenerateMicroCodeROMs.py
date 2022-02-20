@@ -50,7 +50,7 @@ def main():
                 # Make sure all entries are either 1 or 0:
                 for val in entries:
                     if val != '0' and val != '1':
-                        print("Error in line %i:" % (line_num +1))
+                        print("Error in line %i:" % (line_num + 1))
                         print("Expected a 1 or 0 but got a '" + val + "'")
                         print("In the following line: ")
                         print(line)

@@ -1,9 +1,9 @@
 Adr    | Raw Inst. | Bin  | Source                  | Line                                  
 --------------------------------------------------------------------------------------------
-0x0000 | LITA 0x0  | 0400 | input_main.psASM:1      | GLOBAL_LABEL_0: LITA 0                
+0x0000 | LITA 0x0  | 0100 | input_main.psASM:1      | GLOBAL_LABEL_0: LITA 0                
 0x0001 | JMP 0x0   | c000 | input_main.psASM:2      |     JMP GLOBAL_LABEL_0                
 0x0002 | JMP 0x2   | c002 | input_main.psASM:3      |     .block_label_1: JMP .block_label_1
-0x0003 | LITA 0x1  | 0401 | input_main.psASM:5      | GLOBAL_LABEL_1: LITA 1                
+0x0003 | LITA 0x1  | 0101 | input_main.psASM:5      | GLOBAL_LABEL_1: LITA 1                
 0x0004 | JMP 0x3   | c003 | input_main.psASM:6      |     JMP GLOBAL_LABEL_1                
 0x0005 | JMP 0x5   | c005 | input_main.psASM:7      |     .block_label_1: JMP .block_label_1
 0x0006 | JMP 0x6   | c006 | input_secondary.psASM:1 | _FILE_LABEL1: JMP _FILE_LABEL1        

@@ -1,0 +1,15 @@
+#
+# std_util.psASM
+# Part of StdLib for psMCU.
+# Contains small utility macros.
+#
+
+@include_once
+@include "std_sys.psASM"
+
+@macro SWP
+    SVBF TEMP1
+    CPY
+    LDAF TEMP1
+@end
+

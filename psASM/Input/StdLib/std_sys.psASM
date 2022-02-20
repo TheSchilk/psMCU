@@ -10,8 +10,12 @@
 # ########## System Registers ###########
 # #######################################
 
+# ############### TMP ###################
+@define TMP1           0x100    # (R/W) Temp Register 1.
+@define TMP2           0x101    # (R/W) Temp Register 2.
+
 # ############### SYS1 ##################
-@define SYS1           0x100    # (R/W) System Register 1.
+@define SYS1           0x102    # (R/W) System Register 1.
 
 # Bits:
 @define S1_SHFT_IN     0        # [0]    (R/W) Bit that is shifted in while shifting.
@@ -41,7 +45,7 @@
 @define S1_FREQ_M      0xe0     # FREQ field shift.
 
 # ############### SYS2 ##################
-@define SYS2           0x101    # (R/W) System Register 2.
+@define SYS2           0x103    # (R/W) System Register 2.
 
 # Bits:
                                 # [0..6] (R/W) RAM Page.
@@ -52,7 +56,7 @@
 @define S2_PAGE_M      0x7f     # PAGE field mask.
 
 # ############### SYS3 ##################
-@define SYS3           0x102    # (R/W) System Register 3
+@define SYS3           0x104    # (R/W) System Register 3
 
 # Bits:
 @define S3_INT_EN      0        # [0]    (R/W) Interrupt Enable bit.
