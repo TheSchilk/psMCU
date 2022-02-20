@@ -5,13 +5,13 @@ $Descr A4 8268 11693 portrait
 encoding utf-8
 Sheet 61 109
 Title "psMCU"
-Date "2022-02-13"
+Date "2022-02-20"
 Rev "v1.1"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
-Comment3 "a serial interface from the programmer. Can be enabled/disabled."
-Comment4 "Compares current program counter value against a breakpoint-address settable using "
+Comment3 "processor. The debugger is used to set this address and enable/disable the breakpoint."
+Comment4 "Compares the address of the current instruciton to a breakpoint-address to halt the"
 $EndDescr
 $Comp
 L 74xGxx:74LVC1G08 U?

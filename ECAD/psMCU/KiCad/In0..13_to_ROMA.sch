@@ -5,13 +5,13 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 60 109
 Title "psMCU"
-Date "2022-02-13"
+Date "2022-02-20"
 Rev "v1.1"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 "to an address."
-Comment4 "Puts the lowest 14bit of the current instruction on the ROMA bus. Used for branching"
+Comment4 "Puts the lower 14bit of the current instruction on the ROMA bus. Used for branching"
 $EndDescr
 Wire Bus Line
 	6700 1150 7050 1150

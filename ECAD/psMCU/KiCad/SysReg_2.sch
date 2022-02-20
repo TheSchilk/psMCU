@@ -5,13 +5,13 @@ $Descr A4 8268 11693 portrait
 encoding utf-8
 Sheet 79 109
 Title "psMCU"
-Date "2022-02-13"
+Date "2022-02-20"
 Rev "v1.1"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
-Comment3 "and clock frequency (r)."
-Comment4 "System Register 2 (Adr. 0x101). Contains the current RAM Page (r/w)"
+Comment3 ""
+Comment4 "System Register 2 (Adr. 0x103). Used to select the current RAM Page (r/w)."
 $EndDescr
 Wire Wire Line
 	1450 10400 1350 10400
@@ -23,10 +23,6 @@ Wire Wire Line
 	1450 10100 1350 10100
 Wire Wire Line
 	1450 10000 1350 10000
-Wire Wire Line
-	1450 9800 1350 9800
-Wire Wire Line
-	1350 9800 1350 9900
 Connection ~ 1350 10000
 Wire Wire Line
 	1350 10000 1350 10100
@@ -69,7 +65,7 @@ F 3 "" H 1250 9700 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	1250 9700 1450 9700
+	1250 9700 1350 9700
 Text HLabel 6150 4850 2    50   3State ~ 0
 DB_OUT
 $Comp
@@ -2340,7 +2336,6 @@ Text Label 4600 1850 0    50   ~ 0
 VAL3
 Wire Wire Line
 	1450 9900 1350 9900
-Connection ~ 1350 9900
 Wire Wire Line
 	1350 9900 1350 10000
 Text Notes 4700 8750 0    50   ~ 0
@@ -3042,10 +3037,17 @@ Wire Wire Line
 	6750 5650 6750 4250
 Text Notes 1200 5650 0    100  ~ 0
 Debugger RAM \nPage Override
+Wire Wire Line
+	1450 9800 1350 9800
+Wire Wire Line
+	1350 9800 1350 9700
 Wire Bus Line
 	2100 800  2100 4100
 Wire Bus Line
 	6550 800  6550 3450
 Wire Bus Line
 	4850 1150 4850 7250
+Connection ~ 1350 9700
+Wire Wire Line
+	1350 9700 1450 9700
 $EndSCHEMATC

@@ -5,13 +5,13 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 35 109
 Title "psMCU"
-Date "2022-02-13"
+Date "2022-02-20"
 Rev "v1.1"
 Comp "Philipp Schilk"
 Comment1 ""
-Comment2 ""
-Comment3 "forces the state-machine to branch to the interrupt handler if one occurs. "
-Comment4 "Interrupt logic. Keeps track if an interrupt is currently being served, and "
+Comment2 "interrupt occurs."
+Comment3 "overrides the next instruction with a branch to the interrupt handler if an"
+Comment4 "Interrupt logic. Keeps track of if an interrupt is currently being served, and "
 $EndDescr
 Text HLabel 9400 2750 2    50   Output ~ 0
 Interrupt_Override

@@ -5,12 +5,12 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 2 109
 Title "psMCU"
-Date "2022-02-13"
+Date "2022-02-20"
 Rev "v1.1"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
-Comment3 "by the DBUS_OUT signal). "
+Comment3 "by the DBUS_OUT signal). Also allows the debugger to read and write to the bus."
 Comment4 "Displays the current value on the DBus if a different module is providing one (indicated "
 $EndDescr
 $Comp

@@ -4,14 +4,14 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 85 109
-Title ""
-Date ""
-Rev ""
-Comp ""
+Title "psMCU"
+Date "2022-02-20"
+Rev "v1.1"
+Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 ""
-Comment4 ""
+Comment4 "Reset and clock signal distribution."
 $EndDescr
 Text HLabel 4250 2000 0    50   Input ~ 0
 RESET
@@ -263,7 +263,7 @@ Wire Wire Line
 Connection ~ 4400 2200
 Wire Wire Line
 	4400 2200 4950 2200
-Text Notes 8650 1650 0    31   ~ 0
+Text Notes 8550 1650 0    31   ~ 0
 Because the CLK and RESET signals  have a high fan-out, \nthe board is split into regions and the CLK/RESET signals \nfor each section kept seperate, driven from this central\nbuffer.
 Text GLabel 4450 2300 2    31   Input ~ 0
 ~RESET

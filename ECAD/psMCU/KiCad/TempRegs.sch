@@ -4,14 +4,14 @@ EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
 Sheet 68 109
-Title ""
-Date ""
-Rev ""
-Comp ""
-Comment1 ""
-Comment2 ""
-Comment3 ""
-Comment4 ""
+Title "psMCU"
+Date "2022-02-20"
+Rev "v1.1"
+Comp "Philipp Schilk"
+Comment1 "computation."
+Comment2 "the Heap/Stack, they are a usefull spot for storing intermediate results during"
+Comment3 "can be used by freely by the program. As they can be accessed much faster than "
+Comment4 "Temp Register 1 and 2 (Adr. 0x100 & 0x101). Two general-purpose 8-bit registers that "
 $EndDescr
 Wire Wire Line
 	2900 10650 2800 10650

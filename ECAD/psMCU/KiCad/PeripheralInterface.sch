@@ -5,13 +5,13 @@ $Descr A3 16535 11693
 encoding utf-8
 Sheet 72 109
 Title "psMCU"
-Date "2022-02-13"
+Date "2022-02-20"
 Rev "v1.1"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
-Comment3 ""
-Comment4 "Peripheral Connector. Also pre-filters RAMA addresses for peripherals."
+Comment3 "Also pre-filters RAMA addresses for peripherals."
+Comment4 "Peripheral Connector. Includes buffers to fight signal integrity problems."
 $EndDescr
 Text HLabel 8750 3950 2    50   3State ~ 0
 DB[0..7]

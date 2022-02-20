@@ -5,13 +5,13 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 102 109
 Title "psMCU"
-Date "2022-02-13"
+Date "2022-02-20"
 Rev "v1.1"
 Comp "Philipp Schilk"
-Comment1 "(Black Magic. I don't quite remember how this works!)"
-Comment2 ""
-Comment3 "allow manual 'clock stepping'. Avoids clock-glitches when changing modes."
-Comment4 "Generates the actual system clock. Can pause the clock and "
+Comment1 ""
+Comment2 "disabled. Once clock stepping is enabled, it will return to 0 and stay there."
+Comment3 "The flip flop toggles between 1 and 0 to generate the clock as long as clock stepping is "
+Comment4 "Generates the actual system clock. Can pause the clock and allow manual 'clock stepping'. "
 $EndDescr
 Wire Wire Line
 	4100 3200 4100 3250

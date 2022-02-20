@@ -5,13 +5,13 @@ $Descr A3 16535 11693
 encoding utf-8
 Sheet 9 109
 Title "psMCU"
-Date "2022-02-13"
+Date "2022-02-20"
 Rev "v1.1"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
-Comment3 "if instruction requires."
-Comment4 "Calculate the 2's complement (*-1) of Operand B. Can carry-into the addition"
+Comment3 "into the addition from a register flag if the instruction requires it."
+Comment4 "Calculate the 2's complement (*-1) of Operand B. Can optionally carry"
 $EndDescr
 Text HLabel 11600 2200 2    50   3State ~ 0
 DB[0..7]

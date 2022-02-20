@@ -5,13 +5,13 @@ $Descr A4 8268 11693 portrait
 encoding utf-8
 Sheet 81 109
 Title "psMCU"
-Date "2022-02-13"
+Date "2022-02-20"
 Rev "v1.1"
 Comp "Philipp Schilk"
 Comment1 ""
-Comment2 ""
-Comment3 "Used to access fixed/dynamic RAM addresses."
-Comment4 "Puts either RegB or the lowest byte of the current instruction on the RAMA bus."
+Comment2 "addresses."
+Comment3 "instruction plus register B on the RAMA bus. Used to access fixed/dynamic RAM"
+Comment4 "Puts either the lower 9 bits of the current instruction or lower 9 bits of the current"
 $EndDescr
 Entry Wire Line
 	4800 7250 4900 7350

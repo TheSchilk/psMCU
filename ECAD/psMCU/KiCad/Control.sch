@@ -5,13 +5,13 @@ $Descr A3 16535 11693
 encoding utf-8
 Sheet 26 109
 Title "psMCU"
-Date "2022-02-13"
+Date "2022-02-20"
 Rev "v1.1"
 Comp "Philipp Schilk"
 Comment1 ""
-Comment2 "interrupts and instruction stepping logic."
-Comment3 "individual sub-instruction steps are read from the Microcode ROMs. Also handles "
-Comment4 "The central state-machine that handles execution. Instructions are decoded, and the "
+Comment2 "interrupts and halting/instruction stepping."
+Comment3 "individual sub-instruction steps are read from Microcode ROMs. Also handles "
+Comment4 "The central state machine that controls execution. Instructions are decoded, and the "
 $EndDescr
 Text HLabel 5550 5150 0    50   Input ~ 0
 Bkpt_Trig
@@ -662,6 +662,8 @@ Text HLabel 9950 8600 2    50   Output ~ 0
 RAM_R_Fast
 Wire Wire Line
 	4550 2950 4800 2950
+Text Notes 11600 2200 0    100  ~ 0
+Debugger Override
 Wire Bus Line
 	7850 4600 7850 5700
 Wire Bus Line

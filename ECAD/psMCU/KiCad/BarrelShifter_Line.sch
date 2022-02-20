@@ -5,13 +5,13 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 25 109
 Title "psMCU"
-Date "2022-02-13"
+Date "2022-02-20"
 Rev "v1.1"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 ""
-Comment4 "A line of 8 2in-1out multiplexers used multiple times in the barrel shifter."
+Comment4 "A line of 8 2in-1out multiplexers used by the barrel shifter."
 $EndDescr
 Wire Wire Line
 	5650 3700 5700 3700

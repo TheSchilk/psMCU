@@ -5,13 +5,13 @@ $Descr A3 16535 11693
 encoding utf-8
 Sheet 1 109
 Title "psMCU"
-Date "2022-02-13"
+Date "2022-02-20"
 Rev "v1.1"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 ""
-Comment4 "A fairly full-featured, 8-bit processor built entirely from 74-Series logic."
+Comment4 "An 8-bit processor built entirely from 74-Series logic."
 $EndDescr
 Text Notes 7250 6350 0    118  Italic 0
 'Why not?'

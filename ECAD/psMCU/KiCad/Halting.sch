@@ -4,14 +4,14 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 32 109
-Title ""
-Date ""
-Rev ""
-Comp ""
-Comment1 ""
-Comment2 ""
-Comment3 ""
-Comment4 ""
+Title "psMCU"
+Date "2022-02-20"
+Rev "v1.1"
+Comp "Philipp Schilk"
+Comment1 "will halt execution on any sub-instruction step."
+Comment2 "by instruction stepping being active or a breakpoint triggering. A HALT instruction"
+Comment3 "microcode lookup ROMs. Execution can be halted on the first sub-instruction step"
+Comment4 "Controls the halting of execution by asserting the 'Halt' signal, which disables all "
 $EndDescr
 $Sheet
 S 3700 2550 700  500 

@@ -5,15 +5,15 @@ $Descr A3 16535 11693
 encoding utf-8
 Sheet 99 109
 Title "psMCU"
-Date "2022-02-13"
+Date "2022-02-20"
 Rev "v1.1"
 Comp "Philipp Schilk"
-Comment1 "1-of-8/one-hot signal. "
-Comment2 "setting during power-on is configurable with jumpers. Output encoded as "
+Comment1 "1-of-8/one-hot signal. Includes a debugger override."
+Comment2 "setting during power-on is configurable with dip switches. Output is encoded as a"
 Comment3 "Rising-Edge detectors ensure each button press is only counted once. The default clock "
 Comment4 "Frequency selection logic/state machine. Allows selection between 8 frequency set-points."
 $EndDescr
-Text Notes 13000 2650 0    100  ~ 0
+Text Notes 13000 2700 0    100  ~ 0
 Binary to one-hot converter
 Text Notes 8750 2700 0    100  ~ 0
 Up/Down Counter
@@ -2320,7 +2320,7 @@ Wire Wire Line
 Wire Wire Line
 	7700 7700 8100 7700
 NoConn ~ 9000 7650
-Text Notes 11550 2800 0    100  ~ 0
+Text Notes 11550 2850 0    100  ~ 0
 Debugger\nOverride
 Text Notes 8750 6300 0    100  ~ 0
 Debugger Output

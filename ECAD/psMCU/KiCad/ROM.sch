@@ -5,13 +5,13 @@ $Descr A3 11693 16535 portrait
 encoding utf-8
 Sheet 65 109
 Title "psMCU"
-Date "2022-02-13"
+Date "2022-02-20"
 Rev "v1.1"
 Comp "Philipp Schilk"
-Comment1 "reading. To reduce pin count, programming is done serially with shift registers.  "
-Comment2 "external programmer can reroute the IO of the ROM ICs to allow programming and"
-Comment3 "operation the current instruction is read out based on the program counter. The "
-Comment4 "ROM that stores the 16-bit instructions and programming interface. During normal "
+Comment1 "8 slots, and selected using a DIP switch."
+Comment2 "of the ROM ICs for programming and verification. Up to 8 programs can be stored in "
+Comment3 "read out based on the program counter. The debugger can reroute and control the IO "
+Comment4 "ROM that stores the 16-bit instructions. During normal operation the next instruction is"
 $EndDescr
 $Comp
 L power:+5V #PWR?

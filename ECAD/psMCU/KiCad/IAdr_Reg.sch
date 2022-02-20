@@ -5,13 +5,13 @@ $Descr A4 8268 11693 portrait
 encoding utf-8
 Sheet 56 109
 Title "psMCU"
-Date "2022-02-13"
+Date "2022-02-20"
 Rev "v1.1"
 Comp "Philipp Schilk"
-Comment1 ""
-Comment2 ""
-Comment3 ""
-Comment4 "16Bit register that stores the instruction currently being executed."
+Comment1 "This register is not always equal to PC-1, i.e. due to JMP or conditional instructions."
+Comment2 "*next* instruction in ROM but the MCU must return to *this* instruction after an interrupt."
+Comment3 "required for interrupt handling. The program counter always contains the address of the "
+Comment4 "14Bit register that stores the address of the instruction currently being executed. This is "
 $EndDescr
 Text HLabel 800  8750 0    50   Input ~ 0
 Latch

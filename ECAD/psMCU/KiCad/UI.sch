@@ -5,12 +5,12 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 86 109
 Title "psMCU"
-Date "2022-02-13"
+Date "2022-02-20"
 Rev "v1.1"
 Comp "Philipp Schilk"
 Comment1 ""
-Comment2 ""
-Comment3 "and a connector for and external remote control."
+Comment2 "monitor the current state of the processor and override the user controls."
+Comment3 "and a connector for an external remote control. Also allows the debugger to "
 Comment4 "Contains all buttons needed to control the state/execution flow of the processor "
 $EndDescr
 Text HLabel 3950 4450 2    50   Output ~ 0
@@ -5052,7 +5052,7 @@ Text Notes 5900 1500 0    50   ~ 0
 Rising Edge Detection
 Text Notes 6750 850  0    100  ~ 0
 Manual Interrupt Trigger Logic
-Text Notes 9150 3750 0    100  ~ 0
+Text Notes 9050 3750 0    100  ~ 0
 Debugger State Input
 Text Notes 5750 3750 0    100  ~ 0
 External Remote Connector

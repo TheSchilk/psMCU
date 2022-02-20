@@ -5,13 +5,13 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 58 109
 Title "psMCU"
-Date "2022-02-13"
+Date "2022-02-20"
 Rev "v1.1"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
-Comment3 "a return address onto the stack. "
-Comment4 "Puts the higher or lower byte of the PC counter onto the DBus. Used to push"
+Comment3 "Used to push a return address onto the stack for a CALL or interrupt onto the stack."
+Comment4 "Puts the higher or lower byte of the address of the current instruction onto the DBus. "
 $EndDescr
 Wire Wire Line
 	6750 3200 6750 3150

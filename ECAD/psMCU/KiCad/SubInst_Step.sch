@@ -4,14 +4,14 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 30 109
-Title ""
-Date ""
-Rev ""
-Comp ""
+Title "psMCU"
+Date "2022-02-20"
+Rev "v1.1"
+Comp "Philipp Schilk"
 Comment1 ""
-Comment2 ""
-Comment3 ""
-Comment4 ""
+Comment2 "step is active is provided, which is used by the halt logic."
+Comment3 "The current step is shown on a one-hot display. A signal indicating if the first "
+Comment4 "Counter to determine which sub-instruction step is currently being executed."
 $EndDescr
 $Comp
 L 74xx_IEEE:74HC238 U?

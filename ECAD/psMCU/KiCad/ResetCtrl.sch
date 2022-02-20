@@ -5,13 +5,13 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 96 109
 Title "psMCU"
-Date "2022-02-13"
+Date "2022-02-20"
 Rev "v1.1"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
-Comment3 "generate the RESET and ~RESET~ signals used globally."
-Comment4 "Generates reset during power-on and combines the different reset sources to"
+Comment3 ""
+Comment4 "Generates a reset during power-on and generates the RESET and ~RESET~ signals."
 $EndDescr
 Text Label 9000 4200 2    50   ~ 0
 ~R

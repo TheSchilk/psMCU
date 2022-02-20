@@ -5,13 +5,13 @@ $Descr A4 8268 11693 portrait
 encoding utf-8
 Sheet 66 109
 Title "psMCU"
-Date "2022-02-13"
+Date "2022-02-20"
 Rev "v1.1"
 Comp "Philipp Schilk"
 Comment1 ""
-Comment2 "current content can be read to the ROMA bus, or the lower 8 bits can be read to the DBus. "
-Comment3 "few other instructions. The DBus can be latched into the higher or lower 8 bits. The "
-Comment4 "A 16 bit register used during return instructions, to swap register contents, and during a "
+Comment2 "be outputted to the ROMA bus, or the lower 8 bits can be outputted to the DBus. "
+Comment3 "The DBus can be latched into the higher or lower 8 bits. The current content can "
+Comment4 "A 16 bit register used during returns or as a temporary store during other instructions. "
 $EndDescr
 Text HLabel 1150 7300 0    50   Input ~ 0
 LatchL

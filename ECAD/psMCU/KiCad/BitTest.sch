@@ -5,12 +5,12 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 18 109
 Title "psMCU"
-Date "2022-02-13"
+Date "2022-02-20"
 Rev "v1.1"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 "is determined by the current instruction."
-Comment3 "conditional bit test instructions. Which bit is tested, and if it is being tested for 1/0 "
+Comment3 "conditional bit test instructions. Which bit is tested, and if it is being tested for a 1 or 0 "
 Comment4 "Checks if a given bit of the value currently on the DBus is set/reset. Used for the "
 $EndDescr
 Text Label 4500 2050 0    50   ~ 0

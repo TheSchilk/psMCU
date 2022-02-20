@@ -5,13 +5,13 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 34 109
 Title "psMCU"
-Date "2022-02-13"
+Date "2022-02-20"
 Rev "v1.1"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
-Comment3 ""
-Comment4 "Reroutes Latch/OE signals depending on which register instruciton selects."
+Comment3 "Used by some instructions that can affect both the A and B register."
+Comment4 "Reroutes Latch/OE signals depending on which register the instruction selects."
 $EndDescr
 Text HLabel 2150 2100 0    50   Input ~ 0
 Inst[0..15]

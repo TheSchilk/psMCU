@@ -5,12 +5,12 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 49 109
 Title "psMCU"
-Date "2022-02-13"
+Date "2022-02-20"
 Rev "v1.1"
 Comp "Philipp Schilk"
 Comment1 ""
-Comment2 ""
-Comment3 ""
+Comment2 "instruction is generated, no matter what the current instruction is."
+Comment3 "If the interrupt override is active, the instruction code for the branch-to-interrupt "
 Comment4 "Decodes the MSBs of an instruction into the actual instruction code for microcode lookup."
 $EndDescr
 Text HLabel 3800 2050 0    50   Input ~ 0

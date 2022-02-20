@@ -4,14 +4,14 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 51 109
-Title ""
-Date ""
-Rev ""
-Comp ""
+Title "psMCU"
+Date "2022-02-20"
+Rev "v1.1"
+Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 ""
-Comment4 ""
+Comment4 "Allows the debugger to override control lines to the main registers and RAM."
 $EndDescr
 Text HLabel 6500 4050 2    50   Output ~ 0
 RAM_Sync_D_A_O

@@ -5,13 +5,13 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 77 109
 Title "psMCU"
-Date "2022-02-13"
+Date "2022-02-20"
 Rev "v1.1"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
 Comment3 "(r/w) and comparator outputs (r)."
-Comment4 "System Register 3 (Adr. 0x102). Contains the Interrupt EN (r/w), Button Interupt flag"
+Comment4 "System Register 3 (Adr. 0x104). Contains the Interrupt EN (r/w), Button Interupt flag"
 $EndDescr
 Wire Wire Line
 	1300 7150 1200 7150
@@ -25,7 +25,6 @@ Wire Wire Line
 	1300 6750 1200 6750
 Wire Wire Line
 	1300 6450 1200 6450
-Connection ~ 1200 6750
 Wire Wire Line
 	1200 6750 1200 6850
 Connection ~ 1200 6850
@@ -53,23 +52,21 @@ F 3 "" H 1200 7350 50  0001 C CNN
 	1    1200 7350
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	1200 6450 1200 6650
 $Comp
 L power:+5V #PWR?
 U 1 1 602A1723
-P 1100 6550
+P 1250 6650
 AR Path="/5FD65262/602A1723" Ref="#PWR?"  Part="1" 
 AR Path="/5FD65308/602A1723" Ref="#PWR01545"  Part="1" 
-F 0 "#PWR01545" H 1100 6400 50  0001 C CNN
-F 1 "+5V" V 1115 6678 50  0000 L CNN
-F 2 "" H 1100 6550 50  0001 C CNN
-F 3 "" H 1100 6550 50  0001 C CNN
-	1    1100 6550
+F 0 "#PWR01545" H 1250 6500 50  0001 C CNN
+F 1 "+5V" V 1265 6778 50  0000 L CNN
+F 2 "" H 1250 6650 50  0001 C CNN
+F 3 "" H 1250 6650 50  0001 C CNN
+	1    1250 6650
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	1100 6550 1300 6550
+	1250 6650 1300 6650
 Wire Wire Line
 	4950 2450 4950 2500
 $Comp
@@ -2783,11 +2780,6 @@ Text Notes 3850 5700 0    50   ~ 0
 W
 Text Notes 3850 6250 0    50   ~ 0
 R
-Wire Wire Line
-	1300 6650 1200 6650
-Connection ~ 1200 6650
-Wire Wire Line
-	1200 6650 1200 6750
 $Comp
 L Device:CP_Small C?
 U 1 1 6252AC26
@@ -2947,6 +2939,23 @@ Wire Wire Line
 	6550 4600 7300 4600
 Wire Wire Line
 	6550 4700 7300 4700
+$Comp
+L power:GND #PWR?
+U 1 1 65E40E4F
+P 1150 6450
+AR Path="/5FD65262/65E40E4F" Ref="#PWR?"  Part="1" 
+AR Path="/5FD65308/65E40E4F" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 1150 6200 50  0001 C CNN
+F 1 "GND" V 1155 6322 50  0000 R CNN
+F 2 "" H 1150 6450 50  0001 C CNN
+F 3 "" H 1150 6450 50  0001 C CNN
+	1    1150 6450
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	1300 6550 1200 6550
+Wire Wire Line
+	1200 6550 1200 6450
 Wire Bus Line
 	2000 950  2000 3350
 Wire Bus Line
@@ -2955,4 +2964,7 @@ Wire Bus Line
 	9200 950  9200 3600
 Wire Bus Line
 	7400 2300 7400 4900
+Connection ~ 1200 6450
+Wire Wire Line
+	1200 6450 1150 6450
 $EndSCHEMATC

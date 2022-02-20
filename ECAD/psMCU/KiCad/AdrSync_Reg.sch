@@ -5,13 +5,13 @@ $Descr A4 8268 11693 portrait
 encoding utf-8
 Sheet 109 109
 Title "psMCU"
-Date "2022-02-13"
+Date "2022-02-20"
 Rev "v1.1"
 Comp "Philipp Schilk"
 Comment1 ""
 Comment2 ""
-Comment3 ""
-Comment4 "15 bit register."
+Comment3 "the current setting and also take control of the some stack control lines."
+Comment4 "Register  to latch address into for Stack access. Allows the debugger to override"
 $EndDescr
 Text HLabel 1100 900  0    50   Input ~ 0
 In[14..0]

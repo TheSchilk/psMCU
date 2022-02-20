@@ -5,12 +5,12 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 4 109
 Title "psMCU"
-Date "2022-02-13"
+Date "2022-02-20"
 Rev "v1.1"
 Comp "Philipp Schilk"
 Comment1 ""
-Comment2 "provided, as it is used by the ALU for subtraction."
-Comment3 "currently in reg A and operand B. The 2's complement of operand B is always "
+Comment2 "the ALU for subtraction."
+Comment3 "currently in reg A and operand B. The 2's complement of operand B is also used by"
 Comment4 "Performs bitwise logical operations (AND, OR, XOR, NOT, 2's complement) on the value"
 $EndDescr
 Text HLabel 6700 3450 2    50   3State ~ 0

@@ -5,13 +5,13 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 82 109
 Title "psMCU"
-Date "2022-02-13"
+Date "2022-02-20"
 Rev "v1.1"
 Comp "Philipp Schilk"
 Comment1 ""
-Comment2 "clock transitions. Bus-switching is done to interface with the bidirectional port."
+Comment2 "clock transitions. Tristate buffers are used to interface with the bidirectional data port."
 Comment3 "interface, some latches/registers should prevent accidental writes due to glitches on "
-Comment4 "8kB of Heap RAM, split into 16 pages. Because the RAM IC only has an asynchronous "
+Comment4 "32kB of Heap RAM, split into 128 pages. Because the RAM IC only has an asynchronous "
 $EndDescr
 Text HLabel 1600 4100 0    50   Input ~ 0
 Sync_D_A
