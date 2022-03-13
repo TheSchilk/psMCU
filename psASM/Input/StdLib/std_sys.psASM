@@ -68,7 +68,7 @@
 @define S3_BlessA      5        #            (Alias)
 @define S3_BgreaterA   6        # [6]    (R) Reads 1 if A<B. 0 Otherwise.
 @define S3_AlessB      6        #            (Alias)
-                                # [6..7] (R) Reserved. Always Reads 0.
+                                # [7]    (R) Reserved. Always Reads 0.
 
 # Shifts and Masks:
 @define S3_INT_EN_S    0        # INT_EN field shift.

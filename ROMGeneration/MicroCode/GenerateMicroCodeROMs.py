@@ -66,7 +66,7 @@ def main():
 
                 # Have to reverse string because LSB is first in CSV
                 ROMs[rom_index].append(
-                    int(val[::-1], 2).to_bytes(1, byteorder='big', signed=False))
+                    int(val, 2).to_bytes(1, byteorder='big', signed=False))
 
     print("Successfully parsed CSV file")
 
