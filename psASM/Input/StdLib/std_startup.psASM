@@ -1,11 +1,11 @@
-# 
-# psMCU Startup 
+#
+# psMCU Startup
 #
 
 # Include guard
 @ifndef SYSTEM_STARTUP_HEADER
-    
-    # This is the first time the startup file is included. 
+
+    # This is the first time the startup file is included.
     @define SYSTEM_STARTUP_HEADER
 
     # Entry point:
@@ -19,12 +19,12 @@
 
     # Fallback interrupt handler:
     _fallback_handler: RTRNI
-    
+
     # End-of-file:
     _EOF:
 
 @else
-    
+
     # This startup file was included more than once.
     @print "Error: std_startup.psASM was included more than once!"
     @print "The assembler automatically includes the startup file unless the -s flag is set."
